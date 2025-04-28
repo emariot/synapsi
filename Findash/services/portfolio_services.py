@@ -2,6 +2,8 @@ from typing import List, Dict, Optional
 from datetime import datetime, timedelta
 from Findash.modules.metrics import obter_dados, calcular_metricas, get_sector
 import pandas as pd
+import time
+
 
 class PortfolioService:
     """
@@ -245,104 +247,96 @@ class PortfolioService:
     
     # Mover e ajustare para utilizar na camada de serviço
     def calcular_metricas_mensais_anuais(
-    self,
-    tickers: List[str],
-    quantities: List[int],
-    portfolio_values: Dict,
-    dividends: Dict,
-    start_date: str,
-    end_date: str
-    ) -> Dict:
-        """
-        Calcula métricas mensais ou anuais de ganho de capital, dividend yield e retorno total.
-        
-        Args:
-            tickers: Lista de tickers.
-            quantities: Lista de quantidades por ticker.
-            portfolio_values: Dicionário com valores do portfólio (preços diários por ticker).
-            dividends: Dicionário com dividendos por ticker.
-            start_date: Data inicial (formato 'YYYY-MM-DD').
-            end_date: Data final (formato 'YYYY-MM-DD').
-        
-        Returns:
-            Dict: Dicionário com períodos, ganhos de capital, dividend yields e retornos totais.
-        """
-        # Converter datas para datetime
-        start = pd.to_datetime(start_date)
-        end = pd.to_datetime(end_date)
-        
-        # Determinar granularidade (mensal ou anual)
-        delta_years = (end - start).days / 365.25
-        freq = 'ME' if delta_years <= 2 else 'YE'  # Alterado de 'M' para 'ME' e 'Y' para 'YE'
-        date_format = '%Y-%m' if freq == 'ME' else '%Y'
+            self,
+            tickers: List[str],
+            quantities: List[int],
+            portfolio_values: Dict,
+            dividends: Dict,
+            start_date: str,
+            end_date: str
+        ) -> Dict:
+            """
+            Calcula métricas mensais ou anuais de ganho de capital, dividend yield e retorno total.
+            
+            Args:
+                tickers: Lista de tickers.
+                quantities: Lista de quantidades por ticker.
+                portfolio_values: Dicionário com valores do portfólio (preços diários por ticker).
+                dividends: Dicionário com dividendos por ticker.
+                start_date: Data inicial (formato 'YYYY-MM-DD').
+                end_date: Data final (formato 'YYYY-MM-DD').
+            
+            Returns:
+                Dict: Dicionário com períodos, ganhos de capital, dividend yields e retornos totais.
+            """
+            start_time = time.time()  # ALTERAÇÃO: Medir tempo total da função
 
-        # Criar DataFrame com preços do portfólio
-        portfolio_df = pd.DataFrame()
-        for ticker in tickers:
-            if ticker in portfolio_values and portfolio_values[ticker]:
-                df = pd.DataFrame.from_dict(portfolio_values[ticker], orient='index', columns=[ticker])
-                df.index = pd.to_datetime(df.index)
-                portfolio_df = portfolio_df.join(df, how='outer') if not portfolio_df.empty else df
-        portfolio_df = portfolio_df.ffill().loc[start:end]  # Alterado de fillna(method='ffill') para ffill()
+            # Converter datas para datetime
+            start = pd.to_datetime(start_date)
+            end = pd.to_datetime(end_date)
+            
+            # Determinar granularidade (mensal ou anual)
+            delta_years = (end - start).days / 365.25
+            freq = 'ME' if delta_years <= 2 else 'YE'
+            date_format = '%Y-%m' if freq == 'ME' else '%Y'
 
-        # Calcular valor total do portfólio (preço * quantidade)
-        total_portfolio = pd.DataFrame()
-        for ticker, qty in zip(tickers, quantities):
-            if ticker in portfolio_df.columns:
-                total_portfolio[ticker] = portfolio_df[ticker] * qty
-        portfolio_series = total_portfolio.sum(axis=1)
+            # Criar DataFrame com preços do portfólio
+            portfolio_df = pd.DataFrame()  # ALTERAÇÃO: Inicializar fora do loop para clareza
+            for ticker in tickers:
+                if ticker in portfolio_values and portfolio_values[ticker]:
+                    df = pd.DataFrame.from_dict(portfolio_values[ticker], orient='index', columns=[ticker])
+                    df.index = pd.to_datetime(df.index)
+                    # ALTERAÇÃO: Usar concat em vez de join para maior eficiência
+                    portfolio_df = pd.concat([portfolio_df, df], axis=1) if not portfolio_df.empty else df
+            portfolio_df = portfolio_df.ffill().loc[start:end]
 
-        # Resample para períodos mensais ou anuais
-        portfolio_monthly_start = portfolio_series.resample(freq).first()
-        portfolio_monthly_end = portfolio_series.resample(freq).last()
+            # Calcular valor total do portfólio (preço * quantidade)
+            # ALTERAÇÃO: Usar multiplicação vetorizada em vez de loop
+            total_portfolio = portfolio_df.mul(quantities, axis=1)
+            portfolio_series = total_portfolio.sum(axis=1)
 
-        # Calcular ganho de capital para cada período
-        capital_gains = []
-        for i in range(len(portfolio_monthly_start)):
-            start_val = portfolio_monthly_start.iloc[i]
-            end_val = portfolio_monthly_end.iloc[i]
-            if start_val > 0:  # Evitar divisão por zero
-                gain = ((end_val - start_val) / start_val) * 100
-            else:
-                gain = 0.0
-            capital_gains.append(float(gain))
+            # Resample para períodos mensais ou anuais
+            portfolio_monthly_start = portfolio_series.resample(freq).first()
+            portfolio_monthly_end = portfolio_series.resample(freq).last()
 
-        # Calcular dividend yield
-        dividend_yields = []
-        periods = [d.strftime(date_format) for d in portfolio_monthly_start.index]
-        for i, period in enumerate(periods):
-            period_start = portfolio_monthly_start.index[i]
-            if i < len(portfolio_monthly_start) - 1:
-                period_end = portfolio_monthly_start.index[i + 1]
-            else:
-                period_end = end
+            # Calcular ganho de capital para cada período
+            # ALTERAÇÃO: Usar operação vetorizada para ganhos de capital
+            capital_gains = ((portfolio_monthly_end - portfolio_monthly_start) / portfolio_monthly_start.replace(0, float('nan'))) * 100
+            capital_gains = capital_gains.fillna(0.0).astype(float).tolist()
 
-            # Somar dividendos no período
-            div_total = 0
+            # Calcular dividend yield
+            dividend_yields = []
+            periods = [d.strftime(date_format) for d in portfolio_monthly_start.index]
+            # ALTERAÇÃO: Pré-processar dividendos em um DataFrame para evitar múltiplas conversões
+            div_df = pd.DataFrame()
             for ticker, qty in zip(tickers, quantities):
                 if ticker in dividends:
                     div_series = pd.Series(dividends[ticker])
                     div_series.index = pd.to_datetime(div_series.index)
-                    div_series = div_series.loc[period_start:period_end]
-                    div_total += div_series.sum() * qty
+                    div_series = div_series * qty
+                    div_df[ticker] = div_series
+            div_df = div_df.groupby(div_df.index).sum()
 
-            # Calcular dividend yield (%)
-            start_val = portfolio_monthly_start.iloc[i]
-            if start_val > 0:
-                dy = (div_total / start_val) * 100
-            else:
-                dy = 0.0
-            dividend_yields.append(float(dy))
+            for i, period in enumerate(periods):
+                period_start = portfolio_monthly_start.index[i]
+                period_end = portfolio_monthly_start.index[i + 1] if i < len(portfolio_monthly_start) - 1 else end
+                # ALTERAÇÃO: Usar resample para somar dividendos no período
+                div_total = div_df.loc[period_start:period_end].sum().sum() if not div_df.empty else 0.0
+                start_val = portfolio_monthly_start.iloc[i]
+                dy = (div_total / start_val * 100) if start_val > 0 else 0.0
+                dividend_yields.append(float(dy))
 
-        # Calcular retorno total (ganho de capital + dividend yield)
-        total_returns = [capital_gains[i] + dividend_yields[i] for i in range(len(capital_gains))]
+            # Calcular retorno total (ganho de capital + dividend yield)
+            total_returns = [capital_gains[i] + dividend_yields[i] for i in range(len(capital_gains))]
 
-        return {
-            'periods': periods,
-            'capital_gains': capital_gains,
-            'dividend_yields': dividend_yields,
-            'total_returns': total_returns
-        }
+            # ALTERAÇÃO: Imprimir tempo total da função, no estilo metrics.py
+            print(f"calcular_metricas_mensuais_anuais: Tempo de execução = {time.time() - start_time:.4f}s")
+            return {
+                'periods': periods,
+                'capital_gains': capital_gains,
+                'dividend_yields': dividend_yields,
+                'total_returns': total_returns
+            }
     
     def calcular_dy_por_setor(
         self,
@@ -369,9 +363,10 @@ class PortfolioService:
             Dict: {
                 'years': Lista de anos (ex.: ['2023', '2024', '2025*']),
                 'setores': Lista de setores,
-                'dy_por_setor_por_ano': Dicionário com DY por setor por ano (ex.: {'Petróleo e Gás': {'2023': 5.2, '2024': 4.8}, ...})
+                'dy_por_setor_por_ano': Dicionário com DY por setor por ano
             }
         """
+        start_time = time.time()  # Medir tempo total da função
         print("Iniciando cálculo de DY por setor")
 
         # Converter datas para datetime
@@ -397,6 +392,16 @@ class PortfolioService:
         # Inicializar resultado
         dy_por_setor_por_ano = {setor: {year: 0.0 for year in years_str} for setor in setores}
 
+        # ALTERAÇÃO: Pré-processar dividendos em um DataFrame para evitar conversões repetitivas
+        div_df = pd.DataFrame()
+        for ticker, qty in zip(tickers, quantities):
+            if ticker in dividends:
+                div_series = pd.Series(dividends[ticker])
+                div_series.index = pd.to_datetime(div_series.index)
+                div_series = div_series * qty
+                div_df[ticker] = div_series
+        div_df = div_df.groupby(div_df.index).sum()
+
         # Para cada ano, calcular o DY por setor
         for year_idx, year in enumerate(years):
             year_str = years_str[year_idx]
@@ -408,47 +413,41 @@ class PortfolioService:
             # Calcular o número de meses cobertos no ano
             months_in_year = 12 if year < end.year else end.month
 
-            # Criar DataFrame com preços do portfólio para o ano
+            # ALTERAÇÃO: Criar DataFrame com preços apenas uma vez por ano
             portfolio_df = pd.DataFrame()
             for ticker in tickers:
                 if ticker in portfolio_values and portfolio_values[ticker]:
                     df = pd.DataFrame.from_dict(portfolio_values[ticker], orient='index', columns=[ticker])
                     df.index = pd.to_datetime(df.index)
-                    portfolio_df = portfolio_df.join(df, how='outer') if not portfolio_df.empty else df
+                    # ALTERAÇÃO: Usar concat em vez de join para maior eficiência
+                    portfolio_df = pd.concat([portfolio_df, df], axis=1) if not portfolio_df.empty else df
             portfolio_df = portfolio_df.ffill().loc[year_start:year_end]
 
-            # Calcular valor inicial de cada ticker no início do ano
-            valor_inicial_por_ticker = {}
-            for ticker in tickers:
-                if ticker in portfolio_df.columns:
-                    first_date = portfolio_df.index[portfolio_df.index >= year_start][0]
-                    valor_inicial_por_ticker[ticker] = portfolio_df[ticker].loc[first_date]
-                else:
-                    valor_inicial_por_ticker[ticker] = 0.0
+            # ALTERAÇÃO: Calcular valor inicial de todos os tickers de uma vez
+            first_date = portfolio_df.index[portfolio_df.index >= year_start][0]
+            valor_inicial = portfolio_df.loc[first_date].fillna(0.0) * quantities
 
-            # Calcular dividendos por setor no ano
+            # ALTERAÇÃO: Calcular dividendos por ticker no ano usando resample
+            div_totals = div_df.loc[year_start:year_end].sum() if not div_df.empty else pd.Series(0.0, index=tickers)
+
+            # ALTERAÇÃO: Agrupar por setor usando pandas para evitar loops
+            ticker_data = pd.DataFrame({
+                'ticker': tickers,
+                'setor': [setores_dict[ticker] for ticker in tickers],
+                'valor_inicial': valor_inicial,
+                'div_total': [div_totals.get(ticker, 0.0) for ticker in tickers]
+            })
+            setor_agg = ticker_data.groupby('setor').agg({
+                'valor_inicial': 'sum',
+                'div_total': 'sum'
+            })
+
+            # Calcular DY por setor
             for setor in setores:
-                div_total_setor = 0.0
-                valor_total_setor = 0.0
-
-                for ticker, qty in zip(tickers, quantities):
-                    if setores_dict.get(ticker) != setor:
-                        continue
-
-                    # Calcular valor inicial do ticker no setor
-                    valor_inicial = valor_inicial_por_ticker.get(ticker, 0.0) * qty
-                    valor_total_setor += valor_inicial
-
-                    # Somar dividendos no ano
-                    if ticker in dividends:
-                        div_series = pd.Series(dividends[ticker])
-                        div_series.index = pd.to_datetime(div_series.index)
-                        div_series = div_series.loc[year_start:year_end]
-                        div_total_setor += div_series.sum() * qty
-
+                valor_total_setor = setor_agg.loc[setor, 'valor_inicial'] if setor in setor_agg.index else 0.0
+                div_total_setor = setor_agg.loc[setor, 'div_total'] if setor in setor_agg.index else 0.0
                 print(f"Setor {setor}, Ano {year_str} - Dividendos Totais: {div_total_setor}, Valor Total: {valor_total_setor}")
 
-                # Calcular DY bruto do setor
                 if valor_total_setor > 0:
                     dy = (div_total_setor / valor_total_setor) * 100
                     # Ajustar para ano incompleto (anualizar)
@@ -457,6 +456,7 @@ class PortfolioService:
                     dy_por_setor_por_ano[setor][year_str] = float(dy)
 
         print("Cálculo de DY por setor concluído")
+        print(f"calcular_dy_por_setor: Tempo de execução = {time.time() - start_time:.4f}s")
         return {
             'years': years_str,
             'setores': setores,

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinDash - Synapsi</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">Synapsi</div>
+        <ul class="navbar-nav">
+            <li><a href="/">Início</a></li>
+            <li><a href="/findash">FinDash</a></li>
+            <li><a href="/segurai">Segurai</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/company">Empresa</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>FinDash</h1>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        <h2>Analise seu Portfólio</h2>
+        <form action="/dashboard" method="post" id="portfolio-form">
+            <div id="ticker-fields">
+                <div class="ticker-group">
+                    <label for="tickers">Ticker:</label><br>
+                    <select class="ticker-select" onchange="addSelectedTicker(this)">
+                        <option value="" disabled selected>Selecione um ticker</option>
+                    </select><br>
+                </div>
+            </div>
+            <button type="button" onclick="addTickerField()">Adicionar Ticker</button><br>
+            <h3>Tickers Selecionados</h3>
+            <div id="selected-tickers" style="margin-bottom: 20px;"></div>
+            <div style="display: flex; gap: 20px; align-items: center; margin-bottom: 10px;">
+                <div>
+                    <label for="start_date">Data Inicial:</label><br>
+                    <input type="date" name="start_date" id="start_date" onchange="setCustomPeriod()" required>
+                </div>
+                <div>
+                    <label for="end_date">Data Final:</label><br>
+                    <input type="date" name="end_date" id="end_date" onchange="setCustomPeriod()" required>
+                </div>
+            </div>
+            <label>Período de Análise:</label><br>
+            <div style="display: flex; gap: 20px; margin-bottom: 20px;">
+                <label><input type="radio" name="period" value="0.5" onchange="updateDates()" checked> 6 meses</label>
+                <label><input type="radio" name="period" value="1" onchange="updateDates()"> 1 ano</label>
+                <label><input type="radio" name="period" value="5" onchange="updateDates()"> 5 anos</label>
+                <label><input type="radio" name="period" value="custom" id="custom-period" onchange="updateDates()"> Personalizado</label>
+            </div>
+            <button type="submit">Analisar Portfólio</button>
+        </form>
+        <div>{{ dash_content|safe }}</div>
+    </div>
+    <script>
+        let tickers = [];
+        let selectedTickers = [];
+
+        // Carregar tickers do servidor
+        function loadTickers(selectElement) {
+            fetch('/get-tickers')
+                .then(response => response.json())
+                .then(data => {
+                    tickers = data;
+                    updateTickerOptions(selectElement);
+                })
+                .catch(error => console.error('Erro ao carregar tickers:', error));
+        }
+
+        // Atualizar opções de tickers em uma dropdown
+        function updateTickerOptions(selectElement) {
+            selectElement.innerHTML = '<option value="" disabled selected>Selecione um ticker</option>';
+            tickers.forEach(ticker => {
+                if (!selectedTickers.includes(ticker.symbol)) {
+                    const option = document.createElement('option');
+                    option.value = ticker.symbol;
+                    option.textContent = `${ticker.symbol} - ${ticker.name}`;
+                    selectElement.appendChild(option);
+                }
+            });
+        }
+
+        // Atualizar todas as dropdowns
+        function updateAllDropdowns() {
+            const selects = document.querySelectorAll('.ticker-select');
+            selects.forEach(select => updateTickerOptions(select));
+        }
+
+        // Adicionar ticker selecionado à lista
+        function addSelectedTicker(selectElement) {
+            const tickerSymbol = selectElement.value;
+            if (!tickerSymbol || selectedTickers.includes(tickerSymbol)) return;
+
+            selectedTickers.push(tickerSymbol);
+            updateAllDropdowns();
+
+            const selectedTickersDiv = document.getElementById('selected-tickers');
+            const ticker = tickers.find(t => t.symbol === tickerSymbol);
+            const tickerDiv = document.createElement('div');
+            tickerDiv.dataset.symbol = tickerSymbol;
+            tickerDiv.style.display = 'flex';
+            tickerDiv.style.alignItems = 'center';
+            tickerDiv.style.gap = '10px';
+            tickerDiv.style.marginBottom = '10px';
+            tickerDiv.innerHTML = `
+                <span>${ticker.symbol} - ${ticker.name}</span>
+                <input type="number" min="1" value="1" onchange="updateQuantity(this, '${tickerSymbol}')" style="width: 60px;">
+                <button type="button" onclick="removeTicker('${tickerSymbol}')" style="background-color: #ff4d4d; color: white; border: none; padding: 5px 10px; cursor: pointer;">Remover</button>
+                <input type="hidden" name="tickers[]" value="${tickerSymbol}">
+                <input type="hidden" name="quantities[]" value="1" class="quantity-input" data-symbol="${tickerSymbol}">
+            `;
+            selectedTickersDiv.appendChild(tickerDiv);
+
+            selectElement.value = ''; // Resetar a dropdown
+        }
+
+        // Atualizar quantidade no input hidden
+        function updateQuantity(inputElement, tickerSymbol) {
+            const quantity = inputElement.value;
+            const hiddenInput = document.querySelector(`.quantity-input[data-symbol="${tickerSymbol}"]`);
+            if (hiddenInput) {
+                hiddenInput.value = quantity;
+            }
+        }
+
+        // Remover ticker da lista
+        function removeTicker(tickerSymbol) {
+            selectedTickers = selectedTickers.filter(t => t !== tickerSymbol);
+            const tickerDiv = document.querySelector(`div[data-symbol="${tickerSymbol}"]`);
+            if (tickerDiv) {
+                tickerDiv.remove();
+            }
+            updateAllDropdowns();
+        }
+
+        // Adicionar novo campo de ticker
+        function addTickerField() {
+            const tickerFields = document.getElementById('ticker-fields');
+            const newGroup = document.createElement('div');
+            newGroup.className = 'ticker-group';
+            newGroup.style.marginBottom = '10px';
+            newGroup.innerHTML = `
+                <label for="tickers">Ticker:</label><br>
+                <select class="ticker-select" onchange="addSelectedTicker(this)">
+                    <option value="" disabled selected>Selecione um ticker</option>
+                </select><br>
+            `;
+            tickerFields.appendChild(newGroup);
+            updateTickerOptions(newGroup.querySelector('.ticker-select'));
+        }
+
+        // Format date as YYYY-MM-DD
+        function formatDate(date) {
+            return date.toISOString().split('T')[0];
+        }
+
+        // Atualizar datas com base no período selecionado
+        function updateDates() {
+            const period = document.querySelector('input[name="period"]:checked').value;
+            const endDateInput = document.getElementById('end_date');
+            const startDateInput = document.getElementById('start_date');
+
+            // Definir data final padrão (ontem) se end_date estiver vazio ou inválido
+            let endDate;
+            if (endDateInput.value && !isNaN(new Date(endDateInput.value).getTime())) {
+                endDate = new Date(endDateInput.value);
+            } else {
+                endDate = new Date();
+                endDate.setDate(endDate.getDate() - 1); // Ontem
+                endDateInput.value = formatDate(endDate);
+            }
+
+            // Calcular data inicial com base no período
+            if (period !== 'custom') {
+                const startDate = new Date(endDate);
+                if (period === '0.5') {
+                    startDate.setMonth(endDate.getMonth() - 6); // Subtrair 6 meses
+                } else {
+                    const years = parseInt(period);
+                    startDate.setFullYear(endDate.getFullYear() - years); // Subtrair 1 ou 5 anos
+                }
+                startDateInput.value = formatDate(startDate);
+            }
+        }
+
+        // Marcar período como personalizado quando as datas são alteradas manualmente
+        function setCustomPeriod() {
+            const customRadio = document.getElementById('custom-period');
+            customRadio.checked = true;
+        }
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', () => {
+            const initialSelect = document.querySelector('.ticker-select');
+            loadTickers(initialSelect);
+            updateDates(); // Preencher datas iniciais com 6 meses por padrão
+        });
+    </script>
+</body>
+</html>

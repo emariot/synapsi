@@ -1,32 +1,19 @@
-Sinapse/
+Synapsi/
 ├── app.py
 ├── venv/
+├── flask_session/
 ├── templates/
 │   ├── homepage.html
 │   ├── findash_home.html
 │   ├── blog.html
 │   ├── company.html
-├── static/
-│   ├── style.css
-│   ├── scripts.js
+│   ├── segurai.html
 ├── Findash/
-│   ├── __init__.py
 │   ├── app_dash.py
 │   ├── modules/
-│   │   ├── __init__.py
 │   │   └── metrics.py
 │   ├── services/
-│   │   ├── __init__.py
 │   │   └── portfolio_services.py
-│   ├── static/
-│   │   └── script.js
-├── tests/
-│   ├── __init__.py
-│   ├── unit/
-│   │   ├── __init__.py
-│   │   └── test_portfolio_service.py
-│   ├── integration/
-│   │   ├── __init__.py
-│   │   └── test_portfolio_service_integration.py
-├── pytest.ini
-├── conftest.py
+│   ├── utils/
+│   │   └── serialization.py
+

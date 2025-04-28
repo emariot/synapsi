@@ -1,0 +1,42 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Caches
+flask_session/
+*.log
+
+# Virtual environment
+venv/
+ENV/
+env/
+
+# VS Code settings (opcional)
+.vscode/
+
+# Arquivos temporários do sistema
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Pastas do OneDrive temporárias
+*.tmp
+*.bak
+
+# Documentos Word/Office (se não quiser versionar)
+*.docx
+*.xlsx
+*.pptx
+
+# Arquivos de configuração locais
+*.env
+*.local
+*.sqlite3
+instance/
+
+# Pytest cache
+.pytest_cache/
+
+# MacOS files (caso use o projeto em outro computador)
+.DS_Store

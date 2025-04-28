@@ -236,7 +236,7 @@ def calcular_percentual(valor, total):
 
 # Funções menores para cada tipo de cálculo
 @measure_time
-def calcular_pesos_por_setor(tickers, quantities, portfolio):
+def calcular_pesos_por_setor(tickers, quantities, portfolio, get_sector_func=get_sector):
     """
     Calcula os pesos por setor com base na quantidade e no valor financeiro.
     
@@ -265,7 +265,7 @@ def calcular_pesos_por_setor(tickers, quantities, portfolio):
                 quantidade = quantities[i]
                 # Peso por quantidade
                 peso_quantidade = calcular_percentual(quantidade, soma_quantidades)
-                setor = get_sector(ticker)
+                setor = get_sector_func(ticker)
                 setor_pesos[setor] += peso_quantidade
                 # Peso financeiro
                 valor_financeiro = quantidade * preco_final
@@ -395,7 +395,7 @@ def calcular_retorno_ibov(ibov):
     return ibov_return_dict
 
 @measure_time
-def calcular_metricas_tabela(tickers, quantities, portfolio, setor_pesos, start_date, end_date, dividends=None):
+def calcular_metricas_tabela(tickers, quantities, portfolio, setor_pesos, start_date, end_date, dividends=None, get_sector_func=get_sector):
     """
     Calcula as métricas para a tabela (retorno total por ticker, pesos, etc.).
     
@@ -413,7 +413,7 @@ def calcular_metricas_tabela(tickers, quantities, portfolio, setor_pesos, start_
     """
     # [OTIMIZAÇÃO 1]: Pré-calcular setores para todos os tickers em um único dict
     # Evita chamadas repetitivas a get_sector dentro do loop, reduzindo overhead
-    sectores = {ticker: get_sector(ticker) for ticker in tickers}
+    sectores = {ticker: get_sector_func(ticker) for ticker in tickers}
     
     # Inicializar variáveis
     soma_quantidades = sum(quantities)
@@ -535,7 +535,7 @@ def calcular_ganhos_e_proventos(tickers, quantities, portfolio, start_date, end_
     return resultados
 
 @measure_time
-def calcular_metricas(portfolio, tickers, quantities, start_date, end_date, ibov=None, dividends=None):
+def calcular_metricas(portfolio, tickers, quantities, start_date, end_date, ibov=None, dividends=None, get_sector_func=get_sector):
 
     """
     Calcula métricas do portfólio, incluindo tabela, retornos e pesos por setor.
@@ -590,10 +590,10 @@ def calcular_metricas(portfolio, tickers, quantities, start_date, end_date, ibov
         }
 
     # Passo 1: Calcular pesos por setor
-    setor_pesos, setor_pesos_financeiros = calcular_pesos_por_setor(tickers, quantities, portfolio)
+    setor_pesos, setor_pesos_financeiros = calcular_pesos_por_setor(tickers, quantities, portfolio, get_sector_func=get_sector_func)
 
     # Passo 2: Calcular métricas da tabela
-    ticker_metrics = calcular_metricas_tabela(tickers, quantities, portfolio, setor_pesos, start_date, end_date, dividends=dividends)
+    ticker_metrics = calcular_metricas_tabela(tickers, quantities, portfolio, setor_pesos, start_date, end_date, dividends=dividends, get_sector_func=get_sector_func)
 
     # Passo 3: Calcular retornos acumulados e diários por ticker
     individual_returns, individual_daily_returns = calcular_retornos_individuais(tickers, portfolio)

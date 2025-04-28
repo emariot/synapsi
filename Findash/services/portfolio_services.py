@@ -10,10 +10,24 @@ class PortfolioService:
     """
     def __init__(self):
         """
-        Inicializa o PortfolioService.
+        Inicializa o PortfolioService com um cache interno para setores.
         Futuramente, pode aceitar um cache ou repositório de dados como dependência.
         """
-        pass
+        self.setores_cache = {}  # Cache interno para setores
+
+    def get_setor(self, ticker: str) -> str:
+        """
+        Obtém o setor de um ticker, usando cache interno para evitar chamadas repetidas.
+        
+        Args:
+            ticker: Ticker (ex.: 'PETR4.SA').
+        
+        Returns:
+            str: Nome do setor.
+        """
+        if ticker not in self.setores_cache:
+            self.setores_cache[ticker] = get_sector(ticker)
+        return self.setores_cache[ticker]
 
     def validate_dates(self, start_date: str, end_date: str) -> None:
         """
@@ -95,7 +109,8 @@ class PortfolioService:
             start_date=start_date,
             end_date=end_date,
             ibov=data.get('ibov', {}),
-            dividends=data.get('dividends', {})
+            dividends=data.get('dividends', {}),
+            get_sector_func=self.get_setor
         )
 
         # Estruturar o portfólio
@@ -374,8 +389,8 @@ class PortfolioService:
         else:
             months_covered = 12
 
-        # Obter setores para todos os tickers usando get_sector
-        setores_dict = {ticker: get_sector(ticker) for ticker in tickers}
+        # Obter setores usando cache interno
+        setores_dict = {ticker: self.get_setor(ticker) for ticker in tickers}
         setores = sorted(set(setores_dict.values()))
         print(f"Setores identificados: {setores}")
 

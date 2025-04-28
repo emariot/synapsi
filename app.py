@@ -1,9 +1,10 @@
 # app.py
-from flask import Flask, render_template, request, redirect, session, url_for, jsonify
+from flask import Flask, render_template, request, redirect, session, url_for, Response
 from datetime import datetime, timedelta
 from Findash.app_dash import init_dash as init_portfolio_dash
 from flask_session import Session
 from Findash.services.portfolio_services import PortfolioService
+from Findash.utils.serialization import orjson_dumps, orjson_loads
 import orjson
 
 def create_app():
@@ -20,15 +21,7 @@ def create_app():
     def default(obj):
         raise TypeError  # Se aparecer algo não serializável, melhor levantar erro logo.
 
-    portfolio_dash = init_portfolio_dash(
-        flask_app,
-        serializers={
-            'json': {
-                'dumps': lambda obj: orjson.dumps(obj, default=default),
-                'loads': orjson.loads,
-            }
-        }
-    )
+    portfolio_dash = init_portfolio_dash(flask_app)
 
     # Lista estática de tickers (mantida por enquanto)
     TICKERS = [
@@ -64,8 +57,6 @@ def create_app():
         {"symbol": "CYRE3.SA", "name": "Cyrela ON"},
     ]
 
-    # Inicializar o Dash de portfólio
-    portfolio_dash = init_portfolio_dash(flask_app)
 
     @flask_app.route('/', methods=['GET'])
     def homepage():
@@ -82,7 +73,10 @@ def create_app():
     @flask_app.route('/get-tickers', methods=['GET'])
     def get_tickers():
         """Retorna a lista de tickers disponíveis."""
-        return jsonify(TICKERS)
+        return Response(
+            orjson_dumps(TICKERS),
+            mimetype='application/json'
+        )
 
     @flask_app.route('/dashboard', methods=['POST'])
     def dashboard():

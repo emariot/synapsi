@@ -35,8 +35,20 @@ Desktop.ini
 *.sqlite3
 instance/
 
+# Cache e banco de dados local da aplicação
+Findash/cache/
+Findash/data/
+test_database.py
+
+# Arquivos de banco de dados extras
+*.db
+
 # Pytest cache
 .pytest_cache/
 
 # MacOS files (caso use o projeto em outro computador)
 .DS_Store
+
+# Arquivos temporários do Git
+*.swp
+*.swo

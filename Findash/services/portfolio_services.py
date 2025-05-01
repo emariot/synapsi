@@ -3,6 +3,14 @@ from datetime import datetime, timedelta
 from Findash.modules.metrics import obter_dados, calcular_metricas, get_sector
 import pandas as pd
 import time
+import orjson
+import zlib
+import os
+import hashlib
+from flask import session
+from Findash.services.database import Database
+from Findash.utils.serialization import orjson_dumps, orjson_loads
+from uuid import uuid4
 
 
 class PortfolioService:
@@ -16,6 +24,9 @@ class PortfolioService:
         Futuramente, pode aceitar um cache ou repositório de dados como dependência.
         """
         self.setores_cache = {}  # Cache interno para setores
+        self.db = Database()
+        self.redis_client = None
+        os.makedirs("Findash/cache", exist_ok=True)
 
     def get_setor(self, ticker: str) -> str:
         """
@@ -98,6 +109,12 @@ class PortfolioService:
         self.validate_tickers_and_quantities(tickers, quantities)
         self.validate_dates(start_date, end_date)
 
+        # Gera ou obtém user_id da sessão
+        if 'user_id' not in session:
+            session['user_id'] = str(uuid4())
+        user_id = session['user_id']
+        print(f"USER ID: {user_id}")  # Para depuração
+
         # Obter dados financeiros do yfinance
         data = obter_dados(tickers, start_date, end_date, include_ibov)
         if not data['portfolio']:
@@ -117,10 +134,12 @@ class PortfolioService:
 
         # Estruturar o portfólio
         portfolio = {
+            'id': str(uuid4()),
             'tickers': tickers,
             'quantities': quantities,
             'start_date': start_date,
             'end_date': end_date,
+            'created_at': datetime.now().isoformat(),
             'portfolio': data['portfolio'],
             'ibov': data['ibov'],
             'dividends': data['dividends'],
@@ -134,6 +153,17 @@ class PortfolioService:
             'individual_daily_returns': metrics['individual_daily_returns'],
             'portfolio_daily_return': metrics['portfolio_daily_return']
         }
+        # Para usuários não cadastrados, retorna o portfólio
+        if 'user_authenticated' not in session:
+            return portfolio
+        
+        # Para usuários cadastrados, verifica limite no SQLite
+        try:
+            portfolio_data = orjson_dumps(portfolio)
+            self.db.add_portfolio(user_id, portfolio_data.decode('utf-8'))
+            return portfolio
+        except ValueError as e:
+            raise ValueError(f"Erro ao criar portfólio: {str(e)}")
 
         return portfolio
 
@@ -256,7 +286,8 @@ class PortfolioService:
             end_date: str
         ) -> Dict:
             """
-            Calcula métricas mensais ou anuais de ganho de capital, dividend yield e retorno total.
+            Calcula métricas mensais ou anuais de ganho de capital, dividend yield e retorno total,
+            usando cache Redis e local.
             
             Args:
                 tickers: Lista de tickers.
@@ -269,9 +300,28 @@ class PortfolioService:
             Returns:
                 Dict: Dicionário com períodos, ganhos de capital, dividend yields e retornos totais.
             """
-            start_time = time.time()  # ALTERAÇÃO: Medir tempo total da função
+            
+            user_id = session.sid if 'sid' in session else str(uuid4())
+
+            # Gera chave única para o portfólio
+            tickers_str = ":".join(sorted(tickers))
+            hash_input = f"{tickers_str}:{start_date}:{end_date}"
+            tickers_hash = hashlib.sha256(hash_input.encode()).hexdigest()
+            cache_key = f"portfolio:{user_id}:{tickers_hash}:{start_date}:{end_date}"
+
+            # Tenta obter do Redis
+            cached_data = self.redis_client.get(cache_key) if self.redis_client else None
+            if cached_data:
+                return orjson_loads(cached_data)
+            
+            # Tenta obter do cache local
+            cache_file = self.db.get_cache_index(user_id, tickers_hash, start_date, end_date)
+            if cache_file:
+                with open(cache_file, 'rb') as f:
+                    return orjson_loads(zlib.decompress(f.read()))
 
             # Converter datas para datetime
+            start_time = time.time()  # Medir tempo total da função
             start = pd.to_datetime(start_date)
             end = pd.to_datetime(end_date)
             
@@ -331,12 +381,27 @@ class PortfolioService:
 
             # ALTERAÇÃO: Imprimir tempo total da função, no estilo metrics.py
             print(f"calcular_metricas_mensuais_anuais: Tempo de execução = {time.time() - start_time:.4f}s")
-            return {
+            metrics = {
                 'periods': periods,
                 'capital_gains': capital_gains,
                 'dividend_yields': dividend_yields,
                 'total_returns': total_returns
             }
+            # Salva no Redis
+            if self.redis_client: # Verifica se redis_client está disponível
+                self.redis_client.setex(cache_key, 24 * 3600, orjson_dumps(metrics)) 
+
+            # Salva no cache local
+            cache_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "cache")
+            os.makedirs(cache_dir, exist_ok=True)  # Criar diretório se não existir
+            cache_file = os.path.join(cache_dir, f"{tickers_hash}_{start_date}_{end_date}.bin")
+            with open(cache_file, 'wb') as f:
+                f.write(zlib.compress(orjson_dumps(metrics)))
+            print(f"Cache local salvo: {cache_file}")
+            expires_at = (datetime.now() + timedelta(days=1)).isoformat()
+            self.db.add_cache_index(user_id, tickers_hash, start_date, end_date, cache_file, expires_at)
+        
+            return metrics
     
     def calcular_dy_por_setor(
         self,

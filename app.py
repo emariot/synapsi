@@ -1,27 +1,34 @@
 # app.py
-from flask import Flask, render_template, request, redirect, session, url_for, Response
+from flask import Flask, render_template, request, redirect, session, url_for, Response, jsonify
 from datetime import datetime, timedelta
 from Findash.app_dash import init_dash as init_portfolio_dash
 from flask_session import Session
 from Findash.services.portfolio_services import PortfolioService
 from Findash.utils.serialization import orjson_dumps, orjson_loads
 import orjson
+import redis
+import os
+from uuid import uuid4
 
 def create_app():
     # Inicializar Flask
     flask_app = Flask(__name__)
-    flask_app.secret_key = "sua-chave-secreta-aqui"
+    flask_app.secret_key = "123456"
     flask_app.config['SESSION_TYPE'] = 'filesystem'
     Session(flask_app)
 
+    # Inicializa o cliente Redis
+    redis_client = redis.Redis(host='localhost', port=6379, db=0, decode_responses=True)
+
     # Inicializar o serviço
     portfolio_service = PortfolioService()
+    portfolio_service.redis_client = redis_client
 
     # Orjason
     def default(obj):
         raise TypeError  # Se aparecer algo não serializável, melhor levantar erro logo.
 
-    portfolio_dash = init_portfolio_dash(flask_app)
+    portfolio_dash = init_portfolio_dash(flask_app, portfolio_service)
 
     # Lista estática de tickers (mantida por enquanto)
     TICKERS = [
@@ -83,6 +90,8 @@ def create_app():
         """
         Processa o formulário de criação de portfólio e redireciona para o dashboard.
         """
+        session['user_authenticated'] = True
+
         start_date = request.form.get('start_date')
         end_date = request.form.get('end_date')
         tickers = request.form.getlist('tickers[]')
@@ -102,9 +111,26 @@ def create_app():
             return redirect(url_for('dash_entry'))
         except ValueError as e:
             end_date_default = (datetime.today() - timedelta(days=1)).strftime("%Y-%m-%d")
-            return render_template('index.html', 
+            return render_template('findash_home.html', 
                                 end_date_default=end_date_default,
                                 error=str(e))
+        
+
+    # Rota para testar conexão com Redis
+    @flask_app.route('/redis-test', methods=['GET'])
+    def redis_test():
+        try:
+            """Testa a conexão com o Redis usando set e get."""
+            test_key = 'test_key'
+            test_value = 'Redis OK'
+            redis_client.set(test_key, test_value)
+            result = redis_client.get(test_key)
+            if result == test_value:
+                return jsonify({'status': 'success', 'message': 'Redis OK'})
+            else:
+                return jsonify({'status': 'error', 'message': 'Redis value mismatch'}), 500
+        except redis.RedisError as e:
+            return jsonify({'status': 'error', 'message': f'Redis error: {str(e)}'}), 500
 
     @flask_app.route('/dash_entry', methods=['GET'])
     def dash_entry():

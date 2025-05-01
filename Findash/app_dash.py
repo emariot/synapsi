@@ -7,10 +7,16 @@ from datetime import datetime, timedelta
 import pandas as pd
 from Findash.services.portfolio_services import PortfolioService
 from Findash.utils.serialization import orjson_dumps, orjson_loads
+import flask
 
-def init_dash(flask_app):
-    dash_app = Dash(__name__, server=flask_app, url_base_pathname='/dash/',
-                    external_stylesheets=[dbc.themes.FLATLY, '/static/style.css'])
+def init_dash(flask_app, portfolio_service):
+    dash_app = Dash(
+        __name__, 
+        server=flask_app, 
+        url_base_pathname='/dash/',
+        external_stylesheets=[dbc.themes.FLATLY]
+        )
+    dash_app.portfolio_service = portfolio_service
     
     # Configurar o Flask subjacente para usar orjson em respostas JSON
     # Mantido: Garante que os callbacks do Dash usem orjson para serializar respostas
@@ -22,10 +28,6 @@ def init_dash(flask_app):
     flask_app.json_encoder = orjson_dumps
     flask_app.json_decoder = orjson_loads
     dash_app.server.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
-    
-    # Inicializar o PortfolioService
-    # Mantido: Centraliza a lógica de manipulação do portfólio
-    portfolio_service = PortfolioService()
 
     # Lista estática de tickers
     TICKERS = [
@@ -405,7 +407,7 @@ def init_dash(flask_app):
         if col == 'acao' and row < len(store_data['tickers']):
             ticker_to_remove = store_data['tickers'][row]
             try:
-                updated_portfolio = portfolio_service.remove_ticker(store_data, ticker_to_remove)
+                updated_portfolio = dash_app.portfolio_service.remove_ticker(store_data, ticker_to_remove)
                 print(f"Ticker {ticker_to_remove} removido com sucesso")
                 # ALTERAÇÃO: Serializar updated_portfolio com orjson_dumps antes de salvar
                 # Motivo: Garante que os dados salvos usem orjson
@@ -443,7 +445,7 @@ def init_dash(flask_app):
             return orjson_dumps(store_data).decode('utf-8') if store_data else None, None
         
         try:
-            updated_portfolio = portfolio_service.add_ticker(store_data, selected_ticker, 1)
+            updated_portfolio = dash_app.portfolio_service.add_ticker(store_data, selected_ticker, 1)
             # ALTERAÇÃO: Serializar updated_portfolio com orjson_dumps antes de salvar
             # Motivo: Garante que os dados salvos usem orjson
             return orjson_dumps(updated_portfolio).decode('utf-8'), None
@@ -477,7 +479,7 @@ def init_dash(flask_app):
             return orjson_dumps(store_data).decode('utf-8') if store_data else None
 
         try:
-            updated_portfolio = portfolio_service.update_portfolio_period(store_data, start_date, end_date)
+            updated_portfolio = dash_app.portfolio_service.update_portfolio_period(store_data, start_date, end_date)
             print(f"Período atualizado: {start_date} a {end_date}")
             # ALTERAÇÃO: Serializar updated_portfolio com orjson_dumps antes de salvar
             # Motivo: Garante que os dados salvos usem orjson
@@ -602,7 +604,7 @@ def init_dash(flask_app):
             print("Dados incompletos (start_date, end_date ou tickers)")
             return go.Figure()
 
-        metrics = portfolio_service.calcular_metricas_mensais_anuais(tickers, quantities, portfolio_values, dividends, start_date, end_date)
+        metrics = dash_app.portfolio_service.calcular_metricas_mensais_anuais(tickers, quantities, portfolio_values, dividends, start_date, end_date)
 
         periods = metrics['periods']
         capital_gains = metrics['capital_gains']
@@ -706,7 +708,7 @@ def init_dash(flask_app):
             print("Dados incompletos (start_date, end_date ou tickers)")
             return go.Figure()
 
-        metrics = portfolio_service.calcular_dy_por_setor(tickers, quantities, portfolio_values, dividends, start_date, end_date)
+        metrics = dash_app.portfolio_service.calcular_dy_por_setor(tickers, quantities, portfolio_values, dividends, start_date, end_date)
 
         years = metrics['years']
         setores = metrics['setores']

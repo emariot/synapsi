@@ -1,0 +1,3 @@
+[submodule "Findash/Findash/services"]
+	path = Findash/Findash/services
+	url = git@github.com:emariot/synapsi-services.git

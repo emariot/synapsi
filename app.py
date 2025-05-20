@@ -320,6 +320,7 @@ def create_app():
         logger.info(f"Logout solicitado | user_id={session.get('user_id')}")
         logout_user()
         session.clear()
+        session['user_id'] = str(uuid4())  # Novo ID para sessão
         response = redirect(url_for('homepage'))
         response.set_cookie(app.config['SESSION_COOKIE_NAME'], '', expires=0)
         return response

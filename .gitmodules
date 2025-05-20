@@ -1,6 +1,0 @@
-[submodule "services"]
-	path = services
-	url = git@github.com:emariot/synapsi-services.git
-[submodule "Findash/services"]
-	path = Findash/services
-	url = git@github.com:emariot/synapsi-services.git

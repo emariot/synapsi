@@ -1,7 +1,8 @@
 Synapsi/
 ├── app.py
 ├── venv/
-├── flask_session/
+├── static
+|   └── findash.js   
 ├── templates/
 │   ├── homepage.html
 │   ├── findash_home.html
@@ -14,6 +15,10 @@ Synapsi/
 │   │   └── metrics.py
 │   ├── services/
 │   │   └── portfolio_services.py
+|   |   └── database.py
 │   ├── utils/
 │   │   └── serialization.py
-
+|   ├── data
+|   |   └── portfolios.db
+|   ├── cache/ 
+├── SegurAI/

@@ -1,5 +1,5 @@
-from dash import Dash, html, dcc, Output, Input, State, callback
-from dash import dash_table
+import dash
+from dash import Dash, html, dcc, Output, Input, State, callback, no_update, dash_table
 import plotly.graph_objects as go
 import dash_bootstrap_components as dbc
 from Findash.modules.metrics import calcular_metricas
@@ -8,6 +8,37 @@ import pandas as pd
 from Findash.services.portfolio_services import PortfolioService
 from Findash.utils.serialization import orjson_dumps, orjson_loads
 import flask
+import requests
+import orjson
+
+import logging
+
+# Configuração de logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s [%(levelname)s] %(message)s',
+    handlers=[
+        logging.FileHandler('debug.log'),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
+logging.getLogger('yfinance').setLevel(logging.WARNING)
+logging.getLogger('sqlitedict').setLevel(logging.WARNING)
+
+# Alteração: Configurar logger do Werkzeug para nível INFO
+werkzeug_logger = logging.getLogger('werkzeug')
+werkzeug_logger.setLevel(logging.INFO)
+
+# Alteração: Filtro personalizado para suprimir logs de requisições HTTP específicas do Dash
+class DashRequestFilter(logging.Filter):
+    def filter(self, record):
+        # Ignora mensagens de requisições GET/POST para rotas do Dash
+        if 'GET /dash' in record.msg or 'POST /dash' in record.msg:
+            return False
+        return True
+
+werkzeug_logger.addFilter(DashRequestFilter())
 
 def init_dash(flask_app, portfolio_service):
     dash_app = Dash(
@@ -16,6 +47,7 @@ def init_dash(flask_app, portfolio_service):
         url_base_pathname='/dash/',
         external_stylesheets=[dbc.themes.FLATLY]
         )
+    dash_app.enable_dev_tools(debug=True, dev_tools_hot_reload=True)
     dash_app.portfolio_service = portfolio_service
     
     # Configurar o Flask subjacente para usar orjson em respostas JSON
@@ -44,11 +76,99 @@ def init_dash(flask_app, portfolio_service):
         # ALTERAÇÃO: Removido storage_options do dcc.Store
         # Motivo: A versão do Dash (3.0.4) não suporta storage_options, causando TypeError
         # Impacto: dcc.Store usará json padrão internamente; serialização com orjson será feita manualmente nos callbacks
-        dcc.Store(id='data-store', storage_type='session', data=None),
-        html.H1("Dashboard de Portfólio", className="mb-4"),
+        dcc.Store(id='data-store', storage_type='session'),
+        # ALTERAÇÃO: Substituir html.H1 por dbc.Row para header com título, cards, dropdown e botão
+        # Motivo: Adicionar representação do portfólio e funcionalidade de salvamento no header
+        # Impacto: Integra cards com tickers, dropdown para nome e modal para salvar portfólio
+        dbc.Row([
+            dbc.Col(
+                html.H1("Dashboard de Portfólio", className="mb-0"),
+                width=4
+            ),
+            dbc.Col([
+                # Dropdown e botão na parte superior, fora do retângulo
+                html.Div([
+                    dbc.Select(
+                        id='portfolio-name-dropdown',
+                        options=[{'label': 'Portfólio 1', 'value': 'Portfólio 1'}],
+                        value='Portfólio 1',
+                        className="mb-2",
+                        style={
+                            'width': '120px',  # Reduzido o tamanho
+                            'fontSize': '10px',  # Reduzido o tamanho da fonte
+                            'marginRight': '10px',  # Espaço entre dropdown e botão
+                        }
+                    ),
+                    dbc.Button(
+                        "Salvar Portfólio",
+                        id='save-portfolio-button',
+                        n_clicks=0,
+                        color="success",
+                        size="sm",
+                        style={
+                            'fontSize': '10px',  # Reduzido o tamanho da fonte
+                            'padding': '3px 8px',  # Ajustado o padding para menor tamanho
+                        }
+                    ),
+                ], style={
+                    'display': 'flex',
+                    'alignItems': 'center',
+                    'justifyContent': 'flex-end',
+                    'marginBottom': '5px',  # Espaçamento abaixo dos elementos
+                }),
+                # Retângulo envolvente apenas para os cards
+                html.Div([
+                    html.Div(
+                        id='portfolio-cards',
+                        className="d-flex flex-wrap justify-content-center",
+                        style={
+                            'gap': '5px',
+                            'maxWidth': '400px',
+                            'flexGrow': 1,
+                        }
+                    ),
+                ], style={
+                    'border': '1px solid #dee2e6',
+                    'borderRadius': '5px',
+                    'padding': '10px',
+                    'display': 'flex',
+                    'flexDirection': 'column',
+                    'alignItems': 'center',
+                    'backgroundColor': '#f8f9fa',
+                }),
+            ], width=8),
+        ], className="mb-4 align-items-center"),
+        # Modal para salvar portfólio
+        dbc.Modal([
+            dbc.ModalHeader(dbc.ModalTitle("Salvar Portfólio")),
+            dbc.ModalBody([
+                html.Label("Nome do Portfólio:", className="form-label"),
+                dcc.Input(
+                    id='portfolio-name-input',
+                    type='text',
+                    placeholder='Digite o nome do portfólio',
+                    className='form-control mb-2',
+                    style={'width': '100%'}
+                ),
+                html.Div(id='save-portfolio-message', className='mt-2')
+            ]),
+            dbc.ModalFooter([
+                dbc.Button("Salvar", id='modal-save-button', color="primary"),
+                dbc.Button("Cancelar", id='modal-cancel-button', color="secondary", n_clicks=0)
+            ])
+        ], id='save-portfolio-modal', is_open=False),
+
         dbc.Row([
             # Coluna Esquerda (1/3)
             dbc.Col([
+                # Novo: Adicionar dbc.Alert para mensagens de erro de ticker
+                dbc.Alert(
+                    id='ticker-error-alert',
+                    is_open=False,
+                    dismissable=True,
+                    color='danger',
+                    style={'marginBottom': '10px', 'fontSize': '12px'}
+                ),
                 html.Div([
                     dbc.Select(
                         id='ticker-dropdown',
@@ -59,19 +179,25 @@ def init_dash(flask_app, portfolio_service):
                         size="sm",
                         style={'width': '80%', 'fontSize': '12px'}
                     ),
-                    dcc.Input(
+                    dcc.DatePickerSingle(
                         id='start-date-input',
-                        type='date',
-                        value=None,
-                        className="form-control me-2",
-                        style={'width': '25%', 'fontSize': '12px', 'minWidth': '130px', 'height': '31px'}
+                        first_day_of_week=1,
+                        date=None,
+                        day_size=30,
+                        month_format='MMMM, YYYY',
+                        display_format='DD/MM/YYYY',
+                        className="me-2",
+                        style={'width': '25%', 'fontSize': '12px', 'minWidth': '130px', 'position': 'relative', 'zIndex': 1000}
                     ),
-                    dcc.Input(
+                    dcc.DatePickerSingle(
                         id='end-date-input',
-                        type='date',
-                        value=None,
-                        className="form-control",
-                        style={'width': '25%', 'fontSize': '12px', 'minWidth': '130px', 'height': '31px'}
+                        first_day_of_week=1,
+                        date=None,
+                        day_size=30,
+                        month_format='MMMM, YYYY',
+                        display_format='DD/MM/YYYY',
+                        className="",
+                        style={'width': '25%', 'fontSize': '12px', 'minWidth': '130px', 'position': 'relative', 'zIndex': 1000}
                     ),
                     html.Button(
                         'Atualizar Período',
@@ -173,74 +299,188 @@ def init_dash(flask_app, portfolio_service):
         ], className="g-3"),
     ], className="p-4 container-fluid")
 
-    # Callbacks
     @dash_app.callback(
-        [Output('price-table', 'data'),
-         Output('data-store', 'data')],
-        [Input('data-store', 'data'),
-         Input('price-table', 'data')],
-        State('price-table', 'data_previous'),
+        Output('data-store', 'data'),
+        Input('data-store', 'data'),
         prevent_initial_call=False
     )
+    def initialize_store(store_data):
+        """
+        Inicializa o dcc.Store com dados da sessão Flask ou retorna dados existentes.
+        """
+        logger.info(f"Dados atuais do Store ao inicializar: {store_data}")
+        
+        # Se o Store já tem dados válidos, não atualiza
+        if store_data and store_data != {}:
+            if isinstance(store_data, (str, bytes)):
+                store_data = orjson_loads(store_data)
+            if store_data.get('tickers') and store_data.get('portfolio'):
+                logger.info(f"Store contém dados válidos: tickers={store_data.get('tickers')}, portfolio_keys={list(store_data.get('portfolio').keys())}")
+                return orjson_dumps(store_data).decode('utf-8')
+
+        # Tentar carregar portfólio da sessão Flask
+        try:
+            portfolio_json = flask.session.get('initial_portfolio')
+            logger.info(f"Portfolio JSON da sessão: {portfolio_json}")
+            if portfolio_json:
+                logger.info("Carregando portfólio da sessão Flask para o Store Dash")
+                data = orjson_loads(portfolio_json)
+                logger.info(f"Dados desserializados da sessão: tickers={data.get('tickers')}, portfolio_keys={list(data.get('portfolio', {}).keys())}, table_data={data.get('table_data')}")
+                # Garantir que o portfólio tenha todas as chaves necessárias
+                default_data = {
+                    'is_registered': flask.session.get('is_registered', False),
+                    'plan_type': flask.session.get('plan_type', 'free'),
+                    'tickers_limit': flask.session.get('tickers_limit', 5),
+                    'tickers': [],
+                    'quantities': [],
+                    'portfolio': {},
+                    'ibov': {},
+                    'start_date': None,
+                    'end_date': None,
+                    'portfolio_values': {},
+                    'portfolio_return': {},
+                    'individual_returns': {},
+                    'ibov_return': {},
+                    'table_data': [],
+                    'dividends': {ticker['symbol']: {} for ticker in TICKERS},
+                    'setor_pesos': {},
+                    'setor_pesos_financeiros': {},
+                    'individual_daily_returns': {},
+                    'portfolio_daily_return': {},
+                    'portfolio_name': 'Portfólio 1'
+                }
+                default_data.update(data)  # Mesclar dados da sessão com defaults
+                logger.info(f"Store inicializado com portfólio: tickers={default_data['tickers']}, table_data={default_data['table_data']}, portfolio_keys={list(default_data['portfolio'].keys())}")
+                return orjson_dumps(default_data).decode('utf-8')
+            else:
+                logger.info("Nenhum portfólio na sessão Flask, inicializando Store vazio")
+                empty_data = {
+                    'is_registered': flask.session.get('is_registered', False),
+                    'plan_type': flask.session.get('plan_type', 'free'),
+                    'tickers_limit': flask.session.get('tickers_limit', 5),
+                    'tickers': [],
+                    'quantities': [],
+                    'portfolio': {},
+                    'ibov': {},
+                    'start_date': None,
+                    'end_date': None,
+                    'portfolio_values': {},
+                    'portfolio_return': {},
+                    'individual_returns': {},
+                    'ibov_return': {},
+                    'table_data': [],
+                    'dividends': {ticker['symbol']: {} for ticker in TICKERS},
+                    'setor_pesos': {},
+                    'setor_pesos_financeiros': {},
+                    'individual_daily_returns': {},
+                    'portfolio_daily_return': {},
+                    'portfolio_name': 'Portfólio 1'
+                }
+                logger.info(f"Store vazio inicializado: {empty_data}")
+                return orjson_dumps(empty_data).decode('utf-8')
+        except Exception as e:
+            logger.error(f"Erro ao inicializar Store com portfólio da sessão: {e}")
+            error_data = {
+                'is_registered': flask.session.get('is_registered', False),
+                'plan_type': flask.session.get('plan_type', 'free'),
+                'tickers_limit': flask.session.get('tickers_limit', 5),
+                'tickers': [],
+                'quantities': [],
+                'portfolio': {},
+                'ibov': {},
+                'start_date': None,
+                'end_date': None,
+                'portfolio_values': {},
+                'portfolio_return': {},
+                'individual_returns': {},
+                'ibov_return': {},
+                'table_data': [],
+                'dividends': {ticker['symbol']: {} for ticker in TICKERS},
+                'setor_pesos': {},
+                'setor_pesos_financeiros': {},
+                'individual_daily_returns': {},
+                'portfolio_daily_return': {},
+                'portfolio_name': 'Portfólio 1'
+            }
+            logger.error(f"Store inicializado com dados vazios devido a erro: {error_data}")
+            return orjson_dumps(error_data).decode('utf-8')
+
+    @dash_app.callback(
+        [Output('price-table', 'data'),
+        Output('data-store', 'data', allow_duplicate=True)],
+        [Input('data-store', 'data'),
+        Input('price-table', 'data')],
+        State('price-table', 'data_previous'),
+        prevent_initial_call='initial_duplicate'
+    )
     def update_price_table(store_data, table_data, table_data_previous):
-        # ALTERAÇÃO: Desserializar store_data com orjson_loads
-        # Motivo: Dados do dcc.Store são recebidos como string/bytes (serializados com json); convertemos para dict usando orjson
-        # Impacto: Permite manipular dados complexos (ex.: datetime, numpy) sem depender de storage_options
         if store_data:
             store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
 
-        if not store_data or 'portfolio' not in store_data or not store_data['portfolio']:
-            print("Nenhum dado no store - Inicializando store_data")
+        # Logar conteúdo inicial de store_data
+        logger.info(f"Conteúdo de store_data: {store_data}")
+
+        # Verificar se store_data contém table_data válido antes de inicializar como vazio
+        if not store_data or 'portfolio' not in store_data or not store_data['portfolio'] or ('table_data' not in store_data or not store_data['table_data']):
+            logger.info("Inicializando store_data com dados padrão")
             initial_data = {
-                'tickers': [], 
-                'quantities': [], 
-                'portfolio': {}, 
+                'is_registered': flask.session.get('is_registered', False),
+                'plan_type': flask.session.get('plan_type', 'free'),
+                'tickers_limit': flask.session.get('tickers_limit', 5),
+                'tickers': [],
+                'quantities': [],
+                'portfolio': {},
                 'ibov': {},
-                'start_date': None, 
-                'end_date': None, 
+                'start_date': None,
+                'end_date': None,
                 'portfolio_values': {},
-                'portfolio_return': {}, 
-                'individual_returns': {}, 
+                'portfolio_return': {},
+                'individual_returns': {},
                 'ibov_return': {},
-                'table_data': [], 
+                'table_data': [],
                 'dividends': {ticker['symbol']: {} for ticker in TICKERS},
-                'setor_pesos': {}, 
+                'setor_pesos': {},
                 'setor_pesos_financeiros': {},
                 'individual_daily_returns': {},
-                'portfolio_daily_return': {}
+                'portfolio_daily_return': {},
+                'portfolio_name': 'Portfólio 1'
             }
-            # ALTERAÇÃO: Serializar initial_data com orjson_dumps antes de salvar no dcc.Store
-            # Motivo: Substitui serialização padrão (json) por orjson para maior performance
-            # Impacto: Dados salvos são compatíveis com orjson_loads nos outros callbacks
             return [], orjson_dumps(initial_data).decode('utf-8')
-        
-        tickers = store_data['tickers']
-        quantities = store_data['quantities']
-        portfolio = store_data['portfolio']
+
+        tickers = store_data.get('tickers', [])
+        quantities = store_data.get('quantities', [])
+        portfolio = store_data.get('portfolio', {})
         ibov = store_data.get('ibov', {})
-        start_date = store_data['start_date']  
-        end_date = store_data['end_date']
+        start_date = store_data.get('start_date')
+        end_date = store_data.get('end_date')
         dividends = store_data.get('dividends', {})
 
-        if table_data is None or (table_data_previous is None and 'table_data' in store_data):
-            print("Carga inicial: Usando table_data do store")
-            table_data = store_data['table_data']
-            # ALTERAÇÃO: Serializar store_data com orjson_dumps ao retornar
-            # Motivo: Mantém consistência com a serialização manual
+        # Logar tickers e quantities
+        logger.info(f"Tickers: {tickers}, Quantities: {quantities}")
+
+        # Usar table_data do store_data se válido, mesmo que table_data seja None
+        if table_data is None or (table_data_previous is None and 'table_data' in store_data and store_data['table_data']):
+            table_data = store_data.get('table_data', [])
+            logger.info(f"Usando table_data do store_data: {table_data}")
             return table_data, orjson_dumps(store_data).decode('utf-8')
 
         new_quantities = quantities.copy()
         if table_data and table_data != table_data_previous:
-            print("Quantidades alteradas, recalculando métricas")
             table_quantities = {row['ticker']: int(row['quantidade']) for row in table_data if row['ticker'] != 'Total'}
-            new_quantities = [table_quantities.get(ticker, quantities[i] if i < len(quantities) else 1) 
+            new_quantities = [table_quantities.get(ticker, quantities[i] if i < len(quantities) else 1)
                             for i, ticker in enumerate(tickers)]
 
-            result = calcular_metricas(portfolio, tickers, new_quantities, start_date, end_date, ibov, dividends=dividends)
-            metrics = result['table_data']
+            try:
+                result = calcular_metricas(portfolio, tickers, new_quantities, start_date, end_date, ibov, dividends=dividends)
+                metrics = result['table_data']
+            except Exception as e:
+                logger.error(f"Erro ao calcular métricas: {e}")
+                metrics = store_data.get('table_data', [])  # Preservar table_data existente
         else:
-            print("Nenhuma mudança nas quantidades, usando table_data do store")
-            metrics = store_data['table_data']        
+            metrics = store_data.get('table_data', [])  # Preservar table_data existente
+
+        # Logar metrics
+        logger.info(f"Métricas calculadas: {metrics}")
 
         ticker_quantities = dict(zip(tickers, new_quantities))
         updated_table_data = [row for row in metrics if row['ticker'] in tickers or row['ticker'] == 'Total']
@@ -259,11 +499,25 @@ def init_dash(flask_app, portfolio_service):
         updated_store_data['quantities'] = new_quantities
         if table_data and table_data != table_data_previous:
             updated_store_data.update(result)
-        print(f"Store atualizado com quantidades {new_quantities}")
 
-        # ALTERAÇÃO: Serializar updated_store_data com orjson_dumps antes de salvar no dcc.Store
-        # Motivo: Garante que os dados salvos usem orjson, mantendo performance e compatibilidade
+        # Logar dados finais
+        logger.info(f"Retornando updated_table_data: {updated_table_data}")
         return updated_table_data, orjson_dumps(updated_store_data).decode('utf-8')
+
+    @dash_app.callback(
+        [Output('start-date-input', 'date'),
+        Output('end-date-input', 'date')],
+        Input('data-store', 'data'),
+        prevent_initial_call=False
+        )
+    def carregar_datas_iniciais(store_data):
+        """
+        Preenche os inputs de data com os valores do dcc.Store ao iniciar o app.
+        """
+        if store_data:
+            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
+            return store_data.get('start_date'), store_data.get('end_date')
+        return None, None
 
     @dash_app.callback(
         Output('portfolio-treemap', 'figure'),
@@ -278,7 +532,6 @@ def init_dash(flask_app, portfolio_service):
             store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
 
         if not store_data or 'table_data' not in store_data:
-            print("Nenhum dado para o treemap de quantidade")
             return go.Figure(go.Treemap())
 
         table_data = store_data['table_data']
@@ -307,7 +560,6 @@ def init_dash(flask_app, portfolio_service):
             store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
             
         if not store_data or 'tickers' not in store_data or 'quantities' not in store_data or 'portfolio_values' not in store_data:
-            print("Nenhum dado para o treemap financeiro")
             return go.Figure()
 
         tickers = store_data['tickers']
@@ -350,7 +602,6 @@ def init_dash(flask_app, portfolio_service):
             store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
 
         if not store_data or 'portfolio_return' not in store_data or 'ibov_return' not in store_data:
-            print("Nenhum dado no store para o gráfico")
             return go.Figure()
 
         portfolio_return = store_data['portfolio_return']
@@ -377,7 +628,6 @@ def init_dash(flask_app, portfolio_service):
             legend=dict(x=0, y=1),
             margin=dict(l=50, r=50, t=50, b=50)
         )
-        print("Gráfico portfolio-ibov-line gerado com métricas do store")
         return fig
 
     @dash_app.callback(
@@ -408,12 +658,12 @@ def init_dash(flask_app, portfolio_service):
             ticker_to_remove = store_data['tickers'][row]
             try:
                 updated_portfolio = dash_app.portfolio_service.remove_ticker(store_data, ticker_to_remove)
-                print(f"Ticker {ticker_to_remove} removido com sucesso")
+                logger.info(f"Ticker {ticker_to_remove} removido")
                 # ALTERAÇÃO: Serializar updated_portfolio com orjson_dumps antes de salvar
                 # Motivo: Garante que os dados salvos usem orjson
                 return orjson_dumps(updated_portfolio).decode('utf-8')
             except ValueError as e:
-                print(f"Erro ao remover ticker: {e}")
+                logger.error(f"Erro ao remover ticker: {e}")
                 # ALTERAÇÃO: Serializar store_data com orjson_dumps ao retornar
                 # Motivo: Mantém consistência com a serialização manual
                 return orjson_dumps(store_data).decode('utf-8')
@@ -424,42 +674,45 @@ def init_dash(flask_app, portfolio_service):
 
     @dash_app.callback(
         [Output('data-store', 'data', allow_duplicate=True),
-         Output('ticker-dropdown', 'value')],
+         Output('ticker-dropdown', 'value'),
+         Output('ticker-error-alert', 'children'),
+         Output('ticker-error-alert', 'is_open'),
+         Output('ticker-dropdown', 'disabled')],
         Input('ticker-dropdown', 'value'),
         State('data-store', 'data'),
         prevent_initial_call=True
     )
     def add_ticker(selected_ticker, store_data):
         """
-        Adiciona um ticker ao portfólio usando o PortfolioService.
+        Adiciona um ticker ao portfólio usando o PortfolioService, validando o limite de tickers.
         """
-        # ALTERAÇÃO: Desserializar store_data com orjson_loads
-        # Motivo: Dados do dcc.Store foram serializados com orjson_dumps; convertemos para dict
-        # Impacto: Permite acessar dados para adicionar ticker
         if store_data:
             store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
 
         if not selected_ticker or not store_data:
-            # ALTERAÇÃO: Serializar store_data com orjson_dumps ao retornar
-            # Motivo: Mantém consistência com a serialização manual
-            return orjson_dumps(store_data).decode('utf-8') if store_data else None, None
+            return no_update, None, no_update, no_update, no_update
+        
+        # Verificar limite de tickers
+        tickers_limit = flask.session.get('tickers_limit', 5)
+        current_tickers = len(store_data['tickers'])
+        if current_tickers >= tickers_limit:
+            error_message = f"Limite de {tickers_limit} tickers atingido"
+            logger.warning(error_message)
+            return no_update, None, error_message, True, True
         
         try:
             updated_portfolio = dash_app.portfolio_service.add_ticker(store_data, selected_ticker, 1)
-            # ALTERAÇÃO: Serializar updated_portfolio com orjson_dumps antes de salvar
-            # Motivo: Garante que os dados salvos usem orjson
-            return orjson_dumps(updated_portfolio).decode('utf-8'), None
+            logger.info(f"Ticker {selected_ticker} adicionado")
+            return orjson_dumps(updated_portfolio).decode('utf-8'), None, no_update, False, False
         except ValueError as e:
-            print(f"Erro ao adicionar ticker: {e}")
-            # ALTERAÇÃO: Serializar store_data com orjson_dumps ao retornar
-            # Motivo: Mantém consistência com a serialização manual
-            return orjson_dumps(store_data).decode('utf-8'), None
+            logger.error(f"Erro ao adicionar ticker: {e}")
+            return no_update, None, str(e), True, current_tickers + 1 >= tickers_limit
 
     @dash_app.callback(
         Output('data-store', 'data', allow_duplicate=True),
         Input('update-period-button', 'n_clicks'),
-        State('start-date-input', 'value'),
-        State('end-date-input', 'value'),
+        State('start-date-input', 'date'),
+        State('end-date-input', 'date'),
         State('data-store', 'data'),
         prevent_initial_call=True
     )
@@ -467,27 +720,21 @@ def init_dash(flask_app, portfolio_service):
         """
         Atualiza o período do portfólio usando o PortfolioService.
         """
-        # ALTERAÇÃO: Desserializar store_data com orjson_loads
-        # Motivo: Dados do dcc.Store foram serializados com orjson_dumps; convertemos para dict
-        # Impacto: Permite acessar dados para atualizar período
         if store_data:
             store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
 
         if not n_clicks or not start_date or not end_date or not store_data:
-            # ALTERAÇÃO: Serializar store_data com orjson_dumps ao retornar
-            # Motivo: Mantém consistência com a serialização manual
             return orjson_dumps(store_data).decode('utf-8') if store_data else None
 
         try:
-            updated_portfolio = dash_app.portfolio_service.update_portfolio_period(store_data, start_date, end_date)
-            print(f"Período atualizado: {start_date} a {end_date}")
-            # ALTERAÇÃO: Serializar updated_portfolio com orjson_dumps antes de salvar
-            # Motivo: Garante que os dados salvos usem orjson
+            # Converter YYYY-MM-DD (formato retornado por dcc.DatePickerSingle) para YYYY-MM-DD
+            start_date_formatted = datetime.strptime(start_date, '%Y-%m-%d').strftime('%Y-%m-%d')
+            end_date_formatted = datetime.strptime(end_date, '%Y-%m-%d').strftime('%Y-%m-%d')
+            updated_portfolio = dash_app.portfolio_service.update_portfolio_period(store_data, start_date_formatted, end_date_formatted)
+            logger.info(f"Período atualizado: {start_date_formatted} a {end_date_formatted}")
             return orjson_dumps(updated_portfolio).decode('utf-8')
         except ValueError as e:
-            print(f"Erro ao atualizar período: {e}")
-            # ALTERAÇÃO: Serializar store_data com orjson_dumps ao retornar
-            # Motivo: Mantém consistência com a serialização manual
+            logger.error(f"Erro ao atualizar período: {e}")
             return orjson_dumps(store_data).decode('utf-8')
     
     @dash_app.callback(
@@ -503,7 +750,6 @@ def init_dash(flask_app, portfolio_service):
             store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
 
         if not store_data or 'individual_returns' not in store_data:
-            print("Nenhum dado no store para o gráfico de tickers individuais")
             return go.Figure()
 
         individual_returns = store_data['individual_returns']
@@ -527,7 +773,6 @@ def init_dash(flask_app, portfolio_service):
             legend=dict(x=0, y=1),
             margin=dict(l=50, r=50, t=50, b=50)
         )
-        print(f"Gráfico de tickers individuais gerado para: {tickers}")
         return fig
     
     @dash_app.callback(
@@ -543,7 +788,6 @@ def init_dash(flask_app, portfolio_service):
             store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
 
         if not store_data or 'portfolio_values' not in store_data:
-            print("Nenhum dado no store para o gráfico de área empilhada")
             return go.Figure()
 
         portfolio_values = pd.DataFrame(store_data['portfolio_values'])
@@ -571,7 +815,6 @@ def init_dash(flask_app, portfolio_service):
             margin=dict(l=50, r=50, t=50, b=50),
             showlegend=True
         )
-        print(f"Gráfico de área empilhada gerado para: {tickers}")
         return fig
        
     @dash_app.callback(
@@ -590,7 +833,6 @@ def init_dash(flask_app, portfolio_service):
             store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
 
         if not store_data or 'portfolio_values' not in store_data or 'tickers' not in store_data:
-            print("Nenhum dado para o gráfico de ganho de capital e dividend yield")
             return go.Figure()
 
         tickers = store_data['tickers']
@@ -601,7 +843,6 @@ def init_dash(flask_app, portfolio_service):
         end_date = store_data['end_date']
 
         if not start_date or not end_date or not tickers:
-            print("Dados incompletos (start_date, end_date ou tickers)")
             return go.Figure()
 
         metrics = dash_app.portfolio_service.calcular_metricas_mensais_anuais(tickers, quantities, portfolio_values, dividends, start_date, end_date)
@@ -610,12 +851,6 @@ def init_dash(flask_app, portfolio_service):
         capital_gains = metrics['capital_gains']
         dividend_yields = metrics['dividend_yields']
         total_returns = metrics['total_returns']
-
-        print(f"Valores calculados para o gráfico:")
-        print(f"Períodos: {periods}")
-        print(f"Ganho de Capital (%): {capital_gains}")
-        print(f"Dividend Yield (%): {dividend_yields}")
-        print(f"Retorno Total (%): {total_returns}")
 
         fig = go.Figure()
         fig.add_trace(go.Bar(
@@ -669,7 +904,6 @@ def init_dash(flask_app, portfolio_service):
                 autorange=True
             )
         )
-        print(f"Gráfico de ganho de capital e dividend yield gerado para {len(periods)} períodos")
         return fig
     
     @dash_app.callback(
@@ -687,9 +921,7 @@ def init_dash(flask_app, portfolio_service):
         if store_data:
             store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
 
-        print("Callback update_dividend_by_sector_chart acionado")
         if not store_data or 'portfolio_values' not in store_data or 'tickers' not in store_data:
-            print("Nenhum dado para o gráfico de dividendos por setor")
             return go.Figure()
 
         tickers = store_data['tickers']
@@ -699,13 +931,7 @@ def init_dash(flask_app, portfolio_service):
         start_date = store_data['start_date']
         end_date = store_data['end_date']
 
-        print(f"Dados recebidos no callback - Tickers: {tickers}")
-        print(f"Quantities: {quantities}")
-        print(f"Start Date: {start_date}, End Date: {end_date}")
-        print(f"Dividend Keys: {list(dividends.keys())}")
-
         if not start_date or not end_date or not tickers:
-            print("Dados incompletos (start_date, end_date ou tickers)")
             return go.Figure()
 
         metrics = dash_app.portfolio_service.calcular_dy_por_setor(tickers, quantities, portfolio_values, dividends, start_date, end_date)
@@ -714,16 +940,10 @@ def init_dash(flask_app, portfolio_service):
         setores = metrics['setores']
         dy_por_setor_por_ano = metrics['dy_por_setor_por_ano']
 
-        print(f"Valores calculados para o gráfico de dividendos por setor:")
-        print(f"Anos: {years}")
-        print(f"Setores: {setores}")
-        print(f"DY por setor por ano: {dy_por_setor_por_ano}")
-
         fig = go.Figure()
         colors = ['#FF9999', '#FF6666', '#FF3333']
         for idx, year in enumerate(years):
             dy_values = [dy_por_setor_por_ano[setor][year] for setor in setores]
-            print(f"DY values para {year}: {dy_values}")
             fig.add_trace(go.Bar(
                 x=setores,
                 y=dy_values,
@@ -766,7 +986,6 @@ def init_dash(flask_app, portfolio_service):
                 )
             ]
         )
-        print(f"Gráfico de dividendos por setor gerado para {len(setores)} setores e {len(years)} anos")
         return fig
     
     @dash_app.callback(
@@ -784,9 +1003,7 @@ def init_dash(flask_app, portfolio_service):
         if store_data:
             store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
 
-        print("Callback update_cumulative_gains_dividends_chart acionado")
         if not store_data or 'tickers' not in store_data or 'portfolio_values' not in store_data:
-            print("Nenhum dado válido no store para o gráfico de linhas")
             return go.Figure().update_layout(
                 title="Retorno Total e DY Acumulados (%)",
                 annotations=[dict(text="Sem dados", x=0.5, y=0.5, showarrow=False)]
@@ -798,8 +1015,6 @@ def init_dash(flask_app, portfolio_service):
         dividends = store_data.get('dividends', {})
         start_date = store_data.get('start_date', '2024-01-01')
         end_date = store_data.get('end_date', '2025-04-23')
-
-        print(f"Dados recebidos no callback - Tickers: {tickers}, Start Date: {start_date}, End Date: {end_date}")
 
         start = pd.to_datetime(start_date)
         end = pd.to_datetime(end_date)
@@ -813,7 +1028,6 @@ def init_dash(flask_app, portfolio_service):
         portfolio_df = portfolio_df.ffill().loc[start:end]
 
         if portfolio_df.empty:
-            print("DataFrame de preços vazio para o período")
             return go.Figure().update_layout(
                 title="Retorno Total e DY Acumulados (%)",
                 annotations=[dict(text="Sem dados", x=0.5, y=0.5, showarrow=False)]
@@ -827,7 +1041,6 @@ def init_dash(flask_app, portfolio_service):
 
         initial_value = portfolio_series.iloc[0]
         if initial_value == 0:
-            print("Valor inicial do portfólio é zero, não é possível calcular percentuais")
             return go.Figure().update_layout(
                 title="Retorno Total e DY Acumulados (%)",
                 annotations=[dict(text="Valor inicial zero", x=0.5, y=0.5, showarrow=False)]
@@ -856,9 +1069,6 @@ def init_dash(flask_app, portfolio_service):
 
         total_return = gains_series + dy_series
 
-        print(f"DY acumulado (%) (amostra): {dy_series.tail().to_dict()}")
-        print(f"Retorno total acumulado (%) (amostra): {total_return.tail().to_dict()}")
-
         fig = go.Figure()
         fig.add_trace(go.Scatter(
             x=total_return.index,
@@ -884,7 +1094,6 @@ def init_dash(flask_app, portfolio_service):
             height=200,
             legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
         )
-        print(f"Gráfico de linhas gerado com {len(total_return)} pontos de dados")
         return fig
         
     @dash_app.callback(
@@ -900,7 +1109,6 @@ def init_dash(flask_app, portfolio_service):
             store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
 
         if not store_data or 'setor_pesos' not in store_data or 'setor_pesos_financeiros' not in store_data:
-            print("Nenhum dado para o gráfico de setores")
             return go.Figure()
 
         setor_pesos = store_data['setor_pesos']
@@ -973,7 +1181,6 @@ def init_dash(flask_app, portfolio_service):
             store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
 
         if not store_data or 'individual_returns' not in store_data or not store_data['individual_returns']:
-            print("Nenhum dado para o gráfico de correlação")
             return go.Figure()
 
         individual_returns = store_data['individual_returns']
@@ -982,7 +1189,6 @@ def init_dash(flask_app, portfolio_service):
         returns_df = returns_df.apply(pd.to_numeric, errors='coerce').dropna()
 
         if returns_df.empty or len(returns_df.columns) < 2:
-            print("Dados insuficientes para calcular correlação")
             return go.Figure()
         correlation_matrix = returns_df.corr()
 
@@ -1018,7 +1224,6 @@ def init_dash(flask_app, portfolio_service):
             store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
 
         if not store_data or 'individual_daily_returns' not in store_data or 'portfolio_daily_return' not in store_data:
-            print("Nenhum dado para o gráfico de volatilidade")
             return go.Figure()
 
         individual_daily_returns = store_data['individual_daily_returns']
@@ -1029,12 +1234,7 @@ def init_dash(flask_app, portfolio_service):
         returns_df = returns_df.apply(pd.to_numeric, errors='coerce').dropna()
         returns_df['Portfolio'] = pd.Series(portfolio_daily_return).reindex(returns_df.index).fillna(0)
 
-        print("Retornos diários (amostra):")
-        print(returns_df.head())
-        
         volatilities = returns_df.std() * (252 ** 0.5)
-        print("Volatilities anualizadas (%):")
-        print(volatilities)
 
         fig = go.Figure(go.Bar(
             x=volatilities.index,
@@ -1052,5 +1252,153 @@ def init_dash(flask_app, portfolio_service):
             bargap=0.2
         )
         return fig
+    
+    # ALTERAÇÃO: Callback para atualizar cards e dropdown, e controlar modal
+    # Motivo: Exibir tickers no header, nome do portfólio e abrir/fechar modal
+    # Impacto: Integra cards dinâmicos e controle do modal
+    @dash_app.callback(
+        [Output('portfolio-cards', 'children'),
+         Output('portfolio-name-dropdown', 'options'),
+         Output('portfolio-name-dropdown', 'value'),
+         Output('save-portfolio-modal', 'is_open'),
+         Output('save-portfolio-button', 'disabled')],
+        [Input('data-store', 'data'),
+         Input('save-portfolio-button', 'n_clicks'),
+         Input('modal-cancel-button', 'n_clicks'),
+         Input('modal-save-button', 'n_clicks')],
+        [State('save-portfolio-modal', 'is_open')],
+        prevent_initial_call=False
+    )
+    def update_header_and_modal(store_data, save_clicks, cancel_clicks, save_modal_clicks, is_open):
+        """
+        Atualiza cards, dropdown, modal e desabilita botão de salvamento com base no plano.
+        """
+        if store_data:
+            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
+
+        tickers = store_data.get('tickers', []) if store_data else []
+        portfolio_name = store_data.get('portfolio_name', 'Portfólio 1') if store_data else 'Portfólio 1'
+        plan_type = flask.session.get('plan_type', 'free').capitalize()
+
+        # Criar cards de tickers e exibir plano
+        cards = [
+            html.Div([
+                html.Div([
+                    dbc.Card(
+                        html.Span(
+                            ticker.replace('.SA', ''),
+                            style={
+                                'fontSize': '10px',
+                                'fontWeight': 'bold',
+                                'whiteSpace': 'nowrap',
+                                'overflow': 'hidden',
+                                'textOverflow': 'ellipsis',
+                                'display': 'block',
+                                'textAlign': 'center'
+                            }
+                        ),
+                        body=True,
+                        style={
+                            'width': '60px',
+                            'height': '30px',
+                            'backgroundColor': '#e9ecef',
+                            'display': 'flex',
+                            'alignItems': 'center',
+                            'justifyContent': 'center',
+                            'margin': '2px',
+                            'border': '1px solid #dee2e6',
+                            'borderRadius': '3px'
+                        }
+                    ) for ticker in tickers
+                ], className="d-flex flex-wrap justify-content-center"),
+                html.Span(
+                    f"Plano: {plan_type}",
+                    style={
+                        'fontSize': '10px',
+                        'fontWeight': 'bold',
+                        'marginTop': '5px',
+                        'color': '#495057'
+                    }
+                )
+            ])
+        ]
+        dropdown_options = [{'label': portfolio_name, 'value': portfolio_name}]
+        dropdown_value = portfolio_name
+
+        # Desabilitar botão de salvamento para usuários não cadastrados
+        is_registered = flask.session.get('is_registered', False)
+        plan_type = flask.session.get('plan_type', 'free')
+        save_button_disabled = not is_registered or plan_type != 'registered'
+
+        # Controle do modal
+        ctx = dash.callback_context
+        triggered_id = ctx.triggered[0]['prop_id'].split('.')[0] if ctx.triggered else None
+        if triggered_id == 'save-portfolio-button' and save_clicks:
+            return cards, dropdown_options, dropdown_value, True, save_button_disabled
+        elif triggered_id in ['modal-cancel-button', 'modal-save-button'] and (cancel_clicks or save_modal_clicks):
+            return cards, dropdown_options, dropdown_value, False, save_button_disabled
+
+        return cards, dropdown_options, dropdown_value, is_open, save_button_disabled
+
+    # ALTERAÇÃO: Callback para salvar portfólio via modal
+    # Motivo: Enviar requisição POST a /save-portfolio com nome do portfólio
+    # Impacto: Atualiza data-store com nome do portfólio e fecha modal
+    @dash_app.callback(
+        [Output('save-portfolio-message', 'children'),
+        Output('data-store', 'data', allow_duplicate=True),
+        Output('portfolio-name-dropdown', 'options', allow_duplicate=True),
+        Output('portfolio-name-dropdown', 'value', allow_duplicate=True)],
+        Input('modal-save-button', 'n_clicks'),
+        [State('portfolio-name-input', 'value'),
+        State('data-store', 'data')],
+        prevent_initial_call=True
+    )
+    def save_portfolio(n_clicks, portfolio_name, store_data):
+        """
+        Salva o portfólio diretamente no banco usando PortfolioService, com dados do dcc.Store.
+        """
+        if not n_clicks:
+            return no_update, no_update, no_update, no_update
+
+        if not portfolio_name:
+            return html.Div('Nome do portfólio obrigatório', className='text-danger'), no_update, no_update, no_update
+
+        # Verificar se o usuário é cadastrado
+        is_registered = flask.session.get('is_registered', False)
+        plan_type = flask.session.get('plan_type', 'free')
+        user_id = flask.session.get('user_id')
+        if not is_registered or plan_type != 'registered' or not user_id:
+            error_message = "Salvamento restrito a usuários cadastrados"
+            logger.warning(error_message)
+            return html.Div(error_message, className='text-danger'), no_update, no_update, no_update
+
+        if store_data:
+            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
+
+        try:
+            # Criar portfólio com dados essenciais do dcc.Store
+            portfolio = {
+                'tickers': store_data.get('tickers', []),
+                'quantities': store_data.get('quantities', []),
+                'start_date': store_data.get('start_date', ''),
+                'end_date': store_data.get('end_date', ''),
+                'name': portfolio_name
+            }
+            # Salvar diretamente usando PortfolioService
+            dash_app.portfolio_service.save_portfolio(user_id, portfolio, portfolio_name)
+            # Atualizar store_data com o novo nome
+            store_data['portfolio_name'] = portfolio_name
+            logger.info(f"Portfólio '{portfolio_name}' salvo diretamente para user_id {user_id}")
+            # Atualizar dropdown
+            dropdown_options = [{'label': portfolio_name, 'value': portfolio_name}]
+            return (
+                html.Div('Portfólio salvo com sucesso', className='text-success'),
+                orjson_dumps(store_data).decode('utf-8'),
+                dropdown_options,
+                portfolio_name
+            )
+        except ValueError as e:
+            logger.error(f"Erro ao salvar portfólio: {e}")
+            return html.Div(f'Erro: {str(e)}', className='text-danger'), no_update, no_update, no_update
 
     return dash_app

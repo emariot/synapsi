@@ -4,13 +4,12 @@ from Findash.modules.metrics import obter_dados, calcular_metricas, get_sector
 import pandas as pd
 import time
 import orjson
-import zlib
-import os
-import hashlib
 from flask import session
 from Findash.services.database import Database
 from Findash.utils.serialization import orjson_dumps, orjson_loads
 from uuid import uuid4
+import logging
+logger = logging.getLogger(__name__)
 
 
 class PortfolioService:
@@ -25,9 +24,7 @@ class PortfolioService:
         """
         self.setores_cache = {}  # Cache interno para setores
         self.db = Database()
-        self.redis_client = None
-        os.makedirs("Findash/cache", exist_ok=True)
-
+     
     def get_setor(self, ticker: str) -> str:
         """
         Obtém o setor de um ticker, usando cache interno para evitar chamadas repetidas.
@@ -87,8 +84,10 @@ class PortfolioService:
         quantities: List[int],
         start_date: str,
         end_date: str,
-        include_ibov: bool = True
+        include_ibov: bool = True,
+        save_to_db: bool = True
     ) -> Dict:
+        logger.info(f"Iniciando create_portfolio | tickers={tickers}, quantities={quantities}, start_date={start_date}, end_date={end_date}, save_to_db={save_to_db}")
         """
         Cria um portfólio com base nos tickers, quantidades e período especificado.
         
@@ -98,6 +97,7 @@ class PortfolioService:
             start_date: Data inicial no formato 'YYYY-MM-DD'.
             end_date: Data final no formato 'YYYY-MM-DD'.
             include_ibov: Se True, inclui dados do IBOV (^BVSP).
+            save_to_db: Se True, salva no SQLite para usuários cadastrados.
         
         Returns:
             Dict: Dados do portfólio, incluindo tickers, quantidades, preços, métricas, etc.
@@ -105,40 +105,166 @@ class PortfolioService:
         Raises:
             ValueError: Se os parâmetros forem inválidos ou não houver dados.
         """
+        # Validar limite de tickers com base no plano
+        tickers_limit = session.get('tickers_limit', 5)  # Padrão: 5 para gratuito
+        if len(tickers) > tickers_limit:
+            logger.error(f"Limite de tickers excedido: {len(tickers)} > {tickers_limit}")
+            raise ValueError(f"Limite de tickers excedido: máximo de {tickers_limit} tickers permitido.")
+        
         # Validar entradas
         self.validate_tickers_and_quantities(tickers, quantities)
         self.validate_dates(start_date, end_date)
 
-        # Gera ou obtém user_id da sessão
-        if 'user_id' not in session:
-            session['user_id'] = str(uuid4())
-        user_id = session['user_id']
-        print(f"USER ID: {user_id}")  # Para depuração
+        user_id = session.get('user_id')
+        if not user_id:
+            logger.error("user_id não encontrado na sessão")
+            raise ValueError("user_id não encontrado na sessão.")
+
+        logger.info(f"Criando portfólio para user_id existente: {user_id}")
+
 
         # Obter dados financeiros do yfinance
-        data = obter_dados(tickers, start_date, end_date, include_ibov)
+        try:
+            data = obter_dados(tickers, start_date, end_date, include_ibov)
+            if not data['portfolio']:
+                logger.error("Nenhum dado válido retornado para os tickers fornecidos")
+                raise ValueError("Nenhum dado válido retornado para os tickers fornecidos.")
+
+            # Calcular métricas financeiras
+            metrics = calcular_metricas(
+                portfolio=data['portfolio'],
+                tickers=tickers,
+                quantities=quantities,
+                start_date=start_date,
+                end_date=end_date,
+                ibov=data.get('ibov', {}),
+                dividends=data.get('dividends', {}),
+                get_sector_func=self.get_setor
+            )
+
+            # Estruturar o portfólio
+            portfolio = {
+                'id': str(uuid4()),
+                'tickers': tickers,
+                'quantities': quantities,
+                'start_date': start_date,
+                'end_date': end_date,
+                'created_at': datetime.now().isoformat(),
+                'portfolio': data['portfolio'],
+                'ibov': data['ibov'],
+                'dividends': data['dividends'],
+                'portfolio_return': metrics['portfolio_return'],
+                'ibov_return': metrics['ibov_return'],
+                'table_data': metrics['table_data'],
+                'portfolio_values': metrics['portfolio_values'],
+                'setor_pesos': metrics['setor_pesos'],
+                'setor_pesos_financeiros': metrics['setor_pesos_financeiros'],
+                'individual_returns': metrics['individual_returns'],
+                'individual_daily_returns': metrics['individual_daily_returns'],
+                'portfolio_daily_return': metrics['portfolio_daily_return']
+            }
+            logger.debug(f"Portfólio criado: {portfolio}")
+            # Salvamento no banco apenas para usuários cadastrados
+            if save_to_db and session.get('is_registered', False):
+                try:
+                    logger.info(f"Salvando portfólio no banco para user_id={user_id}")
+                    self.db.add_portfolio(user_id, portfolio)
+                except ValueError as e:
+                    logger.error(f"Erro ao salvar portfólio no banco para user_id={user_id}: {str(e)}")
+                    raise 
+                
+            return portfolio
+    
+        except Exception as e:
+            logger.error(f"Erro em create_portfolio para user_id={user_id}: {str(e)}")
+            raise
+    
+    def save_portfolio(self, user_id: str, portfolio: Dict, name: Optional[str] = None) -> None:
+        """
+        Salva ou atualiza o portfólio no SQLite com dados essenciais.
+
+        Args:
+            user_id: ID do usuário.
+            portfolio: Dicionário com os dados do portfólio.
+            name: Nome do portfólio (opcional).
+
+        Raises:
+            ValueError: Se o portfólio for inválido ou houver erro no salvamento.
+        """
+        if isinstance(portfolio, str):
+            try:
+                portfolio = orjson_loads(portfolio)
+            except Exception:
+                raise ValueError("Portfólio inválido: recebido como string malformada.")
+
+        if not isinstance(portfolio, dict):
+            raise ValueError("Portfólio deve ser um dicionário válido.")
+    
+        is_registered = session.get('is_registered', False)
+        plan_type = session.get('plan_type', 'free')
+        if not is_registered or plan_type != 'registered':
+            raise ValueError("Salvamento disponível apenas para usuários cadastrados.")
+        
+        if not portfolio or 'tickers' not in portfolio or 'quantities' not in portfolio:
+            raise ValueError("Portfólio inválido ou incompleto.")
+
+        # Garantir que todos os campos essenciais estejam presentes
+        essential_portfolio = {
+            'tickers': portfolio['tickers'],
+            'quantities': portfolio['quantities'],
+            'start_date': portfolio.get('start_date', ''),
+            'end_date': portfolio.get('end_date', ''),
+            'name': name or portfolio.get('name', 'Portfólio 1')
+        }
+
+        if self.db.has_active_portfolio(user_id):
+            # Atualiza portfólio existente
+            self.db.update_portfolio(user_id, essential_portfolio, essential_portfolio['name'])
+            logger.info(f"Portfólio atualizado para user_id {user_id} com nome {essential_portfolio['name']}")
+        else:
+            # Adiciona novo portfólio
+            self.db.add_portfolio(user_id, essential_portfolio, essential_portfolio['name'])
+            logger.info(f"Portfólio salvo para user_id {user_id} com nome {essential_portfolio['name']}")
+
+    def update_portfolio_period(
+        self,
+        portfolio: Dict,
+        new_start_date: str,
+        new_end_date: str
+    ) -> Dict:
+        """
+        Atualiza o período de análise de um portfólio existente.
+        """
+        if not portfolio or 'tickers' not in portfolio or 'quantities' not in portfolio:
+            raise ValueError("Portfólio inválido ou incompleto.")
+
+        self.validate_dates(new_start_date, new_end_date)
+
+        # ALTERAÇÃO: Atualiza apenas as datas e recalcula métricas sem recriar portfólio
+        # Motivo: Evita chamar create_portfolio, que pode tentar salvar no SQLite
+        # Impacto: Resolve erro de limite e mantém edições na sessão
+        portfolio['start_date'] = new_start_date
+        portfolio['end_date'] = new_end_date
+
+        # Obter novos dados financeiros
+        data = obter_dados(portfolio['tickers'], new_start_date, new_end_date, include_ibov=True)
         if not data['portfolio']:
             raise ValueError("Nenhum dado válido retornado para os tickers fornecidos.")
 
-        # Calcular métricas financeiras
+        # Recalcular métricas
         metrics = calcular_metricas(
             portfolio=data['portfolio'],
-            tickers=tickers,
-            quantities=quantities,
-            start_date=start_date,
-            end_date=end_date,
+            tickers=portfolio['tickers'],
+            quantities=portfolio['quantities'],
+            start_date=new_start_date,
+            end_date=new_end_date,
             ibov=data.get('ibov', {}),
             dividends=data.get('dividends', {}),
             get_sector_func=self.get_setor
         )
 
-        # Estruturar o portfólio
-        portfolio = {
-            'id': str(uuid4()),
-            'tickers': tickers,
-            'quantities': quantities,
-            'start_date': start_date,
-            'end_date': end_date,
+        # Atualizar portfólio com novos dados
+        portfolio.update({
             'created_at': datetime.now().isoformat(),
             'portfolio': data['portfolio'],
             'ibov': data['ibov'],
@@ -152,54 +278,9 @@ class PortfolioService:
             'individual_returns': metrics['individual_returns'],
             'individual_daily_returns': metrics['individual_daily_returns'],
             'portfolio_daily_return': metrics['portfolio_daily_return']
-        }
-        # Para usuários não cadastrados, retorna o portfólio
-        if 'user_authenticated' not in session:
-            return portfolio
-        
-        # Para usuários cadastrados, verifica limite no SQLite
-        try:
-            portfolio_data = orjson_dumps(portfolio)
-            self.db.add_portfolio(user_id, portfolio_data.decode('utf-8'))
-            return portfolio
-        except ValueError as e:
-            raise ValueError(f"Erro ao criar portfólio: {str(e)}")
+        })
 
         return portfolio
-
-    def update_portfolio_period(
-        self,
-        portfolio: Dict,
-        new_start_date: str,
-        new_end_date: str
-    ) -> Dict:
-        """
-        Atualiza o período de análise de um portfólio existente.
-        
-        Args:
-            portfolio: Dicionário com os dados do portfólio atual.
-            new_start_date: Nova data inicial no formato 'YYYY-MM-DD'.
-            new_end_date: Nova data final no formato 'YYYY-MM-DD'.
-        
-        Returns:
-            Dict: Portfólio atualizado com os novos dados e métricas.
-        
-        Raises:
-            ValueError: Se as datas forem inválidas ou o portfólio for inválido.
-        """
-        if not portfolio or 'tickers' not in portfolio or 'quantities' not in portfolio:
-            raise ValueError("Portfólio inválido ou incompleto.")
-
-        self.validate_dates(new_start_date, new_end_date)
-
-        # Recriar o portfólio com o novo período
-        return self.create_portfolio(
-            tickers=portfolio['tickers'],
-            quantities=portfolio['quantities'],
-            start_date=new_start_date,
-            end_date=new_end_date,
-            include_ibov=True
-        )
 
     def add_ticker(
         self,
@@ -209,17 +290,6 @@ class PortfolioService:
     ) -> Dict:
         """
         Adiciona um novo ticker ao portfólio existente.
-        
-        Args:
-            portfolio: Dicionário com os dados do portfólio atual.
-            ticker: Ticker a ser adicionado (ex.: 'PETR4.SA').
-            quantity: Quantidade do ticker.
-        
-        Returns:
-            Dict: Portfólio atualizado com o novo ticker.
-        
-        Raises:
-            ValueError: Se o ticker já existir, a quantidade for inválida ou não houver dados.
         """
         if not portfolio or 'tickers' not in portfolio:
             raise ValueError("Portfólio inválido ou incompleto.")
@@ -227,38 +297,66 @@ class PortfolioService:
             raise ValueError(f"O ticker {ticker} já está no portfólio.")
         if quantity < 0:
             raise ValueError("A quantidade não pode ser negativa.")
+        
+        # Validar limite de tickers com base no plano
+        tickers_limit = session.get('tickers_limit', 5)  # Padrão: 5 para gratuito
+        if len(portfolio['tickers']) + 1 > tickers_limit:
+            raise ValueError(f"Limite de tickers excedido: máximo de {tickers_limit} tickers permitido.")
 
+        # Adiciona ticker diretamente ao portfólio      
         new_tickers = portfolio['tickers'] + [ticker]
         new_quantities = portfolio['quantities'] + [quantity]
 
-        # Recriar o portfólio com o novo ticker
-        return self.create_portfolio(
+        # Obter dados financeiros para o novo ticker
+        data = obter_dados(new_tickers, portfolio['start_date'], portfolio['end_date'], include_ibov=True)
+        if not data['portfolio']:
+            raise ValueError("Nenhum dado válido retornado para os tickers fornecidos.")
+
+        # Recalcular métricas
+        metrics = calcular_metricas(
+            portfolio=data['portfolio'],
             tickers=new_tickers,
             quantities=new_quantities,
             start_date=portfolio['start_date'],
             end_date=portfolio['end_date'],
-            include_ibov=True
+            ibov=data.get('ibov', {}),
+            dividends=data.get('dividends', {}),
+            get_sector_func=self.get_setor
         )
+
+        # Atualizar portfólio
+        portfolio.update({
+            'tickers': new_tickers,
+            'quantities': new_quantities,
+            'created_at': datetime.now().isoformat(),
+            'portfolio': data['portfolio'],
+            'ibov': data['ibov'],
+            'dividends': data['dividends'],
+            'portfolio_return': metrics['portfolio_return'],
+            'ibov_return': metrics['ibov_return'],
+            'table_data': metrics['table_data'],
+            'portfolio_values': metrics['portfolio_values'],
+            'setor_pesos': metrics['setor_pesos'],
+            'setor_pesos_financeiros': metrics['setor_pesos_financeiros'],
+            'individual_returns': metrics['individual_returns'],
+            'individual_daily_returns': metrics['individual_daily_returns'],
+            'portfolio_daily_return': metrics['portfolio_daily_return']
+        })
+
+        return portfolio
 
     def remove_ticker(self, portfolio: Dict, ticker: str) -> Dict:
         """
         Remove um ticker do portfólio existente.
-        
-        Args:
-            portfolio: Dicionário com os dados do portfólio atual.
-            ticker: Ticker a ser removido (ex.: 'PETR4.SA').
-        
-        Returns:
-            Dict: Portfólio atualizado sem o ticker.
-        
-        Raises:
-            ValueError: Se o ticker não existir ou o portfólio for inválido.
         """
         if not portfolio or 'tickers' not in portfolio:
             raise ValueError("Portfólio inválido ou incompleto.")
         if ticker not in portfolio['tickers']:
             raise ValueError(f"O ticker {ticker} não está no portfólio.")
 
+        # ALTERAÇÃO: Remove ticker diretamente do portfólio sem recriar
+        # Motivo: Evita chamar create_portfolio, que pode tentar salvar no SQLite
+        # Impacto: Resolve erro de limite e mantém edições na sessão
         index = portfolio['tickers'].index(ticker)
         new_tickers = portfolio['tickers'][:index] + portfolio['tickers'][index+1:]
         new_quantities = portfolio['quantities'][:index] + portfolio['quantities'][index+1:]
@@ -266,15 +364,101 @@ class PortfolioService:
         if not new_tickers:
             raise ValueError("O portfólio não pode ficar vazio.")
 
-        # Recriar o portfólio sem o ticker
-        return self.create_portfolio(
+        # Obter dados financeiros para os tickers restantes
+        data = obter_dados(new_tickers, portfolio['start_date'], portfolio['end_date'], include_ibov=True)
+        if not data['portfolio']:
+            raise ValueError("Nenhum dado válido retornado para os tickers fornecidos.")
+
+        # Recalcular métricas
+        metrics = calcular_metricas(
+            portfolio=data['portfolio'],
             tickers=new_tickers,
             quantities=new_quantities,
             start_date=portfolio['start_date'],
             end_date=portfolio['end_date'],
-            include_ibov=True
+            ibov=data.get('ibov', {}),
+            dividends=data.get('dividends', {}),
+            get_sector_func=self.get_setor
         )
+
+        # Atualizar portfólio
+        portfolio.update({
+            'tickers': new_tickers,
+            'quantities': new_quantities,
+            'created_at': datetime.now().isoformat(),
+            'portfolio': data['portfolio'],
+            'ibov': data['ibov'],
+            'dividends': data['dividends'],
+            'portfolio_return': metrics['portfolio_return'],
+            'ibov_return': metrics['ibov_return'],
+            'table_data': metrics['table_data'],
+            'portfolio_values': metrics['portfolio_values'],
+            'setor_pesos': metrics['setor_pesos'],
+            'setor_pesos_financeiros': metrics['setor_pesos_financeiros'],
+            'individual_returns': metrics['individual_returns'],
+            'individual_daily_returns': metrics['individual_daily_returns'],
+            'portfolio_daily_return': metrics['portfolio_daily_return']
+        })
+
+        return portfolio
     
+    # ALTERAÇÃO: Novo método para carregar e recalcular portfólio
+    # Motivo: Recalcula métricas a partir dos dados essenciais armazenados
+    # Impacto: Garante que métricas sejam atualizadas ao carregar portfólio
+    def load_portfolio(self, user_id: str) -> Optional[Dict]:
+        """
+        Carrega portfólio ativo do usuário e recalcula métricas.
+
+        Args:
+            user_id: ID do usuário.
+
+        Returns:
+            Dict: Portfólio completo com métricas recalculadas, ou None se não houver portfólio ativo.
+        """
+        portfolios = self.db.get_active_portfolios(user_id)
+        if not portfolios:
+            logger.info(f"Nenhum portfólio ativo encontrado para user_id {user_id}")
+            return None
+        
+        portfolio_data = portfolios[0]['portfolio_data']
+        name = portfolios[0]['name']
+
+        logger.debug(f"Tipo de portfolio_data: {type(portfolio_data)}, Conteúdo: {portfolio_data}")
+
+        # Verificar se portfolio_data é um dicionário válido
+        if not isinstance(portfolio_data, dict):
+            logger.error(f"portfolio_data inválido para user_id {user_id}: esperado dicionário, recebido {type(portfolio_data)}")
+            raise ValueError("Estrutura de dados do portfólio inválida.")
+        
+        # Verificar chaves essenciais
+        required_keys = ['tickers', 'quantities', 'start_date', 'end_date']
+        missing_keys = [key for key in required_keys if key not in portfolio_data]
+        if missing_keys:
+            logger.error(f"portfolio_data incompleto para user_id {user_id}: faltam chaves {missing_keys}")
+            raise ValueError(f"Dados do portfólio incompletos: faltam {missing_keys}")
+        
+        # Verificar tipos dos dados
+        if not isinstance(portfolio_data['tickers'], list) or not isinstance(portfolio_data['quantities'], list):
+            logger.error(f"Tipos inválidos em portfolio_data para user_id {user_id}: tickers={type(portfolio_data['tickers'])}, quantities={type(portfolio_data['quantities'])}")
+            raise ValueError("Tickers e quantidades devem ser listas.")
+        
+        # Recalcular portfólio com base nos dados essenciais
+        try:
+            portfolio = self.create_portfolio(
+                tickers=portfolio_data['tickers'],
+                quantities=portfolio_data['quantities'],
+                start_date=portfolio_data['start_date'],
+                end_date=portfolio_data['end_date'],
+                include_ibov=True,
+                save_to_db=False
+            )
+            portfolio['name'] = name
+            logger.info(f"Portfólio carregado e recalculado para user_id {user_id}")
+            return portfolio
+        except ValueError as e:
+            logger.error(f"Erro ao recalcular portfólio: {str(e)}")
+            raise
+
     # Mover e ajustare para utilizar na camada de serviço
     def calcular_metricas_mensais_anuais(
             self,
@@ -286,78 +470,53 @@ class PortfolioService:
             end_date: str
         ) -> Dict:
             """
-            Calcula métricas mensais ou anuais de ganho de capital, dividend yield e retorno total,
-            usando cache Redis e local.
-            
+            Calcula métricas mensais ou anuais de ganho de capital, dividend yield e retorno total.
+
             Args:
                 tickers: Lista de tickers.
                 quantities: Lista de quantidades por ticker.
-                portfolio_values: Dicionário com valores do portfólio (preços diários por ticker).
+                portfolio_values: Dicionário com preços diários por ticker.
                 dividends: Dicionário com dividendos por ticker.
                 start_date: Data inicial (formato 'YYYY-MM-DD').
                 end_date: Data final (formato 'YYYY-MM-DD').
-            
+
             Returns:
-                Dict: Dicionário com períodos, ganhos de capital, dividend yields e retornos totais.
+                Dict com períodos, ganhos de capital, dividend yields e retornos totais.
             """
             
-            user_id = session.sid if 'sid' in session else str(uuid4())
-
-            # Gera chave única para o portfólio
-            tickers_str = ":".join(sorted(tickers))
-            hash_input = f"{tickers_str}:{start_date}:{end_date}"
-            tickers_hash = hashlib.sha256(hash_input.encode()).hexdigest()
-            cache_key = f"portfolio:{user_id}:{tickers_hash}:{start_date}:{end_date}"
-
-            # Tenta obter do Redis
-            cached_data = self.redis_client.get(cache_key) if self.redis_client else None
-            if cached_data:
-                return orjson_loads(cached_data)
-            
-            # Tenta obter do cache local
-            cache_file = self.db.get_cache_index(user_id, tickers_hash, start_date, end_date)
-            if cache_file:
-                with open(cache_file, 'rb') as f:
-                    return orjson_loads(zlib.decompress(f.read()))
-
-            # Converter datas para datetime
-            start_time = time.time()  # Medir tempo total da função
+            start_time = time.time()
             start = pd.to_datetime(start_date)
             end = pd.to_datetime(end_date)
-            
-            # Determinar granularidade (mensal ou anual)
+
             delta_years = (end - start).days / 365.25
             freq = 'ME' if delta_years <= 2 else 'YE'
             date_format = '%Y-%m' if freq == 'ME' else '%Y'
 
-            # Criar DataFrame com preços do portfólio
-            portfolio_df = pd.DataFrame()  # ALTERAÇÃO: Inicializar fora do loop para clareza
+            # Montar DataFrame com preços dos ativos
+            portfolio_df = pd.DataFrame()
             for ticker in tickers:
                 if ticker in portfolio_values and portfolio_values[ticker]:
                     df = pd.DataFrame.from_dict(portfolio_values[ticker], orient='index', columns=[ticker])
                     df.index = pd.to_datetime(df.index)
-                    # ALTERAÇÃO: Usar concat em vez de join para maior eficiência
                     portfolio_df = pd.concat([portfolio_df, df], axis=1) if not portfolio_df.empty else df
             portfolio_df = portfolio_df.ffill().loc[start:end]
 
-            # Calcular valor total do portfólio (preço * quantidade)
-            # ALTERAÇÃO: Usar multiplicação vetorizada em vez de loop
+            # Calcular valor total do portfólio (preço x quantidade)
             total_portfolio = portfolio_df.mul(quantities, axis=1)
             portfolio_series = total_portfolio.sum(axis=1)
 
-            # Resample para períodos mensais ou anuais
-            portfolio_monthly_start = portfolio_series.resample(freq).first()
-            portfolio_monthly_end = portfolio_series.resample(freq).last()
+            # Resample: valores no início e fim de cada período
+            portfolio_start = portfolio_series.resample(freq).first()
+            portfolio_end = portfolio_series.resample(freq).last()
 
-            # Calcular ganho de capital para cada período
-            # ALTERAÇÃO: Usar operação vetorizada para ganhos de capital
-            capital_gains = ((portfolio_monthly_end - portfolio_monthly_start) / portfolio_monthly_start.replace(0, float('nan'))) * 100
+            # Ganho de capital (%)
+            capital_gains = ((portfolio_end - portfolio_start) / portfolio_start.replace(0, float('nan'))) * 100
             capital_gains = capital_gains.fillna(0.0).astype(float).tolist()
 
-            # Calcular dividend yield
-            dividend_yields = []
-            periods = [d.strftime(date_format) for d in portfolio_monthly_start.index]
-            # ALTERAÇÃO: Pré-processar dividendos em um DataFrame para evitar múltiplas conversões
+            # Períodos no formato apropriado
+            periods = [d.strftime(date_format) for d in portfolio_start.index]
+
+            # Processar dividendos em um DataFrame
             div_df = pd.DataFrame()
             for ticker, qty in zip(tickers, quantities):
                 if ticker in dividends:
@@ -367,41 +526,27 @@ class PortfolioService:
                     div_df[ticker] = div_series
             div_df = div_df.groupby(div_df.index).sum()
 
+            # Calcular dividend yield por período
+            dividend_yields = []
             for i, period in enumerate(periods):
-                period_start = portfolio_monthly_start.index[i]
-                period_end = portfolio_monthly_start.index[i + 1] if i < len(portfolio_monthly_start) - 1 else end
-                # ALTERAÇÃO: Usar resample para somar dividendos no período
+                period_start = portfolio_start.index[i]
+                period_end = portfolio_start.index[i + 1] if i < len(portfolio_start) - 1 else end
                 div_total = div_df.loc[period_start:period_end].sum().sum() if not div_df.empty else 0.0
-                start_val = portfolio_monthly_start.iloc[i]
+                start_val = portfolio_start.iloc[i]
                 dy = (div_total / start_val * 100) if start_val > 0 else 0.0
                 dividend_yields.append(float(dy))
 
-            # Calcular retorno total (ganho de capital + dividend yield)
-            total_returns = [capital_gains[i] + dividend_yields[i] for i in range(len(capital_gains))]
+            # Retorno total
+            total_returns = [cg + dy for cg, dy in zip(capital_gains, dividend_yields)]
 
-            # ALTERAÇÃO: Imprimir tempo total da função, no estilo metrics.py
-            print(f"calcular_metricas_mensuais_anuais: Tempo de execução = {time.time() - start_time:.4f}s")
-            metrics = {
+            print(f"calcular_metricas_mensais_anuais: Tempo de execução = {time.time() - start_time:.4f}s")
+            return {
                 'periods': periods,
                 'capital_gains': capital_gains,
                 'dividend_yields': dividend_yields,
                 'total_returns': total_returns
             }
-            # Salva no Redis
-            if self.redis_client: # Verifica se redis_client está disponível
-                self.redis_client.setex(cache_key, 24 * 3600, orjson_dumps(metrics)) 
 
-            # Salva no cache local
-            cache_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "cache")
-            os.makedirs(cache_dir, exist_ok=True)  # Criar diretório se não existir
-            cache_file = os.path.join(cache_dir, f"{tickers_hash}_{start_date}_{end_date}.bin")
-            with open(cache_file, 'wb') as f:
-                f.write(zlib.compress(orjson_dumps(metrics)))
-            print(f"Cache local salvo: {cache_file}")
-            expires_at = (datetime.now() + timedelta(days=1)).isoformat()
-            self.db.add_cache_index(user_id, tickers_hash, start_date, end_date, cache_file, expires_at)
-        
-            return metrics
     
     def calcular_dy_por_setor(
         self,

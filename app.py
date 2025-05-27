@@ -13,6 +13,9 @@ from Findash.app_dash import init_dash
 from Findash.services.portfolio_services import PortfolioService
 from Findash.utils.serialization import orjson_dumps, orjson_loads
 from werkzeug.security import generate_password_hash, check_password_hash
+from Segurai.app_dash import init_segurai_dash
+import random
+from orjson import dumps as orjson_dumps
 
 # Configurar logging
 logging.basicConfig(
@@ -111,8 +114,9 @@ def create_app():
         def __init__(self, id):
             self.id = id
 
-    # Inicializar app Dash
+    # Inicializar apps
     dash_app = init_dash(app, portfolio_service)
+    segurai_dash = init_segurai_dash(app)
 
     # Lista estática de tickers (mantida por enquanto)
     TICKERS = [
@@ -441,7 +445,38 @@ def create_app():
     def segurai():
         """Renderiza a página do Segurai."""
         return render_template('segurai.html')    
+    
+    @app.route('/dashboard_segurai', methods=['POST'])
 
+    def dashboard_segurai():
+        idade = request.form.get('idade')
+        uf = request.form.get('uf')
+        tipo = request.form.get('tipo_seguro')
+
+        # Simulação de cálculo do modelo (placeholder)
+        score = round(random.uniform(0.1, 0.95), 2)
+        risco = "Baixo" if score <= 0.4 else "Médio" if score <= 0.7 else "Alto"
+
+        segurai_data = {
+            'idade': idade,
+            'uf': uf,
+            'tipo_seguro': tipo,
+            'score': score,
+            'classificacao': risco
+        }
+        # Salvar como JSON na sessão
+        session['segurai_data'] = orjson_dumps(segurai_data).decode('utf-8')
+
+        return redirect(url_for('dash_entry_segurai'))
+
+    @app.route('/dash_entry_segurai', methods=['GET'])
+    def dash_entry_segurai():
+        if 'segurai_data' not in session:
+            return redirect(url_for('segurai_home'))
+       
+        return segurai_dash.index()
+
+    
     return app
 
 if __name__ == "__main__":

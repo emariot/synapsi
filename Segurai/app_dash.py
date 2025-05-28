@@ -1,5 +1,6 @@
 import dash
 from dash import html, dcc, Input, Output
+import flask
 import json
 
 def init_segurai_dash(server):
@@ -9,11 +10,19 @@ def init_segurai_dash(server):
         url_base_pathname='/dash/segurai/',
         suppress_callback_exceptions=True
     )
+    # Função para construir o layout dinamicamente (acessa flask.session com segurança)
+    def serve_layout():
+        segurai_data = flask.session.get("segurai_data")
+        if isinstance(segurai_data, str):
+            segurai_data = json.loads(segurai_data)
 
-    app.layout = html.Div([
-        dcc.Store(id='store-segurai-data'),  # será preenchido pela sessão
-        html.Div(id='resultado-score')
-    ])
+        return html.Div([
+            dcc.Store(id='store-segurai-data', data=segurai_data),
+            html.Div(id='resultado-score')
+        ])
+
+    # Atribui a função dinâmica ao layout
+    app.layout = serve_layout
 
     @app.callback(
         Output('resultado-score', 'children'),

@@ -6,8 +6,8 @@ from Findash.modules.metrics import calcular_metricas
 from datetime import datetime, timedelta
 import pandas as pd
 from Findash.services.portfolio_services import PortfolioService
-from Findash.utils.serialization import orjson_dumps, orjson_loads
-import flask
+from utils.serialization import orjson_dumps, orjson_loads
+from flask import session, has_request_context
 import requests
 import orjson
 
@@ -40,43 +40,57 @@ class DashRequestFilter(logging.Filter):
 
 werkzeug_logger.addFilter(DashRequestFilter())
 
-def init_dash(flask_app, portfolio_service):
-    dash_app = Dash(
-        __name__, 
-        server=flask_app, 
-        url_base_pathname='/dash/',
-        external_stylesheets=[dbc.themes.FLATLY]
-        )
-    dash_app.enable_dev_tools(debug=True, dev_tools_hot_reload=True)
-    dash_app.portfolio_service = portfolio_service
-    
-    # Configurar o Flask subjacente para usar orjson em respostas JSON
-    # Mantido: Garante que os callbacks do Dash usem orjson para serializar respostas
-    def orjson_response(data):
-        return flask_app.response_class(
-            response=orjson_dumps(data),
-            mimetype='application/json'
-        )
-    flask_app.json_encoder = orjson_dumps
-    flask_app.json_decoder = orjson_loads
-    dash_app.server.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
+# Lista estática de tickers
+TICKERS = [
+    {"symbol": "PETR4.SA", "name": "Petrobras PN"},
+    {"symbol": "VALE3.SA", "name": "Vale ON"},
+    {"symbol": "ITUB4.SA", "name": "Itaú Unibanco PN"},
+    {"symbol": "BBDC4.SA", "name": "Bradesco PN"},
+    {"symbol": "ABEV3.SA", "name": "Ambev ON"},
+]
+ticker_options = [{'label': f"{t['symbol']} - {t['name']}", 'value': t['symbol']} for t in TICKERS]
 
-    # Lista estática de tickers
-    TICKERS = [
-        {"symbol": "PETR4.SA", "name": "Petrobras PN"},
-        {"symbol": "VALE3.SA", "name": "Vale ON"},
-        {"symbol": "ITUB4.SA", "name": "Itaú Unibanco PN"},
-        {"symbol": "BBDC4.SA", "name": "Bradesco PN"},
-        {"symbol": "ABEV3.SA", "name": "Ambev ON"},
-    ]
-    ticker_options = [{'label': f"{t['symbol']} - {t['name']}", 'value': t['symbol']} for t in TICKERS]
+# Layout dinâmico
+def serve_layout():
+    try:
+        if has_request_context() and 'initial_portfolio' in session:
+            session_data = session.get("initial_portfolio")
+            decoded = orjson_loads(session_data)
+        else:
+            logger.info("Sem contexto de requisição ou dados de portfólio. Usando valores padrão.")
+            decoded = {
+                'tickers': [],
+                'quantities': [],
+                'portfolio': {},
+                'ibov': {},
+                'start_date': None,
+                'end_date': None,
+                'portfolio_values': {},
+                'portfolio_return': {},
+                'individual_returns': {},
+                'ibov_return': {},
+                'table_data': [],
+                'dividends': {},
+                'setor_pesos': {},
+                'setor_pesos_financeiros': {},
+                'individual_daily_returns': {},
+                'portfolio_daily_return': {},
+                'portfolio_name': 'Portfólio 1',
+                'is_registered': session.get('is_registered', False) if has_request_context() else False,
+                'plan_type': session.get('plan_type', 'free') if has_request_context() else 'free',
+                'tickers_limit': session.get('tickers_limit', 5) if has_request_context() else 5
+            }
+    except Exception as e:
+        logger.error(f"Erro ao constuir layout dinâmico: {e}")
+        decoded = {}   
 
-    # Layout
-    dash_app.layout = html.Div([
+    return html.Div([
         # ALTERAÇÃO: Removido storage_options do dcc.Store
         # Motivo: A versão do Dash (3.0.4) não suporta storage_options, causando TypeError
         # Impacto: dcc.Store usará json padrão internamente; serialização com orjson será feita manualmente nos callbacks
-        dcc.Store(id='data-store', storage_type='session'),
+        dcc.Store(id='data-store', 
+                    data=orjson_dumps(decoded).decode("utf-8"),
+                    storage_type='session'),
         # ALTERAÇÃO: Substituir html.H1 por dbc.Row para header com título, cards, dropdown e botão
         # Motivo: Adicionar representação do portfólio e funcionalidade de salvamento no header
         # Impacto: Integra cards com tickers, dropdown para nome e modal para salvar portfólio
@@ -219,32 +233,32 @@ def init_dash(flask_app, portfolio_service):
                     ],
                     data=[],
                     style_table={'overflowX': 'auto', 
-                                 'marginTop': '20px', 
-                                 'height': '200px',
-                                 'border': '1px solid #dee2e6',
-                                 'overflowY': 'auto'
-                                 },
+                                'marginTop': '20px', 
+                                'height': '200px',
+                                'border': '1px solid #dee2e6',
+                                'overflowY': 'auto'
+                                },
                     fixed_rows={'headers': True},  
                     style_cell={
                         'fontSize': '12px', 'textAlign': 'center', 'minWidth': '50px',
                         'backgroundColor': '#f8f9fa', 'borderBottom': '1px solid #dee2e6', 'padding': '3px'
                     },
                     style_header={'fontWeight': 'bold', 
-                                  'backgroundColor': '#f8f9fa', 
-                                  'borderBottom': '2px solid #dee2e6',
-                                  'position': 'sticky',
-                                  'top': 0,
-                                  'zIndex': 1
-                                  },
+                                'backgroundColor': '#f8f9fa', 
+                                'borderBottom': '2px solid #dee2e6',
+                                'position': 'sticky',
+                                'top': 0,
+                                'zIndex': 1
+                                },
                     style_data_conditional=[
                         {'if': {'row_index': 'odd'}, 'backgroundColor': '#f2f2f2'},
                         {'if': {'filter_query': '{ticker} = "Total"'}, 
-                         'fontWeight': 'bold', 
-                         'backgroundColor': '#e9ecef',
-                         'position': 'sticky',
-                         'bottom': 0,
-                         'zIndex': 1
-                         },
+                        'fontWeight': 'bold', 
+                        'backgroundColor': '#e9ecef',
+                        'position': 'sticky',
+                        'bottom': 0,
+                        'zIndex': 1
+                        },
                         {'if': {'column_id': 'acao'}, 'cursor': 'pointer', 'color': '#007bff'},
                         {'if': {'column_id': 'acao', 'state': 'active'}, 'color': '#dc3545'},
                     ],
@@ -299,112 +313,29 @@ def init_dash(flask_app, portfolio_service):
         ], className="g-3"),
     ], className="p-4 container-fluid")
 
-    @dash_app.callback(
-        Output('data-store', 'data'),
-        Input('data-store', 'data'),
-        prevent_initial_call=False
-    )
-    def initialize_store(store_data):
-        """
-        Inicializa o dcc.Store com dados da sessão Flask ou retorna dados existentes.
-        """
-        logger.info(f"Dados atuais do Store ao inicializar: {store_data}")
-        
-        # Se o Store já tem dados válidos, não atualiza
-        if store_data and store_data != {}:
-            if isinstance(store_data, (str, bytes)):
-                store_data = orjson_loads(store_data)
-            if store_data.get('tickers') and store_data.get('portfolio'):
-                logger.info(f"Store contém dados válidos: tickers={store_data.get('tickers')}, portfolio_keys={list(store_data.get('portfolio').keys())}")
-                return orjson_dumps(store_data).decode('utf-8')
-
-        # Tentar carregar portfólio da sessão Flask
-        try:
-            portfolio_json = flask.session.get('initial_portfolio')
-            logger.info(f"Portfolio JSON da sessão: {portfolio_json}")
-            if portfolio_json:
-                logger.info("Carregando portfólio da sessão Flask para o Store Dash")
-                data = orjson_loads(portfolio_json)
-                logger.info(f"Dados desserializados da sessão: tickers={data.get('tickers')}, portfolio_keys={list(data.get('portfolio', {}).keys())}, table_data={data.get('table_data')}")
-                # Garantir que o portfólio tenha todas as chaves necessárias
-                default_data = {
-                    'is_registered': flask.session.get('is_registered', False),
-                    'plan_type': flask.session.get('plan_type', 'free'),
-                    'tickers_limit': flask.session.get('tickers_limit', 5),
-                    'tickers': [],
-                    'quantities': [],
-                    'portfolio': {},
-                    'ibov': {},
-                    'start_date': None,
-                    'end_date': None,
-                    'portfolio_values': {},
-                    'portfolio_return': {},
-                    'individual_returns': {},
-                    'ibov_return': {},
-                    'table_data': [],
-                    'dividends': {ticker['symbol']: {} for ticker in TICKERS},
-                    'setor_pesos': {},
-                    'setor_pesos_financeiros': {},
-                    'individual_daily_returns': {},
-                    'portfolio_daily_return': {},
-                    'portfolio_name': 'Portfólio 1'
-                }
-                default_data.update(data)  # Mesclar dados da sessão com defaults
-                logger.info(f"Store inicializado com portfólio: tickers={default_data['tickers']}, table_data={default_data['table_data']}, portfolio_keys={list(default_data['portfolio'].keys())}")
-                return orjson_dumps(default_data).decode('utf-8')
-            else:
-                logger.info("Nenhum portfólio na sessão Flask, inicializando Store vazio")
-                empty_data = {
-                    'is_registered': flask.session.get('is_registered', False),
-                    'plan_type': flask.session.get('plan_type', 'free'),
-                    'tickers_limit': flask.session.get('tickers_limit', 5),
-                    'tickers': [],
-                    'quantities': [],
-                    'portfolio': {},
-                    'ibov': {},
-                    'start_date': None,
-                    'end_date': None,
-                    'portfolio_values': {},
-                    'portfolio_return': {},
-                    'individual_returns': {},
-                    'ibov_return': {},
-                    'table_data': [],
-                    'dividends': {ticker['symbol']: {} for ticker in TICKERS},
-                    'setor_pesos': {},
-                    'setor_pesos_financeiros': {},
-                    'individual_daily_returns': {},
-                    'portfolio_daily_return': {},
-                    'portfolio_name': 'Portfólio 1'
-                }
-                logger.info(f"Store vazio inicializado: {empty_data}")
-                return orjson_dumps(empty_data).decode('utf-8')
-        except Exception as e:
-            logger.error(f"Erro ao inicializar Store com portfólio da sessão: {e}")
-            error_data = {
-                'is_registered': flask.session.get('is_registered', False),
-                'plan_type': flask.session.get('plan_type', 'free'),
-                'tickers_limit': flask.session.get('tickers_limit', 5),
-                'tickers': [],
-                'quantities': [],
-                'portfolio': {},
-                'ibov': {},
-                'start_date': None,
-                'end_date': None,
-                'portfolio_values': {},
-                'portfolio_return': {},
-                'individual_returns': {},
-                'ibov_return': {},
-                'table_data': [],
-                'dividends': {ticker['symbol']: {} for ticker in TICKERS},
-                'setor_pesos': {},
-                'setor_pesos_financeiros': {},
-                'individual_daily_returns': {},
-                'portfolio_daily_return': {},
-                'portfolio_name': 'Portfólio 1'
-            }
-            logger.error(f"Store inicializado com dados vazios devido a erro: {error_data}")
-            return orjson_dumps(error_data).decode('utf-8')
-
+def init_dash(flask_app, portfolio_service):
+    dash_app = Dash(
+        __name__, 
+        server=flask_app, 
+        url_base_pathname='/dash/',
+        external_stylesheets=[dbc.themes.FLATLY]
+        )
+    #dash_app.enable_dev_tools(debug=True, dev_tools_hot_reload=True)
+    dash_app.portfolio_service = portfolio_service
+    dash_app.layout = serve_layout
+    
+    # Configurar o Flask subjacente para usar orjson em respostas JSON
+    # Mantido: Garante que os callbacks do Dash usem orjson para serializar respostas
+    def orjson_response(data):
+        return flask_app.response_class(
+            response=orjson_dumps(data),
+            mimetype='application/json'
+        )
+    flask_app.json_encoder = orjson_dumps
+    flask_app.json_decoder = orjson_loads
+    dash_app.server.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
+    
+    # Callbacks
     @dash_app.callback(
         [Output('price-table', 'data'),
         Output('data-store', 'data', allow_duplicate=True)],
@@ -424,9 +355,9 @@ def init_dash(flask_app, portfolio_service):
         if not store_data or 'portfolio' not in store_data or not store_data['portfolio'] or ('table_data' not in store_data or not store_data['table_data']):
             logger.info("Inicializando store_data com dados padrão")
             initial_data = {
-                'is_registered': flask.session.get('is_registered', False),
-                'plan_type': flask.session.get('plan_type', 'free'),
-                'tickers_limit': flask.session.get('tickers_limit', 5),
+                'is_registered': session.get('is_registered', False),
+                'plan_type': session.get('plan_type', 'free'),
+                'tickers_limit': session.get('tickers_limit', 5),
                 'tickers': [],
                 'quantities': [],
                 'portfolio': {},
@@ -693,7 +624,7 @@ def init_dash(flask_app, portfolio_service):
             return no_update, None, no_update, no_update, no_update
         
         # Verificar limite de tickers
-        tickers_limit = flask.session.get('tickers_limit', 5)
+        tickers_limit = session.get('tickers_limit', 5)
         current_tickers = len(store_data['tickers'])
         if current_tickers >= tickers_limit:
             error_message = f"Limite de {tickers_limit} tickers atingido"
@@ -1278,7 +1209,7 @@ def init_dash(flask_app, portfolio_service):
 
         tickers = store_data.get('tickers', []) if store_data else []
         portfolio_name = store_data.get('portfolio_name', 'Portfólio 1') if store_data else 'Portfólio 1'
-        plan_type = flask.session.get('plan_type', 'free').capitalize()
+        plan_type = session.get('plan_type', 'free').capitalize()
 
         # Criar cards de tickers e exibir plano
         cards = [
@@ -1326,8 +1257,8 @@ def init_dash(flask_app, portfolio_service):
         dropdown_value = portfolio_name
 
         # Desabilitar botão de salvamento para usuários não cadastrados
-        is_registered = flask.session.get('is_registered', False)
-        plan_type = flask.session.get('plan_type', 'free')
+        is_registered = session.get('is_registered', False)
+        plan_type = session.get('plan_type', 'free')
         save_button_disabled = not is_registered or plan_type != 'registered'
 
         # Controle do modal
@@ -1364,9 +1295,9 @@ def init_dash(flask_app, portfolio_service):
             return html.Div('Nome do portfólio obrigatório', className='text-danger'), no_update, no_update, no_update
 
         # Verificar se o usuário é cadastrado
-        is_registered = flask.session.get('is_registered', False)
-        plan_type = flask.session.get('plan_type', 'free')
-        user_id = flask.session.get('user_id')
+        is_registered = session.get('is_registered', False)
+        plan_type = session.get('plan_type', 'free')
+        user_id = session.get('user_id')
         if not is_registered or plan_type != 'registered' or not user_id:
             error_message = "Salvamento restrito a usuários cadastrados"
             logger.warning(error_message)

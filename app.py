@@ -11,11 +11,10 @@ from uuid import uuid4
 from datetime import timedelta, datetime
 from Findash.app_dash import init_dash
 from Findash.services.portfolio_services import PortfolioService
-from Findash.utils.serialization import orjson_dumps, orjson_loads
+from utils.serialization import orjson_dumps, orjson_loads
 from werkzeug.security import generate_password_hash, check_password_hash
 from Segurai.app_dash import init_segurai_dash
 import random
-from orjson import dumps as orjson_dumps
 
 # Configurar logging
 logging.basicConfig(

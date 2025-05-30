@@ -317,7 +317,7 @@ def init_dash(flask_app, portfolio_service):
     dash_app = Dash(
         __name__, 
         server=flask_app, 
-        url_base_pathname='/dash/',
+        url_base_pathname='/dash/findash/',
         external_stylesheets=[dbc.themes.FLATLY]
         )
     #dash_app.enable_dev_tools(debug=True, dev_tools_hot_reload=True)

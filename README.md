@@ -9,9 +9,9 @@
 # Synapsi
 Hub de projetos analíticos: SegurAI/FinDash
 
-**Synapsi** é um portfólio de projetos analíticos com foco em soluções aplicáveis a negócios. A plataforma reúne demonstrações interativas de modelos e dashboards desenvolvidos em Python, com foco em análise de dados, visualização e suporte à tomada de decisão.
+## **Synapsi** é um portfólio de projetos analíticos com foco em soluções aplicáveis a negócios. A plataforma reúne demonstrações interativas de modelos e dashboards desenvolvidos em Python, com foco em análise de dados, visualização e suporte à tomada de decisão.
 
-## Projetos
+### Projetos
 
 ### 📊 FinDash
 MVP de análise de portfólio de ações. Principais recursos:

@@ -7,7 +7,7 @@
 ![SQLite](https://img.shields.io/badge/-SQLite-05122A?style=flat&logo=sqlite)
 
 # Synapsi
-
+Hub de projetos analíticos: SegurAI/FinDash
 **Synapsi** é um portfólio de projetos analíticos com foco em soluções aplicáveis a negócios. A plataforma reúne demonstrações interativas de modelos e dashboards desenvolvidos em Python, com foco em análise de dados, visualização e suporte à tomada de decisão.
 
 ## Projetos

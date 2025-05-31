@@ -16,6 +16,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from Segurai.app_dash import init_segurai_dash
 import random
 
+from Segurai.models.calculo_score import calcular_score
+
 # Configurar logging
 logging.basicConfig(
     level=logging.INFO,
@@ -448,20 +450,19 @@ def create_app():
     @app.route('/dashboard_segurai', methods=['POST'])
 
     def dashboard_segurai():
-        idade = request.form.get('idade')
+        idade = int(request.form.get('idade')) 
         uf = request.form.get('uf')
         tipo = request.form.get('tipo_seguro')
 
         # Simulação de cálculo do modelo (placeholder)
-        score = round(random.uniform(0.1, 0.95), 2)
-        risco = "Baixo" if score <= 0.4 else "Médio" if score <= 0.7 else "Alto"
+        resultado = calcular_score(idade, uf, tipo) 
 
         segurai_data = {
             'idade': idade,
             'uf': uf,
             'tipo_seguro': tipo,
-            'score': score,
-            'classificacao': risco
+            'score': resultado["score"],
+            'classificacao': resultado["classificacao"]
         }
         # Salvar como JSON na sessão
         session['segurai_data'] = orjson_dumps(segurai_data).decode('utf-8')

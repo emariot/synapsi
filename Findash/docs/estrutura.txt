@@ -22,3 +22,4 @@ Synapsi/
 |   |   └── portfolios.db
 |   ├── cache/ 
 ├── SegurAI/
+        └── app.dash.py

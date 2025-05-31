@@ -1,9 +1,18 @@
+![Python](https://img.shields.io/badge/-Python-05122A?style=flat&logo=python)
+![Pandas](https://img.shields.io/badge/-Pandas-05122A?style=flat&logo=pandas)
+![Plotly](https://img.shields.io/badge/-Plotly-05122A?style=flat&logo=plotly)
+![Dash](https://img.shields.io/badge/-Dash-05122A?style=flat&logo=plotly)
+![Flask](https://img.shields.io/badge/-Flask-05122A?style=flat&logo=flask)
+![Redis](https://img.shields.io/badge/-Redis-05122A?style=flat&logo=redis)
+![SQLite](https://img.shields.io/badge/-SQLite-05122A?style=flat&logo=sqlite)
+
 # Synapsi
+Hub de projetos analíticos: SegurAI/FinDash
 
 **Synapsi** é um portfólio de projetos analíticos com foco em soluções aplicáveis a negócios. A plataforma reúne demonstrações interativas de modelos e dashboards desenvolvidos em Python, com foco em análise de dados, visualização e suporte à tomada de decisão.
 
 ## Projetos
-
+---
 ### 📊 FinDash
 MVP de análise de portfólio de ações. Principais recursos:
 - Comparação de performance com benchmarks

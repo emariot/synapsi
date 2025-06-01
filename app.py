@@ -28,8 +28,8 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger(__name__)
-werkzeug_logger = logging.getLogger('werkzeug')
-werkzeug_logger.setLevel(logging.INFO)
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.WARNING)
 
 def create_app():
     app = Flask(__name__)
@@ -159,7 +159,7 @@ def create_app():
     # -------------------------------
 
     def load_portfolio_by_context():
-        """Tenta carregar o portfólio do Redis (anônimo) ou banco (autenticado)."""
+        """Tenta carregar o portfólio do Redis ou banco (autenticado)."""
         user_id = session.get('user_id')
         if user_id and current_user.is_authenticated:
             logger.debug(f"Carregando portfólio do BANCO para user_id={user_id}")
@@ -196,8 +196,10 @@ def create_app():
     
     @app.route('/dashboard', methods=['POST'])
     def dashboard():
-        logger.info("Processando criação de portfólio")
+        logger.info("/dashboard | Recebendo dados do formulário para criação de portfólio em dash_entry/")
         user_id = session.get('user_id')
+        
+        # Definindo o plano do usuário
         if not current_user.is_authenticated:
             session['is_registered'] = False
             session['plan_type'] = 'free'
@@ -205,6 +207,7 @@ def create_app():
             logger.info(f"Usuário anônimo | user_id={user_id}")
         else:
             logger.info(f"Usuário autenticado | user_id={user_id}")
+
         try:
             start_date = request.form.get('start_date')
             end_date = request.form.get('end_date')
@@ -216,62 +219,73 @@ def create_app():
             if not all([tickers, quantities, start_date, end_date]):
                 logger.error(f"Dados incompletos | user_id={user_id}")
                 raise ValueError("Todos os campos (tickers, quantidades, start_date, end_date) são obrigatórios")
-            
-            
+                        
             quantities = [int(q) for q in quantities]
-            save_to_db = current_user.is_authenticated
-                
-            portfolio = portfolio_service.create_portfolio(
-                tickers=tickers,
-                quantities=quantities,
-                start_date=start_date,
-                end_date=end_date,
-                save_to_db=save_to_db
-            )
-            if not portfolio:
-                logger.error(f"create_portfolio retornou None | user_id={user_id}")
-                raise ValueError("Falha ao criar portfólio")
-
-            logger.info(f"Portfólio criado | portfolio_id={portfolio.get('id', 'N/A')} | user_id={user_id}")
-            logger.debug(f"Tipo do portfólio: {type(portfolio)}")
-
-            if current_user.is_authenticated:
-                portfolio_service.save_portfolio(current_user.id, portfolio)
-                logger.info(f"Portfólio salvo no banco | portfolio_id={portfolio['id']} | user_id={user_id}")
-            else:
-                data_redis.setex(f"portfolio:{user_id}", 1800, orjson_dumps(portfolio))
-                logger.info(f"Portfólio salvo no Redis | portfolio_id={portfolio['id']} | user_id={user_id}")
+                           
+            essencials = {
+                'tickers': tickers,
+                'quantities': quantities,
+                'start_date': start_date,
+                'end_date': end_date,
+            }
+            session['initial_portfolio_essentials'] = orjson_dumps(essencials).decode('utf-8')
+            session.modified = True
 
             return redirect(url_for('dash_entry'))
-
-        except ValueError as e:
-            logger.error(f"Erro ao criar portfólio | user_id={user_id}: {str(e)}")
-            return render_template('findash_home.html',
-                                end_date_default=(datetime.today() - timedelta(days=1)).strftime("%Y-%m-%d"),
-                                error=str(e))
-        except RedisError as e:
-            logger.error(f"Erro ao salvar no Redis | user_id={user_id}: {str(e)}")
-            return render_template('findash_home.html',
-                                end_date_default=(datetime.today() - timedelta(days=1)).strftime("%Y-%m-%d"),
-                                error="Erro ao salvar o portfólio. Tente novamente.")
+       
         except Exception as e:
-            logger.error(f"Erro inesperado ao criar portfólio | user_id={user_id}: {str(e)}")
-            return render_template('findash_home.html',
-                                end_date_default=(datetime.today() - timedelta(days=1)).strftime("%Y-%m-%d"),
-                                error=f"Erro interno: {str(e)}")
+            logger.error(f"Erro ao processar formulário de portfólio | user_id={user_id}: {e}")
+            return render_template(
+                'findash_home.html',
+                end_date_default=(datetime.today() - timedelta(days=1)).strftime("%Y-%m-%d"),
+                error=str(e)
+            )
 
     @app.route('/dash_entry', methods=['GET'])
     def dash_entry():
         user_id = session.get('user_id')
         try:
-            portfolio = load_portfolio_by_context()
+            # Tenta criar o portfólio com base nos dados da sessão
+            essentials_raw = session.pop('initial_portfolio_essentials', None)
+            if essentials_raw:
+                essentials = orjson_loads(essentials_raw)
+                portfolio = portfolio_service.create_portfolio(
+                    user_id=user_id,
+                    tickers=essentials['tickers'],
+                    quantities=essentials['quantities'],
+                    start_date=essentials['start_date'],
+                    end_date=essentials['end_date'],
+                    is_registered=session.get('is_registered', False),
+                    tickers_limit=session.get('tickers_limit', 5),
+                    plan_type=session.get('plan_type', 'free')
+                )
+                logger.info(f"Portfólio criado com base nos dados essenciais | user_id={user_id}")
 
-            if not portfolio:
-                logger.warning(f"Nenhum portfólio encontrado | user_id={user_id}. Redirecionando.")
-                flash("Nenhum portfólio encontrado. Crie um novo portfólio.", "warning")
-                return redirect(url_for('findash_home'))
+                # Salvar portfólio completo no Redis (para uso no Dash)
+                data_redis.setex(f"portfolio:{user_id}", 1800, orjson_dumps(portfolio))
+                logger.info(f"Portfólio completo salvo no Redis | user_id={user_id}")
+
+                # Se usuário autenticado, salva os dados essenciais no banco
+                if current_user.is_authenticated:
+                    portfolio_service.save_portfolio(user_id, portfolio)
+                    logger.info(f"Dados essenciais salvos no banco | user_id={user_id}")
+            else:
+                # Caso não haja dados na sessão, tenta carregar de fontes persistentes
+                portfolio = load_portfolio_by_context()
+                if not portfolio:
+                     flash("Nenhum portfólio encontrado. Crie um novo.", "warning")
+                     return redirect(url_for('findash_home'))
             
-            # Garantir que o portfólio tenha a estrutura esperada pelo Dash
+            '''
+            Substituir para apenas anexar os metadados (depois de realizado todos os testes)
+            # Anexa metadados de controle (plano) ao portfólio
+            portfolio.update({
+                'is_registered': session.get('is_registered', False),
+                'plan_type': session.get('plan_type', 'free'),
+                'tickers_limit': session.get('tickers_limit', 5)
+            })
+            '''
+            # Preparar o portfólio para enviar ao Dash
             portfolio = {
                 'tickers': portfolio.get('tickers', []),
                 'quantities': portfolio.get('quantities', []),
@@ -300,25 +314,10 @@ def create_app():
 
             return dash_app.index()
         
-        except ValueError as e:
-                logger.error(f"Erro ao carregar portfólio | user_id={user_id}: {str(e)}")
-                flash(f"Erro ao carregar o portfólio: {str(e)}", "danger")
-                return redirect(url_for('findash_home'))
-        except RedisError as e:
-            logger.error(f"Erro no Redis ao carregar portfólio | user_id={user_id}: {str(e)}")
-            flash("Erro ao acessar dados do portfólio. Tente novamente.", "danger")
-            return redirect(url_for('findash_home'))
         except Exception as e:
-            logger.error(f"Erro inesperado ao carregar /dash_entry | user_id={user_id}: {str(e)}")
-            flash("Erro inesperado ao carregar o portfólio. Tente novamente.", "danger")
+            logger.error(f"Erro ao carregar /dash_entry | user_id={user_id}: {str(e)}")
+            flash("Erro ao carregar o portfólio. Tente novamente.", "danger")
             return redirect(url_for('findash_home'))
-
-    def set_user_session(user_id, plan_type='free'):
-        session['user_id'] = user_id
-        session['is_registered'] = (plan_type == 'registered')
-        session['plan_type'] = plan_type
-        session['tickers_limit'] = 8 if plan_type == 'registered' else 5
-        session.permanent = True
 
     @app.route('/logout')
     def logout():
@@ -330,6 +329,13 @@ def create_app():
         response.set_cookie(app.config['SESSION_COOKIE_NAME'], '', expires=0)
         return response
     
+    def set_user_session(user_id, plan_type='free'):
+        session['user_id'] = user_id
+        session['is_registered'] = (plan_type == 'registered')
+        session['plan_type'] = plan_type
+        session['tickers_limit'] = 8 if plan_type == 'registered' else 5
+        session.permanent = True
+
     @app.route('/signup', methods=['POST'])
     def signup():
 
@@ -475,6 +481,11 @@ def create_app():
             return redirect(url_for('segurai_home'))
        
         return segurai_dash.index()
+    
+    @app.route('/ver-session')
+    def ver_session():
+        print(session.keys())  # Mostra no console do servidor
+        return str(list(session.keys()))  # Retorna as chaves como resposta HTTP
 
     
     return app

@@ -349,7 +349,7 @@ def init_dash(flask_app, portfolio_service):
             store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
 
         # Logar conteúdo inicial de store_data
-        logger.info(f"Conteúdo de store_data: {store_data}")
+        logger.info(f"Conteúdo de store_data: tickers={store_data.get('tickers')}, período=({store_data.get('start_date')} -> {store_data.get('end_date')})")
 
         # Verificar se store_data contém table_data válido antes de inicializar como vazio
         if not store_data or 'portfolio' not in store_data or not store_data['portfolio'] or ('table_data' not in store_data or not store_data['table_data']):
@@ -392,7 +392,7 @@ def init_dash(flask_app, portfolio_service):
         # Usar table_data do store_data se válido, mesmo que table_data seja None
         if table_data is None or (table_data_previous is None and 'table_data' in store_data and store_data['table_data']):
             table_data = store_data.get('table_data', [])
-            logger.info(f"Usando table_data do store_data: {table_data}")
+            logger.info(f"table_data carregado com {len(table_data)} linhas | tickers={tickers}")
             return table_data, orjson_dumps(store_data).decode('utf-8')
 
         new_quantities = quantities.copy()

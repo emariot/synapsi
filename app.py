@@ -2,6 +2,7 @@ from flask import Flask, session, redirect, url_for, render_template, request, j
 from flask_session import Session
 from flask_login import LoginManager, UserMixin, login_user, logout_user, current_user, login_required
 from redis.exceptions import RedisError, ConnectionError
+from typing import Optional, Dict
 import redis
 import os
 import re
@@ -157,21 +158,29 @@ def create_app():
     # -------------------------------
     # ROTAS PRINCIPAIS
     # -------------------------------
+    
+    def get_portfolio_for_session_user() -> Optional[Dict]:
+        """
+        Retorna o portfólio associado ao usuário atual da sessão.
+        - Se o usuário for autenticado, tenta carregar do banco.
+        - Caso contrário, tenta carregar do Redis usando o user_id da sessão.
 
-    def load_portfolio_by_context():
-        """Tenta carregar o portfólio do Redis ou banco (autenticado)."""
+        Returns:
+            dict com os dados do portfólio, ou None se não encontrado.
+        """
         user_id = session.get('user_id')
-        if user_id and current_user.is_authenticated:
-            logger.debug(f"Carregando portfólio do BANCO para user_id={user_id}")
+        
+        if not user_id:
+            logger.warning("get_portfolio_for_session_user chamado sem user_id na sessão.")
+            return None
+
+        if current_user.is_authenticated:
+            logger.info(f"[PORTFÓLIO] Usuário autenticado → carregando do banco | user_id={user_id}")
             return portfolio_service.load_portfolio(user_id)
 
-        if user_id:
-            logger.debug(f"Carregando portfólio do REDIS para user_id={user_id}")
-            data = data_redis.get(f"portfolio:{user_id}")
-            return orjson_loads(data) if data else None
-        
-        logger.warning("load_portfolio_by_context chamado sem user_id definido.")
-        return None
+        logger.info(f"[PORTFÓLIO] Usuário anônimo → carregando do Redis | user_id={user_id}")
+        raw_data = data_redis.get(f"portfolio:{user_id}")
+        return orjson_loads(raw_data) if raw_data else None
 
     @app.route('/')
     def homepage():
@@ -271,42 +280,18 @@ def create_app():
                     logger.info(f"Dados essenciais salvos no banco | user_id={user_id}")
             else:
                 # Caso não haja dados na sessão, tenta carregar de fontes persistentes
-                portfolio = load_portfolio_by_context()
+                portfolio = get_portfolio_for_session_user()
                 if not portfolio:
                      flash("Nenhum portfólio encontrado. Crie um novo.", "warning")
                      return redirect(url_for('findash_home'))
-            
-            '''
-            Substituir para apenas anexar os metadados (depois de realizado todos os testes)
+                
             # Anexa metadados de controle (plano) ao portfólio
             portfolio.update({
                 'is_registered': session.get('is_registered', False),
                 'plan_type': session.get('plan_type', 'free'),
                 'tickers_limit': session.get('tickers_limit', 5)
             })
-            '''
-            # Preparar o portfólio para enviar ao Dash
-            portfolio = {
-                'tickers': portfolio.get('tickers', []),
-                'quantities': portfolio.get('quantities', []),
-                'start_date': portfolio.get('start_date', ''),
-                'end_date': portfolio.get('end_date', ''),
-                'portfolio': portfolio.get('portfolio', {}), 
-                'portfolio_values': portfolio.get('portfolio_values', {}),
-                'portfolio_return': portfolio.get('portfolio_return', {}),
-                'individual_returns': portfolio.get('individual_returns', {}),
-                'ibov_return': portfolio.get('ibov_return', {}),
-                'table_data': portfolio.get('table_data', []),
-                'dividends': portfolio.get('dividends', {}),
-                'setor_pesos': portfolio.get('setor_pesos', {}),
-                'setor_pesos_financeiros': portfolio.get('setor_pesos_financeiros', {}),
-                'individual_daily_returns': portfolio.get('individual_daily_returns', {}),
-                'portfolio_daily_return': portfolio.get('portfolio_daily_return', {}),
-                'portfolio_name': portfolio.get('portfolio_name', 'Portfólio 1'),
-                'is_registered': session.get('is_registered', False),
-                'plan_type': session.get('plan_type', 'free'),
-                'tickers_limit': session.get('tickers_limit', 5)
-            }
+
             # Serializar com orjson e salvar na sessão
             session['initial_portfolio'] = orjson_dumps(portfolio).decode('utf-8')
             session.modified = True
@@ -401,7 +386,12 @@ def create_app():
             set_user_session(user_id, plan_type=plan['plan_type'])
 
             # Carregar portfólio salvo
-            portfolio = portfolio_service.load_portfolio(user_id)
+            portfolio = portfolio_service.load_portfolio(
+                user_id=user_id,
+                is_registered=True,
+                tickers_limit=session.get('tickers_limit', 8),
+                plan_type=session.get('plan_type', 'registered')
+                )
             if portfolio:
                 flash("Portfólio carregado automaticamente.", "success")
                 return redirect(url_for('dash_entry'))

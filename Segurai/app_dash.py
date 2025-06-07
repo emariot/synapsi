@@ -1,7 +1,18 @@
 import dash
 from dash import html, dcc, Input, Output, State
 import flask
-import json
+from utils.serialization import orjson_dumps, orjson_loads
+
+# Função para construir o layout dinamicamente (acessa flask.session com segurança)
+def serve_layout():
+    resultado = flask.session.get("segurai_resultado")
+    if isinstance(resultado, str):
+        resultado = orjson_loads(resultado)
+
+    return html.Div([
+        dcc.Store(id='store-segurai-resultado', data=resultado),
+        html.Div(id='resultado-score')
+    ])
 
 def init_segurai_dash(server):
     app = dash.Dash(
@@ -10,17 +21,7 @@ def init_segurai_dash(server):
         url_base_pathname='/dash/segurai/',
         suppress_callback_exceptions=True
     )
-    # Função para construir o layout dinamicamente (acessa flask.session com segurança)
-    def serve_layout():
-        segurai_data = flask.session.get("segurai_data")
-        if isinstance(segurai_data, str):
-            segurai_data = json.loads(segurai_data)
-
-        return html.Div([
-            dcc.Store(id='store-segurai-data', data=segurai_data),
-            html.Div(id='resultado-score')
-        ])
-
+    
     # Atribui a função dinâmica ao layout
     app.layout = serve_layout
 
@@ -33,15 +34,23 @@ def init_segurai_dash(server):
             return html.P("Nenhum dado disponível.")
 
         if isinstance(data, str):  # deserializar se vier como JSON
-            data = json.loads(data)
+            data = orjson_loads(data)
 
         return html.Div([
             html.H2("Resultado da Análise de Risco"),
-            html.P(f"Idade: {data['idade']}"),
-            html.P(f"Estado: {data['uf']}"),
-            html.P(f"Tipo de Seguro: {data['tipo_seguro']}"),
-            html.H4(f"Score de Risco: {data['score']}"),
-            html.P(f"Classificação: {data['classificacao']}"),
+            html.Table([
+                html.Thead([
+                    html.Tr([html.Th("Modelo"), html.Th("Classificação"), html.Th("Score")])
+                ]),
+                html.Tbody([
+                    html.Tr([
+                        html.Td(res['modelo']),
+                        html.Td(res['classe']),
+                        html.Td(f"{res['score']:.2f}")
+                    ]) for res in data
+                ])
+            ], style={'width': '50%', 'border': '1px solid #ccc', 'margin-top': '20px'})
         ])
+
 
     return app

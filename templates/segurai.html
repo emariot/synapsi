@@ -20,8 +20,19 @@
     <div class="container">
         <h1>Simulador de Risco - SegurAI</h1>
         <form action="/dashboard_segurai" method="POST" class="form-style">
+            
             <label for="idade">Idade:</label>
             <input type="number" id="idade" name="idade" required>
+
+            <label for="renda">Renda Mensal (R$):</label>
+            <input type="number" id="renda" name="renda" step="100" required>
+
+            <label for="sinistro">Já teve sinistro?</label>
+            <select id="sinistro" name="sinistro" required>
+                <option value="">Selecione</option>
+                <option value="1">Sim</option>
+                <option value="0">Não</option>
+            </select>
 
             <label for="uf">Estado (UF):</label>
             <select id="uf" name="uf" required>
@@ -39,6 +50,15 @@
                 <option value="auto">Auto</option>
                 <option value="vida">Vida</option>
                 <option value="residencial">Residencial</option>
+            </select>
+
+            <label for="estado_civil">Estado Civil:</label>
+            <select id="estado_civil" name="estado_civil" required>
+                <option value="">Selecione</option>
+                <option value="solteiro">Solteiro</option>
+                <option value="casado">Casado</option>
+                <option value="divorciado">Divorciado</option>
+                <option value="viuvo">Viúvo</option>
             </select>
 
             <button type="submit">Ver Resultado</button>

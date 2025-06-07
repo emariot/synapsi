@@ -16,8 +16,10 @@ from utils.serialization import orjson_dumps, orjson_loads
 from werkzeug.security import generate_password_hash, check_password_hash
 from Segurai.app_dash import init_segurai_dash
 import random
+import pandas as pd
 
-from Segurai.models.calculo_score import calcular_score
+from Segurai.services.model_handler import carregar_modelos, prever_todos_modelos
+from Segurai.utils.encoder import le, preparar_dados_entrada # encoder e função para montar X_input
 
 # Configurar logging
 logging.basicConfig(
@@ -51,6 +53,8 @@ def create_app():
 
     # Redis separado para dados do portfólio (DB1)
     data_redis = redis.Redis(host='localhost', port=6379, db=1)
+    # Redis para dados do SegurAI (não sessões)
+    segurai_redis = redis.Redis(host='localhost', port=6379, db=2)
 
     try:
         app.config['SESSION_REDIS'].ping()
@@ -446,21 +450,28 @@ def create_app():
     @app.route('/dashboard_segurai', methods=['POST'])
 
     def dashboard_segurai():
-        idade = int(request.form.get('idade')) 
+        idade = int(request.form.get('idade'))
+        renda = int(request.form.get('renda'))
+        sinistro = int(request.form.get('sinistro'))
         uf = request.form.get('uf')
         tipo = request.form.get('tipo_seguro')
+        estado_civil = request.form.get('estado_civil')
 
-        # Simulação de cálculo do modelo (placeholder)
-        resultado = calcular_score(idade, uf, tipo) 
-
+        # Validação básica
+        if not all([idade, renda, uf, tipo, estado_civil]):
+            return "Dados incompletos", 400
+        
+        # Monta dicionário com os dados informados
         segurai_data = {
             'idade': idade,
+            'renda': renda,
+            'sinistro': sinistro,
             'uf': uf,
             'tipo_seguro': tipo,
-            'score': resultado["score"],
-            'classificacao': resultado["classificacao"]
+            'estado_civil': estado_civil
         }
-        # Salvar como JSON na sessão
+
+        # Salva na sessão do Redis (db=0) para uso temporário
         session['segurai_data'] = orjson_dumps(segurai_data).decode('utf-8')
 
         return redirect(url_for('dash_entry_segurai'))
@@ -468,8 +479,25 @@ def create_app():
     @app.route('/dash_entry_segurai', methods=['GET'])
     def dash_entry_segurai():
         if 'segurai_data' not in session:
-            return redirect(url_for('segurai_home'))
-       
+            return redirect(url_for('segurai'))
+        
+        # Recupera dados do formulário da sessão
+        dados_raw = orjson_loads(session['segurai_data'].encode('utf-8'))
+        # Prepara o X_input (DataFrame com as mesmas colunas dos modelos)
+        X_input = preparar_dados_entrada(dados_raw)
+        # Roda as previsões
+        modelos = carregar_modelos()
+        resultados = prever_todos_modelos(X_input, modelos, le)
+        # Salva os resultados no Redis db=2 (segurai_redis)
+        user_id = str(uuid4())
+        segurai_redis.set(f'resultado:{user_id}', orjson_dumps({
+                'entrada': dados_raw,
+                'resultado': resultados
+        }))
+
+        # Pode passar esse ID para o Dash via session ou query string
+        session['segurai_resultado'] = orjson_dumps(resultados).decode('utf-8')
+
         return segurai_dash.index()
     
     @app.route('/ver-session')

@@ -496,7 +496,10 @@ def create_app():
         }))
 
         # Pode passar esse ID para o Dash via session ou query string
-        session['segurai_resultado'] = orjson_dumps(resultados).decode('utf-8')
+        session['segurai_resultado'] = orjson_dumps({
+            'entrada': dados_raw,
+            'resultado': resultados
+        }).decode('utf-8')
 
         return segurai_dash.index()
     

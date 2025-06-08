@@ -1,15 +1,22 @@
 import joblib
+import pandas as pd
 
 # Carrega as features usadas nos modelos
 MODELO_FEATURES = joblib.load('Segurai/models/modelo_features.joblib')
 
-# Carrega o LabelEncoder usado no treino
-le = joblib.load('Segurai/models/label_encoder.joblib')
-
 def preparar_dados_entrada(dados):
-    import pandas as pd
 
-    # Cria o dataframe com as variáveis básicas
+    """
+    Monta o DataFrame de entrada para os modelos, garantindo que todas as colunas 
+    estejam presentes e na ordem correta.
+    
+    Parâmetros:
+        dados (dict): dados brutos do formulário com chaves como 'idade', 'renda', etc.
+        
+    Retorna:
+        DataFrame com as features no formato do treino.
+    """
+
     X = pd.DataFrame([{
         'idade': dados['idade'],
         'renda': dados['renda'],
@@ -19,8 +26,13 @@ def preparar_dados_entrada(dados):
         f'estado_civil_{dados["estado_civil"]}': 1
     }])
 
-    # Garante que todas as colunas do treino estejam presentes
+
+    # Zera as colunas ausentes para garantir o mesmo formato das features do treino
     for col in MODELO_FEATURES:
         if col not in X.columns:
             X[col] = 0
-    return X[MODELO_FEATURES]
+    
+    # Reordena as colunas para a mesma ordem do treino
+    X = X[MODELO_FEATURES]
+
+    return X

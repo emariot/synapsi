@@ -19,7 +19,7 @@ import random
 import pandas as pd
 
 from Segurai.services.model_handler import carregar_modelos, prever_todos_modelos
-from Segurai.utils.encoder import le, preparar_dados_entrada # encoder e função para montar X_input
+from Segurai.utils.encoder import preparar_dados_entrada # encoder e função para montar X_input
 
 # Configurar logging
 logging.basicConfig(
@@ -485,9 +485,10 @@ def create_app():
         dados_raw = orjson_loads(session['segurai_data'].encode('utf-8'))
         # Prepara o X_input (DataFrame com as mesmas colunas dos modelos)
         X_input = preparar_dados_entrada(dados_raw)
-        # Roda as previsões
-        modelos = carregar_modelos()
-        resultados = prever_todos_modelos(X_input, modelos, le)
+        # Carrega modelos e scaler da Regressão Logística
+        modelos, scaler_rl = carregar_modelos()
+        # Faz as previsões em todos os modelos (com escala na RL)
+        resultados = prever_todos_modelos(X_input, modelos, scaler_rl)
         # Salva os resultados no Redis db=2 (segurai_redis)
         user_id = str(uuid4())
         segurai_redis.set(f'resultado:{user_id}', orjson_dumps({
@@ -495,7 +496,7 @@ def create_app():
                 'resultado': resultados
         }))
 
-        # Pode passar esse ID para o Dash via session ou query string
+        # Salva resultado na sessão para uso no Dash
         session['segurai_resultado'] = orjson_dumps({
             'entrada': dados_raw,
             'resultado': resultados

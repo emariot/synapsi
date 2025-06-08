@@ -9,19 +9,43 @@ CAMINHOS_MODELOS = {
 
 def carregar_modelos():
     '''Carrega todos os modelos salvos como objetos do Python'''
-    return {nome: joblib.load(caminho) for nome, caminho in CAMINHOS_MODELOS.items()}
+    modelos =  {nome: joblib.load(caminho) for nome, caminho in CAMINHOS_MODELOS.items()}
+    # Carregar o scaler da Regressão Logística separadamente
+    scaler_rl = joblib.load('Segurai/models/scaler_rl.joblib')
 
-def prever_todos_modelos(X_input, modelos, label_encoder):
-    '''Executa a previsão em todos os modelos carregados.'''
+    return modelos, scaler_rl
+
+classes_risco = {0: 'baixo', 1: 'médio', 2: 'alto'}
+def prever_todos_modelos(X_input, modelos, scaler_rl):
+    """
+    Executa a previsão em todos os modelos carregados.
+
+    Parâmetros:
+        X_input (DataFrame): entrada com as features no formato do treino.
+        modelos (dict): dicionário com os modelos carregados.
+
+    Retorna:
+        list: lista de dicionários com modelo, classe prevista e score.
+    """
+
     resultados = []
 
     for nome, modelo in modelos.items():
-        classe_predita = modelo.predict(X_input)[0]
-        score_proba = modelo.predict_proba(X_input)[0].max()
+        if nome == 'Regressão Logística':
+            X_proc = scaler_rl.transform(X_input)
+        else:
+            X_proc = X_input
+
+        classe_predita = modelo.predict(X_proc)[0]
+        score_proba = modelo.predict_proba(X_proc)[0].max()
+
+        classe_nome = classes_risco.get(classe_predita, 'desconhecido')
+
 
         resultados.append({
             'modelo': nome,
-            'classe': label_encoder.inverse_transform([classe_predita])[0],
+            'classe': classe_nome,
             'score': round(score_proba, 2)
         })
+
     return resultados

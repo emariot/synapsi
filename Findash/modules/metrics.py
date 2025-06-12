@@ -3,6 +3,8 @@ import pandas as pd
 import time
 import functools
 from datetime import datetime
+import quantstats as qs
+import numpy as np
 
 # Decorador para medir tempo de execução
 def measure_time(func):
@@ -394,6 +396,36 @@ def calcular_retorno_ibov(ibov):
 
     return ibov_return_dict
 
+
+def calcular_retorno_diario_ibov(ibov):
+    """
+    Calcula os retornos diários do IBOV em formato decimal, com índice datetime.
+
+    Args:
+        ibov (dict): Dicionário de preços do IBOV {data: preço}.
+
+    Returns:
+        pd.Series: Série de retornos diários do IBOV com índice datetime.
+    """
+    if not ibov:
+        return pd.Series(dtype=float)
+
+    try:
+        df_ibov = pd.Series(ibov)
+        df_ibov.index = pd.to_datetime(df_ibov.index)
+        df_ibov = df_ibov.sort_index()
+        
+        if df_ibov.empty or df_ibov.isna().all() or pd.isna(df_ibov.iloc[0]):
+            print("IBOV vazio ou primeiro valor inválido, ignorando cálculo")
+            return pd.Series(dtype=float)
+
+        ibov_daily_returns = df_ibov.pct_change().dropna()
+        return ibov_daily_returns
+
+    except Exception as e:
+        print(f"Erro ao calcular retorno diário do IBOV: {e}")
+        return pd.Series(dtype=float)
+
 @measure_time
 def calcular_metricas_tabela(tickers, quantities, portfolio, setor_pesos, start_date, end_date, dividends=None, get_sector_func=get_sector):
     """
@@ -534,6 +566,54 @@ def calcular_ganhos_e_proventos(tickers, quantities, portfolio, start_date, end_
     
     return resultados
 
+import quantstats as qs
+qs.extend_pandas()
+
+@measure_time
+def calcular_kpis_quantstats(portfolio_daily_returns, benchmark_daily_returns=None):
+    """
+    Calcula KPIs financeiros usando quantstats.
+    
+    Args:
+        portfolio_daily_returns (pd.Series): Retornos diários do portfólio.
+        benchmark_daily_returns (pd.Series): Retornos diários do benchmark (opcional).
+    
+    Returns:
+        dict: KPIs financeiros.
+    """
+
+    # Garantir que o índice seja datetime para compatibilidade com quantstats
+    if not isinstance(portfolio_daily_returns.index, pd.DatetimeIndex):
+        portfolio_daily_returns.index = pd.to_datetime(portfolio_daily_returns.index)
+
+    if benchmark_daily_returns is not None and not isinstance(benchmark_daily_returns.index, pd.DatetimeIndex):
+        benchmark_daily_returns.index = pd.to_datetime(benchmark_daily_returns.index)
+
+
+    metrics = {
+        'sharpe': qs.stats.sharpe(portfolio_daily_returns),
+        'sortino': qs.stats.sortino(portfolio_daily_returns),
+        'volatilidade': qs.stats.volatility(portfolio_daily_returns),
+        'max_drawdown': qs.stats.max_drawdown(portfolio_daily_returns),
+        'retorno_medio_anual': portfolio_daily_returns.mean() * 252,
+    }
+
+    if benchmark_daily_returns is not None:
+        # Calcular alpha e beta manualmente
+        combined = pd.concat([portfolio_daily_returns, benchmark_daily_returns], axis=1).dropna()
+        portfolio_ret = combined.iloc[:, 0]
+        benchmark_ret = combined.iloc[:, 1]
+
+        # Regressão linear: retorno_portfolio = alpha + beta * retorno_benchmark
+        cov_matrix = np.cov(portfolio_ret, benchmark_ret)
+        beta = cov_matrix[0, 1] / cov_matrix[1, 1]
+        alpha = portfolio_ret.mean() - beta * benchmark_ret.mean()
+
+        metrics['alpha'] = alpha * 252  # anualizar
+        metrics['beta'] = beta
+
+    return metrics
+
 @measure_time
 def calcular_metricas(portfolio, tickers, quantities, start_date, end_date, ibov=None, dividends=None, get_sector_func=get_sector):
 
@@ -572,7 +652,8 @@ def calcular_metricas(portfolio, tickers, quantities, start_date, end_date, ibov
             'ibov_return': {},
             'portfolio_values': {},
             'setor_pesos': {setor: 0.0 for setor in SETORES},
-            'setor_pesos_financeiros': {setor: 0.0 for setor in SETORES}
+            'setor_pesos_financeiros': {setor: 0.0 for setor in SETORES},
+            'kpis': {}
         }
 
     if not portfolio:
@@ -586,7 +667,8 @@ def calcular_metricas(portfolio, tickers, quantities, start_date, end_date, ibov
             'ibov_return': {},
             'portfolio_values': {},
             'setor_pesos': {setor: 0.0 for setor in SETORES},
-            'setor_pesos_financeiros': {setor: 0.0 for setor in SETORES}
+            'setor_pesos_financeiros': {setor: 0.0 for setor in SETORES},
+            'kpis': {}
         }
 
     # Passo 1: Calcular pesos por setor
@@ -607,6 +689,22 @@ def calcular_metricas(portfolio, tickers, quantities, start_date, end_date, ibov
     # Passo 6: Calcular retorno do IBOV (se fornecido)
     ibov_return = calcular_retorno_ibov(ibov)
 
+    # Passo 7: Clacular KPIs usando quantstats
+    portfolio_returns_series = pd.Series(portfolio_daily_return).sort_index()
+    portfolio_returns_series.index = pd.to_datetime(portfolio_returns_series.index)
+    portfolio_returns_series = portfolio_returns_series / 100  # Converter de % para decimal
+
+    benchmark_returns_series = None
+    if ibov:
+        benchmark_returns_series = calcular_retorno_diario_ibov(ibov)
+        # Garantir alinhamento com o portfólio
+        benchmark_returns_series = benchmark_returns_series.loc[portfolio_returns_series.index]
+
+    kpis = calcular_kpis_quantstats(portfolio_returns_series, benchmark_returns_series)
+    print("KPIs calculados:")
+    for k, v in kpis.items():
+        print(f"{k}: {v:.4f}")
+
     # Retornar todas as métricas
     return {
         'table_data': ticker_metrics,
@@ -617,6 +715,7 @@ def calcular_metricas(portfolio, tickers, quantities, start_date, end_date, ibov
         'ibov_return': ibov_return,
         'portfolio_values': portfolio_values,
         'setor_pesos': setor_pesos,
-        'setor_pesos_financeiros': setor_pesos_financeiros
+        'setor_pesos_financeiros': setor_pesos_financeiros,
+        'kpis': kpis
     }
 

@@ -1,6 +1,7 @@
 import dash
 from dash import Dash, html, dcc, Output, Input, State, callback, no_update, dash_table
 import plotly.graph_objects as go
+import dash_mantine_components as dmc
 import dash_bootstrap_components as dbc
 from Findash.modules.metrics import calcular_metricas
 from datetime import datetime, timedelta
@@ -99,6 +100,7 @@ def serve_layout():
                 html.H1("Dashboard de Portfólio", className="mb-0"),
                 width=4
             ),
+            
             dbc.Col([
                 # Dropdown e botão na parte superior, fora do retângulo
                 html.Div([
@@ -171,6 +173,40 @@ def serve_layout():
                 dbc.Button("Cancelar", id='modal-cancel-button', color="secondary", n_clicks=0)
             ])
         ], id='save-portfolio-modal', is_open=False),
+        
+            # Bloco dos cards, transformando a coluna para ocupar a largura restante
+            
+        dbc.Col([  
+            dbc.Row([
+                dbc.Col(
+                    dbc.Card([
+                        dbc.CardBody([
+                            html.H5("Retorno Total", className="card-title"),
+                            html.P("12.3%", className="card-text", style={'fontSize': '24px', 'fontWeight': 'bold', 'color': '#198754'}),
+                        ])
+                    ], className="mb-3 shadow-sm"),
+                    md=4
+                ),
+                dbc.Col(
+                    dbc.Card([
+                        dbc.CardBody([
+                            html.H5("Volatilidade", className="card-title"),
+                            html.P("18.7%", className="card-text", style={'fontSize': '24px', 'fontWeight': 'bold', 'color': '#0d6efd'}),
+                        ])
+                    ], className="mb-3 shadow-sm"),
+                    md=4
+                ),
+                dbc.Col(
+                    dbc.Card([
+                        dbc.CardBody([
+                            html.H5("Sharpe Ratio", className="card-title"),
+                            html.P("0.82", className="card-text", style={'fontSize': '24px', 'fontWeight': 'bold', 'color': '#fd7e14'}),
+                        ])
+                    ], className="mb-3 shadow-sm"),
+                    md=4
+                )
+            ])
+        ], width=12),
 
         dbc.Row([
             # Coluna Esquerda (1/3)
@@ -274,7 +310,6 @@ def serve_layout():
                 }),
             # Coluna Direita (2/3)
             dbc.Col([
-                html.Div("Cards com Indicadores (Placeholder)", className="mb-3"),
                 dcc.Graph(id='portfolio-ibov-line', style={'width': '100%', 'height': '200px'}),
                 dcc.Graph(id='individual-tickers-line', style={'width': '100%', 'height': '200px', 'marginTop': '10px'}),
                 dcc.Graph(id='stacked-area-chart', style={'width': '100%', 'height': '200px', 'marginTop': '10px'})

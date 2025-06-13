@@ -182,7 +182,7 @@ def serve_layout():
                     dbc.Card([
                         dbc.CardBody([
                             html.H5("Retorno Total", className="card-title"),
-                            html.P("12.3%", className="card-text", style={'fontSize': '24px', 'fontWeight': 'bold', 'color': '#198754'}),
+                            html.P(id='retorno-total-card', className="card-text", style={'fontSize': '24px', 'fontWeight': 'bold', 'color': '#198754'}),
                         ])
                     ], className="mb-3 shadow-sm"),
                     md=4
@@ -191,7 +191,7 @@ def serve_layout():
                     dbc.Card([
                         dbc.CardBody([
                             html.H5("Volatilidade", className="card-title"),
-                            html.P("18.7%", className="card-text", style={'fontSize': '24px', 'fontWeight': 'bold', 'color': '#0d6efd'}),
+                            html.P(id='volatilidade-card', className="card-text", style={'fontSize': '24px', 'fontWeight': 'bold', 'color': '#0d6efd'}),
                         ])
                     ], className="mb-3 shadow-sm"),
                     md=4
@@ -200,7 +200,7 @@ def serve_layout():
                     dbc.Card([
                         dbc.CardBody([
                             html.H5("Sharpe Ratio", className="card-title"),
-                            html.P("0.82", className="card-text", style={'fontSize': '24px', 'fontWeight': 'bold', 'color': '#fd7e14'}),
+                            html.P(id='sharpe-card', className="card-text", style={'fontSize': '24px', 'fontWeight': 'bold', 'color': '#fd7e14'}),
                         ])
                     ], className="mb-3 shadow-sm"),
                     md=4
@@ -1366,5 +1366,35 @@ def init_dash(flask_app, portfolio_service):
         except ValueError as e:
             logger.error(f"Erro ao salvar portfólio: {e}")
             return html.Div(f'Erro: {str(e)}', className='text-danger'), no_update, no_update, no_update
+        
+    @dash_app.callback(
+        [Output('retorno-total-card', 'children'),
+        Output('volatilidade-card', 'children'),
+        Output('sharpe-card', 'children')],
+        Input('data-store', 'data'),
+        prevent_initial_call=False
+    )
+    def update_kpi_cards(store_data):
+        """
+        Atualiza os valores dos cards de Retorno Total, Volatilidade e Sharpe Ratio com base nos KPIs do data-store.
+        """
+        # Desserializar store_data
+        if store_data:
+            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
+        else:
+            store_data = {}
+
+        # Obter KPIs ou usar valores padrão
+        kpis = store_data.get('kpis', {})
+        retorno_total = kpis.get('retorno_medio_anual', 0.0)
+        volatilidade = kpis.get('volatilidade', 0.0)
+        sharpe = kpis.get('sharpe', 0.0)
+
+        # Formatar valores
+        retorno_total_str = f"{retorno_total:.2f}%" if retorno_total is not None else "N/A"
+        volatilidade_str = f"{volatilidade:.2f}%" if volatilidade is not None else "N/A"
+        sharpe_str = f"{sharpe:.2f}" if sharpe is not None else "N/A"
+
+        return retorno_total_str, volatilidade_str, sharpe_str
 
     return dash_app

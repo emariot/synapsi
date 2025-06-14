@@ -19,7 +19,7 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s [%(levelname)s] %(message)s',
     handlers=[
-        logging.FileHandler('debug.log'),
+        logging.FileHandler('debug.log', encoding='utf-8'),
         logging.StreamHandler()
     ]
 )
@@ -27,11 +27,11 @@ logger = logging.getLogger(__name__)
 logging.getLogger('yfinance').setLevel(logging.WARNING)
 logging.getLogger('sqlitedict').setLevel(logging.WARNING)
 
-# Alteração: Configurar logger do Werkzeug para nível INFO
+#Configurar logger do Werkzeug para nível INFO
 werkzeug_logger = logging.getLogger('werkzeug')
 werkzeug_logger.setLevel(logging.INFO)
 
-# Alteração: Filtro personalizado para suprimir logs de requisições HTTP específicas do Dash
+# Filtro personalizado para suprimir logs de requisições HTTP específicas do Dash
 class DashRequestFilter(logging.Filter):
     def filter(self, record):
         # Ignora mensagens de requisições GET/POST para rotas do Dash
@@ -85,276 +85,300 @@ def serve_layout():
         logger.error(f"Erro ao constuir layout dinâmico: {e}")
         decoded = {}   
 
-    return html.Div([
-        # ALTERAÇÃO: Removido storage_options do dcc.Store
-        # Motivo: A versão do Dash (3.0.4) não suporta storage_options, causando TypeError
-        # Impacto: dcc.Store usará json padrão internamente; serialização com orjson será feita manualmente nos callbacks
-        dcc.Store(id='data-store', 
-                    data=orjson_dumps(decoded).decode("utf-8"),
-                    storage_type='session'),
-        # ALTERAÇÃO: Substituir html.H1 por dbc.Row para header com título, cards, dropdown e botão
-        # Motivo: Adicionar representação do portfólio e funcionalidade de salvamento no header
-        # Impacto: Integra cards com tickers, dropdown para nome e modal para salvar portfólio
-        dbc.Row([
-            dbc.Col(
-                html.H1("Dashboard de Portfólio", className="mb-0"),
-                width=4
-            ),
-            
-            dbc.Col([
-                # Dropdown e botão na parte superior, fora do retângulo
-                html.Div([
-                    dbc.Select(
-                        id='portfolio-name-dropdown',
-                        options=[{'label': 'Portfólio 1', 'value': 'Portfólio 1'}],
-                        value='Portfólio 1',
-                        className="mb-2",
-                        style={
-                            'width': '120px',  # Reduzido o tamanho
-                            'fontSize': '10px',  # Reduzido o tamanho da fonte
-                            'marginRight': '10px',  # Espaço entre dropdown e botão
-                        }
-                    ),
-                    dbc.Button(
-                        "Salvar Portfólio",
-                        id='save-portfolio-button',
-                        n_clicks=0,
-                        color="success",
-                        size="sm",
-                        style={
-                            'fontSize': '10px',  # Reduzido o tamanho da fonte
-                            'padding': '3px 8px',  # Ajustado o padding para menor tamanho
-                        }
-                    ),
-                ], style={
-                    'display': 'flex',
-                    'alignItems': 'center',
-                    'justifyContent': 'flex-end',
-                    'marginBottom': '5px',  # Espaçamento abaixo dos elementos
-                }),
-                # Retângulo envolvente apenas para os cards
-                html.Div([
-                    html.Div(
-                        id='portfolio-cards',
-                        className="d-flex flex-wrap justify-content-center",
-                        style={
-                            'gap': '5px',
-                            'maxWidth': '400px',
-                            'flexGrow': 1,
-                        }
-                    ),
-                ], style={
-                    'border': '1px solid #dee2e6',
-                    'borderRadius': '5px',
-                    'padding': '10px',
-                    'display': 'flex',
-                    'flexDirection': 'column',
-                    'alignItems': 'center',
-                    'backgroundColor': '#f8f9fa',
-                }),
-            ], width=8),
-        ], className="mb-4 align-items-center"),
-        # Modal para salvar portfólio
-        dbc.Modal([
-            dbc.ModalHeader(dbc.ModalTitle("Salvar Portfólio")),
-            dbc.ModalBody([
-                html.Label("Nome do Portfólio:", className="form-label"),
-                dcc.Input(
-                    id='portfolio-name-input',
-                    type='text',
-                    placeholder='Digite o nome do portfólio',
-                    className='form-control mb-2',
-                    style={'width': '100%'}
-                ),
-                html.Div(id='save-portfolio-message', className='mt-2')
-            ]),
-            dbc.ModalFooter([
-                dbc.Button("Salvar", id='modal-save-button', color="primary"),
-                dbc.Button("Cancelar", id='modal-cancel-button', color="secondary", n_clicks=0)
-            ])
-        ], id='save-portfolio-modal', is_open=False),
-        
-            # Bloco dos cards, transformando a coluna para ocupar a largura restante
-            
-        dbc.Col([  
-            dbc.Row([
-                dbc.Col(
-                    dbc.Card([
-                        dbc.CardBody([
-                            html.H5("Retorno Total", className="card-title"),
-                            html.P(id='retorno-total-card', className="card-text", style={'fontSize': '24px', 'fontWeight': 'bold', 'color': '#198754'}),
-                        ])
-                    ], className="mb-3 shadow-sm"),
-                    md=4
-                ),
-                dbc.Col(
-                    dbc.Card([
-                        dbc.CardBody([
-                            html.H5("Volatilidade", className="card-title"),
-                            html.P(id='volatilidade-card', className="card-text", style={'fontSize': '24px', 'fontWeight': 'bold', 'color': '#0d6efd'}),
-                        ])
-                    ], className="mb-3 shadow-sm"),
-                    md=4
-                ),
-                dbc.Col(
-                    dbc.Card([
-                        dbc.CardBody([
-                            html.H5("Sharpe Ratio", className="card-title"),
-                            html.P(id='sharpe-card', className="card-text", style={'fontSize': '24px', 'fontWeight': 'bold', 'color': '#fd7e14'}),
-                        ])
-                    ], className="mb-3 shadow-sm"),
-                    md=4
-                )
-            ])
-        ], width=12),
+    return dmc.MantineProvider(
+        theme={"colorScheme": "light"},
+        children=html.Div([
+            # Removido storage_options do dcc.Store
+            # Motivo: A versão do Dash (3.0.4) não suporta storage_options, causando TypeError
+            # Impacto: dcc.Store usará json padrão internamente; serialização com orjson será feita manualmente nos callbacks
+            dcc.Store(id='data-store', 
+                        data=orjson_dumps(decoded).decode("utf-8"),
+                        storage_type='session'),
+            # ALTERAÇÃO: Substituir html.H1 por dbc.Row para header com título, cards, dropdown e botão
+            # Motivo: Adicionar representação do portfólio e funcionalidade de salvamento no header
+            # Impacto: Integra cards com tickers, dropdown para nome e modal para salvar portfólio
 
-        dbc.Row([
-            # Coluna Esquerda (1/3)
-            dbc.Col([
-                # Novo: Adicionar dbc.Alert para mensagens de erro de ticker
-                dbc.Alert(
-                    id='ticker-error-alert',
-                    is_open=False,
-                    dismissable=True,
-                    color='danger',
-                    style={'marginBottom': '10px', 'fontSize': '12px'}
+            dbc.Row([
+                # Título
+                dbc.Col(
+                    html.H1("FinDash", className="mb-0 text-center text-md-start"),
+                    width={"size": 12, "order": 1},
+                    md={"size": 2, "order": 1},  
+                    className="d-flex align-items-center"
                 ),
-                html.Div([
-                    dbc.Select(
-                        id='ticker-dropdown',
-                        options=ticker_options,
-                        value=None,
-                        placeholder="Selecione um ticker",
-                        className="form-select me-2",
-                        size="sm",
-                        style={'width': '80%', 'fontSize': '12px'}
+        
+                # Conteúdo principal
+                dbc.Col(
+                    dbc.Row([
+                        # Retângulo com os cards
+                        dbc.Col(
+                            html.Div(
+                                id='portfolio-cards',
+                                className="d-flex flex-wrap justify-content-center",
+                                style={
+                                    'gap': '5px',
+                                    'maxWidth': '100%',
+                                    'flexGrow': 1,
+                                    'border': '1px solid #dee2e6',
+                                    'borderRadius': '5px',
+                                    'padding': '10px',
+                                    'backgroundColor': '#f8f9fa',
+                                }
+                            ),
+                            width=12, 
+                            md=9,
+                        ),
+                        
+                        # Dropdown e botão ao lado
+                        dbc.Col(
+                            html.Div([
+                                dbc.Select(
+                                    id='portfolio-name-dropdown',
+                                    options=[{'label': 'Portfólio 1', 'value': 'Portfólio 1'}],
+                                    value='Portfólio 1',
+                                    className="mb-2",
+                                    style={
+                                        'width': '100%',
+                                        'fontSize': '10px',
+                                        'minWidth': '150px',
+                                    }
+                                ),
+                                dbc.Button(
+                                    id='save-portfolio-button',
+                                    n_clicks=0,
+                                    color="success",
+                                    size="sm",
+                                    style={
+                                        'fontSize': '10px',
+                                        'padding': '3px 8px',
+                                        'width': '100%',  # Alinhar com o dropdown
+                                        'minWidth': '150px',
+                                    }, 
+                                    children="Salvar Portfólio"
+                                ),
+                            ], style={
+                                'display': 'flex',
+                                'flexDirection': 'column',  # Botão abaixo do dropdown
+                                'alignItems': 'stretch',
+                            
+                            }),
+                            width=12,
+                            md=3,
+                            className="mt-3 mt-md-0"
+                        ),
+                    ], className="g-2"),
+                    width={"size": 12, "order": 2},
+                    md={"size": 10, "order": 2},
+                ),
+            ], className="mb-4 align-items-center"),
+        
+            # Modal para salvar portfólio
+            dbc.Modal([
+                dbc.ModalHeader(dbc.ModalTitle("Salvar Portfólio")),
+                dbc.ModalBody([
+                    html.Label("Nome do Portfólio:", className="form-label"),
+                    dcc.Input(
+                        id='portfolio-name-input',
+                        type='text',
+                        placeholder='Digite o nome do portfólio',
+                        className='form-control mb-2',
+                        style={'width': '100%'}
                     ),
-                    dcc.DatePickerSingle(
-                        id='start-date-input',
-                        first_day_of_week=1,
-                        date=None,
-                        day_size=30,
-                        month_format='MMMM, YYYY',
-                        display_format='DD/MM/YYYY',
-                        className="me-2",
-                        style={'width': '25%', 'fontSize': '12px', 'minWidth': '130px', 'position': 'relative', 'zIndex': 1000}
+                    html.Div(id='save-portfolio-message', className='mt-2')
+                ]),
+                dbc.ModalFooter([
+                    dbc.Button("Salvar", id='modal-save-button', color="primary"),
+                    dbc.Button("Cancelar", id='modal-cancel-button', color="secondary", n_clicks=0)
+                ])
+            ], id='save-portfolio-modal', is_open=False),
+            
+                # Bloco dos cards, transformando a coluna para ocupar a largura restante
+                
+            dbc.Col([  
+                dbc.Row([
+                    dbc.Col(
+                        dbc.Card([
+                            dbc.CardBody([
+                                html.H5("Retorno Total", className="card-title"),
+                                html.P(id='retorno-total-card', className="card-text", style={'fontSize': '24px', 'fontWeight': 'bold', 'color': '#198754'}),
+                            ])
+                        ], className="mb-3 shadow-sm"),
+                        md=4
                     ),
-                    dcc.DatePickerSingle(
-                        id='end-date-input',
-                        first_day_of_week=1,
-                        date=None,
-                        day_size=30,
-                        month_format='MMMM, YYYY',
-                        display_format='DD/MM/YYYY',
-                        className="",
-                        style={'width': '25%', 'fontSize': '12px', 'minWidth': '130px', 'position': 'relative', 'zIndex': 1000}
+                    dbc.Col(
+                        dbc.Card([
+                            dbc.CardBody([
+                                html.H5("Volatilidade", className="card-title"),
+                                html.P(id='volatilidade-card', className="card-text", style={'fontSize': '24px', 'fontWeight': 'bold', 'color': '#0d6efd'}),
+                            ])
+                        ], className="mb-3 shadow-sm"),
+                        md=4
                     ),
-                    html.Button(
-                        'Atualizar Período',
-                        id='update-period-button',
-                        n_clicks=0,
-                        className="btn btn-primary btn-sm mt-2"
+                    dbc.Col(
+                        dbc.Card([
+                            dbc.CardBody([
+                                html.H5("Sharpe Ratio", className="card-title"),
+                                html.P(id='sharpe-card', className="card-text", style={'fontSize': '24px', 'fontWeight': 'bold', 'color': '#fd7e14'}),
+                            ])
+                        ], className="mb-3 shadow-sm"),
+                        md=4
+                    )
+                ])
+            ], width=12),
+
+            dbc.Row([
+                # Coluna Esquerda (1/3)
+                dbc.Col([
+                    # Novo: Adicionar dbc.Alert para mensagens de erro de ticker
+                    dbc.Alert(
+                        id='ticker-error-alert',
+                        is_open=False,
+                        dismissable=True,
+                        color='danger',
+                        style={'marginBottom': '10px', 'fontSize': '12px'}
                     ),
-                ], className="d-flex flex-wrap align-items-center mb-2"),
-                dash_table.DataTable(
-                    id='price-table',
-                    columns=[
-                        {'name': '', 'id': 'acao', 'editable': False},
-                        {'name': 'Ticker', 'id': 'ticker', 'editable': False},
-                        {'name': 'Total(%)', 'id': 'retorno_total', 'editable': False},
-                        {'name': 'Quant.', 'id': 'quantidade', 'editable': True, 'type': 'numeric'},
-                        {'name': 'Peso(%)', 'id': 'peso_quantidade_percentual', 'editable': False},
-                        {'name': 'GCAP', 'id': 'ganho_capital', 'editable': False},
-                        {'name': 'DY', 'id': 'proventos', 'editable': False},
-                    ],
-                    data=[],
-                    style_table={'overflowX': 'auto', 
-                                'marginTop': '20px', 
-                                'height': '200px',
-                                'border': '1px solid #dee2e6',
-                                'overflowY': 'auto'
-                                },
-                    fixed_rows={'headers': True},  
-                    style_cell={
-                        'fontSize': '12px', 'textAlign': 'center', 'minWidth': '50px',
-                        'backgroundColor': '#f8f9fa', 'borderBottom': '1px solid #dee2e6', 'padding': '3px'
-                    },
-                    style_header={'fontWeight': 'bold', 
-                                'backgroundColor': '#f8f9fa', 
-                                'borderBottom': '2px solid #dee2e6',
-                                'position': 'sticky',
-                                'top': 0,
-                                'zIndex': 1
-                                },
-                    style_data_conditional=[
-                        {'if': {'row_index': 'odd'}, 'backgroundColor': '#f2f2f2'},
-                        {'if': {'filter_query': '{ticker} = "Total"'}, 
-                        'fontWeight': 'bold', 
-                        'backgroundColor': '#e9ecef',
-                        'position': 'sticky',
-                        'bottom': 0,
-                        'zIndex': 1
+                    html.Div([
+                        dbc.Select(
+                            id='ticker-dropdown',
+                            options=ticker_options,
+                            value=None,
+                            placeholder="Selecione um ticker",
+                            className="form-select me-2",
+                            size="sm",
+                            style={'width': '100%', 'fontSize': '12px'}
+                        ),
+                        dmc.DatesProvider(
+                            children=dmc.DatePickerInput(
+                                id='date-input-range-picker',
+                                value=["",""],
+                                type="range",
+                                minDate="2020-01-01",  # Data mínima obrigatória
+                                maxDate="2025-12-31",  # Data máxima obrigatória
+                                dropdownType="calendar",
+                                valueFormat="DD/MM/YYYY",
+                                style={
+                                    'width': '200px', 
+                                    'fontSize': '10px', 
+                                    'maxHeight': '30px',
+                                }
+                            ),
+                            settings={'locale': 'pt'},
+                        ),                    
+                        html.Button(
+                            'Atualizar Período',
+                            id='update-period-button',
+                            n_clicks=0,
+                            className="btn btn-primary btn-sm mt-2"
+                        ),
+                    ], className="d-flex flex-wrap align-items-center mb-2", style={'gap': '5px'}),
+
+                    dash_table.DataTable(
+                        id='price-table',
+                        columns=[
+                            {'name': '', 'id': 'acao', 'editable': False},
+                            {'name': 'Ticker', 'id': 'ticker', 'editable': False},
+                            {'name': 'Total(%)', 'id': 'retorno_total', 'editable': False},
+                            {'name': 'Quant.', 'id': 'quantidade', 'editable': True, 'type': 'numeric'},
+                            {'name': 'Peso(%)', 'id': 'peso_quantidade_percentual', 'editable': False},
+                            {'name': 'GCAP', 'id': 'ganho_capital', 'editable': False},
+                            {'name': 'DY', 'id': 'proventos', 'editable': False},
+                        ],
+                        data=[],
+                        style_table={'overflowX': 'auto', 
+                                    'marginTop': '20px', 
+                                    'height': '200px',
+                                    'border': '1px solid #dee2e6',
+                                    'overflowY': 'auto'
+                                    },
+                        fixed_rows={'headers': True},  
+                        style_cell={
+                            'fontSize': '12px', 'textAlign': 'center', 'minWidth': '50px',
+                            'backgroundColor': '#f8f9fa', 'borderBottom': '1px solid #dee2e6', 'padding': '3px'
                         },
-                        {'if': {'column_id': 'acao'}, 'cursor': 'pointer', 'color': '#007bff'},
-                        {'if': {'column_id': 'acao', 'state': 'active'}, 'color': '#dc3545'},
-                    ],
-                    editable=True
-                ),
-                dcc.Graph(id='portfolio-treemap', style={'width': '100%', 'height': '200px', 'marginTop': '10px'}),
-                dcc.Graph(id='financial-treemap', style={'width': '100%', 'height': '200px', 'marginTop': '10px'})
-            ], md=4, className="p-1", style={
-                'backgroundColor': '#f5f5f5', 
-                'maxHeight': '750px',
-                'overflow': 'hidden',
-                'border': '1px solid red'
+                        style_header={'fontWeight': 'bold', 
+                                    'backgroundColor': '#f8f9fa', 
+                                    'borderBottom': '2px solid #dee2e6',
+                                    'position': 'sticky',
+                                    'top': 0,
+                                    'zIndex': 1
+                                    },
+                        style_data_conditional=[
+                            {'if': {'row_index': 'odd'}, 'backgroundColor': '#f2f2f2'},
+                            {'if': {'filter_query': '{ticker} = "Total"'}, 
+                            'fontWeight': 'bold', 
+                            'backgroundColor': '#e9ecef',
+                            'position': 'sticky',
+                            'bottom': 0,
+                            'zIndex': 1
+                            },
+                            {'if': {'column_id': 'acao'}, 'cursor': 'pointer', 'color': '#007bff'},
+                            {'if': {'column_id': 'acao', 'state': 'active'}, 'color': '#dc3545'},
+                        ],
+                        editable=True
+                    ),
+                    dcc.Graph(id='portfolio-treemap', style={'width': '100%', 'height': '200px', 'marginTop': '10px'}),
+                    dcc.Graph(id='financial-treemap', style={'width': '100%', 'height': '200px', 'marginTop': '10px'})
+                ], md=4, className="p-1", style={
+                    'backgroundColor': '#f5f5f5', 
+                    'maxHeight': '750px',
+                    'overflow': 'hidden',
+                    'border': '1px solid red'
+                    }),
+                # Coluna Direita (2/3)
+                dbc.Col([
+                    dcc.Graph(id='portfolio-ibov-line', style={'width': '100%', 'height': '200px'}),
+                    dcc.Graph(id='individual-tickers-line', style={'width': '100%', 'height': '200px', 'marginTop': '10px'}),
+                    dcc.Graph(id='stacked-area-chart', style={'width': '100%', 'height': '200px', 'marginTop': '10px'})
+                ], md=8, className="p-1", style={
+                    'border': '1px solid blue'
                 }),
-            # Coluna Direita (2/3)
-            dbc.Col([
-                dcc.Graph(id='portfolio-ibov-line', style={'width': '100%', 'height': '200px'}),
-                dcc.Graph(id='individual-tickers-line', style={'width': '100%', 'height': '200px', 'marginTop': '10px'}),
-                dcc.Graph(id='stacked-area-chart', style={'width': '100%', 'height': '200px', 'marginTop': '10px'})
-            ], md=8, className="p-1", style={
-                'border': '1px solid blue'
-            }),
-        ], className="mb-3", align="start", style={
-            'flexWrap': 'nowrap'
-            }),
-        # Linha de largura total para os três novos elementos
-        dbc.Row([
-            # Coluna para o Gráfico 1 (Capital Gains e Dividend Yield)
-            dbc.Col([
-                dcc.Graph(id='capital-dividend-chart', style={'width': '100%', 'height': '200px'})
-            ], md=4, className="p-2"),
-            # Placeholder para o Gráfico 2 (Dividendos por Setor)
-            dbc.Col([
-                dcc.Graph(id='dividend-by-sector-chart', style={'width': '100%', 'height': '200px'})
-            ], md=4, className="p-2"),
-            # Placeholder para a Tabela (Ranking de DY)
-            dbc.Col([
-                dcc.Graph(id='cumulative-gains-dividends-chart', style={'width': '100%', 'height': '200px'})
-            ], md=4, className="p-2"),
-        ], className="g-3"),
-        # Três Colunas Inferiores
-        dbc.Row([
-            dbc.Col([
-                dcc.Graph(id='sector-donut-charts', style={'width': '100%', 'height': '300px'})
-            ], md=4, className="p-2"),
-            dbc.Col([
-                dcc.Graph(id='correlation-heatmap', style={'width': '100%', 'height': '300px'})
-            ], md=4, className="p-2"),
-            dbc.Col([
-                dcc.Graph(id='volatility-chart', style={'width': '100%', 'height': '300px'})
-            ], md=4, className="p-2"),
-        ], className="g-3"),
-    ], className="p-4 container-fluid")
+            ], className="mb-3", align="start", style={
+                'flexWrap': 'nowrap'
+                }),
+            # Linha de largura total para os três novos elementos
+            dbc.Row([
+                # Coluna para o Gráfico 1 (Capital Gains e Dividend Yield)
+                dbc.Col([
+                    dcc.Graph(id='capital-dividend-chart', style={'width': '100%', 'height': '200px'})
+                ], md=4, className="p-2"),
+                # Placeholder para o Gráfico 2 (Dividendos por Setor)
+                dbc.Col([
+                    dcc.Graph(id='dividend-by-sector-chart', style={'width': '100%', 'height': '200px'})
+                ], md=4, className="p-2"),
+                # Placeholder para a Tabela (Ranking de DY)
+                dbc.Col([
+                    dcc.Graph(id='cumulative-gains-dividends-chart', style={'width': '100%', 'height': '200px'})
+                ], md=4, className="p-2"),
+            ], className="g-3"),
+            # Três Colunas Inferiores
+            dbc.Row([
+                dbc.Col([
+                    dcc.Graph(id='sector-donut-charts', style={'width': '100%', 'height': '300px'})
+                ], md=4, className="p-2"),
+                dbc.Col([
+                    dcc.Graph(id='correlation-heatmap', style={'width': '100%', 'height': '300px'})
+                ], md=4, className="p-2"),
+                dbc.Col([
+                    dcc.Graph(id='volatility-chart', style={'width': '100%', 'height': '300px'})
+                ], md=4, className="p-2"),
+            ], className="g-3"),
+        ], className="p-4 container-fluid")
+    )
 
 def init_dash(flask_app, portfolio_service):
     dash_app = Dash(
         __name__, 
         server=flask_app, 
         url_base_pathname='/dash/findash/',
-        external_stylesheets=[dbc.themes.FLATLY]
-        )
+        external_stylesheets=[
+            dbc.themes.FLATLY,
+            ],
+        external_scripts=[
+            "https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.7/dayjs.min.js",
+            "https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.7/locale/pt.js",
+            "/static/assets/dayjs-config.js",
+        ]
+    )
     #dash_app.enable_dev_tools(debug=True, dev_tools_hot_reload=True)
     dash_app.portfolio_service = portfolio_service
     dash_app.layout = serve_layout
@@ -384,7 +408,7 @@ def init_dash(flask_app, portfolio_service):
             store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
 
         # Logar conteúdo inicial de store_data
-        logger.info(f"Conteúdo de store_data: tickers={store_data.get('tickers')}, período=({store_data.get('start_date')} -> {store_data.get('end_date')})")
+        logger.info(f"Conteúdo de store_data: tickers={store_data.get('tickers')}, período=({store_data.get('start_date')} - {store_data.get('end_date')})")
 
         # Verificar se store_data contém table_data válido antes de inicializar como vazio
         if not store_data or 'portfolio' not in store_data or not store_data['portfolio'] or ('table_data' not in store_data or not store_data['table_data']):
@@ -471,8 +495,7 @@ def init_dash(flask_app, portfolio_service):
         return updated_table_data, orjson_dumps(updated_store_data).decode('utf-8')
 
     @dash_app.callback(
-        [Output('start-date-input', 'date'),
-        Output('end-date-input', 'date')],
+        Output('date-input-range-picker', 'value'),
         Input('data-store', 'data'),
         prevent_initial_call=False
         )
@@ -482,9 +505,13 @@ def init_dash(flask_app, portfolio_service):
         """
         if store_data:
             store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
-            return store_data.get('start_date'), store_data.get('end_date')
-        return None, None
-
+            start_date = store_data.get('start_date')
+            end_date = store_data.get('end_date')
+            if start_date and end_date:
+                return [start_date, end_date]
+            
+        return None
+    
     @dash_app.callback(
         Output('portfolio-treemap', 'figure'),
         Input('data-store', 'data'),
@@ -677,30 +704,24 @@ def init_dash(flask_app, portfolio_service):
     @dash_app.callback(
         Output('data-store', 'data', allow_duplicate=True),
         Input('update-period-button', 'n_clicks'),
-        State('start-date-input', 'date'),
-        State('end-date-input', 'date'),
+        State('date-input-range-picker', 'value'),
         State('data-store', 'data'),
         prevent_initial_call=True
     )
-    def update_period(n_clicks, start_date, end_date, store_data):
+    def update_period(n_clicks, date_range, store_data):
         """
         Atualiza o período do portfólio usando o PortfolioService.
         """
         if store_data:
             store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
-
-        if not n_clicks or not start_date or not end_date or not store_data:
+        if not n_clicks or not date_range or not store_data:
             return orjson_dumps(store_data).decode('utf-8') if store_data else None
-
         try:
-            # Converter YYYY-MM-DD (formato retornado por dcc.DatePickerSingle) para YYYY-MM-DD
-            start_date_formatted = datetime.strptime(start_date, '%Y-%m-%d').strftime('%Y-%m-%d')
-            end_date_formatted = datetime.strptime(end_date, '%Y-%m-%d').strftime('%Y-%m-%d')
+            start_date_formatted = date_range[0]
+            end_date_formatted = date_range[1]
             updated_portfolio = dash_app.portfolio_service.update_portfolio_period(store_data, start_date_formatted, end_date_formatted)
-            logger.info(f"Período atualizado: {start_date_formatted} a {end_date_formatted}")
             return orjson_dumps(updated_portfolio).decode('utf-8')
         except ValueError as e:
-            logger.error(f"Erro ao atualizar período: {e}")
             return orjson_dumps(store_data).decode('utf-8')
     
     @dash_app.callback(

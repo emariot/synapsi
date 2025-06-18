@@ -2,6 +2,7 @@ import dash
 from dash import Dash, html, dcc, Output, Input, State, callback, no_update, dash_table
 import plotly.graph_objects as go
 import dash_mantine_components as dmc
+from dash_iconify import DashIconify
 import dash_bootstrap_components as dbc
 from Findash.modules.metrics import calcular_metricas
 from datetime import datetime, timedelta
@@ -86,256 +87,325 @@ def serve_layout():
         decoded = {}   
 
     return dmc.MantineProvider(
-        theme={"colorScheme": "light"},
-        children=html.Div([
-            # Removido storage_options do dcc.Store
-            # Motivo: A versão do Dash (3.0.4) não suporta storage_options, causando TypeError
-            # Impacto: dcc.Store usará json padrão internamente; serialização com orjson será feita manualmente nos callbacks
-            dcc.Store(id='data-store', 
-                        data=orjson_dumps(decoded).decode("utf-8"),
-                        storage_type='session'),
-            # ALTERAÇÃO: Substituir html.H1 por dbc.Row para header com título, cards, dropdown e botão
-            # Motivo: Adicionar representação do portfólio e funcionalidade de salvamento no header
-            # Impacto: Integra cards com tickers, dropdown para nome e modal para salvar portfólio
-
-            dbc.Row([
-                # Título
-                dbc.Col(
-                    html.H1("FinDash", className="mb-0 text-center text-md-start"),
-                    width={"size": 12, "order": 1},
-                    md={"size": 2, "order": 1},  
-                    className="d-flex align-items-center"
-                ),
-        
-                # Conteúdo principal
-                dbc.Col(
-                    dbc.Row([
-                        # Retângulo com os cards
-                        dbc.Col(
-                            html.Div(
-                                id='portfolio-cards',
-                                className="d-flex flex-wrap justify-content-center",
-                                style={
-                                    'gap': '5px',
-                                    'maxWidth': '100%',
-                                    'flexGrow': 1,
-                                    'border': '1px solid #dee2e6',
-                                    'borderRadius': '5px',
-                                    'padding': '10px',
-                                    'backgroundColor': '#f8f9fa',
-                                }
-                            ),
-                            width=12, 
-                            md=9,
-                        ),
-                        
-                        # Dropdown e botão ao lado
-                        dbc.Col(
-                            html.Div([
-                                dbc.Select(
-                                    id='portfolio-name-dropdown',
-                                    options=[{'label': 'Portfólio 1', 'value': 'Portfólio 1'}],
-                                    value='Portfólio 1',
-                                    className="mb-2",
-                                    style={
-                                        'width': '100%',
-                                        'fontSize': '10px',
-                                        'minWidth': '150px',
-                                    }
-                                ),
-                                dbc.Button(
-                                    id='save-portfolio-button',
-                                    n_clicks=0,
-                                    color="success",
-                                    size="sm",
-                                    style={
-                                        'fontSize': '10px',
-                                        'padding': '3px 8px',
-                                        'width': '100%',  # Alinhar com o dropdown
-                                        'minWidth': '150px',
-                                    }, 
-                                    children="Salvar Portfólio"
-                                ),
-                            ], style={
-                                'display': 'flex',
-                                'flexDirection': 'column',  # Botão abaixo do dropdown
-                                'alignItems': 'stretch',
-                            
-                            }),
-                            width=12,
-                            md=3,
-                            className="mt-3 mt-md-0"
-                        ),
-                    ], className="g-2"),
-                    width={"size": 12, "order": 2},
-                    md={"size": 10, "order": 2},
-                ),
-            ], className="mb-4 align-items-center"),
-        
-            # Modal para salvar portfólio
-            dbc.Modal([
-                dbc.ModalHeader(dbc.ModalTitle("Salvar Portfólio")),
-                dbc.ModalBody([
-                    html.Label("Nome do Portfólio:", className="form-label"),
-                    dcc.Input(
-                        id='portfolio-name-input',
-                        type='text',
-                        placeholder='Digite o nome do portfólio',
-                        className='form-control mb-2',
-                        style={'width': '100%'}
-                    ),
-                    html.Div(id='save-portfolio-message', className='mt-2')
-                ]),
-                dbc.ModalFooter([
-                    dbc.Button("Salvar", id='modal-save-button', color="primary"),
-                    dbc.Button("Cancelar", id='modal-cancel-button', color="secondary", n_clicks=0)
-                ])
-            ], id='save-portfolio-modal', is_open=False),
+        id = "mantine-provider",
+        theme={
+            "primaryColor":"indigo",
+            "components": {
+                "Button": {"styles": {"root": {"fontSize": "10px", "padding": "3px 8px"}}},
+                "Select": {"styles": {"input": {"fontSize": "10px"}}},      
             
-                # Bloco dos cards, transformando a coluna para ocupar a largura restante
-                
-            dbc.Col([  
-                dbc.Row([
-                    dbc.Col(
-                        dbc.Card([
-                            dbc.CardBody([
-                                html.H5("Retorno Total", className="card-title"),
-                                html.P(id='retorno-total-card', className="card-text", style={'fontSize': '24px', 'fontWeight': 'bold', 'color': '#198754'}),
-                            ])
-                        ], className="mb-3 shadow-sm"),
-                        md=4
-                    ),
-                    dbc.Col(
-                        dbc.Card([
-                            dbc.CardBody([
-                                html.H5("Volatilidade", className="card-title"),
-                                html.P(id='volatilidade-card', className="card-text", style={'fontSize': '24px', 'fontWeight': 'bold', 'color': '#0d6efd'}),
-                            ])
-                        ], className="mb-3 shadow-sm"),
-                        md=4
-                    ),
-                    dbc.Col(
-                        dbc.Card([
-                            dbc.CardBody([
-                                html.H5("Sharpe Ratio", className="card-title"),
-                                html.P(id='sharpe-card', className="card-text", style={'fontSize': '24px', 'fontWeight': 'bold', 'color': '#fd7e14'}),
-                            ])
-                        ], className="mb-3 shadow-sm"),
-                        md=4
-                    )
-                ])
-            ], width=12),
-
-            dbc.Row([
-                # Coluna Esquerda (1/3)
-                dbc.Col([
-                    # Novo: Adicionar dbc.Alert para mensagens de erro de ticker
-                    dbc.Alert(
-                        id='ticker-error-alert',
-                        is_open=False,
-                        dismissable=True,
-                        color='danger',
-                        style={'marginBottom': '10px', 'fontSize': '12px'}
-                    ),
-                    html.Div([
-                        dbc.Select(
-                            id='ticker-dropdown',
-                            options=ticker_options,
-                            value=None,
-                            placeholder="Selecione um ticker",
-                            className="form-select me-2",
-                            size="sm",
-                            style={'width': '100%', 'fontSize': '12px'}
-                        ),
-                        dmc.DatesProvider(
-                            children=dmc.DatePickerInput(
-                                id='date-input-range-picker',
-                                value=["",""],
-                                type="range",
-                                minDate="2020-01-01",  # Data mínima obrigatória
-                                maxDate="2025-12-31",  # Data máxima obrigatória
-                                dropdownType="calendar",
-                                valueFormat="DD/MM/YYYY",
-                                style={
-                                    'width': '200px', 
-                                    'fontSize': '10px', 
-                                    'maxHeight': '30px',
-                                }
+                },
+            },
+            children=[
+                dcc.Store(
+                    id='data-store', 
+                    data=orjson_dumps(decoded).decode("utf-8"),
+                    storage_type='session',
+                ),
+                dcc.Store(id="theme-store", data="light",storage_type="session"),
+                dmc.Grid(
+                    gutter="sm",
+                    style={"marginBottom": "10px"}, 
+                    children = [
+                        # Coluna do título "FinDash" (2/12)
+                        dmc.GridCol(
+                            span={"base": 12, "md": 2},
+                            children=dmc.Title(
+                                'FinDash', 
+                                order=1, 
+                                style={ "margin": 0, "textAlign": "left", "paddingLeft": "12px"}
                             ),
-                            settings={'locale': 'pt'},
-                        ),                    
-                        html.Button(
-                            'Atualizar Período',
-                            id='update-period-button',
-                            n_clicks=0,
-                            className="btn btn-primary btn-sm mt-2"
                         ),
-                    ], className="d-flex flex-wrap align-items-center mb-2", style={'gap': '5px'}),
+                        # Coluna do portfolio-cards (9/12)
+                        dmc.GridCol(
+                            span={"base": 12, "md": 7},
+                            children=dmc.Paper(
+                                id="portfolio-cards",
+                                shadow="xs",
+                                p="sm",
+                                style={
+                                    "width": "100%",  # Ocupa toda a largura da coluna
+                                    "border": "1px solid #dee2e6",
+                                    "borderRadius": "5px",
+                                    "display": "flex",
+                                    "flexDirection": "row",  # Garante layout horizontal
+                                    "flexWrap": "nowrap",    # Evita quebra de linha
+                                    "overflowX": "auto",     # Rolagem horizontal para muitos tickers
+                                    "gap": "8px",            # Mais espaço entre tickers
+                                    "padding": "8px",        # Aumenta o padding interno
+                                    "alignItems": "center",  # Centraliza verticalmente
+                                },
+                            ),
+                        ),
+                        # Coluna do dropdown, botão e ActionIcons (3/12)
+                        dmc.GridCol(
+                            span={"base": 12, "md": 3},
+                            children=dmc.Stack(
+                                gap="xs",
+                                style={"alignItems": "stretch", "width": "100%", "paddingRight": "12px"},
+                                children=[
+                                    dmc.Select(
+                                        id="portfolio-name-dropdown",
+                                        data=[
+                                            {"label": "Portfólio 1","value": "Portfólio 1"},
+                                        ],
+                                        value="Portfólio 1",
+                                        style={"width": "100%"},
+                                        size="sm",
+                                    ),  
+                                    dmc.Button(
+                                        id="save-portfolio-button",
+                                        children="Salvar Portfólio",
+                                        color="green",
+                                        size="xs",
+                                        fullWidth=True,
+                                    ),
+                                    dmc.Group(
+                                        gap="xs",    
+                                        justify="flex-end",
+                                        style={"width": "100%"},
+                                        children=[
+                                            dmc.Tooltip(
+                                                label="Configurações",
+                                                children=dmc.ActionIcon(
+                                                    id="settings-icon",
+                                                    children=[DashIconify(icon="tabler:settings", width=20)],
+                                                    variant="outline",
+                                                    size="sm",
+                                                )      
+                                            ),
+                                            dmc.Tooltip(
+                                                label="Relatórios",
+                                                children=dmc.ActionIcon(
+                                                    id="reports-icon",
+                                                    children=[DashIconify(icon="tabler:report", width=20)],
+                                                    variant="outline",
+                                                    size="sm",
+                                                )      
+                                            ),
+                                            dmc.Tooltip(
+                                                label="Alertas",
+                                                children=dmc.ActionIcon(
+                                                    id="alerts-icon",
+                                                    children=[DashIconify(icon="tabler:bell", width=20)],
+                                                    variant="outline",
+                                                    size="sm",
+                                                ),
+                                            ),
+                                            dmc.Tooltip(
+                                                label="Alternar Tema",
+                                                children=dmc.ActionIcon(
+                                                    id="theme-toggle",
+                                                    children=[DashIconify(id="theme-icon", icon="tabler:sun", width=20)],
+                                                    variant="outline",
+                                                    size="sm",
+                                                ),
+                                            ),
+                                        ],
+                                    ),
+                                ],   
+                            ),       
+                        ),
+                    ],
+                ),
 
-                    dash_table.DataTable(
-                        id='price-table',
-                        columns=[
-                            {'name': '', 'id': 'acao', 'editable': False},
-                            {'name': 'Ticker', 'id': 'ticker', 'editable': False},
-                            {'name': 'Total(%)', 'id': 'retorno_total', 'editable': False},
-                            {'name': 'Quant.', 'id': 'quantidade', 'editable': True, 'type': 'numeric'},
-                            {'name': 'Peso(%)', 'id': 'peso_quantidade_percentual', 'editable': False},
-                            {'name': 'GCAP', 'id': 'ganho_capital', 'editable': False},
-                            {'name': 'DY', 'id': 'proventos', 'editable': False},
-                        ],
-                        data=[],
-                        style_table={'overflowX': 'auto', 
-                                    'marginTop': '20px', 
-                                    'height': '200px',
-                                    'border': '1px solid #dee2e6',
-                                    'overflowY': 'auto'
-                                    },
-                        fixed_rows={'headers': True},  
-                        style_cell={
-                            'fontSize': '12px', 'textAlign': 'center', 'minWidth': '50px',
-                            'backgroundColor': '#f8f9fa', 'borderBottom': '1px solid #dee2e6', 'padding': '3px'
-                        },
-                        style_header={'fontWeight': 'bold', 
-                                    'backgroundColor': '#f8f9fa', 
-                                    'borderBottom': '2px solid #dee2e6',
-                                    'position': 'sticky',
-                                    'top': 0,
-                                    'zIndex': 1
-                                    },
-                        style_data_conditional=[
-                            {'if': {'row_index': 'odd'}, 'backgroundColor': '#f2f2f2'},
-                            {'if': {'filter_query': '{ticker} = "Total"'}, 
-                            'fontWeight': 'bold', 
-                            'backgroundColor': '#e9ecef',
-                            'position': 'sticky',
-                            'bottom': 0,
-                            'zIndex': 1
-                            },
-                            {'if': {'column_id': 'acao'}, 'cursor': 'pointer', 'color': '#007bff'},
-                            {'if': {'column_id': 'acao', 'state': 'active'}, 'color': '#dc3545'},
-                        ],
-                        editable=True
+                #Modal para salvar portfólio
+                dmc.Modal(
+                    id="save-portfolio-modal",
+                    opened=False,
+                    title="Salvar Portfólio",
+                    centered=True,
+                    size="sm",
+                    children=[
+                        dmc.TextInput(
+                            id="portfolio-name-input",
+                            label="Nome do Portfólio",
+                            placeholder="Digite o nome do portfólio",
+                            style={"marginBottom": "10px"},
                     ),
-                    dcc.Graph(id='portfolio-treemap', style={'width': '100%', 'height': '200px', 'marginTop': '10px'}),
-                    dcc.Graph(id='financial-treemap', style={'width': '100%', 'height': '200px', 'marginTop': '10px'})
-                ], md=4, className="p-1", style={
-                    'backgroundColor': '#f5f5f5', 
-                    'maxHeight': '750px',
-                    'overflow': 'hidden',
-                    'border': '1px solid red'
-                    }),
-                # Coluna Direita (2/3)
-                dbc.Col([
-                    dcc.Graph(id='portfolio-ibov-line', style={'width': '100%', 'height': '200px'}),
-                    dcc.Graph(id='individual-tickers-line', style={'width': '100%', 'height': '200px', 'marginTop': '10px'}),
-                    dcc.Graph(id='stacked-area-chart', style={'width': '100%', 'height': '200px', 'marginTop': '10px'})
-                ], md=8, className="p-1", style={
-                    'border': '1px solid blue'
-                }),
-            ], className="mb-3", align="start", style={
-                'flexWrap': 'nowrap'
-                }),
-            # Linha de largura total para os três novos elementos
+                    html.Div(id="save-portfolio-message", style={"marginBottom": "10px"}),
+                    dmc.Group(
+                        justify="flex-end",
+                        gap="xs",
+                        children=[
+                            dmc.Button(
+                                children="Cancelar",
+                                id="modal-cancel-button",
+                                color="red",
+                                size="xs",
+                                variant="outline",
+                            ),
+                            dmc.Button(
+                                children="Salvar",
+                                id="modal-save-button",
+                                color="green",
+                                size="xs",
+                            ),
+                        ],
+                    ),
+                ],
+            ),
+             # Bloco dos cards, transformando a coluna para ocupar a largura restante
+            dmc.Grid(
+                gutter='sm',
+                children=[
+                    dmc.GridCol(
+                        span={"base":12, "md":4},
+                        children=dmc.Card(
+                            id="retorno-total-card-container",
+                            withBorder=True,
+                            shadow="sm",
+                            radius="md",
+                            style={"marginBottom": "16px"},
+                            children=[
+                                dmc.Text("Retorno Total", size="sm", fw=500),
+                                html.P(id='retorno-total-card', style={'fontSize': '24px', 'fontWeight': 'bold', 'margin': 0}),
+                            ]
+                        )
+                    ),
+                    dmc.GridCol(
+                        span={"base": 12, "md": 4},
+                        children=dmc.Card(
+                            id="volatilidade-card-container",
+                            withBorder=True,
+                            shadow="sm",
+                            radius="md",
+                            style={"marginBottom": "16px"},
+                            children=[
+                                dmc.Text("Volatilidade", size="sm", fw=500),
+                                html.P(id='volatilidade-card', style={'fontSize': '24px', 'fontWeight': 'bold', 'margin': 0}),
+                            ]
+                        )
+                    ),
+                    dmc.GridCol(
+                        span={"base": 12, "md": 4},
+                        children=dmc.Card(
+                            id="sharpe-card-container",
+                            withBorder=True,
+                            shadow="sm",
+                            radius="md",
+                            style={"marginBottom": "16px"},
+                            children=[
+                                dmc.Text("Sharpe Ratio", size="sm", fw=500),
+                                html.P(id='sharpe-card', style={'fontSize': '24px', 'fontWeight': 'bold', 'margin': 0}),
+                            ]
+                        )
+                    ),
+                ]
+            ),
+            dmc.Grid(
+                gutter="sm",
+                id="main-grid",
+                children=[
+                    #Coluna Esquerda (1/3)
+                    dmc.GridCol(
+                        span={"base": 12, "md": 4},
+                        id="left-column",
+                        style={"maxHeight": "750px", "overflow": "hidden"},
+                        children=[
+                            dmc.Alert(
+                                id='ticker-error-alert',
+                                children="Ticker inválido ou limite de tickers atingido.",
+                                color="red",
+                                hide=True,
+                                radius="md",
+                                withCloseButton=True,
+                                style={'marginBottom': '10px', 'fontSize': '12px'},
+                            ),
+                            dmc.Group(
+                                gap="xs",
+                                align="center",
+                                style={'marginBottom': '10px'},
+                                children=[
+                                    dmc.Select(
+                                        id='ticker-dropdown',
+                                        data=ticker_options,
+                                        value=None,
+                                        placeholder="Selecione um ticker",
+                                        style={'width': '100%', 'maxWidth': '250px', 'fontSize': '12px'},
+                                        size="sm",
+                                        clearable=True,
+                                    ),
+                                    dmc.DatesProvider(
+                                        children=dmc.DatePickerInput(
+                                            id='date-input-range-picker',
+                                            value=["",""],
+                                            type="range",
+                                            minDate="2020-01-01",  # Data mínima obrigatória
+                                            maxDate="2025-12-31",  # Data máxima obrigatória
+                                            dropdownType="calendar",
+                                            valueFormat="DD/MM/YYYY",
+                                            style={
+                                                'width': '200px', 
+                                                'fontSize': '10px', 
+                                                'maxHeight': '30px',
+                                            }
+                                        ),
+                                        settings={'locale': 'pt'},
+                                    ),
+                                    dmc.Button(
+                                        id='update-period-button',
+                                        children="Atualizar Período",
+                                        size="sm",
+                                        color="indigo",
+                                        variant="filled",
+                                        style={'marginTop': '8px'},
+                                        n_clicks=0,
+                                    ),
+                                ]
+                            ),
+                            dash_table.DataTable(
+                                id='price-table',
+                                columns=[
+                                    {'name': '', 'id': 'acao', 'editable': False},
+                                    {'name': 'Ticker', 'id': 'ticker', 'editable': False},
+                                    {'name': 'Total(%)', 'id': 'retorno_total', 'editable': False},
+                                    {'name': 'Quant.', 'id': 'quantidade', 'editable': True, 'type': 'numeric'},
+                                    {'name': 'Peso(%)', 'id': 'peso_quantidade_percentual', 'editable': False},
+                                    {'name': 'GCAP', 'id': 'ganho_capital', 'editable': False},
+                                    {'name': 'DY', 'id': 'proventos', 'editable': False},
+                                ],
+                                data=[],
+                                style_table={'overflowX': 'auto', 
+                                            'marginTop': '20px', 
+                                            'height': '200px',
+                                            'border': '1px solid #dee2e6',
+                                            'overflowY': 'auto'
+                                            },
+                                fixed_rows={'headers': True},  
+                                style_cell={'fontSize': '12px', 
+                                            'textAlign': 'center', 
+                                            'minWidth': '50px',
+                                            'padding': '3px'
+                                },
+                                style_header={'fontWeight': 'bold', 
+                                            'position': 'sticky',
+                                            'top': 0,
+                                            'zIndex': 1
+                                            },
+                                style_data_conditional=[],
+                                editable=True
+                            ),
+                            
+                            dcc.Graph(id='portfolio-treemap', style={'width': '100%', 'height': '200px', 'marginTop': '10px'}),
+                            dcc.Graph(id='financial-treemap', style={'width': '100%', 'height': '200px', 'marginTop': '10px'})
+                        ]
+                    ),
+                    # Coluna Direita (2/3)
+                    dmc.GridCol(
+                        span={"base": 12, "md": 8},
+                        id="right-column",
+                        children=[
+                            dcc.Graph(id='portfolio-ibov-line', style={'width': '100%', 'height': '200px'}),
+                            dcc.Graph(id='individual-tickers-line', style={'width': '100%', 'height': '200px', 'marginTop': '10px'}),
+                            dcc.Graph(id='stacked-area-chart', style={'width': '100%', 'height': '200px', 'marginTop': '10px'})
+                        ]
+                    )
+                ]
+            ),
+
+            html.Div([
+                            # Linha de largura total para os três novos elementos
             dbc.Row([
                 # Coluna para o Gráfico 1 (Capital Gains e Dividend Yield)
                 dbc.Col([
@@ -362,17 +432,18 @@ def serve_layout():
                     dcc.Graph(id='volatility-chart', style={'width': '100%', 'height': '300px'})
                 ], md=4, className="p-2"),
             ], className="g-3"),
-        ], className="p-4 container-fluid")
-    )
+        ],id="app-body", className="p-4 container-fluid")
+    ],
+)  
+            
+               
 
 def init_dash(flask_app, portfolio_service):
     dash_app = Dash(
         __name__, 
         server=flask_app, 
         url_base_pathname='/dash/findash/',
-        external_stylesheets=[
-            dbc.themes.FLATLY,
-            ],
+        external_stylesheets=[],
         external_scripts=[
             "https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.7/dayjs.min.js",
             "https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.7/locale/pt.js",
@@ -395,6 +466,193 @@ def init_dash(flask_app, portfolio_service):
     dash_app.server.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
     
     # Callbacks
+
+
+    @dash_app.callback(
+        [Output("mantine-provider", "forceColorScheme"),
+        Output("theme-icon", "icon"),
+        Output("theme-store", "data"),
+        Output("app-body", "style"),
+        Output("portfolio-cards", "style"),
+        Output("retorno-total-card-container", "style"),
+        Output("volatilidade-card-container", "style"),
+        Output("sharpe-card-container", "style"),
+        Output("price-table", "style_table"),
+        Output("price-table", "style_cell"),
+        Output("price-table", "style_header"),
+        Output("price-table", "style_data_conditional"),
+        Output("left-column", "style")],
+        Input("theme-toggle", "n_clicks"),
+        State("theme-store", "data"),
+    )
+    def toggle_theme(n_clicks, current_theme):
+        if n_clicks is None:
+            body_style = {
+                "backgroundColor": "#ffffff" if current_theme == "light" else "#1a1b1e",
+                "color": "#212529" if current_theme == "light" else "#ffffff",
+                "padding": "1rem",
+                "minHeight": "100vh"
+            }
+            paper_style = {
+                "display": "flex",
+                "flexWrap": "wrap",
+                "justifyContent": "center",
+                "gap": "5px",
+                "maxWidth": "100%",
+                "border": "1px solid #dee2e6" if current_theme == "light" else "1px solid #444",
+                "borderRadius": "5px",
+            }
+            card_style = {
+                "marginBottom": "16px",
+            }
+            table_style = {
+                "overflowX": "auto",
+                "marginTop": "20px",
+                "height": "200px",
+                "overflowY": "auto",
+                "border": "1px solid #dee2e6" if current_theme == "light" else "1px solid #444",
+                "backgroundColor": "#ffffff" if current_theme == "light" else "#1a1b1e",
+            }
+            cell_style = {
+                "fontSize": "12px",
+                "textAlign": "center",
+                "minWidth": "50px",
+                "padding": "3px",
+                "color": "#212529" if current_theme == "light" else "#ffffff",
+                "borderBottom": "1px solid #dee2e6" if current_theme == "light" else "1px solid #444",
+                "backgroundColor": "#ffffff" if current_theme == "light" else "#1a1b1e",
+            }
+            header_style = {
+                "fontWeight": "bold",
+                "position": "sticky",
+                "top": 0,
+                "zIndex": 1,
+                "backgroundColor": "#f8f9fa" if current_theme == "light" else "#2c2e33",
+                "color": "#212529" if current_theme == "light" else "#ffffff",
+                "borderBottom": "2px solid #dee2e6" if current_theme == "light" else "2px solid #444",
+            }
+            data_conditional = [
+                {"if": {"row_index": "odd"}, "backgroundColor": "#f2f2f2" if current_theme == "light" else "#2c2e33"},
+                {
+                    "if": {"filter_query": '{ticker} = "Total"'},
+                    "fontWeight": "bold",
+                    "backgroundColor": "#e9ecef" if current_theme == "light" else "#3a3c42",
+                    "color": "#212529" if current_theme == "light" else "#ffffff",
+                    "position": "sticky",
+                    "bottom": 0,
+                    "zIndex": 1,
+                },
+                {"if": {"column_id": "acao"}, "cursor": "pointer", "color": "#007bff" if current_theme == "light" else "#4dabf7"},
+                {"if": {"column_id": "acao", "state": "active"}, "color": "#dc3545" if current_theme == "light" else "#ff6b6b"},
+            ]
+            left_column_style = {
+                "maxHeight": "750px",
+                "overflow": "hidden",
+                "backgroundColor": "#f5f5f5" if current_theme == "light" else "#2c2e33",
+                "border": "1px solid #dee2e6" if current_theme == "light" else "1px solid #444",
+                "padding": "8px",
+            }
+
+            return(
+                current_theme, 
+                "tabler:sun" if current_theme == "light" else "tabler:moon", 
+                current_theme, 
+                body_style, 
+                paper_style, 
+                card_style, 
+                card_style, 
+                card_style,
+                table_style,
+                cell_style,
+                header_style,
+                data_conditional,
+                left_column_style,
+            )
+
+        new_theme = "dark" if current_theme == "light" else "light"
+        new_icon = "tabler:moon" if new_theme == "dark" else "tabler:sun"
+        body_style = {
+            "backgroundColor": "#ffffff" if new_theme == "light" else "#1a1b1e",
+            "color": "#212529" if new_theme == "light" else "#ffffff",
+            "padding": "1rem",
+            "minHeight": "100vh"
+        }
+        paper_style = {
+            "display": "flex",
+            "flexWrap": "wrap",
+            "justifyContent": "center",
+            "gap": "5px",
+            "maxWidth": "100%",
+            "border": "1px solid #dee2e6" if new_theme == "light" else "1px solid #444",
+            "borderRadius": "5px",
+        }
+        card_style = {
+            "marginBottom": "16px",
+        }
+        table_style = {
+        "overflowX": "auto",
+        "marginTop": "20px",
+        "height": "200px",
+        "overflowY": "auto",
+        "border": "1px solid #dee2e6" if new_theme == "light" else "1px solid #444",
+        "backgroundColor": "#ffffff" if new_theme == "light" else "#1a1b1e",
+        }
+        cell_style = {
+            "fontSize": "12px",
+            "textAlign": "center",
+            "minWidth": "50px",
+            "padding": "3px",
+            "color": "#212529" if new_theme == "light" else "#ffffff",
+            "borderBottom": "1px solid #dee2e6" if new_theme == "light" else "1px solid #444",
+            "backgroundColor": "#ffffff" if new_theme == "light" else "#1a1b1e",
+        }
+        header_style = {
+            "fontWeight": "bold",
+            "position": "sticky",
+            "top": 0,
+            "zIndex": 1,
+            "backgroundColor": "#f8f9fa" if new_theme == "light" else "#2c2e33",
+            "color": "#212529" if new_theme == "light" else "#ffffff",
+            "borderBottom": "2px solid #dee2e6" if new_theme == "light" else "2px solid #444",
+        }
+        data_conditional = [
+            {"if": {"row_index": "odd"}, "backgroundColor": "#f2f2f2" if new_theme == "light" else "#2c2e33"},
+            {
+                "if": {"filter_query": '{ticker} = "Total"'},
+                "fontWeight": "bold",
+                "backgroundColor": "#e9ecef" if new_theme == "light" else "#3a3c42",
+                "color": "#212529" if new_theme == "light" else "#ffffff",
+                "position": "sticky",
+                "bottom": 0,
+                "zIndex": 1,
+            },
+            {"if": {"column_id": "acao"}, "cursor": "pointer", "color": "#007bff" if new_theme == "light" else "#4dabf7"},
+            {"if": {"column_id": "acao", "state": "active"}, "color": "#dc3545" if new_theme == "light" else "#ff6b6b"},
+        ]
+        left_column_style = {
+            "maxHeight": "750px",
+            "overflow": "hidden",
+            "backgroundColor": "#f5f5f5" if new_theme == "light" else "#2c2e33",
+            "border": "1px solid #dee2e6" if new_theme == "light" else "1px solid #444",
+            "padding": "8px",
+        }
+        return (
+            new_theme,
+            new_icon,
+            new_theme,
+            body_style,
+            paper_style,
+            card_style,
+            card_style,
+            card_style,
+            table_style,
+            cell_style,
+            header_style,
+            data_conditional,
+            left_column_style,
+        ) 
+    
+
     @dash_app.callback(
         [Output('price-table', 'data'),
         Output('data-store', 'data', allow_duplicate=True)],
@@ -1245,18 +1503,18 @@ def init_dash(flask_app, portfolio_service):
     # Impacto: Integra cards dinâmicos e controle do modal
     @dash_app.callback(
         [Output('portfolio-cards', 'children'),
-         Output('portfolio-name-dropdown', 'options'),
-         Output('portfolio-name-dropdown', 'value'),
-         Output('save-portfolio-modal', 'is_open'),
-         Output('save-portfolio-button', 'disabled')],
+        Output('portfolio-name-dropdown', 'options'),
+        Output('portfolio-name-dropdown', 'value'),
+        Output('save-portfolio-modal', 'opened'),
+        Output('save-portfolio-button', 'disabled')],
         [Input('data-store', 'data'),
-         Input('save-portfolio-button', 'n_clicks'),
-         Input('modal-cancel-button', 'n_clicks'),
-         Input('modal-save-button', 'n_clicks')],
-        [State('save-portfolio-modal', 'is_open')],
-        prevent_initial_call=False
+        Input('save-portfolio-button', 'n_clicks'),
+        Input('modal-cancel-button', 'n_clicks'),
+        Input('modal-save-button', 'n_clicks')],
+        [State('save-portfolio-modal', 'opened')],
+    prevent_initial_call=False
     )
-    def update_header_and_modal(store_data, save_clicks, cancel_clicks, save_modal_clicks, is_open):
+    def update_header_and_modal(store_data, save_clicks, cancel_clicks, save_modal_clicks, opened):
         """
         Atualiza cards, dropdown, modal e desabilita botão de salvamento com base no plano.
         """
@@ -1268,47 +1526,29 @@ def init_dash(flask_app, portfolio_service):
         plan_type = session.get('plan_type', 'free').capitalize()
 
         # Criar cards de tickers e exibir plano
-        cards = [
-            html.Div([
-                html.Div([
-                    dbc.Card(
-                        html.Span(
-                            ticker.replace('.SA', ''),
-                            style={
-                                'fontSize': '10px',
-                                'fontWeight': 'bold',
-                                'whiteSpace': 'nowrap',
-                                'overflow': 'hidden',
-                                'textOverflow': 'ellipsis',
-                                'display': 'block',
-                                'textAlign': 'center'
-                            }
-                        ),
-                        body=True,
-                        style={
-                            'width': '60px',
-                            'height': '30px',
-                            'backgroundColor': '#e9ecef',
-                            'display': 'flex',
-                            'alignItems': 'center',
-                            'justifyContent': 'center',
-                            'margin': '2px',
-                            'border': '1px solid #dee2e6',
-                            'borderRadius': '3px'
-                        }
+        children = [
+            dmc.Group(
+                gap="8px",
+                style={"flexWrap": "nowrap", "display": "flex", "flexDirection": "row", "alignItems": "center"},
+                children=[
+                    dmc.Chip(
+                        ticker.replace('.SA', ''),
+                        size="sm",
+                        variant="filled",
+                        color="indigo",
+                        style={"flexShrink": 0, "fontSize": "10px", "padding": "2px 8px"},
                     ) for ticker in tickers
-                ], className="d-flex flex-wrap justify-content-center"),
-                html.Span(
-                    f"Plano: {plan_type}",
-                    style={
-                        'fontSize': '10px',
-                        'fontWeight': 'bold',
-                        'marginTop': '5px',
-                        'color': '#495057'
-                    }
-                )
-            ])
+                ] + [
+                    dmc.Text(
+                        f"Plano: {plan_type}",
+                        size="xs",
+                        fw=700,
+                        style={"marginLeft": "10px", "color": "#495057" if plan_type == "light" else "#adb5bd"},
+                    )
+                ],
+            )
         ]
+        
         dropdown_options = [{'label': portfolio_name, 'value': portfolio_name}]
         dropdown_value = portfolio_name
 
@@ -1320,12 +1560,15 @@ def init_dash(flask_app, portfolio_service):
         # Controle do modal
         ctx = dash.callback_context
         triggered_id = ctx.triggered[0]['prop_id'].split('.')[0] if ctx.triggered else None
+        
+        # Abrir modal ao clicar em "Salvar Portfólio"
         if triggered_id == 'save-portfolio-button' and save_clicks:
-            return cards, dropdown_options, dropdown_value, True, save_button_disabled
-        elif triggered_id in ['modal-cancel-button', 'modal-save-button'] and (cancel_clicks or save_modal_clicks):
-            return cards, dropdown_options, dropdown_value, False, save_button_disabled
-
-        return cards, dropdown_options, dropdown_value, is_open, save_button_disabled
+            return children, dropdown_options, dropdown_value, True, save_button_disabled
+        # Fechar modal ao clicar em "Cancelar" ou "Salvar"
+        elif triggered_id in ['modal-cancel-button', 'modal-save-button']:
+            return children, dropdown_options, dropdown_value, False, save_button_disabled
+        # Manter estado atual se não houver interação relevante
+        return children, dropdown_options, dropdown_value, opened, save_button_disabled
 
     # ALTERAÇÃO: Callback para salvar portfólio via modal
     # Motivo: Enviar requisição POST a /save-portfolio com nome do portfólio
@@ -1334,7 +1577,8 @@ def init_dash(flask_app, portfolio_service):
         [Output('save-portfolio-message', 'children'),
         Output('data-store', 'data', allow_duplicate=True),
         Output('portfolio-name-dropdown', 'options', allow_duplicate=True),
-        Output('portfolio-name-dropdown', 'value', allow_duplicate=True)],
+        Output('portfolio-name-dropdown', 'value', allow_duplicate=True),
+        Output('save-portfolio-modal', 'opened', allow_duplicate=True)],  # Novo output para fechar o modal
         Input('modal-save-button', 'n_clicks'),
         [State('portfolio-name-input', 'value'),
         State('data-store', 'data')],
@@ -1342,13 +1586,13 @@ def init_dash(flask_app, portfolio_service):
     )
     def save_portfolio(n_clicks, portfolio_name, store_data):
         """
-        Salva o portfólio diretamente no banco usando PortfolioService, com dados do dcc.Store.
+        Salva o portfólio diretamente no banco usando PortfolioService, com dados do dcc.Store, e fecha o modal.
         """
         if not n_clicks:
-            return no_update, no_update, no_update, no_update
+            return no_update, no_update, no_update, no_update, no_update
 
         if not portfolio_name:
-            return html.Div('Nome do portfólio obrigatório', className='text-danger'), no_update, no_update, no_update
+            return dmc.Text('Nome do portfólio obrigatório', color='red'), no_update, no_update, no_update, True
 
         # Verificar se o usuário é cadastrado
         is_registered = session.get('is_registered', False)
@@ -1357,7 +1601,7 @@ def init_dash(flask_app, portfolio_service):
         if not is_registered or plan_type != 'registered' or not user_id:
             error_message = "Salvamento restrito a usuários cadastrados"
             logger.warning(error_message)
-            return html.Div(error_message, className='text-danger'), no_update, no_update, no_update
+            return dmc.Text(error_message, color='red'), no_update, no_update, no_update, True
 
         if store_data:
             store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
@@ -1379,14 +1623,15 @@ def init_dash(flask_app, portfolio_service):
             # Atualizar dropdown
             dropdown_options = [{'label': portfolio_name, 'value': portfolio_name}]
             return (
-                html.Div('Portfólio salvo com sucesso', className='text-success'),
+                dmc.Text('Portfólio salvo com sucesso', color='green'),
                 orjson_dumps(store_data).decode('utf-8'),
                 dropdown_options,
-                portfolio_name
+                portfolio_name,
+                False  # Fechar o modal após salvar
             )
         except ValueError as e:
             logger.error(f"Erro ao salvar portfólio: {e}")
-            return html.Div(f'Erro: {str(e)}', className='text-danger'), no_update, no_update, no_update
+            return dmc.Text(f'Erro: {str(e)}', color='red'), no_update, no_update, no_update, True
         
     @dash_app.callback(
         [Output('retorno-total-card', 'children'),

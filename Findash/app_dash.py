@@ -5,6 +5,7 @@ import dash_mantine_components as dmc
 from dash_iconify import DashIconify
 import dash_bootstrap_components as dbc
 from Findash.modules.metrics import calcular_metricas
+from Findash.modules.components import KpiCard
 from datetime import datetime, timedelta
 import pandas as pd
 from Findash.services.portfolio_services import PortfolioService
@@ -105,7 +106,7 @@ def serve_layout():
                 dcc.Store(id="theme-store", data="light",storage_type="session"),
                 dmc.Grid(
                     gutter="sm",
-                    style={"marginBottom": "10px"}, 
+                    style={"margin": "10px"}, 
                     children = [
                         # Coluna do título "FinDash" (2/12)
                         dmc.GridCol(
@@ -113,7 +114,7 @@ def serve_layout():
                             children=dmc.Title(
                                 'FinDash', 
                                 order=1, 
-                                style={ "margin": 0, "textAlign": "left", "paddingLeft": "12px"}
+                                style={ "margin": 0, "textAlign": "left", "paddingLeft": "0"}
                             ),
                         ),
                         # Coluna do portfolio-cards (9/12)
@@ -132,8 +133,9 @@ def serve_layout():
                                     "flexWrap": "nowrap",    # Evita quebra de linha
                                     "overflowX": "auto",     # Rolagem horizontal para muitos tickers
                                     "gap": "8px",            # Mais espaço entre tickers
-                                    "padding": "8px",        # Aumenta o padding interno
+                                    "padding": "0px",        # Aumenta o padding interno
                                     "alignItems": "center",  # Centraliza verticalmente
+                                    "margin": "0"
                                 },
                             ),
                         ),
@@ -142,7 +144,7 @@ def serve_layout():
                             span={"base": 12, "md": 3},
                             children=dmc.Stack(
                                 gap="xs",
-                                style={"alignItems": "stretch", "width": "100%", "paddingRight": "12px"},
+                                style={"alignItems": "stretch", "width": "100%", "paddingRight": "0"},
                                 children=[
                                     dmc.Select(
                                         id="portfolio-name-dropdown",
@@ -164,9 +166,14 @@ def serve_layout():
                                         gap="xs",    
                                         justify="flex-end",
                                         style={"width": "100%"},
+                                        
                                         children=[
                                             dmc.Tooltip(
                                                 label="Configurações",
+                                                withArrow=True,
+                                                transitionProps={
+                                                    "transition": "scale", 
+                                               },
                                                 children=dmc.ActionIcon(
                                                     id="settings-icon",
                                                     children=[DashIconify(icon="tabler:settings", width=20)],
@@ -176,6 +183,10 @@ def serve_layout():
                                             ),
                                             dmc.Tooltip(
                                                 label="Relatórios",
+                                                withArrow=True,
+                                                transitionProps={
+                                                    "transition": "scale", 
+                                                },
                                                 children=dmc.ActionIcon(
                                                     id="reports-icon",
                                                     children=[DashIconify(icon="tabler:report", width=20)],
@@ -185,6 +196,10 @@ def serve_layout():
                                             ),
                                             dmc.Tooltip(
                                                 label="Alertas",
+                                                withArrow=True,
+                                                transitionProps={
+                                                    "transition": "scale", 
+                                                },
                                                 children=dmc.ActionIcon(
                                                     id="alerts-icon",
                                                     children=[DashIconify(icon="tabler:bell", width=20)],
@@ -194,6 +209,10 @@ def serve_layout():
                                             ),
                                             dmc.Tooltip(
                                                 label="Alternar Tema",
+                                                withArrow=True,
+                                                transitionProps={
+                                                    "transition": "scale", 
+                                                },
                                                 children=dmc.ActionIcon(
                                                     id="theme-toggle",
                                                     children=[DashIconify(id="theme-icon", icon="tabler:sun", width=20)],
@@ -250,49 +269,88 @@ def serve_layout():
                 gutter='sm',
                 children=[
                     dmc.GridCol(
-                        span={"base":12, "md":4},
-                        children=dmc.Card(
-                            id="retorno-total-card-container",
-                            withBorder=True,
-                            shadow="sm",
-                            radius="md",
-                            style={"marginBottom": "16px"},
+                        span={"base":12, "md":12},
+                        children=dmc.Group(
+                            id="kpi-cards",
+                            style={
+                                "width": "100%",
+                                "display": "flex",
+                                "flexDirection": "row",
+                                "flexWrap": "nowrap",
+                                "overflowX": "auto",
+                                "gap": "12px",
+                                "padding": "8px 0",
+                                "alignItems": "center",
+                                "backgroundColor": "#ffffff"
+                            },
                             children=[
-                                dmc.Text("Retorno Total", size="sm", fw=500),
-                                html.P(id='retorno-total-card', style={'fontSize': '24px', 'fontWeight': 'bold', 'margin': 0}),
+                                KpiCard(
+                                    kpi_name="Sharpe",
+                                    value=7.9358,
+                                    icon="tabler:chart-line",
+                                    color="#1e3a8a",
+                                    tooltip="Sharpe Ratio mede o retorno ajustado ao risco",
+                                    id="kpi-sharpe"
+                                ),
+                                KpiCard(
+                                    kpi_name="Sortino",
+                                    value=19.2486,
+                                    icon="tabler:chart-bar",
+                                    color="#1e3a8a",
+                                    tooltip="Sortino Ratio ajusta o retorno ao risco de downside",
+                                    id="kpi-sortino"
+                                ),
+                                KpiCard(
+                                    kpi_name="Retorno",
+                                    value=0.8213,
+                                    icon="tabler:arrow-up",
+                                    color="#1e3a8a",
+                                    tooltip="Retorno médio anualizado do portfólio",
+                                    id="kpi-retorno"
+                                ),
+                                KpiCard(
+                                    kpi_name="Volat",
+                                    value=0.1035,
+                                    icon="tabler:waves",
+                                    color="#1e3a8a",
+                                    tooltip="Volatilidade anualizada em percentual",
+                                    is_percentage=True,
+                                    id="kpi-volat"
+
+                                ),
+                                KpiCard(
+                                    kpi_name="Drawdown",
+                                    value=0.0054,
+                                    icon="tabler:arrow-down",
+                                    color="#1e3a8a",
+                                    tooltip="Maior perda percentual do portfólio",
+                                    is_percentage=True,
+                                    id="kpi-drawdown"
+                                ),
+                                KpiCard(
+                                    kpi_name="Alpha",
+                                    value=0.1098,
+                                    icon="tabler:star",
+                                    color="#1e3a8a",
+                                    tooltip="Excesso de retorno sobre o benchmark",
+                                    is_percentage=True,
+                                    id="kpi-alpha"
+                                ),
+                                KpiCard(
+                                    kpi_name="Beta",
+                                    value=0.5878,
+                                    icon="tabler:balance",
+                                    color="#1e3a8a",
+                                    tooltip="Sensibilidade ao mercado (beta)",
+                                    is_percentage=True,
+                                    id="kpi-beta"
+                                ),
                             ]
                         )
-                    ),
-                    dmc.GridCol(
-                        span={"base": 12, "md": 4},
-                        children=dmc.Card(
-                            id="volatilidade-card-container",
-                            withBorder=True,
-                            shadow="sm",
-                            radius="md",
-                            style={"marginBottom": "16px"},
-                            children=[
-                                dmc.Text("Volatilidade", size="sm", fw=500),
-                                html.P(id='volatilidade-card', style={'fontSize': '24px', 'fontWeight': 'bold', 'margin': 0}),
-                            ]
-                        )
-                    ),
-                    dmc.GridCol(
-                        span={"base": 12, "md": 4},
-                        children=dmc.Card(
-                            id="sharpe-card-container",
-                            withBorder=True,
-                            shadow="sm",
-                            radius="md",
-                            style={"marginBottom": "16px"},
-                            children=[
-                                dmc.Text("Sharpe Ratio", size="sm", fw=500),
-                                html.P(id='sharpe-card', style={'fontSize': '24px', 'fontWeight': 'bold', 'margin': 0}),
-                            ]
-                        )
-                    ),
+                    )
                 ]
-            ),
+            ),                         
+         
             dmc.Grid(
                 gutter="sm",
                 id="main-grid",
@@ -474,14 +532,20 @@ def init_dash(flask_app, portfolio_service):
         Output("theme-store", "data"),
         Output("app-body", "style"),
         Output("portfolio-cards", "style"),
-        Output("retorno-total-card-container", "style"),
-        Output("volatilidade-card-container", "style"),
-        Output("sharpe-card-container", "style"),
         Output("price-table", "style_table"),
         Output("price-table", "style_cell"),
         Output("price-table", "style_header"),
         Output("price-table", "style_data_conditional"),
-        Output("left-column", "style")],
+        Output("left-column", "style"),
+        Output("kpi-cards", "style"),
+        Output("kpi-sharpe", "style"),
+        Output("kpi-sortino", "style"),
+        Output("kpi-retorno", "style"),
+        Output("kpi-volat", "style"),
+        Output("kpi-drawdown", "style"),
+        Output("kpi-alpha", "style"),
+        Output("kpi-beta", "style")
+        ],
         Input("theme-toggle", "n_clicks"),
         State("theme-store", "data"),
     )
@@ -502,8 +566,27 @@ def init_dash(flask_app, portfolio_service):
                 "border": "1px solid #dee2e6" if current_theme == "light" else "1px solid #444",
                 "borderRadius": "5px",
             }
-            card_style = {
-                "marginBottom": "16px",
+            kpi_cards_style = {
+                "width": "100%",
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "nowrap",
+                "overflowX": "auto",
+                "gap": "12px",
+                "padding": "8px 0",
+                "alignItems": "center",
+                "backgroundColor": "#ffffff" if current_theme == "light" else "#1a1b1e"
+            }
+            kpi_card_style = {
+                "minWidth": "120px",
+                "height": "80px",
+                "display": "flex",
+                "flexDirection": "column",
+                "alignItems": "center",
+                "justifyContent": "center",
+                "backgroundColor": "#f8f9fa" if current_theme == "light" else "#2c2e33",
+                "borderColor": "#dee2e6" if current_theme == "light" else "#444",
+                "color": "#212529" if current_theme == "light" else "#ffffff"
             }
             table_style = {
                 "overflowX": "auto",
@@ -559,18 +642,24 @@ def init_dash(flask_app, portfolio_service):
                 current_theme, 
                 body_style, 
                 paper_style, 
-                card_style, 
-                card_style, 
-                card_style,
                 table_style,
                 cell_style,
                 header_style,
                 data_conditional,
                 left_column_style,
+                kpi_cards_style,
+                kpi_card_style,
+                kpi_card_style,
+                kpi_card_style,
+                kpi_card_style,
+                kpi_card_style,
+                kpi_card_style,
+                kpi_card_style
             )
 
         new_theme = "dark" if current_theme == "light" else "light"
         new_icon = "tabler:moon" if new_theme == "dark" else "tabler:sun"
+        logger.info(f"Switching to new_theme={new_theme}")
         body_style = {
             "backgroundColor": "#ffffff" if new_theme == "light" else "#1a1b1e",
             "color": "#212529" if new_theme == "light" else "#ffffff",
@@ -586,9 +675,28 @@ def init_dash(flask_app, portfolio_service):
             "border": "1px solid #dee2e6" if new_theme == "light" else "1px solid #444",
             "borderRadius": "5px",
         }
-        card_style = {
-            "marginBottom": "16px",
+        kpi_cards_style = {
+            "width": "100%",
+            "display": "flex",
+            "flexDirection": "row",
+            "flexWrap": "nowrap",
+            "overflowX": "auto",
+            "gap": "12px",
+            "padding": "8px 0",
+            "alignItems": "center",
+            "backgroundColor": "#ffffff" if new_theme == "light" else "#1a1b1e"
         }
+        kpi_card_style = {
+                "minWidth": "120px",
+                "height": "80px",
+                "display": "flex",
+                "flexDirection": "column",
+                "alignItems": "center",
+                "justifyContent": "center",
+                "backgroundColor": "#f8f9fa" if new_theme == "light" else "#2c2e33",
+                "borderColor": "#dee2e6" if new_theme == "light" else "#444",
+                "color": "#212529" if new_theme == "light" else "#ffffff"
+            }
         table_style = {
         "overflowX": "auto",
         "marginTop": "20px",
@@ -642,14 +750,19 @@ def init_dash(flask_app, portfolio_service):
             new_theme,
             body_style,
             paper_style,
-            card_style,
-            card_style,
-            card_style,
             table_style,
             cell_style,
             header_style,
             data_conditional,
             left_column_style,
+            kpi_cards_style,
+            kpi_card_style,
+            kpi_card_style,
+            kpi_card_style,
+            kpi_card_style,
+            kpi_card_style,
+            kpi_card_style,
+            kpi_card_style,
         ) 
     
 
@@ -1528,26 +1641,70 @@ def init_dash(flask_app, portfolio_service):
         # Criar cards de tickers e exibir plano
         children = [
             dmc.Group(
-                gap="8px",
-                style={"flexWrap": "nowrap", "display": "flex", "flexDirection": "row", "alignItems": "center"},
+                style={
+                    "position": "relative",  # Contexto para posicionamento absoluto
+                    "minHeight": "60px",  # Espaço para texto fixo
+                    "width": "100%",
+                    "justifyContent": "center",  # Centraliza conteúdo horizontalmente
+                    "alignItems": "center"  # Centraliza conteúdo verticalmente
+                },
                 children=[
-                    dmc.Chip(
-                        ticker.replace('.SA', ''),
-                        size="sm",
-                        variant="filled",
-                        color="indigo",
-                        style={"flexShrink": 0, "fontSize": "10px", "padding": "2px 8px"},
-                    ) for ticker in tickers
-                ] + [
-                    dmc.Text(
-                        f"Plano: {plan_type}",
-                        size="xs",
-                        fw=700,
-                        style={"marginLeft": "10px", "color": "#495057" if plan_type == "light" else "#adb5bd"},
+                    dmc.Group(  # Grupo para os badges dos tickers
+                        gap="4px",
+                        style={
+                            "flexWrap": "nowrap",
+                            "display": "flex",
+                            "flexDirection": "row",
+                            "justifyContent": "center",
+                            "paddingBottom": "30px"
+                        },
+                        children=[
+                            dmc.Tooltip(
+                                label=f"Detalhes de {ticker.replace('.SA', '')}",
+                                position="top",
+                                withArrow=True,
+                                transitionProps={
+                                    "transition": "scale", 
+                          
+                                },
+                                children=[
+                                    dmc.Badge(
+                                        ticker.replace('.SA', ''),
+                                        variant="filled",
+                                        color="indigo",
+                                        size="md",
+                                        style={
+                                            "borderRadius": "4px",
+                                            "padding": "4px 8px",
+                                            "margin": "0",
+                                            "fontSize": "12px",
+                                            "fontWeight": 500
+                                        },
+                                    )
+                                ]
+                            ) for ticker in tickers
+                        ],
+                    ),
+                    dmc.Group(  # Grupo separado para o texto do plano
+                        style={
+                            "position": "absolute",  # Fixa na base
+                            "bottom": "-5px",  # Distância da borda inferior
+                            "width": "100%",
+                            "justifyContent": "center"  # Centraliza texto
+                        },
+                        children=[
+                            dmc.Text(
+                                f"Plano: {plan_type}",
+                                size="xs",
+                                fw=700,
+                                style={"color": "#495057" if plan_type.lower() == "light" else "#adb5bd"}
+                            )
+                        ]
                     )
-                ],
+                ]
             )
         ]
+                        
         
         dropdown_options = [{'label': portfolio_name, 'value': portfolio_name}]
         dropdown_value = portfolio_name

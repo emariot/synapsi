@@ -89,6 +89,7 @@ def serve_layout():
 
     return dmc.MantineProvider(
         id = "mantine-provider",
+        forceColorScheme="light",
         theme={
             "primaryColor":"indigo",
             "components": {
@@ -264,237 +265,343 @@ def serve_layout():
                     ),
                 ],
             ),
-             # Bloco dos cards, transformando a coluna para ocupar a largura restante
-            dmc.Grid(
-                gutter='sm',
+            # Abas principais
+            dmc.Tabs(
+                id="main-tabs",
+                value="geral",
                 children=[
-                    dmc.GridCol(
-                        span={"base":12, "md":12},
-                        children=dmc.Group(
-                            id="kpi-cards",
-                            style={
-                                "width": "100%",
-                                "display": "flex",
-                                "flexDirection": "row",
-                                "flexWrap": "nowrap",
-                                "overflowX": "auto",
-                                "gap": "12px",
-                                "padding": "8px 0",
-                                "alignItems": "center",
-                                "backgroundColor": "#ffffff"
-                            },
-                            children=[
-                                KpiCard(
-                                    kpi_name="Sharpe",
-                                    value=7.9358,
-                                    icon="tabler:chart-line",
-                                    color="#1e3a8a",
-                                    tooltip="Sharpe Ratio mede o retorno ajustado ao risco",
-                                    id="kpi-sharpe"
-                                ),
-                                KpiCard(
-                                    kpi_name="Sortino",
-                                    value=19.2486,
-                                    icon="tabler:chart-bar",
-                                    color="#1e3a8a",
-                                    tooltip="Sortino Ratio ajusta o retorno ao risco de downside",
-                                    id="kpi-sortino"
-                                ),
-                                KpiCard(
-                                    kpi_name="Retorno",
-                                    value=0.8213,
-                                    icon="tabler:arrow-up",
-                                    color="#1e3a8a",
-                                    tooltip="Retorno médio anualizado do portfólio",
-                                    id="kpi-retorno"
-                                ),
-                                KpiCard(
-                                    kpi_name="Volat",
-                                    value=0.1035,
-                                    icon="tabler:waves",
-                                    color="#1e3a8a",
-                                    tooltip="Volatilidade anualizada em percentual",
-                                    is_percentage=True,
-                                    id="kpi-volat"
-
-                                ),
-                                KpiCard(
-                                    kpi_name="Drawdown",
-                                    value=0.0054,
-                                    icon="tabler:arrow-down",
-                                    color="#1e3a8a",
-                                    tooltip="Maior perda percentual do portfólio",
-                                    is_percentage=True,
-                                    id="kpi-drawdown"
-                                ),
-                                KpiCard(
-                                    kpi_name="Alpha",
-                                    value=0.1098,
-                                    icon="tabler:star",
-                                    color="#1e3a8a",
-                                    tooltip="Excesso de retorno sobre o benchmark",
-                                    is_percentage=True,
-                                    id="kpi-alpha"
-                                ),
-                                KpiCard(
-                                    kpi_name="Beta",
-                                    value=0.5878,
-                                    icon="tabler:balance",
-                                    color="#1e3a8a",
-                                    tooltip="Sensibilidade ao mercado (beta)",
-                                    is_percentage=True,
-                                    id="kpi-beta"
-                                ),
-                            ]
-                        )
-                    )
-                ]
-            ),                         
-         
-            dmc.Grid(
-                gutter="sm",
-                id="main-grid",
-                children=[
-                    #Coluna Esquerda (1/3)
-                    dmc.GridCol(
-                        span={"base": 12, "md": 4},
-                        id="left-column",
-                        style={"maxHeight": "750px", "overflow": "hidden"},
+                    dmc.TabsList(
                         children=[
-                            dmc.Alert(
-                                id='ticker-error-alert',
-                                children="Ticker inválido ou limite de tickers atingido.",
-                                color="red",
-                                hide=True,
-                                radius="md",
-                                withCloseButton=True,
-                                style={'marginBottom': '10px', 'fontSize': '12px'},
-                            ),
-                            dmc.Group(
-                                gap="xs",
-                                align="center",
-                                style={'marginBottom': '10px'},
+                            dmc.TabsTab("Geral", value="geral"),
+                            dmc.TabsTab("Rentabilidade", value="rentabilidade"),
+                            dmc.TabsTab("Risco", value="risco"),
+                            dmc.TabsTab("IA", value="ia"),
+                            dmc.TabsTab("Avançado", value="avancado"),
+                        ],
+                    ),
+                    # Aba Geral
+                    dmc.TabsPanel(
+                        value="geral",
+                        children=[
+                            # Bloco dos cards, transformando a coluna para ocupar a largura restante
+                            dmc.Grid(
+                                gutter='sm',
                                 children=[
-                                    dmc.Select(
-                                        id='ticker-dropdown',
-                                        data=ticker_options,
-                                        value=None,
-                                        placeholder="Selecione um ticker",
-                                        style={'width': '100%', 'maxWidth': '250px', 'fontSize': '12px'},
-                                        size="sm",
-                                        clearable=True,
-                                    ),
-                                    dmc.DatesProvider(
-                                        children=dmc.DatePickerInput(
-                                            id='date-input-range-picker',
-                                            value=["",""],
-                                            type="range",
-                                            minDate="2020-01-01",  # Data mínima obrigatória
-                                            maxDate="2025-12-31",  # Data máxima obrigatória
-                                            dropdownType="calendar",
-                                            valueFormat="DD/MM/YYYY",
+                                    dmc.GridCol(
+                                        span={"base":12, "md":12},
+                                        children=dmc.Group(
+                                            id="kpi-cards",
                                             style={
-                                                'width': '200px', 
-                                                'fontSize': '10px', 
-                                                'maxHeight': '30px',
-                                            }
-                                        ),
-                                        settings={'locale': 'pt'},
+                                                "width": "100%",
+                                                "display": "flex",
+                                                "flexDirection": "row",
+                                                "flexWrap": "nowrap",
+                                                "overflowX": "auto",
+                                                "gap": "12px",
+                                                "padding": "8px 0",
+                                                "alignItems": "center",
+                                                "paddingLeft": "12px",
+                                                "backgroundColor": "#ffffff"
+                                            },
+                                            children=[
+                                                KpiCard(
+                                                    kpi_name="Sharpe",
+                                                    value=7.9358,
+                                                    icon="tabler:chart-line",
+                                                    color="#1e3a8a",
+                                                    tooltip="Sharpe Ratio mede o retorno ajustado ao risco",
+                                                    id="kpi-sharpe"
+                                                ),
+                                                KpiCard(
+                                                    kpi_name="Sortino",
+                                                    value=19.2486,
+                                                    icon="tabler:chart-bar",
+                                                    color="#1e3a8a",
+                                                    tooltip="Sortino Ratio ajusta o retorno ao risco de downside",
+                                                    id="kpi-sortino"
+                                                ),
+                                                KpiCard(
+                                                    kpi_name="Retorno",
+                                                    value=0.8213,
+                                                    icon="tabler:arrow-up",
+                                                    color="#1e3a8a",
+                                                    tooltip="Retorno médio anualizado do portfólio",
+                                                    id="kpi-retorno"
+                                                ),
+                                                KpiCard(
+                                                    kpi_name="Volat",
+                                                    value=0.1035,
+                                                    icon="tabler:activity",
+                                                    color="#1e3a8a",
+                                                    tooltip="Volatilidade anualizada em percentual",
+                                                    is_percentage=True,
+                                                    id="kpi-volat"
+
+                                                ),
+                                                KpiCard(
+                                                    kpi_name="Drawdown",
+                                                    value=0.0054,
+                                                    icon="tabler:arrow-down",
+                                                    color="#1e3a8a",
+                                                    tooltip="Maior perda percentual do portfólio",
+                                                    is_percentage=True,
+                                                    id="kpi-drawdown"
+                                                ),
+                                                KpiCard(
+                                                    kpi_name="Alpha",
+                                                    value=0.1098,
+                                                    icon="tabler:star",
+                                                    color="#1e3a8a",
+                                                    tooltip="Excesso de retorno sobre o benchmark",
+                                                    is_percentage=True,
+                                                    id="kpi-alpha"
+                                                ),
+                                                KpiCard(
+                                                    kpi_name="Beta",
+                                                    value=0.5878,
+                                                    icon="tabler:scale",
+                                                    color="#1e3a8a",
+                                                    tooltip="Sensibilidade ao mercado (beta)",
+                                                    is_percentage=True,
+                                                    id="kpi-beta"
+                                                ),
+                                            ]
+                                        )
+                                    )
+                                ]
+                            ),                         
+                        
+                            dmc.Grid(
+                                gutter="sm",
+                                id="main-grid",
+                                children=[
+                                    #Coluna Esquerda (1/3)
+                                    dmc.GridCol(
+                                        span={"base": 12, "md": 4},
+                                        id="left-column",
+                                        style={"maxHeight": "750px", "overflow": "hidden"},
+                                        children=[
+                                            dmc.Alert(
+                                                id='ticker-error-alert',
+                                                children="Ticker inválido ou limite de tickers atingido.",
+                                                color="red",
+                                                hide=True,
+                                                radius="md",
+                                                withCloseButton=True,
+                                                style={'marginBottom': '10px', 'fontSize': '12px'},
+                                            ),
+                                            dmc.Group(
+                                                gap="xs",
+                                                align="center",
+                                                style={'marginBottom': '10px'},
+                                                children=[
+                                                    dmc.Select(
+                                                        id='ticker-dropdown',
+                                                        data=ticker_options,
+                                                        value=None,
+                                                        placeholder="Selecione um ticker",
+                                                        style={'width': '100%', 'maxWidth': '250px', 'fontSize': '12px'},
+                                                        size="sm",
+                                                        clearable=True,
+                                                    ),
+                                                    dmc.DatesProvider(
+                                                        children=dmc.DatePickerInput(
+                                                            id='date-input-range-picker',
+                                                            value=["",""],
+                                                            type="range",
+                                                            minDate="2020-01-01",  # Data mínima obrigatória
+                                                            maxDate="2025-12-31",  # Data máxima obrigatória
+                                                            dropdownType="calendar",
+                                                            valueFormat="DD/MM/YYYY",
+                                                            style={
+                                                                'width': '200px', 
+                                                                'fontSize': '10px', 
+                                                                'maxHeight': '30px',
+                                                            }
+                                                        ),
+                                                        settings={'locale': 'pt'},
+                                                    ),
+                                                    dmc.Button(
+                                                        id='update-period-button',
+                                                        children="Atualizar Período",
+                                                        size="sm",
+                                                        color="indigo",
+                                                        variant="filled",
+                                                        style={'marginTop': '8px'},
+                                                        n_clicks=0,
+                                                    ),
+                                                ]
+                                            ),
+                                            dash_table.DataTable(
+                                                id='price-table',
+                                                columns=[
+                                                    {'name': '', 'id': 'acao', 'editable': False},
+                                                    {'name': 'Ticker', 'id': 'ticker', 'editable': False},
+                                                    {'name': 'Total(%)', 'id': 'retorno_total', 'editable': False},
+                                                    {'name': 'Quant.', 'id': 'quantidade', 'editable': True, 'type': 'numeric'},
+                                                    {'name': 'Peso(%)', 'id': 'peso_quantidade_percentual', 'editable': False},
+                                                    {'name': 'GCAP', 'id': 'ganho_capital', 'editable': False},
+                                                    {'name': 'DY', 'id': 'proventos', 'editable': False},
+                                                ],
+                                                data=[],
+                                                style_table={'overflowX': 'auto', 
+                                                            'marginTop': '20px', 
+                                                            'height': '200px',
+                                                            'border': '1px solid #dee2e6',
+                                                            'overflowY': 'auto'
+                                                            },
+                                                fixed_rows={'headers': True},  
+                                                style_cell={'fontSize': '12px', 
+                                                            'textAlign': 'center', 
+                                                            'minWidth': '50px',
+                                                            'padding': '3px'
+                                                },
+                                                style_header={'fontWeight': 'bold', 
+                                                            'position': 'sticky',
+                                                            'top': 0,
+                                                            'zIndex': 1
+                                                            },
+                                                style_data_conditional=[],
+                                                editable=True
+                                            ),
+                                            
+                                            dcc.Graph(id='portfolio-treemap', style={'width': '100%', 'height': '200px', 'marginTop': '10px'}),
+                                            dcc.Graph(id='financial-treemap', style={'width': '100%', 'height': '200px', 'marginTop': '10px'})
+                                        ]
                                     ),
-                                    dmc.Button(
-                                        id='update-period-button',
-                                        children="Atualizar Período",
-                                        size="sm",
-                                        color="indigo",
-                                        variant="filled",
-                                        style={'marginTop': '8px'},
-                                        n_clicks=0,
-                                    ),
+                                    # Coluna Direita (2/3)
+                                    dmc.GridCol(
+                                        span={"base": 12, "md": 8},
+                                        id="right-column",
+                                        children=[
+                                            dcc.Graph(id='portfolio-ibov-line', style={'width': '100%', 'height': '200px'}),
+                                            dcc.Graph(id='individual-tickers-line', style={'width': '100%', 'height': '200px', 'marginTop': '10px'}),
+                                            dcc.Graph(id='stacked-area-chart', style={'width': '100%', 'height': '200px', 'marginTop': '10px'})
+                                        ]
+                                    )
                                 ]
                             ),
-                            dash_table.DataTable(
-                                id='price-table',
-                                columns=[
-                                    {'name': '', 'id': 'acao', 'editable': False},
-                                    {'name': 'Ticker', 'id': 'ticker', 'editable': False},
-                                    {'name': 'Total(%)', 'id': 'retorno_total', 'editable': False},
-                                    {'name': 'Quant.', 'id': 'quantidade', 'editable': True, 'type': 'numeric'},
-                                    {'name': 'Peso(%)', 'id': 'peso_quantidade_percentual', 'editable': False},
-                                    {'name': 'GCAP', 'id': 'ganho_capital', 'editable': False},
-                                    {'name': 'DY', 'id': 'proventos', 'editable': False},
-                                ],
-                                data=[],
-                                style_table={'overflowX': 'auto', 
-                                            'marginTop': '20px', 
-                                            'height': '200px',
-                                            'border': '1px solid #dee2e6',
-                                            'overflowY': 'auto'
-                                            },
-                                fixed_rows={'headers': True},  
-                                style_cell={'fontSize': '12px', 
-                                            'textAlign': 'center', 
-                                            'minWidth': '50px',
-                                            'padding': '3px'
-                                },
-                                style_header={'fontWeight': 'bold', 
-                                            'position': 'sticky',
-                                            'top': 0,
-                                            'zIndex': 1
-                                            },
-                                style_data_conditional=[],
-                                editable=True
-                            ),
-                            
-                            dcc.Graph(id='portfolio-treemap', style={'width': '100%', 'height': '200px', 'marginTop': '10px'}),
-                            dcc.Graph(id='financial-treemap', style={'width': '100%', 'height': '200px', 'marginTop': '10px'})
-                        ]
-                    ),
-                    # Coluna Direita (2/3)
-                    dmc.GridCol(
-                        span={"base": 12, "md": 8},
-                        id="right-column",
-                        children=[
-                            dcc.Graph(id='portfolio-ibov-line', style={'width': '100%', 'height': '200px'}),
-                            dcc.Graph(id='individual-tickers-line', style={'width': '100%', 'height': '200px', 'marginTop': '10px'}),
-                            dcc.Graph(id='stacked-area-chart', style={'width': '100%', 'height': '200px', 'marginTop': '10px'})
-                        ]
-                    )
-                ]
-            ),
 
-            html.Div([
-                            # Linha de largura total para os três novos elementos
-            dbc.Row([
-                # Coluna para o Gráfico 1 (Capital Gains e Dividend Yield)
-                dbc.Col([
-                    dcc.Graph(id='capital-dividend-chart', style={'width': '100%', 'height': '200px'})
-                ], md=4, className="p-2"),
-                # Placeholder para o Gráfico 2 (Dividendos por Setor)
-                dbc.Col([
-                    dcc.Graph(id='dividend-by-sector-chart', style={'width': '100%', 'height': '200px'})
-                ], md=4, className="p-2"),
-                # Placeholder para a Tabela (Ranking de DY)
-                dbc.Col([
-                    dcc.Graph(id='cumulative-gains-dividends-chart', style={'width': '100%', 'height': '200px'})
-                ], md=4, className="p-2"),
-            ], className="g-3"),
-            # Três Colunas Inferiores
-            dbc.Row([
-                dbc.Col([
-                    dcc.Graph(id='sector-donut-charts', style={'width': '100%', 'height': '300px'})
-                ], md=4, className="p-2"),
-                dbc.Col([
-                    dcc.Graph(id='correlation-heatmap', style={'width': '100%', 'height': '300px'})
-                ], md=4, className="p-2"),
-                dbc.Col([
-                    dcc.Graph(id='volatility-chart', style={'width': '100%', 'height': '300px'})
-                ], md=4, className="p-2"),
-            ], className="g-3"),
-        ],id="app-body", className="p-4 container-fluid")
+                            html.Div([
+                                            # Linha de largura total para os três novos elementos
+                            dbc.Row([
+                                # Coluna para o Gráfico 1 (Capital Gains e Dividend Yield)
+                                dbc.Col([
+                                    dcc.Graph(id='capital-dividend-chart', style={'width': '100%', 'height': '200px'})
+                                ], md=4, className="p-2"),
+                                # Placeholder para o Gráfico 2 (Dividendos por Setor)
+                                dbc.Col([
+                                    dcc.Graph(id='dividend-by-sector-chart', style={'width': '100%', 'height': '200px'})
+                                ], md=4, className="p-2"),
+                                # Placeholder para a Tabela (Ranking de DY)
+                                dbc.Col([
+                                    dcc.Graph(id='cumulative-gains-dividends-chart', style={'width': '100%', 'height': '200px'})
+                                ], md=4, className="p-2"),
+                            ], className="g-3"),
+                            # Três Colunas Inferiores
+                            dbc.Row([
+                                dbc.Col([
+                                    dcc.Graph(id='sector-donut-charts', style={'width': '100%', 'height': '300px'})
+                                ], md=4, className="p-2"),
+                                dbc.Col([
+                                    dcc.Graph(id='correlation-heatmap', style={'width': '100%', 'height': '300px'})
+                                ], md=4, className="p-2"),
+                                dbc.Col([
+                                    dcc.Graph(id='volatility-chart', style={'width': '100%', 'height': '300px'})
+                                ], md=4, className="p-2"),
+                            ], className="g-3"),
+                        ],id="app-body", className="p-4 container-fluid")
+                    ],
+                ), 
+                # Aba Rentabilidade - Placeholder
+                dmc.TabsPanel(
+                    value="rentabilidade",
+                    children=[
+                        dmc.Grid(
+                            gutter="sm",
+                            children=[
+                                dmc.GridCol(
+                                    span={"base": 12, "md": 12},
+                                    children=[
+                                        dmc.Text(
+                                            "Funcionalidades de Rentabilidade em desenvolvimento.",
+                                            size="lg",
+                                            style={"textAlign": "center", "marginTop": "20px"}
+                                        )
+                                    ]
+                                )
+                            ]
+                        )
+                    ]
+                ),
+                # Aba de Risco - Placeholder
+                dmc.TabsPanel(
+                    value="risco",
+                    children=[
+                        dmc.Grid(
+                            gutter="sm",
+                            children=[
+                                dmc.GridCol(
+                                    span={"base": 12, "md": 12},
+                                    children=[
+                                        dmc.Text(
+                                            "Funcionalidades de Rsico em desenvolvimento.",
+                                            size="lg",
+                                            style={"textAlign": "center", "marginTop": "20px"}
+                                        )
+                                    ]
+                                )
+                            ]
+                        )
+                    ]
+                ),
+                # Aba IA - Placeholder
+                dmc.TabsPanel(
+                    value="ia",
+                    children=[
+                        dmc.Grid(
+                            gutter="sm",
+                            children=[
+                                dmc.GridCol(
+                                    span={"base": 12, "md": 12},
+                                    children=[
+                                        dmc.Text(
+                                            "Funcionalidades de IA em desenvolvimento.",
+                                            size="lg",
+                                            style={"textAlign": "center", "marginTop": "20px"}
+                                        )
+                                    ]
+                                )
+                            ]
+                        )
+                    ]
+                ),
+                # Aba Avançado - Placeholder
+                dmc.TabsPanel(
+                    value="avancado",
+                    children=[
+                        dmc.Grid(
+                            gutter="sm",
+                            children=[
+                                dmc.GridCol(
+                                    span={"base": 12, "md": 12},
+                                    children=[
+                                        dmc.Text(
+                                            "Funcionalidades de ferramentas avançadas em desenvolvimento.",
+                                            size="lg",
+                                            style={"textAlign": "center", "marginTop": "20px"}
+                                        )
+                                    ]
+                                )
+                            ]
+                        )
+                    ]
+                ),
+
+            ],
+        ),
     ],
-)  
-            
-               
+)           
 
 def init_dash(flask_app, portfolio_service):
     dash_app = Dash(
@@ -550,131 +657,71 @@ def init_dash(flask_app, portfolio_service):
         State("theme-store", "data"),
     )
     def toggle_theme(n_clicks, current_theme):
-        if n_clicks is None:
-            body_style = {
-                "backgroundColor": "#ffffff" if current_theme == "light" else "#1a1b1e",
-                "color": "#212529" if current_theme == "light" else "#ffffff",
-                "padding": "1rem",
-                "minHeight": "100vh"
-            }
-            paper_style = {
-                "display": "flex",
-                "flexWrap": "wrap",
-                "justifyContent": "center",
-                "gap": "5px",
-                "maxWidth": "100%",
-                "border": "1px solid #dee2e6" if current_theme == "light" else "1px solid #444",
-                "borderRadius": "5px",
-            }
-            kpi_cards_style = {
-                "width": "100%",
-                "display": "flex",
-                "flexDirection": "row",
-                "flexWrap": "nowrap",
-                "overflowX": "auto",
-                "gap": "12px",
-                "padding": "8px 0",
-                "alignItems": "center",
-                "backgroundColor": "#ffffff" if current_theme == "light" else "#1a1b1e"
-            }
-            kpi_card_style = {
-                "minWidth": "120px",
-                "height": "80px",
-                "display": "flex",
-                "flexDirection": "column",
-                "alignItems": "center",
-                "justifyContent": "center",
-                "backgroundColor": "#f8f9fa" if current_theme == "light" else "#2c2e33",
-                "borderColor": "#dee2e6" if current_theme == "light" else "#444",
-                "color": "#212529" if current_theme == "light" else "#ffffff"
-            }
-            table_style = {
-                "overflowX": "auto",
-                "marginTop": "20px",
-                "height": "200px",
-                "overflowY": "auto",
-                "border": "1px solid #dee2e6" if current_theme == "light" else "1px solid #444",
-                "backgroundColor": "#ffffff" if current_theme == "light" else "#1a1b1e",
-            }
-            cell_style = {
-                "fontSize": "12px",
-                "textAlign": "center",
-                "minWidth": "50px",
-                "padding": "3px",
-                "color": "#212529" if current_theme == "light" else "#ffffff",
-                "borderBottom": "1px solid #dee2e6" if current_theme == "light" else "1px solid #444",
-                "backgroundColor": "#ffffff" if current_theme == "light" else "#1a1b1e",
-            }
-            header_style = {
-                "fontWeight": "bold",
-                "position": "sticky",
-                "top": 0,
-                "zIndex": 1,
-                "backgroundColor": "#f8f9fa" if current_theme == "light" else "#2c2e33",
-                "color": "#212529" if current_theme == "light" else "#ffffff",
-                "borderBottom": "2px solid #dee2e6" if current_theme == "light" else "2px solid #444",
-            }
-            data_conditional = [
-                {"if": {"row_index": "odd"}, "backgroundColor": "#f2f2f2" if current_theme == "light" else "#2c2e33"},
-                {
-                    "if": {"filter_query": '{ticker} = "Total"'},
-                    "fontWeight": "bold",
-                    "backgroundColor": "#e9ecef" if current_theme == "light" else "#3a3c42",
-                    "color": "#212529" if current_theme == "light" else "#ffffff",
-                    "position": "sticky",
-                    "bottom": 0,
-                    "zIndex": 1,
-                },
-                {"if": {"column_id": "acao"}, "cursor": "pointer", "color": "#007bff" if current_theme == "light" else "#4dabf7"},
-                {"if": {"column_id": "acao", "state": "active"}, "color": "#dc3545" if current_theme == "light" else "#ff6b6b"},
-            ]
-            left_column_style = {
-                "maxHeight": "750px",
-                "overflow": "hidden",
-                "backgroundColor": "#f5f5f5" if current_theme == "light" else "#2c2e33",
-                "border": "1px solid #dee2e6" if current_theme == "light" else "1px solid #444",
-                "padding": "8px",
-            }
-
-            return(
-                current_theme, 
-                "tabler:sun" if current_theme == "light" else "tabler:moon", 
-                current_theme, 
-                body_style, 
-                paper_style, 
-                table_style,
-                cell_style,
-                header_style,
-                data_conditional,
-                left_column_style,
-                kpi_cards_style,
-                kpi_card_style,
-                kpi_card_style,
-                kpi_card_style,
-                kpi_card_style,
-                kpi_card_style,
-                kpi_card_style,
-                kpi_card_style
-            )
+        if n_clicks is None or n_clicks == 0:
+            return [no_update] * 18
 
         new_theme = "dark" if current_theme == "light" else "light"
         new_icon = "tabler:moon" if new_theme == "dark" else "tabler:sun"
-        logger.info(f"Switching to new_theme={new_theme}")
+
+        # Estilos para ambos os temas
         body_style = {
-            "backgroundColor": "#ffffff" if new_theme == "light" else "#1a1b1e",
-            "color": "#212529" if new_theme == "light" else "#ffffff",
+            "backgroundColor": "#1a1b1e" if new_theme == "dark" else "#ffffff",
+            "color": "#ffffff" if new_theme == "dark" else "#212529",
             "padding": "1rem",
             "minHeight": "100vh"
         }
+
         paper_style = {
             "display": "flex",
             "flexWrap": "wrap",
             "justifyContent": "center",
             "gap": "5px",
             "maxWidth": "100%",
-            "border": "1px solid #dee2e6" if new_theme == "light" else "1px solid #444",
-            "borderRadius": "5px",
+            "border": "1px solid #444" if new_theme == "dark" else "1px solid #dee2e6",
+            "borderRadius": "5px"
         }
+
+        table_style = {
+            "overflowX": "auto",
+            "marginTop": "20px",
+            "height": "200px",
+            "overflowY": "auto",
+            "border": "1px solid #444" if new_theme == "dark" else "1px solid #dee2e6",
+            "backgroundColor": "#1a1b1e" if new_theme == "dark" else "#ffffff"
+        }
+
+        cell_style = {
+            "fontSize": "12px",
+            "textAlign": "center",
+            "minWidth": "50px",
+            "padding": "3px",
+            "color": "#ffffff" if new_theme == "dark" else "#212529",
+            "backgroundColor": "#1a1b1e" if new_theme == "dark" else "#ffffff",
+        }
+
+        header_style = {
+            "fontWeight": "bold",
+            "position": "sticky",
+            "top": 0,
+            "zIndex": 1,
+            "backgroundColor": "#2c2e33" if new_theme == "dark" else "#f8f9fa",
+            "color": "#ffffff" if new_theme == "dark" else "#212529"
+        }
+
+        data_conditional = [
+            {"if": {"row_index": "odd"}, "backgroundColor": "#2c2e33" if new_theme == "dark" else "#f2f2f2"},
+            {"if": {"column_id": "acao"}, "cursor": "pointer", "color": "#4dabf7" if new_theme == "dark" else "#007bff"},
+            {"if": {"column_id": "acao", "state": "active"}, "color": "#ff6b6b" if new_theme == "dark" else "#dc3545"}
+        ]
+
+        left_column_style = {
+            "maxHeight": "750px",
+            "overflow": "hidden",
+            "backgroundColor": "#2c2e33" if new_theme == "dark" else "#f5f5f5",
+            "border": "1px solid #444" if new_theme == "dark" else "1px solid #dee2e6",
+            "padding": "8px",
+        }
+
         kpi_cards_style = {
             "width": "100%",
             "display": "flex",
@@ -684,66 +731,21 @@ def init_dash(flask_app, portfolio_service):
             "gap": "12px",
             "padding": "8px 0",
             "alignItems": "center",
-            "backgroundColor": "#ffffff" if new_theme == "light" else "#1a1b1e"
+            "paddingLeft": "12px",
+            "backgroundColor": "#1a1b1e" if new_theme == "dark" else "#ffffff"
         }
+
         kpi_card_style = {
-                "minWidth": "120px",
-                "height": "80px",
-                "display": "flex",
-                "flexDirection": "column",
-                "alignItems": "center",
-                "justifyContent": "center",
-                "backgroundColor": "#f8f9fa" if new_theme == "light" else "#2c2e33",
-                "borderColor": "#dee2e6" if new_theme == "light" else "#444",
-                "color": "#212529" if new_theme == "light" else "#ffffff"
-            }
-        table_style = {
-        "overflowX": "auto",
-        "marginTop": "20px",
-        "height": "200px",
-        "overflowY": "auto",
-        "border": "1px solid #dee2e6" if new_theme == "light" else "1px solid #444",
-        "backgroundColor": "#ffffff" if new_theme == "light" else "#1a1b1e",
-        }
-        cell_style = {
-            "fontSize": "12px",
-            "textAlign": "center",
-            "minWidth": "50px",
-            "padding": "3px",
-            "color": "#212529" if new_theme == "light" else "#ffffff",
-            "borderBottom": "1px solid #dee2e6" if new_theme == "light" else "1px solid #444",
-            "backgroundColor": "#ffffff" if new_theme == "light" else "#1a1b1e",
-        }
-        header_style = {
-            "fontWeight": "bold",
-            "position": "sticky",
-            "top": 0,
-            "zIndex": 1,
-            "backgroundColor": "#f8f9fa" if new_theme == "light" else "#2c2e33",
-            "color": "#212529" if new_theme == "light" else "#ffffff",
-            "borderBottom": "2px solid #dee2e6" if new_theme == "light" else "2px solid #444",
-        }
-        data_conditional = [
-            {"if": {"row_index": "odd"}, "backgroundColor": "#f2f2f2" if new_theme == "light" else "#2c2e33"},
-            {
-                "if": {"filter_query": '{ticker} = "Total"'},
-                "fontWeight": "bold",
-                "backgroundColor": "#e9ecef" if new_theme == "light" else "#3a3c42",
-                "color": "#212529" if new_theme == "light" else "#ffffff",
-                "position": "sticky",
-                "bottom": 0,
-                "zIndex": 1,
-            },
-            {"if": {"column_id": "acao"}, "cursor": "pointer", "color": "#007bff" if new_theme == "light" else "#4dabf7"},
-            {"if": {"column_id": "acao", "state": "active"}, "color": "#dc3545" if new_theme == "light" else "#ff6b6b"},
-        ]
-        left_column_style = {
-            "maxHeight": "750px",
-            "overflow": "hidden",
-            "backgroundColor": "#f5f5f5" if new_theme == "light" else "#2c2e33",
-            "border": "1px solid #dee2e6" if new_theme == "light" else "1px solid #444",
+            "minWidth": "170px",
+            "height": "70px",
+            "display": "flex",
+            "justifyContent": "space-between",
+            "alignItems": "center",
             "padding": "8px",
+            "backgroundColor": "#2c2e33" if new_theme == "dark" else "#f8f9fa",
+            "borderColor": "#444" if new_theme == "dark" else "#dee2e6",
         }
+
         return (
             new_theme,
             new_icon,
@@ -763,7 +765,7 @@ def init_dash(flask_app, portfolio_service):
             kpi_card_style,
             kpi_card_style,
             kpi_card_style,
-        ) 
+        )
     
 
     @dash_app.callback(

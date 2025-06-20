@@ -17,39 +17,43 @@ def KpiCard(kpi_name, value, icon, color, tooltip, is_percentage=False, id=None)
         id (str): ID único do componente para controle via callback.
     """
     formatted_value = f"{value:.2f}%" if is_percentage else f"{value:.2f}"
+    
     return dmc.Tooltip(
         label=tooltip,
         position="top",
         withArrow=True,
-        transitionProps={
-            "transition": "scale"
-        },
+        transitionProps={"transition": "scale"},
         children=[
-            dmc.Card(
+            dmc.Paper(
                 id=id,
                 withBorder=True,
                 shadow="sm",
                 radius="md",
                 style={
-                    "minWidth": "120px",
-                    "height": "80px",
+                    "width": "170px",
+                    "height": "70px",
                     "display": "flex",
-                    "flexDirection": "column",
+                    "justifyContent": "space-between",
                     "alignItems": "center",
-                    "justifyContent": "center",
+                    "padding": "8px",
+                    "backgroundColor": "#f8f9fa"
                 },
                 children=[
-                    DashIconify(icon=icon, width=20, color=color),
-                    dmc.Text(
-                        formatted_value,
-                        size="lg",
-                        fw=700,
-                        style={"color": "#dc2626" if value < 0 else color, "margin": "4px 0 0"}
+                    dmc.Stack(
+                        gap=0,  # <- substituído
+                        align="start",
+                        justify="center",
+                        style={"flexGrow": 1},
+                        children=[
+                            dmc.Text(formatted_value, size="lg", fw=700, style={"color": "#1e3a8a"}),
+                            dmc.Text(kpi_name, size="xs", fw=500, style={"color": "#6c757d"}),
+                        ]
                     ),
-                    dmc.Text(
-                        kpi_name,
-                        size="xs",
-                        fw=500,
+                    dmc.Paper(
+                        radius="md",
+                        p="xs",
+                        style={"backgroundColor": color},
+                        children=DashIconify(icon=icon, width=22, color="#fff")
                     )
                 ]
             )

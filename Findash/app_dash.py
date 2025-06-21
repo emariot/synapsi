@@ -6,6 +6,7 @@ from dash_iconify import DashIconify
 import dash_bootstrap_components as dbc
 from Findash.modules.metrics import calcular_metricas
 from Findash.modules.components import KpiCard
+from Findash.utils.plot_style import get_figure_theme, GRAPH_CONFIG
 from datetime import datetime, timedelta
 import pandas as pd
 from Findash.services.portfolio_services import PortfolioService
@@ -274,6 +275,7 @@ def serve_layout():
                         children=[
                             dmc.TabsTab("Geral", value="geral"),
                             dmc.TabsTab("Rentabilidade", value="rentabilidade"),
+                            dmc.TabsTab("Diversificação", value="diversificacao"),
                             dmc.TabsTab("Risco", value="risco"),
                             dmc.TabsTab("IA", value="ia"),
                             dmc.TabsTab("Avançado", value="avancado"),
@@ -374,12 +376,24 @@ def serve_layout():
                             dmc.Grid(
                                 gutter="sm",
                                 id="main-grid",
+                                style={
+                                    "marginLeft": "12px", 
+                                    
+                                },
                                 children=[
                                     #Coluna Esquerda (1/3)
                                     dmc.GridCol(
                                         span={"base": 12, "md": 4},
                                         id="left-column",
-                                        style={"maxHeight": "750px", "overflow": "hidden"},
+                                        style={
+                                            "maxHeight": "750px", 
+                                            "overflow": "hidden",
+                                            "backgroundColor": "#f5f5f5",
+                                            "border": "1px solid #dee2e6",
+                                            "padding": "8px",
+                                            "marginTop": "5px", 
+                                                                                    
+                                            },
                                         children=[
                                             dmc.Alert(
                                                 id='ticker-error-alert',
@@ -474,7 +488,29 @@ def serve_layout():
                                         span={"base": 12, "md": 8},
                                         id="right-column",
                                         children=[
-                                            dcc.Graph(id='portfolio-ibov-line', style={'width': '100%', 'height': '200px'}),
+                                            dmc.Paper(
+                                                id="portfolio-ibov-line-paper",
+                                                shadow="sm",
+                                                radius="xs",
+                                                p="sm",
+                                                style={
+                                                    "backgroundColor": "#f5f5f5",
+                                                    "border": "1px solid #dee2e6",
+                                                    "marginBottom": "10px",
+                                                },
+                                                children=[
+                                                    dcc.Graph(
+                                                        id='portfolio-ibov-line', 
+                                                        style={
+                                                        'width': '100%', 
+                                                        'height': '200px', 
+                                                        'backgroundColor': 'rgba(0,0,0,0)',
+                                                        },
+                                                        config=GRAPH_CONFIG,
+                                                    ),
+                                                ]
+                                            ),
+                                            
                                             dcc.Graph(id='individual-tickers-line', style={'width': '100%', 'height': '200px', 'marginTop': '10px'}),
                                             dcc.Graph(id='stacked-area-chart', style={'width': '100%', 'height': '200px', 'marginTop': '10px'})
                                         ]
@@ -525,6 +561,27 @@ def serve_layout():
                                     children=[
                                         dmc.Text(
                                             "Funcionalidades de Rentabilidade em desenvolvimento.",
+                                            size="lg",
+                                            style={"textAlign": "center", "marginTop": "20px"}
+                                        )
+                                    ]
+                                )
+                            ]
+                        )
+                    ]
+                ),
+                # Aba Diversificação - Placeholder
+                dmc.TabsPanel(
+                    value="diversificacao",
+                    children=[
+                        dmc.Grid(
+                            gutter="sm",
+                            children=[
+                                dmc.GridCol(
+                                    span={"base": 12, "md": 12},
+                                    children=[
+                                        dmc.Text(
+                                            "Funcionalidades de Diversificação em desenvolvimento.",
                                             size="lg",
                                             style={"textAlign": "center", "marginTop": "20px"}
                                         )
@@ -651,14 +708,15 @@ def init_dash(flask_app, portfolio_service):
         Output("kpi-volat", "style"),
         Output("kpi-drawdown", "style"),
         Output("kpi-alpha", "style"),
-        Output("kpi-beta", "style")
+        Output("kpi-beta", "style"),
+        Output("portfolio-ibov-line-paper", "style")
         ],
         Input("theme-toggle", "n_clicks"),
         State("theme-store", "data"),
     )
     def toggle_theme(n_clicks, current_theme):
         if n_clicks is None or n_clicks == 0:
-            return [no_update] * 18
+            return [no_update] * 19
 
         new_theme = "dark" if current_theme == "light" else "light"
         new_icon = "tabler:moon" if new_theme == "dark" else "tabler:sun"
@@ -720,6 +778,7 @@ def init_dash(flask_app, portfolio_service):
             "backgroundColor": "#2c2e33" if new_theme == "dark" else "#f5f5f5",
             "border": "1px solid #444" if new_theme == "dark" else "1px solid #dee2e6",
             "padding": "8px",
+            "marginTop": "5px"
         }
 
         kpi_cards_style = {
@@ -745,6 +804,11 @@ def init_dash(flask_app, portfolio_service):
             "backgroundColor": "#2c2e33" if new_theme == "dark" else "#f8f9fa",
             "borderColor": "#444" if new_theme == "dark" else "#dee2e6",
         }
+        graph_paper_style = {
+            "backgroundColor": "#000000" if new_theme == "dark" else "#f5f5f5",
+            "border": "1px solid #444" if new_theme == "dark" else "1px solid #dee2e6",
+            "marginBottom": "10px"
+        }
 
         return (
             new_theme,
@@ -765,7 +829,67 @@ def init_dash(flask_app, portfolio_service):
             kpi_card_style,
             kpi_card_style,
             kpi_card_style,
+            graph_paper_style,
         )
+    
+    @dash_app.callback(
+        Output('portfolio-ibov-line', 'figure'),
+        Input('data-store', 'data'),
+        Input('theme-store', 'data'),
+        prevent_initial_call=False
+    )
+    def update_portfolio_ibov_line(store_data, theme):
+        if store_data:
+            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
+
+        if not store_data or 'portfolio_return' not in store_data or 'ibov_return' not in store_data:
+            return go.Figure()
+
+        portfolio_return = store_data['portfolio_return']
+        ibov_return = store_data['ibov_return']
+
+         # Obtém configurações de tema e separa as cores de linha
+        theme_config = get_figure_theme(theme)
+        line_colors = theme_config.pop("line_colors")
+
+        fig = go.Figure()
+
+        fig.add_trace(go.Scatter(
+            x=list(portfolio_return.keys()),
+            y=list(portfolio_return.values()),
+            mode='lines',
+            name='Portfólio',
+            line=dict(color=line_colors["portfolio"], width=2, shape='spline', smoothing=1.3),
+            hovertemplate='%{y:.2%}<br>%{x|%d-%m-%Y}'
+        ))
+
+        fig.add_trace(go.Scatter(
+            x=list(ibov_return.keys()),
+            y=list(ibov_return.values()),
+            mode='lines',
+            name='IBOV',
+            line=dict(color=line_colors["ibov"], width=2, shape='spline', smoothing=1.3),
+            hovertemplate='%{y:.2%}<br>%{x|%d-%m-%Y}'
+        ))
+
+        fig.update_layout(
+            title=dict(
+                text='Retorno Acumulado',
+                x=0.5,
+                xanchor='center',
+                font=dict(size=18)
+            ),
+            hovermode='x unified',
+                hoverlabel=dict(
+                    bgcolor="#2c2c2c" if theme == "dark" else "#FFFFFF",
+                    font=dict(color="#FFFFFF" if theme == "dark" else "#212529", size=10, family="Helvetica"),
+                    bordercolor="rgba(0,0,0,0)"
+                ),
+            transition=dict(duration=200, easing='cubic-in-out'),
+            **theme_config 
+        )
+
+        return fig
     
 
     @dash_app.callback(
@@ -954,47 +1078,6 @@ def init_dash(flask_app, portfolio_service):
             fig.update_layout(margin=dict(t=30, l=0, r=0, b=0), title="Peso Financeiro")
             return fig
         return go.Figure()
-
-    @dash_app.callback(
-        Output('portfolio-ibov-line', 'figure'),
-        Input('data-store', 'data'),
-        prevent_initial_call=False
-    )
-    def update_portfolio_ibov_line(store_data):
-        # ALTERAÇÃO: Desserializar store_data com orjson_loads
-        # Motivo: Dados do dcc.Store foram serializados com orjson_dumps; convertemos para dict
-        # Impacto: Permite acessar portfolio_return e ibov_return para gerar o gráfico
-        if store_data:
-            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
-
-        if not store_data or 'portfolio_return' not in store_data or 'ibov_return' not in store_data:
-            return go.Figure()
-
-        portfolio_return = store_data['portfolio_return']
-        ibov_return = store_data['ibov_return']
-
-        fig = go.Figure()
-        fig.add_trace(go.Scatter(
-            x=list(portfolio_return.keys()),
-            y=list(portfolio_return.values()),
-            mode='lines',
-            name='Portfólio',
-            line=dict(color='blue')
-        ))
-        fig.add_trace(go.Scatter(
-            x=list(ibov_return.keys()),
-            y=list(ibov_return.values()),
-            mode='lines',
-            name='IBOV',
-            line=dict(color='orange')
-        ))
-        fig.update_layout(
-            title='Retorno Acumulado: Portfólio vs IBOV',
-            yaxis_title='Retorno Acumulado (%)',
-            legend=dict(x=0, y=1),
-            margin=dict(l=50, r=50, t=50, b=50)
-        )
-        return fig
 
     @dash_app.callback(
         Output('data-store', 'data', allow_duplicate=True),

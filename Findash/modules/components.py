@@ -1,7 +1,7 @@
 # Findash/modules/components.py
+from dash import dcc
 from dash_iconify import DashIconify
 import dash_mantine_components as dmc
-
 
 def KpiCard(kpi_name, value, icon, color, tooltip, is_percentage=False, id=None):
     """
@@ -59,3 +59,39 @@ def KpiCard(kpi_name, value, icon, color, tooltip, is_percentage=False, id=None)
             )
         ]
     )
+
+GRAPH_CONFIG = {
+    "displaylogo": False,
+    "modeBarButtonsToRemove": [
+        "select2d", "lasso2d", "toggleSpikelines"
+    ]
+}
+
+from dash import dcc
+import dash_mantine_components as dmc
+
+def GraphPaper(paper_id: str, graph_id: str, height="200px"):
+    return dmc.Paper(
+        id=paper_id,
+        shadow="sm",
+        radius="xs",
+        p="sm",
+        style={
+            "backgroundColor": "#f5f5f5",  # estilo inicial (tema claro)
+            "border": "1px solid #dee2e6",
+            "marginBottom": "10px",
+            "marginRight": "10px",
+        },
+        children=[
+            dcc.Graph(
+                id=graph_id,
+                style={
+                    "width": "100%",
+                    "height": height,
+                    "backgroundColor": "rgba(0,0,0,0)",
+                },
+                config=GRAPH_CONFIG,
+            )
+        ]
+    )
+

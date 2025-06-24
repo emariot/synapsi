@@ -5,8 +5,8 @@ import dash_mantine_components as dmc
 from dash_iconify import DashIconify
 import dash_bootstrap_components as dbc
 from Findash.modules.metrics import calcular_metricas
-from Findash.modules.components import KpiCard
-from Findash.utils.plot_style import get_figure_theme, GRAPH_CONFIG
+from Findash.modules.components import KpiCard, GraphPaper
+from Findash.utils.plot_style import get_figure_theme
 from datetime import datetime, timedelta
 import pandas as pd
 from Findash.services.portfolio_services import PortfolioService
@@ -485,36 +485,14 @@ def serve_layout():
                                     ),
                                     # Coluna Direita (2/3)
                                     dmc.GridCol(
-                                        span={"base": 12, "md": 8},
+                                        span={"base":12, "md": 8},
                                         id="right-column",
                                         children=[
-                                            dmc.Paper(
-                                                id="portfolio-ibov-line-paper",
-                                                shadow="sm",
-                                                radius="xs",
-                                                p="sm",
-                                                style={
-                                                    "backgroundColor": "#f5f5f5",
-                                                    "border": "1px solid #dee2e6",
-                                                    "marginBottom": "10px",
-                                                },
-                                                children=[
-                                                    dcc.Graph(
-                                                        id='portfolio-ibov-line', 
-                                                        style={
-                                                        'width': '100%', 
-                                                        'height': '200px', 
-                                                        'backgroundColor': 'rgba(0,0,0,0)',
-                                                        },
-                                                        config=GRAPH_CONFIG,
-                                                    ),
-                                                ]
-                                            ),
-                                            
-                                            dcc.Graph(id='individual-tickers-line', style={'width': '100%', 'height': '200px', 'marginTop': '10px'}),
-                                            dcc.Graph(id='stacked-area-chart', style={'width': '100%', 'height': '200px', 'marginTop': '10px'})
-                                        ]
-                                    )
+                                            GraphPaper("portfolio-ibov-line-paper", "portfolio-ibov-line"),
+                                            GraphPaper("individual-tickers-line-paper","individual-tickers-line"),
+                                            GraphPaper("stacked-area-chart-paper", "stacked-area-chart")
+                                        ]                                        
+                                    ),            
                                 ]
                             ),
 
@@ -688,8 +666,6 @@ def init_dash(flask_app, portfolio_service):
     dash_app.server.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
     
     # Callbacks
-
-
     @dash_app.callback(
         [Output("mantine-provider", "forceColorScheme"),
         Output("theme-icon", "icon"),
@@ -709,14 +685,16 @@ def init_dash(flask_app, portfolio_service):
         Output("kpi-drawdown", "style"),
         Output("kpi-alpha", "style"),
         Output("kpi-beta", "style"),
-        Output("portfolio-ibov-line-paper", "style")
+        Output("portfolio-ibov-line-paper", "style"),
+        Output("individual-tickers-line-paper", "style"),
+        Output("stacked-area-chart-paper", "style")
         ],
         Input("theme-toggle", "n_clicks"),
         State("theme-store", "data"),
     )
     def toggle_theme(n_clicks, current_theme):
         if n_clicks is None or n_clicks == 0:
-            return [no_update] * 19
+            return [no_update] * 21
 
         new_theme = "dark" if current_theme == "light" else "light"
         new_icon = "tabler:moon" if new_theme == "dark" else "tabler:sun"
@@ -805,9 +783,10 @@ def init_dash(flask_app, portfolio_service):
             "borderColor": "#444" if new_theme == "dark" else "#dee2e6",
         }
         graph_paper_style = {
-            "backgroundColor": "#000000" if new_theme == "dark" else "#f5f5f5",
+            "backgroundColor": "#1a1b1e" if new_theme == "dark" else "#f5f5f5",
             "border": "1px solid #444" if new_theme == "dark" else "1px solid #dee2e6",
-            "marginBottom": "10px"
+            "marginBottom": "10px",
+            "marginRight": "10px"
         }
 
         return (
@@ -830,6 +809,8 @@ def init_dash(flask_app, portfolio_service):
             kpi_card_style,
             kpi_card_style,
             graph_paper_style,
+            graph_paper_style,
+            graph_paper_style
         )
     
     @dash_app.callback(
@@ -848,9 +829,10 @@ def init_dash(flask_app, portfolio_service):
         portfolio_return = store_data['portfolio_return']
         ibov_return = store_data['ibov_return']
 
-         # Obtém configurações de tema e separa as cores de linha
+        # Obtém configurações de tema e separa as cores de linha
         theme_config = get_figure_theme(theme)
         line_colors = theme_config.pop("line_colors")
+        theme_config.pop("color_sequence", None)
 
         fig = go.Figure()
 
@@ -859,33 +841,34 @@ def init_dash(flask_app, portfolio_service):
             y=list(portfolio_return.values()),
             mode='lines',
             name='Portfólio',
-            line=dict(color=line_colors["portfolio"], width=2, shape='spline', smoothing=1.3),
+            line=dict(color=line_colors["portfolio"], width=1.2, shape='spline', smoothing=1.3),
             hovertemplate='%{y:.2%}<br>%{x|%d-%m-%Y}'
         ))
-
+       
         fig.add_trace(go.Scatter(
             x=list(ibov_return.keys()),
             y=list(ibov_return.values()),
             mode='lines',
             name='IBOV',
-            line=dict(color=line_colors["ibov"], width=2, shape='spline', smoothing=1.3),
+            line=dict(color=line_colors["ibov"], width=1.2, shape='spline', smoothing=1.3),
             hovertemplate='%{y:.2%}<br>%{x|%d-%m-%Y}'
         ))
 
         fig.update_layout(
             title=dict(
                 text='Retorno Acumulado',
-                x=0.5,
-                xanchor='center',
-                font=dict(size=18)
+                x=0.02,
+                xanchor='left',
+                font=dict(size=14)
             ),
+            yaxis_title='Retorno (%)',
             hovermode='x unified',
-                hoverlabel=dict(
-                    bgcolor="#2c2c2c" if theme == "dark" else "#FFFFFF",
-                    font=dict(color="#FFFFFF" if theme == "dark" else "#212529", size=10, family="Helvetica"),
-                    bordercolor="rgba(0,0,0,0)"
-                ),
-            transition=dict(duration=200, easing='cubic-in-out'),
+            hoverlabel=dict(
+                bgcolor="#2c2c2c" if theme == "dark" else "#FFFFFF",
+                font=dict(color="#FFFFFF" if theme == "dark" else "#212529", size=10, family="Helvetica"),
+                bordercolor="rgba(0,0,0,0)"
+            ),
+            transition=dict(duration=100, easing='cubic-in-out'),
             **theme_config 
         )
 

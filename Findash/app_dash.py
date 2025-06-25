@@ -488,9 +488,48 @@ def serve_layout():
                                         span={"base":12, "md": 8},
                                         id="right-column",
                                         children=[
-                                            GraphPaper("portfolio-ibov-line-paper", "portfolio-ibov-line"),
-                                            GraphPaper("individual-tickers-line-paper","individual-tickers-line"),
-                                            GraphPaper("stacked-area-chart-paper", "stacked-area-chart")
+                                            dmc.Box(
+                                                children=[
+                                                    GraphPaper("portfolio-ibov-line-paper", "portfolio-ibov-line"),
+                                                    dmc.LoadingOverlay(
+                                                        id="loading-overlay-ibov",
+                                                        visible=True,
+                                                        zIndex=1000,
+                                                        overlayProps={"blur": 2},
+                                                        loaderProps={"type": "bars", "color": "blue", "size": 20},
+                                                        
+                                                    ),
+                                                ],
+                                                pos="relative"
+                                            ),
+                                            dmc.Box(
+                                                children=[
+                                                    GraphPaper("individual-tickers-line-paper","individual-tickers-line"),
+                                                    dmc.LoadingOverlay(
+                                                        id="loading-overlay-individual",
+                                                        visible=True,
+                                                        zIndex=1000,
+                                                        overlayProps={"blur": 2},
+                                                        loaderProps={"type": "bars", "color": "blue", "size": 20},
+                                                        
+                                                    ),
+                                                ],
+                                                pos="relative"
+                                            ),
+                                            dmc.Box(
+                                                children=[
+                                                    GraphPaper("stacked-area-chart-paper", "stacked-area-chart"),
+                                                    dmc.LoadingOverlay(
+                                                        id="loading-overlay-area-chart",
+                                                        visible=True,
+                                                        zIndex=1000,
+                                                        overlayProps={"blur": 2},
+                                                        loaderProps={"type": "bars", "color": "blue", "size": 20},
+                                                        
+                                                    ),
+                                                ],
+                                                pos="relative"
+                                            )
                                         ]                                        
                                     ),            
                                 ]
@@ -1080,48 +1119,6 @@ def init_dash(flask_app, portfolio_service):
             return orjson_dumps(updated_portfolio).decode('utf-8')
         except ValueError as e:
             return orjson_dumps(store_data).decode('utf-8')
-      
-    @dash_app.callback(
-        Output('stacked-area-chart', 'figure'),
-        Input('data-store', 'data'),
-        prevent_initial_call=False
-    )
-    def update_stacked_area_chart(store_data):
-        # ALTERAÇÃO: Desserializar store_data com orjson_loads
-        # Motivo: Dados do dcc.Store foram serializados com orjson_dumps; convertemos para dict
-        # Impacto: Permite acessar portfolio_values para gerar o gráfico
-        if store_data:
-            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
-
-        if not store_data or 'portfolio_values' not in store_data:
-            return go.Figure()
-
-        portfolio_values = pd.DataFrame(store_data['portfolio_values'])
-        tickers = store_data['tickers']
-
-        fig = go.Figure()
-        colors = ['blue', 'green', 'red', 'purple', 'orange']
-        for i, ticker in enumerate(tickers):
-            if ticker in portfolio_values.columns:
-                fig.add_trace(go.Scatter(
-                    x=portfolio_values.index,
-                    y=portfolio_values[ticker],
-                    mode='lines',
-                    name=ticker,
-                    stackgroup='one',
-                    line=dict(width=0),
-                    fillcolor=colors[i % len(colors)],
-                    opacity=0.7
-                ))
-
-        fig.update_layout(
-            title='Composição do Portfólio: Área Empilhada',
-            yaxis_title='Valor do Portfólio (R$)',
-            legend=dict(x=0, y=1),
-            margin=dict(l=50, r=50, t=50, b=50),
-            showlegend=True
-        )
-        return fig
        
     @dash_app.callback(
         Output('capital-dividend-chart', 'figure'),

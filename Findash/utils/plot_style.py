@@ -9,27 +9,43 @@ def get_figure_theme(theme: str = "light"):
         "zerolinewidth": 1
     }
     # Paletas de cores
-    pastel_colors = [
-        "#4E79A7", "#F28E2B", "#E15759", "#76B7B2", "#59A14F", 
-        "#EDC948", "#B07AA1", "#FF9DA7", "#9C755F", "#BAB0AC"   
+    dark_colors = [
+         "#ffd15f",
+         "#4c78a8",
+         "#f58518",
+         "#e45756",
+         "#72b7b2",
+         "#54a24b",
+         "#b279a2",
+         "#ff9da6",
+         "#9d755d",
+         "#bab0ac"  
     ]
-    vibrant_colors = [
-        "#5e44f6", "#bc0000", "#26d416", "#ffa600", "#ff6361",
-        "#bc5090", "#58508d", "#003f5c", "#f95d6a", "#ffa07a"
+    light_colors = [
+         "#004172",
+         "#3366cc",
+         "#dc3912",
+         "#ff9900",
+         "#109618",
+         "#990099",
+         "#0099c6",
+         "#dd4477",
+         "#66aa00",
+         "#b82e2e"
     ]
 
     line_colors = {
-        "portfolio": vibrant_colors[0] if is_dark else pastel_colors[0],
-        "ibov": vibrant_colors[1] if is_dark else pastel_colors[1]
+        "portfolio": dark_colors[0] if is_dark else light_colors[0],
+        "ibov": dark_colors[1] if is_dark else light_colors[1]
     }
-    color_sequence = vibrant_colors if is_dark else pastel_colors
+    color_sequence = dark_colors if is_dark else light_colors
 
     return {
         "template": "plotly_dark" if is_dark else "plotly_white",
         "font": dict(family="Helvetica", size=10, color=font_color),
         "paper_bgcolor": "rgba(0,0,0,0)",
         "plot_bgcolor": "rgba(0,0,0,0)",
-        "margin": dict(l=50, r=20, t=40, b=10),
+        "margin": dict(l=50, r=20, t=40, b=5),
         "legend": dict(
             orientation="h",
             yanchor="bottom",

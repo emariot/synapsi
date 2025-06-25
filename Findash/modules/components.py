@@ -68,9 +68,6 @@ GRAPH_CONFIG = {
     ]
 }
 
-from dash import dcc
-import dash_mantine_components as dmc
-
 def GraphPaper(paper_id: str, graph_id: str, height="200px"):
     return dmc.Paper(
         id=paper_id,

@@ -12,8 +12,8 @@ import pandas as pd
 from Findash.services.portfolio_services import PortfolioService
 from utils.serialization import orjson_dumps, orjson_loads
 from flask import session, has_request_context
-import requests
-import orjson
+from Findash.callbacks.tables import register_table_callbacks
+from Findash.callbacks.graphs import register_graph_callbacks
 
 import logging
 
@@ -653,14 +653,12 @@ def init_dash(flask_app, portfolio_service):
     #dash_app.enable_dev_tools(debug=True, dev_tools_hot_reload=True)
     dash_app.portfolio_service = portfolio_service
     dash_app.layout = serve_layout
+    # Registrar callbacks modulares
+    register_table_callbacks(dash_app)
+    register_graph_callbacks(dash_app)
     
     # Configurar o Flask subjacente para usar orjson em respostas JSON
-    # Mantido: Garante que os callbacks do Dash usem orjson para serializar respostas
-    def orjson_response(data):
-        return flask_app.response_class(
-            response=orjson_dumps(data),
-            mimetype='application/json'
-        )
+    # Garante que os callbacks do Dash usem orjson para serializar respostas
     flask_app.json_encoder = orjson_dumps
     flask_app.json_decoder = orjson_loads
     dash_app.server.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
@@ -811,69 +809,7 @@ def init_dash(flask_app, portfolio_service):
             graph_paper_style,
             graph_paper_style,
             graph_paper_style
-        )
-    
-    @dash_app.callback(
-        Output('portfolio-ibov-line', 'figure'),
-        Input('data-store', 'data'),
-        Input('theme-store', 'data'),
-        prevent_initial_call=False
-    )
-    def update_portfolio_ibov_line(store_data, theme):
-        if store_data:
-            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
-
-        if not store_data or 'portfolio_return' not in store_data or 'ibov_return' not in store_data:
-            return go.Figure()
-
-        portfolio_return = store_data['portfolio_return']
-        ibov_return = store_data['ibov_return']
-
-        # Obtém configurações de tema e separa as cores de linha
-        theme_config = get_figure_theme(theme)
-        line_colors = theme_config.pop("line_colors")
-        theme_config.pop("color_sequence", None)
-
-        fig = go.Figure()
-
-        fig.add_trace(go.Scatter(
-            x=list(portfolio_return.keys()),
-            y=list(portfolio_return.values()),
-            mode='lines',
-            name='Portfólio',
-            line=dict(color=line_colors["portfolio"], width=1.2, shape='spline', smoothing=1.3),
-            hovertemplate='%{y:.2%}<br>%{x|%d-%m-%Y}'
-        ))
-       
-        fig.add_trace(go.Scatter(
-            x=list(ibov_return.keys()),
-            y=list(ibov_return.values()),
-            mode='lines',
-            name='IBOV',
-            line=dict(color=line_colors["ibov"], width=1.2, shape='spline', smoothing=1.3),
-            hovertemplate='%{y:.2%}<br>%{x|%d-%m-%Y}'
-        ))
-
-        fig.update_layout(
-            title=dict(
-                text='Retorno Acumulado',
-                x=0.02,
-                xanchor='left',
-                font=dict(size=14)
-            ),
-            yaxis_title='Retorno (%)',
-            hovermode='x unified',
-            hoverlabel=dict(
-                bgcolor="#2c2c2c" if theme == "dark" else "#FFFFFF",
-                font=dict(color="#FFFFFF" if theme == "dark" else "#212529", size=10, family="Helvetica"),
-                bordercolor="rgba(0,0,0,0)"
-            ),
-            transition=dict(duration=100, easing='cubic-in-out'),
-            **theme_config 
-        )
-
-        return fig
-    
+        )   
 
     @dash_app.callback(
         [Output('price-table', 'data'),
@@ -973,24 +909,6 @@ def init_dash(flask_app, portfolio_service):
         # Logar dados finais
         logger.info(f"Retornando updated_table_data: {updated_table_data}")
         return updated_table_data, orjson_dumps(updated_store_data).decode('utf-8')
-
-    @dash_app.callback(
-        Output('date-input-range-picker', 'value'),
-        Input('data-store', 'data'),
-        prevent_initial_call=False
-        )
-    def carregar_datas_iniciais(store_data):
-        """
-        Preenche os inputs de data com os valores do dcc.Store ao iniciar o app.
-        """
-        if store_data:
-            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
-            start_date = store_data.get('start_date')
-            end_date = store_data.get('end_date')
-            if start_date and end_date:
-                return [start_date, end_date]
-            
-        return None
     
     @dash_app.callback(
         Output('portfolio-treemap', 'figure'),
@@ -1162,45 +1080,7 @@ def init_dash(flask_app, portfolio_service):
             return orjson_dumps(updated_portfolio).decode('utf-8')
         except ValueError as e:
             return orjson_dumps(store_data).decode('utf-8')
-    
-    @dash_app.callback(
-        Output('individual-tickers-line', 'figure'),
-        Input('data-store', 'data'),
-        prevent_initial_call=False
-    )
-    def update_individual_tickers_line(store_data):
-        # ALTERAÇÃO: Desserializar store_data com orjson_loads
-        # Motivo: Dados do dcc.Store foram serializados com orjson_dumps; convertemos para dict
-        # Impacto: Permite acessar individual_returns para gerar o gráfico
-        if store_data:
-            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
-
-        if not store_data or 'individual_returns' not in store_data:
-            return go.Figure()
-
-        individual_returns = store_data['individual_returns']
-        tickers = store_data['tickers']
-
-        fig = go.Figure()
-        colors = ['blue', 'green', 'red', 'purple', 'orange']
-        for i, ticker in enumerate(tickers):
-            if ticker in individual_returns:
-                fig.add_trace(go.Scatter(
-                    x=list(individual_returns[ticker].keys()),
-                    y=list(individual_returns[ticker].values()),
-                    mode='lines',
-                    name=ticker,
-                    line=dict(color=colors[i % len(colors)])
-                ))
-
-        fig.update_layout(
-            title='Retorno Acumulado: Tickers Individuais',
-            yaxis_title='Retorno Acumulado (%)',
-            legend=dict(x=0, y=1),
-            margin=dict(l=50, r=50, t=50, b=50)
-        )
-        return fig
-    
+      
     @dash_app.callback(
         Output('stacked-area-chart', 'figure'),
         Input('data-store', 'data'),

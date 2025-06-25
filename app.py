@@ -7,7 +7,6 @@ import redis
 import os
 import re
 import logging
-import shutil
 from uuid import uuid4
 from datetime import timedelta, datetime
 from Findash.app_dash import init_dash
@@ -15,8 +14,6 @@ from Findash.services.portfolio_services import PortfolioService
 from utils.serialization import orjson_dumps, orjson_loads
 from werkzeug.security import generate_password_hash, check_password_hash
 from Segurai.app_dash import init_segurai_dash
-import random
-import pandas as pd
 
 from Segurai.services.model_handler import carregar_modelos, prever_todos_modelos
 from Segurai.utils.encoder import preparar_dados_entrada # encoder e função para montar X_input
@@ -191,7 +188,7 @@ def create_app():
 
     @app.route('/')
     def homepage():
-        return render_template('homepage.html')  # Crie esse template básico
+        return render_template('homepage.html') 
 
     @app.route('/findash')
     def findash_home():

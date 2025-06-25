@@ -62,8 +62,9 @@ def KpiCard(kpi_name, value, icon, color, tooltip, is_percentage=False, id=None)
 
 GRAPH_CONFIG = {
     "displaylogo": False,
+    "modeBarButtonsToAdd": ["toggleHover"],
     "modeBarButtonsToRemove": [
-        "select2d", "lasso2d", "toggleSpikelines"
+        "select2d", "lasso2d", "toggleSpikelines", "zoom2d", "autoScale2d"
     ]
 }
 

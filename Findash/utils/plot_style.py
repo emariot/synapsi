@@ -29,7 +29,7 @@ def get_figure_theme(theme: str = "light"):
         "font": dict(family="Helvetica", size=10, color=font_color),
         "paper_bgcolor": "rgba(0,0,0,0)",
         "plot_bgcolor": "rgba(0,0,0,0)",
-        "margin": dict(l=50, r=20, t=40, b=20),
+        "margin": dict(l=50, r=20, t=40, b=10),
         "legend": dict(
             orientation="h",
             yanchor="bottom",

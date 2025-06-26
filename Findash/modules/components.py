@@ -3,7 +3,7 @@ from dash import dcc
 from dash_iconify import DashIconify
 import dash_mantine_components as dmc
 
-def KpiCard(kpi_name, value, icon, color, tooltip, is_percentage=False, id=None):
+def KpiCard(kpi_name, value, icon, tooltip, id=None):
     """
     Componente reutilizável para exibir KPIs em cards.
     
@@ -13,11 +13,8 @@ def KpiCard(kpi_name, value, icon, color, tooltip, is_percentage=False, id=None)
         icon (str): Nome do ícone do DashIconify (ex.: "tabler:chart-line").
         color (str): Cor do ícone e texto (ex.: "#1e3a8a").
         tooltip (str): Texto do tooltip explicativo.
-        is_percentage (bool): Se True, formata o valor como percentual.
         id (str): ID único do componente para controle via callback.
-    """
-    formatted_value = f"{value:.2f}%" if is_percentage else f"{value:.2f}"
-    
+    """  
     return dmc.Tooltip(
         label=tooltip,
         position="top",
@@ -40,20 +37,26 @@ def KpiCard(kpi_name, value, icon, color, tooltip, is_percentage=False, id=None)
                 },
                 children=[
                     dmc.Stack(
-                        gap=0,  # <- substituído
+                        gap=0,  
                         align="start",
                         justify="center",
                         style={"flexGrow": 1},
                         children=[
-                            dmc.Text(formatted_value, size="lg", fw=700, style={"color": "#1e3a8a"}),
+                            dmc.Text(
+                                value, 
+                                size="lg", 
+                                fw=700, 
+                                style={"color": "var(--kpi-text-color, #1e3a8a)"},
+                                id=f"{id}-value" if id else None
+                                ),
                             dmc.Text(kpi_name, size="xs", fw=500, style={"color": "#6c757d"}),
                         ]
                     ),
                     dmc.Paper(
                         radius="md",
                         p="xs",
-                        style={"backgroundColor": color},
-                        children=DashIconify(icon=icon, width=22, color="#fff")
+                        style={"backgroundColor": "var(--kpi-icon-bg-color, #1e3a8a)"},
+                        children=DashIconify(icon=icon, width=22, color="var(--kpi-icon-color, #fff)")
                     )
                 ]
             )

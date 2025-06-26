@@ -566,9 +566,6 @@ def calcular_ganhos_e_proventos(tickers, quantities, portfolio, start_date, end_
     
     return resultados
 
-import quantstats as qs
-qs.extend_pandas()
-
 @measure_time
 def calcular_kpis_quantstats(portfolio_daily_returns, benchmark_daily_returns=None):
     """

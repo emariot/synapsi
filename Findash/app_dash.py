@@ -7,6 +7,7 @@ import dash_bootstrap_components as dbc
 from Findash.modules.metrics import calcular_metricas
 from Findash.modules.components import KpiCard, GraphPaper
 from Findash.utils.plot_style import get_figure_theme
+from Findash.utils.formatting import format_kpi
 from datetime import datetime, timedelta
 import pandas as pd
 from Findash.services.portfolio_services import PortfolioService
@@ -87,6 +88,9 @@ def serve_layout():
     except Exception as e:
         logger.error(f"Erro ao constuir layout dinâmico: {e}")
         decoded = {}   
+
+    # Extrair KPIs do decoded
+    kpis = decoded.get("kpis", {})
 
     return dmc.MantineProvider(
         id = "mantine-provider",
@@ -308,63 +312,52 @@ def serve_layout():
                                             children=[
                                                 KpiCard(
                                                     kpi_name="Sharpe",
-                                                    value=7.9358,
+                                                    value=format_kpi("sharpe", kpis.get("sharpe")),
                                                     icon="tabler:chart-line",
-                                                    color="#1e3a8a",
                                                     tooltip="Sharpe Ratio mede o retorno ajustado ao risco",
                                                     id="kpi-sharpe"
                                                 ),
                                                 KpiCard(
                                                     kpi_name="Sortino",
-                                                    value=19.2486,
-                                                    icon="tabler:chart-bar",
-                                                    color="#1e3a8a",
+                                                    value=format_kpi("sortino", kpis.get("sortino")),
+                                                    icon="tabler:chart-bar",                                                    
                                                     tooltip="Sortino Ratio ajusta o retorno ao risco de downside",
                                                     id="kpi-sortino"
                                                 ),
                                                 KpiCard(
                                                     kpi_name="Retorno",
-                                                    value=0.8213,
-                                                    icon="tabler:arrow-up",
-                                                    color="#1e3a8a",
+                                                    value=format_kpi("retorno_medio_anual", kpis.get("retorno_medio_anual")),
+                                                    icon="tabler:arrow-up",                                                    
                                                     tooltip="Retorno médio anualizado do portfólio",
                                                     id="kpi-retorno"
                                                 ),
                                                 KpiCard(
                                                     kpi_name="Volat",
-                                                    value=0.1035,
-                                                    icon="tabler:activity",
-                                                    color="#1e3a8a",
-                                                    tooltip="Volatilidade anualizada em percentual",
-                                                    is_percentage=True,
+                                                    value=format_kpi("volatilidade", kpis.get("volatilidade")),
+                                                    icon="tabler:activity",                                                    
+                                                    tooltip="Volatilidade anualizada em percentual",                                                   
                                                     id="kpi-volat"
 
                                                 ),
                                                 KpiCard(
                                                     kpi_name="Drawdown",
-                                                    value=0.0054,
-                                                    icon="tabler:arrow-down",
-                                                    color="#1e3a8a",
-                                                    tooltip="Maior perda percentual do portfólio",
-                                                    is_percentage=True,
+                                                    value=format_kpi("max_drawdown", kpis.get("max_drawdown")),
+                                                    icon="tabler:arrow-down",                                                    
+                                                    tooltip="Maior perda percentual do portfólio",                                                  
                                                     id="kpi-drawdown"
                                                 ),
                                                 KpiCard(
                                                     kpi_name="Alpha",
-                                                    value=0.1098,
-                                                    icon="tabler:star",
-                                                    color="#1e3a8a",
-                                                    tooltip="Excesso de retorno sobre o benchmark",
-                                                    is_percentage=True,
+                                                    value=format_kpi("alpha", kpis.get("alpha")),
+                                                    icon="tabler:star",                                                    
+                                                    tooltip="Excesso de retorno sobre o benchmark",                                                    
                                                     id="kpi-alpha"
                                                 ),
                                                 KpiCard(
                                                     kpi_name="Beta",
-                                                    value=0.5878,
-                                                    icon="tabler:scale",
-                                                    color="#1e3a8a",
-                                                    tooltip="Sensibilidade ao mercado (beta)",
-                                                    is_percentage=True,
+                                                    value=format_kpi("beta", kpis.get("beta")),
+                                                    icon="tabler:scale",                                                    
+                                                    tooltip="Sensibilidade ao mercado (beta)",                                                  
                                                     id="kpi-beta"
                                                 ),
                                             ]
@@ -816,8 +809,12 @@ def init_dash(flask_app, portfolio_service):
             "justifyContent": "space-between",
             "alignItems": "center",
             "padding": "8px",
-            "backgroundColor": "#2c2e33" if new_theme == "dark" else "#f8f9fa",
+            "backgroundColor": "#2c2e30" if new_theme == "dark" else "#f8f9fa",
             "borderColor": "#444" if new_theme == "dark" else "#dee2e6",
+            "--kpi-text-color": "#9775FA" if new_theme == "dark" else "#1e3a8a",
+            "--kpi-icon-bg-color":"#9775FA" if new_theme == "dark" else "#1e3a8a",
+            "--kpi-icon-color": "#000" if new_theme == "dark" else "#fff"
+            
         }
         graph_paper_style = {
             "backgroundColor": "#1a1b1e" if new_theme == "dark" else "#f5f5f5",
@@ -849,6 +846,46 @@ def init_dash(flask_app, portfolio_service):
             graph_paper_style,
             graph_paper_style
         )   
+    
+    @dash_app.callback(
+        [Output("kpi-sharpe-value", "children"),
+         Output("kpi-sortino-value", "children"),
+         Output("kpi-retorno-value", "children"),
+         Output("kpi-volat-value", "children"),
+         Output("kpi-drawdown-value", "children"),
+         Output("kpi-alpha-value", "children"),
+         Output("kpi-beta-value", "children")],
+        Input('data-store', 'data'),
+        prevent_initial_call=True
+    )
+    def update_kpi_cards(store_data):
+        """
+        Atualiza os valores dos KpiCards quando o data-store muda.
+        
+        Args:
+            store_data: Dados armazenados no dcc.Store, contendo os KPIs do portfólio.
+        
+        Returns:
+            Lista de strings formatadas para os dmc.Text de cada KpiCard.
+        """
+        # Desserializar store_data
+        if store_data:
+            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
+        else:
+            store_data = {}
+
+        # Obter KPIs ou usar valores padrão
+        kpis = store_data.get("kpis", {})
+
+        return (
+            format_kpi("sharpe", kpis.get("sharpe")),
+            format_kpi("sortino", kpis.get("sortino")),
+            format_kpi("retorno_medio_anual", kpis.get("retorno_medio_anual")),
+            format_kpi("volatilidade", kpis.get("volatilidade")),
+            format_kpi("max_drawdown", kpis.get("max_drawdown")),
+            format_kpi("alpha", kpis.get("alpha")),
+            format_kpi("beta", kpis.get("beta"))
+        )
 
     @dash_app.callback(
         [Output('price-table', 'data'),
@@ -1735,34 +1772,4 @@ def init_dash(flask_app, portfolio_service):
             logger.error(f"Erro ao salvar portfólio: {e}")
             return dmc.Text(f'Erro: {str(e)}', color='red'), no_update, no_update, no_update, True
         
-    @dash_app.callback(
-        [Output('retorno-total-card', 'children'),
-        Output('volatilidade-card', 'children'),
-        Output('sharpe-card', 'children')],
-        Input('data-store', 'data'),
-        prevent_initial_call=False
-    )
-    def update_kpi_cards(store_data):
-        """
-        Atualiza os valores dos cards de Retorno Total, Volatilidade e Sharpe Ratio com base nos KPIs do data-store.
-        """
-        # Desserializar store_data
-        if store_data:
-            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
-        else:
-            store_data = {}
-
-        # Obter KPIs ou usar valores padrão
-        kpis = store_data.get('kpis', {})
-        retorno_total = kpis.get('retorno_medio_anual', 0.0)
-        volatilidade = kpis.get('volatilidade', 0.0)
-        sharpe = kpis.get('sharpe', 0.0)
-
-        # Formatar valores
-        retorno_total_str = f"{retorno_total:.2f}%" if retorno_total is not None else "N/A"
-        volatilidade_str = f"{volatilidade:.2f}%" if volatilidade is not None else "N/A"
-        sharpe_str = f"{sharpe:.2f}" if sharpe is not None else "N/A"
-
-        return retorno_total_str, volatilidade_str, sharpe_str
-
     return dash_app

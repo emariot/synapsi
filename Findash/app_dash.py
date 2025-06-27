@@ -5,8 +5,7 @@ import dash_mantine_components as dmc
 from dash_iconify import DashIconify
 import dash_bootstrap_components as dbc
 from Findash.modules.metrics import calcular_metricas
-from Findash.modules.components import KpiCard, GraphPaper
-from Findash.utils.plot_style import get_figure_theme
+from Findash.modules.components import KpiCard, GraphPaper, IconTooltip
 from Findash.utils.formatting import format_kpi
 from datetime import datetime, timedelta
 import pandas as pd
@@ -91,6 +90,8 @@ def serve_layout():
 
     # Extrair KPIs do decoded
     kpis = decoded.get("kpis", {})
+    start_date = decoded.get("start_date", {})
+    end_date = decoded.get("end_date", {})
 
     return dmc.MantineProvider(
         id = "mantine-provider",
@@ -174,58 +175,10 @@ def serve_layout():
                                         style={"width": "100%"},
                                         
                                         children=[
-                                            dmc.Tooltip(
-                                                label="Configurações",
-                                                withArrow=True,
-                                                transitionProps={
-                                                    "transition": "scale", 
-                                               },
-                                                children=dmc.ActionIcon(
-                                                    id="settings-icon",
-                                                    children=[DashIconify(icon="tabler:settings", width=20)],
-                                                    variant="outline",
-                                                    size="sm",
-                                                )      
-                                            ),
-                                            dmc.Tooltip(
-                                                label="Relatórios",
-                                                withArrow=True,
-                                                transitionProps={
-                                                    "transition": "scale", 
-                                                },
-                                                children=dmc.ActionIcon(
-                                                    id="reports-icon",
-                                                    children=[DashIconify(icon="tabler:report", width=20)],
-                                                    variant="outline",
-                                                    size="sm",
-                                                )      
-                                            ),
-                                            dmc.Tooltip(
-                                                label="Alertas",
-                                                withArrow=True,
-                                                transitionProps={
-                                                    "transition": "scale", 
-                                                },
-                                                children=dmc.ActionIcon(
-                                                    id="alerts-icon",
-                                                    children=[DashIconify(icon="tabler:bell", width=20)],
-                                                    variant="outline",
-                                                    size="sm",
-                                                ),
-                                            ),
-                                            dmc.Tooltip(
-                                                label="Alternar Tema",
-                                                withArrow=True,
-                                                transitionProps={
-                                                    "transition": "scale", 
-                                                },
-                                                children=dmc.ActionIcon(
-                                                    id="theme-toggle",
-                                                    children=[DashIconify(id="theme-icon", icon="tabler:sun", width=20)],
-                                                    variant="outline",
-                                                    size="sm",
-                                                ),
-                                            ),
+                                            IconTooltip("settings-btn", "tabler:settings", "Configurações"),
+                                            IconTooltip("reports-btn", "tabler:report", "Relatórios"),
+                                            IconTooltip("alerts-btn", "tabler:bell", "Alertas"),
+                                            IconTooltip("theme-toggle", "tabler:sun", "Alternar Tema", iconify_id="theme-icon"),
                                         ],
                                     ),
                                 ],   
@@ -370,8 +323,7 @@ def serve_layout():
                                 gutter="sm",
                                 id="main-grid",
                                 style={
-                                    "marginLeft": "12px", 
-                                    
+                                    "marginLeft": "12px",             
                                 },
                                 children=[
                                     #Coluna Esquerda (1/3)
@@ -386,7 +338,7 @@ def serve_layout():
                                             "padding": "8px",
                                             "marginTop": "5px", 
                                                                                     
-                                            },
+                                        },
                                         children=[
                                             dmc.Alert(
                                                 id='ticker-error-alert',
@@ -397,45 +349,60 @@ def serve_layout():
                                                 withCloseButton=True,
                                                 style={'marginBottom': '10px', 'fontSize': '12px'},
                                             ),
-                                            dmc.Group(
-                                                gap="xs",
-                                                align="center",
+                                            dmc.Grid(
+                                                gutter="xs",
                                                 style={'marginBottom': '10px'},
                                                 children=[
-                                                    dmc.Select(
-                                                        id='ticker-dropdown',
-                                                        data=ticker_options,
-                                                        value=None,
-                                                        placeholder="Selecione um ticker",
-                                                        style={'width': '100%', 'maxWidth': '250px', 'fontSize': '12px'},
-                                                        size="sm",
-                                                        clearable=True,
-                                                    ),
-                                                    dmc.DatesProvider(
-                                                        children=dmc.DatePickerInput(
-                                                            id='date-input-range-picker',
-                                                            value=["",""],
-                                                            type="range",
-                                                            minDate="2020-01-01",  # Data mínima obrigatória
-                                                            maxDate="2025-12-31",  # Data máxima obrigatória
-                                                            dropdownType="calendar",
-                                                            valueFormat="DD/MM/YYYY",
-                                                            style={
-                                                                'width': '200px', 
-                                                                'fontSize': '10px', 
-                                                                'maxHeight': '30px',
-                                                            }
+                                                    dmc.GridCol(
+                                                        span={"base": 12, "md": 7},
+                                                        children=dmc.Select(
+                                                            id='ticker-dropdown',
+                                                            label="Inclua novos Tickers",
+                                                            data=ticker_options,
+                                                            value=None,
+                                                            searchable=True,
+                                                            limit=10,
+                                                            placeholder="Selecione um ticker",
+                                                            style={'width': '100%'},
+                                                            size="xs",
+                                                            clearable=True,
                                                         ),
-                                                        settings={'locale': 'pt'},
                                                     ),
-                                                    dmc.Button(
-                                                        id='update-period-button',
-                                                        children="Atualizar Período",
-                                                        size="sm",
-                                                        color="indigo",
-                                                        variant="filled",
-                                                        style={'marginTop': '8px'},
-                                                        n_clicks=0,
+                                                    dmc.GridCol(
+                                                        span={"base": 12, "md": 5},
+                                                        children=[
+                                                            dmc.DatesProvider(
+                                                                settings={'locale': 'pt'},
+                                                                children=dmc.DatePickerInput(
+                                                                    id='date-input-range-picker',
+                                                                    value=[start_date,end_date],
+                                                                    label="Selecione novo período",
+                                                                    type="range",
+                                                                    numberOfColumns=2,
+                                                                    minDate="2020-01-01",  # Data mínima obrigatória
+                                                                    maxDate="2025-12-31",  # Data máxima obrigatória
+                                                                    dropdownType="calendar",
+                                                                    size="xs",
+                                                                    valueFormat="DD/MM/YYYY",
+                                                                    style={'width': '100%'},                                   
+                                                                ),
+                                                            ),
+                                                            dmc.Group(
+                                                                justify="flex-end",
+                                                                mt=5,
+                                                                children=[
+                                                                    dmc.Button(
+                                                                        id='update-period-button',
+                                                                        children="Atualizar Período",
+                                                                        size="xs",
+                                                                        color="indigo",
+                                                                        variant="filled",
+                                                                        n_clicks=0,
+                                                                        style={'width': '100%'}
+                                                                    )
+                                                                ]
+                                                            ),
+                                                        ],
                                                     ),
                                                 ]
                                             ),
@@ -451,8 +418,7 @@ def serve_layout():
                                                     {'name': 'DY', 'id': 'proventos', 'editable': False},
                                                 ],
                                                 data=[],
-                                                style_table={'overflowX': 'auto', 
-                                                            'marginTop': '20px', 
+                                                style_table={'overflowX': 'auto',                   
                                                             'height': '200px',
                                                             'border': '1px solid #dee2e6',
                                                             'overflowY': 'auto'
@@ -686,7 +652,7 @@ def init_dash(flask_app, portfolio_service):
     dash_app.portfolio_service = portfolio_service
     dash_app.layout = serve_layout
     # Registrar callbacks modulares
-    register_table_callbacks(dash_app)
+    # register_table_callbacks(dash_app)
     register_graph_callbacks(dash_app)
     
     # Configurar o Flask subjacente para usar orjson em respostas JSON
@@ -811,8 +777,8 @@ def init_dash(flask_app, portfolio_service):
             "padding": "8px",
             "backgroundColor": "#2c2e30" if new_theme == "dark" else "#f8f9fa",
             "borderColor": "#444" if new_theme == "dark" else "#dee2e6",
-            "--kpi-text-color": "#9775FA" if new_theme == "dark" else "#1e3a8a",
-            "--kpi-icon-bg-color":"#9775FA" if new_theme == "dark" else "#1e3a8a",
+            "--kpi-text-color": "#b9c7e2" if new_theme == "dark" else "#1e3a8a",
+            "--kpi-icon-bg-color":"#b9c7e2" if new_theme == "dark" else "#1e3a8a",
             "--kpi-icon-color": "#000" if new_theme == "dark" else "#fff"
             
         }

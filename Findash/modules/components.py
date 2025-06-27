@@ -3,6 +3,23 @@ from dash import dcc
 from dash_iconify import DashIconify
 import dash_mantine_components as dmc
 
+def IconTooltip(action_id, icon_name, tooltip_label, icon_size=20, iconify_id=None):
+    icon_props = {"icon": icon_name, "width": icon_size}
+    if iconify_id:
+        icon_props["id"] = iconify_id
+
+    return dmc.Tooltip(
+        label=tooltip_label,
+        withArrow=True,
+        transitionProps={"transition": "scale"},
+        children=dmc.ActionIcon(
+            id=action_id,
+            children=[DashIconify(**icon_props)],
+            variant="outline",
+            size="sm",
+        )
+    )
+
 def KpiCard(kpi_name, value, icon, tooltip, id=None):
     """
     Componente reutilizável para exibir KPIs em cards.
@@ -95,4 +112,5 @@ def GraphPaper(paper_id: str, graph_id: str, height="200px"):
             )
         ]
     )
+
 

@@ -14,6 +14,7 @@ from utils.serialization import orjson_dumps, orjson_loads
 from flask import session, has_request_context
 from Findash.callbacks.tables import register_table_callbacks
 from Findash.callbacks.graphs import register_graph_callbacks
+from Findash.callbacks.kpis_cards import register_kpis_card
 
 import logging
 
@@ -651,8 +652,10 @@ def init_dash(flask_app, portfolio_service):
     #dash_app.enable_dev_tools(debug=True, dev_tools_hot_reload=True)
     dash_app.portfolio_service = portfolio_service
     dash_app.layout = serve_layout
+    
     # Registrar callbacks modulares
     # register_table_callbacks(dash_app)
+    register_kpis_card(dash_app)
     register_graph_callbacks(dash_app)
     
     # Configurar o Flask subjacente para usar orjson em respostas JSON
@@ -812,46 +815,6 @@ def init_dash(flask_app, portfolio_service):
             graph_paper_style,
             graph_paper_style
         )   
-    
-    @dash_app.callback(
-        [Output("kpi-sharpe-value", "children"),
-         Output("kpi-sortino-value", "children"),
-         Output("kpi-retorno-value", "children"),
-         Output("kpi-volat-value", "children"),
-         Output("kpi-drawdown-value", "children"),
-         Output("kpi-alpha-value", "children"),
-         Output("kpi-beta-value", "children")],
-        Input('data-store', 'data'),
-        prevent_initial_call=True
-    )
-    def update_kpi_cards(store_data):
-        """
-        Atualiza os valores dos KpiCards quando o data-store muda.
-        
-        Args:
-            store_data: Dados armazenados no dcc.Store, contendo os KPIs do portfólio.
-        
-        Returns:
-            Lista de strings formatadas para os dmc.Text de cada KpiCard.
-        """
-        # Desserializar store_data
-        if store_data:
-            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
-        else:
-            store_data = {}
-
-        # Obter KPIs ou usar valores padrão
-        kpis = store_data.get("kpis", {})
-
-        return (
-            format_kpi("sharpe", kpis.get("sharpe")),
-            format_kpi("sortino", kpis.get("sortino")),
-            format_kpi("retorno_medio_anual", kpis.get("retorno_medio_anual")),
-            format_kpi("volatilidade", kpis.get("volatilidade")),
-            format_kpi("max_drawdown", kpis.get("max_drawdown")),
-            format_kpi("alpha", kpis.get("alpha")),
-            format_kpi("beta", kpis.get("beta"))
-        )
 
     @dash_app.callback(
         [Output('price-table', 'data'),

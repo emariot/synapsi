@@ -3,6 +3,96 @@ from dash import dcc
 from dash_iconify import DashIconify
 import dash_mantine_components as dmc
 
+def build_portfolio_cards(tickers: list, plan_type: str, theme: str = "light"):
+    """
+    Retorna o componente `dmc.Paper` com badges dos tickers e nome do plano, adaptando-se ao tema.
+    """
+    is_dark = theme == "dark"
+    badge_color = "grape" if is_dark else "indigo"
+    plan_text_color = "#adb5bd" if is_dark else "#495057"
+
+    ticker_badges = [
+        dmc.Tooltip(
+            label=f"Detalhes de {ticker.replace('.SA', '')}",
+            position="top",
+            withArrow=True,
+            transitionProps={"transition": "scale"},
+            children=dmc.Badge(
+                ticker.replace('.SA', ''),
+                variant="filled",
+                color=badge_color,
+                size="md",
+                style={
+                    "borderRadius": "4px",
+                    "padding": "4px 8px",
+                    "margin": "0",
+                    "fontSize": "12px",
+                    "fontWeight": 500
+                }
+            )
+        )
+        for ticker in tickers
+    ]
+
+    return dmc.Paper(
+        id="portfolio-cards",
+        shadow="xs",
+        p="sm",
+        style={
+            "width": "100%",
+            "border": "1px solid #dee2e6",
+            "borderRadius": "5px",
+            "display": "flex",
+            "flexDirection": "row",
+            "flexWrap": "nowrap",
+            "overflowX": "auto",
+            "gap": "8px",
+            "padding": "0px",
+            "alignItems": "center",
+            "margin": "0"
+        },
+        children=[
+            dmc.Group(
+                style={
+                    "position": "relative",
+                    "minHeight": "60px",
+                    "width": "100%",
+                    "justifyContent": "center",
+                    "alignItems": "center"
+                },
+                children=[
+                    dmc.Group(
+                        gap="4px",
+                        style={
+                            "flexWrap": "nowrap",
+                            "display": "flex",
+                            "flexDirection": "row",
+                            "justifyContent": "center",
+                            "paddingBottom": "30px"
+                        },
+                        children=ticker_badges
+                    ),
+                    dmc.Group(
+                        style={
+                            "position": "absolute",
+                            "bottom": "-5px",
+                            "width": "100%",
+                            "justifyContent": "center"
+                        },
+                        children=[
+                            dmc.Text(
+                                f"Plano: {plan_type}",
+                                size="xs",
+                                fw=700,
+                                style={"color": plan_text_color}
+                            )
+                        ]
+                    )
+                ]
+            )
+        ]
+    )
+
 def IconTooltip(action_id, icon_name, tooltip_label, icon_size=20, iconify_id=None):
     icon_props = {"icon": icon_name, "width": icon_size}
     if iconify_id:

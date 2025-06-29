@@ -1,6 +1,7 @@
 from dash import Dash, Output, Input
 from utils.serialization import orjson_loads
 from Findash.utils.formatting import format_kpi
+from Findash.utils.logging_tools import log_callback
 
 
 def register_kpis_card(dash_app: Dash):
@@ -16,6 +17,7 @@ def register_kpis_card(dash_app: Dash):
             Input('data-store', 'data'),
             prevent_initial_call=True
         )
+    @log_callback("update_kpi_cards")
     def update_kpi_cards(store_data):
         """
         Atualiza os valores dos KpiCards quando o data-store muda.

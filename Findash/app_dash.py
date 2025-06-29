@@ -5,7 +5,7 @@ import dash_mantine_components as dmc
 from dash_iconify import DashIconify
 import dash_bootstrap_components as dbc
 from Findash.modules.metrics import calcular_metricas
-from Findash.modules.components import KpiCard, GraphPaper, IconTooltip
+from Findash.modules.components import KpiCard, GraphPaper, IconTooltip, build_portfolio_cards
 from Findash.utils.formatting import format_kpi
 from datetime import datetime, timedelta
 import pandas as pd
@@ -16,34 +16,7 @@ from Findash.callbacks.tables import register_table_callbacks
 from Findash.callbacks.graphs import register_graph_callbacks
 from Findash.callbacks.kpis_cards import register_kpis_card
 
-import logging
-
-# Configuração de logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s [%(levelname)s] %(message)s',
-    handlers=[
-        logging.FileHandler('debug.log', encoding='utf-8'),
-        logging.StreamHandler()
-    ]
-)
-logger = logging.getLogger(__name__)
-logging.getLogger('yfinance').setLevel(logging.WARNING)
-logging.getLogger('sqlitedict').setLevel(logging.WARNING)
-
-#Configurar logger do Werkzeug para nível INFO
-werkzeug_logger = logging.getLogger('werkzeug')
-werkzeug_logger.setLevel(logging.INFO)
-
-# Filtro personalizado para suprimir logs de requisições HTTP específicas do Dash
-class DashRequestFilter(logging.Filter):
-    def filter(self, record):
-        # Ignora mensagens de requisições GET/POST para rotas do Dash
-        if 'GET /dash' in record.msg or 'POST /dash' in record.msg:
-            return False
-        return True
-
-werkzeug_logger.addFilter(DashRequestFilter())
+from Findash.utils.logging_tools import logger, log_callback
 
 # Lista estática de tickers
 TICKERS = [
@@ -94,6 +67,16 @@ def serve_layout():
     start_date = decoded.get("start_date", {})
     end_date = decoded.get("end_date", {})
 
+    # Extrair table_data do decoded
+    table_data = decoded.get('table_data', [])
+
+    # Header: Portfólio Cards, dropdown portfólio, bt salvar portfólio
+    tickers = decoded.get("tickers", [])
+    plan_type = decoded.get("plan_type", "free").capitalize()
+    is_registered = session.get('is_registered', False) if has_request_context() else False
+    portfolio_name = decoded.get('portfolio_name', 'Portfólio 1')
+    save_button_disabled = not is_registered or plan_type.lower() != 'registered'
+
     return dmc.MantineProvider(
         id = "mantine-provider",
         forceColorScheme="light",
@@ -128,24 +111,7 @@ def serve_layout():
                         # Coluna do portfolio-cards (9/12)
                         dmc.GridCol(
                             span={"base": 12, "md": 7},
-                            children=dmc.Paper(
-                                id="portfolio-cards",
-                                shadow="xs",
-                                p="sm",
-                                style={
-                                    "width": "100%",  # Ocupa toda a largura da coluna
-                                    "border": "1px solid #dee2e6",
-                                    "borderRadius": "5px",
-                                    "display": "flex",
-                                    "flexDirection": "row",  # Garante layout horizontal
-                                    "flexWrap": "nowrap",    # Evita quebra de linha
-                                    "overflowX": "auto",     # Rolagem horizontal para muitos tickers
-                                    "gap": "8px",            # Mais espaço entre tickers
-                                    "padding": "0px",        # Aumenta o padding interno
-                                    "alignItems": "center",  # Centraliza verticalmente
-                                    "margin": "0"
-                                },
-                            ),
+                            children=build_portfolio_cards(tickers, plan_type)
                         ),
                         # Coluna do dropdown, botão e ActionIcons (3/12)
                         dmc.GridCol(
@@ -159,7 +125,7 @@ def serve_layout():
                                         data=[
                                             {"label": "Portfólio 1","value": "Portfólio 1"},
                                         ],
-                                        value="Portfólio 1",
+                                        value=portfolio_name,
                                         style={"width": "100%"},
                                         size="sm",
                                     ),  
@@ -169,6 +135,7 @@ def serve_layout():
                                         color="green",
                                         size="xs",
                                         fullWidth=True,
+                                        disabled=save_button_disabled,
                                     ),
                                     dmc.Group(
                                         gap="xs",    
@@ -418,7 +385,7 @@ def serve_layout():
                                                     {'name': 'GCAP', 'id': 'ganho_capital', 'editable': False},
                                                     {'name': 'DY', 'id': 'proventos', 'editable': False},
                                                 ],
-                                                data=[],
+                                                data=table_data,
                                                 style_table={'overflowX': 'auto',                   
                                                             'height': '200px',
                                                             'border': '1px solid #dee2e6',
@@ -690,7 +657,9 @@ def init_dash(flask_app, portfolio_service):
         ],
         Input("theme-toggle", "n_clicks"),
         State("theme-store", "data"),
+        prevent_initial_call=True
     )
+    @log_callback("toggle_theme")
     def toggle_theme(n_clicks, current_theme):
         if n_clicks is None or n_clicks == 0:
             return [no_update] * 21
@@ -816,110 +785,111 @@ def init_dash(flask_app, portfolio_service):
             graph_paper_style
         )   
 
-    @dash_app.callback(
-        [Output('price-table', 'data'),
-        Output('data-store', 'data', allow_duplicate=True)],
-        [Input('data-store', 'data'),
-        Input('price-table', 'data')],
-        State('price-table', 'data_previous'),
-        prevent_initial_call='initial_duplicate'
-    )
-    def update_price_table(store_data, table_data, table_data_previous):
-        if store_data:
-            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
+    # @dash_app.callback(
+    #     [Output('price-table', 'data'),
+    #     Output('data-store', 'data', allow_duplicate=True)],
+    #     [Input('data-store', 'data'),
+    #     Input('price-table', 'data')],
+    #     State('price-table', 'data_previous'),
+    #     prevent_initial_call='initial_duplicate'
+    # )
+    # def update_price_table(store_data, table_data, table_data_previous):
+    #     if store_data:
+    #         store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
 
-        # Logar conteúdo inicial de store_data
-        logger.info(f"Conteúdo de store_data: tickers={store_data.get('tickers')}, período=({store_data.get('start_date')} - {store_data.get('end_date')})")
+    #     # Logar conteúdo inicial de store_data
+    #     logger.info(f"Conteúdo de store_data: tickers={store_data.get('tickers')}, período=({store_data.get('start_date')} - {store_data.get('end_date')})")
 
-        # Verificar se store_data contém table_data válido antes de inicializar como vazio
-        if not store_data or 'portfolio' not in store_data or not store_data['portfolio'] or ('table_data' not in store_data or not store_data['table_data']):
-            logger.info("Inicializando store_data com dados padrão")
-            initial_data = {
-                'is_registered': session.get('is_registered', False),
-                'plan_type': session.get('plan_type', 'free'),
-                'tickers_limit': session.get('tickers_limit', 5),
-                'tickers': [],
-                'quantities': [],
-                'portfolio': {},
-                'ibov': {},
-                'start_date': None,
-                'end_date': None,
-                'portfolio_values': {},
-                'portfolio_return': {},
-                'individual_returns': {},
-                'ibov_return': {},
-                'table_data': [],
-                'dividends': {ticker['symbol']: {} for ticker in TICKERS},
-                'setor_pesos': {},
-                'setor_pesos_financeiros': {},
-                'individual_daily_returns': {},
-                'portfolio_daily_return': {},
-                'portfolio_name': 'Portfólio 1'
-            }
-            return [], orjson_dumps(initial_data).decode('utf-8')
+    #     # Verificar se store_data contém table_data válido antes de inicializar como vazio
+    #     if not store_data or 'portfolio' not in store_data or not store_data['portfolio'] or ('table_data' not in store_data or not store_data['table_data']):
+    #         logger.info("Inicializando store_data com dados padrão")
+    #         initial_data = {
+    #             'is_registered': session.get('is_registered', False),
+    #             'plan_type': session.get('plan_type', 'free'),
+    #             'tickers_limit': session.get('tickers_limit', 5),
+    #             'tickers': [],
+    #             'quantities': [],
+    #             'portfolio': {},
+    #             'ibov': {},
+    #             'start_date': None,
+    #             'end_date': None,
+    #             'portfolio_values': {},
+    #             'portfolio_return': {},
+    #             'individual_returns': {},
+    #             'ibov_return': {},
+    #             'table_data': [],
+    #             'dividends': {ticker['symbol']: {} for ticker in TICKERS},
+    #             'setor_pesos': {},
+    #             'setor_pesos_financeiros': {},
+    #             'individual_daily_returns': {},
+    #             'portfolio_daily_return': {},
+    #             'portfolio_name': 'Portfólio 1'
+    #         }
+    #         return [], orjson_dumps(initial_data).decode('utf-8')
 
-        tickers = store_data.get('tickers', [])
-        quantities = store_data.get('quantities', [])
-        portfolio = store_data.get('portfolio', {})
-        ibov = store_data.get('ibov', {})
-        start_date = store_data.get('start_date')
-        end_date = store_data.get('end_date')
-        dividends = store_data.get('dividends', {})
+    #     tickers = store_data.get('tickers', [])
+    #     quantities = store_data.get('quantities', [])
+    #     portfolio = store_data.get('portfolio', {})
+    #     ibov = store_data.get('ibov', {})
+    #     start_date = store_data.get('start_date')
+    #     end_date = store_data.get('end_date')
+    #     dividends = store_data.get('dividends', {})
 
-        # Logar tickers e quantities
-        logger.info(f"Tickers: {tickers}, Quantities: {quantities}")
+    #     # Logar tickers e quantities
+    #     logger.info(f"Tickers: {tickers}, Quantities: {quantities}")
 
-        # Usar table_data do store_data se válido, mesmo que table_data seja None
-        if table_data is None or (table_data_previous is None and 'table_data' in store_data and store_data['table_data']):
-            table_data = store_data.get('table_data', [])
-            logger.info(f"table_data carregado com {len(table_data)} linhas | tickers={tickers}")
-            return table_data, orjson_dumps(store_data).decode('utf-8')
+    #     # Usar table_data do store_data se válido, mesmo que table_data seja None
+    #     if table_data is None or (table_data_previous is None and 'table_data' in store_data and store_data['table_data']):
+    #         table_data = store_data.get('table_data', [])
+    #         logger.info(f"table_data carregado com {len(table_data)} linhas | tickers={tickers}")
+    #         return table_data, orjson_dumps(store_data).decode('utf-8')
 
-        new_quantities = quantities.copy()
-        if table_data and table_data != table_data_previous:
-            table_quantities = {row['ticker']: int(row['quantidade']) for row in table_data if row['ticker'] != 'Total'}
-            new_quantities = [table_quantities.get(ticker, quantities[i] if i < len(quantities) else 1)
-                            for i, ticker in enumerate(tickers)]
+    #     new_quantities = quantities.copy()
+    #     if table_data and table_data != table_data_previous:
+    #         table_quantities = {row['ticker']: int(row['quantidade']) for row in table_data if row['ticker'] != 'Total'}
+    #         new_quantities = [table_quantities.get(ticker, quantities[i] if i < len(quantities) else 1)
+    #                         for i, ticker in enumerate(tickers)]
 
-            try:
-                result = calcular_metricas(portfolio, tickers, new_quantities, start_date, end_date, ibov, dividends=dividends)
-                metrics = result['table_data']
-            except Exception as e:
-                logger.error(f"Erro ao calcular métricas: {e}")
-                metrics = store_data.get('table_data', [])  # Preservar table_data existente
-        else:
-            metrics = store_data.get('table_data', [])  # Preservar table_data existente
+    #         try:
+    #             result = calcular_metricas(portfolio, tickers, new_quantities, start_date, end_date, ibov, dividends=dividends)
+    #             metrics = result['table_data']
+    #         except Exception as e:
+    #             logger.error(f"Erro ao calcular métricas: {e}")
+    #             metrics = store_data.get('table_data', [])  # Preservar table_data existente
+    #     else:
+    #         metrics = store_data.get('table_data', [])  # Preservar table_data existente
 
-        # Logar metrics
-        logger.info(f"Métricas calculadas: {metrics}")
+    #     # Logar metrics
+    #     logger.info(f"Métricas calculadas: {metrics}")
 
-        ticker_quantities = dict(zip(tickers, new_quantities))
-        updated_table_data = [row for row in metrics if row['ticker'] in tickers or row['ticker'] == 'Total']
-        total_quantity = sum(ticker_quantities.values()) or 1
-        for row in updated_table_data:
-            if row['ticker'] != 'Total':
-                row['quantidade'] = ticker_quantities.get(row['ticker'], 0)
-                row['peso_quantidade_percentual'] = f"{(row['quantidade'] / total_quantity) * 100:.2f}%"
-                row['acao'] = 'x'
-            else:
-                row['acao'] = "Total"
-                row['quantidade'] = total_quantity
-                row['peso_quantidade_percentual'] = "100.00%"
+    #     ticker_quantities = dict(zip(tickers, new_quantities))
+    #     updated_table_data = [row for row in metrics if row['ticker'] in tickers or row['ticker'] == 'Total']
+    #     total_quantity = sum(ticker_quantities.values()) or 1
+    #     for row in updated_table_data:
+    #         if row['ticker'] != 'Total':
+    #             row['quantidade'] = ticker_quantities.get(row['ticker'], 0)
+    #             row['peso_quantidade_percentual'] = f"{(row['quantidade'] / total_quantity) * 100:.2f}%"
+    #             row['acao'] = 'x'
+    #         else:
+    #             row['acao'] = "Total"
+    #             row['quantidade'] = total_quantity
+    #             row['peso_quantidade_percentual'] = "100.00%"
 
-        updated_store_data = store_data.copy()
-        updated_store_data['quantities'] = new_quantities
-        if table_data and table_data != table_data_previous:
-            updated_store_data.update(result)
+    #     updated_store_data = store_data.copy()
+    #     updated_store_data['quantities'] = new_quantities
+    #     if table_data and table_data != table_data_previous:
+    #         updated_store_data.update(result)
 
-        # Logar dados finais
-        logger.info(f"Retornando updated_table_data: {updated_table_data}")
-        return updated_table_data, orjson_dumps(updated_store_data).decode('utf-8')
+    #     # Logar dados finais
+    #     logger.info(f"Retornando updated_table_data: {updated_table_data}")
+    #     return updated_table_data, orjson_dumps(updated_store_data).decode('utf-8')
     
     @dash_app.callback(
         Output('portfolio-treemap', 'figure'),
         Input('data-store', 'data'),
         prevent_initial_call=False
     )
+    @log_callback("update_portfolio_treemap")
     def update_portfolio_treemap(store_data):
         # ALTERAÇÃO: Desserializar store_data com orjson_loads
         # Motivo: Dados do dcc.Store foram serializados com orjson_dumps; convertemos para dict
@@ -948,6 +918,7 @@ def init_dash(flask_app, portfolio_service):
         Input('data-store', 'data'),
         prevent_initial_call=False
     )
+    @log_callback("update_financial_treemap")
     def update_financial_treemap(store_data):
         # ALTERAÇÃO: Desserializar store_data com orjson_loads
         # Motivo: Dados do dcc.Store foram serializados com orjson_dumps; convertemos para dict
@@ -991,6 +962,7 @@ def init_dash(flask_app, portfolio_service):
         State('data-store', 'data'),
         prevent_initial_call=True
     )
+    @log_callback("delete_ticker")
     def delete_ticker(active_cell, store_data):
         """
         Remove um ticker do portfólio usando o PortfolioService.
@@ -1037,6 +1009,7 @@ def init_dash(flask_app, portfolio_service):
         State('data-store', 'data'),
         prevent_initial_call=True
     )
+    @log_callback("add_ticker")
     def add_ticker(selected_ticker, store_data):
         """
         Adiciona um ticker ao portfólio usando o PortfolioService, validando o limite de tickers.
@@ -1070,6 +1043,7 @@ def init_dash(flask_app, portfolio_service):
         State('data-store', 'data'),
         prevent_initial_call=True
     )
+    @log_callback("update_period")
     def update_period(n_clicks, date_range, store_data):
         """
         Atualiza o período do portfólio usando o PortfolioService.
@@ -1091,6 +1065,7 @@ def init_dash(flask_app, portfolio_service):
         Input('data-store', 'data'),
         prevent_initial_call=False
     )
+    @log_callback("update_capital_dividend_chart")
     def update_capital_dividend_chart(store_data):
         """
         Gera um gráfico de colunas lado a lado com ganho de capital, dividend yield e retorno total.
@@ -1180,6 +1155,7 @@ def init_dash(flask_app, portfolio_service):
         Input('data-store', 'data'),
         prevent_initial_call=False
     )
+    @log_callback("update_dividend_by_sector_chart")
     def update_dividend_by_sector_chart(store_data):
         """
         Gera um gráfico de barras com o Dividend Yield por setor.
@@ -1262,6 +1238,7 @@ def init_dash(flask_app, portfolio_service):
         Input('data-store', 'data'),
         prevent_initial_call=False
     )
+    @log_callback("update_cumulative_gains_dividends_chart")
     def update_cumulative_gains_dividends_chart(store_data):
         """
         Gera um gráfico de linhas mostrando o retorno total acumulado e o DY acumulado.
@@ -1370,6 +1347,7 @@ def init_dash(flask_app, portfolio_service):
         Input('data-store', 'data'),
         prevent_initial_call=False
     )
+    @log_callback("update_sector_bar_chart")
     def update_sector_bar_chart(store_data):
         # ALTERAÇÃO: Desserializar store_data com orjson_loads
         # Motivo: Dados do dcc.Store foram serializados com orjson_dumps; convertemos para dict
@@ -1442,6 +1420,7 @@ def init_dash(flask_app, portfolio_service):
         Input('data-store', 'data'),
         prevent_initial_call=False
     )
+    @log_callback("update_correlation_heatmap")
     def update_correlation_heatmap(store_data):
         # ALTERAÇÃO: Desserializar store_data com orjson_loads
         # Motivo: Dados do dcc.Store foram serializados com orjson_dumps; convertemos para dict
@@ -1485,6 +1464,7 @@ def init_dash(flask_app, portfolio_service):
         Input('data-store', 'data'),
         prevent_initial_call=False
     )
+    @log_callback("update_volatility_chart")
     def update_volatility_chart(store_data):
         # ALTERAÇÃO: Desserializar store_data com orjson_loads
         # Motivo: Dados do dcc.Store foram serializados com orjson_dumps; convertemos para dict
@@ -1525,118 +1505,119 @@ def init_dash(flask_app, portfolio_service):
     # ALTERAÇÃO: Callback para atualizar cards e dropdown, e controlar modal
     # Motivo: Exibir tickers no header, nome do portfólio e abrir/fechar modal
     # Impacto: Integra cards dinâmicos e controle do modal
-    @dash_app.callback(
-        [Output('portfolio-cards', 'children'),
-        Output('portfolio-name-dropdown', 'options'),
-        Output('portfolio-name-dropdown', 'value'),
-        Output('save-portfolio-modal', 'opened'),
-        Output('save-portfolio-button', 'disabled')],
-        [Input('data-store', 'data'),
-        Input('save-portfolio-button', 'n_clicks'),
-        Input('modal-cancel-button', 'n_clicks'),
-        Input('modal-save-button', 'n_clicks')],
-        [State('save-portfolio-modal', 'opened')],
-    prevent_initial_call=False
-    )
-    def update_header_and_modal(store_data, save_clicks, cancel_clicks, save_modal_clicks, opened):
-        """
-        Atualiza cards, dropdown, modal e desabilita botão de salvamento com base no plano.
-        """
-        if store_data:
-            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
+    # @dash_app.callback(
+    #     [Output('portfolio-cards', 'children'),
+    #     Output('portfolio-name-dropdown', 'options'),
+    #     Output('portfolio-name-dropdown', 'value'),
+    #     Output('save-portfolio-modal', 'opened'),
+    #     Output('save-portfolio-button', 'disabled')],
+    #     [Input('data-store', 'data'),
+    #     Input('save-portfolio-button', 'n_clicks'),
+    #     Input('modal-cancel-button', 'n_clicks'),
+    #     Input('modal-save-button', 'n_clicks')],
+    #     [State('save-portfolio-modal', 'opened')],
+    # prevent_initial_call=False
+    # )
+    # @log_callback("update_header_and_modal")
+    # def update_header_and_modal(store_data, save_clicks, cancel_clicks, save_modal_clicks, opened):
+    #     """
+    #     Atualiza cards, dropdown, modal e desabilita botão de salvamento com base no plano.
+    #     """
+    #     if store_data:
+    #         store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
 
-        tickers = store_data.get('tickers', []) if store_data else []
-        portfolio_name = store_data.get('portfolio_name', 'Portfólio 1') if store_data else 'Portfólio 1'
-        plan_type = session.get('plan_type', 'free').capitalize()
+    #     tickers = store_data.get('tickers', []) if store_data else []
+    #     portfolio_name = store_data.get('portfolio_name', 'Portfólio 1') if store_data else 'Portfólio 1'
+    #     plan_type = session.get('plan_type', 'free').capitalize()
 
-        # Criar cards de tickers e exibir plano
-        children = [
-            dmc.Group(
-                style={
-                    "position": "relative",  # Contexto para posicionamento absoluto
-                    "minHeight": "60px",  # Espaço para texto fixo
-                    "width": "100%",
-                    "justifyContent": "center",  # Centraliza conteúdo horizontalmente
-                    "alignItems": "center"  # Centraliza conteúdo verticalmente
-                },
-                children=[
-                    dmc.Group(  # Grupo para os badges dos tickers
-                        gap="4px",
-                        style={
-                            "flexWrap": "nowrap",
-                            "display": "flex",
-                            "flexDirection": "row",
-                            "justifyContent": "center",
-                            "paddingBottom": "30px"
-                        },
-                        children=[
-                            dmc.Tooltip(
-                                label=f"Detalhes de {ticker.replace('.SA', '')}",
-                                position="top",
-                                withArrow=True,
-                                transitionProps={
-                                    "transition": "scale", 
+    #     # Criar cards de tickers e exibir plano
+    #     children = [
+    #         dmc.Group(
+    #             style={
+    #                 "position": "relative",  # Contexto para posicionamento absoluto
+    #                 "minHeight": "60px",  # Espaço para texto fixo
+    #                 "width": "100%",
+    #                 "justifyContent": "center",  # Centraliza conteúdo horizontalmente
+    #                 "alignItems": "center"  # Centraliza conteúdo verticalmente
+    #             },
+    #             children=[
+    #                 dmc.Group(  # Grupo para os badges dos tickers
+    #                     gap="4px",
+    #                     style={
+    #                         "flexWrap": "nowrap",
+    #                         "display": "flex",
+    #                         "flexDirection": "row",
+    #                         "justifyContent": "center",
+    #                         "paddingBottom": "30px"
+    #                     },
+    #                     children=[
+    #                         dmc.Tooltip(
+    #                             label=f"Detalhes de {ticker.replace('.SA', '')}",
+    #                             position="top",
+    #                             withArrow=True,
+    #                             transitionProps={
+    #                                 "transition": "scale", 
                           
-                                },
-                                children=[
-                                    dmc.Badge(
-                                        ticker.replace('.SA', ''),
-                                        variant="filled",
-                                        color="indigo",
-                                        size="md",
-                                        style={
-                                            "borderRadius": "4px",
-                                            "padding": "4px 8px",
-                                            "margin": "0",
-                                            "fontSize": "12px",
-                                            "fontWeight": 500
-                                        },
-                                    )
-                                ]
-                            ) for ticker in tickers
-                        ],
-                    ),
-                    dmc.Group(  # Grupo separado para o texto do plano
-                        style={
-                            "position": "absolute",  # Fixa na base
-                            "bottom": "-5px",  # Distância da borda inferior
-                            "width": "100%",
-                            "justifyContent": "center"  # Centraliza texto
-                        },
-                        children=[
-                            dmc.Text(
-                                f"Plano: {plan_type}",
-                                size="xs",
-                                fw=700,
-                                style={"color": "#495057" if plan_type.lower() == "light" else "#adb5bd"}
-                            )
-                        ]
-                    )
-                ]
-            )
-        ]
+    #                             },
+    #                             children=[
+    #                                 dmc.Badge(
+    #                                     ticker.replace('.SA', ''),
+    #                                     variant="filled",
+    #                                     color="indigo",
+    #                                     size="md",
+    #                                     style={
+    #                                         "borderRadius": "4px",
+    #                                         "padding": "4px 8px",
+    #                                         "margin": "0",
+    #                                         "fontSize": "12px",
+    #                                         "fontWeight": 500
+    #                                     },
+    #                                 )
+    #                             ]
+    #                         ) for ticker in tickers
+    #                     ],
+    #                 ),
+    #                 dmc.Group(  # Grupo separado para o texto do plano
+    #                     style={
+    #                         "position": "absolute",  # Fixa na base
+    #                         "bottom": "-5px",  # Distância da borda inferior
+    #                         "width": "100%",
+    #                         "justifyContent": "center"  # Centraliza texto
+    #                     },
+    #                     children=[
+    #                         dmc.Text(
+    #                             f"Plano: {plan_type}",
+    #                             size="xs",
+    #                             fw=700,
+    #                             style={"color": "#495057" if plan_type.lower() == "light" else "#adb5bd"}
+    #                         )
+    #                     ]
+    #                 )
+    #             ]
+    #         )
+    #     ]
                         
         
-        dropdown_options = [{'label': portfolio_name, 'value': portfolio_name}]
-        dropdown_value = portfolio_name
+    #     dropdown_options = [{'label': portfolio_name, 'value': portfolio_name}]
+    #     dropdown_value = portfolio_name
 
-        # Desabilitar botão de salvamento para usuários não cadastrados
-        is_registered = session.get('is_registered', False)
-        plan_type = session.get('plan_type', 'free')
-        save_button_disabled = not is_registered or plan_type != 'registered'
+    #     # Desabilitar botão de salvamento para usuários não cadastrados
+    #     is_registered = session.get('is_registered', False)
+    #     plan_type = session.get('plan_type', 'free')
+    #     save_button_disabled = not is_registered or plan_type != 'registered'
 
-        # Controle do modal
-        ctx = dash.callback_context
-        triggered_id = ctx.triggered[0]['prop_id'].split('.')[0] if ctx.triggered else None
+    #     # Controle do modal
+    #     ctx = dash.callback_context
+    #     triggered_id = ctx.triggered[0]['prop_id'].split('.')[0] if ctx.triggered else None
         
-        # Abrir modal ao clicar em "Salvar Portfólio"
-        if triggered_id == 'save-portfolio-button' and save_clicks:
-            return children, dropdown_options, dropdown_value, True, save_button_disabled
-        # Fechar modal ao clicar em "Cancelar" ou "Salvar"
-        elif triggered_id in ['modal-cancel-button', 'modal-save-button']:
-            return children, dropdown_options, dropdown_value, False, save_button_disabled
-        # Manter estado atual se não houver interação relevante
-        return children, dropdown_options, dropdown_value, opened, save_button_disabled
+    #     # Abrir modal ao clicar em "Salvar Portfólio"
+    #     if triggered_id == 'save-portfolio-button' and save_clicks:
+    #         return children, dropdown_options, dropdown_value, True, save_button_disabled
+    #     # Fechar modal ao clicar em "Cancelar" ou "Salvar"
+    #     elif triggered_id in ['modal-cancel-button', 'modal-save-button']:
+    #         return children, dropdown_options, dropdown_value, False, save_button_disabled
+    #     # Manter estado atual se não houver interação relevante
+    #     return children, dropdown_options, dropdown_value, opened, save_button_disabled
 
     # ALTERAÇÃO: Callback para salvar portfólio via modal
     # Motivo: Enviar requisição POST a /save-portfolio com nome do portfólio
@@ -1652,6 +1633,7 @@ def init_dash(flask_app, portfolio_service):
         State('data-store', 'data')],
         prevent_initial_call=True
     )
+    @log_callback("save_portfolio")
     def save_portfolio(n_clicks, portfolio_name, store_data):
         """
         Salva o portfólio diretamente no banco usando PortfolioService, com dados do dcc.Store, e fecha o modal.

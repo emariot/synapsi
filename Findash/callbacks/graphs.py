@@ -2,6 +2,7 @@ from dash import Dash, Output, Input
 import plotly.graph_objects as go
 from utils.serialization import orjson_loads
 from Findash.utils.plot_style import get_figure_theme
+from Findash.utils.logging_tools import log_callback
 import pandas as pd
 
 def register_graph_callbacks(dash_app: Dash):
@@ -18,6 +19,7 @@ def register_graph_callbacks(dash_app: Dash):
         Input('theme-store', 'data'),
         prevent_initial_call=False
     )
+    @log_callback("update_portfolio_ibov_line")
     def update_portfolio_ibov_line(store_data, theme):
         """
         Atualiza o gráfico de linha comparando o retorno acumulado do portfólio e do IBOV.
@@ -90,6 +92,7 @@ def register_graph_callbacks(dash_app: Dash):
         Input('theme-store', 'data'),
         prevent_initial_call=False
     )
+    @log_callback("update_individual_tickers_line")
     def update_individual_tickers_line(store_data, theme):
 
         if store_data:
@@ -151,6 +154,7 @@ def register_graph_callbacks(dash_app: Dash):
         Input('theme-store', 'data'),
         prevent_initial_call=False
     )
+    @log_callback("update_stacked_area_chart")
     def update_stacked_area_chart(store_data, theme):
         if store_data:
             store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data

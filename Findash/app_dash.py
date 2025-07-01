@@ -1,4 +1,3 @@
-import dash
 from dash import Dash, html, dcc, Output, Input, State, callback, no_update, dash_table
 import plotly.graph_objects as go
 import dash_mantine_components as dmc
@@ -621,7 +620,7 @@ def init_dash(flask_app, portfolio_service):
     dash_app.layout = serve_layout
     
     # Registrar callbacks modulares
-    # register_table_callbacks(dash_app)
+    register_table_callbacks(dash_app)
     register_kpis_card(dash_app)
     register_graph_callbacks(dash_app)
     
@@ -991,9 +990,7 @@ def init_dash(flask_app, portfolio_service):
     #     # Logar dados finais
     #     logger.info(f"Retornando updated_table_data: {updated_table_data}")
     #     return updated_table_data, orjson_dumps(updated_store_data).decode('utf-8')
-    # ALTERAÇÃO: Callback para salvar portfólio via modal
-    # Motivo: Enviar requisição POST a /save-portfolio com nome do portfólio
-    # Impacto: Atualiza data-store com nome do portfólio e fecha modal
+
     @dash_app.callback(
         [Output('save-portfolio-message', 'children'),
         Output('data-store', 'data', allow_duplicate=True),
@@ -1055,86 +1052,6 @@ def init_dash(flask_app, portfolio_service):
             logger.error(f"Erro ao salvar portfólio: {e}")
             return dmc.Text(f'Erro: {str(e)}', color='red'), no_update, no_update, no_update, True
         
-    @dash_app.callback(
-        Output('data-store', 'data', allow_duplicate=True),
-        Input('price-table', 'active_cell'),
-        State('data-store', 'data'),
-        prevent_initial_call=True
-    )
-    @log_callback("delete_ticker")
-    def delete_ticker(active_cell, store_data):
-        """
-        Remove um ticker do portfólio usando o PortfolioService.
-        """
-        # ALTERAÇÃO: Desserializar store_data com orjson_loads
-        # Motivo: Dados do dcc.Store foram serializados com orjson_dumps; convertemos para dict
-        # Impacto: Permite acessar tickers e outros dados para remoção
-        if store_data:
-            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
-
-        if not active_cell or not store_data or not store_data['tickers']:
-            # ALTERAÇÃO: Serializar store_data com orjson_dumps ao retornar
-            # Motivo: Mantém consistência com a serialização manual
-            return orjson_dumps(store_data).decode('utf-8') if store_data else None
-        
-        row = active_cell['row']
-        col = active_cell['column_id']
-        
-        if col == 'acao' and row < len(store_data['tickers']):
-            ticker_to_remove = store_data['tickers'][row]
-            try:
-                updated_portfolio = dash_app.portfolio_service.remove_ticker(store_data, ticker_to_remove)
-                logger.info(f"Ticker {ticker_to_remove} removido")
-                # ALTERAÇÃO: Serializar updated_portfolio com orjson_dumps antes de salvar
-                # Motivo: Garante que os dados salvos usem orjson
-                return orjson_dumps(updated_portfolio).decode('utf-8')
-            except ValueError as e:
-                logger.error(f"Erro ao remover ticker: {e}")
-                # ALTERAÇÃO: Serializar store_data com orjson_dumps ao retornar
-                # Motivo: Mantém consistência com a serialização manual
-                return orjson_dumps(store_data).decode('utf-8')
-        
-        # ALTERAÇÃO: Serializar store_data com orjson_dumps ao retornar
-        # Motivo: Mantém consistência com a serialização manual
-        return orjson_dumps(store_data).decode('utf-8')
-
-    @dash_app.callback(
-        [Output('data-store', 'data', allow_duplicate=True),
-         Output('ticker-dropdown', 'value'),
-         Output('ticker-error-alert', 'children'),
-         Output('ticker-error-alert', 'is_open'),
-         Output('ticker-dropdown', 'disabled')],
-        Input('ticker-dropdown', 'value'),
-        State('data-store', 'data'),
-        prevent_initial_call=True
-    )
-    @log_callback("add_ticker")
-    def add_ticker(selected_ticker, store_data):
-        """
-        Adiciona um ticker ao portfólio usando o PortfolioService, validando o limite de tickers.
-        """
-        if store_data:
-            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
-
-        if not selected_ticker or not store_data:
-            return no_update, None, no_update, no_update, no_update
-        
-        # Verificar limite de tickers
-        tickers_limit = session.get('tickers_limit', 5)
-        current_tickers = len(store_data['tickers'])
-        if current_tickers >= tickers_limit:
-            error_message = f"Limite de {tickers_limit} tickers atingido"
-            logger.warning(error_message)
-            return no_update, None, error_message, True, True
-        
-        try:
-            updated_portfolio = dash_app.portfolio_service.add_ticker(store_data, selected_ticker, 1)
-            logger.info(f"Ticker {selected_ticker} adicionado")
-            return orjson_dumps(updated_portfolio).decode('utf-8'), None, no_update, False, False
-        except ValueError as e:
-            logger.error(f"Erro ao adicionar ticker: {e}")
-            return no_update, None, str(e), True, current_tickers + 1 >= tickers_limit
-
     @dash_app.callback(
         Output('data-store', 'data', allow_duplicate=True),
         Input('update-period-button', 'n_clicks'),

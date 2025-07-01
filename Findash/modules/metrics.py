@@ -3,7 +3,7 @@ import pandas as pd
 import time
 import functools
 from datetime import datetime
-import quantstats as qs
+
 import numpy as np
 
 # Decorador para medir tempo de execução
@@ -222,20 +222,6 @@ def obter_preco_inicial_e_final(prices):
     preco_final = prices[datas_ordenadas[-1]]
     return preco_inicial, preco_final
 
-@measure_time
-def calcular_percentual(valor, total):
-    """
-    Calcula o percentual de um valor em relação a um total.
-    
-    Args:
-        valor (float): Valor a ser convertido em percentual.
-        total (float): Total para cálculo do percentual.
-    
-    Returns:
-        float: Percentual (0.0 se total for 0).
-    """
-    return (valor / total) * 100 if total > 0 else 0.0
-
 # Funções menores para cada tipo de cálculo
 @measure_time
 def calcular_pesos_por_setor(tickers, quantities, portfolio, get_sector_func=get_sector):
@@ -254,29 +240,36 @@ def calcular_pesos_por_setor(tickers, quantities, portfolio, get_sector_func=get
     setor_pesos = {setor: 0.0 for setor in SETORES}
     setor_pesos_financeiros = {setor: 0.0 for setor in SETORES}
 
+    # Pré-calcular setores para evitar chamadas repetitivas a get_sector_func
+    sectores = {ticker: get_sector_func(ticker) for ticker in tickers}
+
+    # Converter inputs em DataFrame para cálculos vetoriais
+    df = pd.DataFrame({
+        'ticker': tickers,
+        'quantidade': quantities,
+        'preco_final': [obter_preco_inicial_e_final(portfolio[t])[1] if t in portfolio and portfolio[t] else None for t in tickers],
+        'setor': [sectores[t] for t in tickers]
+    })
+    # Filtrar tickers válidos (com preço final não nulo)
+    df = df[df['preco_final'].notnull()]
+    if df.empty:
+        return setor_pesos, setor_pesos_financeiros
+
     # Calcular soma total das quantidades
-    soma_quantidades = sum(quantities)
+    soma_quantidades = df['quantidade'].sum()
+
+    # Calcular pesos por quantidade vetorialmente
+    df['peso_quantidade'] = df['quantidade'] / soma_quantidades * 100
+    setor_pesos.update(df.groupby('setor')['peso_quantidade'].sum().to_dict())
 
     # Calcular valor financeiro total
-    valor_total = 0.0
-    for i, ticker in enumerate(tickers):
-        if ticker in portfolio and portfolio[ticker]:
-            precos = portfolio[ticker]
-            preco_inicial, preco_final = obter_preco_inicial_e_final(precos)
-            if preco_final is not None:
-                quantidade = quantities[i]
-                # Peso por quantidade
-                peso_quantidade = calcular_percentual(quantidade, soma_quantidades)
-                setor = get_sector_func(ticker)
-                setor_pesos[setor] += peso_quantidade
-                # Peso financeiro
-                valor_financeiro = quantidade * preco_final
-                valor_total += valor_financeiro
-                setor_pesos_financeiros[setor] += valor_financeiro
+    df['valor_financeiro'] = df['quantidade'] * df['preco_final']
+    valor_total = df['valor_financeiro'].sum()
 
-    # Converter pesos financeiros para percentuais
-    for setor in setor_pesos_financeiros:
-        setor_pesos_financeiros[setor] = calcular_percentual(setor_pesos_financeiros[setor], valor_total)
+    # Calcular pesos financeiros vetorialmente
+    if valor_total > 0:
+        df['peso_financeiro'] = df['valor_financeiro'] / valor_total * 100
+        setor_pesos_financeiros.update(df.groupby('setor')['peso_financeiro'].sum().to_dict())
 
     return setor_pesos, setor_pesos_financeiros
 
@@ -429,7 +422,7 @@ def calcular_retorno_diario_ibov(ibov):
 @measure_time
 def calcular_metricas_tabela(tickers, quantities, portfolio, setor_pesos, start_date, end_date, dividends=None, get_sector_func=get_sector):
     """
-    Calcula as métricas para a tabela (retorno total por ticker, pesos, etc.).
+    Calcula métricas da tabela de forma eficiente.
     
     Args:
         tickers (list): Lista de tickers.
@@ -443,51 +436,35 @@ def calcular_metricas_tabela(tickers, quantities, portfolio, setor_pesos, start_
     Returns:
         list: Lista de dicionários com as métricas para a tabela.
     """
-    # [OTIMIZAÇÃO 1]: Pré-calcular setores para todos os tickers em um único dict
-    # Evita chamadas repetitivas a get_sector dentro do loop, reduzindo overhead
+    # Pré-calcular setores e ganhos/proventos
     sectores = {ticker: get_sector_func(ticker) for ticker in tickers}
-    
-    # Inicializar variáveis
-    soma_quantidades = sum(quantities)
-    retorno_carteira = 0.0
-    ganho_carteira = 0.0
-    proventos_carteira = 0.0
-
-    # Calcular ganhos e proventos (mantido como está, já otimizado)
     ganhos_proventos = calcular_ganhos_e_proventos(tickers, quantities, portfolio, start_date, end_date, dividends=dividends)
 
-    # [OTIMIZAÇÃO 2]: Criar DataFrame diretamente com todos os dados necessários
-    # Evita loops iniciais, usando list comprehensions e acesso direto a ganhos_proventos
-    data = {
+    # Criar DataFrame com todos os dados
+    df = pd.DataFrame({
         'ticker': tickers,
         'quantidade': quantities,
         'preco_inicial': [obter_preco_inicial_e_final(portfolio[t])[0] if t in portfolio and portfolio[t] else None for t in tickers],
         'preco_final': [obter_preco_inicial_e_final(portfolio[t])[1] if t in portfolio and portfolio[t] else None for t in tickers],
         'setor': [sectores[t] for t in tickers],
-        'ganho_capital': [ganhos_proventos[t]['ganho_capital'] if t in ganhos_proventos else 0.0 for t in tickers],
-        'proventos': [ganhos_proventos[t]['proventos'] if t in ganhos_proventos else 0.0 for t in tickers]
-    }
-    df = pd.DataFrame(data)
+        'ganho_capital': [ganhos_proventos[t]['ganho_capital'] for t in tickers],
+        'proventos': [ganhos_proventos[t]['proventos'] for t in tickers]
+    })
 
-    # [OTIMIZAÇÃO 3]: Calcular retornos e pesos vetorialmente com verificação simplificada
-    # Usa where para tratar None/NaN, eliminando verificações redundantes
+    # Calcular retorno total e peso por quantidade vetorialmente
     df['retorno_total'] = ((df['preco_final'] - df['preco_inicial']) / df['preco_inicial'] * 100).where(
         df['preco_inicial'].notnull() & df['preco_final'].notnull(), None
     )
-    df['peso_quantidade'] = df['quantidade'] / soma_quantidades * 100
+    soma_quantidades = df['quantidade'].sum()
+    df['peso_quantidade'] = df['quantidade'] / soma_quantidades * 100 if soma_quantidades > 0 else 0.0
 
-    # [OTIMIZAÇÃO 4]: Calcular retorno da carteira com operação vetorial
-    # Evita loop adicional, usa soma ponderada direta
+    # Calcular totais
     valid_retornos = df[df['retorno_total'].notnull()]
-    if not valid_retornos.empty:
-        retorno_carteira = (valid_retornos['retorno_total'] * valid_retornos['quantidade'] / soma_quantidades).sum()
-
-    # Somar ganhos e proventos (já vetorial)
+    retorno_carteira = (valid_retornos['retorno_total'] * valid_retornos['quantidade'] / soma_quantidades).sum() if not valid_retornos.empty and soma_quantidades > 0 else 0.0
     ganho_carteira = df['ganho_capital'].sum()
     proventos_carteira = df['proventos'].sum()
 
-    # [OTIMIZAÇÃO 5]: Construir ticker_metrics com apply em vez de loop
-    # Reduz overhead de iteração, formata strings diretamente
+    # Formatar métricas
     ticker_metrics = df.apply(lambda row: {
         'ticker': row['ticker'],
         'retorno_total': f"{row['retorno_total']:.2f}%" if pd.notnull(row['retorno_total']) else "N/A",
@@ -498,8 +475,7 @@ def calcular_metricas_tabela(tickers, quantities, portfolio, setor_pesos, start_
         'proventos': f"R$ {row['proventos']:.2f}" if pd.notnull(row['proventos']) else "N/A"
     }, axis=1).tolist()
 
-    # [OTIMIZAÇÃO 6]: Adicionar linha de total com formatação direta
-    # Evita verificações redundantes, usa valores calculados
+    # Adicionar linha de total
     ticker_metrics.append({
         'ticker': 'Total',
         'retorno_total': f"{retorno_carteira:.2f}%" if retorno_carteira != 0 else "N/A",
@@ -569,42 +545,62 @@ def calcular_ganhos_e_proventos(tickers, quantities, portfolio, start_date, end_
 @measure_time
 def calcular_kpis_quantstats(portfolio_daily_returns, benchmark_daily_returns=None):
     """
-    Calcula KPIs financeiros usando quantstats.
-    
+    Calcula KPIs financeiros manualmente.
+
     Args:
         portfolio_daily_returns (pd.Series): Retornos diários do portfólio.
         benchmark_daily_returns (pd.Series): Retornos diários do benchmark (opcional).
-    
+
     Returns:
-        dict: KPIs financeiros.
+        dict: KPIs financeiros (sharpe, sortino, volatilidade, max_drawdown, retorno_medio_anual, alpha, beta).
     """
 
-    # Garantir que o índice seja datetime para compatibilidade com quantstats
+    # Garantir que o índice seja datetime
     if not isinstance(portfolio_daily_returns.index, pd.DatetimeIndex):
         portfolio_daily_returns.index = pd.to_datetime(portfolio_daily_returns.index)
 
     if benchmark_daily_returns is not None and not isinstance(benchmark_daily_returns.index, pd.DatetimeIndex):
         benchmark_daily_returns.index = pd.to_datetime(benchmark_daily_returns.index)
 
+    # Calcular retorno médio anual
+    retorno_medio_anual = portfolio_daily_returns.mean() * 252
 
+    # Calcular volatilidade
+    volatilidade = np.std(portfolio_daily_returns, ddof=1) * np.sqrt(252)
+
+    # Calcular Sharpe Ratio (taxa livre de risco = 0)
+    sharpe = retorno_medio_anual / volatilidade if volatilidade != 0 else np.nan
+
+    # Calcular Sortino Ratio
+    retornos_negativos = portfolio_daily_returns[portfolio_daily_returns < 0]  # Excluir zeros
+    downside_deviation = np.sqrt(np.sum(retornos_negativos ** 2) / len(portfolio_daily_returns)) * np.sqrt(252) if len(retornos_negativos) > 0 else 0
+    sortino = retorno_medio_anual / downside_deviation if downside_deviation != 0 else np.nan
+
+    # Calcular Max Drawdown
+    cum_returns = (1 + portfolio_daily_returns).cumprod()
+    rolling_max = cum_returns.cummax()
+    drawdowns = (cum_returns - rolling_max) / rolling_max
+    max_drawdown = drawdowns.min() if not drawdowns.empty else 0
+
+    # Inicializar dicionário de métricas
     metrics = {
-        'sharpe': qs.stats.sharpe(portfolio_daily_returns),
-        'sortino': qs.stats.sortino(portfolio_daily_returns),
-        'volatilidade': qs.stats.volatility(portfolio_daily_returns),
-        'max_drawdown': qs.stats.max_drawdown(portfolio_daily_returns),
-        'retorno_medio_anual': portfolio_daily_returns.mean() * 252,
+        'sharpe': sharpe,
+        'sortino': sortino,
+        'volatilidade': volatilidade,
+        'max_drawdown': max_drawdown,
+        'retorno_medio_anual': retorno_medio_anual,
     }
 
+    # Calcular alpha e beta (se benchmark disponível)
     if benchmark_daily_returns is not None:
-        # Calcular alpha e beta manualmente
         combined = pd.concat([portfolio_daily_returns, benchmark_daily_returns], axis=1).dropna()
         portfolio_ret = combined.iloc[:, 0]
         benchmark_ret = combined.iloc[:, 1]
 
         # Regressão linear: retorno_portfolio = alpha + beta * retorno_benchmark
         cov_matrix = np.cov(portfolio_ret, benchmark_ret)
-        beta = cov_matrix[0, 1] / cov_matrix[1, 1]
-        alpha = portfolio_ret.mean() - beta * benchmark_ret.mean()
+        beta = cov_matrix[0, 1] / cov_matrix[1, 1] if cov_matrix[1, 1] != 0 else np.nan
+        alpha = portfolio_ret.mean() - beta * benchmark_ret.mean() if not np.isnan(beta) else np.nan
 
         metrics['alpha'] = alpha * 252  # anualizar
         metrics['beta'] = beta
@@ -628,14 +624,15 @@ def calcular_metricas(portfolio, tickers, quantities, start_date, end_date, ibov
     Returns:
         dict: Dicionário com todas as métricas calculadas:
             - table_data: Métricas para a tabela.
-            - portfolio_return: Retornos acumulados do portfólio.
+            - portfolio_return: Lista de {x: data, y: retorno} para o portfólio.
             - individual_returns: Retornos acumulados por ticker.
             - portfolio_daily_return: Retornos diários do portfólio.
             - individual_daily_returns: Retornos diários por ticker.
-            - ibov_return: Retorno acumulado do IBOV (se fornecido).
+            - ibov_return: Lista de {x: data, y: retorno} para o IBOV (se fornecido).
             - portfolio_values: Valores do portfólio ao longo do tempo.
             - setor_pesos: Pesos por setor (por quantidade).
             - setor_pesos_financeiros: Pesos por setor (por valor financeiro).
+            - kpis: Indicadores financeiros.
     """
     # Validação inicial
     if not tickers or not quantities or len(tickers) != len(quantities):
@@ -676,15 +673,28 @@ def calcular_metricas(portfolio, tickers, quantities, start_date, end_date, ibov
 
     # Passo 3: Calcular retornos acumulados e diários por ticker
     individual_returns, individual_daily_returns = calcular_retornos_individuais(tickers, portfolio)
-
+    # Formatar individual_returns para o gráfico
+    individual_returns = {
+        ticker: [{'x': pd.to_datetime(k).strftime('%Y-%m-%d'), 'y': v} for k, v in returns.items()]
+        for ticker, returns in individual_returns.items()
+    }
     # Passo 4: Calcular retornos acumulados e diários do portfólio
     portfolio_return, portfolio_daily_return = calcular_retornos_portfolio(tickers, quantities, portfolio)
+    # Formatar portfolio_return para o gráfico
+    portfolio_return = [
+        {'x': pd.to_datetime(k).strftime('%Y-%m-%d'), 'y': v}
+        for k, v in portfolio_return.items()
+    ]
 
     # Passo 5: Calcular valores do portfólio
     portfolio_values = calcular_valores_portfolio(tickers, quantities, portfolio)
 
     # Passo 6: Calcular retorno do IBOV (se fornecido)
     ibov_return = calcular_retorno_ibov(ibov)
+    ibov_return = [
+        {'x': pd.to_datetime(k).strftime('%Y-%m-%d'), 'y': v}
+        for k, v in ibov_return.items()
+    ]
 
     # Passo 7: Clacular KPIs usando quantstats
     portfolio_returns_series = pd.Series(portfolio_daily_return).sort_index()

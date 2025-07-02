@@ -49,10 +49,11 @@ def register_table_callbacks(dash_app: Dash):
          Output('ticker-dropdown', 'disabled')],
         Input('ticker-dropdown', 'value'),
         State('data-store', 'data'),
+        State('client-config', 'data'),
         prevent_initial_call=True
     )
     @log_callback("add_ticker")
-    def add_ticker(selected_ticker, store_data):
+    def add_ticker(selected_ticker, store_data, client_config):
         """
         Adiciona um ticker ao portfólio usando o PortfolioService, validando o limite de tickers.
         """
@@ -63,7 +64,7 @@ def register_table_callbacks(dash_app: Dash):
             return no_update, None, no_update, no_update, no_update
         
         # Verificar limite de tickers
-        tickers_limit = store_data.get('tickers_limit', 5)
+        tickers_limit = client_config.get('tickers_limit', 5)
         current_tickers = len(store_data['tickers'])
         if current_tickers >= tickers_limit:
             error_message = f"Limite de {tickers_limit} tickers atingido"

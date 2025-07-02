@@ -32,10 +32,10 @@ def serve_layout():
     try:
         if has_request_context() and 'initial_portfolio' in session:
             session_data = session.get("initial_portfolio")
-            decoded = orjson_loads(session_data)
+            portfolio_data = orjson_loads(session_data)
         else:
             logger.info("Sem contexto de requisição ou dados de portfólio. Usando valores padrão.")
-            decoded = {
+            portfolio_data = {
                 'tickers': [],
                 'quantities': [],
                 #'portfolio': {},
@@ -53,27 +53,40 @@ def serve_layout():
                 'individual_daily_returns': {},
                 'portfolio_daily_return': {},
                 'portfolio_name': 'Portfólio 1',
-                'is_registered': session.get('is_registered', False) if has_request_context() else False,
-                'plan_type': session.get('plan_type', 'free') if has_request_context() else 'free',
-                'tickers_limit': session.get('tickers_limit', 5) if has_request_context() else 5
             }
+        # Metadados do usuário
+        client_config = {
+            'is_registered': session.get('is_registered', False) if has_request_context() else False,
+            'plan_type': session.get('plan_type', 'free') if has_request_context() else 'free',
+            'tickers_limit': session.get('tickers_limit', 5) if has_request_context() else 5
+        }
     except Exception as e:
         logger.error(f"Erro ao constuir layout dinâmico: {e}")
-        decoded = {}   
+        portfolio_data = {}  
+        client_config = {} 
 
-    # Extrair KPIs do decoded
-    kpis = decoded.get("kpis", {})
-    start_date = decoded.get("start_date", {})
-    end_date = decoded.get("end_date", {})
+    # Serializa para JSON em bytes
+    json_bytes = orjson_dumps(portfolio_data)
 
-    # Extrair table_data do decoded
-    table_data = decoded.get('table_data', [])
+    # Tamanho em bytes e KB
+    tamanho_bytes = len(json_bytes)
+    tamanho_kb = tamanho_bytes / 1024
+
+    print(f"Tamanho dos dados no Store: {tamanho_bytes} bytes ({tamanho_kb:.2f} KB)")
+
+    # Extrair KPIs do portfolio_data
+    kpis = portfolio_data.get("kpis", {})
+    start_date = portfolio_data.get("start_date", {})
+    end_date = portfolio_data.get("end_date", {})
+
+    # Extrair table_data do portfolio_data
+    table_data = portfolio_data.get('table_data', [])
 
     # Header: Portfólio Cards, dropdown portfólio, bt salvar portfólio
-    tickers = decoded.get("tickers", [])
-    plan_type = decoded.get("plan_type", "free").capitalize()
-    is_registered = session.get('is_registered', False) if has_request_context() else False
-    portfolio_name = decoded.get('portfolio_name', 'Portfólio 1')
+    tickers = portfolio_data.get("tickers", [])
+    plan_type = client_config.get("plan_type", "free").capitalize()
+    is_registered = client_config.get('is_registered', False) if has_request_context() else False
+    portfolio_name = portfolio_data.get('portfolio_name', 'Portfólio 1')
     save_button_disabled = not is_registered or plan_type.lower() != 'registered'
 
     return dmc.MantineProvider(
@@ -90,8 +103,13 @@ def serve_layout():
             children=[
                 dcc.Store(
                     id='data-store', 
-                    data=orjson_dumps(decoded).decode("utf-8"),
+                    data=orjson_dumps(portfolio_data).decode("utf-8"),
                     storage_type='session',
+                ),
+                dcc.Store(
+                    id='client-config',
+                    data=client_config,
+                    storage_type='session'
                 ),
                 dcc.Store(id="theme-store", data="light",storage_type="session"),
                 dmc.Grid(

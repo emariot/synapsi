@@ -41,12 +41,13 @@ def register_graph_callbacks(dash_app: Dash):
         theme_config.pop("color_sequence", None)
 
         # Gráfico Portfólio vs IBOV
+        traces_ibov = []
         fig_ibov = go.Figure()
         if 'portfolio_return' in store_data and 'ibov_return' in store_data:
             portfolio_return = store_data['portfolio_return']
             ibov_return = store_data['ibov_return']
 
-            fig_ibov.add_trace(go.Scatter(
+            traces_ibov.append(go.Scatter(
                 x=[item['x'] for item in portfolio_return],
                 y=[item['y'] for item in portfolio_return],
                 mode='lines',
@@ -60,7 +61,7 @@ def register_graph_callbacks(dash_app: Dash):
                 hovertemplate='%{y:.2%}<br>%{x|%d-%m-%Y}'
             ))
 
-            fig_ibov.add_trace(go.Scatter(
+            traces_ibov.append(go.Scatter(
                 x=[item['x'] for item in ibov_return],
                 y=[item['y'] for item in ibov_return],
                 mode='lines',
@@ -74,26 +75,28 @@ def register_graph_callbacks(dash_app: Dash):
                 hovertemplate='%{y:.2%}<br>%{x|%d-%m-%Y}'
             ))
 
-            fig_ibov.update_layout(
-                title=dict(
-                    text='Retorno Acumulado',
-                    x=0.02,
-                    xanchor='left',
-                    y=0.98,
-                    yanchor='top',
-                    font=dict(size=12, family="Helvetica")
-                ),
-                yaxis_title='Retorno (%)',
-                hovermode='x',
-                hoverlabel=dict(
-                    bgcolor="#2c2c2c" if theme == "dark" else "#FFFFFF",
-                    font=dict(color="#FFFFFF" if theme == "dark" else "#212529", size=10, family="Helvetica"),
-                    bordercolor="rgba(0,0,0,0)"
-                ),
-                **theme_config
-            )
+        fig_ibov = go.Figure(data=traces_ibov)
+        fig_ibov.update_layout(
+            title=dict(
+                text='Retorno Acumulado',
+                x=0.02,
+                xanchor='left',
+                y=0.98,
+                yanchor='top',
+                font=dict(size=12, family="Helvetica")
+            ),
+            yaxis_title='Retorno (%)',
+            hovermode='x',
+            hoverlabel=dict(
+                bgcolor="#2c2c2c" if theme == "dark" else "#FFFFFF",
+                font=dict(color="#FFFFFF" if theme == "dark" else "#212529", size=10, family="Helvetica"),
+                bordercolor="rgba(0,0,0,0)"
+            ),
+            **theme_config
+        )
 
         # Gráfico Retornos Individuais
+        traces_individual = []
         fig_individual = go.Figure()
         if 'individual_returns' in store_data and 'tickers' in store_data:
             individual_returns = store_data['individual_returns']
@@ -101,7 +104,7 @@ def register_graph_callbacks(dash_app: Dash):
 
             for i, ticker in enumerate(tickers):
                 if ticker in individual_returns:
-                    fig_individual.add_trace(go.Scatter(
+                    traces_individual.append(go.Scatter(
                         x=[item['x'] for item in individual_returns[ticker]],
                         y=[item['y'] for item in individual_returns[ticker]],
                         mode='lines',
@@ -115,24 +118,25 @@ def register_graph_callbacks(dash_app: Dash):
                         hovertemplate='%{y:.2%}<br>%{x|%d-%m-%Y}'
                     ))
 
-            fig_individual.update_layout(
-                title=dict(
-                    text='Retorno Acumulado: Tickers Individuais',
-                    x=0.02,
-                    xanchor='left',
-                    y=0.98,
-                    yanchor='top',
-                    font=dict(size=12, family="Helvetica")
-                ),
-                yaxis_title='Retorno (%)',
-                hovermode='x',
-                hoverlabel=dict(
-                    bgcolor="#2c2c2c" if theme == "dark" else "#FFFFFF",
-                    font=dict(color="#FFFFFF" if theme == "dark" else "#212529", size=10, family="Helvetica"),
-                    bordercolor="rgba(0,0,0,0)"
-                ),
-                **theme_config
-            )
+        fig_individual = go.Figure(data=traces_individual)
+        fig_individual.update_layout(
+            title=dict(
+                text='Retorno Acumulado: Tickers Individuais',
+                x=0.02,
+                xanchor='left',
+                y=0.98,
+                yanchor='top',
+                font=dict(size=12, family="Helvetica")
+            ),
+            yaxis_title='Retorno (%)',
+            hovermode='x',
+            hoverlabel=dict(
+                bgcolor="#2c2c2c" if theme == "dark" else "#FFFFFF",
+                font=dict(color="#FFFFFF" if theme == "dark" else "#212529", size=10, family="Helvetica"),
+                bordercolor="rgba(0,0,0,0)"
+            ),
+            **theme_config
+        )
 
         return fig_ibov, fig_individual, False, False
 
@@ -160,11 +164,10 @@ def register_graph_callbacks(dash_app: Dash):
         color_sequence = theme_config.pop("color_sequence")
         theme_config.pop("line_colors", None)
 
-
-        fig = go.Figure()
+        traces = []
         for i, ticker in enumerate(tickers):
             if ticker in portfolio_values.columns:
-                fig.add_trace(go.Scatter(
+                traces.append(go.Scatter(
                     x=portfolio_values.index,
                     y=portfolio_values[ticker],
                     mode='lines',
@@ -176,6 +179,7 @@ def register_graph_callbacks(dash_app: Dash):
                     hovertemplate='%{y:.2f} R$<br>%{x|%d-%m-%Y}<br>' + ticker.replace('.SA', '')
                 ))
 
+        fig = go.Figure(data=traces)
         fig.update_layout(
             title=dict(
                 text='Composição do Portfólio: Área Empilhada',
@@ -192,11 +196,11 @@ def register_graph_callbacks(dash_app: Dash):
                 font=dict(color="#FFFFFF" if theme == "dark" else "#212529", size=10, family="Helvetica"),
                 bordercolor="rgba(0,0,0,0)"
             ),
-            #transition=dict(duration=100, easing='cubic-in-out'),
             showlegend=True,
-            **theme_config          
+            **theme_config
         )
         fig.update_traces(
             hovertemplate='<b>%{fullData.name}</b><br>x: %{x}<br>y: %{y}<extra></extra>'
         )
+
         return fig, False

@@ -10,7 +10,7 @@ from datetime import datetime, timedelta
 import pandas as pd
 from Findash.services.portfolio_services import PortfolioService
 from utils.serialization import orjson_dumps, orjson_loads
-from flask import session, has_request_context
+from flask import session, request, has_request_context
 from Findash.callbacks.tables import register_table_callbacks
 from Findash.callbacks.graphs import register_graph_callbacks
 from Findash.callbacks.kpis_cards import register_kpis_card
@@ -29,50 +29,42 @@ ticker_options = [{'label': f"{t['symbol']} - {t['name']}", 'value': t['symbol']
 
 # Layout dinâmico
 def serve_layout():
+    portfolio_data = {}
+    client_config = {}
     try:
-        if has_request_context() and 'initial_portfolio' in session:
-            session_data = session.get("initial_portfolio")
-            portfolio_data = orjson_loads(session_data)
+        if has_request_context():
+            try:
+                path = request.path
+            except RuntimeError:
+                path = None
+
+            if 'initial_portfolio' in session:
+                session_data = session.get("initial_portfolio")
+                portfolio_data = orjson_loads(session_data)
+                logger.info("Dados de portfólio carregados da sessão para Dash.")
+
+                client_config = {
+                    'is_registered': session.get('is_registered', False),
+                    'plan_type': session.get('plan_type', 'free'),
+                    'tickers_limit': session.get('tickers_limit', 5)
+                }
+            else:
+                logger.info(f"Layout acessado fora de /dash_entry ou sem dados. Store será vazio. Path: {path}")
         else:
-            logger.info("Sem contexto de requisição ou dados de portfólio. Usando valores padrão.")
-            portfolio_data = {
-                'tickers': [],
-                'quantities': [],
-                #'portfolio': {},
-                #'ibov': {},
-                'start_date': None,
-                'end_date': None,
-                'portfolio_values': {},
-                'portfolio_return': {},
-                'individual_returns': {},
-                'ibov_return': {},
-                'table_data': [],
-                'dividends': {},
-                'setor_pesos': {},
-                'setor_pesos_financeiros': {},
-                'individual_daily_returns': {},
-                'portfolio_daily_return': {},
-                'portfolio_name': 'Portfólio 1',
-            }
-        # Metadados do usuário
-        client_config = {
-            'is_registered': session.get('is_registered', False) if has_request_context() else False,
-            'plan_type': session.get('plan_type', 'free') if has_request_context() else 'free',
-            'tickers_limit': session.get('tickers_limit', 5) if has_request_context() else 5
-        }
+             logger.info("serve_layout executado fora de contexto de requisição. Store será vazio.") 
     except Exception as e:
         logger.error(f"Erro ao constuir layout dinâmico: {e}")
         portfolio_data = {}  
         client_config = {} 
 
-    # Serializa para JSON em bytes
-    json_bytes = orjson_dumps(portfolio_data)
-
-    # Tamanho em bytes e KB
-    tamanho_bytes = len(json_bytes)
-    tamanho_kb = tamanho_bytes / 1024
-
-    print(f"Tamanho dos dados no Store: {tamanho_bytes} bytes ({tamanho_kb:.2f} KB)")
+    # Mesmo que vazio, serializa para log de tamanho
+    try:
+        json_bytes = orjson_dumps(portfolio_data)
+        tamanho_bytes = len(json_bytes)
+        tamanho_kb = tamanho_bytes / 1024
+        print(f"Tamanho dos dados no Store: {tamanho_bytes} bytes ({tamanho_kb:.2f} KB)")
+    except Exception as e:
+        logger.warning(f"Erro ao serializar dados para log: {e}")
 
     # Extrair KPIs do portfolio_data
     kpis = portfolio_data.get("kpis", {})

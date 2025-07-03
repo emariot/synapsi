@@ -1093,9 +1093,7 @@ def init_dash(flask_app, portfolio_service):
     )
     @log_callback("update_portfolio_treemap")
     def update_portfolio_treemap(store_data):
-        # ALTERAÇÃO: Desserializar store_data com orjson_loads
-        # Motivo: Dados do dcc.Store foram serializados com orjson_dumps; convertemos para dict
-        # Impacto: Permite acessar os dados corretamente para gerar o treemap
+
         if store_data:
             store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
 
@@ -1107,7 +1105,7 @@ def init_dash(flask_app, portfolio_service):
         treemap_fig = go.Figure(go.Treemap(
             labels=[row['ticker'] for row in treemap_data],
             parents=[""] * len(treemap_data),
-            values=[float(row['peso_quantidade_percentual'].replace('%', '')) for row in treemap_data],
+            values=[float(row['peso_quantidade_percentual']) for row in treemap_data],
             text=[row['ticker'] for row in treemap_data],
             textinfo="text"
         ))

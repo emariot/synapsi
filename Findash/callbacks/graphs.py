@@ -7,6 +7,16 @@ import pandas as pd
 from Findash.utils.logging_tools import logger
 import orjson
 
+DARK_COLORS = [
+    "#ffd15f", "#4c78a8", "#f58518", "#e45756", "#72b7b2",
+    "#54a24b", "#b279a2", "#ff9da6", "#9d755d", "#bab0ac"
+]
+
+LIGHT_COLORS = [
+    "#004172", "#3366cc", "#dc3912", "#ff9900", "#109618",
+    "#990099", "#0099c6", "#dd4477", "#66aa00", "#b82e2e"
+]
+
 def register_graph_callbacks(dash_app: Dash):
     """
     Registra callbacks relacionados a gráficos no Dash app.
@@ -34,83 +44,88 @@ def register_graph_callbacks(dash_app: Dash):
             logger.error("Erro ao deserializar store_data")
             return go.Figure(), go.Figure(), False, False
 
-        theme_config = get_figure_theme(theme)
-        line_colors = theme_config.get("line_colors", {})
-        color_sequence = theme_config.get("color_sequence", [])
-        theme_config.pop("line_colors", None)
-        theme_config.pop("color_sequence", None)
+        dark_mode = theme == "dark"
 
-        # Gráfico Portfólio vs IBOV
+        # Cores estáveis e contrastantes para temas claro/escuro
+        color_sequence = DARK_COLORS if dark_mode else LIGHT_COLORS
+        portfolio_color = color_sequence[0]
+        ibov_color = color_sequence[1]
+
+        # === Gráfico: Portfólio vs IBOV ===
         traces_ibov = []
-        fig_ibov = go.Figure()
         if 'portfolio_return' in store_data and 'ibov_return' in store_data:
-            portfolio_return = store_data['portfolio_return']
-            ibov_return = store_data['ibov_return']
-
             traces_ibov.append(go.Scatter(
-                x=[item['x'] for item in portfolio_return],
-                y=[item['y'] for item in portfolio_return],
+                x=[pt['x'] for pt in store_data['portfolio_return']],
+                y=[pt['y'] for pt in store_data['portfolio_return']],
                 mode='lines',
                 name='Portfólio',
-                line=dict(
-                    color=line_colors.get("portfolio", "#1f77b4"),
-                    width=1.2,
-                    shape='spline',
-                    smoothing=1.0
-                ),
+                line=dict(color=portfolio_color, width=1.2, shape='spline', smoothing=1.0),
                 hovertemplate='%{y:.2%}<br>%{x|%d-%m-%Y}'
             ))
-
             traces_ibov.append(go.Scatter(
-                x=[item['x'] for item in ibov_return],
-                y=[item['y'] for item in ibov_return],
+                x=[pt['x'] for pt in store_data['ibov_return']],
+                y=[pt['y'] for pt in store_data['ibov_return']],
                 mode='lines',
                 name='IBOV',
-                line=dict(
-                    color=line_colors.get("ibov", "#ff7f0e"),
-                    width=1.2,
-                    shape='spline',
-                    smoothing=1.3
-                ),
+                line=dict(color=ibov_color, width=1.2, shape='spline', smoothing=1.3),
                 hovertemplate='%{y:.2%}<br>%{x|%d-%m-%Y}'
             ))
 
         fig_ibov = go.Figure(data=traces_ibov)
         fig_ibov.update_layout(
-            title=dict(
-                text='Retorno Acumulado',
-                x=0.02,
-                xanchor='left',
-                y=0.98,
-                yanchor='top',
-                font=dict(size=12, family="Helvetica")
-            ),
-            yaxis_title='Retorno (%)',
+            template='plotly_dark' if dark_mode else 'plotly_white',
+            font=dict(family="Helvetica", size=10, color="#FFFFFF" if dark_mode else "#212529"),
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            margin=dict(l=20, r=20, t=40, b=5),
             hovermode='x',
             hoverlabel=dict(
-                bgcolor="#2c2c2c" if theme == "dark" else "#FFFFFF",
-                font=dict(color="#FFFFFF" if theme == "dark" else "#212529", size=10, family="Helvetica"),
+                bgcolor="#2c2c2c" if dark_mode else "#FFFFFF",
+                font=dict(color="#FFFFFF" if dark_mode else "#212529", size=10, family="Helvetica"),
                 bordercolor="rgba(0,0,0,0)"
             ),
-            **theme_config
+            title=dict(
+                text='Retorno Acumulado',
+                x=0.02, xanchor='left',
+                y=0.98, yanchor='top',
+                font=dict(size=12, family="Helvetica")
+            ),
+            legend=dict(
+                orientation="h",
+                yanchor="bottom",
+                y=1.02,
+                xanchor="center",
+                x=0.5,
+                font=dict(size=10, color="#FFFFFF" if dark_mode else "#212529"),
+                bgcolor="rgba(0,0,0,0)"
+            ),
+            xaxis=dict(
+                tickfont=dict(color="#FFFFFF" if dark_mode else "#212529"),
+                gridcolor="rgba(128, 128, 128, 0.2)",
+                zeroline=False
+            ),
+            yaxis=dict(
+                title='Retorno (%)',
+                tickfont=dict(color="#FFFFFF" if dark_mode else "#212529"),
+                gridcolor="rgba(128, 128, 128, 0.2)",
+                zeroline=True,
+                zerolinecolor="rgba(128, 128, 128, 0.3)",
+                zerolinewidth=1
+            )
         )
 
-        # Gráfico Retornos Individuais
+        # === Gráfico: Retornos Individuais ===
         traces_individual = []
-        fig_individual = go.Figure()
         if 'individual_returns' in store_data and 'tickers' in store_data:
-            individual_returns = store_data['individual_returns']
-            tickers = store_data['tickers']
-
-            for i, ticker in enumerate(tickers):
-                if ticker in individual_returns:
+            for i, ticker in enumerate(store_data['tickers']):
+                if ticker in store_data['individual_returns']:
                     traces_individual.append(go.Scatter(
-                        x=[item['x'] for item in individual_returns[ticker]],
-                        y=[item['y'] for item in individual_returns[ticker]],
+                        x=[pt['x'] for pt in store_data['individual_returns'][ticker]],
+                        y=[pt['y'] for pt in store_data['individual_returns'][ticker]],
                         mode='lines',
-                        name=ticker.replace('.SA', ''),
+                        name=ticker.replace(".SA", ""),
                         line=dict(
-                            color=color_sequence[i % len(color_sequence)] if color_sequence else None,
+                            color=color_sequence[i % len(color_sequence)],
                             width=1.2,
                             shape='spline',
                             smoothing=1.3
@@ -120,27 +135,49 @@ def register_graph_callbacks(dash_app: Dash):
 
         fig_individual = go.Figure(data=traces_individual)
         fig_individual.update_layout(
-            title=dict(
-                text='Retorno Acumulado: Tickers Individuais',
-                x=0.02,
-                xanchor='left',
-                y=0.98,
-                yanchor='top',
-                font=dict(size=12, family="Helvetica")
-            ),
-            yaxis_title='Retorno (%)',
+            template='plotly_dark' if dark_mode else 'plotly_white',
+            font=dict(family="Helvetica", size=10, color="#FFFFFF" if dark_mode else "#212529"),
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            margin=dict(l=20, r=20, t=40, b=5),
             hovermode='x',
             hoverlabel=dict(
-                bgcolor="#2c2c2c" if theme == "dark" else "#FFFFFF",
-                font=dict(color="#FFFFFF" if theme == "dark" else "#212529", size=10, family="Helvetica"),
+                bgcolor="#2c2c2c" if dark_mode else "#FFFFFF",
+                font=dict(color="#FFFFFF" if dark_mode else "#212529", size=10, family="Helvetica"),
                 bordercolor="rgba(0,0,0,0)"
             ),
-            **theme_config
+            title=dict(
+                text='Retorno Acumulado: Tickers Individuais',
+                x=0.02, xanchor='left',
+                y=0.98, yanchor='top',
+                font=dict(size=12, family="Helvetica")
+            ),
+            legend=dict(
+                orientation="h",
+                yanchor="bottom",
+                y=1.02,
+                xanchor="center",
+                x=0.5,
+                font=dict(size=10, color="#FFFFFF" if dark_mode else "#212529"),
+                bgcolor="rgba(0,0,0,0)"
+            ),
+            xaxis=dict(
+                tickfont=dict(color="#FFFFFF" if dark_mode else "#212529"),
+                gridcolor="rgba(128, 128, 128, 0.2)",
+                zeroline=False
+            ),
+            yaxis=dict(
+                title='Retorno (%)',
+                tickfont=dict(color="#FFFFFF" if dark_mode else "#212529"),
+                gridcolor="rgba(128, 128, 128, 0.2)",
+                zeroline=True,
+                zerolinecolor="rgba(128, 128, 128, 0.3)",
+                zerolinewidth=1
+            )
         )
 
         return fig_ibov, fig_individual, False, False
 
-    
     @dash_app.callback(
         Output('stacked-area-chart', 'figure'),
         Output('loading-overlay-area-chart', 'visible'),
@@ -158,11 +195,8 @@ def register_graph_callbacks(dash_app: Dash):
 
         portfolio_values = pd.DataFrame(store_data['portfolio_values'])
         tickers = store_data['tickers']
-
-        # Obtém configurações de tema
-        theme_config = get_figure_theme(theme)
-        color_sequence = theme_config.pop("color_sequence")
-        theme_config.pop("line_colors", None)
+        dark_mode = theme == "dark"
+        color_sequence = DARK_COLORS if dark_mode else LIGHT_COLORS
 
         traces = []
         for i, ticker in enumerate(tickers):
@@ -180,7 +214,19 @@ def register_graph_callbacks(dash_app: Dash):
                 ))
 
         fig = go.Figure(data=traces)
+
         fig.update_layout(
+            template='plotly_dark' if dark_mode else 'plotly_white',
+            font=dict(family="Helvetica", size=10, color="#FFFFFF" if dark_mode else "#212529"),
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            margin=dict(l=20, r=20, t=40, b=5),
+            hovermode='closest',
+            hoverlabel=dict(
+                bgcolor="#2c2c2c" if dark_mode else "#FFFFFF",
+                font=dict(color="#FFFFFF" if dark_mode else "#212529", size=10, family="Helvetica"),
+                bordercolor="rgba(0,0,0,0)"
+            ),
             title=dict(
                 text='Composição do Portfólio: Área Empilhada',
                 x=0.02,
@@ -189,18 +235,32 @@ def register_graph_callbacks(dash_app: Dash):
                 yanchor='top',
                 font=dict(size=12, family="Helvetica")
             ),
-            yaxis_title='Valor (R$)',
-            hovermode='closest',
-            hoverlabel=dict(
-                bgcolor="#2c2c2c" if theme == "dark" else "#FFFFFF",
-                font=dict(color="#FFFFFF" if theme == "dark" else "#212529", size=10, family="Helvetica"),
-                bordercolor="rgba(0,0,0,0)"
+            legend=dict(
+                orientation="h",
+                yanchor="bottom",
+                y=1.02,
+                xanchor="center",
+                x=0.5,
+                font=dict(size=10, color="#FFFFFF" if dark_mode else "#212529"),
+                bgcolor="rgba(0,0,0,0)"
             ),
-            showlegend=True,
-            **theme_config
-        )
-        fig.update_traces(
-            hovertemplate='<b>%{fullData.name}</b><br>x: %{x}<br>y: %{y}<extra></extra>'
+            xaxis=dict(
+                tickfont=dict(color="#FFFFFF" if dark_mode else "#212529"),
+                gridcolor="rgba(128, 128, 128, 0.2)",
+                zeroline=False
+            ),
+            yaxis=dict(
+                title='Valor (R$)',
+                tickfont=dict(color="#FFFFFF" if dark_mode else "#212529"),
+                gridcolor="rgba(128, 128, 128, 0.2)",
+                zeroline=True,
+                zerolinecolor="rgba(128, 128, 128, 0.3)",
+                zerolinewidth=1
+            )
         )
 
         return fig, False
+    
+ 
+    
+    

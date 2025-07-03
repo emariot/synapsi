@@ -434,7 +434,7 @@ def calcular_metricas_tabela(tickers, quantities, portfolio, setor_pesos, start_
         dividends (dict, optional): Dicionário de dividendos por ticker.
     
     Returns:
-        list: Lista de dicionários com as métricas para a tabela.
+        list: Lista de dicionários com as métricas para a tabela, com valores numéricos puros.
     """
     # Pré-calcular setores e ganhos/proventos
     sectores = {ticker: get_sector_func(ticker) for ticker in tickers}
@@ -467,23 +467,23 @@ def calcular_metricas_tabela(tickers, quantities, portfolio, setor_pesos, start_
     # Formatar métricas
     ticker_metrics = df.apply(lambda row: {
         'ticker': row['ticker'],
-        'retorno_total': f"{row['retorno_total']:.2f}%" if pd.notnull(row['retorno_total']) else "N/A",
+        'retorno_total': row['retorno_total'] if pd.notnull(row['retorno_total']) else None,
         'quantidade': row['quantidade'],
-        'peso_quantidade_percentual': f"{row['peso_quantidade']:.2f}%",
+        'peso_quantidade_percentual': row['peso_quantidade'],  # float puro
         'setor': row['setor'],
-        'ganho_capital': f"R$ {row['ganho_capital']:.2f}" if pd.notnull(row['ganho_capital']) else "N/A",
-        'proventos': f"R$ {row['proventos']:.2f}" if pd.notnull(row['proventos']) else "N/A"
+        'ganho_capital': row['ganho_capital'] if pd.notnull(row['ganho_capital']) else None,
+        'proventos': row['proventos'] if pd.notnull(row['proventos']) else None
     }, axis=1).tolist()
 
     # Adicionar linha de total
     ticker_metrics.append({
         'ticker': 'Total',
-        'retorno_total': f"{retorno_carteira:.2f}%" if retorno_carteira != 0 else "N/A",
+        'retorno_total': retorno_carteira if retorno_carteira != 0 else None,
         'quantidade': soma_quantidades,
-        'peso_quantidade_percentual': "100.00%",
+        'peso_quantidade_percentual': 100.0,
         'setor': '',
-        'ganho_capital': f"R$ {ganho_carteira:.2f}" if ganho_carteira != 0 else "N/A",
-        'proventos': f"R$ {proventos_carteira:.2f}" if proventos_carteira != 0 else "N/A"
+        'ganho_capital': ganho_carteira if ganho_carteira != 0 else None,
+        'proventos': proventos_carteira if proventos_carteira != 0 else None
     })
 
     return ticker_metrics

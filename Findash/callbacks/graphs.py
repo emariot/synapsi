@@ -26,23 +26,21 @@ def register_graph_callbacks(dash_app: Dash):
     """
     @dash_app.callback(
         Output('portfolio-ibov-line', 'figure'),
-        Output('individual-tickers-line', 'figure'),
         Output('loading-overlay-ibov', 'visible'),
-        Output('loading-overlay-individual', 'visible'),
         Input('data-store', 'data'),
         Input('theme-store', 'data'),
         prevent_initial_call=False
     )
-    @log_callback("update_combined_return_lines")
-    def update_combined_return_lines(store_data, theme):
+    @log_callback("update_portfolio_vs_ibov_line")
+    def update_portfolio_vs_ibov_line(store_data, theme):
         if not store_data:
-            return go.Figure(), go.Figure(), False, False
+            return go.Figure(), False
 
         try:
             store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
         except orjson.JSONDecodeError:
             logger.error("Erro ao deserializar store_data")
-            return go.Figure(), go.Figure(), False, False
+            return go.Figure(), False
 
         dark_mode = theme == "dark"
 
@@ -73,7 +71,6 @@ def register_graph_callbacks(dash_app: Dash):
 
         fig_ibov = go.Figure(data=traces_ibov)
         fig_ibov.update_layout(
-            template='plotly_dark' if dark_mode else 'plotly_white',
             font=dict(family="Helvetica", size=10, color="#FFFFFF" if dark_mode else "#212529"),
             paper_bgcolor="rgba(0,0,0,0)",
             plot_bgcolor="rgba(0,0,0,0)",
@@ -105,7 +102,14 @@ def register_graph_callbacks(dash_app: Dash):
                 zeroline=False
             ),
             yaxis=dict(
-                title='Retorno (%)',
+                title=dict(
+                    text='Retorno (%)',
+                    font=dict(
+                        size=10, 
+                        color="#FFFFFF" if dark_mode else "#212529", 
+                        family="Helvetica"
+                    ),
+                ),
                 tickfont=dict(color="#FFFFFF" if dark_mode else "#212529"),
                 gridcolor="rgba(128, 128, 128, 0.2)",
                 zeroline=True,
@@ -113,8 +117,29 @@ def register_graph_callbacks(dash_app: Dash):
                 zerolinewidth=1
             )
         )
+        return fig_ibov, False
+    
+    @dash_app.callback(
+        Output('individual-tickers-line', 'figure'),
+        Output('loading-overlay-individual', 'visible'),
+        Input('data-store', 'data'),
+        Input('theme-store', 'data'),
+        prevent_initial_call=False
+    )
+    @log_callback("update_individual_tickers_line")
+    def update_individual_tickers_line(store_data, theme):
+        if not store_data:
+            return go.Figure(), False
+        try:
+            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
+        except orjson.JSONDecodeError:
+            logger.error("Erro ao deserializar store_data")
+            return go.Figure(), False
 
-        # === Gráfico: Retornos Individuais ===
+        dark_mode = theme == "dark"
+        font_color = "#FFFFFF" if dark_mode else "#212529"
+        color_sequence = DARK_COLORS if dark_mode else LIGHT_COLORS
+    
         traces_individual = []
         if 'individual_returns' in store_data and 'tickers' in store_data:
             for i, ticker in enumerate(store_data['tickers']):
@@ -135,7 +160,6 @@ def register_graph_callbacks(dash_app: Dash):
 
         fig_individual = go.Figure(data=traces_individual)
         fig_individual.update_layout(
-            template='plotly_dark' if dark_mode else 'plotly_white',
             font=dict(family="Helvetica", size=10, color="#FFFFFF" if dark_mode else "#212529"),
             paper_bgcolor="rgba(0,0,0,0)",
             plot_bgcolor="rgba(0,0,0,0)",
@@ -176,7 +200,7 @@ def register_graph_callbacks(dash_app: Dash):
             )
         )
 
-        return fig_ibov, fig_individual, False, False
+        return fig_individual, False
 
     @dash_app.callback(
         Output('stacked-area-chart', 'figure'),
@@ -216,7 +240,6 @@ def register_graph_callbacks(dash_app: Dash):
         fig = go.Figure(data=traces)
 
         fig.update_layout(
-            template='plotly_dark' if dark_mode else 'plotly_white',
             font=dict(family="Helvetica", size=10, color="#FFFFFF" if dark_mode else "#212529"),
             paper_bgcolor="rgba(0,0,0,0)",
             plot_bgcolor="rgba(0,0,0,0)",
@@ -261,6 +284,109 @@ def register_graph_callbacks(dash_app: Dash):
 
         return fig, False
     
- 
+    @dash_app.callback(
+        Output('portfolio-treemap', 'figure'),
+        Input('data-store', 'data'),
+        Input('theme-store', 'data'),
+        prevent_initial_call=False
+    )
+    @log_callback("update_portfolio_treemap")
+    def update_portfolio_treemap(store_data, theme):
+
+        if store_data:
+            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
+
+        if not store_data or 'table_data' not in store_data:
+            return go.Figure(go.Treemap())
+        
+        dark_mode = theme == "dark"
+        font_color = "#FFFFFF" if dark_mode else "#212529"
+        bg_color = "rgba(0,0,0,0)"
+        color_sequence = DARK_COLORS if dark_mode else LIGHT_COLORS
+        #template = "plotly_dark" if dark_mode else "plotly_white"
+
+        table_data = store_data['table_data']
+        treemap_data = [row for row in table_data if row['ticker'] != 'Total']
+        
+        fig = go.Figure(go.Treemap(
+            labels=[row['ticker'] for row in treemap_data],
+            parents=[""] * len(treemap_data),
+            values=[float(row['peso_quantidade_percentual']) for row in treemap_data],
+            text=[row['ticker'] for row in treemap_data],
+            textinfo="text",
+            marker=dict(colors=color_sequence)
+        ))
+
+        fig.update_layout(
+            margin=dict(t=30, l=0, r=0, b=0), 
+            title=dict(
+                text="Peso por Quantidade",
+                font=dict(size=12, family="Helvetica", color=font_color)
+            ),
+            font=dict(family="Helvetica", size=10, color=font_color),
+            paper_bgcolor=bg_color,
+            plot_bgcolor=bg_color,
+           
+        )
+        
+        return fig   
+    
+    @dash_app.callback(
+        Output('financial-treemap', 'figure'),
+        Input('data-store', 'data'),
+        Input('theme-store', 'data'),
+        prevent_initial_call=False
+    )
+    @log_callback("update_financial_treemap")
+    def update_financial_treemap(store_data, theme):
+        if store_data:
+            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
+            
+        if not store_data or 'tickers' not in store_data or 'quantities' not in store_data or 'portfolio_values' not in store_data:
+            return go.Figure()
+
+        dark_mode = theme == "dark"
+        font_color = "#FFFFFF" if dark_mode else "#212529"
+        bg_color = "rgba(0,0,0,0)"
+        color_sequence = DARK_COLORS if dark_mode else LIGHT_COLORS
+       
+        tickers = store_data['tickers']
+        quantities = store_data['quantities']
+        portfolio_values = store_data['portfolio_values']
+
+        valores_financeiros = []
+        for ticker, quantidade in zip(tickers, quantities):
+            if ticker in portfolio_values and portfolio_values[ticker]:
+                ultimo_valor = list(portfolio_values[ticker].values())[-1]
+                valor_financeiro = quantidade * ultimo_valor
+                valores_financeiros.append(valor_financeiro)
+            else:
+                valores_financeiros.append(0.0)
+
+        total_financeiro = sum(valores_financeiros)
+        if total_financeiro > 0:
+            pesos_financeiros = [v / total_financeiro * 100 for v in valores_financeiros]
+
+            fig = go.Figure(go.Treemap(
+                labels=tickers,
+                parents=[""] * len(tickers),
+                values=pesos_financeiros,
+                text=[f"{p:.2f}%" for p in pesos_financeiros],
+                textinfo="label+text",
+                marker=dict(colors=color_sequence)
+            ))
+            fig.update_layout(
+                margin=dict(t=30, l=0, r=0, b=0),
+                title = dict(
+                    text="Peso Financeiro",
+                    font=dict(size=12, family="Helvetica", color=font_color)
+                ),
+                font=dict(family="Helvetica", size=10, color=font_color),
+                paper_bgcolor=bg_color,
+                plot_bgcolor=bg_color,
+            )
+            return fig
+        
+        return go.Figure() 
     
     

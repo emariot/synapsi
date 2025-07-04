@@ -15,6 +15,7 @@ from Findash.callbacks.tables import register_table_callbacks
 from Findash.callbacks.graphs import register_graph_callbacks
 from Findash.callbacks.kpis_cards import register_kpis_card
 
+
 from Findash.utils.logging_tools import logger, log_callback
 
 # Lista estática de tickers
@@ -625,7 +626,7 @@ def init_dash(flask_app, portfolio_service):
             "/static/assets/dayjs-config.js",
         ]
     )
-    #dash_app.enable_dev_tools(debug=True, dev_tools_hot_reload=True)
+    # dash_app.enable_dev_tools(debug=True, dev_tools_hot_reload=True)
     dash_app.portfolio_service = portfolio_service
     dash_app.layout = serve_layout
     
@@ -633,6 +634,7 @@ def init_dash(flask_app, portfolio_service):
     register_table_callbacks(dash_app)
     register_kpis_card(dash_app)
     register_graph_callbacks(dash_app)
+ 
     
     # Configurar o Flask subjacente para usar orjson em respostas JSON
     # Garante que os callbacks do Dash usem orjson para serializar respostas
@@ -641,6 +643,8 @@ def init_dash(flask_app, portfolio_service):
     dash_app.server.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
     
     # Callbacks
+
+
     @dash_app.callback(
         [Output("mantine-provider", "forceColorScheme"),
         Output("theme-icon", "icon"),
@@ -1086,74 +1090,7 @@ def init_dash(flask_app, portfolio_service):
         except ValueError as e:
             return orjson_dumps(store_data).decode('utf-8')
         
-    @dash_app.callback(
-        Output('portfolio-treemap', 'figure'),
-        Input('data-store', 'data'),
-        prevent_initial_call=False
-    )
-    @log_callback("update_portfolio_treemap")
-    def update_portfolio_treemap(store_data):
-
-        if store_data:
-            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
-
-        if not store_data or 'table_data' not in store_data:
-            return go.Figure(go.Treemap())
-
-        table_data = store_data['table_data']
-        treemap_data = [row for row in table_data if row['ticker'] != 'Total']
-        treemap_fig = go.Figure(go.Treemap(
-            labels=[row['ticker'] for row in treemap_data],
-            parents=[""] * len(treemap_data),
-            values=[float(row['peso_quantidade_percentual']) for row in treemap_data],
-            text=[row['ticker'] for row in treemap_data],
-            textinfo="text"
-        ))
-        treemap_fig.update_traces(hoverinfo="label+value")
-        treemap_fig.update_layout(margin=dict(t=30, l=0, r=0, b=0), title="Peso por Quantidade")
-        return treemap_fig   
-    @dash_app.callback(
-        Output('financial-treemap', 'figure'),
-        Input('data-store', 'data'),
-        prevent_initial_call=False
-    )
-    @log_callback("update_financial_treemap")
-    def update_financial_treemap(store_data):
-        # ALTERAÇÃO: Desserializar store_data com orjson_loads
-        # Motivo: Dados do dcc.Store foram serializados com orjson_dumps; convertemos para dict
-        # Impacto: Permite acessar os dados financeiros para gerar o treemap
-        if store_data:
-            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
-            
-        if not store_data or 'tickers' not in store_data or 'quantities' not in store_data or 'portfolio_values' not in store_data:
-            return go.Figure()
-
-        tickers = store_data['tickers']
-        quantities = store_data['quantities']
-        portfolio_values = store_data['portfolio_values']
-
-        valores_financeiros = []
-        for ticker, quantidade in zip(tickers, quantities):
-            if ticker in portfolio_values and portfolio_values[ticker]:
-                ultimo_valor = list(portfolio_values[ticker].values())[-1]
-                valor_financeiro = quantidade * ultimo_valor
-                valores_financeiros.append(valor_financeiro)
-            else:
-                valores_financeiros.append(0.0)
-
-        total_financeiro = sum(valores_financeiros)
-        if total_financeiro > 0:
-            pesos_financeiros = [v / total_financeiro * 100 for v in valores_financeiros]
-            fig = go.Figure(go.Treemap(
-                labels=tickers,
-                parents=[""] * len(tickers),
-                values=pesos_financeiros,
-                text=[f"{p:.2f}%" for p in pesos_financeiros],
-                textinfo="label+text"
-            ))
-            fig.update_layout(margin=dict(t=30, l=0, r=0, b=0), title="Peso Financeiro")
-            return fig
-        return go.Figure()
+    
        
     # @dash_app.callback(
     #     Output('capital-dividend-chart', 'figure'),

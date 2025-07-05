@@ -32,6 +32,8 @@ ticker_options = [{'label': f"{t['symbol']} - {t['name']}", 'value': t['symbol']
 def serve_layout():
     portfolio_data = {}
     client_config = {}
+    theme = 'light'
+    
     try:
         if has_request_context():
             try:
@@ -51,6 +53,9 @@ def serve_layout():
                 }
             else:
                 logger.info(f"Layout acessado fora de /dash_entry ou sem dados. Store será vazio. Path: {path}")
+            theme = session.get('theme', 'light')
+            logger.info(f"Tema inicial carregado da sessão: {theme}")
+
         else:
              logger.info("serve_layout executado fora de contexto de requisição. Store será vazio.") 
     except Exception as e:
@@ -69,8 +74,8 @@ def serve_layout():
 
     # Extrair KPIs do portfolio_data
     kpis = portfolio_data.get("kpis", {})
-    start_date = portfolio_data.get("start_date", {})
-    end_date = portfolio_data.get("end_date", {})
+    start_date = portfolio_data.get("start_date", None)
+    end_date = portfolio_data.get("end_date", None)
 
     # Extrair table_data do portfolio_data
     table_data = portfolio_data.get('table_data', [])
@@ -84,7 +89,7 @@ def serve_layout():
 
     return dmc.MantineProvider(
         id = "mantine-provider",
-        forceColorScheme="light",
+        forceColorScheme=theme,
         theme={
             "primaryColor":"indigo",
             "components": {
@@ -104,7 +109,7 @@ def serve_layout():
                     data=client_config,
                     storage_type='session'
                 ),
-                dcc.Store(id="theme-store", data="light",storage_type="session"),
+                dcc.Store(id="theme-store", data=theme, storage_type="session"),
                 dmc.Grid(
                     gutter="sm",
                     style={"margin": "10px"}, 
@@ -643,8 +648,6 @@ def init_dash(flask_app, portfolio_service):
     dash_app.server.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
     
     # Callbacks
-
-
     @dash_app.callback(
         [Output("mantine-provider", "forceColorScheme"),
         Output("theme-icon", "icon"),
@@ -678,6 +681,10 @@ def init_dash(flask_app, portfolio_service):
 
         new_theme = "dark" if current_theme == "light" else "light"
         new_icon = "tabler:moon" if new_theme == "dark" else "tabler:sun"
+
+        if has_request_context():
+            session['theme'] = new_theme
+            logger.info(f"Tema salvo na sessão: {new_theme}")
 
         # Estilos para ambos os temas
         paper_style = {

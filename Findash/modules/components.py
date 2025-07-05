@@ -8,7 +8,6 @@ def build_portfolio_cards(tickers: list, plan_type: str, theme: str = "light"):
     Retorna o componente `dmc.Paper` com badges dos tickers e nome do plano, adaptando-se ao tema.
     """
     is_dark = theme == "dark"
-    badge_color = "grape" if is_dark else "indigo"
     plan_text_color = "#adb5bd" if is_dark else "#495057"
 
     ticker_badges = [
@@ -20,7 +19,7 @@ def build_portfolio_cards(tickers: list, plan_type: str, theme: str = "light"):
             children=dmc.Badge(
                 ticker.replace('.SA', ''),
                 variant="filled",
-                color=badge_color,
+                color="indigo",
                 size="md",
                 style={
                     "borderRadius": "4px",

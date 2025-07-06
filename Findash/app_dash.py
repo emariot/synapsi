@@ -6,6 +6,7 @@ import dash_bootstrap_components as dbc
 from Findash.modules.metrics import calcular_metricas
 from Findash.modules.components import KpiCard, GraphPaper, IconTooltip, build_portfolio_cards
 from Findash.utils.formatting import format_kpi
+from Findash.utils.setors_bv import SETOR_MAP, SETORIAL_B3
 from datetime import datetime, timedelta
 import pandas as pd
 from Findash.services.portfolio_services import PortfolioService
@@ -477,35 +478,35 @@ def serve_layout():
                                 ]
                             ),
 
-                        #     html.Div([
-                        #                     # Linha de largura total para os três novos elementos
-                        #     dbc.Row([
-                        #         # Coluna para o Gráfico 1 (Capital Gains e Dividend Yield)
-                        #         dbc.Col([
-                        #             dcc.Graph(id='capital-dividend-chart', style={'width': '100%', 'height': '200px'})
-                        #         ], md=4, className="p-2"),
-                        #         # Placeholder para o Gráfico 2 (Dividendos por Setor)
-                        #         dbc.Col([
-                        #             dcc.Graph(id='dividend-by-sector-chart', style={'width': '100%', 'height': '200px'})
-                        #         ], md=4, className="p-2"),
-                        #         # Placeholder para a Tabela (Ranking de DY)
-                        #         dbc.Col([
-                        #             dcc.Graph(id='cumulative-gains-dividends-chart', style={'width': '100%', 'height': '200px'})
-                        #         ], md=4, className="p-2"),
-                        #     ], className="g-3"),
-                        #     # Três Colunas Inferiores
-                        #     dbc.Row([
-                        #         dbc.Col([
-                        #             dcc.Graph(id='sector-donut-charts', style={'width': '100%', 'height': '300px'})
-                        #         ], md=4, className="p-2"),
-                        #         dbc.Col([
-                        #             dcc.Graph(id='correlation-heatmap', style={'width': '100%', 'height': '300px'})
-                        #         ], md=4, className="p-2"),
-                        #         dbc.Col([
-                        #             dcc.Graph(id='volatility-chart', style={'width': '100%', 'height': '300px'})
-                        #         ], md=4, className="p-2"),
-                        #     ], className="g-3"),
-                        # ],id="app-body", className="p-4 container-fluid")
+                            html.Div([
+                                            # Linha de largura total para os três novos elementos
+                            dbc.Row([
+                                # Coluna para o Gráfico 1 (Capital Gains e Dividend Yield)
+                                dbc.Col([
+                                    dcc.Graph(id='capital-dividend-chart', style={'width': '100%', 'height': '200px'})
+                                ], md=4, className="p-2"),
+                                # Placeholder para o Gráfico 2 (Dividendos por Setor)
+                                dbc.Col([
+                                    dcc.Graph(id='dividend-by-sector-chart', style={'width': '100%', 'height': '200px'})
+                                ], md=4, className="p-2"),
+                                # Placeholder para a Tabela (Ranking de DY)
+                                dbc.Col([
+                                    dcc.Graph(id='cumulative-gains-dividends-chart', style={'width': '100%', 'height': '200px'})
+                                ], md=4, className="p-2"),
+                            ], className="g-3"),
+                            # Três Colunas Inferiores
+                            dbc.Row([
+                                dbc.Col([
+                                    dcc.Graph(id='sector-donut-charts', style={'width': '100%', 'height': '300px'})
+                                ], md=4, className="p-2"),
+                                dbc.Col([
+                                    dcc.Graph(id='correlation-heatmap', style={'width': '100%', 'height': '300px'})
+                                ], md=4, className="p-2"),
+                                dbc.Col([
+                                    dcc.Graph(id='volatility-chart', style={'width': '100%', 'height': '300px'})
+                                ], md=4, className="p-2"),
+                            ], className="g-3"),
+                        ],id="app-body", className="p-4 container-fluid")
                     ],
                 ), 
                 # Aba Rentabilidade - Placeholder
@@ -539,13 +540,39 @@ def serve_layout():
                                 dmc.GridCol(
                                     span={"base": 12, "md": 12},
                                     children=[
-                                        dmc.Text(
-                                            "Funcionalidades de Diversificação em desenvolvimento.",
-                                            size="lg",
-                                            style={"textAlign": "center", "marginTop": "20px"}
+                                        dmc.Box(
+                                            children=[
+                                                GraphPaper("quantity-sunburst-paper", "quantity-sunburst-chart"),
+                                                dmc.LoadingOverlay(
+                                                    id="loading-overlay-quantity-sunburst",
+                                                    visible=True,
+                                                    zIndex=1000,
+                                                    overlayProps={"blur": 2},
+                                                    loaderProps={"type": "bars", "color": "blue", "size": 20},
+                                                ),
+                                            ],
+                                            pos="relative"
                                         )
                                     ]
-                                )
+                                ),
+                                dmc.GridCol(
+                                    span={"base": 12, "md": 6},
+                                    children=[
+                                        dmc.Box(
+                                            children=[
+                                                GraphPaper("financial-sunburst-paper", "financial-sunburst-chart"),
+                                                dmc.LoadingOverlay(
+                                                    id="loading-overlay-financial-sunburst",
+                                                    visible=True,
+                                                    zIndex=1000,
+                                                    overlayProps={"blur": 2},
+                                                    loaderProps={"type": "bars", "color": "blue", "size": 20},
+                                                ),
+                                            ],
+                                            pos="relative"
+                                        )
+                                    ]
+                                ),
                             ]
                         )
                     ]
@@ -1381,78 +1408,155 @@ def init_dash(flask_app, portfolio_service):
     #     )
     #     return fig
         
-    # @dash_app.callback(
-    #     Output('sector-donut-charts', 'figure'),
-    #     Input('data-store', 'data'),
-    #     prevent_initial_call=False
-    # )
-    # @log_callback("update_sector_bar_chart")
-    # def update_sector_bar_chart(store_data):
-    #     # ALTERAÇÃO: Desserializar store_data com orjson_loads
-    #     # Motivo: Dados do dcc.Store foram serializados com orjson_dumps; convertemos para dict
-    #     # Impacto: Permite acessar setor_pesos e setor_pesos_financeiros para gerar o gráfico
-    #     if store_data:
-    #         store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
+    @dash_app.callback(
+        Output('sector-donut-charts', 'figure'),
+        Input('data-store', 'data'),
+        prevent_initial_call=False
+    )
+    @log_callback("update_sector_bar_chart")
+    def update_sector_bar_chart(store_data):
 
-    #     if not store_data or 'setor_pesos' not in store_data or 'setor_pesos_financeiros' not in store_data:
-    #         return go.Figure()
+        if store_data:
+            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
 
-    #     setor_pesos = store_data['setor_pesos']
-    #     setor_pesos_financeiros = store_data['setor_pesos_financeiros']
+        if not store_data or 'setor_pesos' not in store_data or 'setor_pesos_financeiros' not in store_data:
+            return go.Figure()
+
+        setor_pesos = store_data['setor_pesos']
+        setor_pesos_financeiros = store_data['setor_pesos_financeiros']
         
-    #     setor_abreviado = {
-    #         "Petróleo, Gás e Biocombustíveis": "Petróleo\ne Gás",
-    #         "Materiais Básicos": "Materiais\nBásicos",
-    #         "Bens Industriais": "Bens\nIndustriais",
-    #         "Consumo Não Cíclico": "Consumo\nNão Cíclico",
-    #         "Consumo Cíclico": "Consumo\nCíclico",
-    #         "Saúde": "Saúde",
-    #         "Tecnologia e Comunicação": "Tech e\nComunicação",
-    #         "Utilidade Pública": "Utilidade\nPública",
-    #         "Financeiro e Outros": "Financeiro\ne Outros"
-    #     }
+        setor_abreviado = {
+            "Petróleo, Gás e Biocombustíveis": "Petróleo\ne Gás",
+            "Materiais Básicos": "Materiais\nBásicos",
+            "Bens Industriais": "Bens\nIndustriais",
+            "Consumo Não Cíclico": "Consumo\nNão Cíclico",
+            "Consumo Cíclico": "Consumo\nCíclico",
+            "Saúde": "Saúde",
+            "Tecnologia da Informação": "Tech da\nInformação",
+            "Comunicações": "Comunicações",
+            "Utilidade Pública": "Utilidade\nPública",
+            "Financeiro": "Financeiro",
+            "Outros": "Outros"
+        }
         
-    #     setores_completos = [s for s in setor_pesos.keys() if setor_pesos[s] > 0 or setor_pesos_financeiros[s] > 0]
-    #     setores = [setor_abreviado[s] for s in setores_completos]
-    #     pesos_quantidade = [setor_pesos[s] for s in setores_completos]
-    #     pesos_financeiros = [setor_pesos_financeiros[s] for s in setores_completos]
+        setores_completos = [s for s in setor_pesos.keys() if setor_pesos[s] > 0 or setor_pesos_financeiros[s] > 0]
+        setores = [setor_abreviado.get(s, s) for s in setores_completos]  # Usar get para evitar KeyError
+        pesos_quantidade = [setor_pesos[s] for s in setores_completos]
+        pesos_financeiros = [setor_pesos_financeiros[s] for s in setores_completos]
 
-    #     fig = go.Figure(data=[
-    #         go.Bar(
-    #             x=setores,
-    #             y=pesos_quantidade,
-    #             name='Peso por Quantidade',
-    #             marker_color='#1f77b4',
-    #             text=[f"{p:.1f}%" for p in pesos_quantidade],
-    #             textposition='auto'
-    #         ),
-    #         go.Bar(
-    #             x=setores,
-    #             y=pesos_financeiros,
-    #             name='Peso Financeiro',
-    #             marker_color='#ff7f0e',
-    #             text=[f"{p:.1f}%" for p in pesos_financeiros],
-    #             textposition='auto'
-    #         )
-    #     ])
-    #     fig.update_layout(
-    #         title="Pesos por Setor",
-    #         yaxis_title="Percentual (%)",
-    #         barmode='group',
-    #         bargap=0.15,
-    #         bargroupgap=0.1,
-    #         height=300,
-    #         margin=dict(l=40, r=80, t=60, b=40),
-    #         legend=dict(
-    #             x=0.5,
-    #             y=1.1,
-    #             xanchor='center',
-    #             yanchor='bottom',
-    #             bgcolor='rgba(255,255,255,0.5)',
-    #             orientation='h'
-    #         )
-    #     )
-    #     return fig
+        fig = go.Figure(data=[
+            go.Bar(
+                x=setores,
+                y=pesos_quantidade,
+                name='Peso por Quantidade',
+                marker_color='#1f77b4',
+                text=[f"{p:.1f}%" for p in pesos_quantidade],
+                textposition='auto'
+            ),
+            go.Bar(
+                x=setores,
+                y=pesos_financeiros,
+                name='Peso Financeiro',
+                marker_color='#ff7f0e',
+                text=[f"{p:.1f}%" for p in pesos_financeiros],
+                textposition='auto'
+            )
+        ])
+        fig.update_layout(
+            title="Pesos por Setor",
+            yaxis_title="Percentual (%)",
+            barmode='group',
+            bargap=0.15,
+            bargroupgap=0.1,
+            height=300,
+            margin=dict(l=40, r=80, t=60, b=40),
+            legend=dict(
+                x=0.5,
+                y=1.1,
+                xanchor='center',
+                yanchor='bottom',
+                bgcolor='rgba(255,255,255,0.5)',
+                orientation='h'
+            )
+        )
+        return fig
+    
+    # Callback para Sunburst Charts
+    @dash_app.callback(
+        [
+            Output('quantity-sunburst-chart', 'figure'),
+            Output('financial-sunburst-chart', 'figure'),
+            Output('loading-overlay-quantity-sunburst', 'visible'),
+            Output('loading-overlay-financial-sunburst', 'visible')
+        ],
+        Input('data-store', 'data'),
+        prevent_initial_call=False
+    )
+    @log_callback("update_sunburst_charts")
+    def update_sunburst_charts(store_data):
+        if not store_data or 'tickers' not in store_data or 'quantities' not in store_data:
+            return go.Figure(), go.Figure(), False, False
+
+        store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
+        tickers = store_data['tickers']
+        quantities = store_data['quantities']
+        portfolio_values = store_data.get('portfolio_values', {})
+
+        labels, parents, values_quantity, values_financial, hover_texts = [], [], [], [], []
+        for ticker, quantity in zip(tickers, quantities):
+            base_ticker = ticker[:-3].rstrip('0123456789') + '.SA' if ticker.endswith('.SA') else ticker
+            setor = SETOR_MAP.get(base_ticker, "Outros")
+            subsetor = SETORIAL_B3.get(ticker, {}).get("subsetor", setor)
+            segmento = SETORIAL_B3.get(ticker, {}).get("segmento", subsetor)
+
+            peso_financeiro = 0
+            if ticker in portfolio_values and portfolio_values[ticker]:
+                peso_financeiro = list(portfolio_values[ticker].values())[-1] * quantity
+
+            # Setor
+            if setor not in labels:
+                labels.append(setor)
+                parents.append("")
+                values_quantity.append(sum(q for t, q in zip(tickers, quantities) if SETOR_MAP.get(t[:-3].rstrip('0123456789') + '.SA' if t.endswith('.SA') else t, "Outros") == setor))
+                values_financial.append(sum(list(portfolio_values[t].values())[-1] * q if t in portfolio_values and portfolio_values[t] else 0 for t, q in zip(tickers, quantities) if SETOR_MAP.get(t[:-3].rstrip('0123456789') + '.SA' if t.endswith('.SA') else t, "Outros") == setor))
+                hover_texts.append(f"{setor}<br>Peso Quantidade: {values_quantity[-1]:.1f}%<br>Peso Financeiro: {values_financial[-1]:.1f}%")
+
+            # Subsetor
+            if subsetor not in labels:
+                labels.append(subsetor)
+                parents.append(setor)
+                values_quantity.append(sum(q for t, q in zip(tickers, quantities) if SETORIAL_B3.get(t, {}).get("subsetor", SETOR_MAP.get(t[:-3].rstrip('0123456789') + '.SA' if t.endswith('.SA') else t, "Outros")) == subsetor))
+                values_financial.append(sum(list(portfolio_values[t].values())[-1] * q if t in portfolio_values and portfolio_values[t] else 0 for t, q in zip(tickers, quantities) if SETORIAL_B3.get(t, {}).get("subsetor", SETOR_MAP.get(t[:-3].rstrip('0123456789') + '.SA' if t.endswith('.SA') else t, "Outros")) == subsetor))
+                hover_texts.append(f"{subsetor}<br>Peso Quantidade: {values_quantity[-1]:.1f}%<br>Peso Financeiro: {values_financial[-1]:.1f}%")
+
+            # Segmento
+            if segmento not in labels:
+                labels.append(segmento)
+                parents.append(subsetor)
+                values_quantity.append(sum(q for t, q in zip(tickers, quantities) if SETORIAL_B3.get(t, {}).get("segmento", SETORIAL_B3.get(t, {}).get("subsetor", SETOR_MAP.get(t[:-3].rstrip('0123456789') + '.SA' if t.endswith('.SA') else t, "Outros"))) == segmento))
+                values_financial.append(sum(list(portfolio_values[t].values())[-1] * q if t in portfolio_values and portfolio_values[t] else 0 for t, q in zip(tickers, quantities) if SETORIAL_B3.get(t, {}).get("segmento", SETORIAL_B3.get(t, {}).get("subsetor", SETOR_MAP.get(t[:-3].rstrip('0123456789') + '.SA' if t.endswith('.SA') else t, "Outros"))) == segmento))
+                hover_texts.append(f"{segmento}<br>Peso Quantidade: {values_quantity[-1]:.1f}%<br>Peso Financeiro: {values_financial[-1]:.1f}%")
+
+            # Ticker
+            labels.append(ticker)
+            parents.append(segmento)
+            values_quantity.append(quantity)
+            values_financial.append(peso_financeiro)
+            hover_texts.append(f"{ticker}<br>Peso Quantidade: {quantity:.1f}<br>Peso Financeiro: {peso_financeiro:.2f}")
+
+        fig_quantity = go.Figure(go.Sunburst(
+            labels=labels, parents=parents, values=values_quantity, branchvalues="total",
+            hovertemplate="%{label}<br>%{customdata}<extra></extra>", customdata=hover_texts,
+            textinfo="label+percent entry", insidetextorientation="radial", marker=dict(colorscale="Blues")
+        )).update_layout(title="Distribuição por Quantidade", height=400, margin=dict(l=20, r=20, t=60, b=20))
+
+        fig_financial = go.Figure(go.Sunburst(
+            labels=labels, parents=parents, values=values_financial, branchvalues="total",
+            hovertemplate="%{label}<br>%{customdata}<extra></extra>", customdata=hover_texts,
+            textinfo="label+percent entry", insidetextorientation="radial", marker=dict(colorscale="Oranges")
+        )).update_layout(title="Distribuição por Peso Financeiro", height=400, margin=dict(l=20, r=20, t=60, b=20))
+
+        return fig_quantity, fig_financial, False, False
 
     # @dash_app.callback(
     #     Output('correlation-heatmap', 'figure'),

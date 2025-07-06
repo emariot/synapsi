@@ -3,6 +3,8 @@ import pandas as pd
 import time
 import functools
 from datetime import datetime
+from Findash.utils.setors_bv import SETOR_MAP, SETORES, YFINANCE_SECTOR_MAP
+from Findash.utils.logging_tools import logger 
 
 import numpy as np
 
@@ -18,100 +20,27 @@ def measure_time(func):
         return result
     return wrapper
 
-# Mapeamento manual inicial baseado na B3 (50 tickers populares como exemplo)
-SETOR_MAP = {
-    "PETR4.SA": "Petróleo, Gás e Biocombustíveis",
-    "VALE3.SA": "Materiais Básicos",
-    "ITUB4.SA": "Financeiro e Outros",
-    "BBDC4.SA": "Financeiro e Outros",
-    "ABEV3.SA": "Consumo Não Cíclico",
-    "CSAN3.SA": "Petróleo, Gás e Biocombustíveis",
-    "PRIO3.SA": "Petróleo, Gás e Biocombustíveis",
-    "UGPA3.SA": "Petróleo, Gás e Biocombustíveis",
-    "VBBR3.SA": "Petróleo, Gás e Biocombustíveis",
-    "BRAP4.SA": "Materiais Básicos",
-    "CSNA3.SA": "Materiais Básicos",
-    "GGBR4.SA": "Materiais Básicos",
-    "USIM5.SA": "Materiais Básicos",
-    "BRKM5.SA": "Materiais Básicos",
-    "SUZB3.SA": "Materiais Básicos",
-    "EMBR3.SA": "Bens Industriais",
-    "WEGE3.SA": "Bens Industriais",
-    "RAIL3.SA": "Bens Industriais",
-    "CCRO3.SA": "Bens Industriais",
-    "ECOR3.SA": "Bens Industriais",
-    "BRFS3.SA": "Consumo Não Cíclico",
-    "JBSS3.SA": "Consumo Não Cíclico",
-    "MRFG3.SA": "Consumo Não Cíclico",
-    "BEEF3.SA": "Consumo Não Cíclico",
-    "SMTO3.SA": "Consumo Não Cíclico",
-    "MGLU3.SA": "Consumo Cíclico",
-    "LREN3.SA": "Consumo Cíclico",
-    "BHIA3.SA": "Consumo Cíclico",
-    "MRVE3.SA": "Consumo Cíclico",
-    "CYRE3.SA": "Consumo Cíclico",
-    "RADL3.SA": "Saúde",
-    "HAPV3.SA": "Saúde",
-    "FLRY3.SA": "Saúde",
-    "DASA3.SA": "Saúde",
-    "QUAL3.SA": "Saúde",
-    "TOTS3.SA": "Tecnologia e Comunicação",
-    "POSI3.SA": "Tecnologia e Comunicação",
-    "LWSA3.SA": "Tecnologia e Comunicação",
-    "VIVT3.SA": "Tecnologia e Comunicação",
-    "TIMP3.SA": "Tecnologia e Comunicação",
-    "CMIG4.SA": "Utilidade Pública",
-    "CPLE6.SA": "Utilidade Pública",
-    "EGIE3.SA": "Utilidade Pública",
-    "SBSP3.SA": "Utilidade Pública",
-    "EQTL3.SA": "Utilidade Pública",
-    "BBAS3.SA": "Financeiro e Outros",
-    "SANB11.SA": "Financeiro e Outros",
-    "B3SA3.SA": "Financeiro e Outros",
-    "ITSA4.SA": "Financeiro e Outros",
-    "BBSE3.SA": "Financeiro e Outros",
-}
-
-# Conversão de setores do yfinance para nossos 9 setores
-YFINANCE_SECTOR_MAP = {
-    "Energy": "Petróleo, Gás e Biocombustíveis",
-    "Basic Materials": "Materiais Básicos",
-    "Industrials": "Bens Industriais",
-    "Consumer Defensive": "Consumo Não Cíclico",
-    "Consumer Cyclical": "Consumo Cíclico",
-    "Healthcare": "Saúde",
-    "Technology": "Tecnologia e Comunicação",
-    "Communication Services": "Tecnologia e Comunicação",
-    "Utilities": "Utilidade Pública",
-    "Financial Services": "Financeiro e Outros",
-    "Real Estate": "Financeiro e Outros",
-}
-
-# Lista de setores para inicialização de dicionários
-SETORES = [
-    "Petróleo, Gás e Biocombustíveis",
-    "Materiais Básicos",
-    "Bens Industriais",
-    "Consumo Não Cíclico",
-    "Consumo Cíclico",
-    "Saúde",
-    "Tecnologia e Comunicação",
-    "Utilidade Pública",
-    "Financeiro e Outros",
-]
-
 @measure_time
 def get_sector(ticker):
+    
     """Obtém o setor do ticker, usando mapeamento manual ou yfinance como fallback."""
-    if ticker in SETOR_MAP:
-        return SETOR_MAP[ticker]
+    # Normalizar ticker removendo dígitos de negociação (e.g., PETR4.SA -> PETR.SA)
+    base_ticker = ticker
+    if ticker.endswith('.SA'):
+        base_ticker = ticker[:-3].rstrip('0123456789') + '.SA'
+    
+    if base_ticker in SETOR_MAP:
+        logger.info(f"[get_sector] Setor de {ticker} (normalizado: {base_ticker}) obtido do SETOR_MAP: {SETOR_MAP[base_ticker]}")
+        return SETOR_MAP[base_ticker]
+    logger.info(f"[get_sector] Setor de {ticker} não encontrado no SETOR_MAP, usando fallback yfinance")
     try:
         stock = yf.Ticker(ticker)
         sector = stock.info.get("sector", "Unknown")
-        return YFINANCE_SECTOR_MAP.get(sector, "Financeiro e Outros")
+        logger.info(f"[get_sector] Setor de {ticker} não encontrado no SETOR_MAP, usando fallback yfinance")
+        return YFINANCE_SECTOR_MAP.get(sector, "Outros")
     except Exception as e:
-        print(f"Erro ao consultar setor de {ticker}: {e}")
-        return "Financeiro e Outros"
+        logger.error(f"[get_sector] Erro ao consultar setor de {ticker} no yfinance: {e}")
+        return "Outros"
 
 @measure_time
 def obter_dados(tickers, start_date, end_date, include_ibov=True):

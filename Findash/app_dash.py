@@ -3,6 +3,7 @@ import plotly.graph_objects as go
 import dash_mantine_components as dmc
 from dash_iconify import DashIconify
 import dash_bootstrap_components as dbc
+from collections import defaultdict
 from Findash.modules.metrics import calcular_metricas
 from Findash.modules.components import KpiCard, GraphPaper, IconTooltip, build_portfolio_cards
 from Findash.utils.formatting import format_kpi
@@ -477,6 +478,10 @@ def serve_layout():
                                     ),            
                                 ]
                             ),
+                            dcc.Graph(
+                                id='financial-sunburst-chart',
+                                style={'width': '100%', 'height': '500px', 'marginTop': '10px'}
+                            ),
 
                             html.Div([
                                             # Linha de largura total para os três novos elementos
@@ -540,39 +545,13 @@ def serve_layout():
                                 dmc.GridCol(
                                     span={"base": 12, "md": 12},
                                     children=[
-                                        dmc.Box(
-                                            children=[
-                                                GraphPaper("quantity-sunburst-paper", "quantity-sunburst-chart"),
-                                                dmc.LoadingOverlay(
-                                                    id="loading-overlay-quantity-sunburst",
-                                                    visible=True,
-                                                    zIndex=1000,
-                                                    overlayProps={"blur": 2},
-                                                    loaderProps={"type": "bars", "color": "blue", "size": 20},
-                                                ),
-                                            ],
-                                            pos="relative"
+                                        dmc.Text(
+                                            "Funcionalidades de Diversificação em desenvolvimento.",
+                                            size="lg",
+                                            style={"textAlign": "center", "marginTop": "20px"}
                                         )
                                     ]
-                                ),
-                                dmc.GridCol(
-                                    span={"base": 12, "md": 6},
-                                    children=[
-                                        dmc.Box(
-                                            children=[
-                                                GraphPaper("financial-sunburst-paper", "financial-sunburst-chart"),
-                                                dmc.LoadingOverlay(
-                                                    id="loading-overlay-financial-sunburst",
-                                                    visible=True,
-                                                    zIndex=1000,
-                                                    overlayProps={"blur": 2},
-                                                    loaderProps={"type": "bars", "color": "blue", "size": 20},
-                                                ),
-                                            ],
-                                            pos="relative"
-                                        )
-                                    ]
-                                ),
+                                )
                             ]
                         )
                     ]
@@ -1481,82 +1460,98 @@ def init_dash(flask_app, portfolio_service):
         )
         return fig
     
-    # Callback para Sunburst Charts
+    import re
+    # Função para remover números e .SA
+    def normaliza_ticker(ticker):
+        return re.sub(r'\d+', '', ticker.replace('.SA', ''))
+
     @dash_app.callback(
-        [
-            Output('quantity-sunburst-chart', 'figure'),
-            Output('financial-sunburst-chart', 'figure'),
-            Output('loading-overlay-quantity-sunburst', 'visible'),
-            Output('loading-overlay-financial-sunburst', 'visible')
-        ],
+        Output('financial-sunburst-chart', 'figure'),
         Input('data-store', 'data'),
         prevent_initial_call=False
     )
-    @log_callback("update_sunburst_charts")
-    def update_sunburst_charts(store_data):
+    def update_sunburst_chart(store_data):
         if not store_data or 'tickers' not in store_data or 'quantities' not in store_data:
-            return go.Figure(), go.Figure(), False, False
+            return go.Figure()
 
         store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
         tickers = store_data['tickers']
         quantities = store_data['quantities']
         portfolio_values = store_data.get('portfolio_values', {})
 
-        labels, parents, values_quantity, values_financial, hover_texts = [], [], [], [], []
+        labels, ids, parents, values, hover_texts = [], [], [], [], []
+        inseridos = set()
+
         for ticker, quantity in zip(tickers, quantities):
-            base_ticker = ticker[:-3].rstrip('0123456789') + '.SA' if ticker.endswith('.SA') else ticker
-            setor = SETOR_MAP.get(base_ticker, "Outros")
-            subsetor = SETORIAL_B3.get(ticker, {}).get("subsetor", setor)
-            segmento = SETORIAL_B3.get(ticker, {}).get("segmento", subsetor)
+            ticker_base = normaliza_ticker(ticker)
+            info = SETORIAL_B3.get(ticker_base, {})
+            setor = info.get("setor", "Outros")
+            subsetor = info.get("subsetor", setor)
+            segmento = info.get("segmento", subsetor)
 
-            peso_financeiro = 0
+            valor_final = 0
             if ticker in portfolio_values and portfolio_values[ticker]:
-                peso_financeiro = list(portfolio_values[ticker].values())[-1] * quantity
+                valor_final = list(portfolio_values[ticker].values())[-1] * quantity
 
-            # Setor
-            if setor not in labels:
+            setor_id = f"setor::{setor}"
+            subsetor_id = f"{setor_id}|subsetor::{subsetor}"
+            segmento_id = f"{subsetor_id}|segmento::{segmento}"
+
+            if setor_id not in inseridos:
                 labels.append(setor)
+                ids.append(setor_id)
                 parents.append("")
-                values_quantity.append(sum(q for t, q in zip(tickers, quantities) if SETOR_MAP.get(t[:-3].rstrip('0123456789') + '.SA' if t.endswith('.SA') else t, "Outros") == setor))
-                values_financial.append(sum(list(portfolio_values[t].values())[-1] * q if t in portfolio_values and portfolio_values[t] else 0 for t, q in zip(tickers, quantities) if SETOR_MAP.get(t[:-3].rstrip('0123456789') + '.SA' if t.endswith('.SA') else t, "Outros") == setor))
-                hover_texts.append(f"{setor}<br>Peso Quantidade: {values_quantity[-1]:.1f}%<br>Peso Financeiro: {values_financial[-1]:.1f}%")
+                values.append(0)
+                hover_texts.append(f"{setor}<br>Nível: Setor")
+                inseridos.add(setor_id)
 
-            # Subsetor
-            if subsetor not in labels:
+            if subsetor_id not in inseridos:
                 labels.append(subsetor)
-                parents.append(setor)
-                values_quantity.append(sum(q for t, q in zip(tickers, quantities) if SETORIAL_B3.get(t, {}).get("subsetor", SETOR_MAP.get(t[:-3].rstrip('0123456789') + '.SA' if t.endswith('.SA') else t, "Outros")) == subsetor))
-                values_financial.append(sum(list(portfolio_values[t].values())[-1] * q if t in portfolio_values and portfolio_values[t] else 0 for t, q in zip(tickers, quantities) if SETORIAL_B3.get(t, {}).get("subsetor", SETOR_MAP.get(t[:-3].rstrip('0123456789') + '.SA' if t.endswith('.SA') else t, "Outros")) == subsetor))
-                hover_texts.append(f"{subsetor}<br>Peso Quantidade: {values_quantity[-1]:.1f}%<br>Peso Financeiro: {values_financial[-1]:.1f}%")
+                ids.append(subsetor_id)
+                parents.append(setor_id)
+                values.append(0)
+                hover_texts.append(f"{subsetor}<br>Nível: Subsetor")
+                inseridos.add(subsetor_id)
 
-            # Segmento
-            if segmento not in labels:
+            if segmento_id not in inseridos:
                 labels.append(segmento)
-                parents.append(subsetor)
-                values_quantity.append(sum(q for t, q in zip(tickers, quantities) if SETORIAL_B3.get(t, {}).get("segmento", SETORIAL_B3.get(t, {}).get("subsetor", SETOR_MAP.get(t[:-3].rstrip('0123456789') + '.SA' if t.endswith('.SA') else t, "Outros"))) == segmento))
-                values_financial.append(sum(list(portfolio_values[t].values())[-1] * q if t in portfolio_values and portfolio_values[t] else 0 for t, q in zip(tickers, quantities) if SETORIAL_B3.get(t, {}).get("segmento", SETORIAL_B3.get(t, {}).get("subsetor", SETOR_MAP.get(t[:-3].rstrip('0123456789') + '.SA' if t.endswith('.SA') else t, "Outros"))) == segmento))
-                hover_texts.append(f"{segmento}<br>Peso Quantidade: {values_quantity[-1]:.1f}%<br>Peso Financeiro: {values_financial[-1]:.1f}%")
+                ids.append(segmento_id)
+                parents.append(subsetor_id)
+                values.append(0)
+                hover_texts.append(f"{segmento}<br>Nível: Segmento")
+                inseridos.add(segmento_id)
 
-            # Ticker
             labels.append(ticker)
-            parents.append(segmento)
-            values_quantity.append(quantity)
-            values_financial.append(peso_financeiro)
-            hover_texts.append(f"{ticker}<br>Peso Quantidade: {quantity:.1f}<br>Peso Financeiro: {peso_financeiro:.2f}")
+            ids.append(ticker)
+            parents.append(segmento_id)
+            values.append(valor_final)
+            hover_texts.append(f"{ticker}<br>Peso: {valor_final:.2f}")
 
-        fig_quantity = go.Figure(go.Sunburst(
-            labels=labels, parents=parents, values=values_quantity, branchvalues="total",
-            hovertemplate="%{label}<br>%{customdata}<extra></extra>", customdata=hover_texts,
-            textinfo="label+percent entry", insidetextorientation="radial", marker=dict(colorscale="Blues")
-        )).update_layout(title="Distribuição por Quantidade", height=400, margin=dict(l=20, r=20, t=60, b=20))
+            for node_id in [segmento_id, subsetor_id, setor_id]:
+                idx = ids.index(node_id)
+                values[idx] += valor_final
 
-        fig_financial = go.Figure(go.Sunburst(
-            labels=labels, parents=parents, values=values_financial, branchvalues="total",
-            hovertemplate="%{label}<br>%{customdata}<extra></extra>", customdata=hover_texts,
-            textinfo="label+percent entry", insidetextorientation="radial", marker=dict(colorscale="Oranges")
-        )).update_layout(title="Distribuição por Peso Financeiro", height=400, margin=dict(l=20, r=20, t=60, b=20))
+        fig = go.Figure(go.Sunburst(
+            ids=ids,
+            labels=labels,
+            parents=parents,
+            values=values,
+            customdata=hover_texts,
+            hovertemplate="%{customdata}<extra></extra>",
+            branchvalues="total",
+            textinfo="label+percent entry",
+            insidetextorientation="radial",
+            marker=dict(colorscale="Oranges")
+        ))
 
-        return fig_quantity, fig_financial, False, False
+        fig.update_layout(
+            title="Distribuição por Peso Financeiro",
+            height=320,
+            margin=dict(t=40, l=20, r=20, b=20)
+        )
+
+        return fig
+
 
     # @dash_app.callback(
     #     Output('correlation-heatmap', 'figure'),

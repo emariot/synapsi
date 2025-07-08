@@ -1,72 +1,73 @@
-
-def get_figure_theme(theme: str = "light"):
-    is_dark = theme == "dark"
-    font_color = "#FFFFFF" if is_dark else "#212529"
-    grid_color = "rgba(128, 128, 128, 0.2)"
-    zero_line = {
-        "zeroline": True,
-        "zerolinecolor": "rgba(128, 128, 128, 0.3)",
-        "zerolinewidth": 1
-    }
-    # Paletas de cores
-    dark_colors = [
-         "#ffd15f",
-         "#4c78a8",
-         "#f58518",
-         "#e45756",
-         "#72b7b2",
-         "#54a24b",
-         "#b279a2",
-         "#ff9da6",
-         "#9d755d",
-         "#bab0ac"  
+def get_color_sequence(theme: str):
+    DARK_COLORS = [
+        "#ffd15f", "#4c78a8", "#f58518", "#e45756", "#72b7b2",
+        "#54a24b", "#b279a2", "#ff9da6", "#9d755d", "#bab0ac"
     ]
-    light_colors = [
-         "#004172",
-         "#3366cc",
-         "#dc3912",
-         "#ff9900",
-         "#109618",
-         "#990099",
-         "#0099c6",
-         "#dd4477",
-         "#66aa00",
-         "#b82e2e"
+    LIGHT_COLORS = [
+        "#004172", "#3366cc", "#dc3912", "#ff9900", "#109618",
+        "#990099", "#0099c6", "#dd4477", "#66aa00", "#b82e2e"
     ]
+    return DARK_COLORS if theme == "dark" else LIGHT_COLORS
 
-    line_colors = {
-        "portfolio": dark_colors[0] if is_dark else light_colors[0],
-        "ibov": dark_colors[1] if is_dark else light_colors[1]
-    }
-    color_sequence = dark_colors if is_dark else light_colors
+def get_figure_theme(theme: str, title: str = None, yaxis_title: str = None):
+    """
+    Retorna dicionário com layout padrão para gráficos Plotly com base no tema.
 
-    return {
-        "template": "plotly_dark" if is_dark else "plotly_white",
-        "font": dict(family="Helvetica", size=10, color=font_color),
-        "paper_bgcolor": "rgba(0,0,0,0)",
-        "plot_bgcolor": "rgba(0,0,0,0)",
-        "margin": dict(l=20, r=20, t=40, b=5),
-        "legend": dict(
+    Args:
+        theme (str): 'dark' ou 'light'.
+        title (str): Título do gráfico.
+        yaxis_title (str): Título do eixo Y.
+
+    Returns:
+        dict: layout padrão com estilo.
+    """
+    dark_mode = theme == "dark"
+    font_color = "#FFFFFF" if dark_mode else "#212529"
+    bg_color = "rgba(0,0,0,0)"
+
+    layout = dict(
+        font=dict(family="Helvetica", size=10, color=font_color),
+        paper_bgcolor=bg_color,
+        plot_bgcolor=bg_color,
+        margin=dict(l=20, r=20, t=40, b=5),
+        hoverlabel=dict(
+            bgcolor="#2c2c2c" if dark_mode else "#FFFFFF",
+            font=dict(color=font_color, size=10, family="Helvetica"),
+            bordercolor="rgba(0,0,0,0)"
+        ),
+        legend=dict(
             orientation="h",
             yanchor="bottom",
             y=1.02,
             xanchor="center",
             x=0.5,
             font=dict(size=10, color=font_color),
-            bgcolor="rgba(0,0,0,0)"
+            bgcolor=bg_color
         ),
-        "xaxis": dict(
-            title=dict(font=dict(color=font_color, size=10, family="Helvetica")),
+        xaxis=dict(
             tickfont=dict(color=font_color),
-            gridcolor=grid_color,
-            **zero_line
+            gridcolor="rgba(128, 128, 128, 0.2)",
+            zeroline=False
         ),
-        "yaxis": dict(
-            title=dict(font=dict(color=font_color, size=10, family="Helvetica")),
+        yaxis=dict(
+            title=dict(
+                text=yaxis_title or '',
+                font=dict(size=10, color=font_color, family="Helvetica")
+            ) if yaxis_title else None,
             tickfont=dict(color=font_color),
-            gridcolor=grid_color,
-            **zero_line
-        ),
-        "line_colors": line_colors,
-        "color_sequence": color_sequence
-    }
+            gridcolor="rgba(128, 128, 128, 0.2)",
+            zeroline=True,
+            zerolinecolor="rgba(128, 128, 128, 0.3)",
+            zerolinewidth=1
+        )
+    )
+
+    if title:
+        layout["title"] = dict(
+            text=title,
+            x=0.02, xanchor='left',
+            y=0.98, yanchor='top',
+            font=dict(size=12, family="Helvetica")
+        )
+
+    return layout

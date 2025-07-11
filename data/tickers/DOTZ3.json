@@ -1,0 +1,17 @@
+{
+  "ticker": "DOTZ3",
+  "nome": null,
+  "inicio_negociacao": "31/05/2021",
+  "cnpj": "18.174.270/0001-84",
+  "sobre": "Desenvolvimento e gerenciamento de programa de fidelização de clientes em razão do consumo de bens e serviços oferecidos por parceiros; comercialização de direitos de resgate e prêmios.",
+  "setor_economico": "Consumo Cíclico",
+  "subsetor": "Diversos",
+  "segmento": "Programas de Fidelização",
+  "site": null,
+  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível107.529112.015Ativo Total188.488194.574Patrimônio Líquido(247.366)(246.421)Patrimônio Líquido Atribuído à Controladora(247.366)(246.421)Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda44.39636.109Resultado Bruto34.92528.788Resultado de Equivalência Patrimonial00Resultado Financeiro(2.418)(2.016)Resultado Líquido das Operações Continuadas(945)(10.155)Lucro (Prejuízo) do Período(945)(10.155)Lucro (Prejuízo) do Período Atribuído à Controladora00Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais17.184(14.184)Atividades de Investimento(5.090)(2.174)Atividades de Financiamento(15.406)(10.102)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(3.312)(26.460)",
+  "posicao_acionaria": "Nome%ON%PN%TotalANTFIN SINGAPORE HOLDING PTE. LTD4,960,004,96Ascet I  Fundo de Investimento em Participações66,530,0066,53LA DZ HOLDCO LLC5,690,005,69San Siro FIP Multiestratégia7,500,007,50OUTROS14,670,0014,67AÇÕES TESOURARIA0,660,000,66TOTAL100,000,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
+  "acoes_em_circulacao_no_mercado": "29/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas2.591-Pessoas Jurídicas37-Investidores Institucionais1-Quantidade de Ações Ordinárias4.076.23730,60Total de Ações4.076.23730,60",
+  "composicao_capital_social": "29/04/2025Ordinárias13.321.978Preferenciais0Total13.321.978",
+  "coleta_incompleta": true
+}

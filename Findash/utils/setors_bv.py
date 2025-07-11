@@ -420,7 +420,7 @@ SETORIAL_B3 = {
     "AZTE": {"setor": "Petróleo, Gás e Biocombustíveis", "subsetor": "Petróleo, Gás e Biocombustíveis", "segmento": "Exploração, Refino e Distribuição"},
     "BRAV": {"setor": "Petróleo, Gás e Biocombustíveis", "subsetor": "Petróleo, Gás e Biocombustíveis", "segmento": "Exploração, Refino e Distribuição"},
     "CSAN": {"setor": "Petróleo, Gás e Biocombustíveis", "subsetor": "Petróleo, Gás e Biocombustíveis", "segmento": "Exploração, Refino e Distribuição"},
-    "RPMG": {"setor": "Petróleo, Gás e Biocombustíveis", "subsetor": "Petróleo, Gás e Biocombustíveis", "segmento": "Exploração, Refino e Distribuição"},
+    "RPMG": {"setor": "Petróleo, Gás e Biocombustíveis", "subsetor": "Petróleo, Gás e Biocombustíveis", "segmento": "Exploração, Refino e Distribuição"},   
     "PETR": {"setor": "Petróleo, Gás e Biocombustíveis", "subsetor": "Petróleo, Gás e Biocombustíveis", "segmento": "Exploração, Refino e Distribuição"},
     "RECV": {"setor": "Petróleo, Gás e Biocombustíveis", "subsetor": "Petróleo, Gás e Biocombustíveis", "segmento": "Exploração, Refino e Distribuição"},
     "PRIO": {"setor": "Petróleo, Gás e Biocombustíveis", "subsetor": "Petróleo, Gás e Biocombustíveis", "segmento": "Exploração, Refino e Distribuição"},

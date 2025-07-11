@@ -1,0 +1,5 @@
+{
+  "ticker": "PORT3",
+  "erro": "Locator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"textbox\", name=\"Digite o nome da Empresa\")\n",
+  "coleta_incompleta": true
+}

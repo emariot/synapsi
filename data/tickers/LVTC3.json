@@ -1,0 +1,17 @@
+{
+  "ticker": "LVTC3",
+  "nome": null,
+  "inicio_negociacao": "26/07/2021",
+  "cnpj": "05.917.486/0001-40",
+  "sobre": null,
+  "setor_economico": "Tecnologia da Informação",
+  "subsetor": "Programas e Serviços",
+  "segmento": "Programas e Serviços (segmento)",
+  "site": null,
+  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível475.213492.862Ativo Total1.503.5831.455.435Patrimônio Líquido662.855665.846Patrimônio Líquido Atribuído à Controladora662.855665.846Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda213.555209.541Resultado Bruto66.87254.131Resultado de Equivalência Patrimonial00Resultado Financeiro(15.378)(11.395)Resultado Líquido das Operações Continuadas8.1494.738Lucro (Prejuízo) do Período8.1494.738Lucro (Prejuízo) do Período Atribuído à Controladora8.1494.738Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais50.40644.411Atividades de Investimento(37.263)(32.449)Atividades de Financiamento31.530(19.060)Variação Cambial sobre Caixa e Equivalentes(2.096)849Aumento (Redução) de Caixa e Equivalentes42.577(6.249)",
+  "posicao_acionaria": "Nome%ON%PN%Total2B Capital  Brasil Capital de Crescimento I  Fundo Invest Partic Multiestratégia30,470,0030,47ALASKA POLAND FUNDO DE INVESTIMENTO DE AÇÕES  BDR NÍVEL I INVESTIMENTO NO EXTERIOR7,690,007,69Fundo de Investimento em Participações Multiestratégia Multisetorial Plus Investimento no Exterior10,190,0010,19VANDERLEI RIGATIERI JUNIOR36,140,0036,14OUTROS15,520,0015,52AÇÕES TESOURARIA0,000,000,00TOTAL100,000,00100,00Informação recebida em 23/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
+  "acoes_em_circulacao_no_mercado": "29/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas4.130-Pessoas Jurídicas72-Investidores Institucionais0-Quantidade de Ações Ordinárias21.189.12133,39Total de Ações21.189.12133,39",
+  "composicao_capital_social": "03/02/2025Ordinárias63.461.463Preferenciais0Total63.461.463",
+  "coleta_incompleta": true
+}

@@ -1,0 +1,17 @@
+{
+  "ticker": "SOJA3",
+  "nome": null,
+  "inicio_negociacao": "29/04/2021",
+  "cnpj": "10.807.374/0001-77",
+  "sobre": "Produção de sementes certificadas. exceto de forrageiras para pasto. Comércio atacadista de sementes. flores. plantas e gramas.",
+  "setor_economico": "Consumo não Cíclico",
+  "subsetor": "Agropecuária",
+  "segmento": "Agricultura",
+  "site": null,
+  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível811.816814.743Ativo Total3.474.8452.666.602Patrimônio Líquido1.963.9671.954.270Patrimônio Líquido Atribuído à Controladora1.347.5131.346.795Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda131.21769.102Resultado Bruto12.143(7.729)Resultado de Equivalência Patrimonial3170Resultado Financeiro27.50133.427Resultado Líquido das Operações Continuadas16.8548.091Lucro (Prejuízo) do Período16.8548.091Lucro (Prejuízo) do Período Atribuído à Controladora718(5.844)Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(90.154)(143.175)Atividades de Investimento(99.791)48.461Atividades de Financiamento405.636122.470Variação Cambial sobre Caixa e Equivalentes4650Aumento (Redução) de Caixa e Equivalentes216.15627.756",
+  "posicao_acionaria": "Nome%ON%PN%TotalCAMILA STEFANI COLPO KOCH26,130,0026,13CEREAIS SUL INDUSTRIA E COMERCIO DE CEREAIS LTDA0,120,000,12HIX Investimentos Ltda.6,390,006,39MARINO STEFANI COLPO26,130,0026,13SOYBEAN FUNDO DE INVESTIMENTO EM AÇÕES0,730,000,73STEFANI FUNDO DE INVESTIMENTOS EM AÇÕES4,590,004,59OUTROS35,330,0035,33AÇÕES TESOURARIA0,590,000,59TOTAL100,000,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
+  "acoes_em_circulacao_no_mercado": "21/05/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas59.181-Pessoas Jurídicas39-Investidores Institucionais418-Quantidade de Ações Ordinárias56.439.78541,71Total de Ações56.439.78541,71",
+  "composicao_capital_social": "18/04/2024Ordinárias135.322.144Preferenciais0Total135.322.144",
+  "coleta_incompleta": true
+}

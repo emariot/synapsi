@@ -1,0 +1,17 @@
+{
+  "ticker": "TFCO4",
+  "nome": null,
+  "inicio_negociacao": "26/10/2020",
+  "cnpj": "59.418.806/0001-47",
+  "sobre": "Atuação no varejo dos setores de vestuário. acessórios e calçados. dentre outros.",
+  "setor_economico": "Consumo Cíclico",
+  "subsetor": "Tecidos. Vestuário e Calçados",
+  "segmento": "Vestuário",
+  "site": null,
+  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível243.948244.234Ativo Total829.401825.166Patrimônio Líquido484.021472.809Patrimônio Líquido Atribuído à Controladora484.021472.809Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda212.786162.131Resultado Bruto129.81895.436Resultado de Equivalência Patrimonial00Resultado Financeiro(7.685)(3.534)Resultado Líquido das Operações Continuadas34.79126.385Lucro (Prejuízo) do Período34.79126.385Lucro (Prejuízo) do Período Atribuído à Controladora00Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais58.96646.383Atividades de Investimento(8.579)(10.965)Atividades de Financiamento(23.354)(7.717)Variação Cambial sobre Caixa e Equivalentes(3)1Aumento (Redução) de Caixa e Equivalentes27.03027.702",
+  "posicao_acionaria": "Nome%ON%PN%TotalALBERTO DOMINGUEZ VON IHERING AZEVEDO33,337,1831,52BC Gestão de Recursos Ltda0,0019,361,35FREDERICO WAGNER33,337,3031,52RICARDO ROSSET33,337,1831,52OUTROS0,0056,353,92AÇÕES TESOURARIA0,002,640,18TOTAL100,00100,00100,00Informação recebida em 06/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
+  "acoes_em_circulacao_no_mercado": "25/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas3.963-Pessoas Jurídicas22-Investidores Institucionais165-Quantidade de Ações Preferenciais49.515.88375,61Total de Ações49.515.8835,25",
+  "composicao_capital_social": "21/03/2025Ordinárias877.251.375Preferenciais65.492.864Total942.744.239",
+  "coleta_incompleta": true
+}

@@ -1,0 +1,5 @@
+{
+  "ticker": "PPLA11",
+  "erro": "Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_text(re.compile(r\"PPLA1\")).first to be visible\n",
+  "coleta_incompleta": true
+}

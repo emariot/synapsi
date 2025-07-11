@@ -1,0 +1,17 @@
+{
+  "ticker": "MDNE3",
+  "nome": null,
+  "inicio_negociacao": "13/02/2020",
+  "cnpj": "12.049.631/0001-84",
+  "sobre": "Compra e venda de imóveis. locação. desmembramento ou loteamento de terrenos. incorporação imobiliária ou construção de imóveis destinados à venda. participação em outras sociedades.",
+  "setor_economico": "Consumo Cíclico",
+  "subsetor": "Construção Civil",
+  "segmento": "Incorporações",
+  "site": null,
+  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível376.037369.714Ativo Total4.210.9154.148.169Patrimônio Líquido1.607.6941.536.068Patrimônio Líquido Atribuído à Controladora1.611.7211.540.280Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda438.973308.443Resultado Bruto148.413100.686Resultado de Equivalência Patrimonial284(64)Resultado Financeiro4.0396.181Resultado Líquido das Operações Continuadas70.38342.156Lucro (Prejuízo) do Período70.38342.156Lucro (Prejuízo) do Período Atribuído à Controladora70.19842.320Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(4.025)(67.426)Atividades de Investimento(135.263)9.681Atividades de Financiamento12.07315.152Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(127.215)(42.593)",
+  "posicao_acionaria": "Nome%ON%PN%TotalALUISIO JOSE MOURA DUBEUX11,040,0011,04GUSTAVO JOSE MOURA DUBEUX11,660,0011,66JOSE DO EGITO FIM CP INVESTIMENTO NO EXTERIOR1,950,001,95MARCOS JOSE MOURA DUBEUX9,550,009,55Navi Capital Administradora e Gestora de Recursos Financeiros Ltda.5,370,005,37REEF 1 RV FUNDO DE INVESTIMENTO MULTIMERCADO CRDITO PRIVADO1,720,001,72Safra Asset Management Ltda.5,080,005,08OUTROS53,310,0053,31AÇÕES TESOURARIA0,340,000,34TOTAL100,000,00100,00Informação recebida em 27/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
+  "acoes_em_circulacao_no_mercado": "25/04/2024Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas12.616-Pessoas Jurídicas401-Investidores Institucionais316-Quantidade de Ações Ordinárias52.153.06061,42Total de Ações52.153.06061,42",
+  "composicao_capital_social": "11/02/2019Ordinárias84.909.375Preferenciais0Total84.909.375",
+  "coleta_incompleta": true
+}

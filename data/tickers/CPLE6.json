@@ -1,0 +1,16 @@
+{
+  "ticker": "CPLE6",
+  "nome": null,
+  "inicio_negociacao": "12/04/1994",
+  "cnpj": "76.483.817/0001-20",
+  "sobre": "Geração. Transmissão. Comercialização e Distribuição de Energia Elétrica",
+  "setor_economico": "Utilidade Pública",
+  "subsetor": "Energia Elétrica",
+  "segmento": "Energia Elétrica (segmento)",
+  "site": "//http://ri.copel.com",
+  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível28.089.28728.718.244Ativo Total60.240.75357.384.156Patrimônio Líquido26.233.52625.636.935Patrimônio Líquido Atribuído à Controladora26.272.20625.674.718Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda5.892.0865.416.998Resultado Bruto1.481.5891.262.734Resultado de Equivalência Patrimonial100.41681.643Resultado Financeiro(446.525)(268.174)Resultado Líquido das Operações Continuadas664.667532.190Lucro (Prejuízo) do Período664.667533.543Lucro (Prejuízo) do Período Atribuído à Controladora665.508531.383Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais992.673779.116Atividades de Investimento(310.612)(568.628)Atividades de Financiamento1.213.344(108.592)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes1.895.405101.896",
+  "posicao_acionaria": null,
+  "acoes_em_circulacao_no_mercado": "22/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas334.421-Pessoas Jurídicas3.343-Investidores Institucionais556-Quantidade de Ações Ordinárias1.293.574.33099,48Quantidade de Ações Preferenciais1.675.110.39199,56Total de Ações2.968.684.72199,53",
+  "composicao_capital_social": "06/09/2023Ordinárias1.300.347.300Preferenciais1.682.463.291Total2.982.810.591",
+  "coleta_incompleta": true
+}

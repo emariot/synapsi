@@ -1,0 +1,17 @@
+{
+  "ticker": "WEST3",
+  "nome": null,
+  "inicio_negociacao": "11/02/2021",
+  "cnpj": "14.776.142/0001-50",
+  "sobre": "Comércio físico e digital varejista de móveis e artigos domésticos em geral. vestuário e bens e acessórios de uso pessoal; serviços de design de interiores e arquitetura.",
+  "setor_economico": "Consumo Cíclico",
+  "subsetor": "Utilidades Domésticas",
+  "segmento": "Móveis",
+  "site": null,
+  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "dados_economico_financeiros": "Ver dados no formato Não consolidado Balanço Patrimonial  - Não-Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos, Intangível e Diferido33.25934.299Ativo Total299.609315.028Patrimônio Líquido221.569230.203Demonstração do Resultado - Não-Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda33.36939.979Resultado Bruto13.58415.631Resultado de Equivalência Patrimonial00Resultado Financeiro3.5374.813Resultado Líquido das Operações Continuadas(8.656)(14.595)Lucro (Prejuízo) do Período(8.656)(14.595)Demonstração do Fluxo de Caixa - Não-Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(13.429)(4.611)Atividades de Investimento(543)(605)Atividades de Financiamento(2.467)(2.216)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(16.439)(7.432)",
+  "posicao_acionaria": "Nome%ON%PN%TotalOIKOS Fundo de Investimento em Participações Multiestratégia25,470,0025,47Trustee Distribuidora de Títulos e Valores Mobiliários Ltda.5,650,005,65WNT Gestora de Recursos LTDA.39,300,0039,30OUTROS29,580,0029,58AÇÕES TESOURARIA0,000,000,00TOTAL100,000,00100,00Informação recebida em 27/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
+  "acoes_em_circulacao_no_mercado": "25/05/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas4.004-Pessoas Jurídicas26-Investidores Institucionais31-Quantidade de Ações Ordinárias11.057.02399,53Total de Ações11.057.02399,53",
+  "composicao_capital_social": "13/12/2024Ordinárias11.109.348Preferenciais0Total11.109.348",
+  "coleta_incompleta": true
+}

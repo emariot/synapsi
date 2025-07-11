@@ -1,0 +1,17 @@
+{
+  "ticker": "CSED3",
+  "nome": null,
+  "inicio_negociacao": "11/02/2021",
+  "cnpj": "62.984.091/0001-02",
+  "sobre": "Atividades relacionadas à prestação de serviços do setor de educação e áreas associadas. administração de bens próprios e participação em outras sociedades.",
+  "setor_economico": "Consumo Cíclico",
+  "subsetor": "Diversos",
+  "segmento": "Serviços Educacionais",
+  "site": null,
+  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível3.508.9143.526.573Ativo Total4.806.9494.569.487Patrimônio Líquido1.557.2001.470.789Patrimônio Líquido Atribuído à Controladora1.557.2001.470.789Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda671.774610.509Resultado Bruto353.149304.719Resultado de Equivalência Patrimonial00Resultado Financeiro(93.827)(87.040)Resultado Líquido das Operações Continuadas86.41138.624Lucro (Prejuízo) do Período86.41138.624Lucro (Prejuízo) do Período Atribuído à Controladora86.41138.624Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais272.218197.359Atividades de Investimento(218.731)(93.522)Atividades de Financiamento203.859(135.966)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes257.346(32.129)",
+  "posicao_acionaria": "Nome%ON%PN%TotalARCHY LLC - CITIBANK DTVM SA36,400,0036,40D2HFP  FUNDO DE INVESTIMENTO FINANCEIRO EM AÇÕES23,500,0023,50GAMA 1 FUNDO DE INVESTIMENTO DE AÇÕES11,750,0011,75Government of Singapore4,200,004,20REDMOND FUNDO DE INVESTIMENTO DE AÇÕES11,750,0011,75OUTROS12,390,0012,39AÇÕES TESOURARIA0,000,000,00TOTAL100,000,00100,00Informação recebida em 04/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
+  "acoes_em_circulacao_no_mercado": "28/05/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas5.636-Pessoas Jurídicas98-Investidores Institucionais47-Quantidade de Ações Ordinárias45.175.51212,39Total de Ações45.175.51212,39",
+  "composicao_capital_social": "09/11/2023Ordinárias364.542.552Preferenciais0Total364.542.552",
+  "coleta_incompleta": true
+}

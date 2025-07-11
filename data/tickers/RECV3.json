@@ -1,0 +1,17 @@
+{
+  "ticker": "RECV3",
+  "nome": null,
+  "inicio_negociacao": "05/05/2021",
+  "cnpj": "03.342.704/0001-30",
+  "sobre": "Exploração e produção de petróleo e gás natural",
+  "setor_economico": "Petróleo. Gás e Biocombustíveis",
+  "subsetor": "Petróleo. Gás e Biocombustíveis (subsetor)",
+  "segmento": "Exploração. Refino e Distribuição",
+  "site": null,
+  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível5.649.3995.561.314Ativo Total7.454.9307.437.571Patrimônio Líquido4.463.7904.235.277Patrimônio Líquido Atribuído à Controladora4.463.7904.235.277Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda860.752744.735Resultado Bruto319.886268.887Resultado de Equivalência Patrimonial00Resultado Financeiro48.997(70.978)Resultado Líquido das Operações Continuadas227.529110.033Lucro (Prejuízo) do Período227.529110.033Lucro (Prejuízo) do Período Atribuído à Controladora00Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais505.006465.986Atividades de Investimento(276.768)(298.604)Atividades de Financiamento(208.165)(62.417)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes20.073104.965",
+  "posicao_acionaria": "Nome%ON%PN%TotalEDUARDO CINTRA SANTOS5,810,005,81Opeg Fundo de Investimento em Ações Investimento no Exterior9,680,009,68OPEG SPECTRUM FUNDO DE INVESTIMENTO DE ACOES0,950,000,95Opportunity Holding Fundo de Investimento em Participações Multiestratégia Investimento no Exterior17,010,0017,01Perbras - Empresa Brasileira de Perfurações Ltda.4,270,004,27PetroSantander Luxembourg Holdings S.a.r.l.19,610,0019,61OUTROS42,450,0042,45AÇÕES TESOURARIA0,230,000,23TOTAL100,000,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
+  "acoes_em_circulacao_no_mercado": "24/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas38.894-Pessoas Jurídicas0-Investidores Institucionais697-Quantidade de Ações Ordinárias274.628.64493,58Total de Ações274.628.64493,58",
+  "composicao_capital_social": "30/01/2025Ordinárias293.472.126Preferenciais0Total293.472.126",
+  "coleta_incompleta": true
+}

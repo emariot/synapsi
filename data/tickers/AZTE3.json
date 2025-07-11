@@ -1,0 +1,17 @@
+{
+  "ticker": "AZTE3",
+  "nome": null,
+  "inicio_negociacao": "14/02/2025",
+  "cnpj": "52.017.473/0001-03",
+  "sobre": null,
+  "setor_economico": "Petróleo. Gás e Biocombustíveis",
+  "subsetor": "Petróleo. Gás e Biocombustíveis (subsetor)",
+  "segmento": "Exploração. Refino e Distribuição",
+  "site": null,
+  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível167.516165.641Ativo Total201.950192.262Patrimônio Líquido150.106154.638Patrimônio Líquido Atribuído à Controladora150.106154.638Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda4470Resultado Bruto(63)0Resultado de Equivalência Patrimonial00Resultado Financeiro(605)0Resultado Líquido das Operações Continuadas(4.532)(5)Lucro (Prejuízo) do Período(4.532)(5)Lucro (Prejuízo) do Período Atribuído à Controladora00Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(443)(5)Atividades de Investimento(4.103)0Atividades de Financiamento4.5395Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(7)0",
+  "posicao_acionaria": "Nome%ON%PN%TotalFORSETI INVESTIMENTOS LTDA5,530,005,53NEMESIS BRASIL PARTICIPAÇÕES S.A.12,770,0012,77OUTROS81,700,0081,70AÇÕES TESOURARIA0,000,000,00TOTAL100,000,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
+  "acoes_em_circulacao_no_mercado": "14/02/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas27.468-Pessoas Jurídicas165-Investidores Institucionais98-Quantidade de Ações Ordinárias197.559.48499,99Total de Ações197.559.48499,99",
+  "composicao_capital_social": "27/09/2023Ordinárias197.585.471Preferenciais0Total197.585.471",
+  "coleta_incompleta": true
+}

@@ -17,9 +17,9 @@ Synapsi/
 │   │   └── portfolio_services.py
 |   |   └── database.py
 │   ├── utils/
-│   │   └── serialization.py
+│   │   └── setorial_b3.py
 |   ├── data
 |   |   └── portfolios.db
-|   ├── cache/ 
+|   ├── docs/ 
 ├── SegurAI/
         └── app.dash.py

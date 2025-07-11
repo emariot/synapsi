@@ -1,0 +1,17 @@
+{
+  "ticker": "ORVR3",
+  "nome": null,
+  "inicio_negociacao": "17/02/2021",
+  "cnpj": "11.421.994/0001-36",
+  "sobre": "Atuação na cadeia de gestão de resíduos: tratamento e destinação final de resíduos; exploração do biogás. energia e créditos de carbono; beneficiamento de resíduos; e serviços de engenharia ambiental.",
+  "setor_economico": "Utilidade Pública",
+  "subsetor": "Água e Saneamento",
+  "segmento": "Água e Saneamento (segmento)",
+  "site": null,
+  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível2.312.6652.218.486Ativo Total3.387.0803.334.198Patrimônio Líquido870.314873.871Patrimônio Líquido Atribuído à Controladora771.834778.156Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda240.800209.146Resultado Bruto100.90096.574Resultado de Equivalência Patrimonial4.1794.470Resultado Financeiro(55.235)(38.880)Resultado Líquido das Operações Continuadas(3.557)30.194Lucro (Prejuízo) do Período(3.557)30.194Lucro (Prejuízo) do Período Atribuído à Controladora(6.322)25.543Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais47.55128.678Atividades de Investimento(138.396)(36.261)Atividades de Financiamento7.515(17.530)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(83.330)(25.113)",
+  "posicao_acionaria": "Nome%ON%PN%TotalCIRCULAR HOLDING S.A.8,630,008,63DALTON ASSUMÇÃO CANELHAS2,810,002,81DALTON ASSUMÇÃO CANELHAS FILHO0,940,000,94EMERALDS FUNDO DE INVESTIMENTO MULTIMERCADO CRÉDITO PRIVADO INVESTIMENTO NO EXTERIOR1,090,001,09FABIO VETTORI6,610,006,61FERNANDA ASSALY CANELHAS DAUD0,270,000,27HIX Investimentos Ltda.5,940,005,94Inovatec Participações S.A.0,080,000,08ISMAR MACHADO ASSALY7,660,007,66MILTON PILÃO JUNIOR10,880,0010,88PEXA FUNDO DE INVESTIMENTO MULTIMERCADO CRÉDITO PRIVADO INVESTIMENTO NO EXTERIOR2,180,002,18VOLT FUNDO DE INVESTIMENTO MULTIMERCADO CRÉDITO PRIVADO INVESTIMENTO NO EXTERIOR3,130,003,13OUTROS49,780,0049,78AÇÕES TESOURARIA0,000,000,00TOTAL100,000,00100,00Informação recebida em 09/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
+  "acoes_em_circulacao_no_mercado": "02/06/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas8.750-Pessoas Jurídicas150-Investidores Institucionais392-Quantidade de Ações Ordinárias53.203.38755,35Total de Ações53.203.38755,35",
+  "composicao_capital_social": "23/05/2025Ordinárias96.126.871Preferenciais0Total96.126.871",
+  "coleta_incompleta": true
+}

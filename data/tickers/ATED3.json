@@ -1,0 +1,17 @@
+{
+  "ticker": "ATED3",
+  "nome": null,
+  "inicio_negociacao": "11/12/2024",
+  "cnpj": "23.994.857/0001-70",
+  "sobre": "Edição e publicação de livros. revistas e conteúdo educacional do segmento financeiro. treinamentos em desenvolvimento profissional e gestão de capital próprio.",
+  "setor_economico": "Consumo Cíclico",
+  "subsetor": "Diversos",
+  "segmento": "Serviços Educacionais",
+  "site": null,
+  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível12.81512.823Ativo Total26.25527.599Patrimônio Líquido23.24724.147Patrimônio Líquido Atribuído à Controladora21.22322.470Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda8.90112.063Resultado Bruto8.37211.437Resultado de Equivalência Patrimonial00Resultado Financeiro2979Resultado Líquido das Operações Continuadas(900)3.025Lucro (Prejuízo) do Período(900)3.025Lucro (Prejuízo) do Período Atribuído à Controladora(1.247)2.479Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(2.026)(313)Atividades de Investimento(296)(10.432)Atividades de Financiamento(113)(460)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(2.435)(11.205)",
+  "posicao_acionaria": "Nome%ON%PN%TotalANA CAROLINA PAIFER24,930,0024,93EXAME. LTDA.35,230,0035,23JOSÉ JOAQUIM PAIFER12,600,0012,60JP TUCHE ASSET MANAGEMENT ADM DE CARTEIRAS LTDA5,120,005,12OUTROS18,650,0018,65AÇÕES TESOURARIA3,470,003,47TOTAL100,000,00100,00Informação recebida em 02/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
+  "acoes_em_circulacao_no_mercado": "29/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas4.465-Pessoas Jurídicas19-Investidores Institucionais4-Quantidade de Ações Ordinárias8.849.41237,65Total de Ações8.849.41237,65",
+  "composicao_capital_social": "04/09/2024Ordinárias23.804.898Preferenciais0Total23.804.898",
+  "coleta_incompleta": true
+}

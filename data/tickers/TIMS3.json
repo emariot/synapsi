@@ -1,0 +1,17 @@
+{
+  "ticker": "TIMS3",
+  "nome": null,
+  "inicio_negociacao": "13/10/2020",
+  "cnpj": "02.421.421/0001-11",
+  "sobre": "",
+  "setor_economico": "Comunicações",
+  "subsetor": "Telecomunicações",
+  "segmento": "Telecomunicações (segmento)",
+  "site": null,
+  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "dados_economico_financeiros": "Ver dados no formato Não consolidado Balanço Patrimonial  - Não-Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos, Intangível e Diferido39.219.11939.038.574Ativo Total56.458.89456.327.311Patrimônio Líquido24.455.54726.404.636Demonstração do Resultado - Não-Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda6.393.6416.095.529Resultado Bruto3.309.6393.142.648Resultado de Equivalência Patrimonial(26.647)(22.501)Resultado Financeiro(598.466)(524.993)Resultado Líquido das Operações Continuadas797.622519.423Lucro (Prejuízo) do Período797.622519.423Demonstração do Fluxo de Caixa - Não-Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais2.495.9521.645.687Atividades de Investimento(1.332.594)(731.943)Atividades de Financiamento(1.581.733)(2.006.993)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(418.375)(1.093.249)",
+  "posicao_acionaria": "Nome%ON%PN%TotalTIM Brasil Serviços e Participações S.A.66,590,0066,59OUTROS33,280,0033,28AÇÕES TESOURARIA0,130,000,13TOTAL100,000,00100,00Informação recebida em 28/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
+  "acoes_em_circulacao_no_mercado": "27/03/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas1.283.458-Pessoas Jurídicas221.364-Investidores Institucionais90-Quantidade de Ações Ordinárias804.628.13633,24Total de Ações804.628.13633,24",
+  "composicao_capital_social": "27/03/2025Ordinárias2.420.804.398Preferenciais0Total2.420.804.398",
+  "coleta_incompleta": true
+}

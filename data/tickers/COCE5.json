@@ -1,0 +1,16 @@
+{
+  "ticker": "COCE5",
+  "nome": null,
+  "inicio_negociacao": "09/10/1995",
+  "cnpj": "07.047.251/0001-70",
+  "sobre": "Distribuição de energia elétrica.",
+  "setor_economico": "Utilidade Pública",
+  "subsetor": "Energia Elétrica",
+  "segmento": "Energia Elétrica (segmento)",
+  "site": "//http://www.eneldistribuicao.com.br/ce/",
+  "dados_economico_financeiros": "Ver dados no formato Não consolidado Balanço Patrimonial  - Não-Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos, Intangível e Diferido2.312.3222.274.296Ativo Total14.942.60614.406.941Patrimônio Líquido5.174.4385.139.622Demonstração do Resultado - Não-Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda1.936.9501.934.280Resultado Bruto357.455451.334Resultado de Equivalência Patrimonial00Resultado Financeiro(185.813)(199.400)Resultado Líquido das Operações Continuadas34.039127.078Lucro (Prejuízo) do Período34.039127.078Demonstração do Fluxo de Caixa - Não-Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais164.453236.456Atividades de Investimento(353.143)(283.558)Atividades de Financiamento273.611(9.559)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes84.921(56.661)",
+  "posicao_acionaria": "Nome%ON%PN%TotalBANCARD INVERSIONES LIMITADA0,0011,284,32Centrais Elétricas Brasileiras S.A.0,0618,487,10Enel Brasil S.A.97,9135,5574,05FOURTH SAIL DISCOVERY LLC0,002,520,96FOURTH SAIL LONG SHORT LLC0,006,972,67UNA CAPITAL LTDA0,007,853,00OUTROS2,0317,367,90AÇÕES TESOURARIA0,000,000,00TOTAL100,00100,00100,00Informação recebida em 05/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
+  "acoes_em_circulacao_no_mercado": "29/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas5.458-Pessoas Jurídicas164-Investidores Institucionais36-Quantidade de Ações Ordinárias1.003.6922,09Quantidade de Ações Preferenciais19.198.93264,45Total de Ações20.202.62425,95",
+  "composicao_capital_social": "29/04/2025Ordinárias48.067.937Preferenciais29.787.362Total77.855.299",
+  "coleta_incompleta": true
+}

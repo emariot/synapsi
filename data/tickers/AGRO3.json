@@ -1,0 +1,17 @@
+{
+  "ticker": "AGRO3",
+  "nome": "BRASILAGRO - CIA BRAS DE PROP AGRICOLAS",
+  "inicio_negociacao": "02/05/2006",
+  "cnpj": "07.628.528/0001-59",
+  "sobre": "EMPRESA DE DESENVOLVIMENTO AGROPECUARIO",
+  "setor_economico": "Consumo não Cíclico",
+  "subsetor": "Agropecuária",
+  "segmento": "Agricultura",
+  "site": null,
+  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.locator(\"//p[strong[normalize-space(text())='Site']]\").first.locator(\"xpath=following-sibling::p[1]\").locator(\"a[href^='http']\").first to be visible\n",
+  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202530/06/2024Ativo Imobilizado, Investimentos e Intangível532.678443.179Ativo Total3.971.6663.605.082Patrimônio Líquido2.169.8982.179.679Patrimônio Líquido Atribuído à Controladora2.169.8982.179.679Demonstração do Resultado - Consolidado01/07/2024 a 31/03/202501/07/2023 a 31/03/2024Receita de Venda849.136552.866Resultado Bruto254.24432.418Resultado de Equivalência Patrimonial00Resultado Financeiro(93.302)42.361Resultado Líquido das Operações Continuadas76.738(5.984)Lucro (Prejuízo) do Período76.738(5.984)Lucro (Prejuízo) do Período Atribuído à Controladora00Demonstração do Fluxo de Caixa - Consolidado01/07/2024 a 31/03/202501/07/2023 a 31/03/2024Atividades Operacionais(74.185)40.527Atividades de Investimento1.873(56.085)Atividades de Financiamento(35.429)(147.591)Variação Cambial sobre Caixa e Equivalentes899(19.537)Aumento (Redução) de Caixa e Equivalentes(106.842)(182.686)",
+  "posicao_acionaria": "Nome%ON%PN%TotalCharles River Capital9,990,009,99CRESUD S.A.C.I.F.Y.A34,220,0034,22ELIE HORN5,940,005,94OUTROS46,870,0046,87AÇÕES TESOURARIA2,990,002,99TOTAL100,000,00100,00Informação recebida em 28/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
+  "acoes_em_circulacao_no_mercado": "22/10/2024Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas128.121-Pessoas Jurídicas305-Investidores Institucionais104-Quantidade de Ações Ordinárias63.480.48861,82Total de Ações63.480.48861,82",
+  "composicao_capital_social": "19/09/2023Ordinárias102.683.444Preferenciais0Total102.683.444",
+  "coleta_incompleta": true
+}

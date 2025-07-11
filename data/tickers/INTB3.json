@@ -1,0 +1,17 @@
+{
+  "ticker": "INTB3",
+  "nome": null,
+  "inicio_negociacao": "04/02/2021",
+  "cnpj": "82.901.000/0001-27",
+  "sobre": null,
+  "setor_economico": "Tecnologia da Informação",
+  "subsetor": "Computadores e Equipamentos",
+  "segmento": "Computadores e Equipamentos (segmento)",
+  "site": null,
+  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível1.286.8561.294.185Ativo Total5.116.5065.569.521Patrimônio Líquido2.965.0062.966.536Patrimônio Líquido Atribuído à Controladora2.941.2512.941.909Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda921.2671.039.031Resultado Bruto271.216351.899Resultado de Equivalência Patrimonial00Resultado Financeiro(2.955)9.391Resultado Líquido das Operações Continuadas61.594153.939Lucro (Prejuízo) do Período61.594153.939Lucro (Prejuízo) do Período Atribuído à Controladora61.438153.971Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(133.937)212.342Atividades de Investimento(27.327)(45.210)Atividades de Financiamento(78.777)(105.545)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(240.041)61.587",
+  "posicao_acionaria": "Nome%ON%PN%TotalANTONIA DE FREITAS TONIN9,670,009,67ANTONIO DE FREITAS AIQUEL4,840,004,84Dahua Europe B.V.7,560,007,56EDUARDO DE FREITAS TEIXEIRA4,840,004,84JADNA SAVI DE FREITAS6,320,006,32JANE SAVI DE FREITAS6,320,006,32JANETE SAVI DE FREITAS6,320,006,32JOANNA HORN DE FREITAS4,840,004,84JORGE LUIZ SAVI DE FREITAS6,530,006,53MARIA AUGUSTA DE FREITAS FRANCALACCI9,670,009,67PEDRO HORN DE FREITAS4,910,004,91OUTROS28,150,0028,15AÇÕES TESOURARIA0,040,000,04TOTAL100,000,00100,00Informação recebida em 31/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
+  "acoes_em_circulacao_no_mercado": "29/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas28.521-Pessoas Jurídicas316-Investidores Institucionais306-Quantidade de Ações Ordinárias114.132.68134,84Total de Ações114.132.68134,84",
+  "composicao_capital_social": "29/04/2025Ordinárias327.611.110Preferenciais0Total327.611.110",
+  "coleta_incompleta": true
+}

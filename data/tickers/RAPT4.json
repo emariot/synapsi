@@ -1,17 +1,15 @@
 {
   "ticker": "RAPT4",
-  "nome": null,
+  "nome": "RANDONCORP S.A.",
   "inicio_negociacao": "22/03/1993",
   "cnpj": "89.086.144/0001-16",
   "sobre": "Indústria e comércio de autopeças e de veículos rebocados. participação societária. transporte de cargas e prestação de serviços técnicos e logísticos.",
   "setor_economico": "Bens Industriais",
   "subsetor": "Material de Transporte",
   "segmento": "Material Rodoviário",
-  "site": null,
-  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "site": "https://randoncorp.com",
   "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível6.102.6724.337.122Ativo Total18.121.82515.437.636Patrimônio Líquido4.352.5464.507.688Patrimônio Líquido Atribuído à Controladora3.105.1473.229.923Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda3.191.3632.537.785Resultado Bruto849.194686.265Resultado de Equivalência Patrimonial2.393(68)Resultado Financeiro(167.220)(701)Resultado Líquido das Operações Continuadas47.100159.720Lucro (Prejuízo) do Período47.168159.765Lucro (Prejuízo) do Período Atribuído à Controladora(7.670)81.829Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais243.479(317.128)Atividades de Investimento(2.254.534)(92.075)Atividades de Financiamento2.011.745363.045Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes690(46.158)",
   "posicao_acionaria": "Nome%ON%PN%TotalALEXANDRE RANDON0,000,010,01AUDREY VICTORIA RANDON FOREST0,000,000,00DANIEL RAUL RANDON0,000,080,05DAVI COUTO FROTA0,000,010,01DAVID ABRAMO RANDON0,000,020,01DRAMD PARTICIPAÇÕES E ADMINISTRAÇÃO LTDA81,7116,2439,40ISABELLE RANDON0,000,000,00MAURIEN HELENA RANDON BARBOSA0,000,030,02NILVA THEREZINHA RANDON0,000,000,00PREVI-Caixa Previdência Funcionários Banco do Brasil8,850,003,13ROSELI BEATRIZ RANDON0,000,030,02SÉRGIO MARTINS BARBOSA0,000,000,00TPE GESTORA DE RECURSOS LTDA0,0010,496,78OUTROS9,4472,6150,26AÇÕES TESOURARIA0,000,490,32TOTAL100,00100,00100,00Informação recebida em 16/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
   "acoes_em_circulacao_no_mercado": "24/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas36.463-Pessoas Jurídicas329-Investidores Institucionais452-Quantidade de Ações Ordinárias21.308.96618,29Quantidade de Ações Preferenciais176.835.02583,09Total de Ações198.143.99160,17",
-  "composicao_capital_social": "18/04/2024Ordinárias116.515.527Preferenciais212.815.006Total329.330.533",
-  "coleta_incompleta": true
+  "composicao_capital_social": "18/04/2024Ordinárias116.515.527Preferenciais212.815.006Total329.330.533"
 }

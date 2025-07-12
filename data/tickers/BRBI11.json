@@ -1,5 +1,5 @@
 {
   "ticker": "BRBI11",
-  "erro": "Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_text(re.compile(r\"BRBI1\")).first to be visible\n",
+  "erro": "Locator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"textbox\", name=\"Digite o nome da Empresa\")\n",
   "coleta_incompleta": true
 }

@@ -1,6 +1,6 @@
 {
   "ticker": "PEAB4",
-  "nome": null,
+  "nome": "CIA PARTICIPACOES ALIANCA DA BAHIA",
   "inicio_negociacao": "18/09/2000",
   "cnpj": "01.938.783/0001-11",
   "sobre": "Participações em outras sociedades. na qualidade de sócia e/ou quotista e administração de bens próprios",
@@ -11,6 +11,5 @@
   "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível819.293812.201Ativo Total1.294.4031.239.221Patrimônio Líquido898.730896.214Patrimônio Líquido Atribuído à Controladora898.730896.214Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda26.51116.842Resultado Bruto10.53010.701Resultado de Equivalência Patrimonial8.55711.600Resultado Financeiro(185)4.375Resultado Líquido das Operações Continuadas2.8097.975Lucro (Prejuízo) do Período2.8097.975Lucro (Prejuízo) do Período Atribuído à Controladora00Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(8.208)(6.055)Atividades de Investimento(42.314)7.867Atividades de Financiamento48.416(291)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(2.106)1.521",
   "posicao_acionaria": "Nome%ON%PN%TotalADRECOR ADMINISTRAÇÃO LTDA0,0560,7130,25COMPANHIA DE SEGUROS ALIANÇA DA BAHIA1,866,274,05FUNDAÇÃO MARIA EMILIA PEDREIRA FREIRE DE CARVALHO17,783,0210,43JOSÉ RENATO DE ALMEIDA GONÇALVES TOURINHO16,260,228,27Patrimonial Mundo Novo Ltda6,011,693,86SOCIEDADE AGRÍCOLA SANTA TEREZA LTDA0,000,340,17THEREZA DE ALMEIDA GONÇALVES TOURINHO16,050,198,15OUTROS41,9827,5534,80AÇÕES TESOURARIA0,020,000,01TOTAL100,00100,00100,00Informação recebida em 01/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
   "acoes_em_circulacao_no_mercado": "30/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas1.443-Pessoas Jurídicas28-Investidores Institucionais5-Quantidade de Ações Ordinárias5.892.85762,06Quantidade de Ações Preferenciais2.829.15930,06Total de Ações8.722.01646,13",
-  "composicao_capital_social": "15/12/2023Ordinárias9.495.733Preferenciais9.412.283Total18.908.016",
-  "coleta_incompleta": true
+  "composicao_capital_social": "15/12/2023Ordinárias9.495.733Preferenciais9.412.283Total18.908.016"
 }

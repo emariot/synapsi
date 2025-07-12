@@ -1,17 +1,15 @@
 {
   "ticker": "CASH3",
-  "nome": null,
+  "nome": "MÉLIUZ S.A.",
   "inicio_negociacao": "05/11/2020",
   "cnpj": "14.110.585/0001-07",
   "sobre": "Portal para divulgação de marcas e produtos. publicidade. intermediação de negócios. licenciamento de software e investimentos em Bitcoin e participação em sociedades.",
   "setor_economico": "Tecnologia da Informação",
   "subsetor": "Programas e Serviços",
   "segmento": "Programas e Serviços (segmento)",
-  "site": null,
-  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "site": "https://meliuz.com.br",
   "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível135.928115.068Ativo Total486.791486.794Patrimônio Líquido358.405349.470Patrimônio Líquido Atribuído à Controladora352.593342.465Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda100.39982.412Resultado Bruto11.2192.932Resultado de Equivalência Patrimonial00Resultado Financeiro6.11417.020Resultado Líquido das Operações Continuadas10.00419.080Lucro (Prejuízo) do Período10.00419.080Lucro (Prejuízo) do Período Atribuído à Controladora10.32720.234Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais7.67414.784Atividades de Investimento21.034(9.330)Atividades de Financiamento(41)(89)Variação Cambial sobre Caixa e Equivalentes3.990176Aumento (Redução) de Caixa e Equivalentes32.6575.541",
   "posicao_acionaria": "Nome%ON%PN%TotalANDRÉ AMARAL RIBEIRO0,980,000,98BANCO BTG PACTUAL S/A14,250,0014,25BTG PACTUAL WM GESTÃO DE RECURSOS LTDA6,280,006,28CANARY IV. L.P5,740,005,74ISRAEL FERNANDES SALMEN14,920,0014,92LUCAS MARQUES PELOSO FIGUEIREDO1,280,001,28ORG Investments LLC4,010,004,01OUTROS52,530,0052,53AÇÕES TESOURARIA0,000,000,00TOTAL100,000,00100,00Informação recebida em 08/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
   "acoes_em_circulacao_no_mercado": "23/05/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas59.082-Pessoas Jurídicas3-Investidores Institucionais335-Quantidade de Ações Ordinárias88.854.34978,81Total de Ações88.854.34978,81",
-  "composicao_capital_social": "04/07/2025Ordinárias112.751.441Preferenciais0Total112.751.441",
-  "coleta_incompleta": true
+  "composicao_capital_social": "04/07/2025Ordinárias112.751.441Preferenciais0Total112.751.441"
 }

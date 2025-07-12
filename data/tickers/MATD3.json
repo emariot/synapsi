@@ -1,17 +1,15 @@
 {
   "ticker": "MATD3",
-  "nome": null,
+  "nome": "HOSPITAL MATER DEI S/A",
   "inicio_negociacao": "16/04/2021",
   "cnpj": "16.676.520/0001-59",
-  "sobre": "",
+  "sobre": "Grupo hospitalar que atua na área médico-hospitalar, oferecendo serviços de saúde de alta complexidade, diagnóstico, prevenção e tratamento, com foco na tecnologia e no atendimento ao paciente.",
   "setor_economico": "Saúde",
   "subsetor": "Serv.Méd.Hospit..Análises e Diagnósticos",
   "segmento": "Serv.Méd.Hospit..Análises e Diagnósticos (segmento)",
-  "site": null,
-  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "site": "https://www.materdei.com.br/",
   "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível1.574.5681.585.215Ativo Total4.377.3674.340.852Patrimônio Líquido1.485.0171.476.425Patrimônio Líquido Atribuído à Controladora1.454.6401.448.435Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda499.318582.799Resultado Bruto143.788193.108Resultado de Equivalência Patrimonial(1.228)(231)Resultado Financeiro(39.140)(49.287)Resultado Líquido das Operações Continuadas20.17345.959Lucro (Prejuízo) do Período20.17345.959Lucro (Prejuízo) do Período Atribuído à Controladora19.93142.183Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais51.83746.143Atividades de Investimento(16.865)(88.636)Atividades de Financiamento(41.440)(22.402)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(6.468)(64.895)",
   "posicao_acionaria": "Nome%ON%PN%TotalANNA DIAS SALVADOR0,250,000,25FELIPE SALVADOR LIGÓRIO1,740,001,74FLAVIA SALVADOR LIGÓRIO1,740,001,74GUY SALVADOR GEO0,560,000,56HENRIQUE MORAES SALVADOR SILVA3,710,003,71JOSÉ HENRIQUE DIAS SALVADOR0,210,000,21JSS Empreendimentos e Administração LTDA.64,610,0064,61JULIA DIAS SALVADOR0,200,000,20LARA SALVADOR GEO0,560,000,56LIVIA SALVADOR GEO0,560,000,56MARIA NORMA SALVADOR LIGÓRIO0,750,000,75MÁRCIA SALVADOR GÉO2,590,002,59RAFAEL SABINO SALVADOR0,370,000,37RENATA SABINO SALVADOR GRANDE0,370,000,37RENATO MORAES SALVADOR SILVA2,430,002,43OUTROS18,380,0018,38AÇÕES TESOURARIA0,980,000,98TOTAL100,000,00100,00Informação recebida em 08/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
   "acoes_em_circulacao_no_mercado": "23/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas4.161-Pessoas Jurídicas23-Investidores Institucionais127-Quantidade de Ações Ordinárias62.373.40318,38Total de Ações62.373.40318,38",
-  "composicao_capital_social": "19/03/2025Ordinárias339.428.025Preferenciais0Total339.428.025",
-  "coleta_incompleta": true
+  "composicao_capital_social": "19/03/2025Ordinárias339.428.025Preferenciais0Total339.428.025"
 }

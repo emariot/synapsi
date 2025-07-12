@@ -1,6 +1,6 @@
 {
   "ticker": "AMER3",
-  "nome": null,
+  "nome": "AMERICANAS S.A",
   "inicio_negociacao": "08/08/2007",
   "cnpj": "00.776.574/0001-56",
   "sobre": "Comércio varejista e atacadista em geral de quaisquer bens e serviços por meio de diversos meios. em especial. da Internet e de lojas físicas. sem restrição a outros meios.",
@@ -11,6 +11,5 @@
   "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível6.017.0006.127.000Ativo Total17.377.00017.465.000Patrimônio Líquido4.475.0004.970.000Patrimônio Líquido Atribuído à Controladora4.475.0004.970.000Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda3.058.0003.702.000Resultado Bruto889.0001.228.000Resultado de Equivalência Patrimonial1.0001.000Resultado Financeiro(200.000)(93.000)Resultado Líquido das Operações Continuadas(493.000)444.000Lucro (Prejuízo) do Período(496.000)453.000Lucro (Prejuízo) do Período Atribuído à Controladora(496.000)453.000Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(316.000)(3.695.000)Atividades de Investimento86.000213.000Atividades de Financiamento(115.000)3.391.000Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(345.000)(91.000)",
   "posicao_acionaria": "Nome%ON%PN%TotalCARLOS ALBERTO DA VEIGA SICUPIRA0,090,000,09Cedar Trade LLC15,070,0015,07SAMER INVESTMENT LLC6,620,006,62SAWDOG HOLDINGS LLC28,220,0028,22OUTROS50,000,0050,00AÇÕES TESOURARIA0,000,000,00TOTAL100,000,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
   "acoes_em_circulacao_no_mercado": "29/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas124.421-Pessoas Jurídicas1.374-Investidores Institucionais449-Quantidade de Ações Ordinárias100.121.73650,00Total de Ações100.121.73650,00",
-  "composicao_capital_social": "14/05/2025Ordinárias200.244.321Preferenciais0Total200.244.321",
-  "coleta_incompleta": true
+  "composicao_capital_social": "14/05/2025Ordinárias200.244.321Preferenciais0Total200.244.321"
 }

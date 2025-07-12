@@ -7,11 +7,9 @@
   "setor_economico": "Utilidade Pública",
   "subsetor": "Energia Elétrica",
   "segmento": "Energia Elétrica (segmento)",
-  "site": null,
-  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.locator(\"//p[strong[normalize-space(text())='Site']]\").first.locator(\"xpath=following-sibling::p[1]\").locator(\"a[href^='http']\").first to be visible\n",
+  "site": "//http://www.afluentet.com.br/",
   "dados_economico_financeiros": "Ver dados no formato Não consolidado Balanço Patrimonial  - Não-Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos, Intangível e Diferido4.9775.148Ativo Total345.644342.757Patrimônio Líquido257.167252.912Demonstração do Resultado - Não-Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda10.41514.958Resultado Bruto7.85812.290Resultado de Equivalência Patrimonial00Resultado Financeiro(612)179Resultado Líquido das Operações Continuadas3.9467.340Lucro (Prejuízo) do Período3.9467.340Demonstração do Fluxo de Caixa - Não-Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais6.58010.862Atividades de Investimento(222)0Atividades de Financiamento(8)(50)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes6.35010.812",
   "posicao_acionaria": "Nome%ON%PN%TotalIberdrola Energia S.A.8,500,008,50Neoenergia S.A90,180,0090,18OUTROS1,330,001,33AÇÕES TESOURARIA0,000,000,00TOTAL100,000,00100,00Informação recebida em 13/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
   "acoes_em_circulacao_no_mercado": "14/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas3.061-Pessoas Jurídicas200-Investidores Institucionais54-Quantidade de Ações Ordinárias835.9651,33Total de Ações835.9651,33",
-  "composicao_capital_social": "07/04/2017Ordinárias63.084.700Preferenciais0Total63.084.700",
-  "coleta_incompleta": true
+  "composicao_capital_social": "07/04/2017Ordinárias63.084.700Preferenciais0Total63.084.700"
 }

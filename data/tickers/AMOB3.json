@@ -1,17 +1,15 @@
 {
   "ticker": "AMOB3",
-  "nome": null,
+  "nome": "AUTOMOB PARTICIPAÇÕES S.A.",
   "inicio_negociacao": "16/12/2024",
   "cnpj": "35.654.688/0001-08",
   "sobre": "Comércio de tratores. máquinas. veículos automotores (novos e usados) peças. acessórios. prestação de serviços de intermediação. transporte rodoviário de cargas e participação em outras sociedades.",
   "setor_economico": "Consumo Cíclico",
   "subsetor": "Automóveis e Motocicletas",
   "segmento": "Automóveis e Motocicletas (segmento)",
-  "site": null,
-  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "site": "https://grupovamos.com.br",
   "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível2.659.6952.610.868Ativo Total8.857.7898.909.802Patrimônio Líquido2.262.5462.302.582Patrimônio Líquido Atribuído à Controladora2.262.5462.302.582Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda2.999.0922.727.702Resultado Bruto421.073403.546Resultado de Equivalência Patrimonial00Resultado Financeiro(121.682)(84.143)Resultado Líquido das Operações Continuadas(35.314)(4.737)Lucro (Prejuízo) do Período(35.314)(4.737)Lucro (Prejuízo) do Período Atribuído à Controladora00Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais321.650117.444Atividades de Investimento(92.258)(131.213)Atividades de Financiamento(84.786)(21.567)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes144.606(35.336)",
   "posicao_acionaria": "Nome%ON%PN%TotalSIMPAR S.A.71,750,0071,75OUTROS28,250,0028,25AÇÕES TESOURARIA0,000,000,00TOTAL100,000,00100,00Informação recebida em 01/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
   "acoes_em_circulacao_no_mercado": "30/12/2024Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas70.413-Pessoas Jurídicas285-Investidores Institucionais549-Quantidade de Ações Ordinárias10.703.13228,25Total de Ações10.703.13228,25",
-  "composicao_capital_social": "25/04/2025Ordinárias37.886.057Preferenciais0Total37.886.057",
-  "coleta_incompleta": true
+  "composicao_capital_social": "25/04/2025Ordinárias37.886.057Preferenciais0Total37.886.057"
 }

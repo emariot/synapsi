@@ -1,17 +1,15 @@
 {
   "ticker": "MTRE3",
-  "nome": null,
+  "nome": "MITRE REALTY EMPREENDIMENTOS E PARTICIPAÇÕES S.A.",
   "inicio_negociacao": "05/02/2020",
   "cnpj": "07.882.930/0001-65",
   "sobre": "(a) Incorporação e comercialização de empreendimentos imobiliários de qualquer natureza. (b) loteamento de terrenos. (c) construção de condomínios",
   "setor_economico": "Consumo Cíclico",
   "subsetor": "Construção Civil",
   "segmento": "Incorporações",
-  "site": null,
-  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "site": "https://mitrerealty.com.br",
   "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível84.07185.190Ativo Total2.224.4962.200.285Patrimônio Líquido1.051.9861.041.998Patrimônio Líquido Atribuído à Controladora997.155997.920Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda239.305245.573Resultado Bruto63.53053.221Resultado de Equivalência Patrimonial1.613520Resultado Financeiro3.9632.002Resultado Líquido das Operações Continuadas15.6992.054Lucro (Prejuízo) do Período15.6992.054Lucro (Prejuízo) do Período Atribuído à Controladora11.2351.065Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(71.229)51.545Atividades de Investimento8.6761.669Atividades de Financiamento(25.514)(63.619)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(88.067)(10.405)",
   "posicao_acionaria": "Nome%ON%PN%TotalClube de Investimento Padova7,230,007,23FABRICIO MITRE23,200,0023,20JORGE MITRE3,270,003,27MITRE PARTNERS PARTICIPACOES S.A.3,830,003,83STAR MITRE EMPREENDIMENTOS E PARTICIPACOES LTDA9,900,009,90OUTROS52,580,0052,58AÇÕES TESOURARIA0,000,000,00TOTAL100,000,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
   "acoes_em_circulacao_no_mercado": "25/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas32.092-Pessoas Jurídicas103-Investidores Institucionais137-Quantidade de Ações Ordinárias62.667.91359,25Total de Ações62.667.91359,25",
-  "composicao_capital_social": "03/02/2020Ordinárias105.774.820Preferenciais0Total105.774.820",
-  "coleta_incompleta": true
+  "composicao_capital_social": "03/02/2020Ordinárias105.774.820Preferenciais0Total105.774.820"
 }

@@ -1,16 +1,15 @@
 {
   "ticker": "CMIG4",
-  "nome": null,
+  "nome": "CIA ENERGETICA DE MINAS GERAIS - CEMIG",
   "inicio_negociacao": "14/01/1972",
   "cnpj": "17.155.730/0001-64",
   "sobre": "Concessionária de serviço público de energia elétrica.",
   "setor_economico": "Utilidade Pública",
   "subsetor": "Energia Elétrica",
   "segmento": "Energia Elétrica (segmento)",
-  "site": "//www.cemig.com.br",
+  "site": "https://cemig.com.br",
   "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível24.090.10623.742.025Ativo Total63.901.93159.726.836Patrimônio Líquido27.920.24027.383.079Patrimônio Líquido Atribuído à Controladora27.914.45527.377.786Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda9.844.2319.057.867Resultado Bruto1.840.6662.025.460Resultado de Equivalência Patrimonial42.11990.501Resultado Financeiro(249.631)(180.986)Resultado Líquido das Operações Continuadas1.038.7401.152.891Lucro (Prejuízo) do Período1.038.7401.152.891Lucro (Prejuízo) do Período Atribuído à Controladora1.038.2481.152.388Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais1.371.5191.639.400Atividades de Investimento(2.762.780)(2.486.376)Atividades de Financiamento2.737.0671.486.895Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes1.345.806639.919",
   "posicao_acionaria": "Nome%ON%PN%TotalBNDES Participações S.A.11,150,003,73BLACKROCK. INC.0,0010,016,66Estado de Minas Gerais (Casa Civil)50,970,0017,04FIA Dinâmica Energia32,828,4116,57Pzena Investment Management. LLC0,005,003,33OUTROS5,0776,5352,64AÇÕES TESOURARIA0,000,060,04TOTAL100,00100,00100,00Informação recebida em 03/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
   "acoes_em_circulacao_no_mercado": "30/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas516.886-Pessoas Jurídicas3.321-Investidores Institucionais1.368-Quantidade de Ações Ordinárias469.061.11549,03Quantidade de Ações Preferenciais1.904.057.89499,94Total de Ações2.373.119.00982,93",
-  "composicao_capital_social": "29/04/2024Ordinárias956.601.911Preferenciais1.905.179.984Total2.861.781.895",
-  "coleta_incompleta": true
+  "composicao_capital_social": "29/04/2024Ordinárias956.601.911Preferenciais1.905.179.984Total2.861.781.895"
 }

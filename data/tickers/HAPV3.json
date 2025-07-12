@@ -1,5 +1,15 @@
 {
   "ticker": "HAPV3",
-  "erro": "Locator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"textbox\", name=\"Digite o nome da Empresa\")\n",
-  "coleta_incompleta": true
+  "nome": "HAPVIDA PARTICIPACOES E INVESTIMENTOS SA",
+  "inicio_negociacao": "25/04/2018",
+  "cnpj": "05.197.443/0001-38",
+  "sobre": "Participação. como sócia ou acionista. em outras empresas. predominantemente de assistência médica. bem como a realização de investimentos diretos e a exploração de atividades de prestação de serviços",
+  "setor_economico": "Saúde",
+  "subsetor": "Serv.Méd.Hospit..Análises e Diagnósticos",
+  "segmento": "Serv.Méd.Hospit..Análises e Diagnósticos (segmento)",
+  "site": "https://hapvida.com.br",
+  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível56.403.11256.873.331Ativo Total74.221.45873.499.646Patrimônio Líquido48.865.94748.676.923Patrimônio Líquido Atribuído à Controladora48.864.19548.675.201Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda1.469.2351.321.446Resultado Bruto1.282.084993.699Resultado de Equivalência Patrimonial00Resultado Financeiro(349.876)(375.150)Resultado Líquido das Operações Continuadas185.89759.194Lucro (Prejuízo) do Período185.89765.159Lucro (Prejuízo) do Período Atribuído à Controladora186.12265.277Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais885.056924.389Atividades de Investimento(725.944)(412.571)Atividades de Financiamento(260.831)(1.100.500)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(101.719)(588.682)",
+  "posicao_acionaria": "Nome%ON%PN%TotalANA CHRISTINA FONTOURA KOREN DE LIMA0,660,000,66CANDIDO PINHEIRO KOREN DE LIMA0,670,000,67CANDIDO PINHEIRO KOREN DE LIMA JUNIOR0,570,000,57JORGE FONTOURA PINHEIRO KOREN DE LIMA0,700,000,70PPAR Pinheiro Participações S.A.33,890,0033,89SQUADRA INVESTIMENTOS  GESTÃO DE RECURSOS LTDA.5,150,005,15OUTROS56,780,0056,78AÇÕES TESOURARIA1,590,001,59TOTAL100,000,00100,00Informação recebida em 07/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
+  "acoes_em_circulacao_no_mercado": "30/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas59.692-Pessoas Jurídicas292-Investidores Institucionais1.166-Quantidade de Ações Ordinárias312.217.20962,12Total de Ações312.217.20962,12",
+  "composicao_capital_social": "30/04/2025Ordinárias502.630.884Preferenciais0Total502.630.884"
 }

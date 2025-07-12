@@ -1,17 +1,15 @@
 {
   "ticker": "ASAI3",
-  "nome": null,
+  "nome": "ASAI",
   "inicio_negociacao": "01/03/2021",
   "cnpj": "06.057.223/0001-71",
   "sobre": "Atacadista de autosserviços",
   "setor_economico": "Consumo não Cíclico",
   "subsetor": "Comércio e Distribuição",
   "segmento": "Alimentos",
-  "site": null,
-  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "site": "https://assai.com.br",
   "dados_economico_financeiros": "Ver dados no formato Não consolidado Balanço Patrimonial  - Não-Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos, Intangível e Diferido27.419.00027.949.000Ativo Total44.685.00045.593.000Patrimônio Líquido5.385.0005.255.000Demonstração do Resultado - Não-Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda18.552.00017.222.000Resultado Bruto3.066.0002.802.000Resultado de Equivalência Patrimonial17.00016.000Resultado Financeiro(790.000)(760.000)Resultado Líquido das Operações Continuadas117.00060.000Lucro (Prejuízo) do Período117.00060.000Demonstração do Fluxo de Caixa - Não-Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais396.000457.000Atividades de Investimento(306.000)(405.000)Atividades de Financiamento(1.316.000)(973.000)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(1.226.000)(921.000)",
   "posicao_acionaria": "Nome%ON%PN%TotalConifer Management LLC5,010,005,01Dynamo Administração de Recursos Ltda.5,020,005,02Orbis Invest11,580,0011,58WishBone Management LP5,010,005,01OUTROS73,040,0073,04AÇÕES TESOURARIA0,350,000,35TOTAL100,000,00100,00Informação recebida em 10/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
   "acoes_em_circulacao_no_mercado": "25/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas39.608.542-Pessoas Jurídicas6.265.219-Investidores Institucionais1.306.371.514-Quantidade de Ações Ordinárias1.345.066.30199,47Total de Ações1.345.066.30199,47",
-  "composicao_capital_social": "18/03/2025Ordinárias1.352.245.185Preferenciais0Total1.352.245.185",
-  "coleta_incompleta": true
+  "composicao_capital_social": "18/03/2025Ordinárias1.352.245.185Preferenciais0Total1.352.245.185"
 }

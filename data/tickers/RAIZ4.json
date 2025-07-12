@@ -1,17 +1,15 @@
 {
   "ticker": "RAIZ4",
-  "nome": null,
+  "nome": "RAIZEN S.A.",
   "inicio_negociacao": "05/08/2021",
   "cnpj": "33.453.598/0001-23",
   "sobre": "Distribuição e venda de etanol e de petróleo. combustíveis e outros hidrocarbonetos fluidos e seus subprodutos. bem como itens necessários para o desemprenho de tais atividades.",
   "setor_economico": "Petróleo. Gás e Biocombustíveis",
   "subsetor": "Petróleo. Gás e Biocombustíveis (subsetor)",
   "segmento": "Exploração. Refino e Distribuição",
-  "site": null,
-  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "site": "https://raizen.com",
   "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/03/2024Ativo Imobilizado, Investimentos e Intangível56.997.36150.970.062Ativo Total140.999.678128.183.310Patrimônio Líquido18.175.93822.125.564Patrimônio Líquido Atribuído à Controladora17.588.53021.379.405Demonstração do Resultado - Consolidado01/04/2024 a 31/03/202501/04/2023 a 31/03/2024Receita de Venda255.268.454220.454.239Resultado Bruto11.836.79315.723.597Resultado de Equivalência Patrimonial(204.827)(252.430)Resultado Financeiro(7.462.591)(6.314.539)Resultado Líquido das Operações Continuadas(4.176.951)614.133Lucro (Prejuízo) do Período(4.176.951)614.133Lucro (Prejuízo) do Período Atribuído à Controladora(4.256.524)520.715Demonstração do Fluxo de Caixa - Consolidado01/04/2024 a 31/03/202501/04/2023 a 31/03/2024Atividades Operacionais6.215.84721.421.351Atividades de Investimento(11.440.239)(12.870.776)Atividades de Financiamento11.791.320(2.475.611)Variação Cambial sobre Caixa e Equivalentes334.55911.546Aumento (Redução) de Caixa e Equivalentes6.901.4876.086.510",
   "posicao_acionaria": "Nome%ON%PN%TotalA BlackRock. Inc.0,005,000,66BAILLIE GIFFORD OVERSEAS LIMITED0,009,911,30Cosan Nove Participações S.A.44,920,0039,02Cosan S.A.5,084,485,00Norges Bank0,005,000,66Nuveen. LLC0,005,640,74Shell Brazil Holding BV50,004,4844,02Wellington Management Group LLP0,0010,841,42OUTROS0,0053,317,00AÇÕES TESOURARIA0,001,340,18TOTAL100,00100,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
   "acoes_em_circulacao_no_mercado": "30/07/2024Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas128.182-Pessoas Jurídicas736-Investidores Institucionais368-Quantidade de Ações Preferenciais1.217.819.63389,62Total de Ações1.217.819.63311,76",
-  "composicao_capital_social": "03/09/2021Ordinárias8.993.572.584Preferenciais1.358.936.900Total10.352.509.484",
-  "coleta_incompleta": true
+  "composicao_capital_social": "03/09/2021Ordinárias8.993.572.584Preferenciais1.358.936.900Total10.352.509.484"
 }

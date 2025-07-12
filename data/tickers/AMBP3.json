@@ -1,17 +1,15 @@
 {
   "ticker": "AMBP3",
-  "nome": null,
+  "nome": "AMBIPAR PARTICIPACOES E EMPREENDIMENTOS S/A",
   "inicio_negociacao": "13/07/2020",
   "cnpj": "12.648.266/0001-24",
   "sobre": "Gerenciamento e valorização de resíduos. bem como. prestação de serviços de atendimento a emergência.",
   "setor_economico": "Utilidade Pública",
   "subsetor": "Água e Saneamento",
   "segmento": "Água e Saneamento (segmento)",
-  "site": null,
-  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "site": "https://grupoambipar.com.br",
   "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível8.644.2718.004.991Ativo Total17.179.56214.655.272Patrimônio Líquido2.363.2752.732.554Patrimônio Líquido Atribuído à Controladora1.315.4811.628.304Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda1.739.7541.266.865Resultado Bruto360.366284.317Resultado de Equivalência Patrimonial00Resultado Financeiro(446.340)(419.933)Resultado Líquido das Operações Continuadas(165.782)(202.070)Lucro (Prejuízo) do Período(165.782)(202.070)Lucro (Prejuízo) do Período Atribuído à Controladora(190.534)(253.388)Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais27.506(34.113)Atividades de Investimento(180.744)(365.942)Atividades de Financiamento1.286.318528.749Variação Cambial sobre Caixa e Equivalentes(40.851)18.788Aumento (Redução) de Caixa e Equivalentes1.092.229147.482",
   "posicao_acionaria": "Nome%ON%PN%TotalCHRISTIANE BORLENGHI DONADIO0,000,000,00EVEREST  FUNDO DE INVESTIMENTO EM PARTICIPAÇÕES MULTIESTRATÉGIA INVESTIMENTOS NO EXTERIOR25,300,0025,30TRUSTEE DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA8,980,008,98TÉRCIO BORLENGHI JUNIOR48,180,0048,18OUTROS17,260,0017,26AÇÕES TESOURARIA0,290,000,29TOTAL100,000,00100,00Informação recebida em 23/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
   "acoes_em_circulacao_no_mercado": "30/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas11.200-Pessoas Jurídicas36-Investidores Institucionais184-Quantidade de Ações Ordinárias36.932.48922,11Total de Ações36.932.48922,11",
-  "composicao_capital_social": "01/11/2023Ordinárias167.041.869Preferenciais0Total167.041.869",
-  "coleta_incompleta": true
+  "composicao_capital_social": "01/11/2023Ordinárias167.041.869Preferenciais0Total167.041.869"
 }

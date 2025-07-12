@@ -4,7 +4,7 @@ import time
 import random
 import pandas as pd
 from playwright.sync_api import sync_playwright
-from extrair_dados import extrair_dados_ticker
+from extrator_b3 import extrair_dados_ticker
 
 def carregar_tickers(caminho_csv="Findash/docs/acoes-listadas-b3.csv"):
     df = pd.read_csv(caminho_csv)

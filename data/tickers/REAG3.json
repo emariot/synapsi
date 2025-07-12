@@ -1,17 +1,15 @@
 {
   "ticker": "REAG3",
-  "nome": null,
+  "nome": "REAG INVESTIMENTOS S.A.",
   "inicio_negociacao": "17/05/2021",
   "cnpj": "14.127.813/0001-51",
   "sobre": "A Companhia é uma Holding. focada em serviços financeiros. especialmente \"asset & wealth management\"",
   "setor_economico": "Tecnologia da Informação",
   "subsetor": "Programas e Serviços",
   "segmento": "Programas e Serviços (segmento)",
-  "site": null,
-  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "site": "https://getninjas.com.br",
   "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado30/09/202431/12/2023Ativo Imobilizado, Investimentos e Intangível7.64310.648Ativo Total313.039297.689Patrimônio Líquido293.687280.335Patrimônio Líquido Atribuído à Controladora293.687280.335Demonstração do Resultado - Consolidado01/01/2024 a 30/09/202401/01/2023 a 30/09/2023Receita de Venda46.45447.986Resultado Bruto39.25242.735Resultado de Equivalência Patrimonial00Resultado Financeiro34.31623.180Resultado Líquido das Operações Continuadas13.2783.658Lucro (Prejuízo) do Período13.2783.658Lucro (Prejuízo) do Período Atribuído à Controladora00Demonstração do Fluxo de Caixa - Consolidado01/01/2024 a 30/09/202401/01/2023 a 30/09/2023Atividades Operacionais19.2899.565Atividades de Investimento(37.895)46.799Atividades de Financiamento(415)(176)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(19.021)56.188",
   "posicao_acionaria": "Nome%ON%PN%TotalARC CAPITAL LTDA8,500,008,50REAG ALPHA FUNDO DE INVESTIMENTO FINANCEIRO EM AÇÕES23,450,0023,45REAG ASSET MANAGEMENT LTDA.63,930,0063,93OUTROS3,980,003,98AÇÕES TESOURARIA0,140,000,14TOTAL100,000,00100,00Informação recebida em 03/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
   "acoes_em_circulacao_no_mercado": "02/06/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas2.017-Pessoas Jurídicas17-Investidores Institucionais17-Quantidade de Ações Ordinárias16.470.11311,68Total de Ações16.470.11311,68",
-  "composicao_capital_social": "09/12/2024Ordinárias140.991.806Preferenciais0Total140.991.806",
-  "coleta_incompleta": true
+  "composicao_capital_social": "09/12/2024Ordinárias140.991.806Preferenciais0Total140.991.806"
 }

@@ -1,6 +1,6 @@
 {
   "ticker": "LOGG3",
-  "nome": null,
+  "nome": "LOG COMMERCIAL PROPERTIES",
   "inicio_negociacao": "21/12/2018",
   "cnpj": "09.041.168/0001-10",
   "sobre": "Administração de bens próprios. prestação de serviços de engenharia e construção.Incorporação. construção comercialização e locação de imóveis.Participação em outras sociedades como sócia ou acionista",
@@ -11,6 +11,5 @@
   "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível4.790.0784.557.697Ativo Total6.737.6296.774.201Patrimônio Líquido3.692.3373.605.375Patrimônio Líquido Atribuído à Controladora3.672.9193.586.009Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda55.32753.841Resultado Bruto54.02352.388Resultado de Equivalência Patrimonial7441.823Resultado Financeiro(26.046)(9.123)Resultado Líquido das Operações Continuadas86.36555.300Lucro (Prejuízo) do Período86.36555.300Lucro (Prejuízo) do Período Atribuído à Controladora86.31355.155Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(23.862)28.208Atividades de Investimento43.619(156.728)Atividades de Financiamento(153.928)(73.970)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(134.171)(202.490)",
   "posicao_acionaria": "Nome%ON%PN%TotalCHALLENGER FIA11,850,0011,85CONEDI PARTICIPAÇÕES LTDA28,350,0028,35FIDELITY MANAGEMENT RESEARCH COMPANY (FMR LLC)9,160,009,16Fundo de Investimento em Participações Bradesco MPLUS8,850,008,85REAL INVESTOR ASSET MANAGEMENT LTDA.11,170,0011,17RUBENS MENIN TEIXEIRA DE SOUZA1,640,001,64OUTROS28,040,0028,04AÇÕES TESOURARIA0,940,000,94TOTAL100,000,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
   "acoes_em_circulacao_no_mercado": "07/05/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas13.006-Pessoas Jurídicas51-Investidores Institucionais225-Quantidade de Ações Ordinárias50.624.08057,62Total de Ações50.624.08057,62",
-  "composicao_capital_social": "21/10/2024Ordinárias87.859.154Preferenciais0Total87.859.154",
-  "coleta_incompleta": true
+  "composicao_capital_social": "21/10/2024Ordinárias87.859.154Preferenciais0Total87.859.154"
 }

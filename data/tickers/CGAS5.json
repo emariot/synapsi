@@ -1,16 +1,15 @@
 {
   "ticker": "CGAS5",
-  "nome": null,
+  "nome": "CIA GAS DE SAO PAULO - COMGAS",
   "inicio_negociacao": "11/09/1997",
   "cnpj": "61.856.571/0001-17",
   "sobre": "Setor de atividade: Utilidade Pública: Distribuição de gás natural canalizado.",
   "setor_economico": "Utilidade Pública",
   "subsetor": "Gás",
   "segmento": "Gás (segmento)",
-  "site": "//www.comgas.com.br",
+  "site": "https://raizen.com",
   "dados_economico_financeiros": "Ver dados no formato Não consolidado Balanço Patrimonial  - Não-Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos, Intangível e Diferido8.750.8998.750.630Ativo Total14.028.66615.591.493Patrimônio Líquido1.420.1831.133.863Demonstração do Resultado - Não-Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda3.012.5573.561.042Resultado Bruto749.362720.936Resultado de Equivalência Patrimonial00Resultado Financeiro(207.295)(137.178)Resultado Líquido das Operações Continuadas286.320322.204Lucro (Prejuízo) do Período286.320322.204Demonstração do Fluxo de Caixa - Não-Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais456.769341.092Atividades de Investimento(16.825)(463.369)Atividades de Financiamento(1.485.112)833.599Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(1.045.168)711.322",
   "posicao_acionaria": "Nome%ON%PN%TotalCompass Gás e Energia S.A.99,8496,6099,14OUTROS0,163,410,86AÇÕES TESOURARIA0,000,000,00TOTAL100,00100,00100,00Informação recebida em 27/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
   "acoes_em_circulacao_no_mercado": "25/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas5.667-Pessoas Jurídicas99-Investidores Institucionais12-Quantidade de Ações Ordinárias163.4350,16Quantidade de Ações Preferenciais975.7753,41Total de Ações1.139.2100,86",
-  "composicao_capital_social": "01/07/2019Ordinárias103.862.768Preferenciais28.657.819Total132.520.587",
-  "coleta_incompleta": true
+  "composicao_capital_social": "01/07/2019Ordinárias103.862.768Preferenciais28.657.819Total132.520.587"
 }

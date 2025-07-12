@@ -2,6 +2,7 @@ from playwright.sync_api import TimeoutError
 import time
 import re
 
+
 def extrair_dados_ticker(ticker, pw):
     navegador = pw.chromium.launch(headless=False)
     pagina = navegador.new_page()
@@ -71,18 +72,16 @@ def extrair_dados_ticker(ticker, pw):
         # Site oficial - captura flexível
         # Espera presença de qualquer link http
         try:
-                # Procura um <p> cujo conteúdo seja exatamente "Site"
-                p_com_site = iframe.locator("xpath=//p[strong[normalize-space(text())='Site']]").first
+            # Localiza o <a> cujo título vem após <strong>Site</strong>
+            link = iframe.locator("xpath=//p[strong[normalize-space(text())='Site']]/following-sibling::p//a[contains(@href, 'http')]").first
+            link.wait_for(timeout=5000)
+            href = link.get_attribute("href")
 
-                # Localiza o <p> seguinte (irmão)
-                p_valor = p_com_site.locator("xpath=following-sibling::p[1]")
-
-                # Extrai o <a href> com http ou https
-                link = p_valor.locator("a[href^='http']").first
-                link.wait_for(timeout=3000)
-
-                href = link.get_attribute("href")
-                dados["site"] = href.strip() if href else None
+            # Verifica se o href parece válido
+            if href and any(kw in href for kw in ['http', 'www', '.com', '.com.br']):
+                dados["site"] = href.strip()
+            else:
+                dados["site"] = None
 
         except Exception as e:
             dados["site"] = None

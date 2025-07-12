@@ -1,5 +1,15 @@
 {
   "ticker": "VALE3",
-  "erro": "Locator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"textbox\", name=\"Digite o nome da Empresa\")\n",
-  "coleta_incompleta": true
+  "nome": "VALE S.A.",
+  "inicio_negociacao": "01/04/1968",
+  "cnpj": "33.592.510/0001-54",
+  "sobre": "Mineração",
+  "setor_economico": "Materiais Básicos",
+  "subsetor": "Mineração",
+  "segmento": "Minerais Metálicos",
+  "site": "https://vale.com/",
+  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível325.816.000340.857.000Ativo Total479.072.000496.325.000Patrimônio Líquido208.717.000213.720.000Patrimônio Líquido Atribuído à Controladora202.082.000206.772.000Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda47.411.00041.891.000Resultado Bruto15.600.00015.297.000Resultado de Equivalência Patrimonial342.000620.000Resultado Financeiro1.182.000(2.179.000)Resultado Líquido das Operações Continuadas8.173.0008.332.000Lucro (Prejuízo) do Período8.173.0008.332.000Lucro (Prejuízo) do Período Atribuído à Controladora8.164.0008.291.000Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais9.726.00017.822.000Atividades de Investimento(8.036.000)(7.518.000)Atividades de Financiamento(7.672.000)(9.261.000)Variação Cambial sobre Caixa e Equivalentes(1.979.000)418.000Aumento (Redução) de Caixa e Equivalentes(7.961.000)1.461.000",
+  "posicao_acionaria": "Nome%ON%PN%TotalBLACKROCK. INC.5,280,005,28GOVERNO FEDERAL0,00100,000,00MITSUI AMP; CO.. LTD6,310,006,31PREVI  CAIXA DE PREVIDÊNCIA DOS FUNCIONÁRIOS DO BANCO DO BRASIL8,700,008,70OUTROS73,760,0073,76AÇÕES TESOURARIA5,950,005,95TOTAL100,00100,00100,00Informação recebida em 24/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
+  "acoes_em_circulacao_no_mercado": "30/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas932.566-Pessoas Jurídicas15.779-Investidores Institucionais1.419-Quantidade de Ações Ordinárias4.267.772.01894,02Quantidade de Ações Preferenciais12100,00Total de Ações4.267.772.03094,02",
+  "composicao_capital_social": "02/03/2023Ordinárias4.539.007.568Preferenciais12Total4.539.007.580"
 }

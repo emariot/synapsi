@@ -1,17 +1,15 @@
 {
   "ticker": "SEQL3",
-  "nome": null,
+  "nome": "SEQUOIA LOGISTICA E TRANSPORTES S.A",
   "inicio_negociacao": "07/10/2020",
   "cnpj": "01.599.101/0001-93",
   "sobre": "Logística.transporte rodoviário de cargas em geral. municipal. intermunicipal. estadual e interestadual. serviços de entrega rápida e carga e descarga. dentre outros.",
   "setor_economico": "Bens Industriais",
   "subsetor": "Serviços",
   "segmento": "Serviços Diversos",
-  "site": null,
-  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "site": "https://sequoialog.com.br",
   "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/12/202431/12/2023Ativo Imobilizado, Investimentos e Intangível730.631955.489Ativo Total1.232.1561.561.132Patrimônio Líquido(924.561)117.566Patrimônio Líquido Atribuído à Controladora(758.374)117.566Demonstração do Resultado - Consolidado01/01/2024 a 31/12/202401/01/2023 a 31/12/2023Receita de Venda769.016744.741Resultado Bruto(25.167)(86.795)Resultado de Equivalência Patrimonial(507)(3.519)Resultado Financeiro(197.608)(246.876)Resultado Líquido das Operações Continuadas(1.278.391)(822.222)Lucro (Prejuízo) do Período(1.278.391)(822.222)Lucro (Prejuízo) do Período Atribuído à Controladora(1.094.265)(822.222)Demonstração do Fluxo de Caixa - Consolidado01/01/2024 a 31/12/202401/01/2023 a 31/12/2023Atividades Operacionais76.728(282.489)Atividades de Investimento2.859(23.095)Atividades de Financiamento(87.779)216.279Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(8.192)(89.305)",
   "posicao_acionaria": "Nome%ON%PN%TotalJGB III FUNDO DE INVESTIMENTO MULTIMERCADO14,560,0014,56LOGISTICA I FIF MULTIMERCADO CP RL13,160,0013,16NEWFOUNDLAND CAPITAL MANAGEMENT US. LLC2,710,002,71OUTROS69,560,0069,56AÇÕES TESOURARIA0,000,000,00TOTAL100,000,00100,00Informação recebida em 04/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
   "acoes_em_circulacao_no_mercado": "27/05/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas16.431-Pessoas Jurídicas176-Investidores Institucionais0-Quantidade de Ações Ordinárias50.311.576100,00Total de Ações50.311.576100,00",
-  "composicao_capital_social": "27/05/2025Ordinárias50.311.576Preferenciais0Total50.311.576",
-  "coleta_incompleta": true
+  "composicao_capital_social": "27/05/2025Ordinárias50.311.576Preferenciais0Total50.311.576"
 }

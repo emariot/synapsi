@@ -1,5 +1,15 @@
 {
   "ticker": "AGXY3",
-  "erro": "Locator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"textbox\", name=\"Digite o nome da Empresa\")\n",
-  "coleta_incompleta": true
+  "nome": "AGROGALAXY PARTICIPAÇÕES S.A.",
+  "inicio_negociacao": "26/07/2021",
+  "cnpj": "21.240.146/0001-84",
+  "sobre": "Comércio de insumos agrícolas (fertilizantes. defensivos biológicos. inoculantes e sementes) e de grãos",
+  "setor_economico": "Consumo não Cíclico",
+  "subsetor": "Agropecuária",
+  "segmento": "Agricultura",
+  "site": "https://agrogalaxy.com.br",
+  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível1.160.5491.203.349Ativo Total3.488.8163.638.761Patrimônio Líquido(2.009.675)(1.810.127)Patrimônio Líquido Atribuído à Controladora(2.009.675)(1.810.127)Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda341.2031.596.367Resultado Bruto(6.166)72.610Resultado de Equivalência Patrimonial00Resultado Financeiro(55.219)(166.125)Resultado Líquido das Operações Continuadas(199.813)(275.473)Lucro (Prejuízo) do Período(199.813)(275.473)Lucro (Prejuízo) do Período Atribuído à Controladora(199.813)(275.635)Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(166.861)(443.539)Atividades de Investimento(11.647)243.642Atividades de Financiamento(45.262)(185.824)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(223.770)(385.721)",
+  "posicao_acionaria": "Nome%ON%PN%TotalAgrofundo Brasil III Fundo de Investimento em Participações Multiestratégia5,340,005,34Agrofundo Brasil IV Fundo de Investimento em Participações Multiestratégia12,610,0012,61Agrofundo Brasil V Fundo de Investimento em Participações Multiestratégia20,120,0020,12AGROFUNDO BRASIL X FUNDO DE INVESTIMENTO EM PARTICIPAÇÕES24,130,0024,13AUSTIN LATAM FUND LP0,450,000,45Galaxy Agribusiness LP4,070,004,07OUTROS31,940,0031,94AÇÕES TESOURARIA1,330,001,33TOTAL100,000,00100,00Informação recebida em 01/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
+  "acoes_em_circulacao_no_mercado": "23/05/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas6.333-Pessoas Jurídicas0-Investidores Institucionais62-Quantidade de Ações Ordinárias5.419.75531,94Total de Ações5.419.75531,94",
+  "composicao_capital_social": "03/04/2025Ordinárias16.969.571Preferenciais0Total16.969.571"
 }

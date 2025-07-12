@@ -1,17 +1,15 @@
 {
   "ticker": "NGRD3",
-  "nome": null,
+  "nome": "NEOGRID PARTICIPACOES S.A.",
   "inicio_negociacao": "17/12/2020",
   "cnpj": "10.139.870/0001-08",
   "sobre": "Participação em outras empresas ou sociedades. negócios e empreendimentos; desenvolvimento. licenciamento e implementação de softwares; e prestação de serviços de assessoria técnica e de treinamento.",
   "setor_economico": "Tecnologia da Informação",
   "subsetor": "Programas e Serviços",
   "segmento": "Programas e Serviços (segmento)",
-  "site": null,
-  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "site": "https://neogrid.com/",
   "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível360.984365.554Ativo Total597.496606.878Patrimônio Líquido447.975452.974Patrimônio Líquido Atribuído à Controladora447.975452.974Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda69.32467.980Resultado Bruto40.13040.759Resultado de Equivalência Patrimonial00Resultado Financeiro3.0971.636Resultado Líquido das Operações Continuadas(756)(3.410)Lucro (Prejuízo) do Período(756)(3.410)Lucro (Prejuízo) do Período Atribuído à Controladora(756)(3.410)Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais5.555(1.562)Atividades de Investimento(2.085)437Atividades de Financiamento(3.031)(2.802)Variação Cambial sobre Caixa e Equivalentes(2.666)829Aumento (Redução) de Caixa e Equivalentes(2.227)(3.098)",
   "posicao_acionaria": "Nome%ON%PN%TotalDAVID ABUHAB0,110,000,11ISAAC ABUHAB0,900,000,90IZMIR FUNDO DE INVESTIMENTO MULTIMERCADO CREDITO PRIVADO0,250,000,25L4 VENTURE BUILDER FIP MULTIESTRATEGIA IE7,500,007,50YAFO - FUNDO DE INVESTIMENTO EM AÇÕES54,140,0054,14OUTROS33,580,0033,58AÇÕES TESOURARIA3,520,003,52TOTAL100,000,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
   "acoes_em_circulacao_no_mercado": "31/03/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas24.953-Pessoas Jurídicas148-Investidores Institucionais0-Quantidade de Ações Ordinárias3.731.69240,82Total de Ações3.731.69240,82",
-  "composicao_capital_social": "05/09/2024Ordinárias9.140.944Preferenciais0Total9.140.944",
-  "coleta_incompleta": true
+  "composicao_capital_social": "05/09/2024Ordinárias9.140.944Preferenciais0Total9.140.944"
 }

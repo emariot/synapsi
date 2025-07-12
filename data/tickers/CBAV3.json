@@ -1,17 +1,15 @@
 {
   "ticker": "CBAV3",
-  "nome": null,
+  "nome": "COMPANHIA BRASILEIRA DE ALUMÍNIO",
   "inicio_negociacao": "15/07/2021",
   "cnpj": "61.409.892/0001-73",
   "sobre": "Extração de minério de alumínio. serviços de usinagem. caldeira e montagem de maquinário.",
   "setor_economico": "Materiais Básicos",
   "subsetor": "Mineração",
   "segmento": "Minerais Metálicos",
-  "site": null,
-  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "site": "https://votorantim.com",
   "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível7.607.4187.530.736Ativo Total13.359.76513.833.020Patrimônio Líquido4.508.0774.011.554Patrimônio Líquido Atribuído à Controladora4.280.6613.784.334Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda2.337.8311.693.866Resultado Bruto426.05278.502Resultado de Equivalência Patrimonial32.33732.139Resultado Financeiro(20.294)(144.401)Resultado Líquido das Operações Continuadas334.616(29.543)Lucro (Prejuízo) do Período334.616(29.543)Lucro (Prejuízo) do Período Atribuído à Controladora304.983(56.400)Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais67.019(74.207)Atividades de Investimento6.296(228.447)Atividades de Financiamento(562.122)25.317Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(488.807)(277.337)",
   "posicao_acionaria": "Nome%ON%PN%TotalVotorantim S.A.68,600,0068,60OUTROS31,400,0031,40AÇÕES TESOURARIA0,000,000,00TOTAL100,000,00100,00Informação recebida em 03/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
   "acoes_em_circulacao_no_mercado": "24/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas32.928-Pessoas Jurídicas630-Investidores Institucionais350-Quantidade de Ações Ordinárias204.441.27731,40Total de Ações204.441.27731,40",
-  "composicao_capital_social": "20/05/2025Ordinárias651.072.697Preferenciais0Total651.072.697",
-  "coleta_incompleta": true
+  "composicao_capital_social": "20/05/2025Ordinárias651.072.697Preferenciais0Total651.072.697"
 }

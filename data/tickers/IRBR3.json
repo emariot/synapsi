@@ -1,17 +1,15 @@
 {
   "ticker": "IRBR3",
-  "nome": null,
+  "nome": "IRB - BRASIL RESSEGUROS S.A.",
   "inicio_negociacao": "31/07/2017",
   "cnpj": "33.376.989/0001-91",
   "sobre": "Operações de resseguro e retrocessão",
   "setor_economico": "Financeiro",
   "subsetor": "Previdência e Seguros",
   "segmento": "Resseguradoras",
-  "site": null,
-  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "site": "https://irbre.com",
   "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível222.359235.668Ativo Total16.043.59216.446.866Patrimônio Líquido5.087.4514.926.059Patrimônio Líquido Atribuído à Controladora5.087.4514.926.059Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receitas das Operações1.366.7541.428.093Resultado Bruto234.670251.915Resultado de Equivalência Patrimonial00Resultado Financeiro(18.016)133.765Resultado Líquido das Operações Continuadas134.100236.819Lucro (Prejuízo) do Período134.100236.819Lucro (Prejuízo) do Período Atribuído à Controladora134.100236.819Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais30.71031.808Atividades de Investimento(14.950)(20.969)Atividades de Financiamento(1.470)(868)Variação Cambial sobre Caixa e Equivalentes(2.359)(1.911)Aumento (Redução) de Caixa e Equivalentes11.9318.060",
   "posicao_acionaria": "Nome%ON%PN%TotalBonsucex Holding S.A5,070,005,07Bradesco Seguros S.A.15,930,0015,93Itaú Seguros S.A.11,630,0011,63União Federal0,00100,000,00OUTROS67,370,0067,37AÇÕES TESOURARIA0,000,000,00TOTAL100,00100,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
   "acoes_em_circulacao_no_mercado": "28/03/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas153.818-Pessoas Jurídicas776-Investidores Institucionais390-Quantidade de Ações Ordinárias81.838.787100,00Total de Ações81.838.787100,00",
-  "composicao_capital_social": "13/01/2025Ordinárias81.842.886Preferenciais0Total81.842.886",
-  "coleta_incompleta": true
+  "composicao_capital_social": "13/01/2025Ordinárias81.842.886Preferenciais0Total81.842.886"
 }

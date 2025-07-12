@@ -1,17 +1,15 @@
 {
   "ticker": "VVEO3",
-  "nome": null,
+  "nome": "CM HOSPITALAR S.A.",
   "inicio_negociacao": "09/08/2021",
   "cnpj": "12.420.164/0001-57",
   "sobre": "Distribuição e comércio atacadista de produtos para saúde. incluindo medicamentos. produtos médico-hospitalares e laboratoriais; vacinas para uso humano; dietas e leites nutricionais; cosméticos.",
   "setor_economico": "Saúde",
   "subsetor": "Comércio e Distribuição",
   "segmento": "Medicamentos e Outros Produtos",
-  "site": null,
-  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "site": "https://mafrahospitalar.com.br",
   "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível3.072.2793.094.299Ativo Total9.371.0279.544.197Patrimônio Líquido1.868.6311.926.522Patrimônio Líquido Atribuído à Controladora1.868.6311.926.522Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda2.784.8932.952.599Resultado Bruto384.218397.712Resultado de Equivalência Patrimonial(461)(467)Resultado Financeiro(101.451)(112.669)Resultado Líquido das Operações Continuadas(58.934)3.043Lucro (Prejuízo) do Período(58.934)3.043Lucro (Prejuízo) do Período Atribuído à Controladora(58.934)3.043Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(106.285)(180.429)Atividades de Investimento525.756(107.363)Atividades de Financiamento(101.691)950.607Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes317.780662.815",
   "posicao_acionaria": "Nome%ON%PN%TotalDARWIN FUNDO DE INVESTIMENTO MULTIMERCADO - CREDITO PRIVADO INVESTIMENTO NO EXTERIOR0,120,000,12DIAMANTINA FIC DE FIM CP IE0,060,000,06DINA FIM CP IE0,040,000,04DNA CAPITAL CONSULTORIA LTDA0,010,000,01DYNAMO ADMINISTRAÇÃO DE RECURSOS LTDA8,970,008,97FUNDO DE INVESTIMENTOS EM PARTICIPAÇÕES MULTIESTRATÉGIA GENOMA I15,580,0015,58Genoma VI Fundo de Investimento em Participações Multiestratégia21,610,0021,61GIC Private Limited12,220,0012,22JOSÉ EDUARDO RIBEIRO GUINLE0,050,000,05LUIZ FELIPE DUARTE MARTINS COSTA0,060,000,06PEREA CAPITAL PARTNERS. LP5,000,005,00OUTROS34,100,0034,10AÇÕES TESOURARIA2,170,002,17TOTAL100,000,00100,00Informação recebida em 02/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
   "acoes_em_circulacao_no_mercado": "30/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas8.041-Pessoas Jurídicas41-Investidores Institucionais104-Quantidade de Ações Ordinárias192.557.48759,65Total de Ações192.557.48759,65",
-  "composicao_capital_social": "02/08/2023Ordinárias322.820.608Preferenciais0Total322.820.608",
-  "coleta_incompleta": true
+  "composicao_capital_social": "02/08/2023Ordinárias322.820.608Preferenciais0Total322.820.608"
 }

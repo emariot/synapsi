@@ -1,17 +1,15 @@
 {
   "ticker": "TRAD3",
-  "nome": null,
+  "nome": "TC S.A.",
   "inicio_negociacao": "28/07/2021",
   "cnpj": "26.345.998/0001-50",
   "sobre": "Desenvolvimento e gestão de plataformas para oferecer produtos e serviços para o mercado financeiro.",
   "setor_economico": "Tecnologia da Informação",
   "subsetor": "Programas e Serviços",
   "segmento": "Programas e Serviços (segmento)",
-  "site": null,
-  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "site": "https://tradersclub.com.br",
   "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível131.736134.540Ativo Total204.495216.781Patrimônio Líquido186.190196.857Patrimônio Líquido Atribuído à Controladora186.999198.545Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda8.92911.386Resultado Bruto1.2622.238Resultado de Equivalência Patrimonial235(40)Resultado Financeiro2511.475Resultado Líquido das Operações Continuadas(10.710)(11.546)Lucro (Prejuízo) do Período(10.710)(11.546)Lucro (Prejuízo) do Período Atribuído à Controladora(11.589)(11.462)Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(5.468)(6.985)Atividades de Investimento(31)(1.667)Atividades de Financiamento(507)(548)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(6.006)(9.200)",
   "posicao_acionaria": "Nome%ON%PN%TotalCSHG EC CAPITAL FUNDO DE INVESTIMENTO MULTIMERCADO5,320,005,32ISRAEL CALEBE MASSA5,290,005,29MARCELO FARIA DE LIMA12,060,0012,06OMAR AJAME ZANATTO MIRANDA5,020,005,02PEDRO GERALDO BERNARDO DE ALBUQUERQUE FILHO26,880,0026,88PHF CONSULTORIA. ASSESSORIA E PARTICIPAÇÕES LTDA.1,430,001,43RICARDO ROESSLE GUIMARAES FILHO7,180,007,18WNT GESTORA DE RECURSOS LTDA14,880,0014,88OUTROS20,470,0020,47AÇÕES TESOURARIA1,480,001,48TOTAL100,000,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
   "acoes_em_circulacao_no_mercado": "28/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas4.622-Pessoas Jurídicas55-Investidores Institucionais20-Quantidade de Ações Ordinárias7.373.61218,42Total de Ações7.373.61218,42",
-  "composicao_capital_social": "26/06/2024Ordinárias40.021.019Preferenciais0Total40.021.019",
-  "coleta_incompleta": true
+  "composicao_capital_social": "26/06/2024Ordinárias40.021.019Preferenciais0Total40.021.019"
 }

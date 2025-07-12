@@ -1,17 +1,15 @@
 {
   "ticker": "ARML3",
-  "nome": null,
+  "nome": "ARMAC LOCAÇÃO. LOGÍSTICA E SERVIÇOS S.A.",
   "inicio_negociacao": "28/07/2021",
   "cnpj": "00.242.184/0001-04",
   "sobre": "Locação de máquinas e equipamentos pesados",
   "setor_economico": "Bens Industriais",
   "subsetor": "Máquinas e Equipamentos",
   "segmento": "Máq. e Equip. Industriais",
-  "site": null,
-  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "site": "https://armac.com.br",
   "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível3.127.3673.212.417Ativo Total4.575.7164.637.353Patrimônio Líquido1.312.4371.311.017Patrimônio Líquido Atribuído à Controladora1.263.4021.258.625Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda439.917387.787Resultado Bruto150.831173.557Resultado de Equivalência Patrimonial00Resultado Financeiro(85.169)(65.802)Resultado Líquido das Operações Continuadas12.51253.114Lucro (Prejuízo) do Período12.51253.114Lucro (Prejuízo) do Período Atribuído à Controladora13.15453.114Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais244.51968.432Atividades de Investimento177.179(590.256)Atividades de Financiamento(161.970)532.048Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes259.72810.224",
   "posicao_acionaria": "Nome%ON%PN%TotalFERNANDO PEREIRA ARAGÃO16,780,0016,78JOSÉ AUGUSTO CARVALHO ARAGÃO8,360,008,36JOSÉ AUGUSTO PEREIRA ARAGÃO16,720,0016,72LÚCIA ROSA PEREIRA ARAGÃO8,360,008,36Opportunity Ações Fundo de Investimento em Ações - BDR Nível I - Investimento no Exterior5,960,005,96Opportunity Lógica Master Fundo de Investimento em Ações1,890,001,89Opportunity Selection Master Fundo de Investimento em Ações0,150,000,15SPEED AB FUNDO DE INVESTIMENTO FINANCEIRO EM AÇÕES17,680,0017,68SPEED C FUNDO DE INVESTIMENTO EM PARTICIPAÇÕES MULTIESTRATÉGIA4,820,004,82OUTROS19,210,0019,21AÇÕES TESOURARIA0,080,000,08TOTAL100,000,00100,00Informação recebida em 02/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
   "acoes_em_circulacao_no_mercado": "30/04/2024Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas3.686-Pessoas Jurídicas25-Investidores Institucionais181-Quantidade de Ações Ordinárias172.086.22649,67Total de Ações172.086.22649,67",
-  "composicao_capital_social": "20/05/2024Ordinárias346.494.097Preferenciais0Total346.494.097",
-  "coleta_incompleta": true
+  "composicao_capital_social": "20/05/2024Ordinárias346.494.097Preferenciais0Total346.494.097"
 }

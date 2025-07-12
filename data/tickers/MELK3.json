@@ -1,17 +1,15 @@
 {
   "ticker": "MELK3",
-  "nome": null,
+  "nome": "MELNICK DESENVOLVIMENTO IMOBILIÁRIO S.A.",
   "inicio_negociacao": "28/09/2020",
   "cnpj": "12.181.987/0001-77",
   "sobre": "Construção. incorporação. loteamento e comercialização de condomínios e empreendimentos imobiliários de qualquer natureza.",
   "setor_economico": "Consumo Cíclico",
   "subsetor": "Construção Civil",
   "segmento": "Incorporações",
-  "site": null,
-  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "site": "https://melnick.com.br",
   "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível91.30989.494Ativo Total2.489.0382.594.695Patrimônio Líquido1.226.8511.367.967Patrimônio Líquido Atribuído à Controladora1.083.0411.211.564Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda225.183245.143Resultado Bruto50.92354.122Resultado de Equivalência Patrimonial1.172(961)Resultado Financeiro20.59324.214Resultado Líquido das Operações Continuadas21.18942.378Lucro (Prejuízo) do Período21.18942.378Lucro (Prejuízo) do Período Atribuído à Controladora13.43330.340Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais69.17378.322Atividades de Investimento108.969(47.929)Atividades de Financiamento(181.693)(30.928)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(3.551)(535)",
   "posicao_acionaria": "Nome%ON%PN%TotalMELPAR INVEST LTDA48,830,0048,83Real Investor Gestão de Recursos LTDA18,570,0018,57OUTROS32,230,0032,23AÇÕES TESOURARIA0,370,000,37TOTAL100,000,00100,00Informação recebida em 24/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
   "acoes_em_circulacao_no_mercado": "29/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas14.079-Pessoas Jurídicas40-Investidores Institucionais138-Quantidade de Ações Ordinárias152.333.55773,85Total de Ações152.333.55773,85",
-  "composicao_capital_social": "28/03/2023Ordinárias206.269.341Preferenciais0Total206.269.341",
-  "coleta_incompleta": true
+  "composicao_capital_social": "28/03/2023Ordinárias206.269.341Preferenciais0Total206.269.341"
 }

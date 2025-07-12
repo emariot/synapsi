@@ -1,17 +1,15 @@
 {
   "ticker": "BRAV3",
-  "nome": null,
+  "nome": "BRAVA ENERGIA S.A.",
   "inicio_negociacao": "12/11/2020",
   "cnpj": "12.091.809/0001-55",
   "sobre": "Exploração. produção. refino e comercialização de petróleo. gás natural e derivados. incluindo. tratamento. processamento. estocagem. liquefação e regaseificação de gás natural.",
   "setor_economico": "Petróleo. Gás e Biocombustíveis",
   "subsetor": "Petróleo. Gás e Biocombustíveis (subsetor)",
   "segmento": "Exploração. Refino e Distribuição",
-  "site": null,
-  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "site": "https://3rpetroleum.com.br",
   "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível28.888.23128.023.298Ativo Total43.181.05844.463.747Patrimônio Líquido11.151.16610.523.671Patrimônio Líquido Atribuído à Controladora11.151.16610.523.671Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda2.874.3192.007.601Resultado Bruto930.459651.122Resultado de Equivalência Patrimonial00Resultado Financeiro588.835(765.401)Resultado Líquido das Operações Continuadas829.174(229.886)Lucro (Prejuízo) do Período829.174(229.886)Lucro (Prejuízo) do Período Atribuído à Controladora829.174(235.623)Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais808.573113.702Atividades de Investimento(399.217)(501.428)Atividades de Financiamento(883.417)(346.656)Variação Cambial sobre Caixa e Equivalentes(3.352)131Aumento (Redução) de Caixa e Equivalentes(477.413)(734.251)",
   "posicao_acionaria": "Nome%ON%PN%TotalBanco Bradesco S.A.12,190,0012,19JIVE INVESTMENTS GESTÃO DE RECURSOS E CONSULTORIA S.A.7,140,007,14YELLOWSTONE5,290,005,29OUTROS75,370,0075,37AÇÕES TESOURARIA0,000,000,00TOTAL100,000,00100,00Informação recebida em 03/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
   "acoes_em_circulacao_no_mercado": "19/05/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas80.562-Pessoas Jurídicas678-Investidores Institucionais838-Quantidade de Ações Ordinárias461.715.08199,47Total de Ações461.715.08199,47",
-  "composicao_capital_social": "18/06/2025Ordinárias464.187.462Preferenciais0Total464.187.462",
-  "coleta_incompleta": true
+  "composicao_capital_social": "18/06/2025Ordinárias464.187.462Preferenciais0Total464.187.462"
 }

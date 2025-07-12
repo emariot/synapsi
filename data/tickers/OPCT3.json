@@ -1,17 +1,15 @@
 {
   "ticker": "OPCT3",
-  "nome": null,
+  "nome": "OCEANPACT SERVICOS MARITIMOS S.A.",
   "inicio_negociacao": "12/02/2021",
   "cnpj": "09.114.805/0001-30",
   "sobre": "Serviços de suporte marítimo. incluindo soluções de meio ambiente. serviços submarinos e de apoio logístico e de engenharia para clientes de diversos setores. como óleo e gás. energia. mineração. tele",
   "setor_economico": "Petróleo. Gás e Biocombustíveis",
   "subsetor": "Petróleo. Gás e Biocombustíveis (subsetor)",
   "segmento": "Equipamentos e Serviços",
-  "site": null,
-  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "site": "https://oceanpact.com",
   "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível1.733.2661.786.375Ativo Total2.915.9463.031.483Patrimônio Líquido944.915994.268Patrimônio Líquido Atribuído à Controladora944.915994.268Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda459.202490.028Resultado Bruto103.591135.029Resultado de Equivalência Patrimonial00Resultado Financeiro(16.415)(47.132)Resultado Líquido das Operações Continuadas13.65521.137Lucro (Prejuízo) do Período13.65521.137Lucro (Prejuízo) do Período Atribuído à Controladora13.65521.137Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais7.26625.294Atividades de Investimento(59.823)(55.572)Atividades de Financiamento(54.907)3.966Variação Cambial sobre Caixa e Equivalentes(1.964)693Aumento (Redução) de Caixa e Equivalentes(109.428)(25.619)",
   "posicao_acionaria": "Nome%ON%PN%TotalADRIANO RANIERI CERVINHO VIANA0,630,000,63ANA MARIA SIQUEIRA DANTAS0,050,000,05ANA PAULA LOPES COELHO DE CASTRO LYRA0,010,000,01ARTHUR OCTAVIO DE AVILA KOS FILHO1,180,001,18CARLOS FREDERICO FRIENDENBERG DE BRITO SILVA MARINS0,080,000,08CHEN LI CHENG0,020,000,02DYNAMO ADMINISTRAÇÃO DE RECURSOS LTDA12,260,0012,26EDUARDO DE TOLEDO0,300,000,30ERIK FABIAN GOMES CUNHA1,100,001,10FABIO SCHVARTSMAN0,050,000,05FAGNER AUGUSTO DE MAGALHÃES0,010,000,01FELIPE NOGUEIRA PINHEIRO DE ANDRADE0,470,000,47FERNANDO BORENSZTEIN0,010,000,01FERNANDO DAMBRÓSIO LUCCHESI0,010,000,01FLAVIO NOGUEIRA PINHEIRO DE ANDRADE30,750,0030,75GUSTAVO AMARANTE GABRIEL0,010,000,01GUSTAVO LUTZ MENEZES PETRY0,390,000,39HAROLDO NOGUEIRA SOLBERG2,540,002,54HIX INVESTIMENTOS LTDA7,160,007,16JORGE LUIZ ELIAS GERALDO0,010,000,01JULIO CESAR DE SOUZA JUNIOR0,010,000,01LEONARDO SANTANNA ANTUNES MACIEL0,010,000,01LUCIANE ATELLA BASTOS0,010,000,01LUIS ANTONIO GOMES ARAUJO0,110,000,11LUIS CLAUDIO RAPPARINI SOARES0,050,000,05LUIZ IZIDÓRIO SOARES PINTO0,390,000,39MARCELO CORTES MONTEIRO DA SILVA0,390,000,39MAURÍCIO MAURO ROCHA LATADO1,150,001,15NATALIA DE MENEZES FONSECA0,010,000,01ORGANON CAPITAL GESTÃO DE INVESTIMENTOS LTDA5,510,005,51PEDRO DE MORAES REGO MARTINS0,010,000,01PEDRO RAFAEL NONATO PEREZ0,210,000,21RICARDO LUTZ DA CUNHA E MENEZES0,160,000,16THIAGO BORGES PAES DE LIMA0,070,000,07VITOR KUME0,140,000,14OUTROS33,950,0033,95AÇÕES TESOURARIA0,800,000,80TOTAL100,000,00100,00Informação recebida em 23/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
   "acoes_em_circulacao_no_mercado": "10/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas4.971-Pessoas Jurídicas33-Investidores Institucionais150-Quantidade de Ações Ordinárias126.256.16563,14Total de Ações126.256.16563,14",
-  "composicao_capital_social": "10/02/2021Ordinárias199.959.554Preferenciais0Total199.959.554",
-  "coleta_incompleta": true
+  "composicao_capital_social": "10/02/2021Ordinárias199.959.554Preferenciais0Total199.959.554"
 }

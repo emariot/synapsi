@@ -1,17 +1,15 @@
 {
   "ticker": "LJQQ3",
-  "nome": null,
+  "nome": "LOJAS QUERO-QUERO S/A",
   "inicio_negociacao": "10/08/2020",
   "cnpj": "96.418.264/0218-02",
   "sobre": "Comércio varejista especializado em material de construção. eletrodomésticos e móveis.",
   "setor_economico": "Consumo Cíclico",
   "subsetor": "Comércio",
   "segmento": "Produtos Diversos",
-  "site": null,
-  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
+  "site": "https://quero-quero.com.br",
   "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível705.761705.700Ativo Total3.430.2233.702.247Patrimônio Líquido536.003545.997Patrimônio Líquido Atribuído à Controladora536.003545.997Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda671.524588.330Resultado Bruto222.028206.440Resultado de Equivalência Patrimonial00Resultado Financeiro(34.489)106Resultado Líquido das Operações Continuadas(31.099)53.923Lucro (Prejuízo) do Período(31.099)53.923Lucro (Prejuízo) do Período Atribuído à Controladora(31.099)53.923Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(227.530)(148.397)Atividades de Investimento(9.962)(8.473)Atividades de Financiamento(83.413)(18.378)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(320.905)(175.248)",
-  "posicao_acionaria": "Nome%ON%PN%TotalAlaska Investimento Ltda23,190,0023,19Wishbone Management LC16,290,0016,29OUTROS60,520,0060,52AÇÕES TESOURARIA0,000,000,00TOTAL100,000,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
+  "posicao_acionaria": "Nome%ON%PN%TotalAlaska Investimento Ltda23,190,0023,19Wishbone Management LC16,290,0016,29OUTROS60,520,0060,52AÇÕES TESOURARIA0,000,000,00TOTAL100,000,00100,00Informação recebida em 10/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
   "acoes_em_circulacao_no_mercado": "30/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas22.239-Pessoas Jurídicas194-Investidores Institucionais131-Quantidade de Ações Ordinárias206.917.263100,00Total de Ações206.917.263100,00",
-  "composicao_capital_social": "19/12/2024Ordinárias206.917.263Preferenciais0Total206.917.263",
-  "coleta_incompleta": true
+  "composicao_capital_social": "19/12/2024Ordinárias206.917.263Preferenciais0Total206.917.263"
 }

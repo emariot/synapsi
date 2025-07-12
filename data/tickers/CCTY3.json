@@ -1,17 +1,15 @@
 {
   "ticker": "CCTY3",
-  "nome": null,
+  "nome": "RDVC CITY S.A.",
   "inicio_negociacao": "29/04/2025",
   "cnpj": "52.805.925/0001-03",
-  "sobre": "",
+  "sobre": "Empresa do setor imobiliário que atua como incorporadora, desenvolvendo e gerenciando projetos residenciais e comerciais.",
   "setor_economico": "Consumo Cíclico",
   "subsetor": "Construção Civil",
   "segmento": "Incorporações",
-  "site": null,
-  "erro_site": "Falha ao extrair site: Locator.wait_for: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_role(\"link\").filter(has_text=re.compile(r\"(https?:/\\/|www\\.)\", re.IGNORECASE)).first to be visible\n",
-  "dados_economico_financeiros": null,
-  "posicao_acionaria": null,
-  "acoes_em_circulacao_no_mercado": null,
-  "composicao_capital_social": null,
-  "coleta_incompleta": true
+  "site": "https://ri.redvco.com.br/",
+  "dados_economico_financeiros": "Não disponível",
+  "posicao_acionaria": "Não disponível",
+  "acoes_em_circulacao_no_mercado": "Não disponível",
+  "composicao_capital_social": "Não disponível"
 }

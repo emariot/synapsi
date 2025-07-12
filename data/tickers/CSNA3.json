@@ -1,16 +1,15 @@
 {
   "ticker": "CSNA3",
-  "nome": null,
+  "nome": "CIA SIDERURGICA NACIONAL",
   "inicio_negociacao": "02/08/1993",
   "cnpj": "33.042.730/0001-04",
   "sobre": "A Companhia Siderúrgica Nacional atua nos setores de mineração. siderurgia. logística. cimento e energia.",
   "setor_economico": "Materiais Básicos",
   "subsetor": "Siderurgia e Metalurgia",
   "segmento": "Siderurgia",
-  "site": "//www.csn.com.br",
+  "site": "https://csn.com.br",
   "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível47.183.35746.812.165Ativo Total99.758.272103.906.654Patrimônio Líquido16.260.06215.459.116Patrimônio Líquido Atribuído à Controladora13.083.88912.271.438Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda10.907.6299.712.992Resultado Bruto2.532.2432.191.024Resultado de Equivalência Patrimonial78.43493.320Resultado Financeiro(1.850.347)(1.124.527)Resultado Líquido das Operações Continuadas(731.580)(479.662)Lucro (Prejuízo) do Período(731.580)(479.662)Lucro (Prejuízo) do Período Atribuído à Controladora(619.146)(589.701)Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(1.153.595)(616.089)Atividades de Investimento(1.182.781)(834.502)Atividades de Financiamento(1.214.013)271.603Variação Cambial sobre Caixa e Equivalentes27.598(8.865)Aumento (Redução) de Caixa e Equivalentes(3.522.791)(1.187.853)",
   "posicao_acionaria": "Nome%ON%PN%TotalCFL Ana Participações S.A.9,930,009,93RIO IACO PARTICIPAÇÕES S.A.3,450,003,45VICUNHA AÇOS S.A.41,660,0041,66OUTROS44,960,0044,96AÇÕES TESOURARIA0,000,000,00TOTAL100,000,00100,00Informação recebida em 04/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
   "acoes_em_circulacao_no_mercado": "30/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas99.046-Pessoas Jurídicas911-Investidores Institucionais1.165-Quantidade de Ações Ordinárias709.694.46653,52Total de Ações709.694.46653,52",
-  "composicao_capital_social": "18/05/2022Ordinárias1.326.093.947Preferenciais0Total1.326.093.947",
-  "coleta_incompleta": true
+  "composicao_capital_social": "18/05/2022Ordinárias1.326.093.947Preferenciais0Total1.326.093.947"
 }

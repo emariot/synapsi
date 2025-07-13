@@ -1,0 +1,31 @@
+{
+  "ticker": "AMBP3",
+  "nome": "AMBIPAR PARTICIPACOES E EMPREENDIMENTOS S/A",
+  "inicio_negociacao": "13/07/2020",
+  "cnpj": "12.648.266/0001-24",
+  "sobre": "Gerenciamento e valorização de resíduos. bem como. prestação de serviços de atendimento a emergência.",
+  "setor_economico": "Utilidade Pública",
+  "subsetor": "Água e Saneamento",
+  "segmento": "Água e Saneamento (segmento)",
+  "site": "https://grupoambipar.com.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

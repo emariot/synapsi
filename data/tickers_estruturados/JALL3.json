@@ -1,0 +1,31 @@
+{
+  "ticker": "JALL3",
+  "nome": "JALLES MACHADO S.A.",
+  "inicio_negociacao": "08/02/2021",
+  "cnpj": "02.635.522/0001-95",
+  "sobre": "Exploração agrícola industrial e comercial em todas as suas modalidades. especialmente no que diz respeito à produção de cana-de-açúcar. seus subprodutos. em especial do açúcar e do álcool.",
+  "setor_economico": "Consumo não Cíclico",
+  "subsetor": "Alimentos Processados",
+  "segmento": "Açucar e Alcool",
+  "site": "https://jallesmachado.com",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/03/2024",
+        "01/04/2024",
+        "31/03/2025",
+        "01/04/2023",
+        "31/03/2024",
+        "01/04/2024",
+        "31/03/2025",
+        "01/04/2023",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

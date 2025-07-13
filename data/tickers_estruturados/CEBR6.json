@@ -1,0 +1,31 @@
+{
+  "ticker": "CEBR6",
+  "nome": "CIA ENERGETICA DE BRASILIA",
+  "inicio_negociacao": "10/08/1994",
+  "cnpj": "00.070.698/0001-11",
+  "sobre": "HOLDING - GERAÇÃO DE ENERGIA ELÉTRICA E ILUMINAÇÃO PÚBLICA",
+  "setor_economico": "Utilidade Pública",
+  "subsetor": "Energia Elétrica",
+  "segmento": "Energia Elétrica (segmento)",
+  "site": "https://www.ceb.com.br/",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

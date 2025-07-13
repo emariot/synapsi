@@ -1,0 +1,31 @@
+{
+  "ticker": "RPMG3",
+  "nome": "REFINARIA DE PETROLEOS MANGUINHOS S.A.",
+  "inicio_negociacao": "23/06/1972",
+  "cnpj": "33.412.081/0001-96",
+  "sobre": "Fabricação de produtos de refino de petróleo.",
+  "setor_economico": "Petróleo. Gás e Biocombustíveis",
+  "subsetor": "Petróleo. Gás e Biocombustíveis (subsetor)",
+  "segmento": "Exploração. Refino e Distribuição",
+  "site": "www.refit.com.br/ri/.",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

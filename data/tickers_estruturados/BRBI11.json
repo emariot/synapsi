@@ -1,0 +1,31 @@
+{
+  "ticker": "BRBI11",
+  "nome": "BRBI BR PARTNERS S.A.",
+  "inicio_negociacao": "21/06/2021",
+  "cnpj": "10.739.356/0001-03",
+  "sobre": "Participação em outras sociedades. nacionais ou estrangeiras. na qualidade de sócia. acionista ou quotista. e a administração de bens próprios.",
+  "setor_economico": "Financeiro",
+  "subsetor": "Intermediários Financeiros",
+  "segmento": "Bancos",
+  "site": "https://www.brpartners.com.br/",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

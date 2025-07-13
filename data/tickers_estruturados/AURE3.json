@@ -1,0 +1,31 @@
+{
+  "ticker": "AURE3",
+  "nome": "AUREN ENERGIA S.A.",
+  "inicio_negociacao": "28/03/2022",
+  "cnpj": "28.594.234/0001-23",
+  "sobre": "Participação em empresas de geração. transmissão e comercialização de energia elétrica e a prestação de serviços correlatos.",
+  "setor_economico": "Utilidade Pública",
+  "subsetor": "Energia Elétrica",
+  "segmento": "Energia Elétrica (segmento)",
+  "site": "https://www.aurenenergia.com.br/",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

@@ -1,0 +1,31 @@
+{
+  "ticker": "BNBR3",
+  "nome": "BCO NORDESTE DO BRASIL S.A.",
+  "inicio_negociacao": "02/05/1968",
+  "cnpj": "07.237.373/0001-20",
+  "sobre": "Banco Múltiplo com Carteira Comercial",
+  "setor_economico": "Financeiro",
+  "subsetor": "Intermediários Financeiros",
+  "segmento": "Bancos",
+  "site": "www.bnb.gov.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

@@ -1,0 +1,31 @@
+{
+  "ticker": "BMGB4",
+  "nome": "BANCO BMG S.A.",
+  "inicio_negociacao": "28/10/2019",
+  "cnpj": "61.186.680/0001-74",
+  "sobre": "Prática de todas as operações ativas. passivas e acessórias permitidas nas normas legais e regulamentares para o funcionamento dos bancos com carteira comercial. de investimento. inclusive câmbio",
+  "setor_economico": "Financeiro",
+  "subsetor": "Intermediários Financeiros",
+  "segmento": "Bancos",
+  "site": "www.bancobmg.com.br/ri",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

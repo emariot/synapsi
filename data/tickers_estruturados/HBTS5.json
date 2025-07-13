@@ -1,0 +1,31 @@
+{
+  "ticker": "HBTS5",
+  "nome": "CIA HABITASUL DE PARTICIPACOES",
+  "inicio_negociacao": "12/11/1984",
+  "cnpj": "87.762.563/0001-03",
+  "sobre": "Participação em sociedades. civis ou comerciais; prestação de serviços técnicos de planejamento. organização e estruturação de empresas ou grupos empresariais.",
+  "setor_economico": "Financeiro",
+  "subsetor": "Exploração de Imóveis",
+  "segmento": "Exploração de Imóveis (segmento)",
+  "site": "https://irani.com.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

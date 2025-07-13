@@ -1,0 +1,31 @@
+{
+  "ticker": "VLID3",
+  "nome": "VALID SOLUÇÕES S.A.",
+  "inicio_negociacao": "27/04/2006",
+  "cnpj": "33.113.309/0001-47",
+  "sobre": "Integração de Soluções de Identificação Segura. físicas e digitais. para os ecossistemas de ID & Governo Digital. Banking & Meios de Pagamento e Conectividade Segura.",
+  "setor_economico": "Bens Industriais",
+  "subsetor": "Serviços",
+  "segmento": "Serviços Diversos",
+  "site": "www.valid.com.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

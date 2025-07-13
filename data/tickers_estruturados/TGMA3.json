@@ -1,0 +1,31 @@
+{
+  "ticker": "TGMA3",
+  "nome": "TEGMA GESTAO LOGISTICA S.A.",
+  "inicio_negociacao": "03/07/2007",
+  "cnpj": "02.351.144/0001-18",
+  "sobre": "Prestação de serviços de logística para a indústria automotiva. química e de bens de consumo. como o transporte. gerenciamento de estoques e pátios. atividades de armazém geral. PDI. dentre outras.",
+  "setor_economico": "Bens Industriais",
+  "subsetor": "Transporte",
+  "segmento": "Transporte Rodoviário",
+  "site": "www.tegma.com.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

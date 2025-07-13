@@ -1,0 +1,31 @@
+{
+  "ticker": "MDIA3",
+  "nome": "M.DIAS BRANCO S.A. IND COM DE ALIMENTOS",
+  "inicio_negociacao": "18/10/2006",
+  "cnpj": "07.206.816/0001-15",
+  "sobre": "Industrialização e comércio de biscoitos; bolachas; massas; bolos; mistura para bolos; snacks; salgadinhos; torradas; farinha de trigo e outros produtos derivados do trigo; refrescos em pó; etc.",
+  "setor_economico": "Consumo não Cíclico",
+  "subsetor": "Alimentos Processados",
+  "segmento": "Alimentos Diversos",
+  "site": "www.mdiasbranco.com.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

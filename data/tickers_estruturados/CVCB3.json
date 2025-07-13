@@ -1,0 +1,31 @@
+{
+  "ticker": "CVCB3",
+  "nome": "CVC BRASIL OPERADORA E AGÊNCIA DE VIAGENS S.A.",
+  "inicio_negociacao": "09/12/2013",
+  "cnpj": "10.760.260/0001-19",
+  "sobre": "Serviços de turismo. compreendendo a intermediação. individualmente ou na forma agregada. de passagens aéreas. transporte terrestre. reservas de hotéis. passagens de cruzeiros marítimos. entre outros.",
+  "setor_economico": "Consumo Cíclico",
+  "subsetor": "Viagens e Lazer",
+  "segmento": "Viagens e Turismo",
+  "site": "//http://www.cvc.com.br/ri",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

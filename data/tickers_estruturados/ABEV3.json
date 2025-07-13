@@ -1,0 +1,31 @@
+{
+  "ticker": "ABEV3",
+  "nome": "AMBEV S.A.",
+  "inicio_negociacao": "11/11/2013",
+  "cnpj": "07.526.557/0001-00",
+  "sobre": "Fabricação e distribuição de cervejas. refrigerantes e bebidas não carbonatadas e não alcoólicas.",
+  "setor_economico": "Consumo não Cíclico",
+  "subsetor": "Bebidas",
+  "segmento": "Cervejas e Refrigerantes",
+  "site": "//http://ri.ambev.com.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

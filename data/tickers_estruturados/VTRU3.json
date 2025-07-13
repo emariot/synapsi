@@ -1,0 +1,31 @@
+{
+  "ticker": "VTRU3",
+  "nome": "VITRU BRASIL EMPREEND. PARTICIP. E COMERCIO S.A.",
+  "inicio_negociacao": "10/06/2024",
+  "cnpj": "20.512.706/0001-40",
+  "sobre": "A Companhia atua na participação no capital de outras sociedades. no desenvolvimento de atividades relacionadas à educação; na realização de congressos educacionais; e na comercialização de livros.",
+  "setor_economico": "Consumo Cíclico",
+  "subsetor": "Diversos",
+  "segmento": "Serviços Educacionais",
+  "site": "https://investors.vitru.com.br/",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

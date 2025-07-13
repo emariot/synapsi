@@ -1,0 +1,31 @@
+{
+  "ticker": "CASH3",
+  "nome": "MÉLIUZ S.A.",
+  "inicio_negociacao": "05/11/2020",
+  "cnpj": "14.110.585/0001-07",
+  "sobre": "Portal para divulgação de marcas e produtos. publicidade. intermediação de negócios. licenciamento de software e investimentos em Bitcoin e participação em sociedades.",
+  "setor_economico": "Tecnologia da Informação",
+  "subsetor": "Programas e Serviços",
+  "segmento": "Programas e Serviços (segmento)",
+  "site": "https://meliuz.com.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

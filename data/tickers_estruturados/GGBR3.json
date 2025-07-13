@@ -1,0 +1,31 @@
+{
+  "ticker": "GGBR3",
+  "nome": "GERDAU S.A.",
+  "inicio_negociacao": "01/02/2001",
+  "cnpj": "33.611.500/0001-19",
+  "sobre": "Participação e Administração",
+  "setor_economico": "Materiais Básicos",
+  "subsetor": "Siderurgia e Metalurgia",
+  "segmento": "Siderurgia",
+  "site": "//www.gerdau.com",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

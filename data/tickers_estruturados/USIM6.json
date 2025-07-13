@@ -1,0 +1,31 @@
+{
+  "ticker": "USIM6",
+  "nome": "USINAS SID DE MINAS GERAIS S.A.-USIMINAS",
+  "inicio_negociacao": "18/04/1994",
+  "cnpj": "60.894.730/0001-05",
+  "sobre": "Venda de produtos siderúrgicos. como Chapas Grossas. Laminados a quente. a frio. placas. galvanizados. entre outros.",
+  "setor_economico": "Materiais Básicos",
+  "subsetor": "Siderurgia e Metalurgia",
+  "segmento": "Siderurgia",
+  "site": "www.usiminas.com",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

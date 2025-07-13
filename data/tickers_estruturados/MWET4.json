@@ -1,0 +1,31 @@
+{
+  "ticker": "MWET4",
+  "nome": "WETZEL S.A.",
+  "inicio_negociacao": "21/11/1984",
+  "cnpj": "84.683.671/0001-94",
+  "sobre": "Fabricação de peças e acessórios para sistema motor de veículos automotores Fabricação de material elétrico e de luminárias para instalações em circuito de consumo",
+  "setor_economico": "Bens Industriais",
+  "subsetor": "Material de Transporte",
+  "segmento": "Material Rodoviário",
+  "site": "www.wetzel.com.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

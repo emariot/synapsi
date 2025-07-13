@@ -1,0 +1,31 @@
+{
+  "ticker": "MNDL3",
+  "nome": "MUNDIAL S.A. - PRODUTOS DE CONSUMO",
+  "inicio_negociacao": "01/03/2004",
+  "cnpj": "88.610.191/0001-54",
+  "sobre": "Componentes diversos para Indústria de calçados. confecções. artigos de cuidados pessoais e de cutelaria. fabricação de motores elétricos.",
+  "setor_economico": "Consumo Cíclico",
+  "subsetor": "Tecidos. Vestuário e Calçados",
+  "segmento": "Acessórios",
+  "site": "www.mundial.com",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

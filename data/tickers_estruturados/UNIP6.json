@@ -1,0 +1,31 @@
+{
+  "ticker": "UNIP6",
+  "nome": "UNIPAR CARBOCLORO S.A.",
+  "inicio_negociacao": "04/06/1980",
+  "cnpj": "33.958.695/0001-78",
+  "sobre": "Atuar no setor de soda. cloro e derivados. podendo participar como sócia ou acionista de outras sociedades. direta ou indiretamente. inclusive por meio de fundos de investimentos.",
+  "setor_economico": "Materiais Básicos",
+  "subsetor": "Químicos",
+  "segmento": "Químicos Diversos",
+  "site": "www.uniparcarbocloro.com.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

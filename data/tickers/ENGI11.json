@@ -1,5 +1,15 @@
 {
   "ticker": "ENGI11",
-  "erro": "Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_text(re.compile(r\"ENGI1\")).first to be visible\n",
-  "coleta_incompleta": true
+  "nome": "ENERGISA S.A.",
+  "inicio_negociacao": "01/12/2000",
+  "cnpj": "00.864.214/0001-06",
+  "sobre": "Sociedade de participações em outras empresas. predominantemente em distribuidoras de energia elétrica.",
+  "setor_economico": "Utilidade Pública",
+  "subsetor": "Energia Elétrica",
+  "segmento": "Energia Elétrica (segmento)",
+  "site": "https://energisa.com.br",
+  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível25.493.43525.248.091Ativo Total78.311.36177.181.653Patrimônio Líquido22.829.01222.143.222Patrimônio Líquido Atribuído à Controladora17.989.29717.279.498Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda8.409.6167.973.743Resultado Bruto2.493.0232.547.714Resultado de Equivalência Patrimonial30.4720Resultado Financeiro(613.885)(606.647)Resultado Líquido das Operações Continuadas1.026.7151.135.090Lucro (Prejuízo) do Período1.026.7151.135.090Lucro (Prejuízo) do Período Atribuído à Controladora775.736901.961Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais1.472.0301.924.644Atividades de Investimento(1.093.367)(2.959.095)Atividades de Financiamento(292.773)906.108Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes85.890(128.343)",
+  "posicao_acionaria": "Nome%ON%PN%TotalBEATRIZ ALZUGUIR BOTELHO0,000,000,00BNDES PARTICIPACOES S/A BNDESPAR3,318,376,41BRUNO ALZUGUIR BOTELHO0,000,000,00CINTIA ALZUGUIR BOTELHO0,000,000,00FRANCISCO EDUARDO MULLER BOTELHO (ESPÓLIO)0,070,000,03FREDERICO KOS BOTELHO0,000,000,00GILBERTO MULLER BOTELHO0,070,020,04Gipar S.A.62,455,7827,74Itacatu S/A0,010,030,02IVAN MÜLLER BOTELHO0,210,520,40MARIA DO CARMO RIPPER KOS0,010,020,01MAURÍCIO PEREZ BOTELHO0,040,090,07MONICA PEREZ BOTELHO0,000,000,00MULTISETOR COM. LND. E PARTICIPAÇÕES S/A0,200,420,34OPPORTUNITY HDF ADMINISTRADORA DE RECURSOS LTDA.2,035,133,93RICARDO PEREZ BOTELHO0,010,030,02Samambaia Master Fundo de Investimento em Ações no Exterior - BDR Nível I4,3010,888,33SQUADRA INVESTIMENTOS  GESTÃO DE RECURSOS LTDA.5,0212,719,73STELLA PEREZ BOTELHO0,010,020,02OUTROS22,1855,7842,76AÇÕES TESOURARIA0,090,220,17TOTAL100,00100,00100,00Informação recebida em 18/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
+  "acoes_em_circulacao_no_mercado": "29/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas24.242-Pessoas Jurídicas245-Investidores Institucionais1.543-Quantidade de Ações Ordinárias326.757.51336,83Quantidade de Ações Preferenciais1.302.012.18492,86Total de Ações1.628.769.69771,14",
+  "composicao_capital_social": "29/04/2025Ordinárias887.231.247Preferenciais1.402.193.416Total2.289.424.663"
 }

@@ -1,0 +1,31 @@
+{
+  "ticker": "BAUH4",
+  "nome": "EXCELSIOR ALIMENTOS S.A.",
+  "inicio_negociacao": "26/08/1988",
+  "cnpj": "95.426.862/0001-97",
+  "sobre": "Atua na produção e comercialização. sendo seus principais produtos: presunto. linguiça defumada. linha light. mortadela. pão de alho. patês. salsichas e hambúrguer.",
+  "setor_economico": "Consumo não Cíclico",
+  "subsetor": "Alimentos Processados",
+  "segmento": "Carnes e Derivados",
+  "site": "www.excelsior.ind.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

@@ -1,0 +1,31 @@
+{
+  "ticker": "MOTV3",
+  "nome": "MOTIVA INFRAESTRUTURA DE MOBILIDADE S.A.",
+  "inicio_negociacao": "01/02/2002",
+  "cnpj": "02.846.056/0001-97",
+  "sobre": "Prestadora de serviços públicos por meio de concessões rodoviária. metroviária e aeroportuária. além de prestação de serviços de meio de pagamentos e outros.",
+  "setor_economico": "Bens Industriais",
+  "subsetor": "Transporte",
+  "segmento": "Exploração de Rodovias",
+  "site": "//www.ccr.com.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

@@ -1,0 +1,31 @@
+{
+  "ticker": "EPAR3",
+  "nome": "EMBPAR PARTICIPACOES S.A.",
+  "inicio_negociacao": "18/03/1996",
+  "cnpj": "42.331.462/0001-31",
+  "sobre": "Industrialização e comércio de madeiras; Prestação de serviços sob a forma de trading company; Partic. em outras sociedades.",
+  "setor_economico": "Bens Industriais",
+  "subsetor": "Comércio",
+  "segmento": "Material de Transporte",
+  "site": "www.battistella.com.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

@@ -1,0 +1,31 @@
+{
+  "ticker": "DEXP4",
+  "nome": "DEXXOS PARTICIPACOES S.A.",
+  "inicio_negociacao": "23/03/2000",
+  "cnpj": "02.193.750/0001-52",
+  "sobre": "Holding de instituições não-financeiras",
+  "setor_economico": "Materiais Básicos",
+  "subsetor": "Químicos",
+  "segmento": "Petroquímicos",
+  "site": "//www.gpc.com.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

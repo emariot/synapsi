@@ -1,0 +1,31 @@
+{
+  "ticker": "CAML3",
+  "nome": "CAMIL ALIMENTOS S.A.",
+  "inicio_negociacao": "28/09/2017",
+  "cnpj": "64.904.295/0001-03",
+  "sobre": "Industrialização e comercialização de grãos. pescados. açúcar. massas. biscoitos e café.",
+  "setor_economico": "Consumo não Cíclico",
+  "subsetor": "Alimentos Processados",
+  "segmento": "Alimentos Diversos",
+  "site": "www.camilalimentos.com.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "28/02/2025",
+        "28/02/2024",
+        "01/03/2024",
+        "28/02/2025",
+        "01/03/2023",
+        "28/02/2024",
+        "01/03/2024",
+        "28/02/2025",
+        "01/03/2023",
+        "28/02/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

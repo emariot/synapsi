@@ -1,5 +1,15 @@
 {
   "ticker": "PPLA11",
-  "erro": "Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_text(re.compile(r\"PPLA1\")).first to be visible\n",
-  "coleta_incompleta": true
+  "nome": "PPLA PARTICIPATIONS LTD.",
+  "inicio_negociacao": "31/03/2025",
+  "cnpj": "15.073.274/0001-88",
+  "sobre": "Holding de companhias que atuam como veículos de investimento.",
+  "setor_economico": "Financeiro",
+  "subsetor": "Serviços Financeiros Diversos",
+  "segmento": "Gestão de Recursos e Investimentos",
+  "site": "https://ri.pplaparticipations.com/",
+  "dados_economico_financeiros": "Ver dados no formato Não consolidado Balanço Patrimonial  - Não-Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos, Intangível e Diferido119Ativo Total3531.247Patrimônio Líquido109Demonstração do Resultado - Não-Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda00Resultado Bruto00Resultado de Equivalência Patrimonial10Resultado Financeiro00Resultado Líquido das Operações Continuadas10Lucro (Prejuízo) do Período10Demonstração do Fluxo de Caixa - Não-Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais00Atividades de Investimento00Atividades de Financiamento00Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes00",
+  "posicao_acionaria": "Nome%ON%PN%TotalPPLA GP Managment Ltd.0,000,000,00OUTROS0,00100,00100,00AÇÕES TESOURARIA0,000,000,00TOTAL0,00100,00100,00Informação recebida em 29/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
+  "acoes_em_circulacao_no_mercado": "28/05/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas1.797-Pessoas Jurídicas14-Investidores Institucionais8-Quantidade de Ações Preferenciais2.814.666100,00Total de Ações2.814.666100,00",
+  "composicao_capital_social": "18/03/2020Ordinárias0Preferenciais2.814.666Total2.814.666"
 }

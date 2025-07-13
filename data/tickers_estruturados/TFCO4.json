@@ -1,0 +1,31 @@
+{
+  "ticker": "TFCO4",
+  "nome": "TRACK & FIELD CO S.A.",
+  "inicio_negociacao": "26/10/2020",
+  "cnpj": "59.418.806/0001-47",
+  "sobre": "Atuação no varejo dos setores de vestuário. acessórios e calçados. dentre outros.",
+  "setor_economico": "Consumo Cíclico",
+  "subsetor": "Tecidos. Vestuário e Calçados",
+  "segmento": "Vestuário",
+  "site": "https://www.tf.com.br/",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

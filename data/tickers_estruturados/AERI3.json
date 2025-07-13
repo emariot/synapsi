@@ -1,0 +1,31 @@
+{
+  "ticker": "AERI3",
+  "nome": "AERIS IND. E COM. DE EQUIP. GERACAO DE ENERGIA S/A",
+  "inicio_negociacao": "11/11/2020",
+  "cnpj": "12.528.708/0001-07",
+  "sobre": "Exploração de negócio de construção e comercialização de pás de rotores para turbinas utilizadas na geração eólica de energia.",
+  "setor_economico": "Bens Industriais",
+  "subsetor": "Máquinas e Equipamentos",
+  "segmento": "Máq. e Equip. Industriais",
+  "site": "https://www.aerisenergy.com.br/",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

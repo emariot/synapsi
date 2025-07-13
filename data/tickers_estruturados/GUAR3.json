@@ -1,0 +1,31 @@
+{
+  "ticker": "GUAR3",
+  "nome": "GUARARAPES CONFECCOES S.A.",
+  "inicio_negociacao": "03/01/1972",
+  "cnpj": "08.402.943/0001-52",
+  "sobre": "Confecções de roupas e tecidos em geral.",
+  "setor_economico": "Consumo Cíclico",
+  "subsetor": "Comércio",
+  "segmento": "Tecidos. Vestuário e Calçados",
+  "site": "www.guararapes.ind.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

@@ -1,0 +1,31 @@
+{
+  "ticker": "WEST3",
+  "nome": "WESTWING COMERCIO VAREJISTA S.A.",
+  "inicio_negociacao": "11/02/2021",
+  "cnpj": "14.776.142/0001-50",
+  "sobre": "Comércio físico e digital varejista de móveis e artigos domésticos em geral. vestuário e bens e acessórios de uso pessoal; serviços de design de interiores e arquitetura.",
+  "setor_economico": "Consumo Cíclico",
+  "subsetor": "Utilidades Domésticas",
+  "segmento": "Móveis",
+  "site": "https://westwing.com.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

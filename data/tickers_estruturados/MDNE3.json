@@ -1,0 +1,31 @@
+{
+  "ticker": "MDNE3",
+  "nome": "MOURA DUBEUX ENGENHARIA S/A",
+  "inicio_negociacao": "13/02/2020",
+  "cnpj": "12.049.631/0001-84",
+  "sobre": "Compra e venda de imóveis. locação. desmembramento ou loteamento de terrenos. incorporação imobiliária ou construção de imóveis destinados à venda. participação em outras sociedades.",
+  "setor_economico": "Consumo Cíclico",
+  "subsetor": "Construção Civil",
+  "segmento": "Incorporações",
+  "site": "https://mouradubeux.com.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

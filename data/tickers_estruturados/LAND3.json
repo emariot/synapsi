@@ -1,0 +1,31 @@
+{
+  "ticker": "LAND3",
+  "nome": "TERRA SANTA PROPRIEDADES AGRICOLAS S.A.",
+  "inicio_negociacao": "02/08/2021",
+  "cnpj": "40.337.136/0001-06",
+  "sobre": "Aquisição. administração e arrendamento de propriedades rurais com potencial de geração de valor por meio da valorização de terras e da receita de arrendamento das mesmas.",
+  "setor_economico": "Consumo não Cíclico",
+  "subsetor": "Agropecuária",
+  "segmento": "Agricultura",
+  "site": "https://www.terrasantapa.com.br/",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

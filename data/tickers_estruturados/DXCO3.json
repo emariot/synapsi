@@ -1,0 +1,31 @@
+{
+  "ticker": "DXCO3",
+  "nome": "DEXCO S.A.",
+  "inicio_negociacao": "08/10/2009",
+  "cnpj": "97.837.181/0001-47",
+  "sobre": "Fabricação. Comércio. Importação e Exportação de Produtos derivados de Madeira. de Produtos de Metais e Materiais Cerâmicos",
+  "setor_economico": "Materiais Básicos",
+  "subsetor": "Madeira e Papel",
+  "segmento": "Madeira",
+  "site": "www.dex.co",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

@@ -80,7 +80,7 @@ def recoletar_tickers():
             else:
                 print("→ Coleta completa pela B3")
                 try:
-                    dados = extrair_dados_ticker(ticker, pw)
+                    dados = extrair_dados_ticker(dados_anteriores, pw)
                     salvar_json_por_ticker(dados, ticker)
                 except Exception as e:
                     print(f"[ERRO] Falha ao recoletar via B3 {ticker}: {e}")

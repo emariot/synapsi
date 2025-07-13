@@ -1,0 +1,31 @@
+{
+  "ticker": "AALR3",
+  "nome": "ALLIANÇA SAÚDE E PARTICIPAÇÕES S.A.",
+  "inicio_negociacao": "28/10/2016",
+  "cnpj": "42.771.949/0001-35",
+  "sobre": "Prestação de serviços de medicina diagnóstica",
+  "setor_economico": "Saúde",
+  "subsetor": "Serv.Méd.Hospit..Análises e Diagnósticos",
+  "segmento": "Serv.Méd.Hospit..Análises e Diagnósticos (segmento)",
+  "site": "//http://ri.alliar.com/",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

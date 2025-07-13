@@ -1,0 +1,31 @@
+{
+  "ticker": "PEAB4",
+  "nome": "CIA PARTICIPACOES ALIANCA DA BAHIA",
+  "inicio_negociacao": "18/09/2000",
+  "cnpj": "01.938.783/0001-11",
+  "sobre": "Participações em outras sociedades. na qualidade de sócia e/ou quotista e administração de bens próprios",
+  "setor_economico": "Financeiro",
+  "subsetor": "Exploração de Imóveis",
+  "segmento": "Exploração de Imóveis (segmento)",
+  "site": "//http://www.aliancaparticipacoes.com.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

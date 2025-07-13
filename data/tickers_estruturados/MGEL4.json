@@ -1,0 +1,31 @@
+{
+  "ticker": "MGEL4",
+  "nome": "MANGELS INDUSTRIAL S.A.",
+  "inicio_negociacao": "28/12/1971",
+  "cnpj": "61.065.298/0001-02",
+  "sobre": "Produção de relaminados. trefilados e perfilados de aço. exceto arames.",
+  "setor_economico": "Materiais Básicos",
+  "subsetor": "Siderurgia e Metalurgia",
+  "segmento": "Artefatos de Ferro e Aço",
+  "site": "www.mangels.com.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

@@ -1,5 +1,15 @@
 {
   "ticker": "MRSA3B",
-  "erro": "Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_text(re.compile(r\"MRSA3\")).first to be visible\n",
-  "coleta_incompleta": true
+  "nome": "MRS Logística",
+  "inicio_negociacao": "18/12/1998",
+  "cnpj": "01.417.222/0001-77",
+  "sobre": "Serviços de Transporte Ferroviário de Cargas",
+  "setor_economico": "Bens Industriais",
+  "subsetor": "Transporte",
+  "segmento": "Transporte Ferroviário",
+  "site": "https://www.mrs.com.br/",
+  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível15.183.73214.791.500Ativo Total20.465.37720.613.082Patrimônio Líquido7.748.6647.465.937Patrimônio Líquido Atribuído à Controladora7.748.6647.465.937Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda1.676.6021.643.868Resultado Bruto712.729806.682Resultado de Equivalência Patrimonial00Resultado Financeiro(178.955)(168.487)Resultado Líquido das Operações Continuadas282.716315.859Lucro (Prejuízo) do Período282.716315.859Lucro (Prejuízo) do Período Atribuído à Controladora00Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais575.633488.933Atividades de Investimento(401.869)(347.352)Atividades de Financiamento(610.920)(474.240)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(437.156)(332.659)",
+  "posicao_acionaria": "Nome%ON%PN%TotalCOMPANHIA SIDERÚRGICA NACIONAL (CSN)14,2224,3918,75CSN Mineração S.A.13,7824,9018,74Gerdau S.A.2,380,001,32Minerações Brasileiras Reunidas S.A.20,1249,2833,13Railvest Investments Inc.7,880,004,36Usiminas Participações e Logística S.A.20,040,2311,20Vale S.A.19,370,5110,96OUTROS2,210,701,54AÇÕES TESOURARIA0,000,000,00TOTAL100,00100,00100,00Informação recebida em 08/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
+  "acoes_em_circulacao_no_mercado": "26/04/2024Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas540-Pessoas Jurídicas13-Investidores Institucionais1-Quantidade de Ações Ordinárias3.187.4201,70Quantidade de Ações Preferenciais1.050.8770,70Total de Ações4.238.2971,25",
+  "composicao_capital_social": "30/04/2025Ordinárias187.210.201Preferenciais150.766.818Total337.977.019"
 }

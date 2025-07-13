@@ -1,0 +1,31 @@
+{
+  "ticker": "PPLA11",
+  "nome": "PPLA PARTICIPATIONS LTD.",
+  "inicio_negociacao": "31/03/2025",
+  "cnpj": "15.073.274/0001-88",
+  "sobre": "Holding de companhias que atuam como veículos de investimento.",
+  "setor_economico": "Financeiro",
+  "subsetor": "Serviços Financeiros Diversos",
+  "segmento": "Gestão de Recursos e Investimentos",
+  "site": "https://ri.pplaparticipations.com/",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

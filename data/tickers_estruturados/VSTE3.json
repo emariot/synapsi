@@ -1,0 +1,31 @@
+{
+  "ticker": "VSTE3",
+  "nome": "VESTE S.A. ESTILO",
+  "inicio_negociacao": "29/04/2008",
+  "cnpj": "49.669.856/0001-43",
+  "sobre": "(a) confecção de produtos em geral. através de terceiros; (b) importação e exportação; (c) exploração de comércio e indústria de confecção de produtos em geral.",
+  "setor_economico": "Consumo Cíclico",
+  "subsetor": "Comércio",
+  "segmento": "Tecidos. Vestuário e Calçados",
+  "site": "www.restoque.com.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

@@ -1,0 +1,31 @@
+{
+  "ticker": "DMVF3",
+  "nome": "D1000 VAREJO FARMA PARTICIPAÇÕES S.A.",
+  "inicio_negociacao": "10/08/2020",
+  "cnpj": "12.108.897/0001-50",
+  "sobre": "A Companhia tem por objeto a participação. como sócia ou acionista. em outras sociedades do varejo farmacêutico. nacionais ou estrangeiras.",
+  "setor_economico": "Saúde",
+  "subsetor": "Comércio e Distribuição",
+  "segmento": "Medicamentos e Outros Produtos",
+  "site": "www.d1000varejofarma.com.br/ri",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

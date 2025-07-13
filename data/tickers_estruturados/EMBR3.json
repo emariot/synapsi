@@ -1,0 +1,31 @@
+{
+  "ticker": "EMBR3",
+  "nome": "EMBRAER S.A.",
+  "inicio_negociacao": "05/06/2006",
+  "cnpj": "07.689.002/0001-89",
+  "sobre": "Projeto. desenvolvimento. fabricação. comercialização de aeronaves e sistemas e fornecimento de suporte e serviços de pós-venda.",
+  "setor_economico": "Bens Industriais",
+  "subsetor": "Material de Transporte",
+  "segmento": "Material Aeronáutico e de Defesa",
+  "site": "www.embraer.com.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

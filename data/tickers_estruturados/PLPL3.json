@@ -1,0 +1,31 @@
+{
+  "ticker": "PLPL3",
+  "nome": "PLANO & PLANO DESENVOLVIMENTO IMOBILIÁRIO S.A.",
+  "inicio_negociacao": "17/09/2020",
+  "cnpj": "24.230.275/0001-80",
+  "sobre": "(i) incorporação. construção e comercialização de empreendimentos imobiliários; (ii) locação de imóveis próprios; (iii) administração de carteira de recebíveis de financiamentos. empréstimos imobiliár",
+  "setor_economico": "Consumo Cíclico",
+  "subsetor": "Construção Civil",
+  "segmento": "Incorporações",
+  "site": "www.planoeplanori.com.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

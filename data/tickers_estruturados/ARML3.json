@@ -1,0 +1,31 @@
+{
+  "ticker": "ARML3",
+  "nome": "ARMAC LOCAÇÃO. LOGÍSTICA E SERVIÇOS S.A.",
+  "inicio_negociacao": "28/07/2021",
+  "cnpj": "00.242.184/0001-04",
+  "sobre": "Locação de máquinas e equipamentos pesados",
+  "setor_economico": "Bens Industriais",
+  "subsetor": "Máquinas e Equipamentos",
+  "segmento": "Máq. e Equip. Industriais",
+  "site": "https://armac.com.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

@@ -1,0 +1,31 @@
+{
+  "ticker": "SCAR3",
+  "nome": "SAO CARLOS EMPREEND E PARTICIPACOES S.A.",
+  "inicio_negociacao": "20/09/1999",
+  "cnpj": "29.780.061/0001-09",
+  "sobre": "Compra e venda de imóveis prontos ou a construir; locação de bens imóveis; administração de empreendimentos imobiliários próprios ou de terceiros; exercício de outras atividades correlatas; e outros",
+  "setor_economico": "Financeiro",
+  "subsetor": "Exploração de Imóveis",
+  "segmento": "Exploração de Imóveis (segmento)",
+  "site": "www.scsa.com.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

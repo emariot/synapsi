@@ -1,0 +1,31 @@
+{
+  "ticker": "LEVE3",
+  "nome": "MAHLE-METAL LEVE S.A.",
+  "inicio_negociacao": "20/07/1977",
+  "cnpj": "60.476.884/0001-87",
+  "sobre": "Industria e comércio de peças e componentes para motores a combustão",
+  "setor_economico": "Consumo Cíclico",
+  "subsetor": "Automóveis e Motocicletas",
+  "segmento": "Automóveis e Motocicletas (segmento)",
+  "site": "www.mahle.com.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

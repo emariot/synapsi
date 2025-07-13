@@ -1,5 +1,15 @@
 {
   "ticker": "EQMA3B",
-  "erro": "Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"#bvmf_iframe\").content_frame.get_by_text(re.compile(r\"EQMA3\")).first to be visible\n",
-  "coleta_incompleta": true
+  "nome": "EQUATORIAL MARANHÃO DISTRIBUIDORA DE ENERGIA S.A.",
+  "inicio_negociacao": "29/01/1998",
+  "cnpj": "06.272.793/0001-84",
+  "sobre": "Empresa distribuidora de energia elétrica para todo o Estado do Maranhão.",
+  "setor_economico": "Utilidade Pública",
+  "subsetor": "Energia Elétrica",
+  "segmento": "Energia Elétrica (segmento)",
+  "site": "https://www.equatorialenergia.com.br",
+  "dados_economico_financeiros": "Ver dados no formato Não consolidado Balanço Patrimonial  - Não-Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos, Intangível e Diferido1.712.5021.623.691Ativo Total10.997.18311.250.010Patrimônio Líquido4.231.0764.088.221Demonstração do Resultado - Não-Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda1.532.2621.350.693Resultado Bruto464.831416.517Resultado de Equivalência Patrimonial00Resultado Financeiro(92.997)(62.018)Resultado Líquido das Operações Continuadas142.187155.228Lucro (Prejuízo) do Período142.187155.228Demonstração do Fluxo de Caixa - Não-Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais93.608140.448Atividades de Investimento133.128(158.189)Atividades de Financiamento(242.682)(205.969)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(15.946)(223.710)",
+  "posicao_acionaria": "Nome%ON%PN%TotalEletrobras - Centrais Elétricas Brasileiras S.A.33,3437,2933,41Equatorial Energia Distribuição S.A.65,1662,0465,11OUTROS1,500,671,49AÇÕES TESOURARIA0,000,000,00TOTAL100,00100,00100,00Informação recebida em 02/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
+  "acoes_em_circulacao_no_mercado": "29/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas1.643-Pessoas Jurídicas27-Investidores Institucionais17-Quantidade de Ações Ordinárias2.421.0531,50Quantidade de Ações Preferenciais19.1270,67Total de Ações2.440.1801,49",
+  "composicao_capital_social": "28/04/2021Ordinárias161.318.939Preferenciais2.864.960Total164.183.899"
 }

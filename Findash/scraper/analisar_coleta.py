@@ -13,10 +13,18 @@ def verificar_coletas(pasta="data/tickers"):
         try:
             with open(caminho, "r", encoding="utf-8") as f:
                 dados = json.load(f)
-            if "erro" in dados or dados.get("coleta_incompleta"):
-                tickers_erro.append(dados.get("ticker", arquivo.replace(".json", "")))
+
+            ticker = dados.get("ticker", arquivo.replace(".json", ""))
+            # Verifica se existe 'erro' ou 'coleta_incompleta' ou qualquer campo com valor None
+            if (
+                "erro" in dados
+                or dados.get("coleta_incompleta")
+                or any(v is None for v in dados.values())
+            ):
+                tickers_erro.append(ticker)
             else:
-                tickers_ok.append(dados.get("ticker", arquivo.replace(".json", "")))
+                tickers_ok.append(ticker)
+
         except Exception as e:
             print(f"[!] Erro ao ler {arquivo}: {e}")
             tickers_erro.append(arquivo.replace(".json", ""))
@@ -35,4 +43,3 @@ def verificar_coletas(pasta="data/tickers"):
 
 if __name__ == "__main__":
     verificar_coletas()
-

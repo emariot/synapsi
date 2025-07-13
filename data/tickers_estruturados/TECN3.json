@@ -1,0 +1,31 @@
+{
+  "ticker": "TECN3",
+  "nome": "TECHNOS S.A.",
+  "inicio_negociacao": "01/07/2011",
+  "cnpj": "09.295.063/0001-97",
+  "sobre": "A Companhia tem por objeto social a participação em outras sociedades. como sócia ou acionista. no país ou no exterior.",
+  "setor_economico": "Consumo Cíclico",
+  "subsetor": "Tecidos. Vestuário e Calçados",
+  "segmento": "Acessórios",
+  "site": "www.grupotechnos.com.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

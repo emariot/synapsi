@@ -1,0 +1,31 @@
+{
+  "ticker": "EUCA4",
+  "nome": "EUCATEX S.A. INDUSTRIA E COMERCIO",
+  "inicio_negociacao": "20/08/1969",
+  "cnpj": "56.643.018/0001-66",
+  "sobre": "Indústria e Comércio de chapas de fibra de madeira",
+  "setor_economico": "Materiais Básicos",
+  "subsetor": "Madeira e Papel",
+  "segmento": "Madeira",
+  "site": "www.eucatex.com.br/ri",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

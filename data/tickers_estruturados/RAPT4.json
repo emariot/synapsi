@@ -1,0 +1,31 @@
+{
+  "ticker": "RAPT4",
+  "nome": "RANDONCORP S.A.",
+  "inicio_negociacao": "22/03/1993",
+  "cnpj": "89.086.144/0001-16",
+  "sobre": "Indústria e comércio de autopeças e de veículos rebocados. participação societária. transporte de cargas e prestação de serviços técnicos e logísticos.",
+  "setor_economico": "Bens Industriais",
+  "subsetor": "Material de Transporte",
+  "segmento": "Material Rodoviário",
+  "site": "https://randoncorp.com",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

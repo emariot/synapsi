@@ -1,0 +1,31 @@
+{
+  "ticker": "BGIP3",
+  "nome": "BCO ESTADO DE SERGIPE S.A. - BANESE",
+  "inicio_negociacao": "26/08/1988",
+  "cnpj": "13.009.717/0001-46",
+  "sobre": "",
+  "setor_economico": "Financeiro",
+  "subsetor": "Intermediários Financeiros",
+  "segmento": "Bancos",
+  "site": "www.banese.com.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/12/2024",
+        "31/12/2023",
+        "01/01/2024",
+        "31/12/2024",
+        "01/01/2023",
+        "31/12/2023",
+        "01/01/2024",
+        "31/12/2024",
+        "01/01/2023",
+        "31/12/2023"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

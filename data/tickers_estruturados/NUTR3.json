@@ -1,0 +1,31 @@
+{
+  "ticker": "NUTR3",
+  "nome": "NUTRIPLANT INDUSTRIA E COMERCIO S.A.",
+  "inicio_negociacao": "03/02/2014",
+  "cnpj": "51.128.999/0001-90",
+  "sobre": "Industria e comércio de fertilizantes para agricultura.",
+  "setor_economico": "Materiais Básicos",
+  "subsetor": "Químicos",
+  "segmento": "Fertilizantes e Defensivos",
+  "site": "www.nutriplant.com.br/ri",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

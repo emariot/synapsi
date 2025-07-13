@@ -1,0 +1,31 @@
+{
+  "ticker": "BSLI4",
+  "nome": "BRB BCO DE BRASILIA S.A.",
+  "inicio_negociacao": "24/09/1993",
+  "cnpj": "00.000.208/0001-00",
+  "sobre": "O BRB é uma instituição financeira de economia mista. controlada pelo Governo do Distrito Federal. organizada sob a forma de banco múltiplo.",
+  "setor_economico": "Financeiro",
+  "subsetor": "Intermediários Financeiros",
+  "segmento": "Bancos",
+  "site": "www.brb.com.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/12/2024",
+        "31/12/2023",
+        "01/12/2024",
+        "31/12/2024",
+        "01/12/2023",
+        "31/12/2023",
+        "01/12/2024",
+        "31/12/2024",
+        "01/12/2023",
+        "31/12/2023"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

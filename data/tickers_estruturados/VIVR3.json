@@ -1,0 +1,31 @@
+{
+  "ticker": "VIVR3",
+  "nome": "VIVER INCORPORADORA E CONSTRUTORA S.A.",
+  "inicio_negociacao": "06/06/2007",
+  "cnpj": "67.571.414/0001-41",
+  "sobre": "Construção. incorporação. aquisição de créditos com lastro em ativos imobiliários. obras paradas. vendas. repasse. cobrança. assistência técnica. negociação de dívidas e processos judiciais.",
+  "setor_economico": "Consumo Cíclico",
+  "subsetor": "Construção Civil",
+  "segmento": "Incorporações",
+  "site": "https://www.viver.com.br/",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/12/2024",
+        "31/12/2023",
+        "01/01/2024",
+        "31/12/2024",
+        "01/01/2023",
+        "31/12/2023",
+        "01/01/2024",
+        "31/12/2024",
+        "01/01/2023",
+        "31/12/2023"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

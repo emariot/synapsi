@@ -1,0 +1,31 @@
+{
+  "ticker": "SBFG3",
+  "nome": "GRUPO SBF SA",
+  "inicio_negociacao": "17/04/2019",
+  "cnpj": "13.217.485/0001-11",
+  "sobre": "A Companhia tem por objeto social (a) administração de bens próprios; e. (b) a participação. como sócia ou acionista. em outras empresas.",
+  "setor_economico": "Consumo Cíclico",
+  "subsetor": "Comércio",
+  "segmento": "Produtos Diversos",
+  "site": "https://gruposbf.com.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

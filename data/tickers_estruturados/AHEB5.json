@@ -1,0 +1,31 @@
+{
+  "ticker": "AHEB5",
+  "nome": "SAO PAULO TURISMO S.A.",
+  "inicio_negociacao": "02/09/1988",
+  "cnpj": "62.002.886/0001-60",
+  "sobre": "Fiscalização da concessão do Complexo Anhembi. produção e organização de eventos. formulação e execução da político de turismo do Município de São Paulo.",
+  "setor_economico": "Consumo Cíclico",
+  "subsetor": "Viagens e Lazer",
+  "segmento": "Produção de Eventos e Shows",
+  "site": "//www.spturis.com",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

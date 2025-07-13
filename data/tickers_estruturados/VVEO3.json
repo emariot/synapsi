@@ -1,0 +1,31 @@
+{
+  "ticker": "VVEO3",
+  "nome": "CM HOSPITALAR S.A.",
+  "inicio_negociacao": "09/08/2021",
+  "cnpj": "12.420.164/0001-57",
+  "sobre": "Distribuição e comércio atacadista de produtos para saúde. incluindo medicamentos. produtos médico-hospitalares e laboratoriais; vacinas para uso humano; dietas e leites nutricionais; cosméticos.",
+  "setor_economico": "Saúde",
+  "subsetor": "Comércio e Distribuição",
+  "segmento": "Medicamentos e Outros Produtos",
+  "site": "https://portal.mafrahospitalar.com.br/",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

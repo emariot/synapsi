@@ -1,0 +1,31 @@
+{
+  "ticker": "HBSA3",
+  "nome": "HIDROVIAS DO BRASIL S.A.",
+  "inicio_negociacao": "25/09/2020",
+  "cnpj": "12.648.327/0001-53",
+  "sobre": "Operador de logística hidroviária para clientes de commodities agrícolas. minerais. combustíveis e derivados e carga. integrando o transporte por barcaças com operação de terminais de origem e destino",
+  "setor_economico": "Bens Industriais",
+  "subsetor": "Transporte",
+  "segmento": "Transporte Hidroviário",
+  "site": "www.hbsa.com.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

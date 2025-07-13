@@ -1,0 +1,31 @@
+{
+  "ticker": "TTEN3",
+  "nome": "TRÊS TENTOS AGROINDUSTRIAL S/A",
+  "inicio_negociacao": "12/07/2021",
+  "cnpj": "94.813.102/0001-70",
+  "sobre": "Varejo de insumos agrícolas; Recebimento e comercialização de grãos de soja. milho e trigo; e Indústria. na cadeia de soja.",
+  "setor_economico": "Consumo não Cíclico",
+  "subsetor": "Agropecuária",
+  "segmento": "Agricultura",
+  "site": "//www.3tentos.com.br",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

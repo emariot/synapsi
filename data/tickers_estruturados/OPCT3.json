@@ -1,0 +1,31 @@
+{
+  "ticker": "OPCT3",
+  "nome": "OCEANPACT SERVICOS MARITIMOS S.A.",
+  "inicio_negociacao": "12/02/2021",
+  "cnpj": "09.114.805/0001-30",
+  "sobre": "Serviços de suporte marítimo. incluindo soluções de meio ambiente. serviços submarinos e de apoio logístico e de engenharia para clientes de diversos setores. como óleo e gás. energia. mineração. tele",
+  "setor_economico": "Petróleo. Gás e Biocombustíveis",
+  "subsetor": "Petróleo. Gás e Biocombustíveis (subsetor)",
+  "segmento": "Equipamentos e Serviços",
+  "site": "https://oceanpact.com",
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "datas": [
+        "31/03/2025",
+        "31/12/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024",
+        "01/01/2025",
+        "31/03/2025",
+        "01/01/2024",
+        "31/03/2024"
+      ],
+      "valores": {}
+    }
+  },
+  "posicao_acionaria": [],
+  "acoes_em_circulacao_no_mercado": [],
+  "composicao_capital_social": null
+}

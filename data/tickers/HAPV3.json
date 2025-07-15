@@ -8,8 +8,161 @@
   "subsetor": "Serv.Méd.Hospit..Análises e Diagnósticos",
   "segmento": "Serv.Méd.Hospit..Análises e Diagnósticos (segmento)",
   "site": "https://www2.hapvida.com.br/",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível56.403.11256.873.331Ativo Total74.221.45873.499.646Patrimônio Líquido48.865.94748.676.923Patrimônio Líquido Atribuído à Controladora48.864.19548.675.201Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda1.469.2351.321.446Resultado Bruto1.282.084993.699Resultado de Equivalência Patrimonial00Resultado Financeiro(349.876)(375.150)Resultado Líquido das Operações Continuadas185.89759.194Lucro (Prejuízo) do Período185.89765.159Lucro (Prejuízo) do Período Atribuído à Controladora186.12265.277Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais885.056924.389Atividades de Investimento(725.944)(412.571)Atividades de Financiamento(260.831)(1.100.500)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(101.719)(588.682)",
-  "posicao_acionaria": "Nome%ON%PN%TotalANA CHRISTINA FONTOURA KOREN DE LIMA0,660,000,66CANDIDO PINHEIRO KOREN DE LIMA0,670,000,67CANDIDO PINHEIRO KOREN DE LIMA JUNIOR0,570,000,57JORGE FONTOURA PINHEIRO KOREN DE LIMA0,700,000,70PPAR Pinheiro Participações S.A.33,890,0033,89SQUADRA INVESTIMENTOS  GESTÃO DE RECURSOS LTDA.5,150,005,15OUTROS56,780,0056,78AÇÕES TESOURARIA1,590,001,59TOTAL100,000,00100,00Informação recebida em 07/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "30/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas59.692-Pessoas Jurídicas292-Investidores Institucionais1.166-Quantidade de Ações Ordinárias312.217.20962,12Total de Ações312.217.20962,12",
-  "composicao_capital_social": "30/04/2025Ordinárias502.630.884Preferenciais0Total502.630.884"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 56403112,
+        "31/12/2024": 56873331
+      },
+      "ativo_total": {
+        "31/03/2025": 74221458,
+        "31/12/2024": 73499646
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 48865947,
+        "31/12/2024": 48676923
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 48864195,
+        "31/12/2024": 48675201
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 1469235,
+        "01/01/2024_a_31/03/2024": 1321446
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 1282084,
+        "01/01/2024_a_31/03/2024": 993699
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -349876,
+        "01/01/2024_a_31/03/2024": -375150
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 185897,
+        "01/01/2024_a_31/03/2024": 59194
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 185897,
+        "01/01/2024_a_31/03/2024": 65159
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 186122,
+        "01/01/2024_a_31/03/2024": 65277
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 885056,
+        "01/01/2024_a_31/03/2024": 924389
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -725944,
+        "01/01/2024_a_31/03/2024": -412571
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -260831,
+        "01/01/2024_a_31/03/2024": -1100500
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -101719,
+        "01/01/2024_a_31/03/2024": -588682
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "ANA CHRISTINA FONTOURA KOREN DE LIMA",
+      "ON": 0.66,
+      "PN": 0.0,
+      "Total": 0.66
+    },
+    {
+      "nome": "CANDIDO PINHEIRO KOREN DE LIMA",
+      "ON": 0.67,
+      "PN": 0.0,
+      "Total": 0.67
+    },
+    {
+      "nome": "CANDIDO PINHEIRO KOREN DE LIMA JUNIOR",
+      "ON": 0.57,
+      "PN": 0.0,
+      "Total": 0.57
+    },
+    {
+      "nome": "JORGE FONTOURA PINHEIRO KOREN DE LIMA",
+      "ON": 0.7,
+      "PN": 0.0,
+      "Total": 0.7
+    },
+    {
+      "nome": "PPAR Pinheiro Participações S.A.",
+      "ON": 33.89,
+      "PN": 0.0,
+      "Total": 33.89
+    },
+    {
+      "nome": "SQUADRA INVESTIMENTOS  GESTÃO DE RECURSOS LTDA.",
+      "ON": 5.15,
+      "PN": 0.0,
+      "Total": 5.15
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 56.78,
+      "PN": 0.0,
+      "Total": 56.78
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 1.59,
+      "PN": 0.0,
+      "Total": 1.59
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 59692,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 292,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 1166,
+        "percentual": null
+      }
+    ],
+    "data": "30/04/2025",
+    "quantidade_acoes_ordinarias": 312217209,
+    "percentual_ordinarias": 62.12,
+    "total_acoes": 312217209,
+    "percentual_total": 62.12
+  },
+  "composicao_capital_social": {
+    "data": "30/04/2025",
+    "preferenciais": 0,
+    "total": 502630884
+  }
 }

@@ -8,8 +8,335 @@
   "subsetor": "Comércio e Distribuição",
   "segmento": "Medicamentos e Outros Produtos",
   "site": "www.panvel.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível1.300.9721.280.025Ativo Total3.174.9973.377.453Patrimônio Líquido1.245.8251.234.714Patrimônio Líquido Atribuído à Controladora1.245.8251.234.714Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda1.258.6881.226.103Resultado Bruto401.095394.011Resultado de Equivalência Patrimonial00Resultado Financeiro(24.057)(21.253)Resultado Líquido das Operações Continuadas25.46633.550Lucro (Prejuízo) do Período25.46633.550Lucro (Prejuízo) do Período Atribuído à Controladora25.46633.550Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais99.62216.070Atividades de Investimento(9.657)(41.034)Atividades de Financiamento(81.734)19.137Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes8.231(5.827)",
-  "posicao_acionaria": "Nome%ON%PN%TotalADRIANA MOTTIN VELLINHO0,080,000,08ANA LUIZA MARIANO DA ROCHA MOTTIN1,460,001,46ANTÔNIO CARLOS TOCCHETTO NAPP0,050,000,05CARLOS ALBERTO DE FREITAS LIMA0,200,000,20DENIS PIZZATO3,560,003,56ELISABETH WEBER TAYLOR3,030,003,03FRANCISCO ANGELO MOTTIN2,810,002,81GABRIELA WEBER LUCE0,140,000,14GABRIELA ZUBARAN DE AZEVEDO PIZZATO0,070,000,07GERALDO OTTO WEBER3,680,003,68GUILHERME WEBER LUCE0,130,000,13IVETE POLESE WEBER0,010,000,01JOSE E P ANNONI1,610,001,61JOSÉ F A PIZZATO ANNONI0,010,000,01JULIO RICARDO ANDRIGHETTO MOTTIN8,430,008,43JULIO RICARDO MOTTIN NETO0,260,000,26KINEA PRIVATE EQUITY IV MASTER FUNDO DE INVESTIMENTO EM PARTICIPAÇÕES MULTIESTRATÉGICA5,030,005,03LUCAS WEBER0,130,000,13MARCELA DE AZEVEDO PIZZATO0,070,000,07MARIANA MARIANO DA ROCHA MOTTIN0,080,000,08MARTHA WEBER LUCE3,600,003,60MELISSA POLESE SCHNEIDER0,130,000,13NADJA PIZZATO1,680,001,68NELSON DE ALVARENGA MARIANO DA ROCHA2,240,002,24NELSON DE CASTRO PERRONE0,110,000,11PATRÍCIA WEBER0,130,000,13PAULO ROBERTO BAGGIO0,080,000,08RAFAELLA POLESE WEBER0,150,000,15REGIS PIZZATO3,270,003,27ROBERTO LUIZ WEBER3,800,003,80RUDOLFO JOSE MUSSNICH0,590,000,59SILVIA TOSTES MOTTIN0,370,000,37SYLVIA WAHRLICH1,010,001,01VIVIAN VIEIRA ALBRECHT0,120,000,12SPX GESTÃO DE RECURSOS LTDA6,470,006,47OUTROS44,550,0044,55AÇÕES TESOURARIA0,880,000,88TOTAL100,000,00100,00Informação recebida em 17/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "22/05/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas31.160-Pessoas Jurídicas264-Investidores Institucionais58-Quantidade de Ações Ordinárias71.064.41644,23Total de Ações71.064.41644,23",
-  "composicao_capital_social": "30/04/2025Ordinárias150.377.481Preferenciais0Total150.377.481"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 1300972,
+        "31/12/2024": 1280025
+      },
+      "ativo_total": {
+        "31/03/2025": 3174997,
+        "31/12/2024": 3377453
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 1245825,
+        "31/12/2024": 1234714
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 1245825,
+        "31/12/2024": 1234714
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 1258688,
+        "01/01/2024_a_31/03/2024": 1226103
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 401095,
+        "01/01/2024_a_31/03/2024": 394011
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -24057,
+        "01/01/2024_a_31/03/2024": -21253
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 25466,
+        "01/01/2024_a_31/03/2024": 33550
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 25466,
+        "01/01/2024_a_31/03/2024": 33550
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 25466,
+        "01/01/2024_a_31/03/2024": 33550
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 99622,
+        "01/01/2024_a_31/03/2024": 16070
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -9657,
+        "01/01/2024_a_31/03/2024": -41034
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -81734,
+        "01/01/2024_a_31/03/2024": 19137
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 8231,
+        "01/01/2024_a_31/03/2024": -5827
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "ADRIANA MOTTIN VELLINHO",
+      "ON": 0.08,
+      "PN": 0.0,
+      "Total": 0.08
+    },
+    {
+      "nome": "ANA LUIZA MARIANO DA ROCHA MOTTIN",
+      "ON": 1.46,
+      "PN": 0.0,
+      "Total": 1.46
+    },
+    {
+      "nome": "ANTÔNIO CARLOS TOCCHETTO NAPP",
+      "ON": 0.05,
+      "PN": 0.0,
+      "Total": 0.05
+    },
+    {
+      "nome": "CARLOS ALBERTO DE FREITAS LIMA",
+      "ON": 0.2,
+      "PN": 0.0,
+      "Total": 0.2
+    },
+    {
+      "nome": "DENIS PIZZATO",
+      "ON": 3.56,
+      "PN": 0.0,
+      "Total": 3.56
+    },
+    {
+      "nome": "ELISABETH WEBER TAYLOR",
+      "ON": 3.03,
+      "PN": 0.0,
+      "Total": 3.03
+    },
+    {
+      "nome": "FRANCISCO ANGELO MOTTIN",
+      "ON": 2.81,
+      "PN": 0.0,
+      "Total": 2.81
+    },
+    {
+      "nome": "GABRIELA WEBER LUCE",
+      "ON": 0.14,
+      "PN": 0.0,
+      "Total": 0.14
+    },
+    {
+      "nome": "GABRIELA ZUBARAN DE AZEVEDO PIZZATO",
+      "ON": 0.07,
+      "PN": 0.0,
+      "Total": 0.07
+    },
+    {
+      "nome": "GERALDO OTTO WEBER",
+      "ON": 3.68,
+      "PN": 0.0,
+      "Total": 3.68
+    },
+    {
+      "nome": "GUILHERME WEBER LUCE",
+      "ON": 0.13,
+      "PN": 0.0,
+      "Total": 0.13
+    },
+    {
+      "nome": "IVETE POLESE WEBER",
+      "ON": 0.01,
+      "PN": 0.0,
+      "Total": 0.01
+    },
+    {
+      "nome": "JOSE E P ANNONI",
+      "ON": 1.61,
+      "PN": 0.0,
+      "Total": 1.61
+    },
+    {
+      "nome": "JOSÉ F A PIZZATO ANNONI",
+      "ON": 0.01,
+      "PN": 0.0,
+      "Total": 0.01
+    },
+    {
+      "nome": "JULIO RICARDO ANDRIGHETTO MOTTIN",
+      "ON": 8.43,
+      "PN": 0.0,
+      "Total": 8.43
+    },
+    {
+      "nome": "JULIO RICARDO MOTTIN NETO",
+      "ON": 0.26,
+      "PN": 0.0,
+      "Total": 0.26
+    },
+    {
+      "nome": "KINEA PRIVATE EQUITY IV MASTER FUNDO DE INVESTIMENTO EM PARTICIPAÇÕES MULTIESTRATÉGICA",
+      "ON": 5.03,
+      "PN": 0.0,
+      "Total": 5.03
+    },
+    {
+      "nome": "LUCAS WEBER",
+      "ON": 0.13,
+      "PN": 0.0,
+      "Total": 0.13
+    },
+    {
+      "nome": "MARCELA DE AZEVEDO PIZZATO",
+      "ON": 0.07,
+      "PN": 0.0,
+      "Total": 0.07
+    },
+    {
+      "nome": "MARIANA MARIANO DA ROCHA MOTTIN",
+      "ON": 0.08,
+      "PN": 0.0,
+      "Total": 0.08
+    },
+    {
+      "nome": "MARTHA WEBER LUCE",
+      "ON": 3.6,
+      "PN": 0.0,
+      "Total": 3.6
+    },
+    {
+      "nome": "MELISSA POLESE SCHNEIDER",
+      "ON": 0.13,
+      "PN": 0.0,
+      "Total": 0.13
+    },
+    {
+      "nome": "NADJA PIZZATO",
+      "ON": 1.68,
+      "PN": 0.0,
+      "Total": 1.68
+    },
+    {
+      "nome": "NELSON DE ALVARENGA MARIANO DA ROCHA",
+      "ON": 2.24,
+      "PN": 0.0,
+      "Total": 2.24
+    },
+    {
+      "nome": "NELSON DE CASTRO PERRONE",
+      "ON": 0.11,
+      "PN": 0.0,
+      "Total": 0.11
+    },
+    {
+      "nome": "PATRÍCIA WEBER",
+      "ON": 0.13,
+      "PN": 0.0,
+      "Total": 0.13
+    },
+    {
+      "nome": "PAULO ROBERTO BAGGIO",
+      "ON": 0.08,
+      "PN": 0.0,
+      "Total": 0.08
+    },
+    {
+      "nome": "RAFAELLA POLESE WEBER",
+      "ON": 0.15,
+      "PN": 0.0,
+      "Total": 0.15
+    },
+    {
+      "nome": "REGIS PIZZATO",
+      "ON": 3.27,
+      "PN": 0.0,
+      "Total": 3.27
+    },
+    {
+      "nome": "ROBERTO LUIZ WEBER",
+      "ON": 3.8,
+      "PN": 0.0,
+      "Total": 3.8
+    },
+    {
+      "nome": "RUDOLFO JOSE MUSSNICH",
+      "ON": 0.59,
+      "PN": 0.0,
+      "Total": 0.59
+    },
+    {
+      "nome": "SILVIA TOSTES MOTTIN",
+      "ON": 0.37,
+      "PN": 0.0,
+      "Total": 0.37
+    },
+    {
+      "nome": "SYLVIA WAHRLICH",
+      "ON": 1.01,
+      "PN": 0.0,
+      "Total": 1.01
+    },
+    {
+      "nome": "VIVIAN VIEIRA ALBRECHT",
+      "ON": 0.12,
+      "PN": 0.0,
+      "Total": 0.12
+    },
+    {
+      "nome": "SPX GESTÃO DE RECURSOS LTDA",
+      "ON": 6.47,
+      "PN": 0.0,
+      "Total": 6.47
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 44.55,
+      "PN": 0.0,
+      "Total": 44.55
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.88,
+      "PN": 0.0,
+      "Total": 0.88
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 31160,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 264,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 58,
+        "percentual": null
+      }
+    ],
+    "data": "22/05/2025",
+    "quantidade_acoes_ordinarias": 71064416,
+    "percentual_ordinarias": 44.23,
+    "total_acoes": 71064416,
+    "percentual_total": 44.23
+  },
+  "composicao_capital_social": {
+    "data": "30/04/2025",
+    "preferenciais": 0,
+    "total": 150377481
+  }
 }

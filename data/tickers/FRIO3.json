@@ -8,8 +8,155 @@
   "subsetor": "Máquinas e Equipamentos",
   "segmento": "Máq. e Equip. Industriais",
   "site": "www.metalfrio.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível548.658538.398Ativo Total1.928.7841.980.185Patrimônio Líquido409.814434.408Patrimônio Líquido Atribuído à Controladora327.983343.433Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda543.602434.298Resultado Bruto91.69681.667Resultado de Equivalência Patrimonial00Resultado Financeiro(37.217)(16.890)Resultado Líquido das Operações Continuadas(9.198)1.074Lucro (Prejuízo) do Período(9.198)1.074Lucro (Prejuízo) do Período Atribuído à Controladora(3.766)2.577Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(64.127)43.270Atividades de Investimento9.604(30.585)Atividades de Financiamento(30.450)(37.366)Variação Cambial sobre Caixa e Equivalentes(10.766)3.170Aumento (Redução) de Caixa e Equivalentes(95.739)(21.511)",
-  "posicao_acionaria": "Nome%ON%PN%TotalAlmond Tree LLC27,130,0027,13FUNDOS SOB GESTÃO DISCRICIONÁRIA  DA WNT GESTORA DE RECURSOS LTDA.36,500,0036,50MARCELO FARIA DE LIMA0,710,000,71Peach Tree LLC10,370,0010,37Rio Verde Consultoria e Participações Ltda23,150,0023,15OUTROS2,140,002,14AÇÕES TESOURARIA0,000,000,00TOTAL100,000,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "21/05/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas291-Pessoas Jurídicas18-Investidores Institucionais0-Quantidade de Ações Ordinárias4.107.21665,34Total de Ações4.107.21665,34",
-  "composicao_capital_social": "18/12/2023Ordinárias6.286.293Preferenciais0Total6.286.293"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 548658,
+        "31/12/2024": 538398
+      },
+      "ativo_total": {
+        "31/03/2025": 1928784,
+        "31/12/2024": 1980185
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 409814,
+        "31/12/2024": 434408
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 327983,
+        "31/12/2024": 343433
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 543602,
+        "01/01/2024_a_31/03/2024": 434298
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 91696,
+        "01/01/2024_a_31/03/2024": 81667
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -37217,
+        "01/01/2024_a_31/03/2024": -16890
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": -9198,
+        "01/01/2024_a_31/03/2024": 1074
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": -9198,
+        "01/01/2024_a_31/03/2024": 1074
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": -3766,
+        "01/01/2024_a_31/03/2024": 2577
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": -64127,
+        "01/01/2024_a_31/03/2024": 43270
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": 9604,
+        "01/01/2024_a_31/03/2024": -30585
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -30450,
+        "01/01/2024_a_31/03/2024": -37366
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -10766,
+        "01/01/2024_a_31/03/2024": 3170
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -95739,
+        "01/01/2024_a_31/03/2024": -21511
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "Almond Tree LLC",
+      "ON": 27.13,
+      "PN": 0.0,
+      "Total": 27.13
+    },
+    {
+      "nome": "FUNDOS SOB GESTÃO DISCRICIONÁRIA  DA WNT GESTORA DE RECURSOS LTDA.",
+      "ON": 36.5,
+      "PN": 0.0,
+      "Total": 36.5
+    },
+    {
+      "nome": "MARCELO FARIA DE LIMA",
+      "ON": 0.71,
+      "PN": 0.0,
+      "Total": 0.71
+    },
+    {
+      "nome": "Peach Tree LLC",
+      "ON": 10.37,
+      "PN": 0.0,
+      "Total": 10.37
+    },
+    {
+      "nome": "Rio Verde Consultoria e Participações Ltda",
+      "ON": 23.15,
+      "PN": 0.0,
+      "Total": 23.15
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 2.14,
+      "PN": 0.0,
+      "Total": 2.14
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 291,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 18,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 0,
+        "percentual": null
+      }
+    ],
+    "data": "21/05/2025",
+    "quantidade_acoes_ordinarias": 4107216,
+    "percentual_ordinarias": 65.34,
+    "total_acoes": 4107216,
+    "percentual_total": 65.34
+  },
+  "composicao_capital_social": {
+    "data": "18/12/2023",
+    "preferenciais": 0,
+    "total": 6286293
+  }
 }

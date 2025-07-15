@@ -8,8 +8,129 @@
   "subsetor": "Outros (subsetor)",
   "segmento": "Outros (segmento)",
   "site": "www.fictoralimentos.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Não consolidado Balanço Patrimonial  - Não-Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos, Intangível e Diferido4.4010Ativo Total4.4451Patrimônio Líquido(9.103)(8.483)Demonstração do Resultado - Não-Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda00Resultado Bruto00Resultado de Equivalência Patrimonial02.479Resultado Financeiro00Resultado Líquido das Operações Continuadas(620)22.388Lucro (Prejuízo) do Período(620)22.388Demonstração do Fluxo de Caixa - Não-Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais26(153)Atividades de Investimento(26)153Atividades de Financiamento00Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes00",
-  "posicao_acionaria": "Nome%ON%PN%TotalAQWA CAPITAL HOLDINGS LLC30,600,0030,60FICTOR HOLDING S.A.45,910,0045,91OUTROS21,900,0021,90AÇÕES TESOURARIA1,590,001,59TOTAL100,000,00100,00Informação recebida em 10/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "09/05/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas5.043-Pessoas Jurídicas18-Investidores Institucionais11-Quantidade de Ações Ordinárias5.212.78221,90Total de Ações5.212.78221,90",
-  "composicao_capital_social": "17/10/2024Ordinárias23.804.898Preferenciais0Total23.804.898"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_intangivel_e_diferido": {
+        "31/03/2025": 4401,
+        "31/12/2024": 0
+      },
+      "ativo_total": {
+        "31/03/2025": 4445,
+        "31/12/2024": 1
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": -9103,
+        "31/12/2024": -8483
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 2479
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": -620,
+        "01/01/2024_a_31/03/2024": 22388
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": -620,
+        "01/01/2024_a_31/03/2024": 22388
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 26,
+        "01/01/2024_a_31/03/2024": -153
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -26,
+        "01/01/2024_a_31/03/2024": 153
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "AQWA CAPITAL HOLDINGS LLC",
+      "ON": 30.6,
+      "PN": 0.0,
+      "Total": 30.6
+    },
+    {
+      "nome": "FICTOR HOLDING S.A.",
+      "ON": 45.91,
+      "PN": 0.0,
+      "Total": 45.91
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 21.9,
+      "PN": 0.0,
+      "Total": 21.9
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 1.59,
+      "PN": 0.0,
+      "Total": 1.59
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 5043,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 18,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 11,
+        "percentual": null
+      }
+    ],
+    "data": "09/05/2025",
+    "quantidade_acoes_ordinarias": 5212782,
+    "percentual_ordinarias": 21.9,
+    "total_acoes": 5212782,
+    "percentual_total": 21.9
+  },
+  "composicao_capital_social": {
+    "data": "17/10/2024",
+    "preferenciais": 0,
+    "total": 23804898
+  }
 }

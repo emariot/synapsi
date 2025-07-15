@@ -8,8 +8,245 @@
   "subsetor": "Serv.Méd.Hospit..Análises e Diagnósticos",
   "segmento": "Serv.Méd.Hospit..Análises e Diagnósticos (segmento)",
   "site": "https://www.rededorsaoluiz.com.br/",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível37.146.20836.757.702Ativo Total104.304.446102.597.882Patrimônio Líquido27.541.65726.701.868Patrimônio Líquido Atribuído à Controladora25.002.98424.702.627Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda12.973.03212.195.029Resultado Bruto2.713.6682.225.224Resultado de Equivalência Patrimonial(2.900)(9.736)Resultado Financeiro(861.785)(672.546)Resultado Líquido das Operações Continuadas1.066.778835.481Lucro (Prejuízo) do Período1.066.778835.481Lucro (Prejuízo) do Período Atribuído à Controladora1.040.489804.590Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais2.419.238568.852Atividades de Investimento310.04756.167Atividades de Financiamento(1.624.515)(1.301.682)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes1.104.770(676.663)",
-  "posicao_acionaria": "Nome%ON%PN%TotalALICE JUNQUEIRA MOLL2,730,002,73ANDRÉ FRANCISCO JUNQUEIRA MOLL2,730,002,73CHARDONNAY FUNDO DE INVESTIMENTO EM AÇÕES INVESTIMENTO NO EXTERIOR1,080,001,08DELTA FM&B FUNDO DE INVESTIMENTO EM AÇÕES13,450,0013,45ISABELLE ROSE MARIE DE SEGUR LAMOIGNON0,000,000,00JORGE NEVAL MOLL FILHO16,400,0016,40JORGE NEVAL MOLL NETO2,730,002,73PACIFIC MEZZ PTE LIMITED17,700,0017,70PATRICK ANTONIO CLAUDE DE LARRAGOITI LUCAS0,370,000,37PAULO JUNQUEIRA MOLL2,730,002,73PEDRO JUNQUEIRA MOLL2,730,002,73PIEMONTE 2 FUNDO DE INVESTIMENTO FINANCEIRO EM AÇÕES0,020,000,02PSTAR FUNDO DE INVESTIMENTO EM AÇÕES0,020,000,02RENATA JUNQUEIRA MOLL BERNARDES2,730,002,73SOPHIE MARIE ANTOINETTE DE SEGUR0,000,000,00Sulasapar Participações S.A.0,350,000,35SULAVER S.A.R.L0,290,000,29SULEMISA LUX S.A.R.L0,670,000,67SULTASO LUX S.A.R.L0,670,000,67VIDEIRAS FUNDO DE INVESTIMENTO EM AÇÕES0,190,000,19OUTROS28,800,0028,80AÇÕES TESOURARIA3,610,003,61TOTAL100,000,00100,00Informação recebida em 11/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "30/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas59.511-Pessoas Jurídicas1.913-Investidores Institucionais0-Quantidade de Ações Ordinárias1.091.469.30847,68Total de Ações1.091.469.30847,68",
-  "composicao_capital_social": "29/12/2022Ordinárias2.289.292.590Preferenciais0Total2.289.292.590"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 37146208,
+        "31/12/2024": 36757702
+      },
+      "ativo_total": {
+        "31/03/2025": 104304446,
+        "31/12/2024": 102597882
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 27541657,
+        "31/12/2024": 26701868
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 25002984,
+        "31/12/2024": 24702627
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 12973032,
+        "01/01/2024_a_31/03/2024": 12195029
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 2713668,
+        "01/01/2024_a_31/03/2024": 2225224
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": -2900,
+        "01/01/2024_a_31/03/2024": -9736
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -861785,
+        "01/01/2024_a_31/03/2024": -672546
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 1066778,
+        "01/01/2024_a_31/03/2024": 835481
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 1066778,
+        "01/01/2024_a_31/03/2024": 835481
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 1040489,
+        "01/01/2024_a_31/03/2024": 804590
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 2419238,
+        "01/01/2024_a_31/03/2024": 568852
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": 310047,
+        "01/01/2024_a_31/03/2024": 56167
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -1624515,
+        "01/01/2024_a_31/03/2024": -1301682
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 1104770,
+        "01/01/2024_a_31/03/2024": -676663
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "ALICE JUNQUEIRA MOLL",
+      "ON": 2.73,
+      "PN": 0.0,
+      "Total": 2.73
+    },
+    {
+      "nome": "ANDRÉ FRANCISCO JUNQUEIRA MOLL",
+      "ON": 2.73,
+      "PN": 0.0,
+      "Total": 2.73
+    },
+    {
+      "nome": "CHARDONNAY FUNDO DE INVESTIMENTO EM AÇÕES INVESTIMENTO NO EXTERIOR",
+      "ON": 1.08,
+      "PN": 0.0,
+      "Total": 1.08
+    },
+    {
+      "nome": "DELTA FM&B FUNDO DE INVESTIMENTO EM AÇÕES",
+      "ON": 13.45,
+      "PN": 0.0,
+      "Total": 13.45
+    },
+    {
+      "nome": "ISABELLE ROSE MARIE DE SEGUR LAMOIGNON",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "JORGE NEVAL MOLL FILHO",
+      "ON": 16.4,
+      "PN": 0.0,
+      "Total": 16.4
+    },
+    {
+      "nome": "JORGE NEVAL MOLL NETO",
+      "ON": 2.73,
+      "PN": 0.0,
+      "Total": 2.73
+    },
+    {
+      "nome": "PACIFIC MEZZ PTE LIMITED",
+      "ON": 17.7,
+      "PN": 0.0,
+      "Total": 17.7
+    },
+    {
+      "nome": "PATRICK ANTONIO CLAUDE DE LARRAGOITI LUCAS",
+      "ON": 0.37,
+      "PN": 0.0,
+      "Total": 0.37
+    },
+    {
+      "nome": "PAULO JUNQUEIRA MOLL",
+      "ON": 2.73,
+      "PN": 0.0,
+      "Total": 2.73
+    },
+    {
+      "nome": "PEDRO JUNQUEIRA MOLL",
+      "ON": 2.73,
+      "PN": 0.0,
+      "Total": 2.73
+    },
+    {
+      "nome": "PIEMONTE 2 FUNDO DE INVESTIMENTO FINANCEIRO EM AÇÕES",
+      "ON": 0.02,
+      "PN": 0.0,
+      "Total": 0.02
+    },
+    {
+      "nome": "PSTAR FUNDO DE INVESTIMENTO EM AÇÕES",
+      "ON": 0.02,
+      "PN": 0.0,
+      "Total": 0.02
+    },
+    {
+      "nome": "RENATA JUNQUEIRA MOLL BERNARDES",
+      "ON": 2.73,
+      "PN": 0.0,
+      "Total": 2.73
+    },
+    {
+      "nome": "SOPHIE MARIE ANTOINETTE DE SEGUR",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "Sulasapar Participações S.A.",
+      "ON": 0.35,
+      "PN": 0.0,
+      "Total": 0.35
+    },
+    {
+      "nome": "SULAVER S.A.R.L",
+      "ON": 0.29,
+      "PN": 0.0,
+      "Total": 0.29
+    },
+    {
+      "nome": "SULEMISA LUX S.A.R.L",
+      "ON": 0.67,
+      "PN": 0.0,
+      "Total": 0.67
+    },
+    {
+      "nome": "SULTASO LUX S.A.R.L",
+      "ON": 0.67,
+      "PN": 0.0,
+      "Total": 0.67
+    },
+    {
+      "nome": "VIDEIRAS FUNDO DE INVESTIMENTO EM AÇÕES",
+      "ON": 0.19,
+      "PN": 0.0,
+      "Total": 0.19
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 28.8,
+      "PN": 0.0,
+      "Total": 28.8
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 3.61,
+      "PN": 0.0,
+      "Total": 3.61
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 59511,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 1913,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 0,
+        "percentual": null
+      }
+    ],
+    "data": "30/04/2025",
+    "quantidade_acoes_ordinarias": 1091469308,
+    "percentual_ordinarias": 47.68,
+    "total_acoes": 1091469308,
+    "percentual_total": 47.68
+  },
+  "composicao_capital_social": {
+    "data": "29/12/2022",
+    "preferenciais": 0,
+    "total": 2289292590
+  }
 }

@@ -8,8 +8,128 @@
   "subsetor": "Gás",
   "segmento": "Gás (segmento)",
   "site": "https://raizen.com",
-  "dados_economico_financeiros": "Ver dados no formato Não consolidado Balanço Patrimonial  - Não-Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos, Intangível e Diferido8.750.8998.750.630Ativo Total14.028.66615.591.493Patrimônio Líquido1.420.1831.133.863Demonstração do Resultado - Não-Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda3.012.5573.561.042Resultado Bruto749.362720.936Resultado de Equivalência Patrimonial00Resultado Financeiro(207.295)(137.178)Resultado Líquido das Operações Continuadas286.320322.204Lucro (Prejuízo) do Período286.320322.204Demonstração do Fluxo de Caixa - Não-Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais456.769341.092Atividades de Investimento(16.825)(463.369)Atividades de Financiamento(1.485.112)833.599Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(1.045.168)711.322",
-  "posicao_acionaria": "Nome%ON%PN%TotalCompass Gás e Energia S.A.99,8496,6099,14OUTROS0,163,410,86AÇÕES TESOURARIA0,000,000,00TOTAL100,00100,00100,00Informação recebida em 27/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "25/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas5.667-Pessoas Jurídicas99-Investidores Institucionais12-Quantidade de Ações Ordinárias163.4350,16Quantidade de Ações Preferenciais975.7753,41Total de Ações1.139.2100,86",
-  "composicao_capital_social": "01/07/2019Ordinárias103.862.768Preferenciais28.657.819Total132.520.587"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_intangivel_e_diferido": {
+        "31/03/2025": 8750899,
+        "31/12/2024": 8750630
+      },
+      "ativo_total": {
+        "31/03/2025": 14028666,
+        "31/12/2024": 15591493
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 1420183,
+        "31/12/2024": 1133863
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 3012557,
+        "01/01/2024_a_31/03/2024": 3561042
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 749362,
+        "01/01/2024_a_31/03/2024": 720936
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -207295,
+        "01/01/2024_a_31/03/2024": -137178
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 286320,
+        "01/01/2024_a_31/03/2024": 322204
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 286320,
+        "01/01/2024_a_31/03/2024": 322204
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 456769,
+        "01/01/2024_a_31/03/2024": 341092
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -16825,
+        "01/01/2024_a_31/03/2024": -463369
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -1485112,
+        "01/01/2024_a_31/03/2024": 833599
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -1045168,
+        "01/01/2024_a_31/03/2024": 711322
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "Compass Gás e Energia S.A.",
+      "ON": 99.84,
+      "PN": 96.6,
+      "Total": 99.14
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 0.16,
+      "PN": 3.41,
+      "Total": 0.86
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 100.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 5667,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 99,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 12,
+        "percentual": null
+      },
+      {
+        "tipo": "Quantidade de Ações Preferenciais",
+        "quantidade": 975775,
+        "percentual": 3.41
+      }
+    ],
+    "data": "25/04/2025",
+    "quantidade_acoes_ordinarias": 163435,
+    "percentual_ordinarias": 0.16,
+    "total_acoes": 1139210,
+    "percentual_total": 0.86
+  },
+  "composicao_capital_social": {
+    "data": "01/07/2019",
+    "preferenciais": 28657819,
+    "total": 132520587
+  }
 }

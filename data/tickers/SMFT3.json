@@ -8,8 +8,185 @@
   "subsetor": "Viagens e Lazer",
   "segmento": "Atividades Esportivas",
   "site": "www.smartfit.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível12.838.78512.922.092Ativo Total18.255.06718.350.302Patrimônio Líquido5.543.5045.471.778Patrimônio Líquido Atribuído à Controladora5.527.2185.455.896Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda1.678.1741.259.888Resultado Bruto717.120523.315Resultado de Equivalência Patrimonial3.049(1.069)Resultado Financeiro(225.359)(161.239)Resultado Líquido das Operações Continuadas120.94794.486Lucro (Prejuízo) do Período120.94794.486Lucro (Prejuízo) do Período Atribuído à Controladora120.52093.225Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais540.021248.278Atividades de Investimento(394.394)(396.914)Atividades de Financiamento(157.035)1.093Variação Cambial sobre Caixa e Equivalentes(32.407)5.930Aumento (Redução) de Caixa e Equivalentes(43.815)(141.613)",
-  "posicao_acionaria": "Nome%ON%PN%TotalANA CAROLINA CORONA GOLDFARB1,690,001,69CAMILA CORONA DE GODOY BUENO1,690,001,69Canada Pension Plan Investment Board12,100,0012,10CORONFIM 95 FUNDO DE INVESTIMENTO MULTIMERCADO0,000,000,00CORONFIM RV2 FUNDO DE INVESTIMENTO MULTIMERCADO0,940,000,94DIOGO FERRAZ DE ANDRADE CORONA1,690,001,69EDGARD GOMES CORONA8,850,008,85GRUPO GIC8,200,008,20Pátria Private Equity Co-Investimento Smartfit - FIP Multiestratégia13,220,0013,22Pátria Private Equity Co-Investimento Smartfit Partners Fund  FIP Multiestratégia0,420,000,42OUTROS51,210,0051,21AÇÕES TESOURARIA0,000,000,00TOTAL100,000,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "20/05/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas9.364-Pessoas Jurídicas97-Investidores Institucionais1.009-Quantidade de Ações Ordinárias427.078.00871,51Total de Ações427.078.00871,51",
-  "composicao_capital_social": "10/12/2024Ordinárias597.250.053Preferenciais0Total597.250.053"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 12838785,
+        "31/12/2024": 12922092
+      },
+      "ativo_total": {
+        "31/03/2025": 18255067,
+        "31/12/2024": 18350302
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 5543504,
+        "31/12/2024": 5471778
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 5527218,
+        "31/12/2024": 5455896
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 1678174,
+        "01/01/2024_a_31/03/2024": 1259888
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 717120,
+        "01/01/2024_a_31/03/2024": 523315
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 3049,
+        "01/01/2024_a_31/03/2024": -1069
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -225359,
+        "01/01/2024_a_31/03/2024": -161239
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 120947,
+        "01/01/2024_a_31/03/2024": 94486
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 120947,
+        "01/01/2024_a_31/03/2024": 94486
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 120520,
+        "01/01/2024_a_31/03/2024": 93225
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 540021,
+        "01/01/2024_a_31/03/2024": 248278
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -394394,
+        "01/01/2024_a_31/03/2024": -396914
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -157035,
+        "01/01/2024_a_31/03/2024": 1093
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -32407,
+        "01/01/2024_a_31/03/2024": 5930
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -43815,
+        "01/01/2024_a_31/03/2024": -141613
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "ANA CAROLINA CORONA GOLDFARB",
+      "ON": 1.69,
+      "PN": 0.0,
+      "Total": 1.69
+    },
+    {
+      "nome": "CAMILA CORONA DE GODOY BUENO",
+      "ON": 1.69,
+      "PN": 0.0,
+      "Total": 1.69
+    },
+    {
+      "nome": "Canada Pension Plan Investment Board",
+      "ON": 12.1,
+      "PN": 0.0,
+      "Total": 12.1
+    },
+    {
+      "nome": "CORONFIM 95 FUNDO DE INVESTIMENTO MULTIMERCADO",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "CORONFIM RV2 FUNDO DE INVESTIMENTO MULTIMERCADO",
+      "ON": 0.94,
+      "PN": 0.0,
+      "Total": 0.94
+    },
+    {
+      "nome": "DIOGO FERRAZ DE ANDRADE CORONA",
+      "ON": 1.69,
+      "PN": 0.0,
+      "Total": 1.69
+    },
+    {
+      "nome": "EDGARD GOMES CORONA",
+      "ON": 8.85,
+      "PN": 0.0,
+      "Total": 8.85
+    },
+    {
+      "nome": "GRUPO GIC",
+      "ON": 8.2,
+      "PN": 0.0,
+      "Total": 8.2
+    },
+    {
+      "nome": "Pátria Private Equity Co-Investimento Smartfit - FIP Multiestratégia",
+      "ON": 13.22,
+      "PN": 0.0,
+      "Total": 13.22
+    },
+    {
+      "nome": "Pátria Private Equity Co-Investimento Smartfit Partners Fund  FIP Multiestratégia",
+      "ON": 0.42,
+      "PN": 0.0,
+      "Total": 0.42
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 51.21,
+      "PN": 0.0,
+      "Total": 51.21
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 9364,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 97,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 1009,
+        "percentual": null
+      }
+    ],
+    "data": "20/05/2025",
+    "quantidade_acoes_ordinarias": 427078008,
+    "percentual_ordinarias": 71.51,
+    "total_acoes": 427078008,
+    "percentual_total": 71.51
+  },
+  "composicao_capital_social": {
+    "data": "10/12/2024",
+    "preferenciais": 0,
+    "total": 597250053
+  }
 }

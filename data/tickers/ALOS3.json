@@ -8,8 +8,161 @@
   "subsetor": "Exploração de Imóveis",
   "segmento": "Exploração de Imóveis (segmento)",
   "site": "//www.alianscesonae.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível21.792.00822.249.429Ativo Total26.592.04027.288.790Patrimônio Líquido14.198.26414.134.520Patrimônio Líquido Atribuído à Controladora13.432.55213.364.892Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda649.842644.358Resultado Bruto475.939462.493Resultado de Equivalência Patrimonial17.20118.149Resultado Financeiro(157.651)(103.191)Resultado Líquido das Operações Continuadas278.103127.373Lucro (Prejuízo) do Período278.103127.373Lucro (Prejuízo) do Período Atribuído à Controladora254.67091.066Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais341.802411.582Atividades de Investimento698.722147.320Atividades de Financiamento(1.049.913)(566.440)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(9.389)(7.538)",
-  "posicao_acionaria": "Nome%ON%PN%TotalCanada Pension Plan Investment Board12,920,0012,92CURA BRAZIL S.À R.L.6,300,006,30GUEPARDO INVESTIMENTOS LTDA5,000,005,00RENATO FEITOSA RIQUE2,680,002,68Rique Empreendimentos e Participações Ltda.0,630,000,63SONAE SIERRA BRAZIL HOLDINGS4,960,004,96OUTROS59,620,0059,62AÇÕES TESOURARIA7,900,007,90TOTAL100,000,00100,00Informação recebida em 17/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "16/05/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas52.431-Pessoas Jurídicas333-Investidores Institucionais1.030-Quantidade de Ações Ordinárias467.568.72286,12Total de Ações467.568.72286,12",
-  "composicao_capital_social": "12/06/2024Ordinárias542.936.909Preferenciais0Total542.936.909"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 21792008,
+        "31/12/2024": 22249429
+      },
+      "ativo_total": {
+        "31/03/2025": 26592040,
+        "31/12/2024": 27288790
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 14198264,
+        "31/12/2024": 14134520
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 13432552,
+        "31/12/2024": 13364892
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 649842,
+        "01/01/2024_a_31/03/2024": 644358
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 475939,
+        "01/01/2024_a_31/03/2024": 462493
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 17201,
+        "01/01/2024_a_31/03/2024": 18149
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -157651,
+        "01/01/2024_a_31/03/2024": -103191
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 278103,
+        "01/01/2024_a_31/03/2024": 127373
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 278103,
+        "01/01/2024_a_31/03/2024": 127373
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 254670,
+        "01/01/2024_a_31/03/2024": 91066
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 341802,
+        "01/01/2024_a_31/03/2024": 411582
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": 698722,
+        "01/01/2024_a_31/03/2024": 147320
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -1049913,
+        "01/01/2024_a_31/03/2024": -566440
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -9389,
+        "01/01/2024_a_31/03/2024": -7538
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "Canada Pension Plan Investment Board",
+      "ON": 12.92,
+      "PN": 0.0,
+      "Total": 12.92
+    },
+    {
+      "nome": "CURA BRAZIL S.À R.L.",
+      "ON": 6.3,
+      "PN": 0.0,
+      "Total": 6.3
+    },
+    {
+      "nome": "GUEPARDO INVESTIMENTOS LTDA",
+      "ON": 5.0,
+      "PN": 0.0,
+      "Total": 5.0
+    },
+    {
+      "nome": "RENATO FEITOSA RIQUE",
+      "ON": 2.68,
+      "PN": 0.0,
+      "Total": 2.68
+    },
+    {
+      "nome": "Rique Empreendimentos e Participações Ltda.",
+      "ON": 0.63,
+      "PN": 0.0,
+      "Total": 0.63
+    },
+    {
+      "nome": "SONAE SIERRA BRAZIL HOLDINGS",
+      "ON": 4.96,
+      "PN": 0.0,
+      "Total": 4.96
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 59.62,
+      "PN": 0.0,
+      "Total": 59.62
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 7.9,
+      "PN": 0.0,
+      "Total": 7.9
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 52431,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 333,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 1030,
+        "percentual": null
+      }
+    ],
+    "data": "16/05/2025",
+    "quantidade_acoes_ordinarias": 467568722,
+    "percentual_ordinarias": 86.12,
+    "total_acoes": 467568722,
+    "percentual_total": 86.12
+  },
+  "composicao_capital_social": {
+    "data": "12/06/2024",
+    "preferenciais": 0,
+    "total": 542936909
+  }
 }

@@ -8,8 +8,142 @@
   "subsetor": "Energia Elétrica",
   "segmento": "Energia Elétrica (segmento)",
   "site": "//www.taesa.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível4.176.2564.009.992Ativo Total21.030.24020.431.093Patrimônio Líquido7.297.9426.939.504Patrimônio Líquido Atribuído à Controladora7.297.9426.939.504Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda982.893729.484Resultado Bruto658.663610.331Resultado de Equivalência Patrimonial170.117157.228Resultado Financeiro(344.291)(301.964)Resultado Líquido das Operações Continuadas365.161374.700Lucro (Prejuízo) do Período365.161374.700Lucro (Prejuízo) do Período Atribuído à Controladora365.161374.700Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais131.130260.793Atividades de Investimento(591.862)(2.643)Atividades de Financiamento(80.503)(484.170)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(541.235)(226.020)",
-  "posicao_acionaria": "Nome%ON%PN%TotalCompanhia Energética de Minas Gerais36,971,2821,68ISA Investimentos e Participações do Brasil S.A.26,030,0014,88OUTROS37,0098,7363,45AÇÕES TESOURARIA0,000,000,00TOTAL100,00100,00100,00Informação recebida em 03/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "29/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas749.796-Pessoas Jurídicas324-Investidores Institucionais1.390-Quantidade de Ações Ordinárias218.568.27437,00Quantidade de Ações Preferenciais437.136.46898,73Total de Ações655.704.74263,45",
-  "composicao_capital_social": "29/09/2016Ordinárias590.714.069Preferenciais442.782.652Total1.033.496.721"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 4176256,
+        "31/12/2024": 4009992
+      },
+      "ativo_total": {
+        "31/03/2025": 21030240,
+        "31/12/2024": 20431093
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 7297942,
+        "31/12/2024": 6939504
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 7297942,
+        "31/12/2024": 6939504
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 982893,
+        "01/01/2024_a_31/03/2024": 729484
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 658663,
+        "01/01/2024_a_31/03/2024": 610331
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 170117,
+        "01/01/2024_a_31/03/2024": 157228
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -344291,
+        "01/01/2024_a_31/03/2024": -301964
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 365161,
+        "01/01/2024_a_31/03/2024": 374700
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 365161,
+        "01/01/2024_a_31/03/2024": 374700
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 365161,
+        "01/01/2024_a_31/03/2024": 374700
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 131130,
+        "01/01/2024_a_31/03/2024": 260793
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -591862,
+        "01/01/2024_a_31/03/2024": -2643
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -80503,
+        "01/01/2024_a_31/03/2024": -484170
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -541235,
+        "01/01/2024_a_31/03/2024": -226020
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "Companhia Energética de Minas Gerais",
+      "ON": 36.97,
+      "PN": 1.28,
+      "Total": 21.68
+    },
+    {
+      "nome": "ISA Investimentos e Participações do Brasil S.A.",
+      "ON": 26.03,
+      "PN": 0.0,
+      "Total": 14.88
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 37.0,
+      "PN": 98.73,
+      "Total": 63.45
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 100.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 749796,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 324,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 1390,
+        "percentual": null
+      },
+      {
+        "tipo": "Quantidade de Ações Preferenciais",
+        "quantidade": 437136468,
+        "percentual": 98.73
+      }
+    ],
+    "data": "29/04/2025",
+    "quantidade_acoes_ordinarias": 218568274,
+    "percentual_ordinarias": 37.0,
+    "total_acoes": 655704742,
+    "percentual_total": 63.45
+  },
+  "composicao_capital_social": {
+    "data": "29/09/2016",
+    "preferenciais": 442782652,
+    "total": 1033496721
+  }
 }

@@ -8,8 +8,491 @@
   "subsetor": "Máquinas e Equipamentos",
   "segmento": "Motores . Compressores e Outros",
   "site": "www.weg.net/br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível12.813.41612.826.122Ativo Total39.323.51441.489.701Patrimônio Líquido22.228.78823.125.217Patrimônio Líquido Atribuído à Controladora21.281.62122.204.221Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda10.078.5718.033.304Resultado Bruto3.316.0202.670.704Resultado de Equivalência Patrimonial(517)73Resultado Financeiro40.10372.452Resultado Líquido das Operações Continuadas1.637.1801.377.254Lucro (Prejuízo) do Período1.637.1801.377.254Lucro (Prejuízo) do Período Atribuído à Controladora1.546.0361.327.964Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais540.5431.578.370Atividades de Investimento(701.840)(386.203)Atividades de Financiamento(2.002.963)(1.798.110)Variação Cambial sobre Caixa e Equivalentes(194.119)38.574Aumento (Redução) de Caixa e Equivalentes(2.358.379)(567.369)",
-  "posicao_acionaria": "Nome%ON%PN%Total05 de Maio Participações Ltda1,790,001,79ALBERTO DA SILVA GEFFERT0,160,000,16AMELIE VOIGT TREJES0,010,000,01Analeca Participações Ltda0,960,000,96ANNE MARIE WERNINGHAUS0,000,000,00ARTHUR RAINUI PEIXER BEHNKE0,000,000,00ASG Participações Ltda0,210,000,21BRUNA DA SILVA BARTSCH LANGSCH0,020,000,02BRUNO WERNINGHAUS DE CARVALHO0,000,000,00Cladis Voigt Trejes Administradora Ltda0,000,000,00Clica Voigt Administradora Ltda2,030,002,03CLÁUDIO WILSON PEREIRA DE ASSIS0,010,000,01CLÉCIO FÁBIO ZUCCO0,010,000,01DANIEL RICARDO BEHNKE0,180,000,18DAVI RICARDO BEHNKE0,210,000,21DIETHER WERNINGHAUS0,490,000,49DORA VOIGT DE ASSIS0,020,000,02EDUARDO VOIGT SCHWARTZ0,170,000,17Eggon João da Silva Administradora Ltda0,990,000,99EW Administradora Eireli0,290,000,29FABIO ROBERTO DE OLIVEIRA0,000,000,00FELIPE VOIGT TREJES0,010,000,01G Werninghaus Administradora Ltda0,010,000,01GERD DA SILVA WERNINGHAUS0,010,000,01HSG Gestão Ltda0,160,000,16JOANA ZIMMERMANN DA SILVA0,000,000,00JOAQUIM WERNINGHAUS TAVARES0,000,000,00JÚLIA DA SILVA GEFFERT DE OLIVEIRA0,160,000,16LAURA AUGUSTA DA SILVA0,010,000,01LILIAN DA SILVA WERNINGHAUS0,010,000,01LIPEJU Participações Ltda0,210,000,21LIVIA VOIGT0,020,000,02LWB Administradora Eireli0,240,000,24MAIA PEIXER BEHNKE0,000,000,00MARIANA VOIGT SCHWARTZ GOMES0,170,000,17MARIANA WERNINGHAUS DE CARVALHO0,020,000,02MELISSA WERNINGHAUS0,010,000,01Miriam Voigt Schwartz Administradora Ltda0,000,000,00PAULA DA SILVA JANSSEN0,000,000,00PAULO DARIO PARANHOS TREJES0,000,000,00PAULO TREJES ADMINISTRADORA LTDA0,010,000,01PEDRO VOIGT TREJES0,010,000,01PEDRO WERNINGHAUS DE CARVALHO0,000,000,00Pender Participações Ltda0,980,000,98RENATA DA SILVA JANSSEN DECKER0,000,000,00RICARDO BARTSCH FILHO0,020,000,02RICARDO WERNINGHAUS0,020,000,02ROSELI WERNINGHAUS0,150,000,15Si Voigt Administradora Ltda2,010,002,01SWJ Participações Ltda0,930,000,93THEO WERNINGHAUS TAVARES0,000,000,00THIAGO PIAZERA DE CARVALHO0,000,000,00THOMAS WERNINGHAUS TAVARES0,000,000,00Valsi Voigt Administradora Ltda0,000,000,00Ventura Participações Ltda0,050,000,05VITOR WERNINGHAUS DE CARVALHO0,000,000,00WALTER JANSSEN NETO0,100,000,10Wernin Administradora Ltda0,670,000,67WPA Participações e Serviços S.A.50,090,0050,09ZAIRA ZIMMERMANN DA SILVA FERNANDES0,000,000,00ZZS Administradora Ltda0,940,000,94OUTROS35,400,0035,40AÇÕES TESOURARIA0,040,000,04TOTAL100,000,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "29/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas347.780-Pessoas Jurídicas2.154-Investidores Institucionais1.289-Quantidade de Ações Ordinárias1.485.954.73235,40Total de Ações1.485.954.73235,40",
-  "composicao_capital_social": "29/04/2025Ordinárias4.197.317.998Preferenciais0Total4.197.317.998"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 12813416,
+        "31/12/2024": 12826122
+      },
+      "ativo_total": {
+        "31/03/2025": 39323514,
+        "31/12/2024": 41489701
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 22228788,
+        "31/12/2024": 23125217
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 21281621,
+        "31/12/2024": 22204221
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 10078571,
+        "01/01/2024_a_31/03/2024": 8033304
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 3316020,
+        "01/01/2024_a_31/03/2024": 2670704
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": -517,
+        "01/01/2024_a_31/03/2024": 73
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": 40103,
+        "01/01/2024_a_31/03/2024": 72452
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 1637180,
+        "01/01/2024_a_31/03/2024": 1377254
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 1637180,
+        "01/01/2024_a_31/03/2024": 1377254
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 1546036,
+        "01/01/2024_a_31/03/2024": 1327964
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 540543,
+        "01/01/2024_a_31/03/2024": 1578370
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -701840,
+        "01/01/2024_a_31/03/2024": -386203
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -2002963,
+        "01/01/2024_a_31/03/2024": -1798110
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -194119,
+        "01/01/2024_a_31/03/2024": 38574
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -2358379,
+        "01/01/2024_a_31/03/2024": -567369
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "05 de Maio Participações Ltda",
+      "ON": 1.79,
+      "PN": 0.0,
+      "Total": 1.79
+    },
+    {
+      "nome": "ALBERTO DA SILVA GEFFERT",
+      "ON": 0.16,
+      "PN": 0.0,
+      "Total": 0.16
+    },
+    {
+      "nome": "AMELIE VOIGT TREJES",
+      "ON": 0.01,
+      "PN": 0.0,
+      "Total": 0.01
+    },
+    {
+      "nome": "Analeca Participações Ltda",
+      "ON": 0.96,
+      "PN": 0.0,
+      "Total": 0.96
+    },
+    {
+      "nome": "ANNE MARIE WERNINGHAUS",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "ARTHUR RAINUI PEIXER BEHNKE",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "ASG Participações Ltda",
+      "ON": 0.21,
+      "PN": 0.0,
+      "Total": 0.21
+    },
+    {
+      "nome": "BRUNA DA SILVA BARTSCH LANGSCH",
+      "ON": 0.02,
+      "PN": 0.0,
+      "Total": 0.02
+    },
+    {
+      "nome": "BRUNO WERNINGHAUS DE CARVALHO",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "Cladis Voigt Trejes Administradora Ltda",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "Clica Voigt Administradora Ltda",
+      "ON": 2.03,
+      "PN": 0.0,
+      "Total": 2.03
+    },
+    {
+      "nome": "CLÁUDIO WILSON PEREIRA DE ASSIS",
+      "ON": 0.01,
+      "PN": 0.0,
+      "Total": 0.01
+    },
+    {
+      "nome": "CLÉCIO FÁBIO ZUCCO",
+      "ON": 0.01,
+      "PN": 0.0,
+      "Total": 0.01
+    },
+    {
+      "nome": "DANIEL RICARDO BEHNKE",
+      "ON": 0.18,
+      "PN": 0.0,
+      "Total": 0.18
+    },
+    {
+      "nome": "DAVI RICARDO BEHNKE",
+      "ON": 0.21,
+      "PN": 0.0,
+      "Total": 0.21
+    },
+    {
+      "nome": "DIETHER WERNINGHAUS",
+      "ON": 0.49,
+      "PN": 0.0,
+      "Total": 0.49
+    },
+    {
+      "nome": "DORA VOIGT DE ASSIS",
+      "ON": 0.02,
+      "PN": 0.0,
+      "Total": 0.02
+    },
+    {
+      "nome": "EDUARDO VOIGT SCHWARTZ",
+      "ON": 0.17,
+      "PN": 0.0,
+      "Total": 0.17
+    },
+    {
+      "nome": "Eggon João da Silva Administradora Ltda",
+      "ON": 0.99,
+      "PN": 0.0,
+      "Total": 0.99
+    },
+    {
+      "nome": "EW Administradora Eireli",
+      "ON": 0.29,
+      "PN": 0.0,
+      "Total": 0.29
+    },
+    {
+      "nome": "FABIO ROBERTO DE OLIVEIRA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "FELIPE VOIGT TREJES",
+      "ON": 0.01,
+      "PN": 0.0,
+      "Total": 0.01
+    },
+    {
+      "nome": "G Werninghaus Administradora Ltda",
+      "ON": 0.01,
+      "PN": 0.0,
+      "Total": 0.01
+    },
+    {
+      "nome": "GERD DA SILVA WERNINGHAUS",
+      "ON": 0.01,
+      "PN": 0.0,
+      "Total": 0.01
+    },
+    {
+      "nome": "HSG Gestão Ltda",
+      "ON": 0.16,
+      "PN": 0.0,
+      "Total": 0.16
+    },
+    {
+      "nome": "JOANA ZIMMERMANN DA SILVA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "JOAQUIM WERNINGHAUS TAVARES",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "JÚLIA DA SILVA GEFFERT DE OLIVEIRA",
+      "ON": 0.16,
+      "PN": 0.0,
+      "Total": 0.16
+    },
+    {
+      "nome": "LAURA AUGUSTA DA SILVA",
+      "ON": 0.01,
+      "PN": 0.0,
+      "Total": 0.01
+    },
+    {
+      "nome": "LILIAN DA SILVA WERNINGHAUS",
+      "ON": 0.01,
+      "PN": 0.0,
+      "Total": 0.01
+    },
+    {
+      "nome": "LIPEJU Participações Ltda",
+      "ON": 0.21,
+      "PN": 0.0,
+      "Total": 0.21
+    },
+    {
+      "nome": "LIVIA VOIGT",
+      "ON": 0.02,
+      "PN": 0.0,
+      "Total": 0.02
+    },
+    {
+      "nome": "LWB Administradora Eireli",
+      "ON": 0.24,
+      "PN": 0.0,
+      "Total": 0.24
+    },
+    {
+      "nome": "MAIA PEIXER BEHNKE",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "MARIANA VOIGT SCHWARTZ GOMES",
+      "ON": 0.17,
+      "PN": 0.0,
+      "Total": 0.17
+    },
+    {
+      "nome": "MARIANA WERNINGHAUS DE CARVALHO",
+      "ON": 0.02,
+      "PN": 0.0,
+      "Total": 0.02
+    },
+    {
+      "nome": "MELISSA WERNINGHAUS",
+      "ON": 0.01,
+      "PN": 0.0,
+      "Total": 0.01
+    },
+    {
+      "nome": "Miriam Voigt Schwartz Administradora Ltda",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "PAULA DA SILVA JANSSEN",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "PAULO DARIO PARANHOS TREJES",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "PAULO TREJES ADMINISTRADORA LTDA",
+      "ON": 0.01,
+      "PN": 0.0,
+      "Total": 0.01
+    },
+    {
+      "nome": "PEDRO VOIGT TREJES",
+      "ON": 0.01,
+      "PN": 0.0,
+      "Total": 0.01
+    },
+    {
+      "nome": "PEDRO WERNINGHAUS DE CARVALHO",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "Pender Participações Ltda",
+      "ON": 0.98,
+      "PN": 0.0,
+      "Total": 0.98
+    },
+    {
+      "nome": "RENATA DA SILVA JANSSEN DECKER",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "RICARDO BARTSCH FILHO",
+      "ON": 0.02,
+      "PN": 0.0,
+      "Total": 0.02
+    },
+    {
+      "nome": "RICARDO WERNINGHAUS",
+      "ON": 0.02,
+      "PN": 0.0,
+      "Total": 0.02
+    },
+    {
+      "nome": "ROSELI WERNINGHAUS",
+      "ON": 0.15,
+      "PN": 0.0,
+      "Total": 0.15
+    },
+    {
+      "nome": "Si Voigt Administradora Ltda",
+      "ON": 2.01,
+      "PN": 0.0,
+      "Total": 2.01
+    },
+    {
+      "nome": "SWJ Participações Ltda",
+      "ON": 0.93,
+      "PN": 0.0,
+      "Total": 0.93
+    },
+    {
+      "nome": "THEO WERNINGHAUS TAVARES",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "THIAGO PIAZERA DE CARVALHO",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "THOMAS WERNINGHAUS TAVARES",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "Valsi Voigt Administradora Ltda",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "Ventura Participações Ltda",
+      "ON": 0.05,
+      "PN": 0.0,
+      "Total": 0.05
+    },
+    {
+      "nome": "VITOR WERNINGHAUS DE CARVALHO",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "WALTER JANSSEN NETO",
+      "ON": 0.1,
+      "PN": 0.0,
+      "Total": 0.1
+    },
+    {
+      "nome": "Wernin Administradora Ltda",
+      "ON": 0.67,
+      "PN": 0.0,
+      "Total": 0.67
+    },
+    {
+      "nome": "WPA Participações e Serviços S.A.",
+      "ON": 50.09,
+      "PN": 0.0,
+      "Total": 50.09
+    },
+    {
+      "nome": "ZAIRA ZIMMERMANN DA SILVA FERNANDES",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "ZZS Administradora Ltda",
+      "ON": 0.94,
+      "PN": 0.0,
+      "Total": 0.94
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 35.4,
+      "PN": 0.0,
+      "Total": 35.4
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.04,
+      "PN": 0.0,
+      "Total": 0.04
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 347780,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 2154,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 1289,
+        "percentual": null
+      }
+    ],
+    "data": "29/04/2025",
+    "quantidade_acoes_ordinarias": 1485954732,
+    "percentual_ordinarias": 35.4,
+    "total_acoes": 1485954732,
+    "percentual_total": 35.4
+  },
+  "composicao_capital_social": {
+    "data": "29/04/2025",
+    "preferenciais": 0,
+    "total": 4197317998
+  }
 }

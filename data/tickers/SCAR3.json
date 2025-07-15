@@ -8,8 +8,209 @@
   "subsetor": "Exploração de Imóveis",
   "segmento": "Exploração de Imóveis (segmento)",
   "site": "www.scsa.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível1.976.4161.984.747Ativo Total2.754.7342.873.684Patrimônio Líquido1.543.2731.553.774Patrimônio Líquido Atribuído à Controladora1.533.9681.543.787Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda61.312110.895Resultado Bruto39.20736.097Resultado de Equivalência Patrimonial00Resultado Financeiro(24.822)(24.801)Resultado Líquido das Operações Continuadas(6.214)(10.782)Lucro (Prejuízo) do Período(6.214)(10.782)Lucro (Prejuízo) do Período Atribuído à Controladora(6.722)(10.651)Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(16.370)(70.689)Atividades de Investimento130.134187.030Atividades de Financiamento(120.355)(129.064)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(6.591)(12.723)",
-  "posicao_acionaria": "Nome%ON%PN%TotalAC FUNDO DE INVESTIMENTO FINANCEIRO EM AES16,880,0016,88Alaska Investimentos Ltda5,470,005,47ANNA VICTORIA LEMANN OSÓRIO3,320,003,32CECILIA SICUPIRA5,620,005,62CHRISTIAN VAN HOEGAERDEN HERRMANN TELLES8,340,008,34HELENA SICUPIRA RODAS5,560,005,56HELOÍSA DE PAULA MACHADO SICUPIRA5,570,005,57JORGE FELIPE LEMANN3,400,003,40KIM LEMANN2,490,002,49LARA LEMANN2,490,002,49MARC LEMANN2,500,002,50MAX VAN HOEGAERDEN HERRMANN TELLES8,340,008,34PAULO ALBERTO LEMANN3,320,003,32SUSANNE MALLY LEMANN2,490,002,49OUTROS23,480,0023,48AÇÕES TESOURARIA0,740,000,74TOTAL100,000,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "25/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas4.392-Pessoas Jurídicas106-Investidores Institucionais98-Quantidade de Ações Ordinárias24.414.82542,29Total de Ações24.414.82542,29",
-  "composicao_capital_social": "28/04/2017Ordinárias57.737.319Preferenciais0Total57.737.319"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 1976416,
+        "31/12/2024": 1984747
+      },
+      "ativo_total": {
+        "31/03/2025": 2754734,
+        "31/12/2024": 2873684
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 1543273,
+        "31/12/2024": 1553774
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 1533968,
+        "31/12/2024": 1543787
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 61312,
+        "01/01/2024_a_31/03/2024": 110895
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 39207,
+        "01/01/2024_a_31/03/2024": 36097
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -24822,
+        "01/01/2024_a_31/03/2024": -24801
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": -6214,
+        "01/01/2024_a_31/03/2024": -10782
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": -6214,
+        "01/01/2024_a_31/03/2024": -10782
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": -6722,
+        "01/01/2024_a_31/03/2024": -10651
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": -16370,
+        "01/01/2024_a_31/03/2024": -70689
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": 130134,
+        "01/01/2024_a_31/03/2024": 187030
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -120355,
+        "01/01/2024_a_31/03/2024": -129064
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -6591,
+        "01/01/2024_a_31/03/2024": -12723
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "AC FUNDO DE INVESTIMENTO FINANCEIRO EM AES",
+      "ON": 16.88,
+      "PN": 0.0,
+      "Total": 16.88
+    },
+    {
+      "nome": "Alaska Investimentos Ltda",
+      "ON": 5.47,
+      "PN": 0.0,
+      "Total": 5.47
+    },
+    {
+      "nome": "ANNA VICTORIA LEMANN OSÓRIO",
+      "ON": 3.32,
+      "PN": 0.0,
+      "Total": 3.32
+    },
+    {
+      "nome": "CECILIA SICUPIRA",
+      "ON": 5.62,
+      "PN": 0.0,
+      "Total": 5.62
+    },
+    {
+      "nome": "CHRISTIAN VAN HOEGAERDEN HERRMANN TELLES",
+      "ON": 8.34,
+      "PN": 0.0,
+      "Total": 8.34
+    },
+    {
+      "nome": "HELENA SICUPIRA RODAS",
+      "ON": 5.56,
+      "PN": 0.0,
+      "Total": 5.56
+    },
+    {
+      "nome": "HELOÍSA DE PAULA MACHADO SICUPIRA",
+      "ON": 5.57,
+      "PN": 0.0,
+      "Total": 5.57
+    },
+    {
+      "nome": "JORGE FELIPE LEMANN",
+      "ON": 3.4,
+      "PN": 0.0,
+      "Total": 3.4
+    },
+    {
+      "nome": "KIM LEMANN",
+      "ON": 2.49,
+      "PN": 0.0,
+      "Total": 2.49
+    },
+    {
+      "nome": "LARA LEMANN",
+      "ON": 2.49,
+      "PN": 0.0,
+      "Total": 2.49
+    },
+    {
+      "nome": "MARC LEMANN",
+      "ON": 2.5,
+      "PN": 0.0,
+      "Total": 2.5
+    },
+    {
+      "nome": "MAX VAN HOEGAERDEN HERRMANN TELLES",
+      "ON": 8.34,
+      "PN": 0.0,
+      "Total": 8.34
+    },
+    {
+      "nome": "PAULO ALBERTO LEMANN",
+      "ON": 3.32,
+      "PN": 0.0,
+      "Total": 3.32
+    },
+    {
+      "nome": "SUSANNE MALLY LEMANN",
+      "ON": 2.49,
+      "PN": 0.0,
+      "Total": 2.49
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 23.48,
+      "PN": 0.0,
+      "Total": 23.48
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.74,
+      "PN": 0.0,
+      "Total": 0.74
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 4392,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 106,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 98,
+        "percentual": null
+      }
+    ],
+    "data": "25/04/2025",
+    "quantidade_acoes_ordinarias": 24414825,
+    "percentual_ordinarias": 42.29,
+    "total_acoes": 24414825,
+    "percentual_total": 42.29
+  },
+  "composicao_capital_social": {
+    "data": "28/04/2017",
+    "preferenciais": 0,
+    "total": 57737319
+  }
 }

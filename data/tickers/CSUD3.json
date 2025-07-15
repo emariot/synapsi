@@ -8,8 +8,155 @@
   "subsetor": "Serviços Financeiros Diversos",
   "segmento": "Serviços Financeiros Diversos (segmento)",
   "site": "www.csu.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível494.753488.538Ativo Total708.661696.188Patrimônio Líquido494.617477.140Patrimônio Líquido Atribuído à Controladora494.617477.140Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda150.692139.228Resultado Bruto63.07658.472Resultado de Equivalência Patrimonial00Resultado Financeiro(1.101)(164)Resultado Líquido das Operações Continuadas24.43424.232Lucro (Prejuízo) do Período24.43424.232Lucro (Prejuízo) do Período Atribuído à Controladora00Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais22.18140.695Atividades de Investimento(19.738)(16.615)Atividades de Financiamento(20.471)(9.633)Variação Cambial sobre Caixa e Equivalentes(38)0Aumento (Redução) de Caixa e Equivalentes(18.066)14.447",
-  "posicao_acionaria": "Nome%ON%PN%TotalADMINISTRADORES0,120,000,12Greeneville Delaware LLC17,240,0017,24Greeneville Delaware LLC.36,810,0036,81MARCOS RIBEIRO LEITE0,220,000,22REAL INVESTOR GESTÃO DE RECURSOS LTDA.10,020,0010,02OUTROS34,350,0034,35AÇÕES TESOURARIA1,240,001,24TOTAL100,000,00100,00Informação recebida em 26/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "30/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas17.647-Pessoas Jurídicas138-Investidores Institucionais76-Quantidade de Ações Ordinárias18.546.10044,37Total de Ações18.546.10044,37",
-  "composicao_capital_social": "04/05/2023Ordinárias41.800.000Preferenciais0Total41.800.000"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 494753,
+        "31/12/2024": 488538
+      },
+      "ativo_total": {
+        "31/03/2025": 708661,
+        "31/12/2024": 696188
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 494617,
+        "31/12/2024": 477140
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 494617,
+        "31/12/2024": 477140
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 150692,
+        "01/01/2024_a_31/03/2024": 139228
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 63076,
+        "01/01/2024_a_31/03/2024": 58472
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -1101,
+        "01/01/2024_a_31/03/2024": -164
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 24434,
+        "01/01/2024_a_31/03/2024": 24232
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 24434,
+        "01/01/2024_a_31/03/2024": 24232
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 22181,
+        "01/01/2024_a_31/03/2024": 40695
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -19738,
+        "01/01/2024_a_31/03/2024": -16615
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -20471,
+        "01/01/2024_a_31/03/2024": -9633
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -38,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -18066,
+        "01/01/2024_a_31/03/2024": 14447
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "ADMINISTRADORES",
+      "ON": 0.12,
+      "PN": 0.0,
+      "Total": 0.12
+    },
+    {
+      "nome": "Greeneville Delaware LLC",
+      "ON": 17.24,
+      "PN": 0.0,
+      "Total": 17.24
+    },
+    {
+      "nome": "Greeneville Delaware LLC.",
+      "ON": 36.81,
+      "PN": 0.0,
+      "Total": 36.81
+    },
+    {
+      "nome": "MARCOS RIBEIRO LEITE",
+      "ON": 0.22,
+      "PN": 0.0,
+      "Total": 0.22
+    },
+    {
+      "nome": "REAL INVESTOR GESTÃO DE RECURSOS LTDA.",
+      "ON": 10.02,
+      "PN": 0.0,
+      "Total": 10.02
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 34.35,
+      "PN": 0.0,
+      "Total": 34.35
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 1.24,
+      "PN": 0.0,
+      "Total": 1.24
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 17647,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 138,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 76,
+        "percentual": null
+      }
+    ],
+    "data": "30/04/2025",
+    "quantidade_acoes_ordinarias": 18546100,
+    "percentual_ordinarias": 44.37,
+    "total_acoes": 18546100,
+    "percentual_total": 44.37
+  },
+  "composicao_capital_social": {
+    "data": "04/05/2023",
+    "preferenciais": 0,
+    "total": 41800000
+  }
 }

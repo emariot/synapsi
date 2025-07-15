@@ -8,8 +8,112 @@
   "subsetor": "Intermediários Financeiros",
   "segmento": "Bancos",
   "site": "https://banestes.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível617.723543.883Ativo Total38.111.46836.916.911Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita da Intermediação Financeira1.223.2051.227.048Resultado Bruto da Intermediação Financeira359.820346.511Resultado de Equivalência Patrimonial(35.329)(137.041)Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais245.626(418.468)Atividades de Investimento3.069.719925.720Atividades de Financiamento(22.200)(28.400)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes3.293.145478.852",
-  "posicao_acionaria": "Nome%ON%PN%TotalESTADO DO ESPÍRITO SANTO92,4892,0692,37OUTROS7,527,947,64AÇÕES TESOURARIA0,000,000,00TOTAL100,00100,00100,00Informação recebida em 11/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "25/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas45.531-Pessoas Jurídicas64-Investidores Institucionais13-Quantidade de Ações Ordinárias11.997.0715,19Quantidade de Ações Preferenciais2.514.3602,96Total de Ações14.511.4314,59",
-  "composicao_capital_social": "13/12/2021Ordinárias231.006.000Preferenciais84.906.860Total315.912.860"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 617723,
+        "31/12/2024": 543883
+      },
+      "ativo_total": {
+        "31/03/2025": 38111468,
+        "31/12/2024": 36916911
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_da_intermediacao_financeira": {
+        "01/01/2025_a_31/03/2025": 1223205,
+        "01/01/2024_a_31/03/2024": 1227048
+      },
+      "resultado_bruto_da_intermediacao_financeira": {
+        "01/01/2025_a_31/03/2025": 359820,
+        "01/01/2024_a_31/03/2024": 346511
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": -35329,
+        "01/01/2024_a_31/03/2024": -137041
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 245626,
+        "01/01/2024_a_31/03/2024": -418468
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": 3069719,
+        "01/01/2024_a_31/03/2024": 925720
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -22200,
+        "01/01/2024_a_31/03/2024": -28400
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 3293145,
+        "01/01/2024_a_31/03/2024": 478852
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "ESTADO DO ESPÍRITO SANTO",
+      "ON": 92.48,
+      "PN": 92.06,
+      "Total": 92.37
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 7.52,
+      "PN": 7.94,
+      "Total": 7.64
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 100.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 45531,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 64,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 13,
+        "percentual": null
+      },
+      {
+        "tipo": "Quantidade de Ações Preferenciais",
+        "quantidade": 2514360,
+        "percentual": 2.96
+      }
+    ],
+    "data": "25/04/2025",
+    "quantidade_acoes_ordinarias": 11997071,
+    "percentual_ordinarias": 5.19,
+    "total_acoes": 14511431,
+    "percentual_total": 4.59
+  },
+  "composicao_capital_social": {
+    "data": "13/12/2021",
+    "preferenciais": 84906860,
+    "total": 315912860
+  }
 }

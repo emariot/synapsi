@@ -8,8 +8,143 @@
   "subsetor": "Computadores e Equipamentos",
   "segmento": "Computadores e Equipamentos (segmento)",
   "site": "https://www.multilaser.com.br/",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível663.697658.689Ativo Total5.278.1985.308.700Patrimônio Líquido2.953.4312.891.745Patrimônio Líquido Atribuído à Controladora2.953.4312.891.745Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda763.811730.776Resultado Bruto181.208164.966Resultado de Equivalência Patrimonial00Resultado Financeiro75.127(29.222)Resultado Líquido das Operações Continuadas64.641(68.996)Lucro (Prejuízo) do Período64.641(68.996)Lucro (Prejuízo) do Período Atribuído à Controladora64.641(68.996)Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(330.286)71.463Atividades de Investimento(15.178)(14.993)Atividades de Financiamento76.754(152.886)Variação Cambial sobre Caixa e Equivalentes(2.955)529Aumento (Redução) de Caixa e Equivalentes(271.665)(95.887)",
-  "posicao_acionaria": "Nome%ON%PN%TotalALEXANDRE OSTROWIECKI41,050,0041,05EDWARD JAMES FEDER6,020,006,02RENATO FEDER28,160,0028,16OUTROS23,170,0023,17AÇÕES TESOURARIA1,600,001,60TOTAL100,000,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "25/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas21.281-Pessoas Jurídicas211-Investidores Institucionais43-Quantidade de Ações Ordinárias383.910.57146,79Total de Ações383.910.57146,79",
-  "composicao_capital_social": "20/07/2021Ordinárias820.539.225Preferenciais0Total820.539.225"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 663697,
+        "31/12/2024": 658689
+      },
+      "ativo_total": {
+        "31/03/2025": 5278198,
+        "31/12/2024": 5308700
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 2953431,
+        "31/12/2024": 2891745
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 2953431,
+        "31/12/2024": 2891745
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 763811,
+        "01/01/2024_a_31/03/2024": 730776
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 181208,
+        "01/01/2024_a_31/03/2024": 164966
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": 75127,
+        "01/01/2024_a_31/03/2024": -29222
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 64641,
+        "01/01/2024_a_31/03/2024": -68996
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 64641,
+        "01/01/2024_a_31/03/2024": -68996
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 64641,
+        "01/01/2024_a_31/03/2024": -68996
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": -330286,
+        "01/01/2024_a_31/03/2024": 71463
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -15178,
+        "01/01/2024_a_31/03/2024": -14993
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": 76754,
+        "01/01/2024_a_31/03/2024": -152886
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -2955,
+        "01/01/2024_a_31/03/2024": 529
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -271665,
+        "01/01/2024_a_31/03/2024": -95887
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "ALEXANDRE OSTROWIECKI",
+      "ON": 41.05,
+      "PN": 0.0,
+      "Total": 41.05
+    },
+    {
+      "nome": "EDWARD JAMES FEDER",
+      "ON": 6.02,
+      "PN": 0.0,
+      "Total": 6.02
+    },
+    {
+      "nome": "RENATO FEDER",
+      "ON": 28.16,
+      "PN": 0.0,
+      "Total": 28.16
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 23.17,
+      "PN": 0.0,
+      "Total": 23.17
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 1.6,
+      "PN": 0.0,
+      "Total": 1.6
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 21281,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 211,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 43,
+        "percentual": null
+      }
+    ],
+    "data": "25/04/2025",
+    "quantidade_acoes_ordinarias": 383910571,
+    "percentual_ordinarias": 46.79,
+    "total_acoes": 383910571,
+    "percentual_total": 46.79
+  },
+  "composicao_capital_social": {
+    "data": "20/07/2021",
+    "preferenciais": 0,
+    "total": 820539225
+  }
 }

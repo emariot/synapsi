@@ -8,8 +8,155 @@
   "subsetor": "Construção Civil",
   "segmento": "Incorporações",
   "site": "//http://ri.jhsf.com.br/",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível8.460.5347.888.595Ativo Total14.554.07013.293.747Patrimônio Líquido6.168.4395.836.514Patrimônio Líquido Atribuído à Controladora5.753.2785.413.238Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda403.287293.596Resultado Bruto250.362159.306Resultado de Equivalência Patrimonial2.3222.459Resultado Financeiro(85.083)(44.310)Resultado Líquido das Operações Continuadas340.005141.967Lucro (Prejuízo) do Período340.005141.967Lucro (Prejuízo) do Período Atribuído à Controladora348.120134.284Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(103.226)(57.901)Atividades de Investimento(122.069)14.306Atividades de Financiamento596.355657.207Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes371.060613.612",
-  "posicao_acionaria": "Nome%ON%PN%TotalFlatly Global Ltd.0,250,000,25JHSF PAR S.A.39,890,0039,89JHSF UK LIMITED12,160,0012,16JOSÉ AURIEMO NETO1,100,001,10PROFIT II FUNDO DE INVESTIMENTO MULTIMERCADO CREDITO1,780,001,78OUTROS42,640,0042,64AÇÕES TESOURARIA2,200,002,20TOTAL100,000,00100,00Informação recebida em 18/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "30/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas104.023-Pessoas Jurídicas310-Investidores Institucionais305-Quantidade de Ações Ordinárias290.506.04342,64Total de Ações290.506.04342,64",
-  "composicao_capital_social": "03/02/2025Ordinárias681.322.756Preferenciais0Total681.322.756"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 8460534,
+        "31/12/2024": 7888595
+      },
+      "ativo_total": {
+        "31/03/2025": 14554070,
+        "31/12/2024": 13293747
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 6168439,
+        "31/12/2024": 5836514
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 5753278,
+        "31/12/2024": 5413238
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 403287,
+        "01/01/2024_a_31/03/2024": 293596
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 250362,
+        "01/01/2024_a_31/03/2024": 159306
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 2322,
+        "01/01/2024_a_31/03/2024": 2459
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -85083,
+        "01/01/2024_a_31/03/2024": -44310
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 340005,
+        "01/01/2024_a_31/03/2024": 141967
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 340005,
+        "01/01/2024_a_31/03/2024": 141967
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 348120,
+        "01/01/2024_a_31/03/2024": 134284
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": -103226,
+        "01/01/2024_a_31/03/2024": -57901
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -122069,
+        "01/01/2024_a_31/03/2024": 14306
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": 596355,
+        "01/01/2024_a_31/03/2024": 657207
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 371060,
+        "01/01/2024_a_31/03/2024": 613612
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "Flatly Global Ltd.",
+      "ON": 0.25,
+      "PN": 0.0,
+      "Total": 0.25
+    },
+    {
+      "nome": "JHSF PAR S.A.",
+      "ON": 39.89,
+      "PN": 0.0,
+      "Total": 39.89
+    },
+    {
+      "nome": "JHSF UK LIMITED",
+      "ON": 12.16,
+      "PN": 0.0,
+      "Total": 12.16
+    },
+    {
+      "nome": "JOSÉ AURIEMO NETO",
+      "ON": 1.1,
+      "PN": 0.0,
+      "Total": 1.1
+    },
+    {
+      "nome": "PROFIT II FUNDO DE INVESTIMENTO MULTIMERCADO CREDITO",
+      "ON": 1.78,
+      "PN": 0.0,
+      "Total": 1.78
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 42.64,
+      "PN": 0.0,
+      "Total": 42.64
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 2.2,
+      "PN": 0.0,
+      "Total": 2.2
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 104023,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 310,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 305,
+        "percentual": null
+      }
+    ],
+    "data": "30/04/2025",
+    "quantidade_acoes_ordinarias": 290506043,
+    "percentual_ordinarias": 42.64,
+    "total_acoes": 290506043,
+    "percentual_total": 42.64
+  },
+  "composicao_capital_social": {
+    "data": "03/02/2025",
+    "preferenciais": 0,
+    "total": 681322756
+  }
 }

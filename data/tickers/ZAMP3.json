@@ -8,8 +8,149 @@
   "subsetor": "Hoteis e Restaurantes",
   "segmento": "Restaurante e Similares",
   "site": "//www.burgerking.com.br/ri",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível2.935.1463.002.939Ativo Total4.345.7074.677.970Patrimônio Líquido1.519.0811.546.026Patrimônio Líquido Atribuído à Controladora1.519.0811.546.026Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda1.158.6411.028.624Resultado Bruto734.218658.982Resultado de Equivalência Patrimonial00Resultado Financeiro(50.146)(42.681)Resultado Líquido das Operações Continuadas(43.500)(90.769)Lucro (Prejuízo) do Período(43.500)(90.769)Lucro (Prejuízo) do Período Atribuído à Controladora(43.500)(90.769)Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(100.490)25.183Atividades de Investimento304.741(613.991)Atividades de Financiamento(232.204)580.948Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(27.953)(7.860)",
-  "posicao_acionaria": "Nome%ON%PN%TotalBurger King do Brasil Assessoria a Restaurantes Ltda.6,360,006,36KING ARTHUR LLC.5,060,005,06MC BRAZIL F&B PARTICIPAÇÕES S.A.42,970,0042,97MIC CAPITAL PARTNERS (BRAZIL SPECIAL OPPORTUNITIES II) FIP MULTIESTRATÉGIA IE28,620,0028,62OUTROS15,030,0015,03AÇÕES TESOURARIA1,970,001,97TOTAL100,000,00100,00Informação recebida em 02/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "29/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas14.702-Pessoas Jurídicas52-Investidores Institucionais160-Quantidade de Ações Ordinárias107.970.53126,53Total de Ações107.970.53126,53",
-  "composicao_capital_social": "26/07/2024Ordinárias406.934.395Preferenciais0Total406.934.395"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 2935146,
+        "31/12/2024": 3002939
+      },
+      "ativo_total": {
+        "31/03/2025": 4345707,
+        "31/12/2024": 4677970
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 1519081,
+        "31/12/2024": 1546026
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 1519081,
+        "31/12/2024": 1546026
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 1158641,
+        "01/01/2024_a_31/03/2024": 1028624
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 734218,
+        "01/01/2024_a_31/03/2024": 658982
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -50146,
+        "01/01/2024_a_31/03/2024": -42681
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": -43500,
+        "01/01/2024_a_31/03/2024": -90769
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": -43500,
+        "01/01/2024_a_31/03/2024": -90769
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": -43500,
+        "01/01/2024_a_31/03/2024": -90769
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": -100490,
+        "01/01/2024_a_31/03/2024": 25183
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": 304741,
+        "01/01/2024_a_31/03/2024": -613991
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -232204,
+        "01/01/2024_a_31/03/2024": 580948
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -27953,
+        "01/01/2024_a_31/03/2024": -7860
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "Burger King do Brasil Assessoria a Restaurantes Ltda.",
+      "ON": 6.36,
+      "PN": 0.0,
+      "Total": 6.36
+    },
+    {
+      "nome": "KING ARTHUR LLC.",
+      "ON": 5.06,
+      "PN": 0.0,
+      "Total": 5.06
+    },
+    {
+      "nome": "MC BRAZIL F&B PARTICIPAÇÕES S.A.",
+      "ON": 42.97,
+      "PN": 0.0,
+      "Total": 42.97
+    },
+    {
+      "nome": "MIC CAPITAL PARTNERS (BRAZIL SPECIAL OPPORTUNITIES II) FIP MULTIESTRATÉGIA IE",
+      "ON": 28.62,
+      "PN": 0.0,
+      "Total": 28.62
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 15.03,
+      "PN": 0.0,
+      "Total": 15.03
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 1.97,
+      "PN": 0.0,
+      "Total": 1.97
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 14702,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 52,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 160,
+        "percentual": null
+      }
+    ],
+    "data": "29/04/2025",
+    "quantidade_acoes_ordinarias": 107970531,
+    "percentual_ordinarias": 26.53,
+    "total_acoes": 107970531,
+    "percentual_total": 26.53
+  },
+  "composicao_capital_social": {
+    "data": "26/07/2024",
+    "preferenciais": 0,
+    "total": 406934395
+  }
 }

@@ -8,8 +8,179 @@
   "subsetor": "Construção Civil",
   "segmento": "Incorporações",
   "site": "www.rossiresidencial.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado30/09/202431/12/2023Ativo Imobilizado, Investimentos e Intangível49.99231.018Ativo Total503.144542.480Patrimônio Líquido(973.070)(853.760)Patrimônio Líquido Atribuído à Controladora(972.057)(852.013)Demonstração do Resultado - Consolidado01/01/2024 a 30/09/202401/01/2023 a 30/09/2023Receita de Venda68.540(5.876)Resultado Bruto13.371(23.810)Resultado de Equivalência Patrimonial18.4784.877Resultado Financeiro(112.881)(43.202)Resultado Líquido das Operações Continuadas(119.312)(141.613)Lucro (Prejuízo) do Período(119.312)(141.613)Lucro (Prejuízo) do Período Atribuído à Controladora(120.045)(140.233)Demonstração do Fluxo de Caixa - Consolidado01/01/2024 a 30/09/202401/01/2023 a 30/09/2023Atividades Operacionais17.5606.918Atividades de Investimento(10.377)(8.750)Atividades de Financiamento(6.900)2.611Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes283779",
-  "posicao_acionaria": "Nome%ON%PN%TotalAperoama Participações Ltda.12,330,0012,33FHS Fundo de Investimento em Ações - Investimento no Exterior1,500,001,50Fundo de Investimento em Ações Mistyque  Investimento no Exterior1,860,001,86LAB Fundo de Investimento em Ações - Investimento no Exterior8,850,008,85Lagro do Brasil Participações Ltda.18,460,0018,46MARCELO ZELADA7,620,007,62Mistyque Teens Fundo de Investimento em Ações - Investimento no Exterior0,250,000,25X LAB Fundo de Investimento em Ações - Investimento no Exterior2,950,002,95XMZ FUNDO DE INVESTIMENTO FINANCEIRO - MULTIMERCADO CRÉDITO PRIVADO RESPONSABILIDADE LIMITADA3,020,003,02OUTROS41,940,0041,94AÇÕES TESOURARIA1,230,001,23TOTAL100,000,00100,00Informação recebida em 08/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "15/08/2024Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas3.319-Pessoas Jurídicas40-Investidores Institucionais11-Quantidade de Ações Ordinárias19.754.91998,78Total de Ações19.754.91998,78",
-  "composicao_capital_social": "22/02/2022Ordinárias20.000.000Preferenciais0Total20.000.000"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "30/09/2024": 49992,
+        "31/12/2023": 31018
+      },
+      "ativo_total": {
+        "30/09/2024": 503144,
+        "31/12/2023": 542480
+      },
+      "patrimônio_liquido": {
+        "30/09/2024": -973070,
+        "31/12/2023": -853760
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "30/09/2024": -972057,
+        "31/12/2023": -852013
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2024_a_30/09/2024": 68540,
+        "01/01/2023_a_30/09/2023": -5876
+      },
+      "resultado_bruto": {
+        "01/01/2024_a_30/09/2024": 13371,
+        "01/01/2023_a_30/09/2023": -23810
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2024_a_30/09/2024": 18478,
+        "01/01/2023_a_30/09/2023": 4877
+      },
+      "resultado_financeiro": {
+        "01/01/2024_a_30/09/2024": -112881,
+        "01/01/2023_a_30/09/2023": -43202
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2024_a_30/09/2024": -119312,
+        "01/01/2023_a_30/09/2023": -141613
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2024_a_30/09/2024": -119312,
+        "01/01/2023_a_30/09/2023": -141613
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2024_a_30/09/2024": -120045,
+        "01/01/2023_a_30/09/2023": -140233
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2024_a_30/09/2024": 17560,
+        "01/01/2023_a_30/09/2023": 6918
+      },
+      "atividades_de_investimento": {
+        "01/01/2024_a_30/09/2024": -10377,
+        "01/01/2023_a_30/09/2023": -8750
+      },
+      "atividades_de_financiamento": {
+        "01/01/2024_a_30/09/2024": -6900,
+        "01/01/2023_a_30/09/2023": 2611
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2024_a_30/09/2024": 0,
+        "01/01/2023_a_30/09/2023": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2024_a_30/09/2024": 283,
+        "01/01/2023_a_30/09/2023": 779
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "Aperoama Participações Ltda.",
+      "ON": 12.33,
+      "PN": 0.0,
+      "Total": 12.33
+    },
+    {
+      "nome": "FHS Fundo de Investimento em Ações - Investimento no Exterior",
+      "ON": 1.5,
+      "PN": 0.0,
+      "Total": 1.5
+    },
+    {
+      "nome": "Fundo de Investimento em Ações Mistyque  Investimento no Exterior",
+      "ON": 1.86,
+      "PN": 0.0,
+      "Total": 1.86
+    },
+    {
+      "nome": "LAB Fundo de Investimento em Ações - Investimento no Exterior",
+      "ON": 8.85,
+      "PN": 0.0,
+      "Total": 8.85
+    },
+    {
+      "nome": "Lagro do Brasil Participações Ltda.",
+      "ON": 18.46,
+      "PN": 0.0,
+      "Total": 18.46
+    },
+    {
+      "nome": "MARCELO ZELADA",
+      "ON": 7.62,
+      "PN": 0.0,
+      "Total": 7.62
+    },
+    {
+      "nome": "Mistyque Teens Fundo de Investimento em Ações - Investimento no Exterior",
+      "ON": 0.25,
+      "PN": 0.0,
+      "Total": 0.25
+    },
+    {
+      "nome": "X LAB Fundo de Investimento em Ações - Investimento no Exterior",
+      "ON": 2.95,
+      "PN": 0.0,
+      "Total": 2.95
+    },
+    {
+      "nome": "XMZ FUNDO DE INVESTIMENTO FINANCEIRO - MULTIMERCADO CRÉDITO PRIVADO RESPONSABILIDADE LIMITADA",
+      "ON": 3.02,
+      "PN": 0.0,
+      "Total": 3.02
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 41.94,
+      "PN": 0.0,
+      "Total": 41.94
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 1.23,
+      "PN": 0.0,
+      "Total": 1.23
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 3319,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 40,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 11,
+        "percentual": null
+      }
+    ],
+    "data": "15/08/2024",
+    "quantidade_acoes_ordinarias": 19754919,
+    "percentual_ordinarias": 98.78,
+    "total_acoes": 19754919,
+    "percentual_total": 98.78
+  },
+  "composicao_capital_social": {
+    "data": "22/02/2022",
+    "preferenciais": 0,
+    "total": 20000000
+  }
 }

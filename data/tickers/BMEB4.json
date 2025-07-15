@@ -8,8 +8,232 @@
   "subsetor": "Intermediários Financeiros",
   "segmento": "Bancos",
   "site": "www.mercantildobrasil.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível622.926595.950Ativo Total27.155.13825.479.109Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita da Intermediação Financeira1.741.3541.311.833Resultado Bruto da Intermediação Financeira720.427775.803Resultado de Equivalência Patrimonial(324.874)(307.431)Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais574.805234.177Atividades de Investimento(272.119)157Atividades de Financiamento(65.784)(74.138)Variação Cambial sobre Caixa e Equivalentes012Aumento (Redução) de Caixa e Equivalentes236.902160.208",
-  "posicao_acionaria": "Nome%ON%PN%TotalANA CAROLINA ANDRADE DE ARAUJO LIMA0,980,300,72CLARISSA NOGUEIRA DE ARAUJO0,450,200,36CONSUELO ANDRADE DE ARAÚJO30,2815,3224,62CRISTIANA NOGUEIRA DE ARAÚJO0,700,000,44DANIELA DE ARAUJO COELHO0,070,000,04GUSTAVO HENRIQUE DINIZ DE ARAÚJO1,223,362,03JOSÉ RIBEIRO VIANNA NETO1,000,000,62Lance Empreendimentos e Participações Ltda.3,950,002,46LUIZ HENRIQUE ANDRADE DE ARAÚJO5,443,054,54MARCO ANTÔNIO ANDRADE DE ARAÚJO2,655,633,78MARIA ÂNGELA DE MOURA0,101,930,79MAURICIO DE FARIA ARAÚJO4,400,002,73MB Ações Mercantil do Brasil FI0,302,251,04MB Fundo de Investimento em Ações Instituições Financeiras0,072,691,06PAULO HENRIQUE BRANT DE ARAUJO3,120,202,01PEDRO HENRIQUE DE OLIVEIRA11,197,569,82RENATO AUGUSTO DE ARAÚJO4,020,562,71SANDRA MARIA DE ARAUJO SIMOES0,940,150,64Sapil Ltda.4,240,002,64Sociedade Agrícola Santa Luzia Ltda5,900,003,67YEHUDA WAISBERG1,109,144,14OUTROS17,8846,7928,82AÇÕES TESOURARIA0,000,880,33TOTAL100,00100,00100,00Informação recebida em 02/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "30/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas6.982-Pessoas Jurídicas450-Investidores Institucionais13-Quantidade de Ações Ordinárias21.602.28133,16Quantidade de Ações Preferenciais26.808.44967,57Total de Ações48.410.73046,18",
-  "composicao_capital_social": "22/03/2024Ordinárias65.155.744Preferenciais39.675.836Total104.831.580"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 622926,
+        "31/12/2024": 595950
+      },
+      "ativo_total": {
+        "31/03/2025": 27155138,
+        "31/12/2024": 25479109
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_da_intermediacao_financeira": {
+        "01/01/2025_a_31/03/2025": 1741354,
+        "01/01/2024_a_31/03/2024": 1311833
+      },
+      "resultado_bruto_da_intermediacao_financeira": {
+        "01/01/2025_a_31/03/2025": 720427,
+        "01/01/2024_a_31/03/2024": 775803
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": -324874,
+        "01/01/2024_a_31/03/2024": -307431
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 574805,
+        "01/01/2024_a_31/03/2024": 234177
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -272119,
+        "01/01/2024_a_31/03/2024": 157
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -65784,
+        "01/01/2024_a_31/03/2024": -74138
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 12
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 236902,
+        "01/01/2024_a_31/03/2024": 160208
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "ANA CAROLINA ANDRADE DE ARAUJO LIMA",
+      "ON": 0.98,
+      "PN": 0.3,
+      "Total": 0.72
+    },
+    {
+      "nome": "CLARISSA NOGUEIRA DE ARAUJO",
+      "ON": 0.45,
+      "PN": 0.2,
+      "Total": 0.36
+    },
+    {
+      "nome": "CONSUELO ANDRADE DE ARAÚJO",
+      "ON": 30.28,
+      "PN": 15.32,
+      "Total": 24.62
+    },
+    {
+      "nome": "CRISTIANA NOGUEIRA DE ARAÚJO",
+      "ON": 0.7,
+      "PN": 0.0,
+      "Total": 0.44
+    },
+    {
+      "nome": "DANIELA DE ARAUJO COELHO",
+      "ON": 0.07,
+      "PN": 0.0,
+      "Total": 0.04
+    },
+    {
+      "nome": "GUSTAVO HENRIQUE DINIZ DE ARAÚJO",
+      "ON": 1.22,
+      "PN": 3.36,
+      "Total": 2.03
+    },
+    {
+      "nome": "JOSÉ RIBEIRO VIANNA NETO",
+      "ON": 1.0,
+      "PN": 0.0,
+      "Total": 0.62
+    },
+    {
+      "nome": "Lance Empreendimentos e Participações Ltda.",
+      "ON": 3.95,
+      "PN": 0.0,
+      "Total": 2.46
+    },
+    {
+      "nome": "LUIZ HENRIQUE ANDRADE DE ARAÚJO",
+      "ON": 5.44,
+      "PN": 3.05,
+      "Total": 4.54
+    },
+    {
+      "nome": "MARCO ANTÔNIO ANDRADE DE ARAÚJO",
+      "ON": 2.65,
+      "PN": 5.63,
+      "Total": 3.78
+    },
+    {
+      "nome": "MARIA ÂNGELA DE MOURA",
+      "ON": 0.1,
+      "PN": 1.93,
+      "Total": 0.79
+    },
+    {
+      "nome": "MAURICIO DE FARIA ARAÚJO",
+      "ON": 4.4,
+      "PN": 0.0,
+      "Total": 2.73
+    },
+    {
+      "nome": "MB Ações Mercantil do Brasil FI",
+      "ON": 0.3,
+      "PN": 2.25,
+      "Total": 1.04
+    },
+    {
+      "nome": "MB Fundo de Investimento em Ações Instituições Financeiras",
+      "ON": 0.07,
+      "PN": 2.69,
+      "Total": 1.06
+    },
+    {
+      "nome": "PAULO HENRIQUE BRANT DE ARAUJO",
+      "ON": 3.12,
+      "PN": 0.2,
+      "Total": 2.01
+    },
+    {
+      "nome": "PEDRO HENRIQUE DE OLIVEIRA",
+      "ON": 11.19,
+      "PN": 7.56,
+      "Total": 9.82
+    },
+    {
+      "nome": "RENATO AUGUSTO DE ARAÚJO",
+      "ON": 4.02,
+      "PN": 0.56,
+      "Total": 2.71
+    },
+    {
+      "nome": "SANDRA MARIA DE ARAUJO SIMOES",
+      "ON": 0.94,
+      "PN": 0.15,
+      "Total": 0.64
+    },
+    {
+      "nome": "Sapil Ltda.",
+      "ON": 4.24,
+      "PN": 0.0,
+      "Total": 2.64
+    },
+    {
+      "nome": "Sociedade Agrícola Santa Luzia Ltda",
+      "ON": 5.9,
+      "PN": 0.0,
+      "Total": 3.67
+    },
+    {
+      "nome": "YEHUDA WAISBERG",
+      "ON": 1.1,
+      "PN": 9.14,
+      "Total": 4.14
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 17.88,
+      "PN": 46.79,
+      "Total": 28.82
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.0,
+      "PN": 0.88,
+      "Total": 0.33
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 100.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 6982,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 450,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 13,
+        "percentual": null
+      },
+      {
+        "tipo": "Quantidade de Ações Preferenciais",
+        "quantidade": 26808449,
+        "percentual": 67.57
+      }
+    ],
+    "data": "30/04/2025",
+    "quantidade_acoes_ordinarias": 21602281,
+    "percentual_ordinarias": 33.16,
+    "total_acoes": 48410730,
+    "percentual_total": 46.18
+  },
+  "composicao_capital_social": {
+    "data": "22/03/2024",
+    "preferenciais": 39675836,
+    "total": 104831580
+  }
 }

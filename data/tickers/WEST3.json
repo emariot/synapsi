@@ -8,8 +8,135 @@
   "subsetor": "Utilidades Domésticas",
   "segmento": "Móveis",
   "site": "https://westwing.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Não consolidado Balanço Patrimonial  - Não-Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos, Intangível e Diferido33.25934.299Ativo Total299.609315.028Patrimônio Líquido221.569230.203Demonstração do Resultado - Não-Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda33.36939.979Resultado Bruto13.58415.631Resultado de Equivalência Patrimonial00Resultado Financeiro3.5374.813Resultado Líquido das Operações Continuadas(8.656)(14.595)Lucro (Prejuízo) do Período(8.656)(14.595)Demonstração do Fluxo de Caixa - Não-Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(13.429)(4.611)Atividades de Investimento(543)(605)Atividades de Financiamento(2.467)(2.216)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(16.439)(7.432)",
-  "posicao_acionaria": "Nome%ON%PN%TotalOIKOS Fundo de Investimento em Participações Multiestratégia25,470,0025,47Trustee Distribuidora de Títulos e Valores Mobiliários Ltda.5,650,005,65WNT Gestora de Recursos LTDA.39,300,0039,30OUTROS29,580,0029,58AÇÕES TESOURARIA0,000,000,00TOTAL100,000,00100,00Informação recebida em 10/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "25/05/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas4.004-Pessoas Jurídicas26-Investidores Institucionais31-Quantidade de Ações Ordinárias11.057.02399,53Total de Ações11.057.02399,53",
-  "composicao_capital_social": "13/12/2024Ordinárias11.109.348Preferenciais0Total11.109.348"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_intangivel_e_diferido": {
+        "31/03/2025": 33259,
+        "31/12/2024": 34299
+      },
+      "ativo_total": {
+        "31/03/2025": 299609,
+        "31/12/2024": 315028
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 221569,
+        "31/12/2024": 230203
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 33369,
+        "01/01/2024_a_31/03/2024": 39979
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 13584,
+        "01/01/2024_a_31/03/2024": 15631
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": 3537,
+        "01/01/2024_a_31/03/2024": 4813
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": -8656,
+        "01/01/2024_a_31/03/2024": -14595
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": -8656,
+        "01/01/2024_a_31/03/2024": -14595
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": -13429,
+        "01/01/2024_a_31/03/2024": -4611
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -543,
+        "01/01/2024_a_31/03/2024": -605
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -2467,
+        "01/01/2024_a_31/03/2024": -2216
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -16439,
+        "01/01/2024_a_31/03/2024": -7432
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "OIKOS Fundo de Investimento em Participações Multiestratégia",
+      "ON": 25.47,
+      "PN": 0.0,
+      "Total": 25.47
+    },
+    {
+      "nome": "Trustee Distribuidora de Títulos e Valores Mobiliários Ltda.",
+      "ON": 5.65,
+      "PN": 0.0,
+      "Total": 5.65
+    },
+    {
+      "nome": "WNT Gestora de Recursos LTDA.",
+      "ON": 39.3,
+      "PN": 0.0,
+      "Total": 39.3
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 29.58,
+      "PN": 0.0,
+      "Total": 29.58
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 4004,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 26,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 31,
+        "percentual": null
+      }
+    ],
+    "data": "25/05/2025",
+    "quantidade_acoes_ordinarias": 11057023,
+    "percentual_ordinarias": 99.53,
+    "total_acoes": 11057023,
+    "percentual_total": 99.53
+  },
+  "composicao_capital_social": {
+    "data": "13/12/2024",
+    "preferenciais": 0,
+    "total": 11109348
+  }
 }

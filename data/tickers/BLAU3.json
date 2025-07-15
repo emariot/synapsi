@@ -8,8 +8,137 @@
   "subsetor": "Comércio e Distribuição",
   "segmento": "Medicamentos e Outros Produtos",
   "site": "www.blau.com.br/ri",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível1.383.0611.332.941Ativo Total3.431.9253.411.729Patrimônio Líquido2.187.9802.150.664Patrimônio Líquido Atribuído à Controladora2.201.5632.163.989Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda372.997359.681Resultado Bruto149.490119.662Resultado de Equivalência Patrimonial00Resultado Financeiro4.308(1.252)Resultado Líquido das Operações Continuadas90.68939.671Lucro (Prejuízo) do Período90.68939.671Lucro (Prejuízo) do Período Atribuído à Controladora90.93440.090Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais46.99097.671Atividades de Investimento16.992(70.537)Atividades de Financiamento(49.234)(32.139)Variação Cambial sobre Caixa e Equivalentes(1.564)0Aumento (Redução) de Caixa e Equivalentes13.184(5.005)",
-  "posicao_acionaria": "Nome%ON%PN%TotalHahn Participações EIRELI0,000,000,00MARCELO RODOLFO HAHN82,500,0082,50OUTROS16,550,0016,55AÇÕES TESOURARIA0,960,000,96TOTAL100,000,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "29/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas20.774-Pessoas Jurídicas58-Investidores Institucionais178-Quantidade de Ações Ordinárias29.680.73916,55Total de Ações29.680.73916,55",
-  "composicao_capital_social": "19/05/2021Ordinárias179.393.939Preferenciais0Total179.393.939"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 1383061,
+        "31/12/2024": 1332941
+      },
+      "ativo_total": {
+        "31/03/2025": 3431925,
+        "31/12/2024": 3411729
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 2187980,
+        "31/12/2024": 2150664
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 2201563,
+        "31/12/2024": 2163989
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 372997,
+        "01/01/2024_a_31/03/2024": 359681
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 149490,
+        "01/01/2024_a_31/03/2024": 119662
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": 4308,
+        "01/01/2024_a_31/03/2024": -1252
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 90689,
+        "01/01/2024_a_31/03/2024": 39671
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 90689,
+        "01/01/2024_a_31/03/2024": 39671
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 90934,
+        "01/01/2024_a_31/03/2024": 40090
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 46990,
+        "01/01/2024_a_31/03/2024": 97671
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": 16992,
+        "01/01/2024_a_31/03/2024": -70537
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -49234,
+        "01/01/2024_a_31/03/2024": -32139
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -1564,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 13184,
+        "01/01/2024_a_31/03/2024": -5005
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "Hahn Participações EIRELI",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "MARCELO RODOLFO HAHN",
+      "ON": 82.5,
+      "PN": 0.0,
+      "Total": 82.5
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 16.55,
+      "PN": 0.0,
+      "Total": 16.55
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.96,
+      "PN": 0.0,
+      "Total": 0.96
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 20774,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 58,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 178,
+        "percentual": null
+      }
+    ],
+    "data": "29/04/2025",
+    "quantidade_acoes_ordinarias": 29680739,
+    "percentual_ordinarias": 16.55,
+    "total_acoes": 29680739,
+    "percentual_total": 16.55
+  },
+  "composicao_capital_social": {
+    "data": "19/05/2021",
+    "preferenciais": 0,
+    "total": 179393939
+  }
 }

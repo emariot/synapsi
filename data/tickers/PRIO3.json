@@ -8,8 +8,125 @@
   "subsetor": "Petróleo. Gás e Biocombustíveis (subsetor)",
   "segmento": "Exploração. Refino e Distribuição",
   "site": "www.petroriosa.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível38.469.12541.799.971Ativo Total54.789.86555.746.165Patrimônio Líquido26.603.16525.924.192Patrimônio Líquido Atribuído à Controladora26.603.16525.924.192Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda4.440.8093.200.186Resultado Bruto1.400.9231.812.547Resultado de Equivalência Patrimonial00Resultado Financeiro(481.631)(198.679)Resultado Líquido das Operações Continuadas2.072.6591.045.553Lucro (Prejuízo) do Período2.072.6591.045.553Lucro (Prejuízo) do Período Atribuído à Controladora2.072.6591.045.553Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais256.8111.614.537Atividades de Investimento(1.592.862)(1.491.428)Atividades de Financiamento669.6851.183.497Variação Cambial sobre Caixa e Equivalentes835.333388.089Aumento (Redução) de Caixa e Equivalentes168.9671.694.695",
-  "posicao_acionaria": "Nome%ON%PN%TotalOUTROS90,510,0090,51AÇÕES TESOURARIA9,490,009,49TOTAL100,000,00100,00Informação recebida em 25/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "17/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas167.560-Pessoas Jurídicas1.479-Investidores Institucionais1.381-Quantidade de Ações Ordinárias762.764.25385,10Total de Ações762.764.25385,10",
-  "composicao_capital_social": "25/02/2025Ordinárias896.346.173Preferenciais0Total896.346.173"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 38469125,
+        "31/12/2024": 41799971
+      },
+      "ativo_total": {
+        "31/03/2025": 54789865,
+        "31/12/2024": 55746165
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 26603165,
+        "31/12/2024": 25924192
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 26603165,
+        "31/12/2024": 25924192
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 4440809,
+        "01/01/2024_a_31/03/2024": 3200186
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 1400923,
+        "01/01/2024_a_31/03/2024": 1812547
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -481631,
+        "01/01/2024_a_31/03/2024": -198679
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 2072659,
+        "01/01/2024_a_31/03/2024": 1045553
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 2072659,
+        "01/01/2024_a_31/03/2024": 1045553
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 2072659,
+        "01/01/2024_a_31/03/2024": 1045553
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 256811,
+        "01/01/2024_a_31/03/2024": 1614537
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -1592862,
+        "01/01/2024_a_31/03/2024": -1491428
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": 669685,
+        "01/01/2024_a_31/03/2024": 1183497
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 835333,
+        "01/01/2024_a_31/03/2024": 388089
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 168967,
+        "01/01/2024_a_31/03/2024": 1694695
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "OUTROS",
+      "ON": 90.51,
+      "PN": 0.0,
+      "Total": 90.51
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 9.49,
+      "PN": 0.0,
+      "Total": 9.49
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 167560,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 1479,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 1381,
+        "percentual": null
+      }
+    ],
+    "data": "17/04/2025",
+    "quantidade_acoes_ordinarias": 762764253,
+    "percentual_ordinarias": 85.1,
+    "total_acoes": 762764253,
+    "percentual_total": 85.1
+  },
+  "composicao_capital_social": {
+    "data": "25/02/2025",
+    "preferenciais": 0,
+    "total": 896346173
+  }
 }

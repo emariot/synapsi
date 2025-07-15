@@ -8,8 +8,167 @@
   "subsetor": "Hoteis e Restaurantes",
   "segmento": "Restaurante e Similares",
   "site": "//www.internationalmealcompany.com",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível2.120.8422.184.663Ativo Total2.649.5902.796.869Patrimônio Líquido987.8891.041.298Patrimônio Líquido Atribuído à Controladora987.8891.041.298Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda504.136506.699Resultado Bruto156.636144.928Resultado de Equivalência Patrimonial1.5562.557Resultado Financeiro(30.719)(23.637)Resultado Líquido das Operações Continuadas(38.631)(27.879)Lucro (Prejuízo) do Período(38.631)(27.879)Lucro (Prejuízo) do Período Atribuído à Controladora00Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais35.694(25.315)Atividades de Investimento(28.465)24.741Atividades de Financiamento(29.179)(32.328)Variação Cambial sobre Caixa e Equivalentes(1.875)2.091Aumento (Redução) de Caixa e Equivalentes(23.825)(30.811)",
-  "posicao_acionaria": "Nome%ON%PN%TotalBFFC DO BRASIL COMERCIO E PARTICIPACOES LTDA5,580,005,58CARLOS ROBERTO WIZARD MARTINS2,830,002,83CHARLES PIMENTEL MARTINS3,280,003,28Kentucky Fried Chicken International Holdings LLC0,500,000,50LINCOLN PIMENTEL MARTINS3,000,003,00Pizza Hut International LLC0,930,000,93UV Gestora de Ativos Financeiros Ltda34,890,0034,89OUTROS49,010,0049,01AÇÕES TESOURARIA0,000,000,00TOTAL100,000,00100,00Informação recebida em 30/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "30/05/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas26.416-Pessoas Jurídicas153-Investidores Institucionais69-Quantidade de Ações Ordinárias283.782.84098,99Total de Ações283.782.84098,99",
-  "composicao_capital_social": "17/04/2025Ordinárias286.676.540Preferenciais0Total286.676.540"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 2120842,
+        "31/12/2024": 2184663
+      },
+      "ativo_total": {
+        "31/03/2025": 2649590,
+        "31/12/2024": 2796869
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 987889,
+        "31/12/2024": 1041298
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 987889,
+        "31/12/2024": 1041298
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 504136,
+        "01/01/2024_a_31/03/2024": 506699
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 156636,
+        "01/01/2024_a_31/03/2024": 144928
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 1556,
+        "01/01/2024_a_31/03/2024": 2557
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -30719,
+        "01/01/2024_a_31/03/2024": -23637
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": -38631,
+        "01/01/2024_a_31/03/2024": -27879
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": -38631,
+        "01/01/2024_a_31/03/2024": -27879
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 35694,
+        "01/01/2024_a_31/03/2024": -25315
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -28465,
+        "01/01/2024_a_31/03/2024": 24741
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -29179,
+        "01/01/2024_a_31/03/2024": -32328
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -1875,
+        "01/01/2024_a_31/03/2024": 2091
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -23825,
+        "01/01/2024_a_31/03/2024": -30811
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "BFFC DO BRASIL COMERCIO E PARTICIPACOES LTDA",
+      "ON": 5.97,
+      "PN": 0.0,
+      "Total": 5.97
+    },
+    {
+      "nome": "CARLOS ROBERTO WIZARD MARTINS",
+      "ON": 2.83,
+      "PN": 0.0,
+      "Total": 2.83
+    },
+    {
+      "nome": "CHARLES PIMENTEL MARTINS",
+      "ON": 3.28,
+      "PN": 0.0,
+      "Total": 3.28
+    },
+    {
+      "nome": "Kentucky Fried Chicken International Holdings LLC",
+      "ON": 0.5,
+      "PN": 0.0,
+      "Total": 0.5
+    },
+    {
+      "nome": "LINCOLN PIMENTEL MARTINS",
+      "ON": 3.0,
+      "PN": 0.0,
+      "Total": 3.0
+    },
+    {
+      "nome": "Pizza Hut International LLC",
+      "ON": 0.93,
+      "PN": 0.0,
+      "Total": 0.93
+    },
+    {
+      "nome": "UV Gestora de Ativos Financeiros Ltda",
+      "ON": 35.01,
+      "PN": 0.0,
+      "Total": 35.01
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 48.5,
+      "PN": 0.0,
+      "Total": 48.5
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 26416,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 153,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 69,
+        "percentual": null
+      }
+    ],
+    "data": "30/05/2025",
+    "quantidade_acoes_ordinarias": 283782840,
+    "percentual_ordinarias": 98.99,
+    "total_acoes": 283782840,
+    "percentual_total": 98.99
+  },
+  "composicao_capital_social": {
+    "data": "17/04/2025",
+    "preferenciais": 0,
+    "total": 286676540
+  }
 }

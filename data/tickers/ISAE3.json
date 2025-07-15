@@ -8,8 +8,154 @@
   "subsetor": "Energia Elétrica",
   "segmento": "Energia Elétrica (segmento)",
   "site": "//http://www.isaenergiabrasil.com.br/",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível5.091.4334.946.966Ativo Total44.691.88643.304.632Patrimônio Líquido20.859.20720.071.282Patrimônio Líquido Atribuído à Controladora20.414.90919.714.581Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda2.412.0401.978.188Resultado Bruto1.165.6651.011.045Resultado de Equivalência Patrimonial155.348149.951Resultado Financeiro(351.575)(252.507)Resultado Líquido das Operações Continuadas724.705655.915Lucro (Prejuízo) do Período724.705655.915Lucro (Prejuízo) do Período Atribuído à Controladora713.235643.078Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(176.733)183.267Atividades de Investimento(1.905.768)162.830Atividades de Financiamento(48.466)674.195Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(2.130.967)1.020.292",
-  "posicao_acionaria": "Nome%ON%PN%TotalCENTRAIS ELETRICAS BRASILEIRAS S/A3,117,155,57CENTRAIS ELÉTRICAS BRASILEIRAS S.A.6,6220,9415,33Eletrobras Participações S.A. - ELETROPAR0,001,200,73Isa Capital do Brasil S.A89,501,2835,82OUTROS0,7769,4442,55AÇÕES TESOURARIA0,000,000,00TOTAL100,00100,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "25/03/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas317.942-Pessoas Jurídicas2.088-Investidores Institucionais287-Quantidade de Ações Ordinárias27.080.90010,50Quantidade de Ações Preferenciais395.801.04498,72Total de Ações422.881.94464,18",
-  "composicao_capital_social": "04/04/2019Ordinárias257.937.732Preferenciais400.945.572Total658.883.304"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 5091433,
+        "31/12/2024": 4946966
+      },
+      "ativo_total": {
+        "31/03/2025": 44691886,
+        "31/12/2024": 43304632
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 20859207,
+        "31/12/2024": 20071282
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 20414909,
+        "31/12/2024": 19714581
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 2412040,
+        "01/01/2024_a_31/03/2024": 1978188
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 1165665,
+        "01/01/2024_a_31/03/2024": 1011045
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 155348,
+        "01/01/2024_a_31/03/2024": 149951
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -351575,
+        "01/01/2024_a_31/03/2024": -252507
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 724705,
+        "01/01/2024_a_31/03/2024": 655915
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 724705,
+        "01/01/2024_a_31/03/2024": 655915
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 713235,
+        "01/01/2024_a_31/03/2024": 643078
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": -176733,
+        "01/01/2024_a_31/03/2024": 183267
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -1905768,
+        "01/01/2024_a_31/03/2024": 162830
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -48466,
+        "01/01/2024_a_31/03/2024": 674195
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -2130967,
+        "01/01/2024_a_31/03/2024": 1020292
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "CENTRAIS ELETRICAS BRASILEIRAS S/A",
+      "ON": 3.11,
+      "PN": 7.15,
+      "Total": 5.57
+    },
+    {
+      "nome": "CENTRAIS ELÉTRICAS BRASILEIRAS S.A.",
+      "ON": 6.62,
+      "PN": 20.94,
+      "Total": 15.33
+    },
+    {
+      "nome": "Eletrobras Participações S.A. - ELETROPAR",
+      "ON": 0.0,
+      "PN": 1.2,
+      "Total": 0.73
+    },
+    {
+      "nome": "Isa Capital do Brasil S.A",
+      "ON": 89.5,
+      "PN": 1.28,
+      "Total": 35.82
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 0.77,
+      "PN": 69.44,
+      "Total": 42.55
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 100.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 317942,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 2088,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 287,
+        "percentual": null
+      },
+      {
+        "tipo": "Quantidade de Ações Preferenciais",
+        "quantidade": 395801044,
+        "percentual": 98.72
+      }
+    ],
+    "data": "25/03/2025",
+    "quantidade_acoes_ordinarias": 27080900,
+    "percentual_ordinarias": 10.5,
+    "total_acoes": 422881944,
+    "percentual_total": 64.18
+  },
+  "composicao_capital_social": {
+    "data": "04/04/2019",
+    "preferenciais": 400945572,
+    "total": 658883304
+  }
 }

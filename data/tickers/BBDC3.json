@@ -8,8 +8,124 @@
   "subsetor": "Intermediários Financeiros",
   "segmento": "Bancos",
   "site": "//www.bradesco.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível32.441.50633.969.652Ativo Total2.054.649.7042.069.484.362Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita da Intermediação Financeira60.135.72952.766.144Resultado Bruto da Intermediação Financeira20.051.97216.888.433Resultado de Equivalência Patrimonial(17.747.713)(15.531.905)Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(83.262.056)17.683.276Atividades de Investimento51.989.1922.780.314Atividades de Financiamento(5.358.119)(1.057.438)Variação Cambial sobre Caixa e Equivalentes(172.089)(190.229)Aumento (Redução) de Caixa e Equivalentes(36.803.072)19.215.923",
-  "posicao_acionaria": "Nome%ON%PN%TotalCidade de Deus Cia Cial Participações46,090,0223,09Fundação Bradesco17,240,008,63NCF Participações S.A.8,522,265,40OUTROS28,0297,5762,74AÇÕES TESOURARIA0,140,140,14TOTAL100,00100,00100,00Informação recebida em 03/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "09/05/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas912.773-Pessoas Jurídicas34.103-Investidores Institucionais1.080-Quantidade de Ações Ordinárias1.467.570.78927,66Quantidade de Ações Preferenciais5.106.488.51696,54Total de Ações6.574.059.30562,05",
-  "composicao_capital_social": "07/02/2025Ordinárias5.303.870.781Preferenciais5.288.141.247Total10.592.012.028"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 32441506,
+        "31/12/2024": 33969652
+      },
+      "ativo_total": {
+        "31/03/2025": 2054649704,
+        "31/12/2024": 2069484362
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_da_intermediacao_financeira": {
+        "01/01/2025_a_31/03/2025": 60135729,
+        "01/01/2024_a_31/03/2024": 52766144
+      },
+      "resultado_bruto_da_intermediacao_financeira": {
+        "01/01/2025_a_31/03/2025": 20051972,
+        "01/01/2024_a_31/03/2024": 16888433
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": -17747713,
+        "01/01/2024_a_31/03/2024": -15531905
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": -83262056,
+        "01/01/2024_a_31/03/2024": 17683276
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": 51989192,
+        "01/01/2024_a_31/03/2024": 2780314
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -5358119,
+        "01/01/2024_a_31/03/2024": -1057438
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -172089,
+        "01/01/2024_a_31/03/2024": -190229
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -36803072,
+        "01/01/2024_a_31/03/2024": 19215923
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "Cidade de Deus Cia Cial Participações",
+      "ON": 46.09,
+      "PN": 0.02,
+      "Total": 23.09
+    },
+    {
+      "nome": "Fundação Bradesco",
+      "ON": 17.24,
+      "PN": 0.0,
+      "Total": 8.63
+    },
+    {
+      "nome": "NCF Participações S.A.",
+      "ON": 8.52,
+      "PN": 2.26,
+      "Total": 5.4
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 28.02,
+      "PN": 97.57,
+      "Total": 62.74
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.14,
+      "PN": 0.14,
+      "Total": 0.14
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 100.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 912773,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 34103,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 1080,
+        "percentual": null
+      },
+      {
+        "tipo": "Quantidade de Ações Preferenciais",
+        "quantidade": 5106488516,
+        "percentual": 96.54
+      }
+    ],
+    "data": "09/05/2025",
+    "quantidade_acoes_ordinarias": 1467570789,
+    "percentual_ordinarias": 27.66,
+    "total_acoes": 6574059305,
+    "percentual_total": 62.05
+  },
+  "composicao_capital_social": {
+    "data": "07/02/2025",
+    "preferenciais": 5288141247,
+    "total": 10592012028
+  }
 }

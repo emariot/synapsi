@@ -8,8 +8,129 @@
   "subsetor": "Energia Elétrica",
   "segmento": "Energia Elétrica (segmento)",
   "site": "//http://www.afluentet.com.br/",
-  "dados_economico_financeiros": "Ver dados no formato Não consolidado Balanço Patrimonial  - Não-Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos, Intangível e Diferido4.9775.148Ativo Total345.644342.757Patrimônio Líquido257.167252.912Demonstração do Resultado - Não-Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda10.41514.958Resultado Bruto7.85812.290Resultado de Equivalência Patrimonial00Resultado Financeiro(612)179Resultado Líquido das Operações Continuadas3.9467.340Lucro (Prejuízo) do Período3.9467.340Demonstração do Fluxo de Caixa - Não-Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais6.58010.862Atividades de Investimento(222)0Atividades de Financiamento(8)(50)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes6.35010.812",
-  "posicao_acionaria": "Nome%ON%PN%TotalIberdrola Energia S.A.8,500,008,50Neoenergia S.A90,180,0090,18OUTROS1,330,001,33AÇÕES TESOURARIA0,000,000,00TOTAL100,000,00100,00Informação recebida em 13/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "14/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas3.061-Pessoas Jurídicas200-Investidores Institucionais54-Quantidade de Ações Ordinárias835.9651,33Total de Ações835.9651,33",
-  "composicao_capital_social": "07/04/2017Ordinárias63.084.700Preferenciais0Total63.084.700"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_intangivel_e_diferido": {
+        "31/03/2025": 4977,
+        "31/12/2024": 5148
+      },
+      "ativo_total": {
+        "31/03/2025": 345644,
+        "31/12/2024": 342757
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 257167,
+        "31/12/2024": 252912
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 10415,
+        "01/01/2024_a_31/03/2024": 14958
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 7858,
+        "01/01/2024_a_31/03/2024": 12290
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -612,
+        "01/01/2024_a_31/03/2024": 179
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 3946,
+        "01/01/2024_a_31/03/2024": 7340
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 3946,
+        "01/01/2024_a_31/03/2024": 7340
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 6580,
+        "01/01/2024_a_31/03/2024": 10862
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -222,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -8,
+        "01/01/2024_a_31/03/2024": -50
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 6350,
+        "01/01/2024_a_31/03/2024": 10812
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "Iberdrola Energia S.A.",
+      "ON": 8.5,
+      "PN": 0.0,
+      "Total": 8.5
+    },
+    {
+      "nome": "Neoenergia S.A",
+      "ON": 90.18,
+      "PN": 0.0,
+      "Total": 90.18
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 1.33,
+      "PN": 0.0,
+      "Total": 1.33
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 3061,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 200,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 54,
+        "percentual": null
+      }
+    ],
+    "data": "14/04/2025",
+    "quantidade_acoes_ordinarias": 835965,
+    "percentual_ordinarias": 1.33,
+    "total_acoes": 835965,
+    "percentual_total": 1.33
+  },
+  "composicao_capital_social": {
+    "data": "07/04/2017",
+    "preferenciais": 0,
+    "total": 63084700
+  }
 }

@@ -8,8 +8,191 @@
   "subsetor": "Comércio e Distribuição",
   "segmento": "Medicamentos e Outros Produtos",
   "site": "https://portal.mafrahospitalar.com.br/",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível3.072.2793.094.299Ativo Total9.371.0279.544.197Patrimônio Líquido1.868.6311.926.522Patrimônio Líquido Atribuído à Controladora1.868.6311.926.522Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda2.784.8932.952.599Resultado Bruto384.218397.712Resultado de Equivalência Patrimonial(461)(467)Resultado Financeiro(101.451)(112.669)Resultado Líquido das Operações Continuadas(58.934)3.043Lucro (Prejuízo) do Período(58.934)3.043Lucro (Prejuízo) do Período Atribuído à Controladora(58.934)3.043Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(106.285)(180.429)Atividades de Investimento525.756(107.363)Atividades de Financiamento(101.691)950.607Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes317.780662.815",
-  "posicao_acionaria": "Nome%ON%PN%TotalDARWIN FUNDO DE INVESTIMENTO MULTIMERCADO - CREDITO PRIVADO INVESTIMENTO NO EXTERIOR0,120,000,12DIAMANTINA FIC DE FIM CP IE0,060,000,06DINA FIM CP IE0,040,000,04DNA CAPITAL CONSULTORIA LTDA0,010,000,01DYNAMO ADMINISTRAÇÃO DE RECURSOS LTDA8,970,008,97FUNDO DE INVESTIMENTOS EM PARTICIPAÇÕES MULTIESTRATÉGIA GENOMA I15,580,0015,58Genoma VI Fundo de Investimento em Participações Multiestratégia21,610,0021,61GIC Private Limited12,220,0012,22JOSÉ EDUARDO RIBEIRO GUINLE0,050,000,05LUIZ FELIPE DUARTE MARTINS COSTA0,060,000,06PEREA CAPITAL PARTNERS. LP5,000,005,00OUTROS34,100,0034,10AÇÕES TESOURARIA2,170,002,17TOTAL100,000,00100,00Informação recebida em 02/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "30/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas8.041-Pessoas Jurídicas41-Investidores Institucionais104-Quantidade de Ações Ordinárias192.557.48759,65Total de Ações192.557.48759,65",
-  "composicao_capital_social": "02/08/2023Ordinárias322.820.608Preferenciais0Total322.820.608"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 3072279,
+        "31/12/2024": 3094299
+      },
+      "ativo_total": {
+        "31/03/2025": 9371027,
+        "31/12/2024": 9544197
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 1868631,
+        "31/12/2024": 1926522
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 1868631,
+        "31/12/2024": 1926522
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 2784893,
+        "01/01/2024_a_31/03/2024": 2952599
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 384218,
+        "01/01/2024_a_31/03/2024": 397712
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": -461,
+        "01/01/2024_a_31/03/2024": -467
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -101451,
+        "01/01/2024_a_31/03/2024": -112669
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": -58934,
+        "01/01/2024_a_31/03/2024": 3043
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": -58934,
+        "01/01/2024_a_31/03/2024": 3043
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": -58934,
+        "01/01/2024_a_31/03/2024": 3043
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": -106285,
+        "01/01/2024_a_31/03/2024": -180429
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": 525756,
+        "01/01/2024_a_31/03/2024": -107363
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -101691,
+        "01/01/2024_a_31/03/2024": 950607
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 317780,
+        "01/01/2024_a_31/03/2024": 662815
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "DARWIN FUNDO DE INVESTIMENTO MULTIMERCADO - CREDITO PRIVADO INVESTIMENTO NO EXTERIOR",
+      "ON": 0.12,
+      "PN": 0.0,
+      "Total": 0.12
+    },
+    {
+      "nome": "DIAMANTINA FIC DE FIM CP IE",
+      "ON": 0.06,
+      "PN": 0.0,
+      "Total": 0.06
+    },
+    {
+      "nome": "DINA FIM CP IE",
+      "ON": 0.04,
+      "PN": 0.0,
+      "Total": 0.04
+    },
+    {
+      "nome": "DNA CAPITAL CONSULTORIA LTDA",
+      "ON": 0.01,
+      "PN": 0.0,
+      "Total": 0.01
+    },
+    {
+      "nome": "DYNAMO ADMINISTRAÇÃO DE RECURSOS LTDA",
+      "ON": 8.97,
+      "PN": 0.0,
+      "Total": 8.97
+    },
+    {
+      "nome": "FUNDO DE INVESTIMENTOS EM PARTICIPAÇÕES MULTIESTRATÉGIA GENOMA I",
+      "ON": 15.58,
+      "PN": 0.0,
+      "Total": 15.58
+    },
+    {
+      "nome": "Genoma VI Fundo de Investimento em Participações Multiestratégia",
+      "ON": 21.61,
+      "PN": 0.0,
+      "Total": 21.61
+    },
+    {
+      "nome": "GIC Private Limited",
+      "ON": 12.22,
+      "PN": 0.0,
+      "Total": 12.22
+    },
+    {
+      "nome": "JOSÉ EDUARDO RIBEIRO GUINLE",
+      "ON": 0.05,
+      "PN": 0.0,
+      "Total": 0.05
+    },
+    {
+      "nome": "LUIZ FELIPE DUARTE MARTINS COSTA",
+      "ON": 0.06,
+      "PN": 0.0,
+      "Total": 0.06
+    },
+    {
+      "nome": "PEREA CAPITAL PARTNERS. LP",
+      "ON": 5.0,
+      "PN": 0.0,
+      "Total": 5.0
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 34.1,
+      "PN": 0.0,
+      "Total": 34.1
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 2.17,
+      "PN": 0.0,
+      "Total": 2.17
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 8041,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 41,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 104,
+        "percentual": null
+      }
+    ],
+    "data": "30/04/2025",
+    "quantidade_acoes_ordinarias": 192557487,
+    "percentual_ordinarias": 59.65,
+    "total_acoes": 192557487,
+    "percentual_total": 59.65
+  },
+  "composicao_capital_social": {
+    "data": "02/08/2023",
+    "preferenciais": 0,
+    "total": 322820608
+  }
 }

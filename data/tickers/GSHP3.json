@@ -8,8 +8,143 @@
   "subsetor": "Exploração de Imóveis",
   "segmento": "Exploração de Imóveis (segmento)",
   "site": "www.generalshopping.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível954.184952.286Ativo Total1.188.6251.219.757Patrimônio Líquido(1.409.770)(1.533.916)Patrimônio Líquido Atribuído à Controladora(1.409.770)(1.533.916)Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda44.79641.492Resultado Bruto29.78828.868Resultado de Equivalência Patrimonial00Resultado Financeiro79.108(99.935)Resultado Líquido das Operações Continuadas124.146(104.291)Lucro (Prejuízo) do Período124.146(104.291)Lucro (Prejuízo) do Período Atribuído à Controladora00Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(11.384)(72.988)Atividades de Investimento(3.377)98.332Atividades de Financiamento(14.519)(15.900)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(29.280)9.444",
-  "posicao_acionaria": "Nome%ON%PN%TotalGolf Participações Ltda23,170,0023,17L.H.X.S.P.E. Empreendimentos e Participações Ltda23,170,0023,17L.H.Y.S.P.E. Empreendimentos e Participações Ltda23,170,0023,17OUTROS27,720,0027,72AÇÕES TESOURARIA2,770,002,77TOTAL100,000,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "28/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas1.266-Pessoas Jurídicas9-Investidores Institucionais7-Quantidade de Ações Ordinárias1.428.32874,05Total de Ações1.428.32874,05",
-  "composicao_capital_social": "11/12/2019Ordinárias1.928.769Preferenciais0Total1.928.769"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 954184,
+        "31/12/2024": 952286
+      },
+      "ativo_total": {
+        "31/03/2025": 1188625,
+        "31/12/2024": 1219757
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": -1409770,
+        "31/12/2024": -1533916
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": -1409770,
+        "31/12/2024": -1533916
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 44796,
+        "01/01/2024_a_31/03/2024": 41492
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 29788,
+        "01/01/2024_a_31/03/2024": 28868
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": 79108,
+        "01/01/2024_a_31/03/2024": -99935
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 124146,
+        "01/01/2024_a_31/03/2024": -104291
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 124146,
+        "01/01/2024_a_31/03/2024": -104291
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": -11384,
+        "01/01/2024_a_31/03/2024": -72988
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -3377,
+        "01/01/2024_a_31/03/2024": 98332
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -14519,
+        "01/01/2024_a_31/03/2024": -15900
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -29280,
+        "01/01/2024_a_31/03/2024": 9444
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "Golf Participações Ltda",
+      "ON": 23.17,
+      "PN": 0.0,
+      "Total": 23.17
+    },
+    {
+      "nome": "L.H.X.S.P.E. Empreendimentos e Participações Ltda",
+      "ON": 23.17,
+      "PN": 0.0,
+      "Total": 23.17
+    },
+    {
+      "nome": "L.H.Y.S.P.E. Empreendimentos e Participações Ltda",
+      "ON": 23.17,
+      "PN": 0.0,
+      "Total": 23.17
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 27.72,
+      "PN": 0.0,
+      "Total": 27.72
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 2.77,
+      "PN": 0.0,
+      "Total": 2.77
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 1266,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 9,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 7,
+        "percentual": null
+      }
+    ],
+    "data": "28/04/2025",
+    "quantidade_acoes_ordinarias": 1428328,
+    "percentual_ordinarias": 74.05,
+    "total_acoes": 1428328,
+    "percentual_total": 74.05
+  },
+  "composicao_capital_social": {
+    "data": "11/12/2019",
+    "preferenciais": 0,
+    "total": 1928769
+  }
 }

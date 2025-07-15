@@ -8,8 +8,137 @@
   "subsetor": "Previdência e Seguros",
   "segmento": "Seguradoras",
   "site": "//www.portoseguro.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível5.344.1875.368.800Ativo Total49.466.82447.913.736Patrimônio Líquido13.899.89314.145.398Patrimônio Líquido Atribuído à Controladora13.856.82114.050.794Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda9.705.8698.669.719Resultado Bruto9.705.8698.669.719Resultado de Equivalência Patrimonial17.7197.167Resultado Financeiro412.034273.944Resultado Líquido das Operações Continuadas845.446661.634Lucro (Prejuízo) do Período845.446661.634Lucro (Prejuízo) do Período Atribuído à Controladora832.264651.018Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais109.851690.948Atividades de Investimento(83.703)121.155Atividades de Financiamento(184.151)(256.293)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(158.003)555.810",
-  "posicao_acionaria": "Nome%ON%PN%TotalJAYME BRASIL GARFINKEL0,000,000,00Porto Seguro Itaú Unibanco Participações S.A.70,820,0070,82OUTROS28,470,0028,47AÇÕES TESOURARIA0,710,000,71TOTAL100,000,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "28/03/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas129.779-Pessoas Jurídicas364-Investidores Institucionais910-Quantidade de Ações Ordinárias181.016.45428,00Total de Ações181.016.45428,00",
-  "composicao_capital_social": "20/10/2021Ordinárias646.586.060Preferenciais0Total646.586.060"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 5344187,
+        "31/12/2024": 5368800
+      },
+      "ativo_total": {
+        "31/03/2025": 49466824,
+        "31/12/2024": 47913736
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 13899893,
+        "31/12/2024": 14145398
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 13856821,
+        "31/12/2024": 14050794
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 9705869,
+        "01/01/2024_a_31/03/2024": 8669719
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 9705869,
+        "01/01/2024_a_31/03/2024": 8669719
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 17719,
+        "01/01/2024_a_31/03/2024": 7167
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": 412034,
+        "01/01/2024_a_31/03/2024": 273944
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 845446,
+        "01/01/2024_a_31/03/2024": 661634
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 845446,
+        "01/01/2024_a_31/03/2024": 661634
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 832264,
+        "01/01/2024_a_31/03/2024": 651018
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 109851,
+        "01/01/2024_a_31/03/2024": 690948
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -83703,
+        "01/01/2024_a_31/03/2024": 121155
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -184151,
+        "01/01/2024_a_31/03/2024": -256293
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -158003,
+        "01/01/2024_a_31/03/2024": 555810
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "JAYME BRASIL GARFINKEL",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "Porto Seguro Itaú Unibanco Participações S.A.",
+      "ON": 70.82,
+      "PN": 0.0,
+      "Total": 70.82
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 28.47,
+      "PN": 0.0,
+      "Total": 28.47
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.71,
+      "PN": 0.0,
+      "Total": 0.71
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 129779,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 364,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 910,
+        "percentual": null
+      }
+    ],
+    "data": "28/03/2025",
+    "quantidade_acoes_ordinarias": 181016454,
+    "percentual_ordinarias": 28.0,
+    "total_acoes": 181016454,
+    "percentual_total": 28.0
+  },
+  "composicao_capital_social": {
+    "data": "20/10/2021",
+    "preferenciais": 0,
+    "total": 646586060
+  }
 }

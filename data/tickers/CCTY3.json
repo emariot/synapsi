@@ -11,5 +11,6 @@
   "dados_economico_financeiros": "Não disponível",
   "posicao_acionaria": "Não disponível",
   "acoes_em_circulacao_no_mercado": "Não disponível",
-  "composicao_capital_social": "Não disponível"
+  "composicao_capital_social": "Não disponível",
+  "coleta_incompleta": true
 }

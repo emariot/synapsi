@@ -8,8 +8,161 @@
   "subsetor": "Programas e Serviços",
   "segmento": "Programas e Serviços (segmento)",
   "site": "https://enjoei.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível184.736184.368Ativo Total421.327422.174Patrimônio Líquido313.950320.453Patrimônio Líquido Atribuído à Controladora313.950320.453Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda60.68061.520Resultado Bruto34.58733.409Resultado de Equivalência Patrimonial2.2471.809Resultado Financeiro1.6033.747Resultado Líquido das Operações Continuadas(6.721)(9.822)Lucro (Prejuízo) do Período(6.721)(9.822)Lucro (Prejuízo) do Período Atribuído à Controladora0(9.822)Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais11.0107.298Atividades de Investimento(12.346)(38.945)Atividades de Financiamento(700)(562)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(2.036)(32.209)",
-  "posicao_acionaria": "Nome%ON%PN%TotalANA LUIZA MCLAREN MOREIRA MAIA E LIMA8,680,008,68ARAM. LLC6,190,006,19ARNALDO GOLDEMBERG4,990,004,99SÃO PEDRO CAPITAL INVESTIMENTOS LTDA10,930,0010,93TIÊ LIMA6,780,006,78Vokin Administração de Recursos Ltda.8,440,008,44OUTROS54,000,0054,00AÇÕES TESOURARIA0,000,000,00TOTAL100,000,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "24/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas21.167-Pessoas Jurídicas145-Investidores Institucionais145-Quantidade de Ações Ordinárias127.183.10362,04Total de Ações127.183.10362,04",
-  "composicao_capital_social": "15/07/2024Ordinárias205.017.990Preferenciais0Total205.017.990"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 184736,
+        "31/12/2024": 184368
+      },
+      "ativo_total": {
+        "31/03/2025": 421327,
+        "31/12/2024": 422174
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 313950,
+        "31/12/2024": 320453
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 313950,
+        "31/12/2024": 320453
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 60680,
+        "01/01/2024_a_31/03/2024": 61520
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 34587,
+        "01/01/2024_a_31/03/2024": 33409
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 2247,
+        "01/01/2024_a_31/03/2024": 1809
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": 1603,
+        "01/01/2024_a_31/03/2024": 3747
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": -6721,
+        "01/01/2024_a_31/03/2024": -9822
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": -6721,
+        "01/01/2024_a_31/03/2024": -9822
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": -9822
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 11010,
+        "01/01/2024_a_31/03/2024": 7298
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -12346,
+        "01/01/2024_a_31/03/2024": -38945
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -700,
+        "01/01/2024_a_31/03/2024": -562
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -2036,
+        "01/01/2024_a_31/03/2024": -32209
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "ANA LUIZA MCLAREN MOREIRA MAIA E LIMA",
+      "ON": 8.68,
+      "PN": 0.0,
+      "Total": 8.68
+    },
+    {
+      "nome": "ARAM. LLC",
+      "ON": 6.19,
+      "PN": 0.0,
+      "Total": 6.19
+    },
+    {
+      "nome": "ARNALDO GOLDEMBERG",
+      "ON": 4.99,
+      "PN": 0.0,
+      "Total": 4.99
+    },
+    {
+      "nome": "SÃO PEDRO CAPITAL INVESTIMENTOS LTDA",
+      "ON": 10.93,
+      "PN": 0.0,
+      "Total": 10.93
+    },
+    {
+      "nome": "TIÊ LIMA",
+      "ON": 6.78,
+      "PN": 0.0,
+      "Total": 6.78
+    },
+    {
+      "nome": "Vokin Administração de Recursos Ltda.",
+      "ON": 8.44,
+      "PN": 0.0,
+      "Total": 8.44
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 54.0,
+      "PN": 0.0,
+      "Total": 54.0
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 21167,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 145,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 145,
+        "percentual": null
+      }
+    ],
+    "data": "24/04/2025",
+    "quantidade_acoes_ordinarias": 127183103,
+    "percentual_ordinarias": 62.04,
+    "total_acoes": 127183103,
+    "percentual_total": 62.04
+  },
+  "composicao_capital_social": {
+    "data": "15/07/2024",
+    "preferenciais": 0,
+    "total": 205017990
+  }
 }

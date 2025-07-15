@@ -8,8 +8,143 @@
   "subsetor": "Transporte",
   "segmento": "Transporte Hidroviário",
   "site": "www.hbsa.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível4.327.8924.996.550Ativo Total6.263.7747.166.688Patrimônio Líquido949.871948.075Patrimônio Líquido Atribuído à Controladora949.871948.075Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda481.604381.513Resultado Bruto188.488124.572Resultado de Equivalência Patrimonial(2.584)(1.373)Resultado Financeiro(78.094)(89.512)Resultado Líquido das Operações Continuadas36.976(74.883)Lucro (Prejuízo) do Período23.164(70.857)Lucro (Prejuízo) do Período Atribuído à Controladora00Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(5.073)(32.650)Atividades de Investimento(46.982)13.993Atividades de Financiamento(584.002)(48.305)Variação Cambial sobre Caixa e Equivalentes68.93956.007Aumento (Redução) de Caixa e Equivalentes(567.118)(10.955)",
-  "posicao_acionaria": "Nome%ON%PN%TotalAlaska Investimentos Ltda.18,870,0018,87PATRIA INFRAESTRUTURA IV FIP MULTIESTRATEGIA5,770,005,77ULTRAPAR LOGÍSTICA  LTDA.50,480,0050,48OUTROS24,890,0024,89AÇÕES TESOURARIA0,000,000,00TOTAL100,000,00100,00Informação recebida em 30/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "15/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas8.795-Pessoas Jurídicas282-Investidores Institucionais212-Quantidade de Ações Ordinárias416.490.69730,62Total de Ações416.490.69730,62",
-  "composicao_capital_social": "04/03/2025Ordinárias1.360.382.643Preferenciais0Total1.360.382.643"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 4327892,
+        "31/12/2024": 4996550
+      },
+      "ativo_total": {
+        "31/03/2025": 6263774,
+        "31/12/2024": 7166688
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 949871,
+        "31/12/2024": 948075
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 949871,
+        "31/12/2024": 948075
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 481604,
+        "01/01/2024_a_31/03/2024": 381513
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 188488,
+        "01/01/2024_a_31/03/2024": 124572
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": -2584,
+        "01/01/2024_a_31/03/2024": -1373
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -78094,
+        "01/01/2024_a_31/03/2024": -89512
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 36976,
+        "01/01/2024_a_31/03/2024": -74883
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 23164,
+        "01/01/2024_a_31/03/2024": -70857
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": -5073,
+        "01/01/2024_a_31/03/2024": -32650
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -46982,
+        "01/01/2024_a_31/03/2024": 13993
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -584002,
+        "01/01/2024_a_31/03/2024": -48305
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 68939,
+        "01/01/2024_a_31/03/2024": 56007
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -567118,
+        "01/01/2024_a_31/03/2024": -10955
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "Alaska Investimentos Ltda.",
+      "ON": 18.87,
+      "PN": 0.0,
+      "Total": 18.87
+    },
+    {
+      "nome": "PATRIA INFRAESTRUTURA IV FIP MULTIESTRATEGIA",
+      "ON": 5.77,
+      "PN": 0.0,
+      "Total": 5.77
+    },
+    {
+      "nome": "ULTRAPAR LOGÍSTICA  LTDA.",
+      "ON": 50.48,
+      "PN": 0.0,
+      "Total": 50.48
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 24.89,
+      "PN": 0.0,
+      "Total": 24.89
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 8795,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 282,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 212,
+        "percentual": null
+      }
+    ],
+    "data": "15/04/2025",
+    "quantidade_acoes_ordinarias": 416490697,
+    "percentual_ordinarias": 30.62,
+    "total_acoes": 416490697,
+    "percentual_total": 30.62
+  },
+  "composicao_capital_social": {
+    "data": "04/03/2025",
+    "preferenciais": 0,
+    "total": 1360382643
+  }
 }

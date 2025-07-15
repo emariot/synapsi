@@ -8,8 +8,124 @@
   "subsetor": "Intermediários Financeiros",
   "segmento": "Bancos",
   "site": "www.pine.com",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível108.502106.542Ativo Total27.333.64126.994.482Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita da Intermediação Financeira944.906590.783Resultado Bruto da Intermediação Financeira234.14581.527Resultado de Equivalência Patrimonial18.80976.572Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(1.983.327)(89.959)Atividades de Investimento(6.530)(2.559)Atividades de Financiamento(22.088)171.000Variação Cambial sobre Caixa e Equivalentes20.52010.748Aumento (Redução) de Caixa e Equivalentes(1.991.425)89.230",
-  "posicao_acionaria": "Nome%ON%PN%TotalClube de Investimento Horizonte0,717,764,15FRANCISCO ASCLEPIO BARROSO AGUIAR0,506,123,24NOBERTO NOGUEIRA PINHEIRO97,8636,5667,94OUTROS0,9148,5624,17AÇÕES TESOURARIA0,021,000,50TOTAL100,00100,00100,00Informação recebida em 11/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "04/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas20.269-Pessoas Jurídicas89-Investidores Institucionais31-Quantidade de Ações Ordinárias1.053.4530,91Quantidade de Ações Preferenciais53.669.60548,56Total de Ações54.723.05824,17",
-  "composicao_capital_social": "01/07/2025Ordinárias116.044.153Preferenciais110.695.415Total226.739.568"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 108502,
+        "31/12/2024": 106542
+      },
+      "ativo_total": {
+        "31/03/2025": 27333641,
+        "31/12/2024": 26994482
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_da_intermediacao_financeira": {
+        "01/01/2025_a_31/03/2025": 944906,
+        "01/01/2024_a_31/03/2024": 590783
+      },
+      "resultado_bruto_da_intermediacao_financeira": {
+        "01/01/2025_a_31/03/2025": 234145,
+        "01/01/2024_a_31/03/2024": 81527
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 18809,
+        "01/01/2024_a_31/03/2024": 76572
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": -1983327,
+        "01/01/2024_a_31/03/2024": -89959
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -6530,
+        "01/01/2024_a_31/03/2024": -2559
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -22088,
+        "01/01/2024_a_31/03/2024": 171000
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 20520,
+        "01/01/2024_a_31/03/2024": 10748
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -1991425,
+        "01/01/2024_a_31/03/2024": 89230
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "Clube de Investimento Horizonte",
+      "ON": 0.66,
+      "PN": 7.75,
+      "Total": 4.12
+    },
+    {
+      "nome": "FRANCISCO ASCLEPIO BARROSO AGUIAR",
+      "ON": 0.5,
+      "PN": 6.11,
+      "Total": 3.24
+    },
+    {
+      "nome": "NOBERTO NOGUEIRA PINHEIRO",
+      "ON": 97.75,
+      "PN": 36.5,
+      "Total": 67.85
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 1.02,
+      "PN": 47.98,
+      "Total": 23.95
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.08,
+      "PN": 1.66,
+      "Total": 0.85
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 100.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 20269,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 89,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 31,
+        "percentual": null
+      },
+      {
+        "tipo": "Quantidade de Ações Preferenciais",
+        "quantidade": 53114173,
+        "percentual": 47.98
+      }
+    ],
+    "data": "04/04/2025",
+    "quantidade_acoes_ordinarias": 1179494,
+    "percentual_ordinarias": 1.02,
+    "total_acoes": 54293667,
+    "percentual_total": 23.95
+  },
+  "composicao_capital_social": {
+    "data": "01/07/2025",
+    "preferenciais": 110695415,
+    "total": 226739568
+  }
 }

@@ -8,8 +8,143 @@
   "subsetor": "Tecidos. Vestuário e Calçados",
   "segmento": "Acessórios",
   "site": "https://www.vivara.com.br/",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível943.125.642920.497.601Ativo Total4.228.263.9084.273.730.310Patrimônio Líquido2.611.940.0562.496.942.987Patrimônio Líquido Atribuído à Controladora2.611.940.0562.496.942.987Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda537.080.710444.590.467Resultado Bruto364.678.961302.989.538Resultado de Equivalência Patrimonial00Resultado Financeiro(19.812.692)(15.499.737)Resultado Líquido das Operações Continuadas115.038.06635.809.185Lucro (Prejuízo) do Período115.038.06635.809.185Lucro (Prejuízo) do Período Atribuído à Controladora115.038.0660Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(143.966.430)167.949.605Atividades de Investimento(42.000.191)(45.712.940)Atividades de Financiamento57.754.293(73.528.908)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(128.212.328)48.707.757",
-  "posicao_acionaria": "Nome%ON%PN%TotalMARINA KAUFMAN BUENO NETTO14,000,0014,00NELSON KAUFMAN26,630,0026,63NKAUFMAN EMPREENDIMENTOS IMOBILIÁRIOS LTDA.5,730,005,73OUTROS53,170,0053,17AÇÕES TESOURARIA0,480,000,48TOTAL100,000,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "22/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas40.338-Pessoas Jurídicas193-Investidores Institucionais1.005-Quantidade de Ações Ordinárias123.160.59152,14Total de Ações123.160.59152,14",
-  "composicao_capital_social": "07/11/2024Ordinárias236.197.769Preferenciais0Total236.197.769"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 943125642,
+        "31/12/2024": 920497601
+      },
+      "ativo_total": {
+        "31/03/2025": 4228263908,
+        "31/12/2024": 4273730310
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 2611940056,
+        "31/12/2024": 2496942987
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 2611940056,
+        "31/12/2024": 2496942987
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 537080710,
+        "01/01/2024_a_31/03/2024": 444590467
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 364678961,
+        "01/01/2024_a_31/03/2024": 302989538
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -19812692,
+        "01/01/2024_a_31/03/2024": -15499737
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 115038066,
+        "01/01/2024_a_31/03/2024": 35809185
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 115038066,
+        "01/01/2024_a_31/03/2024": 35809185
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 115038066,
+        "01/01/2024_a_31/03/2024": 0
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": -143966430,
+        "01/01/2024_a_31/03/2024": 167949605
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -42000191,
+        "01/01/2024_a_31/03/2024": -45712940
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": 57754293,
+        "01/01/2024_a_31/03/2024": -73528908
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -128212328,
+        "01/01/2024_a_31/03/2024": 48707757
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "MARINA KAUFMAN BUENO NETTO",
+      "ON": 14.0,
+      "PN": 0.0,
+      "Total": 14.0
+    },
+    {
+      "nome": "NELSON KAUFMAN",
+      "ON": 26.63,
+      "PN": 0.0,
+      "Total": 26.63
+    },
+    {
+      "nome": "NKAUFMAN EMPREENDIMENTOS IMOBILIÁRIOS LTDA.",
+      "ON": 5.73,
+      "PN": 0.0,
+      "Total": 5.73
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 53.17,
+      "PN": 0.0,
+      "Total": 53.17
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.48,
+      "PN": 0.0,
+      "Total": 0.48
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 40338,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 193,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 1005,
+        "percentual": null
+      }
+    ],
+    "data": "22/04/2025",
+    "quantidade_acoes_ordinarias": 123160591,
+    "percentual_ordinarias": 52.14,
+    "total_acoes": 123160591,
+    "percentual_total": 52.14
+  },
+  "composicao_capital_social": {
+    "data": "07/11/2024",
+    "preferenciais": 0,
+    "total": 236197769
+  }
 }

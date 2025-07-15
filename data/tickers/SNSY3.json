@@ -8,8 +8,202 @@
   "subsetor": "Materiais Diversos",
   "segmento": "Materiais Diversos (segmento)",
   "site": "www.sansuy.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível220.851207.114Ativo Total578.897551.164Patrimônio Líquido(2.043.188)(1.985.197)Patrimônio Líquido Atribuído à Controladora(2.025.587)(1.968.399)Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda241.558221.478Resultado Bruto48.29158.406Resultado de Equivalência Patrimonial00Resultado Financeiro(54.039)(47.399)Resultado Líquido das Operações Continuadas(57.991)(39.020)Lucro (Prejuízo) do Período(57.991)(39.020)Lucro (Prejuízo) do Período Atribuído à Controladora(57.188)(38.460)Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(1.601)11.623Atividades de Investimento(13.024)(8.423)Atividades de Financiamento8.024(6.852)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(6.601)(3.652)",
-  "posicao_acionaria": "Nome%ON%PN%TotalANTONIO NOVORO KANEKO0,020,000,01CELIA EMIKO YAMAMOTO NAKABAYASHI0,660,000,23EDUARDO DA FONSECA MENDES2,080,971,35JOSÉ PAULINO DA ROCHA RIBEIRO0,040,000,01KAZUMI MIYAMOTO0,720,000,25KEIKO AKIMOTO1,600,901,14ROBERTO LOMBARDI DE BARROS1,768,686,30SANSUY ADMINISTRAÇÃO PARTICIPAÇÃO REPRES. E SERVIÇOS LTDA78,2534,6149,64SERGIO AMERICANO MENDES0,007,785,10TOSHIO KUKO0,120,000,04TOSHIO NAKABAYASHI0,440,000,15YOSHIYUKI ONO0,000,000,00OUTROS14,3247,0635,79AÇÕES TESOURARIA0,000,000,00TOTAL100,00100,00100,00Informação recebida em 02/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "31/03/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas1.498-Pessoas Jurídicas58-Investidores Institucionais0-Quantidade de Ações Ordinárias479.70018,05Quantidade de Ações Preferenciais2.844.54156,23Total de Ações3.324.24143,08",
-  "composicao_capital_social": "27/07/2020Ordinárias2.657.920Preferenciais5.058.480Total7.716.400"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 220851,
+        "31/12/2024": 207114
+      },
+      "ativo_total": {
+        "31/03/2025": 578897,
+        "31/12/2024": 551164
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": -2043188,
+        "31/12/2024": -1985197
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": -2025587,
+        "31/12/2024": -1968399
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 241558,
+        "01/01/2024_a_31/03/2024": 221478
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 48291,
+        "01/01/2024_a_31/03/2024": 58406
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -54039,
+        "01/01/2024_a_31/03/2024": -47399
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": -57991,
+        "01/01/2024_a_31/03/2024": -39020
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": -57991,
+        "01/01/2024_a_31/03/2024": -39020
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": -57188,
+        "01/01/2024_a_31/03/2024": -38460
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": -1601,
+        "01/01/2024_a_31/03/2024": 11623
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -13024,
+        "01/01/2024_a_31/03/2024": -8423
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": 8024,
+        "01/01/2024_a_31/03/2024": -6852
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -6601,
+        "01/01/2024_a_31/03/2024": -3652
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "ANTONIO NOVORO KANEKO",
+      "ON": 0.02,
+      "PN": 0.0,
+      "Total": 0.01
+    },
+    {
+      "nome": "CELIA EMIKO YAMAMOTO NAKABAYASHI",
+      "ON": 0.66,
+      "PN": 0.0,
+      "Total": 0.23
+    },
+    {
+      "nome": "EDUARDO DA FONSECA MENDES",
+      "ON": 2.08,
+      "PN": 0.97,
+      "Total": 1.35
+    },
+    {
+      "nome": "JOSÉ PAULINO DA ROCHA RIBEIRO",
+      "ON": 0.04,
+      "PN": 0.0,
+      "Total": 0.01
+    },
+    {
+      "nome": "KAZUMI MIYAMOTO",
+      "ON": 0.72,
+      "PN": 0.0,
+      "Total": 0.25
+    },
+    {
+      "nome": "KEIKO AKIMOTO",
+      "ON": 1.6,
+      "PN": 0.9,
+      "Total": 1.14
+    },
+    {
+      "nome": "ROBERTO LOMBARDI DE BARROS",
+      "ON": 1.76,
+      "PN": 8.68,
+      "Total": 6.3
+    },
+    {
+      "nome": "SANSUY ADMINISTRAÇÃO PARTICIPAÇÃO REPRES. E SERVIÇOS LTDA",
+      "ON": 78.25,
+      "PN": 34.61,
+      "Total": 49.64
+    },
+    {
+      "nome": "SERGIO AMERICANO MENDES",
+      "ON": 0.0,
+      "PN": 7.78,
+      "Total": 5.1
+    },
+    {
+      "nome": "TOSHIO KUKO",
+      "ON": 0.12,
+      "PN": 0.0,
+      "Total": 0.04
+    },
+    {
+      "nome": "TOSHIO NAKABAYASHI",
+      "ON": 0.44,
+      "PN": 0.0,
+      "Total": 0.15
+    },
+    {
+      "nome": "YOSHIYUKI ONO",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 14.32,
+      "PN": 47.06,
+      "Total": 35.79
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 100.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 1498,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 58,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 0,
+        "percentual": null
+      },
+      {
+        "tipo": "Quantidade de Ações Preferenciais",
+        "quantidade": 2844541,
+        "percentual": 56.23
+      }
+    ],
+    "data": "31/03/2025",
+    "quantidade_acoes_ordinarias": 479700,
+    "percentual_ordinarias": 18.05,
+    "total_acoes": 3324241,
+    "percentual_total": 43.08
+  },
+  "composicao_capital_social": {
+    "data": "27/07/2020",
+    "preferenciais": 5058480,
+    "total": 7716400
+  }
 }

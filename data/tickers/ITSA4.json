@@ -8,8 +8,334 @@
   "subsetor": "Holdings Diversificadas",
   "segmento": "Holdings Diversificadas (segmento)",
   "site": "www.itausa.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível91.949.00095.737.000Ativo Total110.639.000114.625.000Patrimônio Líquido90.441.00094.997.000Patrimônio Líquido Atribuído à Controladora85.938.00090.443.000Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda1.903.0001.936.000Resultado Bruto446.000550.000Resultado de Equivalência Patrimonial4.251.0003.630.000Resultado Financeiro(524.000)(253.000)Resultado Líquido das Operações Continuadas3.955.0003.455.000Lucro (Prejuízo) do Período3.955.0003.455.000Lucro (Prejuízo) do Período Atribuído à Controladora3.914.0003.475.000Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(108.000)(17.000)Atividades de Investimento7.427.0005.530.000Atividades de Financiamento(6.659.000)(4.884.000)Variação Cambial sobre Caixa e Equivalentes24.0007.000Aumento (Redução) de Caixa e Equivalentes684.000636.000",
-  "posicao_acionaria": "Nome%ON%PN%TotalALFREDO EGYDIO ARRUDA VILLELA FILHO12,793,936,97ALFREDO EGYDIO NUGENT SETUBAL0,000,000,00ALFREDO EGYDIO SETUBAL3,590,751,72ANA LÚCIA DE MATTOS BARRETTO VILLELA12,793,666,80BEATRIZ DE MATTOS SETUBAL0,230,010,08BlackRock Inc.0,005,003,28BRUNO RIZZO SETUBAL1,080,000,37CAMILA SETUBAL LENZ CESAR1,080,000,37CAROLINA MARINHO LUTZ SETUBAL1,360,250,63Companhia ESA0,910,000,32FERNANDO SETUBAL SOUZA E SILVA0,740,190,38Fundação Antonio e Helena Zerrener Instituição Nacional de Beneficência15,402,036,63FUNDAÇÃO ITAÚ11,380,734,39GABRIEL DE MATTOS SETUBAL0,230,010,08GUILHERME SETUBAL SOUZA E SILVA0,740,180,37JOSÉ LUIZ EGYDIO SETUBAL2,890,721,46JULIA GUIDON SETUBAL1,360,250,63LUIZA RIZZO SETUBAL1,080,000,37MARCELO RIBEIRO DO VALLE SETUBAL0,000,010,00MARIANA LUCAS SETUBAL0,850,170,40MARINA NUGENT SETUBAL0,000,000,00OLAVO EGYDIO MUTARELLI SETUBAL0,230,010,08OLAVO EGYDIO SETUBAL JÚNIOR0,360,770,63PATRICIA RIBEIRO DO VALLE SETUBAL0,000,010,00PAULA LUCAS SETUBAL0,850,170,40PAULO EGYDIO SETUBAL1,360,250,63PAULO SETUBAL NETO0,000,010,01RICARDO EGYDIO SETUBAL3,580,761,73RICARDO VILLELA MARINO6,402,603,91ROBERTO EGYDIO SETUBAL1,900,380,90RODOLFO VILLELA MARINO6,412,603,91RODRIGO RIBEIRO DO VALLE SETUBAL0,000,010,00Rudric ITH Participações Ltda0,080,040,05TIDE SETUBAL SOUZA E SILVA NOGUEIRA0,740,200,39OUTROS9,5674,3152,06AÇÕES TESOURARIA0,000,040,02TOTAL100,00100,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "30/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas976.977-Pessoas Jurídicas2.099-Investidores Institucionais1.884-Quantidade de Ações Ordinárias1.362.918.34636,07Quantidade de Ações Preferenciais5.853.286.92881,12Total de Ações7.216.205.27465,64",
-  "composicao_capital_social": "10/02/2025Ordinárias3.778.072.561Preferenciais7.215.738.072Total10.993.810.633"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 91949000,
+        "31/12/2024": 95737000
+      },
+      "ativo_total": {
+        "31/03/2025": 110639000,
+        "31/12/2024": 114625000
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 90441000,
+        "31/12/2024": 94997000
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 85938000,
+        "31/12/2024": 90443000
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 1903000,
+        "01/01/2024_a_31/03/2024": 1936000
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 446000,
+        "01/01/2024_a_31/03/2024": 550000
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 4251000,
+        "01/01/2024_a_31/03/2024": 3630000
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -524000,
+        "01/01/2024_a_31/03/2024": -253000
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 3955000,
+        "01/01/2024_a_31/03/2024": 3455000
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 3955000,
+        "01/01/2024_a_31/03/2024": 3455000
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 3914000,
+        "01/01/2024_a_31/03/2024": 3475000
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": -108000,
+        "01/01/2024_a_31/03/2024": -17000
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": 7427000,
+        "01/01/2024_a_31/03/2024": 5530000
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -6659000,
+        "01/01/2024_a_31/03/2024": -4884000
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 24000,
+        "01/01/2024_a_31/03/2024": 7000
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 684000,
+        "01/01/2024_a_31/03/2024": 636000
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "ALFREDO EGYDIO ARRUDA VILLELA FILHO",
+      "ON": 12.79,
+      "PN": 3.93,
+      "Total": 6.97
+    },
+    {
+      "nome": "ALFREDO EGYDIO NUGENT SETUBAL",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "ALFREDO EGYDIO SETUBAL",
+      "ON": 3.59,
+      "PN": 0.75,
+      "Total": 1.72
+    },
+    {
+      "nome": "ANA LÚCIA DE MATTOS BARRETTO VILLELA",
+      "ON": 12.79,
+      "PN": 3.66,
+      "Total": 6.8
+    },
+    {
+      "nome": "BEATRIZ DE MATTOS SETUBAL",
+      "ON": 0.23,
+      "PN": 0.01,
+      "Total": 0.08
+    },
+    {
+      "nome": "BlackRock Inc.",
+      "ON": 0.0,
+      "PN": 5.0,
+      "Total": 3.28
+    },
+    {
+      "nome": "BRUNO RIZZO SETUBAL",
+      "ON": 1.08,
+      "PN": 0.0,
+      "Total": 0.37
+    },
+    {
+      "nome": "CAMILA SETUBAL LENZ CESAR",
+      "ON": 1.08,
+      "PN": 0.0,
+      "Total": 0.37
+    },
+    {
+      "nome": "CAROLINA MARINHO LUTZ SETUBAL",
+      "ON": 1.36,
+      "PN": 0.25,
+      "Total": 0.63
+    },
+    {
+      "nome": "Companhia ESA",
+      "ON": 0.91,
+      "PN": 0.0,
+      "Total": 0.32
+    },
+    {
+      "nome": "FERNANDO SETUBAL SOUZA E SILVA",
+      "ON": 0.74,
+      "PN": 0.19,
+      "Total": 0.38
+    },
+    {
+      "nome": "Fundação Antonio e Helena Zerrener Instituição Nacional de Beneficência",
+      "ON": 15.4,
+      "PN": 2.03,
+      "Total": 6.63
+    },
+    {
+      "nome": "FUNDAÇÃO ITAÚ",
+      "ON": 11.38,
+      "PN": 0.73,
+      "Total": 4.39
+    },
+    {
+      "nome": "GABRIEL DE MATTOS SETUBAL",
+      "ON": 0.23,
+      "PN": 0.01,
+      "Total": 0.08
+    },
+    {
+      "nome": "GUILHERME SETUBAL SOUZA E SILVA",
+      "ON": 0.74,
+      "PN": 0.18,
+      "Total": 0.37
+    },
+    {
+      "nome": "JOSÉ LUIZ EGYDIO SETUBAL",
+      "ON": 2.89,
+      "PN": 0.72,
+      "Total": 1.46
+    },
+    {
+      "nome": "JULIA GUIDON SETUBAL",
+      "ON": 1.36,
+      "PN": 0.25,
+      "Total": 0.63
+    },
+    {
+      "nome": "LUIZA RIZZO SETUBAL",
+      "ON": 1.08,
+      "PN": 0.0,
+      "Total": 0.37
+    },
+    {
+      "nome": "MARCELO RIBEIRO DO VALLE SETUBAL",
+      "ON": 0.0,
+      "PN": 0.01,
+      "Total": 0.0
+    },
+    {
+      "nome": "MARIANA LUCAS SETUBAL",
+      "ON": 0.85,
+      "PN": 0.17,
+      "Total": 0.4
+    },
+    {
+      "nome": "MARINA NUGENT SETUBAL",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "OLAVO EGYDIO MUTARELLI SETUBAL",
+      "ON": 0.23,
+      "PN": 0.01,
+      "Total": 0.08
+    },
+    {
+      "nome": "OLAVO EGYDIO SETUBAL JÚNIOR",
+      "ON": 0.36,
+      "PN": 0.77,
+      "Total": 0.63
+    },
+    {
+      "nome": "PATRICIA RIBEIRO DO VALLE SETUBAL",
+      "ON": 0.0,
+      "PN": 0.01,
+      "Total": 0.0
+    },
+    {
+      "nome": "PAULA LUCAS SETUBAL",
+      "ON": 0.85,
+      "PN": 0.17,
+      "Total": 0.4
+    },
+    {
+      "nome": "PAULO EGYDIO SETUBAL",
+      "ON": 1.36,
+      "PN": 0.25,
+      "Total": 0.63
+    },
+    {
+      "nome": "PAULO SETUBAL NETO",
+      "ON": 0.0,
+      "PN": 0.01,
+      "Total": 0.01
+    },
+    {
+      "nome": "RICARDO EGYDIO SETUBAL",
+      "ON": 3.58,
+      "PN": 0.76,
+      "Total": 1.73
+    },
+    {
+      "nome": "RICARDO VILLELA MARINO",
+      "ON": 6.4,
+      "PN": 2.6,
+      "Total": 3.91
+    },
+    {
+      "nome": "ROBERTO EGYDIO SETUBAL",
+      "ON": 1.9,
+      "PN": 0.38,
+      "Total": 0.9
+    },
+    {
+      "nome": "RODOLFO VILLELA MARINO",
+      "ON": 6.41,
+      "PN": 2.6,
+      "Total": 3.91
+    },
+    {
+      "nome": "RODRIGO RIBEIRO DO VALLE SETUBAL",
+      "ON": 0.0,
+      "PN": 0.01,
+      "Total": 0.0
+    },
+    {
+      "nome": "Rudric ITH Participações Ltda",
+      "ON": 0.08,
+      "PN": 0.04,
+      "Total": 0.05
+    },
+    {
+      "nome": "TIDE SETUBAL SOUZA E SILVA NOGUEIRA",
+      "ON": 0.74,
+      "PN": 0.2,
+      "Total": 0.39
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 9.56,
+      "PN": 74.31,
+      "Total": 52.06
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.0,
+      "PN": 0.04,
+      "Total": 0.02
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 100.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 976977,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 2099,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 1884,
+        "percentual": null
+      },
+      {
+        "tipo": "Quantidade de Ações Preferenciais",
+        "quantidade": 5853286928,
+        "percentual": 81.12
+      }
+    ],
+    "data": "30/04/2025",
+    "quantidade_acoes_ordinarias": 1362918346,
+    "percentual_ordinarias": 36.07,
+    "total_acoes": 7216205274,
+    "percentual_total": 65.64
+  },
+  "composicao_capital_social": {
+    "data": "10/02/2025",
+    "preferenciais": 7215738072,
+    "total": 10993810633
+  }
 }

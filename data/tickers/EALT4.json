@@ -8,8 +8,202 @@
   "subsetor": "Máquinas e Equipamentos",
   "segmento": "Máq. e Equip. Industriais",
   "site": "www.altona.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível330.765327.508Ativo Total644.494618.724Patrimônio Líquido337.052295.589Patrimônio Líquido Atribuído à Controladora337.052295.589Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda152.175128.901Resultado Bruto41.86538.242Resultado de Equivalência Patrimonial00Resultado Financeiro4.012(4.019)Resultado Líquido das Operações Continuadas41.60613.398Lucro (Prejuízo) do Período41.60613.398Lucro (Prejuízo) do Período Atribuído à Controladora00Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais14.2956.848Atividades de Investimento(8.965)(4.187)Atividades de Financiamento(8.119)(5.226)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(2.789)(2.565)",
-  "posicao_acionaria": "Nome%ON%PN%TotalBANRISUL FUNDO DE INVESTIMENTO EM AÇÕES0,005,353,03BEATRIZ ELOISA WERNER OLINGER4,090,692,17CARMEN VETTER WERNER2,980,041,32EDUARDO LIVIO VALARETTO0,734,262,73ELTON UGHINI0,004,392,49ESPÓLIO BERNARDO H. W. WERNER0,142,401,42GURGUEIA FUNDO DE INVESTIMENTO MULTIMERCADO0,0021,1812,00JIMMY KELVYN ESTEVAM CARVALHO5,330,422,55LUIZ FERNANDO WERNER0,004,842,74MARCO ANTÔNIO WERNER0,005,152,92UW28 PARTICIPAÇÕES LTDA9,130,003,96WERNER S.A. AGRICULTURA COMÉRCIO E INDÚSTRIA72,000,5731,52OUTROS5,6050,7131,17AÇÕES TESOURARIA0,000,000,00TOTAL100,00100,00100,00Informação recebida em 05/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "26/05/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas5.172-Pessoas Jurídicas30-Investidores Institucionais29-Quantidade de Ações Ordinárias9.750.000100,00Quantidade de Ações Preferenciais12.750.000100,00Total de Ações22.500.000100,00",
-  "composicao_capital_social": "29/04/2021Ordinárias9.750.000Preferenciais12.750.000Total22.500.000"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 330765,
+        "31/12/2024": 327508
+      },
+      "ativo_total": {
+        "31/03/2025": 644494,
+        "31/12/2024": 618724
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 337052,
+        "31/12/2024": 295589
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 337052,
+        "31/12/2024": 295589
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 152175,
+        "01/01/2024_a_31/03/2024": 128901
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 41865,
+        "01/01/2024_a_31/03/2024": 38242
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": 4012,
+        "01/01/2024_a_31/03/2024": -4019
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 41606,
+        "01/01/2024_a_31/03/2024": 13398
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 41606,
+        "01/01/2024_a_31/03/2024": 13398
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 14295,
+        "01/01/2024_a_31/03/2024": 6848
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -8965,
+        "01/01/2024_a_31/03/2024": -4187
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -8119,
+        "01/01/2024_a_31/03/2024": -5226
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -2789,
+        "01/01/2024_a_31/03/2024": -2565
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "BANRISUL FUNDO DE INVESTIMENTO EM AÇÕES",
+      "ON": 0.0,
+      "PN": 5.35,
+      "Total": 3.03
+    },
+    {
+      "nome": "BEATRIZ ELOISA WERNER OLINGER",
+      "ON": 4.09,
+      "PN": 0.69,
+      "Total": 2.17
+    },
+    {
+      "nome": "CARMEN VETTER WERNER",
+      "ON": 2.98,
+      "PN": 0.04,
+      "Total": 1.32
+    },
+    {
+      "nome": "EDUARDO LIVIO VALARETTO",
+      "ON": 0.73,
+      "PN": 4.26,
+      "Total": 2.73
+    },
+    {
+      "nome": "ELTON UGHINI",
+      "ON": 0.0,
+      "PN": 4.39,
+      "Total": 2.49
+    },
+    {
+      "nome": "ESPÓLIO BERNARDO H. W. WERNER",
+      "ON": 0.14,
+      "PN": 2.4,
+      "Total": 1.42
+    },
+    {
+      "nome": "GURGUEIA FUNDO DE INVESTIMENTO MULTIMERCADO",
+      "ON": 0.0,
+      "PN": 21.18,
+      "Total": 12.0
+    },
+    {
+      "nome": "JIMMY KELVYN ESTEVAM CARVALHO",
+      "ON": 5.33,
+      "PN": 0.42,
+      "Total": 2.55
+    },
+    {
+      "nome": "LUIZ FERNANDO WERNER",
+      "ON": 0.0,
+      "PN": 4.84,
+      "Total": 2.74
+    },
+    {
+      "nome": "MARCO ANTÔNIO WERNER",
+      "ON": 0.0,
+      "PN": 5.15,
+      "Total": 2.92
+    },
+    {
+      "nome": "UW28 PARTICIPAÇÕES LTDA",
+      "ON": 9.13,
+      "PN": 0.0,
+      "Total": 3.96
+    },
+    {
+      "nome": "WERNER S.A. AGRICULTURA COMÉRCIO E INDÚSTRIA",
+      "ON": 72.0,
+      "PN": 0.57,
+      "Total": 31.52
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 5.6,
+      "PN": 50.71,
+      "Total": 31.17
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 100.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 5172,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 30,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 29,
+        "percentual": null
+      },
+      {
+        "tipo": "Quantidade de Ações Preferenciais",
+        "quantidade": 12750000,
+        "percentual": 100.0
+      }
+    ],
+    "data": "26/05/2025",
+    "quantidade_acoes_ordinarias": 9750000,
+    "percentual_ordinarias": 100.0,
+    "total_acoes": 22500000,
+    "percentual_total": 100.0
+  },
+  "composicao_capital_social": {
+    "data": "29/04/2021",
+    "preferenciais": 12750000,
+    "total": 22500000
+  }
 }

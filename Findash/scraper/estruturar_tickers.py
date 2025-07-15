@@ -1,180 +1,113 @@
-import os
-import json
 import re
-from pathlib import Path
+import json
 
-PASTA_ORIGINAL = Path("data/tickers")
-PASTA_DESTINO = Path("data/tickers_estruturados")
-RELATORIO_ERROS = "relatorio_erros_estrutura.json"
+def limpar_texto(texto):
+    """
+    Insere espaços entre números grudados:
+    - Ex: '1.603.8521.600.313' -> '1.603.852 1.600.313'
+    """
+    # Regex que identifica quando um número termina e outro começa imediatamente
+    # Procura dígito seguido imediatamente por outro dígito e um ponto decimal, separa por espaço
+    # Também procura parênteses e separa para evitar mistura
+    texto = re.sub(r'(\d)(?=(\d{1,3}\.))', r'\1 ', texto)
+    texto = re.sub(r'(\))(?=\d)', r') ', texto)
+    texto = re.sub(r'(\d)(?=\()', r'\1 ', texto)
+    return texto
 
-os.makedirs(PASTA_DESTINO, exist_ok=True)
-erros = {}
-
-def parse_numero(s):
-    if not s:
+def converte_num_brasileiro(valor):
+    """
+    Converte número formatado no padrão brasileiro para int,
+    tratando negativo entre parênteses.
+    """
+    valor = valor.strip()
+    if not valor:
         return None
-    s = s.strip()
-    if s in ("-", "", None):
-        return None
-    s = s.replace('.', '').replace(',', '.')
-    if s.startswith('(') and s.endswith(')'):
-        s = '-' + s[1:-1]
+    negativo = False
+    if valor.startswith('(') and valor.endswith(')'):
+        negativo = True
+        valor = valor[1:-1]
+
+    # Remove pontos e troca vírgula por ponto (para float)
+    valor = valor.replace('.', '').replace(',', '.')
     try:
-        return float(s)
-    except:
+        n = float(valor)
+        n_int = int(round(n))
+        return -n_int if negativo else n_int
+    except Exception:
         return None
 
-def estruturar_dados_eco(texto):
-    if not texto:
-        return None
-    
-    linhas = [l.strip() for l in texto.split('\n') if l.strip()]
-    
-    secoes_chaves = {
-        "balanco_patrimonial": "Balanço Patrimonial",
-        "demonstracao_resultado": "Demonstração do Resultado",
-        "demonstracao_fluxo_caixa": "Demonstração do Fluxo de Caixa"
+def extrair_dados(texto, campos, datas_esperadas):
+    """
+    Extrai para cada campo seus valores numéricos correspondentes.
+    Retorna dict {campo: {data1: val1, data2: val2}}
+    """
+    dados = {}
+    for campo in campos:
+        # Escapa caracteres especiais no campo para regex
+        campo_escapado = re.escape(campo)
+        # Busca a linha com campo seguido de dois números (podem ter parênteses)
+        regex = re.compile(rf'{campo_escapado}\s*([\(\)\d\.,\-]+)\s*([\(\)\d\.,\-]+)')
+        match = regex.search(texto)
+        if match:
+            v1 = converte_num_brasileiro(match.group(1))
+            v2 = converte_num_brasileiro(match.group(2))
+            dados[campo.lower().replace(' ', '_').replace('á','a').replace('à','a').replace('é','e').replace('í','i').replace('ó','o').replace('ú','u').replace('ç','c').replace('(','').replace(')','')] = {
+                datas_esperadas[0]: v1,
+                datas_esperadas[1]: v2
+            }
+    return dados
+
+def parse_dados_economicos(texto_bruto):
+    texto = limpar_texto(texto_bruto)
+
+    # Datas do balanço patrimonial - aparecem juntas no texto
+    datas_bp = re.findall(r'\d{2}/\d{2}/\d{4}', texto)
+    datas_bp = list(dict.fromkeys(datas_bp))  # Remove duplicados mantendo ordem
+    if len(datas_bp) < 2:
+        raise ValueError("Não encontrou 2 datas no balanço patrimonial")
+
+    campos_bp = [
+        "Ativo Imobilizado, Investimentos e Intangível",
+        "Ativo Total",
+        "Patrimônio Líquido",
+        "Patrimônio Líquido Atribuído à Controladora"
+    ]
+
+    campos_dr = [
+        "Receita de Venda",
+        "Resultado Bruto",
+        "Resultado de Equivalência Patrimonial",
+        "Resultado Financeiro",
+        "Resultado Líquido das Operações Continuadas",
+        "Lucro (Prejuízo) do Período",
+        "Lucro (Prejuízo) do Período Atribuído à Controladora"
+    ]
+
+    # Datas da Demonstração do Resultado e Fluxo de Caixa (formato 01/01/2025 a 31/03/2025)
+    datas_dr = re.findall(r'\d{2}/\d{2}/\d{4} a \d{2}/\d{2}/\d{4}', texto)
+    if len(datas_dr) < 2:
+        raise ValueError("Não encontrou 2 datas no demonstrativo de resultado")
+
+    campos_fc = [
+        "Atividades Operacionais",
+        "Atividades de Investimento",
+        "Atividades de Financiamento",
+        "Variação Cambial sobre Caixa e Equivalentes",
+        "Aumento (Redução) de Caixa e Equivalentes"
+    ]
+
+    dados = {
+        "balanco_patrimonial": extrair_dados(texto, campos_bp, datas_bp[:2]),
+        "demonstracao_resultado": extrair_dados(texto, campos_dr, datas_dr[:2]),
+        "fluxo_caixa": extrair_dados(texto, campos_fc, datas_dr[:2]),
     }
 
-    secoes = {}
-    secao_atual = None
-    datas = []
-    valores = {}
+    return dados
 
-    for linha in linhas:
-        # Detecta o início da seção e datas
-        for chave, titulo in secoes_chaves.items():
-            if titulo in linha:
-                # Salva seção anterior se existir
-                if secao_atual:
-                    secoes[secao_atual] = {"datas": datas, "valores": valores}
-                secao_atual = chave
-                # Extrai as datas da linha
-                datas = re.findall(r'\d{2}/\d{2}/\d{4}', linha)
-                valores = {}
-                break
-        else:
-            # Linha dentro da seção: tenta extrair nome + valores
-            if secao_atual:
-                # Dividir por 2 ou mais espaços consecutivos (colunas)
-                partes = re.split(r'\s{2,}', linha)
-                if len(partes) >= 2:
-                    nome = partes[0]
-                    numeros = [parse_numero(x) for x in partes[1:]]
-                    valores[nome] = numeros
-
-    # Salva a última seção processada
-    if secao_atual:
-        secoes[secao_atual] = {"datas": datas, "valores": valores}
-
-    return secoes
-
-def estruturar_posicao_acionaria(texto):
-    if not texto:
-        return None
-    # Exemplo: Nome %ON %PN %Total separados por tabulação ou múltiplos espaços
-    linhas = [l.strip() for l in texto.split('\n') if l.strip()]
-    resultado = []
-    for linha in linhas:
-        # Tentativa simples: dividir por tab ou 2+ espaços
-        campos = re.split(r'\t+|\s{2,}', linha)
-        if len(campos) >= 4:
-            nome = campos[0]
-            try:
-                on = float(campos[1].replace(',', '.'))
-            except:
-                on = None
-            try:
-                pn = float(campos[2].replace(',', '.'))
-            except:
-                pn = None
-            try:
-                total = float(campos[3].replace(',', '.'))
-            except:
-                total = None
-            resultado.append({"nome": nome, "%ON": on, "%PN": pn, "%Total": total})
-    return resultado
-
-def estruturar_acoes_em_circulacao(texto):
-    if not texto:
-        return None
-    linhas = [l.strip() for l in texto.split('\n') if l.strip()]
-    resultado = []
-    for linha in linhas:
-        # Tenta separar em três colunas: tipo, quantidade, percentual
-        campos = re.split(r'\t+|\s{2,}', linha)
-        if len(campos) >= 3:
-            tipo = campos[0]
-            qtd = parse_numero(campos[1])
-            perc = campos[2].replace(',', '.') if campos[2] != '-' else None
-            try:
-                perc = float(perc) if perc else None
-            except:
-                perc = None
-            resultado.append({"tipo": tipo, "quantidade": qtd, "percentual": perc})
-    return resultado
-
-def estruturar_capital_social(texto):
-    if not texto:
-        return None
-    linhas = [l.strip() for l in texto.split('\n') if l.strip()]
-    resultado = {}
-    for linha in linhas:
-        # Espera formato "Ordinárias\t123456", etc
-        campos = re.split(r'\t+|\s{2,}', linha)
-        if len(campos) >= 2:
-            chave = campos[0].lower()
-            valor = parse_numero(campos[1])
-            if chave and valor is not None:
-                # padronizar chaves
-                if 'ordinaria' in chave:
-                    resultado['ordinarias'] = valor
-                elif 'preferencial' in chave:
-                    resultado['preferenciais'] = valor
-                elif 'total' in chave:
-                    resultado['total'] = valor
-    return resultado if resultado else None
-
-def processar_arquivo(caminho):
-    try:
-        with open(caminho, "r", encoding="utf-8") as f:
-            dados = json.load(f)
-
-        # Substitui os campos originais pelos estruturados
-        if "dados_economico_financeiros" in dados:
-            dados["dados_economico_financeiros"] = estruturar_dados_eco(dados["dados_economico_financeiros"])
-
-        if "posicao_acionaria" in dados:
-            dados["posicao_acionaria"] = estruturar_posicao_acionaria(dados["posicao_acionaria"])
-
-        if "acoes_em_circulacao_no_mercado" in dados:
-            dados["acoes_em_circulacao_no_mercado"] = estruturar_acoes_em_circulacao(dados["acoes_em_circulacao_no_mercado"])
-
-        if "composicao_capital_social" in dados:
-            dados["composicao_capital_social"] = estruturar_capital_social(dados["composicao_capital_social"])
-
-        destino = PASTA_DESTINO / caminho.name
-        with open(destino, "w", encoding="utf-8") as f_out:
-            json.dump(dados, f_out, ensure_ascii=False, indent=2)
-
-    except Exception as e:
-        erros[caminho.name] = str(e)
-
-def main():
-    arquivos = list(PASTA_ORIGINAL.glob("*.json"))
-    total = len(arquivos)
-    print(f"Processando {total} arquivos...")
-
-    for i, caminho in enumerate(arquivos, 1):
-        print(f"[{i}/{total}] {caminho.name}")
-        processar_arquivo(caminho)
-
-    with open(RELATORIO_ERROS, "w", encoding="utf-8") as f:
-        json.dump(erros, f, indent=2, ensure_ascii=False)
-
-    print(f"\n✅ Concluído. {len(erros)} arquivos com erro.")
-    print(f"→ Relatório salvo em: {RELATORIO_ERROS}")
-    print(f"→ Arquivos salvos em: {PASTA_DESTINO}")
 
 if __name__ == "__main__":
-    main()
+    texto_teste = """
+    Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível1.603.8521.600.313Ativo Total2.859.0062.889.222Patrimônio Líquido1.114.9151.136.817Patrimônio Líquido Atribuído à Controladora1.074.9751.094.793Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda307.063280.709Resultado Bruto72.79180.617Resultado de Equivalência Patrimonial00Resultado Financeiro(39.572)(71.143)Resultado Líquido das Operações Continuadas(21.208)(76.845)Lucro (Prejuízo) do Período(21.208)(76.845)Lucro (Prejuízo) do Período Atribuído à Controladora(19.828)(78.744)Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais73.9045.689Atividades de Investimento36.349(20.411)Atividades de Financiamento(102.955)(106.085)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes7.298(120.807)
+    """
+    resultado = parse_dados_economicos(texto_teste)
+    print(json.dumps(resultado, indent=2, ensure_ascii=False))

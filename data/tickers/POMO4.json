@@ -8,8 +8,202 @@
   "subsetor": "Material de Transporte",
   "segmento": "Material Rodoviário",
   "site": "www.marcopolo.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível2.206.3762.217.213Ativo Total8.980.9129.441.753Patrimônio Líquido4.013.8004.082.336Patrimônio Líquido Atribuído à Controladora3.960.1424.026.610Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda1.677.4361.656.076Resultado Bruto384.255385.301Resultado de Equivalência Patrimonial15.50434.609Resultado Financeiro109.35842.195Resultado Líquido das Operações Continuadas243.071316.940Lucro (Prejuízo) do Período243.071316.940Lucro (Prejuízo) do Período Atribuído à Controladora241.809309.766Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais74.990148.691Atividades de Investimento(62.848)(59.977)Atividades de Financiamento(322.310)(161.635)Variação Cambial sobre Caixa e Equivalentes(20.417)7.177Aumento (Redução) de Caixa e Equivalentes(330.585)(65.744)",
-  "posicao_acionaria": "Nome%ON%PN%TotalAlaska Investimentos Ltda19,980,067,25BELLPART PARTICIPAÇÕES LTDA44,480,6716,47BlackRock. Inc.0,654,963,40FUNDAÇÃO MARCOPOLO5,311,262,72G5 HUBBLE FIA IE4,130,001,49JAMES EDUARDO BELLINI3,203,383,32LARRAINVIAL ASSET MANAGEMENT SICAV0,005,693,64MAURO GILBERTO BELLINI2,781,672,07PAULO ALEXANDER PACHECO BELLINI2,321,111,55THE GOLDMAN SACHS GROUP. INC.0,004,883,12VATE PARTICIPACOES E ADMINISTRACAO LTDA1,030,000,37VIVIANE MARIA PINTO BADO0,360,080,18OUTROS15,7674,9853,62AÇÕES TESOURARIA0,001,270,81TOTAL100,00100,00100,00Informação recebida em 25/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "28/03/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas68.838-Pessoas Jurídicas608-Investidores Institucionais927-Quantidade de Ações Ordinárias193.259.90947,14Quantidade de Ações Preferenciais661.573.51691,09Total de Ações854.833.42575,23",
-  "composicao_capital_social": "22/02/2024Ordinárias409.950.893Preferenciais726.320.565Total1.136.271.458"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 2206376,
+        "31/12/2024": 2217213
+      },
+      "ativo_total": {
+        "31/03/2025": 8980912,
+        "31/12/2024": 9441753
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 4013800,
+        "31/12/2024": 4082336
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 3960142,
+        "31/12/2024": 4026610
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 1677436,
+        "01/01/2024_a_31/03/2024": 1656076
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 384255,
+        "01/01/2024_a_31/03/2024": 385301
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 15504,
+        "01/01/2024_a_31/03/2024": 34609
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": 109358,
+        "01/01/2024_a_31/03/2024": 42195
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 243071,
+        "01/01/2024_a_31/03/2024": 316940
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 243071,
+        "01/01/2024_a_31/03/2024": 316940
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 241809,
+        "01/01/2024_a_31/03/2024": 309766
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 74990,
+        "01/01/2024_a_31/03/2024": 148691
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -62848,
+        "01/01/2024_a_31/03/2024": -59977
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -322310,
+        "01/01/2024_a_31/03/2024": -161635
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -20417,
+        "01/01/2024_a_31/03/2024": 7177
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -330585,
+        "01/01/2024_a_31/03/2024": -65744
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "Alaska Investimentos Ltda",
+      "ON": 19.98,
+      "PN": 0.06,
+      "Total": 7.25
+    },
+    {
+      "nome": "BELLPART PARTICIPAÇÕES LTDA",
+      "ON": 44.48,
+      "PN": 0.67,
+      "Total": 16.47
+    },
+    {
+      "nome": "BlackRock. Inc.",
+      "ON": 0.65,
+      "PN": 4.96,
+      "Total": 3.4
+    },
+    {
+      "nome": "FUNDAÇÃO MARCOPOLO",
+      "ON": 5.31,
+      "PN": 1.26,
+      "Total": 2.72
+    },
+    {
+      "nome": "G5 HUBBLE FIA IE",
+      "ON": 4.13,
+      "PN": 0.0,
+      "Total": 1.49
+    },
+    {
+      "nome": "JAMES EDUARDO BELLINI",
+      "ON": 3.2,
+      "PN": 3.38,
+      "Total": 3.32
+    },
+    {
+      "nome": "LARRAINVIAL ASSET MANAGEMENT SICAV",
+      "ON": 0.0,
+      "PN": 5.69,
+      "Total": 3.64
+    },
+    {
+      "nome": "MAURO GILBERTO BELLINI",
+      "ON": 2.78,
+      "PN": 1.67,
+      "Total": 2.07
+    },
+    {
+      "nome": "PAULO ALEXANDER PACHECO BELLINI",
+      "ON": 2.32,
+      "PN": 1.11,
+      "Total": 1.55
+    },
+    {
+      "nome": "THE GOLDMAN SACHS GROUP. INC.",
+      "ON": 0.0,
+      "PN": 4.88,
+      "Total": 3.12
+    },
+    {
+      "nome": "VATE PARTICIPACOES E ADMINISTRACAO LTDA",
+      "ON": 1.03,
+      "PN": 0.0,
+      "Total": 0.37
+    },
+    {
+      "nome": "VIVIANE MARIA PINTO BADO",
+      "ON": 0.36,
+      "PN": 0.08,
+      "Total": 0.18
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 15.76,
+      "PN": 74.98,
+      "Total": 53.62
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.0,
+      "PN": 1.27,
+      "Total": 0.81
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 100.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 68838,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 608,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 927,
+        "percentual": null
+      },
+      {
+        "tipo": "Quantidade de Ações Preferenciais",
+        "quantidade": 661573516,
+        "percentual": 91.09
+      }
+    ],
+    "data": "28/03/2025",
+    "quantidade_acoes_ordinarias": 193259909,
+    "percentual_ordinarias": 47.14,
+    "total_acoes": 854833425,
+    "percentual_total": 75.23
+  },
+  "composicao_capital_social": {
+    "data": "22/02/2024",
+    "preferenciais": 726320565,
+    "total": 1136271458
+  }
 }

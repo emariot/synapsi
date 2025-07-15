@@ -8,8 +8,208 @@
   "subsetor": "Material de Transporte",
   "segmento": "Material Rodoviário",
   "site": "https://randoncorp.com",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível6.102.6724.337.122Ativo Total18.121.82515.437.636Patrimônio Líquido4.352.5464.507.688Patrimônio Líquido Atribuído à Controladora3.105.1473.229.923Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda3.191.3632.537.785Resultado Bruto849.194686.265Resultado de Equivalência Patrimonial2.393(68)Resultado Financeiro(167.220)(701)Resultado Líquido das Operações Continuadas47.100159.720Lucro (Prejuízo) do Período47.168159.765Lucro (Prejuízo) do Período Atribuído à Controladora(7.670)81.829Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais243.479(317.128)Atividades de Investimento(2.254.534)(92.075)Atividades de Financiamento2.011.745363.045Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes690(46.158)",
-  "posicao_acionaria": "Nome%ON%PN%TotalALEXANDRE RANDON0,000,010,01AUDREY VICTORIA RANDON FOREST0,000,000,00DANIEL RAUL RANDON0,000,080,05DAVI COUTO FROTA0,000,010,01DAVID ABRAMO RANDON0,000,020,01DRAMD PARTICIPAÇÕES E ADMINISTRAÇÃO LTDA81,7116,2439,40ISABELLE RANDON0,000,000,00MAURIEN HELENA RANDON BARBOSA0,000,030,02NILVA THEREZINHA RANDON0,000,000,00PREVI-Caixa Previdência Funcionários Banco do Brasil8,850,003,13ROSELI BEATRIZ RANDON0,000,030,02SÉRGIO MARTINS BARBOSA0,000,000,00TPE GESTORA DE RECURSOS LTDA0,0010,496,78OUTROS9,4472,6150,26AÇÕES TESOURARIA0,000,490,32TOTAL100,00100,00100,00Informação recebida em 16/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "24/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas36.463-Pessoas Jurídicas329-Investidores Institucionais452-Quantidade de Ações Ordinárias21.308.96618,29Quantidade de Ações Preferenciais176.835.02583,09Total de Ações198.143.99160,17",
-  "composicao_capital_social": "18/04/2024Ordinárias116.515.527Preferenciais212.815.006Total329.330.533"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 6102672,
+        "31/12/2024": 4337122
+      },
+      "ativo_total": {
+        "31/03/2025": 18121825,
+        "31/12/2024": 15437636
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 4352546,
+        "31/12/2024": 4507688
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 3105147,
+        "31/12/2024": 3229923
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 3191363,
+        "01/01/2024_a_31/03/2024": 2537785
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 849194,
+        "01/01/2024_a_31/03/2024": 686265
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 2393,
+        "01/01/2024_a_31/03/2024": -68
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -167220,
+        "01/01/2024_a_31/03/2024": -701
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 47100,
+        "01/01/2024_a_31/03/2024": 159720
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 47168,
+        "01/01/2024_a_31/03/2024": 159765
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": -7670,
+        "01/01/2024_a_31/03/2024": 81829
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 243479,
+        "01/01/2024_a_31/03/2024": -317128
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -2254534,
+        "01/01/2024_a_31/03/2024": -92075
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": 2011745,
+        "01/01/2024_a_31/03/2024": 363045
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 690,
+        "01/01/2024_a_31/03/2024": -46158
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "ALEXANDRE RANDON",
+      "ON": 0.0,
+      "PN": 0.01,
+      "Total": 0.01
+    },
+    {
+      "nome": "AUDREY VICTORIA RANDON FOREST",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "DANIEL RAUL RANDON",
+      "ON": 0.0,
+      "PN": 0.08,
+      "Total": 0.05
+    },
+    {
+      "nome": "DAVI COUTO FROTA",
+      "ON": 0.0,
+      "PN": 0.01,
+      "Total": 0.01
+    },
+    {
+      "nome": "DAVID ABRAMO RANDON",
+      "ON": 0.0,
+      "PN": 0.02,
+      "Total": 0.01
+    },
+    {
+      "nome": "DRAMD PARTICIPAÇÕES E ADMINISTRAÇÃO LTDA",
+      "ON": 81.71,
+      "PN": 16.24,
+      "Total": 39.4
+    },
+    {
+      "nome": "ISABELLE RANDON",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "MAURIEN HELENA RANDON BARBOSA",
+      "ON": 0.0,
+      "PN": 0.03,
+      "Total": 0.02
+    },
+    {
+      "nome": "NILVA THEREZINHA RANDON",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "PREVI-Caixa Previdência Funcionários Banco do Brasil",
+      "ON": 8.85,
+      "PN": 0.0,
+      "Total": 3.13
+    },
+    {
+      "nome": "ROSELI BEATRIZ RANDON",
+      "ON": 0.0,
+      "PN": 0.03,
+      "Total": 0.02
+    },
+    {
+      "nome": "SÉRGIO MARTINS BARBOSA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "TPE GESTORA DE RECURSOS LTDA",
+      "ON": 0.0,
+      "PN": 10.49,
+      "Total": 6.78
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 9.44,
+      "PN": 72.61,
+      "Total": 50.26
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.0,
+      "PN": 0.49,
+      "Total": 0.32
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 100.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 36463,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 329,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 452,
+        "percentual": null
+      },
+      {
+        "tipo": "Quantidade de Ações Preferenciais",
+        "quantidade": 176835025,
+        "percentual": 83.09
+      }
+    ],
+    "data": "24/04/2025",
+    "quantidade_acoes_ordinarias": 21308966,
+    "percentual_ordinarias": 18.29,
+    "total_acoes": 198143991,
+    "percentual_total": 60.17
+  },
+  "composicao_capital_social": {
+    "data": "18/04/2024",
+    "preferenciais": 212815006,
+    "total": 329330533
+  }
 }

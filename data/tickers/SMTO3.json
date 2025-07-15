@@ -8,8 +8,131 @@
   "subsetor": "Alimentos Processados",
   "segmento": "Açucar e Alcool",
   "site": "www.saomartinho.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/03/2024Ativo Imobilizado, Investimentos e Intangível11.975.37111.344.404Ativo Total21.769.38320.371.449Patrimônio Líquido6.699.3626.862.371Patrimônio Líquido Atribuído à Controladora6.699.3626.862.371Demonstração do Resultado - Consolidado01/04/2024 a 31/03/202501/04/2023 a 31/03/2024Receita de Venda7.162.0346.891.738Resultado Bruto1.785.3021.675.447Resultado de Equivalência Patrimonial9.4568.318Resultado Financeiro(1.014.629)(744.864)Resultado Líquido das Operações Continuadas556.7311.476.279Lucro (Prejuízo) do Período556.7311.476.279Lucro (Prejuízo) do Período Atribuído à Controladora556.7311.476.279Demonstração do Fluxo de Caixa - Consolidado01/04/2024 a 31/03/202501/04/2023 a 31/03/2024Atividades Operacionais2.689.5373.766.257Atividades de Investimento(1.744.570)(2.496.082)Atividades de Financiamento(220.552)(1.333.266)Variação Cambial sobre Caixa e Equivalentes(30.387)(5.757)Aumento (Redução) de Caixa e Equivalentes694.028(68.848)",
-  "posicao_acionaria": "Nome%ON%PN%TotalLJN Participações S.A.57,230,0057,23OUTROS42,770,0042,77AÇÕES TESOURARIA0,000,000,00TOTAL100,000,00100,00Informação recebida em 01/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "26/07/2024Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas20.990-Pessoas Jurídicas265-Investidores Institucionais525-Quantidade de Ações Ordinárias128.130.96638,54Total de Ações128.130.96638,54",
-  "composicao_capital_social": "30/09/2024Ordinárias332.435.391Preferenciais0Total332.435.391"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 11975371,
+        "31/03/2024": 11344404
+      },
+      "ativo_total": {
+        "31/03/2025": 21769383,
+        "31/03/2024": 20371449
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 6699362,
+        "31/03/2024": 6862371
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 6699362,
+        "31/03/2024": 6862371
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/04/2024_a_31/03/2025": 7162034,
+        "01/04/2023_a_31/03/2024": 6891738
+      },
+      "resultado_bruto": {
+        "01/04/2024_a_31/03/2025": 1785302,
+        "01/04/2023_a_31/03/2024": 1675447
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/04/2024_a_31/03/2025": 9456,
+        "01/04/2023_a_31/03/2024": 8318
+      },
+      "resultado_financeiro": {
+        "01/04/2024_a_31/03/2025": -1014629,
+        "01/04/2023_a_31/03/2024": -744864
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/04/2024_a_31/03/2025": 556731,
+        "01/04/2023_a_31/03/2024": 1476279
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/04/2024_a_31/03/2025": 556731,
+        "01/04/2023_a_31/03/2024": 1476279
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/04/2024_a_31/03/2025": 556731,
+        "01/04/2023_a_31/03/2024": 1476279
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/04/2024_a_31/03/2025": 2689537,
+        "01/04/2023_a_31/03/2024": 3766257
+      },
+      "atividades_de_investimento": {
+        "01/04/2024_a_31/03/2025": -1744570,
+        "01/04/2023_a_31/03/2024": -2496082
+      },
+      "atividades_de_financiamento": {
+        "01/04/2024_a_31/03/2025": -220552,
+        "01/04/2023_a_31/03/2024": -1333266
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/04/2024_a_31/03/2025": -30387,
+        "01/04/2023_a_31/03/2024": -5757
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/04/2024_a_31/03/2025": 694028,
+        "01/04/2023_a_31/03/2024": -68848
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "LJN Participações S.A.",
+      "ON": 57.23,
+      "PN": 0.0,
+      "Total": 57.23
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 42.77,
+      "PN": 0.0,
+      "Total": 42.77
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 20990,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 265,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 525,
+        "percentual": null
+      }
+    ],
+    "data": "26/07/2024",
+    "quantidade_acoes_ordinarias": 128130966,
+    "percentual_ordinarias": 38.54,
+    "total_acoes": 128130966,
+    "percentual_total": 38.54
+  },
+  "composicao_capital_social": {
+    "data": "30/09/2024",
+    "preferenciais": 0,
+    "total": 332435391
+  }
 }

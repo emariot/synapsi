@@ -8,8 +8,197 @@
   "subsetor": "Agropecuária",
   "segmento": "Agricultura",
   "site": "//www.3tentos.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível3.024.6892.721.092Ativo Total9.833.3538.889.423Patrimônio Líquido4.162.4394.045.718Patrimônio Líquido Atribuído à Controladora4.153.0364.037.714Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda3.499.1082.679.222Resultado Bruto511.333500.781Resultado de Equivalência Patrimonial(230)(8)Resultado Financeiro111.585(9.064)Resultado Líquido das Operações Continuadas192.419156.438Lucro (Prejuízo) do Período192.419156.438Lucro (Prejuízo) do Período Atribuído à Controladora192.333157.424Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais125.762(40.392)Atividades de Investimento(285.693)(73.205)Atividades de Financiamento2.94820.352Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(156.983)(93.245)",
-  "posicao_acionaria": "Nome%ON%PN%TotalALD Participações Ltda.14,250,0014,25Boaventura Participações Ltda.1,440,001,44CELEIRO PARTICIPAÇÕES LTDA6,040,006,04DUMTAG PARTICIPAÇÕES LTDA6,040,006,04EDUARDO AUGUSTO PEREIRA DE MENEZES FILHO0,910,000,91JM Participações Ltda.14,250,0014,25JOÃO MARCELO DUMONCEL8,770,008,77KDUH PARTICIPAÇÕES LTDA6,040,006,04LUIZ OSÓRIO DUMONCEL8,770,008,77MARIA BEATRIZ DUMONCEL HOFF3,580,003,58ROSALBA LUISA DUMONCEL TAGLIARI3,580,003,58VANIA MARGARIDA DUMONCEL MARTINS3,580,003,58OUTROS22,680,0022,68AÇÕES TESOURARIA0,060,000,06TOTAL100,000,00100,00Informação recebida em 25/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "09/06/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas25.231-Pessoas Jurídicas150-Investidores Institucionais551-Quantidade de Ações Ordinárias112.595.68622,54Total de Ações112.595.68622,54",
-  "composicao_capital_social": "09/06/2025Ordinárias499.497.647Preferenciais0Total499.497.647"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 3024689,
+        "31/12/2024": 2721092
+      },
+      "ativo_total": {
+        "31/03/2025": 9833353,
+        "31/12/2024": 8889423
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 4162439,
+        "31/12/2024": 4045718
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 4153036,
+        "31/12/2024": 4037714
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 3499108,
+        "01/01/2024_a_31/03/2024": 2679222
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 511333,
+        "01/01/2024_a_31/03/2024": 500781
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": -230,
+        "01/01/2024_a_31/03/2024": -8
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": 111585,
+        "01/01/2024_a_31/03/2024": -9064
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 192419,
+        "01/01/2024_a_31/03/2024": 156438
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 192419,
+        "01/01/2024_a_31/03/2024": 156438
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 192333,
+        "01/01/2024_a_31/03/2024": 157424
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 125762,
+        "01/01/2024_a_31/03/2024": -40392
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -285693,
+        "01/01/2024_a_31/03/2024": -73205
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": 2948,
+        "01/01/2024_a_31/03/2024": 20352
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -156983,
+        "01/01/2024_a_31/03/2024": -93245
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "ALD Participações Ltda.",
+      "ON": 14.25,
+      "PN": 0.0,
+      "Total": 14.25
+    },
+    {
+      "nome": "Boaventura Participações Ltda.",
+      "ON": 1.44,
+      "PN": 0.0,
+      "Total": 1.44
+    },
+    {
+      "nome": "CELEIRO PARTICIPAÇÕES LTDA",
+      "ON": 6.04,
+      "PN": 0.0,
+      "Total": 6.04
+    },
+    {
+      "nome": "DUMTAG PARTICIPAÇÕES LTDA",
+      "ON": 6.04,
+      "PN": 0.0,
+      "Total": 6.04
+    },
+    {
+      "nome": "EDUARDO AUGUSTO PEREIRA DE MENEZES FILHO",
+      "ON": 0.91,
+      "PN": 0.0,
+      "Total": 0.91
+    },
+    {
+      "nome": "JM Participações Ltda.",
+      "ON": 14.25,
+      "PN": 0.0,
+      "Total": 14.25
+    },
+    {
+      "nome": "JOÃO MARCELO DUMONCEL",
+      "ON": 8.77,
+      "PN": 0.0,
+      "Total": 8.77
+    },
+    {
+      "nome": "KDUH PARTICIPAÇÕES LTDA",
+      "ON": 6.04,
+      "PN": 0.0,
+      "Total": 6.04
+    },
+    {
+      "nome": "LUIZ OSÓRIO DUMONCEL",
+      "ON": 8.77,
+      "PN": 0.0,
+      "Total": 8.77
+    },
+    {
+      "nome": "MARIA BEATRIZ DUMONCEL HOFF",
+      "ON": 3.58,
+      "PN": 0.0,
+      "Total": 3.58
+    },
+    {
+      "nome": "ROSALBA LUISA DUMONCEL TAGLIARI",
+      "ON": 3.58,
+      "PN": 0.0,
+      "Total": 3.58
+    },
+    {
+      "nome": "VANIA MARGARIDA DUMONCEL MARTINS",
+      "ON": 3.58,
+      "PN": 0.0,
+      "Total": 3.58
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 22.68,
+      "PN": 0.0,
+      "Total": 22.68
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.06,
+      "PN": 0.0,
+      "Total": 0.06
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 25231,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 150,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 551,
+        "percentual": null
+      }
+    ],
+    "data": "09/06/2025",
+    "quantidade_acoes_ordinarias": 112595686,
+    "percentual_ordinarias": 22.54,
+    "total_acoes": 112595686,
+    "percentual_total": 22.54
+  },
+  "composicao_capital_social": {
+    "data": "09/06/2025",
+    "preferenciais": 0,
+    "total": 499497647
+  }
 }

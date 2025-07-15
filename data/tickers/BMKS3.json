@@ -8,8 +8,171 @@
   "subsetor": "Viagens e Lazer",
   "segmento": "Bicicletas",
   "site": "www.monark.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Não consolidado Balanço Patrimonial  - Não-Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos, Intangível e Diferido4.3584.777Ativo Total237.339232.040Patrimônio Líquido206.593202.045Demonstração do Resultado - Não-Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda3.3462.754Resultado Bruto1.019852Resultado de Equivalência Patrimonial00Resultado Financeiro4.9644.423Resultado Líquido das Operações Continuadas3.2193.191Lucro (Prejuízo) do Período3.2193.191Demonstração do Fluxo de Caixa - Não-Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais3.5214.104Atividades de Investimento(41)(14)Atividades de Financiamento(453)(453)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes3.0273.637",
-  "posicao_acionaria": "Nome%ON%PN%TotalDYON PARTICIPAÇÕES LTDA0,760,000,76EDUARDO BOCCUZZI0,000,000,00ELSOL PARTICIPAÇÕES LTDA8,790,008,79MARIA ELISABETH JARDIM MARZAGÃO0,000,000,00MONARK PARTICIPAÇÕES LTDA63,460,0063,46PAULO MARZAGÃO SOBRINHO0,270,000,27SEB FORVALTNINGS AB10,000,0010,00SME PARTICIPAÇÕES LTDA2,360,002,36SYLVIO MARZAGÃO2,360,002,36OUTROS12,000,0012,00AÇÕES TESOURARIA0,000,000,00TOTAL100,000,00100,00Informação recebida em 23/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "30/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas623-Pessoas Jurídicas18-Investidores Institucionais1-Quantidade de Ações Ordinárias100.04422,00Total de Ações100.04422,00",
-  "composicao_capital_social": "27/04/2007Ordinárias454.750Preferenciais0Total454.750"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_intangivel_e_diferido": {
+        "31/03/2025": 4358,
+        "31/12/2024": 4777
+      },
+      "ativo_total": {
+        "31/03/2025": 237339,
+        "31/12/2024": 232040
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 206593,
+        "31/12/2024": 202045
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 3346,
+        "01/01/2024_a_31/03/2024": 2754
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 1019,
+        "01/01/2024_a_31/03/2024": 852
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": 4964,
+        "01/01/2024_a_31/03/2024": 4423
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 3219,
+        "01/01/2024_a_31/03/2024": 3191
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 3219,
+        "01/01/2024_a_31/03/2024": 3191
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 3521,
+        "01/01/2024_a_31/03/2024": 4104
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -41,
+        "01/01/2024_a_31/03/2024": -14
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -453,
+        "01/01/2024_a_31/03/2024": -453
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 3027,
+        "01/01/2024_a_31/03/2024": 3637
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "DYON PARTICIPAÇÕES LTDA",
+      "ON": 0.76,
+      "PN": 0.0,
+      "Total": 0.76
+    },
+    {
+      "nome": "EDUARDO BOCCUZZI",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "ELSOL PARTICIPAÇÕES LTDA",
+      "ON": 8.79,
+      "PN": 0.0,
+      "Total": 8.79
+    },
+    {
+      "nome": "MARIA ELISABETH JARDIM MARZAGÃO",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "MONARK PARTICIPAÇÕES LTDA",
+      "ON": 63.46,
+      "PN": 0.0,
+      "Total": 63.46
+    },
+    {
+      "nome": "PAULO MARZAGÃO SOBRINHO",
+      "ON": 0.27,
+      "PN": 0.0,
+      "Total": 0.27
+    },
+    {
+      "nome": "SEB FORVALTNINGS AB",
+      "ON": 10.0,
+      "PN": 0.0,
+      "Total": 10.0
+    },
+    {
+      "nome": "SME PARTICIPAÇÕES LTDA",
+      "ON": 2.36,
+      "PN": 0.0,
+      "Total": 2.36
+    },
+    {
+      "nome": "SYLVIO MARZAGÃO",
+      "ON": 2.36,
+      "PN": 0.0,
+      "Total": 2.36
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 12.0,
+      "PN": 0.0,
+      "Total": 12.0
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 623,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 18,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 1,
+        "percentual": null
+      }
+    ],
+    "data": "30/04/2025",
+    "quantidade_acoes_ordinarias": 100044,
+    "percentual_ordinarias": 22.0,
+    "total_acoes": 100044,
+    "percentual_total": 22.0
+  },
+  "composicao_capital_social": {
+    "data": "27/04/2007",
+    "preferenciais": 0,
+    "total": 454750
+  }
 }

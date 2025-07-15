@@ -8,8 +8,130 @@
   "subsetor": "Intermediários Financeiros",
   "segmento": "Bancos",
   "site": "www.brb.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/12/202431/12/2023Ativo Imobilizado, Investimentos e Intangível786.182784.399Ativo Total62.504.41249.947.019Demonstração do Resultado - Consolidado01/12/2024 a 31/12/202401/12/2023 a 31/12/2023Receita da Intermediação Financeira8.909.3567.938.306Resultado Bruto da Intermediação Financeira3.773.7433.630.994Resultado de Equivalência Patrimonial(664.629)(419.752)Demonstração do Fluxo de Caixa - Consolidado01/12/2024 a 31/12/202401/12/2023 a 31/12/2023Atividades Operacionais1.476.678281.165Atividades de Investimento(187.725)(477.377)Atividades de Financiamento546.600(2.796)Variação Cambial sobre Caixa e Equivalentes(7.495)(9.439)Aumento (Redução) de Caixa e Equivalentes1.828.058(208.447)",
-  "posicao_acionaria": "Nome%ON%PN%TotalASSOCIAÇÃO NACIONAL DOS EMPREGADOS ATIVOS E APOSENTADOS DO BANCO DE BRASÍLIA - ANEABRB13,300,488,92BORNEO FIP MULTIESTRATEGIA0,809,783,87GOVERNO DO DISTRITO FEDERAL56,4848,3553,71Instituto de Previdência dos Sevidores do Distrito Federal - IPREV DF18,730,0012,33OUTROS10,6941,3921,17AÇÕES TESOURARIA0,000,000,00TOTAL100,00100,00100,00Informação recebida em 20/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "09/05/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas3.808-Pessoas Jurídicas30-Investidores Institucionais7-Quantidade de Ações Ordinárias79.340.58624,79Quantidade de Ações Preferenciais85.770.38551,65Total de Ações165.110.97133,96",
-  "composicao_capital_social": "30/10/2024Ordinárias320.121.140Preferenciais166.059.947Total486.181.087"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/12/2024": 786182,
+        "31/12/2023": 784399
+      },
+      "ativo_total": {
+        "31/12/2024": 62504412,
+        "31/12/2023": 49947019
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_da_intermediacao_financeira": {
+        "01/12/2024_a_31/12/2024": 8909356,
+        "01/12/2023_a_31/12/2023": 7938306
+      },
+      "resultado_bruto_da_intermediacao_financeira": {
+        "01/12/2024_a_31/12/2024": 3773743,
+        "01/12/2023_a_31/12/2023": 3630994
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/12/2024_a_31/12/2024": -664629,
+        "01/12/2023_a_31/12/2023": -419752
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/12/2024_a_31/12/2024": 1476678,
+        "01/12/2023_a_31/12/2023": 281165
+      },
+      "atividades_de_investimento": {
+        "01/12/2024_a_31/12/2024": -187725,
+        "01/12/2023_a_31/12/2023": -477377
+      },
+      "atividades_de_financiamento": {
+        "01/12/2024_a_31/12/2024": 546600,
+        "01/12/2023_a_31/12/2023": -2796
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/12/2024_a_31/12/2024": -7495,
+        "01/12/2023_a_31/12/2023": -9439
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/12/2024_a_31/12/2024": 1828058,
+        "01/12/2023_a_31/12/2023": -208447
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "ASSOCIAÇÃO NACIONAL DOS EMPREGADOS ATIVOS E APOSENTADOS DO BANCO DE BRASÍLIA - ANEABRB",
+      "ON": 13.3,
+      "PN": 0.48,
+      "Total": 8.92
+    },
+    {
+      "nome": "BORNEO FIP MULTIESTRATEGIA",
+      "ON": 0.8,
+      "PN": 9.78,
+      "Total": 3.87
+    },
+    {
+      "nome": "GOVERNO DO DISTRITO FEDERAL",
+      "ON": 56.48,
+      "PN": 48.35,
+      "Total": 53.71
+    },
+    {
+      "nome": "Instituto de Previdência dos Sevidores do Distrito Federal - IPREV DF",
+      "ON": 18.73,
+      "PN": 0.0,
+      "Total": 12.33
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 10.69,
+      "PN": 41.39,
+      "Total": 21.17
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 100.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 3808,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 30,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 7,
+        "percentual": null
+      },
+      {
+        "tipo": "Quantidade de Ações Preferenciais",
+        "quantidade": 85770385,
+        "percentual": 51.65
+      }
+    ],
+    "data": "09/05/2025",
+    "quantidade_acoes_ordinarias": 79340586,
+    "percentual_ordinarias": 24.79,
+    "total_acoes": 165110971,
+    "percentual_total": 33.96
+  },
+  "composicao_capital_social": {
+    "data": "30/10/2024",
+    "preferenciais": 166059947,
+    "total": 486181087
+  }
 }

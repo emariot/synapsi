@@ -8,8 +8,311 @@
   "subsetor": "Produtos de Uso Pessoal e de Limpeza",
   "segmento": "Produtos de Uso Pessoal",
   "site": "https://natu.infoinvest.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível16.318.33617.015.919Ativo Total35.159.23437.133.423Patrimônio Líquido15.095.30415.671.587Patrimônio Líquido Atribuído à Controladora15.095.94715.671.408Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda6.679.4334.582.605Resultado Bruto4.426.0933.030.271Resultado de Equivalência Patrimonial00Resultado Financeiro(250.936)(84.359)Resultado Líquido das Operações Continuadas(151.447)134.567Lucro (Prejuízo) do Período(151.447)(935.126)Lucro (Prejuízo) do Período Atribuído à Controladora(150.625)(935.126)Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(333.569)(1.758.105)Atividades de Investimento95.0712.262.203Atividades de Financiamento(169.766)(168.036)Variação Cambial sobre Caixa e Equivalentes(87.704)103.638Aumento (Redução) de Caixa e Equivalentes(495.968)439.700",
-  "posicao_acionaria": "Nome%ON%PN%TotalADRIANA RAUCI SEABRA1,190,001,19ANTONIO LUIZ DA CUNHA SEABRA4,780,004,78Aikya Investment Management Limited5,050,005,05BAILLIE GIFFORD OVERSEAS LIMITED5,020,005,02BlackRock. Inc.5,030,005,03Dynamo Administração de Recursos Ltda / Dynamo Internacional Gestão de Recursos Ltda.5,100,005,10ESTELA RIOS SEABRA1,190,001,19FABRICIUS PINOTTI1,820,001,82FELIPE PEDROSO LEAL3,260,003,26FIA Veredas  Investimento no Exterior1,620,001,62FÁBIO DALLA COLLETTA DE MATTOS0,310,000,31GUILHERME PEIRÃO LEAL4,150,004,15GUILHERME RUGGIERO PASSOS0,850,000,85GUSTAVO DALLA COLLETTA DE MATTOS0,310,000,31GUSTAVO FARAH OLIVA1,000,001,00Kairós Fundo de Investimento em Ações - Investimento no Exterior0,380,000,38LUIS FERNANDO RAUCCI SEABRA1,190,001,19LUIS HENRIQUE RAUCCI SEABRA1,190,001,19LÚCIA HELENA RIOS SEABRA4,770,004,77MARIA HELI DALLA COLLETTA DE MATTOS1,750,001,75MATHEUS FARAH LEAL1,000,001,00NORMA REGINA PINOTTI0,000,000,00Passos Participações S.A.0,000,000,00PATRÍCIA RUGGIERO PASSOS0,850,000,85PEDRO LUIZ BARREIROS PASSOS0,190,000,19Pzena Investment Management. Llc5,310,005,31RICARDO PEDROSO LEAL3,260,003,26RM Futura Multimercado Fundo de Investimento Crédito Privado Investimento no Exterior0,090,000,09SIRIUS FUNDO DE INVESTIMENTO FINANCEIRO EM AÇÕES  RESPONSABILIDADE LIMITADA0,360,000,36THOMAS FARAH DE GODOY1,000,001,00VINICIUS PINOTTI1,820,001,82OUTROS35,190,0035,19AÇÕES TESOURARIA0,960,000,96TOTAL100,000,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "25/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas46.701-Pessoas Jurídicas1.064-Investidores Institucionais247-Quantidade de Ações Ordinárias842.398.22460,58Total de Ações842.398.22460,58",
-  "composicao_capital_social": "01/07/2025Ordinárias1.374.557.657Preferenciais0Total1.374.557.657"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 16318336,
+        "31/12/2024": 17015919
+      },
+      "ativo_total": {
+        "31/03/2025": 35159234,
+        "31/12/2024": 37133423
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 15095304,
+        "31/12/2024": 15671587
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 15095947,
+        "31/12/2024": 15671408
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 6679433,
+        "01/01/2024_a_31/03/2024": 4582605
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 4426093,
+        "01/01/2024_a_31/03/2024": 3030271
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -250936,
+        "01/01/2024_a_31/03/2024": -84359
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": -151447,
+        "01/01/2024_a_31/03/2024": 134567
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": -151447,
+        "01/01/2024_a_31/03/2024": -935126
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": -150625,
+        "01/01/2024_a_31/03/2024": -935126
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": -333569,
+        "01/01/2024_a_31/03/2024": -1758105
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": 95071,
+        "01/01/2024_a_31/03/2024": 2262203
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -169766,
+        "01/01/2024_a_31/03/2024": -168036
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -87704,
+        "01/01/2024_a_31/03/2024": 103638
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -495968,
+        "01/01/2024_a_31/03/2024": 439700
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "ADRIANA RAUCI SEABRA",
+      "ON": 1.19,
+      "PN": 0.0,
+      "Total": 1.19
+    },
+    {
+      "nome": "ANTONIO LUIZ DA CUNHA SEABRA",
+      "ON": 4.78,
+      "PN": 0.0,
+      "Total": 4.78
+    },
+    {
+      "nome": "Aikya Investment Management Limited",
+      "ON": 5.05,
+      "PN": 0.0,
+      "Total": 5.05
+    },
+    {
+      "nome": "BAILLIE GIFFORD OVERSEAS LIMITED",
+      "ON": 5.02,
+      "PN": 0.0,
+      "Total": 5.02
+    },
+    {
+      "nome": "BlackRock. Inc.",
+      "ON": 5.03,
+      "PN": 0.0,
+      "Total": 5.03
+    },
+    {
+      "nome": "Dynamo Administração de Recursos Ltda / Dynamo Internacional Gestão de Recursos Ltda.",
+      "ON": 5.1,
+      "PN": 0.0,
+      "Total": 5.1
+    },
+    {
+      "nome": "ESTELA RIOS SEABRA",
+      "ON": 1.19,
+      "PN": 0.0,
+      "Total": 1.19
+    },
+    {
+      "nome": "FABRICIUS PINOTTI",
+      "ON": 1.82,
+      "PN": 0.0,
+      "Total": 1.82
+    },
+    {
+      "nome": "FELIPE PEDROSO LEAL",
+      "ON": 3.26,
+      "PN": 0.0,
+      "Total": 3.26
+    },
+    {
+      "nome": "FIA Veredas  Investimento no Exterior",
+      "ON": 1.62,
+      "PN": 0.0,
+      "Total": 1.62
+    },
+    {
+      "nome": "FÁBIO DALLA COLLETTA DE MATTOS",
+      "ON": 0.31,
+      "PN": 0.0,
+      "Total": 0.31
+    },
+    {
+      "nome": "GUILHERME PEIRÃO LEAL",
+      "ON": 4.15,
+      "PN": 0.0,
+      "Total": 4.15
+    },
+    {
+      "nome": "GUILHERME RUGGIERO PASSOS",
+      "ON": 0.85,
+      "PN": 0.0,
+      "Total": 0.85
+    },
+    {
+      "nome": "GUSTAVO DALLA COLLETTA DE MATTOS",
+      "ON": 0.31,
+      "PN": 0.0,
+      "Total": 0.31
+    },
+    {
+      "nome": "GUSTAVO FARAH OLIVA",
+      "ON": 1.0,
+      "PN": 0.0,
+      "Total": 1.0
+    },
+    {
+      "nome": "Kairós Fundo de Investimento em Ações - Investimento no Exterior",
+      "ON": 0.38,
+      "PN": 0.0,
+      "Total": 0.38
+    },
+    {
+      "nome": "LUIS FERNANDO RAUCCI SEABRA",
+      "ON": 1.19,
+      "PN": 0.0,
+      "Total": 1.19
+    },
+    {
+      "nome": "LUIS HENRIQUE RAUCCI SEABRA",
+      "ON": 1.19,
+      "PN": 0.0,
+      "Total": 1.19
+    },
+    {
+      "nome": "LÚCIA HELENA RIOS SEABRA",
+      "ON": 4.77,
+      "PN": 0.0,
+      "Total": 4.77
+    },
+    {
+      "nome": "MARIA HELI DALLA COLLETTA DE MATTOS",
+      "ON": 1.75,
+      "PN": 0.0,
+      "Total": 1.75
+    },
+    {
+      "nome": "MATHEUS FARAH LEAL",
+      "ON": 1.0,
+      "PN": 0.0,
+      "Total": 1.0
+    },
+    {
+      "nome": "NORMA REGINA PINOTTI",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "Passos Participações S.A.",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "PATRÍCIA RUGGIERO PASSOS",
+      "ON": 0.85,
+      "PN": 0.0,
+      "Total": 0.85
+    },
+    {
+      "nome": "PEDRO LUIZ BARREIROS PASSOS",
+      "ON": 0.19,
+      "PN": 0.0,
+      "Total": 0.19
+    },
+    {
+      "nome": "Pzena Investment Management. Llc",
+      "ON": 5.31,
+      "PN": 0.0,
+      "Total": 5.31
+    },
+    {
+      "nome": "RICARDO PEDROSO LEAL",
+      "ON": 3.26,
+      "PN": 0.0,
+      "Total": 3.26
+    },
+    {
+      "nome": "RM Futura Multimercado Fundo de Investimento Crédito Privado Investimento no Exterior",
+      "ON": 0.09,
+      "PN": 0.0,
+      "Total": 0.09
+    },
+    {
+      "nome": "SIRIUS FUNDO DE INVESTIMENTO FINANCEIRO EM AÇÕES  RESPONSABILIDADE LIMITADA",
+      "ON": 0.36,
+      "PN": 0.0,
+      "Total": 0.36
+    },
+    {
+      "nome": "THOMAS FARAH DE GODOY",
+      "ON": 1.0,
+      "PN": 0.0,
+      "Total": 1.0
+    },
+    {
+      "nome": "VINICIUS PINOTTI",
+      "ON": 1.82,
+      "PN": 0.0,
+      "Total": 1.82
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 35.19,
+      "PN": 0.0,
+      "Total": 35.19
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.96,
+      "PN": 0.0,
+      "Total": 0.96
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 46701,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 1064,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 247,
+        "percentual": null
+      }
+    ],
+    "data": "25/04/2025",
+    "quantidade_acoes_ordinarias": 842398224,
+    "percentual_ordinarias": 60.58,
+    "total_acoes": 842398224,
+    "percentual_total": 60.58
+  },
+  "composicao_capital_social": {
+    "data": "01/07/2025",
+    "preferenciais": 0,
+    "total": 1374557657
+  }
 }

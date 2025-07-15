@@ -8,8 +8,160 @@
   "subsetor": "Químicos",
   "segmento": "Petroquímicos",
   "site": "www.braskem.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível46.068.00047.961.000Ativo Total95.422.000101.575.000Patrimônio Líquido(3.795.000)(4.278.000)Patrimônio Líquido Atribuído à Controladora(4.236.000)(4.782.000)Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda19.460.00017.920.000Resultado Bruto1.310.0001.211.000Resultado de Equivalência Patrimonial(7.000)(5.000)Resultado Financeiro717.000(2.030.000)Resultado Líquido das Operações Continuadas632.000(1.390.000)Lucro (Prejuízo) do Período632.000(1.390.000)Lucro (Prejuízo) do Período Atribuído à Controladora698.000(1.345.000)Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(2.332.000)965.000Atividades de Investimento(576.000)(871.000)Atividades de Financiamento(191.000)(264.000)Variação Cambial sobre Caixa e Equivalentes(570.000)198.000Aumento (Redução) de Caixa e Equivalentes(3.669.000)28.000",
-  "posicao_acionaria": "Nome%ON%PN%TotalADR's0,0020,018,67NORGES BANK0,006,902,99NOVONOR S.A. - Em Recuperação Judicial0,000,000,00NSP Investimentos S.A. - Em Recuperação Judicial50,1122,9238,32Petróleo Brasileiro S.A. - Petrobras47,0321,9336,15OUTROS2,8628,2513,86AÇÕES TESOURARIA0,000,000,00TOTAL100,00100,00100,00Informação recebida em 04/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "28/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas57.885-Pessoas Jurídicas3.612-Investidores Institucionais182-Quantidade de Ações Ordinárias12.906.1792,86Quantidade de Ações Preferenciais266.355.55777,08Total de Ações279.261.73635,03",
-  "composicao_capital_social": "18/02/2022Ordinárias451.668.652Preferenciais345.539.182Total797.207.834"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 46068000,
+        "31/12/2024": 47961000
+      },
+      "ativo_total": {
+        "31/03/2025": 95422000,
+        "31/12/2024": 101575000
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": -3795000,
+        "31/12/2024": -4278000
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": -4236000,
+        "31/12/2024": -4782000
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 19460000,
+        "01/01/2024_a_31/03/2024": 17920000
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 1310000,
+        "01/01/2024_a_31/03/2024": 1211000
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": -7000,
+        "01/01/2024_a_31/03/2024": -5000
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": 717000,
+        "01/01/2024_a_31/03/2024": -2030000
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 632000,
+        "01/01/2024_a_31/03/2024": -1390000
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 632000,
+        "01/01/2024_a_31/03/2024": -1390000
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 698000,
+        "01/01/2024_a_31/03/2024": -1345000
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": -2332000,
+        "01/01/2024_a_31/03/2024": 965000
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -576000,
+        "01/01/2024_a_31/03/2024": -871000
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -191000,
+        "01/01/2024_a_31/03/2024": -264000
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -570000,
+        "01/01/2024_a_31/03/2024": 198000
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -3669000,
+        "01/01/2024_a_31/03/2024": 28000
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "ADR's",
+      "ON": 0.0,
+      "PN": 20.01,
+      "Total": 8.67
+    },
+    {
+      "nome": "NORGES BANK",
+      "ON": 0.0,
+      "PN": 6.9,
+      "Total": 2.99
+    },
+    {
+      "nome": "NOVONOR S.A. - Em Recuperação Judicial",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "NSP Investimentos S.A. - Em Recuperação Judicial",
+      "ON": 50.11,
+      "PN": 22.92,
+      "Total": 38.32
+    },
+    {
+      "nome": "Petróleo Brasileiro S.A. - Petrobras",
+      "ON": 47.03,
+      "PN": 21.93,
+      "Total": 36.15
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 2.86,
+      "PN": 28.25,
+      "Total": 13.86
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 100.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 57885,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 3612,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 182,
+        "percentual": null
+      },
+      {
+        "tipo": "Quantidade de Ações Preferenciais",
+        "quantidade": 266355557,
+        "percentual": 77.08
+      }
+    ],
+    "data": "28/04/2025",
+    "quantidade_acoes_ordinarias": 12906179,
+    "percentual_ordinarias": 2.86,
+    "total_acoes": 279261736,
+    "percentual_total": 35.03
+  },
+  "composicao_capital_social": {
+    "data": "18/02/2022",
+    "preferenciais": 345539182,
+    "total": 797207834
+  }
 }

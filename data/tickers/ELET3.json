@@ -8,8 +8,220 @@
   "subsetor": "Energia Elétrica",
   "segmento": "Energia Elétrica (segmento)",
   "site": "www.eletrobras.com",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível146.196.514146.713.955Ativo Total282.016.140289.871.330Patrimônio Líquido121.577.682121.999.776Patrimônio Líquido Atribuído à Controladora121.494.065121.863.225Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda10.414.1798.718.271Resultado Bruto4.806.4224.218.589Resultado de Equivalência Patrimonial367.832575.962Resultado Financeiro(3.493.976)(2.987.776)Resultado Líquido das Operações Continuadas(353.614)330.535Lucro (Prejuízo) do Período(353.614)330.535Lucro (Prejuízo) do Período Atribuído à Controladora(353.039)328.051Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais3.139.3531.286.078Atividades de Investimento494.563(1.350.878)Atividades de Financiamento(7.542.602)(1.489.352)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(3.908.686)(1.554.152)",
-  "posicao_acionaria": "Nome%ON%PN%TotalBanco do Nordeste0,020,000,02BANCO NACIONAL DE DESENVOLVIMENTO ECONÔMICO E SOCIAL  BNDES3,686,524,02BB ASSET0,830,150,75BNDES Participações S.A. - BNDESPAR3,556,673,93CAIXA ASSET1,640,151,46Caixa de Previdência dos Func. do Banco do Brasil0,760,220,69Fundo de Investimento Caixa FGHab Multimercado0,050,000,04Fundo Nacional de Desenvolvimento - FND2,250,001,98Geração Futuro L. Par FIA0,058,181,04GIC Private6,172,085,68Petros0,120,150,13RADAR GESTORA DE RECURSOS0,7010,821,93União Federal32,930,0028,93VIC DTVM0,010,130,03VICTOR ADLER0,000,020,00OUTROS44,6062,3346,75AÇÕES TESOURARIA2,642,592,64TOTAL100,00100,00100,00Informação recebida em 01/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "29/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas151.174-Pessoas Jurídicas10.326-Investidores Institucionais730-Quantidade de Ações Ordinárias1.974.649.55897,34Quantidade de Ações Preferenciais270.655.58596,63Total de Ações2.245.305.14397,26",
-  "composicao_capital_social": "29/04/2025Ordinárias2.028.544.286Preferenciais280.088.314Total2.308.632.600"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 146196514,
+        "31/12/2024": 146713955
+      },
+      "ativo_total": {
+        "31/03/2025": 282016140,
+        "31/12/2024": 289871330
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 121577682,
+        "31/12/2024": 121999776
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 121494065,
+        "31/12/2024": 121863225
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 10414179,
+        "01/01/2024_a_31/03/2024": 8718271
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 4806422,
+        "01/01/2024_a_31/03/2024": 4218589
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 367832,
+        "01/01/2024_a_31/03/2024": 575962
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -3493976,
+        "01/01/2024_a_31/03/2024": -2987776
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": -353614,
+        "01/01/2024_a_31/03/2024": 330535
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": -353614,
+        "01/01/2024_a_31/03/2024": 330535
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": -353039,
+        "01/01/2024_a_31/03/2024": 328051
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 3139353,
+        "01/01/2024_a_31/03/2024": 1286078
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": 494563,
+        "01/01/2024_a_31/03/2024": -1350878
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -7542602,
+        "01/01/2024_a_31/03/2024": -1489352
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -3908686,
+        "01/01/2024_a_31/03/2024": -1554152
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "Banco do Nordeste",
+      "ON": 0.02,
+      "PN": 0.0,
+      "Total": 0.02
+    },
+    {
+      "nome": "BANCO NACIONAL DE DESENVOLVIMENTO ECONÔMICO E SOCIAL  BNDES",
+      "ON": 3.68,
+      "PN": 6.52,
+      "Total": 4.02
+    },
+    {
+      "nome": "BB ASSET",
+      "ON": 0.83,
+      "PN": 0.15,
+      "Total": 0.75
+    },
+    {
+      "nome": "BNDES Participações S.A. - BNDESPAR",
+      "ON": 3.55,
+      "PN": 6.67,
+      "Total": 3.93
+    },
+    {
+      "nome": "CAIXA ASSET",
+      "ON": 1.64,
+      "PN": 0.15,
+      "Total": 1.46
+    },
+    {
+      "nome": "Caixa de Previdência dos Func. do Banco do Brasil",
+      "ON": 0.76,
+      "PN": 0.22,
+      "Total": 0.69
+    },
+    {
+      "nome": "Fundo de Investimento Caixa FGHab Multimercado",
+      "ON": 0.05,
+      "PN": 0.0,
+      "Total": 0.04
+    },
+    {
+      "nome": "Fundo Nacional de Desenvolvimento - FND",
+      "ON": 2.25,
+      "PN": 0.0,
+      "Total": 1.98
+    },
+    {
+      "nome": "Geração Futuro L. Par FIA",
+      "ON": 0.05,
+      "PN": 8.18,
+      "Total": 1.04
+    },
+    {
+      "nome": "GIC Private",
+      "ON": 6.17,
+      "PN": 2.08,
+      "Total": 5.68
+    },
+    {
+      "nome": "Petros",
+      "ON": 0.12,
+      "PN": 0.15,
+      "Total": 0.13
+    },
+    {
+      "nome": "RADAR GESTORA DE RECURSOS",
+      "ON": 0.7,
+      "PN": 10.82,
+      "Total": 1.93
+    },
+    {
+      "nome": "União Federal",
+      "ON": 32.93,
+      "PN": 0.0,
+      "Total": 28.93
+    },
+    {
+      "nome": "VIC DTVM",
+      "ON": 0.01,
+      "PN": 0.13,
+      "Total": 0.03
+    },
+    {
+      "nome": "VICTOR ADLER",
+      "ON": 0.0,
+      "PN": 0.02,
+      "Total": 0.0
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 44.6,
+      "PN": 62.33,
+      "Total": 46.75
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 2.64,
+      "PN": 2.59,
+      "Total": 2.64
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 100.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 151174,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 10326,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 730,
+        "percentual": null
+      },
+      {
+        "tipo": "Quantidade de Ações Preferenciais",
+        "quantidade": 270655585,
+        "percentual": 96.63
+      }
+    ],
+    "data": "29/04/2025",
+    "quantidade_acoes_ordinarias": 1974649558,
+    "percentual_ordinarias": 97.34,
+    "total_acoes": 2245305143,
+    "percentual_total": 97.26
+  },
+  "composicao_capital_social": {
+    "data": "29/04/2025",
+    "preferenciais": 280088314,
+    "total": 2308632600
+  }
 }

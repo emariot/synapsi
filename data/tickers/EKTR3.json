@@ -8,8 +8,128 @@
   "subsetor": "Energia Elétrica",
   "segmento": "Energia Elétrica (segmento)",
   "site": "www.elektro.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Não consolidado Balanço Patrimonial  - Não-Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos, Intangível e Diferido1.314.0001.382.000Ativo Total12.239.00012.011.000Patrimônio Líquido2.285.0002.013.000Demonstração do Resultado - Não-Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda2.359.0002.278.000Resultado Bruto791.000679.000Resultado de Equivalência Patrimonial00Resultado Financeiro(243.000)(162.000)Resultado Líquido das Operações Continuadas289.000273.000Lucro (Prejuízo) do Período289.000273.000Demonstração do Fluxo de Caixa - Não-Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais268.000447.000Atividades de Investimento(255.000)(216.000)Atividades de Financiamento(68.000)183.000Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(55.000)414.000",
-  "posicao_acionaria": "Nome%ON%PN%TotalNeoenergia S.A99,9799,4199,68OUTROS0,030,590,32AÇÕES TESOURARIA0,000,000,00TOTAL100,00100,00100,00Informação recebida em 27/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "11/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas2.572-Pessoas Jurídicas14-Investidores Institucionais8-Quantidade de Ações Ordinárias25.1470,03Quantidade de Ações Preferenciais598.6970,59Total de Ações623.8440,32",
-  "composicao_capital_social": "31/03/2008Ordinárias91.880.972Preferenciais101.878.293Total193.759.265"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_intangivel_e_diferido": {
+        "31/03/2025": 1314000,
+        "31/12/2024": 1382000
+      },
+      "ativo_total": {
+        "31/03/2025": 12239000,
+        "31/12/2024": 12011000
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 2285000,
+        "31/12/2024": 2013000
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 2359000,
+        "01/01/2024_a_31/03/2024": 2278000
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 791000,
+        "01/01/2024_a_31/03/2024": 679000
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -243000,
+        "01/01/2024_a_31/03/2024": -162000
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 289000,
+        "01/01/2024_a_31/03/2024": 273000
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 289000,
+        "01/01/2024_a_31/03/2024": 273000
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 268000,
+        "01/01/2024_a_31/03/2024": 447000
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -255000,
+        "01/01/2024_a_31/03/2024": -216000
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -68000,
+        "01/01/2024_a_31/03/2024": 183000
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -55000,
+        "01/01/2024_a_31/03/2024": 414000
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "Neoenergia S.A",
+      "ON": 99.97,
+      "PN": 99.41,
+      "Total": 99.68
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 0.03,
+      "PN": 0.59,
+      "Total": 0.32
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 100.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 2572,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 14,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 8,
+        "percentual": null
+      },
+      {
+        "tipo": "Quantidade de Ações Preferenciais",
+        "quantidade": 598697,
+        "percentual": 0.59
+      }
+    ],
+    "data": "11/04/2025",
+    "quantidade_acoes_ordinarias": 25147,
+    "percentual_ordinarias": 0.03,
+    "total_acoes": 623844,
+    "percentual_total": 0.32
+  },
+  "composicao_capital_social": {
+    "data": "31/03/2008",
+    "preferenciais": 101878293,
+    "total": 193759265
+  }
 }

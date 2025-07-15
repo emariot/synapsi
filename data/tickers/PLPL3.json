@@ -8,8 +8,149 @@
   "subsetor": "Construção Civil",
   "segmento": "Incorporações",
   "site": "www.planoeplanori.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível45.60644.391Ativo Total2.501.6622.581.180Patrimônio Líquido865.113915.646Patrimônio Líquido Atribuído à Controladora801.581847.235Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda608.288500.528Resultado Bruto199.688166.468Resultado de Equivalência Patrimonial(94)0Resultado Financeiro1.6853.823Resultado Líquido das Operações Continuadas80.82849.679Lucro (Prejuízo) do Período80.82849.679Lucro (Prejuízo) do Período Atribuído à Controladora66.93741.497Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(90.348)3.297Atividades de Investimento(6.325)26.124Atividades de Financiamento(221.155)(128.015)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(317.828)(98.594)",
-  "posicao_acionaria": "Nome%ON%PN%TotalCyrela Brazil Realty S.A. Empreendimentos e Participações33,560,0033,56LUMINARE CAPITAL FUNDO DE INVESTIMENTO EM AÇÕES0,450,000,45RODRIGO FAIRBANKS VON UHLENDORFF15,530,0015,53RODRIGO UCHOA LUNA22,810,0022,81OUTROS27,160,0027,16AÇÕES TESOURARIA0,490,000,49TOTAL100,000,00100,00Informação recebida em 02/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "24/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas30.870-Pessoas Jurídicas205-Investidores Institucionais255-Quantidade de Ações Ordinárias54.395.64126,68Total de Ações54.395.64126,68",
-  "composicao_capital_social": "04/09/2024Ordinárias203.901.000Preferenciais0Total203.901.000"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 45606,
+        "31/12/2024": 44391
+      },
+      "ativo_total": {
+        "31/03/2025": 2501662,
+        "31/12/2024": 2581180
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 865113,
+        "31/12/2024": 915646
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 801581,
+        "31/12/2024": 847235
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 608288,
+        "01/01/2024_a_31/03/2024": 500528
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 199688,
+        "01/01/2024_a_31/03/2024": 166468
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": -94,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": 1685,
+        "01/01/2024_a_31/03/2024": 3823
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 80828,
+        "01/01/2024_a_31/03/2024": 49679
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 80828,
+        "01/01/2024_a_31/03/2024": 49679
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 66937,
+        "01/01/2024_a_31/03/2024": 41497
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": -90348,
+        "01/01/2024_a_31/03/2024": 3297
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -6325,
+        "01/01/2024_a_31/03/2024": 26124
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -221155,
+        "01/01/2024_a_31/03/2024": -128015
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -317828,
+        "01/01/2024_a_31/03/2024": -98594
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "Cyrela Brazil Realty S.A. Empreendimentos e Participações",
+      "ON": 33.56,
+      "PN": 0.0,
+      "Total": 33.56
+    },
+    {
+      "nome": "LUMINARE CAPITAL FUNDO DE INVESTIMENTO EM AÇÕES",
+      "ON": 0.45,
+      "PN": 0.0,
+      "Total": 0.45
+    },
+    {
+      "nome": "RODRIGO FAIRBANKS VON UHLENDORFF",
+      "ON": 15.53,
+      "PN": 0.0,
+      "Total": 15.53
+    },
+    {
+      "nome": "RODRIGO UCHOA LUNA",
+      "ON": 22.81,
+      "PN": 0.0,
+      "Total": 22.81
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 27.16,
+      "PN": 0.0,
+      "Total": 27.16
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.49,
+      "PN": 0.0,
+      "Total": 0.49
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 30870,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 205,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 255,
+        "percentual": null
+      }
+    ],
+    "data": "24/04/2025",
+    "quantidade_acoes_ordinarias": 54395641,
+    "percentual_ordinarias": 26.68,
+    "total_acoes": 54395641,
+    "percentual_total": 26.68
+  },
+  "composicao_capital_social": {
+    "data": "04/09/2024",
+    "preferenciais": 0,
+    "total": 203901000
+  }
 }

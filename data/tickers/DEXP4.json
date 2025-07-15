@@ -8,8 +8,274 @@
   "subsetor": "Químicos",
   "segmento": "Petroquímicos",
   "site": "//www.gpc.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível440.697436.804Ativo Total1.623.9701.557.125Patrimônio Líquido999.766951.170Patrimônio Líquido Atribuído à Controladora999.766951.170Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda603.154387.929Resultado Bruto106.678100.877Resultado de Equivalência Patrimonial2.6363.233Resultado Financeiro(2.380)(2.957)Resultado Líquido das Operações Continuadas52.60145.845Lucro (Prejuízo) do Período52.60145.845Lucro (Prejuízo) do Período Atribuído à Controladora52.60140.420Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(8.457)13.658Atividades de Investimento(13.274)(15.434)Atividades de Financiamento(42.000)(36.351)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(63.731)(38.127)",
-  "posicao_acionaria": "Nome%ON%PN%TotalANDREA PALHARES VASCONCELOS4,180,003,96ANTÔNIO EDUARDO PEIXOTO DE CASTRO PALHARES1,680,001,59ANTÔNIO JOAQUIM PEIXOTO DE CASTRO1,700,001,61CAIXA ECONÔMICA FEDERAL0,008,150,43CAMILA MARIA LODI PALHARES0,710,000,67CELINA CORREA PEIXOTO DE CASTRO PALHARES1,900,001,80CESAR AUGUSTO PEIXOTO DE CASTRO PALHARES0,010,000,01EDUARDO DE FARIA6,280,005,94EMÍLIO SALGADO FILHO0,790,000,75GURGUEIA FUNDO DE INVESTIMENTO EM ACOES BDR NIVEL 18,5910,008,66HEITOR DIAS PALHARES NETO0,560,000,53Imobiliária Mondesir S/A6,870,286,53JORGE PAULO PEIXOTO DE CASTRO PALHARES4,180,003,96JOÃO CARLOS PEIXOTO DE CASTRO PALHARES0,210,000,20JOÃO PEDRO SILVA SALGADO0,090,000,08JULIANA MARIA LODI PALHARES0,710,000,67LUIS FELIPE BRANDAO DOS SANTOS2,0010,382,44MARCELO PRADEZ DE FARIA STALLONE7,150,006,77MARIA CANDIDA BEHRING PALHARES0,710,000,67MARIA HELENA PALHARES SALGADO3,210,003,04MONICA BEHRING PALHARES0,230,000,22PAULO CESAR PEIXOTO DE CASTRO PALHARES FILHO4,180,003,96PEDRO HENRIQUE SILVA SALGADO0,120,000,11TAQUARI PARTICIPAÇÕES S/A0,009,700,51OUTROS43,0455,2343,68AÇÕES TESOURARIA0,956,261,23TOTAL100,00100,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "30/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas9.871-Pessoas Jurídicas486-Investidores Institucionais74-Quantidade de Ações Ordinárias102.599.95299,09Quantidade de Ações Preferenciais5.410.52693,74Total de Ações108.010.47898,81",
-  "composicao_capital_social": "04/06/2024Ordinárias103.538.833Preferenciais5.771.805Total109.310.638"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 440697,
+        "31/12/2024": 436804
+      },
+      "ativo_total": {
+        "31/03/2025": 1623970,
+        "31/12/2024": 1557125
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 999766,
+        "31/12/2024": 951170
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 999766,
+        "31/12/2024": 951170
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 603154,
+        "01/01/2024_a_31/03/2024": 387929
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 106678,
+        "01/01/2024_a_31/03/2024": 100877
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 2636,
+        "01/01/2024_a_31/03/2024": 3233
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -2380,
+        "01/01/2024_a_31/03/2024": -2957
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 52601,
+        "01/01/2024_a_31/03/2024": 45845
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 52601,
+        "01/01/2024_a_31/03/2024": 45845
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 52601,
+        "01/01/2024_a_31/03/2024": 40420
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": -8457,
+        "01/01/2024_a_31/03/2024": 13658
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -13274,
+        "01/01/2024_a_31/03/2024": -15434
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -42000,
+        "01/01/2024_a_31/03/2024": -36351
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -63731,
+        "01/01/2024_a_31/03/2024": -38127
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "ANDREA PALHARES VASCONCELOS",
+      "ON": 4.18,
+      "PN": 0.0,
+      "Total": 3.96
+    },
+    {
+      "nome": "ANTÔNIO EDUARDO PEIXOTO DE CASTRO PALHARES",
+      "ON": 1.68,
+      "PN": 0.0,
+      "Total": 1.59
+    },
+    {
+      "nome": "ANTÔNIO JOAQUIM PEIXOTO DE CASTRO",
+      "ON": 1.7,
+      "PN": 0.0,
+      "Total": 1.61
+    },
+    {
+      "nome": "CAIXA ECONÔMICA FEDERAL",
+      "ON": 0.0,
+      "PN": 8.15,
+      "Total": 0.43
+    },
+    {
+      "nome": "CAMILA MARIA LODI PALHARES",
+      "ON": 0.71,
+      "PN": 0.0,
+      "Total": 0.67
+    },
+    {
+      "nome": "CELINA CORREA PEIXOTO DE CASTRO PALHARES",
+      "ON": 1.9,
+      "PN": 0.0,
+      "Total": 1.8
+    },
+    {
+      "nome": "CESAR AUGUSTO PEIXOTO DE CASTRO PALHARES",
+      "ON": 0.01,
+      "PN": 0.0,
+      "Total": 0.01
+    },
+    {
+      "nome": "EDUARDO DE FARIA",
+      "ON": 6.28,
+      "PN": 0.0,
+      "Total": 5.94
+    },
+    {
+      "nome": "EMÍLIO SALGADO FILHO",
+      "ON": 0.79,
+      "PN": 0.0,
+      "Total": 0.75
+    },
+    {
+      "nome": "GURGUEIA FUNDO DE INVESTIMENTO EM ACOES BDR NIVEL 1",
+      "ON": 8.59,
+      "PN": 10.0,
+      "Total": 8.66
+    },
+    {
+      "nome": "HEITOR DIAS PALHARES NETO",
+      "ON": 0.56,
+      "PN": 0.0,
+      "Total": 0.53
+    },
+    {
+      "nome": "Imobiliária Mondesir S/A",
+      "ON": 6.87,
+      "PN": 0.28,
+      "Total": 6.53
+    },
+    {
+      "nome": "JORGE PAULO PEIXOTO DE CASTRO PALHARES",
+      "ON": 4.18,
+      "PN": 0.0,
+      "Total": 3.96
+    },
+    {
+      "nome": "JOÃO CARLOS PEIXOTO DE CASTRO PALHARES",
+      "ON": 0.21,
+      "PN": 0.0,
+      "Total": 0.2
+    },
+    {
+      "nome": "JOÃO PEDRO SILVA SALGADO",
+      "ON": 0.09,
+      "PN": 0.0,
+      "Total": 0.08
+    },
+    {
+      "nome": "JULIANA MARIA LODI PALHARES",
+      "ON": 0.71,
+      "PN": 0.0,
+      "Total": 0.67
+    },
+    {
+      "nome": "LUIS FELIPE BRANDAO DOS SANTOS",
+      "ON": 2.0,
+      "PN": 10.38,
+      "Total": 2.44
+    },
+    {
+      "nome": "MARCELO PRADEZ DE FARIA STALLONE",
+      "ON": 7.15,
+      "PN": 0.0,
+      "Total": 6.77
+    },
+    {
+      "nome": "MARIA CANDIDA BEHRING PALHARES",
+      "ON": 0.71,
+      "PN": 0.0,
+      "Total": 0.67
+    },
+    {
+      "nome": "MARIA HELENA PALHARES SALGADO",
+      "ON": 3.21,
+      "PN": 0.0,
+      "Total": 3.04
+    },
+    {
+      "nome": "MONICA BEHRING PALHARES",
+      "ON": 0.23,
+      "PN": 0.0,
+      "Total": 0.22
+    },
+    {
+      "nome": "PAULO CESAR PEIXOTO DE CASTRO PALHARES FILHO",
+      "ON": 4.18,
+      "PN": 0.0,
+      "Total": 3.96
+    },
+    {
+      "nome": "PEDRO HENRIQUE SILVA SALGADO",
+      "ON": 0.12,
+      "PN": 0.0,
+      "Total": 0.11
+    },
+    {
+      "nome": "TAQUARI PARTICIPAÇÕES S/A",
+      "ON": 0.0,
+      "PN": 9.7,
+      "Total": 0.51
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 43.04,
+      "PN": 55.23,
+      "Total": 43.68
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.95,
+      "PN": 6.26,
+      "Total": 1.23
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 100.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 9871,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 486,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 74,
+        "percentual": null
+      },
+      {
+        "tipo": "Quantidade de Ações Preferenciais",
+        "quantidade": 5410526,
+        "percentual": 93.74
+      }
+    ],
+    "data": "30/04/2025",
+    "quantidade_acoes_ordinarias": 102599952,
+    "percentual_ordinarias": 99.09,
+    "total_acoes": 108010478,
+    "percentual_total": 98.81
+  },
+  "composicao_capital_social": {
+    "data": "04/06/2024",
+    "preferenciais": 5771805,
+    "total": 109310638
+  }
 }

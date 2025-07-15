@@ -8,8 +8,245 @@
   "subsetor": "Comércio e Distribuição",
   "segmento": "Medicamentos e Outros Produtos",
   "site": "www.rd.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível8.714.2258.609.993Ativo Total22.633.25322.163.756Patrimônio Líquido6.500.5716.446.887Patrimônio Líquido Atribuído à Controladora6.485.9126.433.460Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda10.051.0109.100.494Resultado Bruto2.883.2652.659.264Resultado de Equivalência Patrimonial(1.274)340Resultado Financeiro(279.507)(247.530)Resultado Líquido das Operações Continuadas165.079193.301Lucro (Prejuízo) do Período165.079193.301Lucro (Prejuízo) do Período Atribuído à Controladora163.967187.814Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais521.310655.076Atividades de Investimento(320.617)(199.485)Atividades de Financiamento(324.314)(455.316)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(123.621)275",
-  "posicao_acionaria": "Nome%ON%PN%TotalALBERTO WRIGHT PIPPONZI0,290,000,29ALEXANDRE DE ZAGOTTIS0,530,000,53ANDRE ALMEIDA PIPPONZI0,690,000,69ANTONIO CARLOS PIPPONZI1,000,001,00BRUNO WRIGHT PIPPONZI0,410,000,41BlackRock. Inc. (Gestor/Administrador - Vide item 6.6 a seguir)5,060,005,06CRISTIANA ALMEIDA PIPPONZI0,930,000,93Capital Research Global Investors (CRGI)(Gestor/Administrador - Vide item 6.6 a seguir)5,520,005,52EUGENIO DE ZAGOTTIS0,720,000,72FUNDO DE INVEST DE ACOES ARAUCARIA SEGUNDO0,090,000,09Gl Investimentos e Participacoes Ltda5,580,005,58MARCELLO DE ZAGOTTIS0,740,000,74MARIA EUGÊNIA LAFER GALVÃO0,400,000,40MARTA ALMEIDA PIPPONZI0,770,000,77PAULO SÉRGIO COUTINHO GALVÃO FILHO0,720,000,72RBC GLOBAL ASSET MANAGEMENT INC. (GESTOR/ADMINISTRADOR - VIDE ITEM 6.6 A SEGUIR)5,070,005,07RODRIGO WRIGHT PIPPONZI0,400,000,40ROSALIA PIPPONZI RAIA DE ALMEIDA PRADO0,530,000,53WELLS HOLDING LIMITED11,020,0011,02WELLS HOLDING LIMITED0,000,000,00OUTROS59,240,0059,24AÇÕES TESOURARIA0,290,000,29TOTAL100,000,00100,00Informação recebida em 16/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "22/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas48.419-Pessoas Jurídicas134-Investidores Institucionais1.402-Quantidade de Ações Ordinárias1.285.713.89874,84Total de Ações1.285.713.89874,84",
-  "composicao_capital_social": "19/04/2023Ordinárias1.718.007.200Preferenciais0Total1.718.007.200"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 8714225,
+        "31/12/2024": 8609993
+      },
+      "ativo_total": {
+        "31/03/2025": 22633253,
+        "31/12/2024": 22163756
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 6500571,
+        "31/12/2024": 6446887
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 6485912,
+        "31/12/2024": 6433460
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 10051010,
+        "01/01/2024_a_31/03/2024": 9100494
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 2883265,
+        "01/01/2024_a_31/03/2024": 2659264
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": -1274,
+        "01/01/2024_a_31/03/2024": 340
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -279507,
+        "01/01/2024_a_31/03/2024": -247530
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 165079,
+        "01/01/2024_a_31/03/2024": 193301
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 165079,
+        "01/01/2024_a_31/03/2024": 193301
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 163967,
+        "01/01/2024_a_31/03/2024": 187814
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 521310,
+        "01/01/2024_a_31/03/2024": 655076
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -320617,
+        "01/01/2024_a_31/03/2024": -199485
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -324314,
+        "01/01/2024_a_31/03/2024": -455316
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -123621,
+        "01/01/2024_a_31/03/2024": 275
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "ALBERTO WRIGHT PIPPONZI",
+      "ON": 0.29,
+      "PN": 0.0,
+      "Total": 0.29
+    },
+    {
+      "nome": "ALEXANDRE DE ZAGOTTIS",
+      "ON": 0.53,
+      "PN": 0.0,
+      "Total": 0.53
+    },
+    {
+      "nome": "ANDRE ALMEIDA PIPPONZI",
+      "ON": 0.69,
+      "PN": 0.0,
+      "Total": 0.69
+    },
+    {
+      "nome": "ANTONIO CARLOS PIPPONZI",
+      "ON": 1.0,
+      "PN": 0.0,
+      "Total": 1.0
+    },
+    {
+      "nome": "BRUNO WRIGHT PIPPONZI",
+      "ON": 0.41,
+      "PN": 0.0,
+      "Total": 0.41
+    },
+    {
+      "nome": "BlackRock. Inc. (Gestor/Administrador - Vide item 6.6 a seguir)",
+      "ON": 5.06,
+      "PN": 0.0,
+      "Total": 5.06
+    },
+    {
+      "nome": "CRISTIANA ALMEIDA PIPPONZI",
+      "ON": 0.93,
+      "PN": 0.0,
+      "Total": 0.93
+    },
+    {
+      "nome": "Capital Research Global Investors (CRGI)(Gestor/Administrador - Vide item 6.6 a seguir)",
+      "ON": 5.52,
+      "PN": 0.0,
+      "Total": 5.52
+    },
+    {
+      "nome": "EUGENIO DE ZAGOTTIS",
+      "ON": 0.72,
+      "PN": 0.0,
+      "Total": 0.72
+    },
+    {
+      "nome": "FUNDO DE INVEST DE ACOES ARAUCARIA SEGUNDO",
+      "ON": 0.09,
+      "PN": 0.0,
+      "Total": 0.09
+    },
+    {
+      "nome": "Gl Investimentos e Participacoes Ltda",
+      "ON": 5.58,
+      "PN": 0.0,
+      "Total": 5.58
+    },
+    {
+      "nome": "MARCELLO DE ZAGOTTIS",
+      "ON": 0.74,
+      "PN": 0.0,
+      "Total": 0.74
+    },
+    {
+      "nome": "MARIA EUGÊNIA LAFER GALVÃO",
+      "ON": 0.4,
+      "PN": 0.0,
+      "Total": 0.4
+    },
+    {
+      "nome": "MARTA ALMEIDA PIPPONZI",
+      "ON": 0.77,
+      "PN": 0.0,
+      "Total": 0.77
+    },
+    {
+      "nome": "PAULO SÉRGIO COUTINHO GALVÃO FILHO",
+      "ON": 0.72,
+      "PN": 0.0,
+      "Total": 0.72
+    },
+    {
+      "nome": "RBC GLOBAL ASSET MANAGEMENT INC. (GESTOR/ADMINISTRADOR - VIDE ITEM 6.6 A SEGUIR)",
+      "ON": 5.07,
+      "PN": 0.0,
+      "Total": 5.07
+    },
+    {
+      "nome": "RODRIGO WRIGHT PIPPONZI",
+      "ON": 0.4,
+      "PN": 0.0,
+      "Total": 0.4
+    },
+    {
+      "nome": "ROSALIA PIPPONZI RAIA DE ALMEIDA PRADO",
+      "ON": 0.53,
+      "PN": 0.0,
+      "Total": 0.53
+    },
+    {
+      "nome": "WELLS HOLDING LIMITED",
+      "ON": 11.02,
+      "PN": 0.0,
+      "Total": 11.02
+    },
+    {
+      "nome": "WELLS HOLDING LIMITED",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 59.24,
+      "PN": 0.0,
+      "Total": 59.24
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.29,
+      "PN": 0.0,
+      "Total": 0.29
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 48419,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 134,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 1402,
+        "percentual": null
+      }
+    ],
+    "data": "22/04/2025",
+    "quantidade_acoes_ordinarias": 1285713898,
+    "percentual_ordinarias": 74.84,
+    "total_acoes": 1285713898,
+    "percentual_total": 74.84
+  },
+  "composicao_capital_social": {
+    "data": "19/04/2023",
+    "preferenciais": 0,
+    "total": 1718007200
+  }
 }

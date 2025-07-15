@@ -8,8 +8,244 @@
   "subsetor": "Energia Elétrica",
   "segmento": "Energia Elétrica (segmento)",
   "site": "www.energisa.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível25.493.43525.248.091Ativo Total78.311.36177.181.653Patrimônio Líquido22.829.01222.143.222Patrimônio Líquido Atribuído à Controladora17.989.29717.279.498Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda8.409.6167.973.743Resultado Bruto2.493.0232.547.714Resultado de Equivalência Patrimonial30.4720Resultado Financeiro(613.885)(606.647)Resultado Líquido das Operações Continuadas1.026.7151.135.090Lucro (Prejuízo) do Período1.026.7151.135.090Lucro (Prejuízo) do Período Atribuído à Controladora775.736901.961Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais1.472.0301.924.644Atividades de Investimento(1.093.367)(2.959.095)Atividades de Financiamento(292.773)906.108Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes85.890(128.343)",
-  "posicao_acionaria": "Nome%ON%PN%TotalBEATRIZ ALZUGUIR BOTELHO0,000,000,00BNDES PARTICIPACOES S/A BNDESPAR3,318,376,41BRUNO ALZUGUIR BOTELHO0,000,000,00CINTIA ALZUGUIR BOTELHO0,000,000,00FRANCISCO EDUARDO MULLER BOTELHO (ESPÓLIO)0,070,000,03FREDERICO KOS BOTELHO0,000,000,00GILBERTO MULLER BOTELHO0,070,020,04Gipar S.A.62,455,7827,74Itacatu S/A0,010,030,02IVAN MÜLLER BOTELHO0,210,520,40MARIA DO CARMO RIPPER KOS0,010,020,01MAURÍCIO PEREZ BOTELHO0,040,090,07MONICA PEREZ BOTELHO0,000,000,00MULTISETOR COM. LND. E PARTICIPAÇÕES S/A0,200,420,34OPPORTUNITY HDF ADMINISTRADORA DE RECURSOS LTDA.2,035,133,93RICARDO PEREZ BOTELHO0,010,030,02Samambaia Master Fundo de Investimento em Ações no Exterior - BDR Nível I4,3010,888,33SQUADRA INVESTIMENTOS  GESTÃO DE RECURSOS LTDA.5,0212,719,73STELLA PEREZ BOTELHO0,010,020,02OUTROS22,1855,7842,76AÇÕES TESOURARIA0,090,220,17TOTAL100,00100,00100,00Informação recebida em 18/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "29/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas24.242-Pessoas Jurídicas245-Investidores Institucionais1.543-Quantidade de Ações Ordinárias326.757.51336,83Quantidade de Ações Preferenciais1.302.012.18492,86Total de Ações1.628.769.69771,14",
-  "composicao_capital_social": "29/04/2025Ordinárias887.231.247Preferenciais1.402.193.416Total2.289.424.663"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 25493435,
+        "31/12/2024": 25248091
+      },
+      "ativo_total": {
+        "31/03/2025": 78311361,
+        "31/12/2024": 77181653
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 22829012,
+        "31/12/2024": 22143222
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 17989297,
+        "31/12/2024": 17279498
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 8409616,
+        "01/01/2024_a_31/03/2024": 7973743
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 2493023,
+        "01/01/2024_a_31/03/2024": 2547714
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 30472,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -613885,
+        "01/01/2024_a_31/03/2024": -606647
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 1026715,
+        "01/01/2024_a_31/03/2024": 1135090
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 1026715,
+        "01/01/2024_a_31/03/2024": 1135090
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 775736,
+        "01/01/2024_a_31/03/2024": 901961
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 1472030,
+        "01/01/2024_a_31/03/2024": 1924644
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -1093367,
+        "01/01/2024_a_31/03/2024": -2959095
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -292773,
+        "01/01/2024_a_31/03/2024": 906108
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 85890,
+        "01/01/2024_a_31/03/2024": -128343
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "BEATRIZ ALZUGUIR BOTELHO",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "BNDES PARTICIPACOES S/A BNDESPAR",
+      "ON": 3.31,
+      "PN": 8.37,
+      "Total": 6.41
+    },
+    {
+      "nome": "BRUNO ALZUGUIR BOTELHO",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "CINTIA ALZUGUIR BOTELHO",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "FRANCISCO EDUARDO MULLER BOTELHO (ESPÓLIO)",
+      "ON": 0.07,
+      "PN": 0.0,
+      "Total": 0.03
+    },
+    {
+      "nome": "FREDERICO KOS BOTELHO",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "GILBERTO MULLER BOTELHO",
+      "ON": 0.07,
+      "PN": 0.02,
+      "Total": 0.04
+    },
+    {
+      "nome": "Gipar S.A.",
+      "ON": 62.45,
+      "PN": 5.78,
+      "Total": 27.74
+    },
+    {
+      "nome": "Itacatu S/A",
+      "ON": 0.01,
+      "PN": 0.03,
+      "Total": 0.02
+    },
+    {
+      "nome": "IVAN MÜLLER BOTELHO",
+      "ON": 0.21,
+      "PN": 0.52,
+      "Total": 0.4
+    },
+    {
+      "nome": "MARIA DO CARMO RIPPER KOS",
+      "ON": 0.01,
+      "PN": 0.02,
+      "Total": 0.01
+    },
+    {
+      "nome": "MAURÍCIO PEREZ BOTELHO",
+      "ON": 0.04,
+      "PN": 0.09,
+      "Total": 0.07
+    },
+    {
+      "nome": "MONICA PEREZ BOTELHO",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "MULTISETOR COM. LND. E PARTICIPAÇÕES S/A",
+      "ON": 0.2,
+      "PN": 0.42,
+      "Total": 0.34
+    },
+    {
+      "nome": "OPPORTUNITY HDF ADMINISTRADORA DE RECURSOS LTDA.",
+      "ON": 2.03,
+      "PN": 5.13,
+      "Total": 3.93
+    },
+    {
+      "nome": "RICARDO PEREZ BOTELHO",
+      "ON": 0.01,
+      "PN": 0.03,
+      "Total": 0.02
+    },
+    {
+      "nome": "Samambaia Master Fundo de Investimento em Ações no Exterior - BDR Nível I",
+      "ON": 4.3,
+      "PN": 10.88,
+      "Total": 8.33
+    },
+    {
+      "nome": "SQUADRA INVESTIMENTOS  GESTÃO DE RECURSOS LTDA.",
+      "ON": 5.02,
+      "PN": 12.71,
+      "Total": 9.73
+    },
+    {
+      "nome": "STELLA PEREZ BOTELHO",
+      "ON": 0.01,
+      "PN": 0.02,
+      "Total": 0.02
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 22.18,
+      "PN": 55.78,
+      "Total": 42.76
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.09,
+      "PN": 0.22,
+      "Total": 0.17
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 100.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 24242,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 245,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 1543,
+        "percentual": null
+      },
+      {
+        "tipo": "Quantidade de Ações Preferenciais",
+        "quantidade": 1302012184,
+        "percentual": 92.86
+      }
+    ],
+    "data": "29/04/2025",
+    "quantidade_acoes_ordinarias": 326757513,
+    "percentual_ordinarias": 36.83,
+    "total_acoes": 1628769697,
+    "percentual_total": 71.14
+  },
+  "composicao_capital_social": {
+    "data": "29/04/2025",
+    "preferenciais": 1402193416,
+    "total": 2289424663
+  }
 }

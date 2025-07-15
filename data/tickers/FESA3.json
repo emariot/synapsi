@@ -8,8 +8,142 @@
   "subsetor": "Siderurgia e Metalurgia",
   "segmento": "Siderurgia",
   "site": "//www.ferbasa.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível1.912.6411.908.651Ativo Total4.334.5624.387.880Patrimônio Líquido3.365.0213.340.773Patrimônio Líquido Atribuído à Controladora3.363.4403.339.257Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda549.849509.489Resultado Bruto74.28397.428Resultado de Equivalência Patrimonial00Resultado Financeiro38.71827.706Resultado Líquido das Operações Continuadas24.24841.205Lucro (Prejuízo) do Período24.24841.205Lucro (Prejuízo) do Período Atribuído à Controladora24.18341.146Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais113.333(42.558)Atividades de Investimento(62.087)15.861Atividades de Financiamento(68.047)(24.194)Variação Cambial sobre Caixa e Equivalentes076Aumento (Redução) de Caixa e Equivalentes(16.801)(50.815)",
-  "posicao_acionaria": "Nome%ON%PN%TotalFundação José Carvalho98,8326,3950,54Trigono Capital Ltda.0,019,096,06OUTROS1,0559,1439,78AÇÕES TESOURARIA0,115,383,62TOTAL100,00100,00100,00Informação recebida em 20/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "17/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas39.136-Pessoas Jurídicas140-Investidores Institucionais287-Quantidade de Ações Ordinárias1.251.9041,06Quantidade de Ações Preferenciais160.507.70068,17Total de Ações161.759.60445,80",
-  "composicao_capital_social": "07/11/2024Ordinárias117.725.000Preferenciais235.450.000Total353.175.000"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 1912641,
+        "31/12/2024": 1908651
+      },
+      "ativo_total": {
+        "31/03/2025": 4334562,
+        "31/12/2024": 4387880
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 3365021,
+        "31/12/2024": 3340773
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 3363440,
+        "31/12/2024": 3339257
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 549849,
+        "01/01/2024_a_31/03/2024": 509489
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 74283,
+        "01/01/2024_a_31/03/2024": 97428
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": 38718,
+        "01/01/2024_a_31/03/2024": 27706
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 24248,
+        "01/01/2024_a_31/03/2024": 41205
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 24248,
+        "01/01/2024_a_31/03/2024": 41205
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 24183,
+        "01/01/2024_a_31/03/2024": 41146
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 113333,
+        "01/01/2024_a_31/03/2024": -42558
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -62087,
+        "01/01/2024_a_31/03/2024": 15861
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -68047,
+        "01/01/2024_a_31/03/2024": -24194
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 76
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -16801,
+        "01/01/2024_a_31/03/2024": -50815
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "Fundação José Carvalho",
+      "ON": 98.83,
+      "PN": 26.39,
+      "Total": 50.54
+    },
+    {
+      "nome": "Trigono Capital Ltda.",
+      "ON": 0.01,
+      "PN": 9.09,
+      "Total": 6.06
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 1.05,
+      "PN": 59.14,
+      "Total": 39.78
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.11,
+      "PN": 5.38,
+      "Total": 3.62
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 100.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 39136,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 140,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 287,
+        "percentual": null
+      },
+      {
+        "tipo": "Quantidade de Ações Preferenciais",
+        "quantidade": 160507700,
+        "percentual": 68.17
+      }
+    ],
+    "data": "17/04/2025",
+    "quantidade_acoes_ordinarias": 1251904,
+    "percentual_ordinarias": 1.06,
+    "total_acoes": 161759604,
+    "percentual_total": 45.8
+  },
+  "composicao_capital_social": {
+    "data": "07/11/2024",
+    "preferenciais": 235450000,
+    "total": 353175000
+  }
 }

@@ -8,8 +8,449 @@
   "subsetor": "Alimentos Processados",
   "segmento": "Açucar e Alcool",
   "site": "https://jallesmachado.com",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/03/2024Ativo Imobilizado, Investimentos e Intangível4.558.2214.245.112Ativo Total7.137.6066.701.940Patrimônio Líquido2.003.1702.074.758Patrimônio Líquido Atribuído à Controladora2.003.1702.074.758Demonstração do Resultado - Consolidado01/04/2024 a 31/03/202501/04/2023 a 31/03/2024Receita de Venda2.337.9111.909.528Resultado Bruto638.870533.372Resultado de Equivalência Patrimonial8.32513.146Resultado Financeiro(618.158)(333.739)Resultado Líquido das Operações Continuadas(55.950)85.118Lucro (Prejuízo) do Período(55.950)85.118Lucro (Prejuízo) do Período Atribuído à Controladora085.118Demonstração do Fluxo de Caixa - Consolidado01/04/2024 a 31/03/202501/04/2023 a 31/03/2024Atividades Operacionais841.282696.474Atividades de Investimento(720.211)(817.310)Atividades de Financiamento62.500172.369Variação Cambial sobre Caixa e Equivalentes3.908(791)Aumento (Redução) de Caixa e Equivalentes187.47950.742",
-  "posicao_acionaria": "Nome%ON%PN%TotalADRIANA BRAOLLOS0,510,000,51ALEXANDRE BRAOIOS0,490,000,49ANTONIO FERNANDO ABRAHAO DE MORAIS0,520,000,52Baptista de Siqueira Adm. e Participações Ltda.0,010,000,01CHRISTIANE NASCIMENTO DE MORAIS0,180,000,18CL MORAIS AGROPECUÁRIA &AMP; PLANEJAMENTO LTDA.0,060,000,06CLAUDIA ABRAHAO DE MORAIS0,520,000,52CLOVIS FERREIRA DE MORAIS3,700,003,70CLOVIS FERREIRA DE MORAIS JUNIOR0,180,000,18DANIELA ABRAH?O DE MORAIS0,520,000,52DÉBORA BRAOLLOS0,500,000,50EDNAN ARAÚJO MORAES FILHO0,210,000,21GIBRAIL KINJO ESBER BRAHIM FILHO0,000,000,00GISLENE RODRIGUES MORAES0,210,000,21Gissara Agropecuária Ltda.10,440,0010,44GRACE GIBRAIL KANJO0,000,000,00GRACIELE RODRIGUES MORAES0,210,000,21HENRIQUE PENNA DE SIQUEIRA0,000,000,00HÉLIO MÁRCIO BATISTA DE SIQUEIRA0,110,000,11JOSÉ SALVINO DE MENEZES0,200,000,20JOÃO PEDRO BRAOLLOS NETO0,530,000,53JUDITH RODRIGUES DE MENEZES0,000,000,00JULIA PENNA DE SIQUEIRA0,010,000,01LISBELA BAPTISTA LAGE DE SIQUEIRA1,990,001,99LIZETI RODRIGUES DE MENEZES E CASTRO0,210,000,21LUIZ CESAR VAZ DE MELO0,000,000,00MARCELO BRAOIOS0,490,000,49MARIA BETHANIA NEVES CARVALHO LAGE SIQUEIRA0,010,000,01MARIA DE LOURDES MATIAZZO1,480,001,48MARIA THEREZINHA CHAIN?A BRAOLLOS1,500,001,50MARÍLIA BAPTISTA DE SIQUEIRA0,030,000,03MIRIAM SIQUEIRA KRUG0,100,000,10MYRIAM PENNA E SIQUEIRA0,030,000,03MÁRIO BENJAMIM BATISTA DE SIQUEIRA0,110,000,11MÔNICA GIBRAIL KANJO DE ÁVILA0,000,000,00NAZIRA GIBRAIL KANJO NASSER0,000,000,00NÁDIA GIBRAIL KANJO0,000,000,00OTAVIO LAGE DE SIQUEIRA FILHO0,080,000,08OTÁVIO JOSÉ BAPTISTA DE SIQUEIRA0,110,000,11OZIRES SALVINO DE MENEZES0,210,000,21Planagri S/A0,400,000,40RAUL TADEU BATISTA DE SIQUEIRA0,170,000,17RENATA DRUMMOND DE SIQUEIRA0,690,000,69RICARDO BRAOIOS0,500,000,50RODRIGO PENNA DE SIQUEIRA0,010,000,01ROSANA ABRAH?O DE MORAIS0,520,000,52Rural Agropastoril Empreendimentos e Participações Ltda.2,230,002,23SARA KINJO ESBER0,060,000,06SILVIA DRUMMOND DE SIQUEIRA0,690,000,69SILVIA REGINA FONTOURA DE SIQUEIRA0,040,000,04SILVIO AUGUSTO BATISTA DE SIQUEIRA0,700,000,70TERESA MARCIA NASCIMENTO DE MORAIS0,180,000,18TEREZA PENNA DE SIQUEIRA0,010,000,01Vera Cruz Agropecuária Ltda.35,980,0035,98OUTROS31,700,0031,70AÇÕES TESOURARIA0,660,000,66TOTAL100,000,00100,00Informação recebida em 10/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "25/07/2024Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas30.662-Pessoas Jurídicas160-Investidores Institucionais129-Quantidade de Ações Ordinárias96.226.07731,70Total de Ações96.226.07731,70",
-  "composicao_capital_social": "15/08/2023Ordinárias303.541.864Preferenciais0Total303.541.864"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 4558221,
+        "31/03/2024": 4245112
+      },
+      "ativo_total": {
+        "31/03/2025": 7137606,
+        "31/03/2024": 6701940
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 2003170,
+        "31/03/2024": 2074758
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 2003170,
+        "31/03/2024": 2074758
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/04/2024_a_31/03/2025": 2337911,
+        "01/04/2023_a_31/03/2024": 1909528
+      },
+      "resultado_bruto": {
+        "01/04/2024_a_31/03/2025": 638870,
+        "01/04/2023_a_31/03/2024": 533372
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/04/2024_a_31/03/2025": 8325,
+        "01/04/2023_a_31/03/2024": 13146
+      },
+      "resultado_financeiro": {
+        "01/04/2024_a_31/03/2025": -618158,
+        "01/04/2023_a_31/03/2024": -333739
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/04/2024_a_31/03/2025": -55950,
+        "01/04/2023_a_31/03/2024": 85118
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/04/2024_a_31/03/2025": -55950,
+        "01/04/2023_a_31/03/2024": 85118
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/04/2024_a_31/03/2025": 0,
+        "01/04/2023_a_31/03/2024": 85118
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/04/2024_a_31/03/2025": 841282,
+        "01/04/2023_a_31/03/2024": 696474
+      },
+      "atividades_de_investimento": {
+        "01/04/2024_a_31/03/2025": -720211,
+        "01/04/2023_a_31/03/2024": -817310
+      },
+      "atividades_de_financiamento": {
+        "01/04/2024_a_31/03/2025": 62500,
+        "01/04/2023_a_31/03/2024": 172369
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/04/2024_a_31/03/2025": 3908,
+        "01/04/2023_a_31/03/2024": -791
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/04/2024_a_31/03/2025": 187479,
+        "01/04/2023_a_31/03/2024": 50742
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "ADRIANA BRAOLLOS",
+      "ON": 0.51,
+      "PN": 0.0,
+      "Total": 0.51
+    },
+    {
+      "nome": "ALEXANDRE BRAOIOS",
+      "ON": 0.49,
+      "PN": 0.0,
+      "Total": 0.49
+    },
+    {
+      "nome": "ANTONIO FERNANDO ABRAHAO DE MORAIS",
+      "ON": 0.52,
+      "PN": 0.0,
+      "Total": 0.52
+    },
+    {
+      "nome": "Baptista de Siqueira Adm. e Participações Ltda.",
+      "ON": 0.01,
+      "PN": 0.0,
+      "Total": 0.01
+    },
+    {
+      "nome": "CHRISTIANE NASCIMENTO DE MORAIS",
+      "ON": 0.18,
+      "PN": 0.0,
+      "Total": 0.18
+    },
+    {
+      "nome": "CL MORAIS AGROPECUÁRIA &AMP; PLANEJAMENTO LTDA.",
+      "ON": 0.06,
+      "PN": 0.0,
+      "Total": 0.06
+    },
+    {
+      "nome": "CLAUDIA ABRAHAO DE MORAIS",
+      "ON": 0.52,
+      "PN": 0.0,
+      "Total": 0.52
+    },
+    {
+      "nome": "CLOVIS FERREIRA DE MORAIS",
+      "ON": 3.7,
+      "PN": 0.0,
+      "Total": 3.7
+    },
+    {
+      "nome": "CLOVIS FERREIRA DE MORAIS JUNIOR",
+      "ON": 0.18,
+      "PN": 0.0,
+      "Total": 0.18
+    },
+    {
+      "nome": "DANIELA ABRAH?O DE MORAIS",
+      "ON": 0.52,
+      "PN": 0.0,
+      "Total": 0.52
+    },
+    {
+      "nome": "DÉBORA BRAOLLOS",
+      "ON": 0.5,
+      "PN": 0.0,
+      "Total": 0.5
+    },
+    {
+      "nome": "EDNAN ARAÚJO MORAES FILHO",
+      "ON": 0.21,
+      "PN": 0.0,
+      "Total": 0.21
+    },
+    {
+      "nome": "GIBRAIL KINJO ESBER BRAHIM FILHO",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "GISLENE RODRIGUES MORAES",
+      "ON": 0.21,
+      "PN": 0.0,
+      "Total": 0.21
+    },
+    {
+      "nome": "Gissara Agropecuária Ltda.",
+      "ON": 10.44,
+      "PN": 0.0,
+      "Total": 10.44
+    },
+    {
+      "nome": "GRACE GIBRAIL KANJO",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "GRACIELE RODRIGUES MORAES",
+      "ON": 0.21,
+      "PN": 0.0,
+      "Total": 0.21
+    },
+    {
+      "nome": "HENRIQUE PENNA DE SIQUEIRA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "HÉLIO MÁRCIO BATISTA DE SIQUEIRA",
+      "ON": 0.11,
+      "PN": 0.0,
+      "Total": 0.11
+    },
+    {
+      "nome": "JOSÉ SALVINO DE MENEZES",
+      "ON": 0.2,
+      "PN": 0.0,
+      "Total": 0.2
+    },
+    {
+      "nome": "JOÃO PEDRO BRAOLLOS NETO",
+      "ON": 0.53,
+      "PN": 0.0,
+      "Total": 0.53
+    },
+    {
+      "nome": "JUDITH RODRIGUES DE MENEZES",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "JULIA PENNA DE SIQUEIRA",
+      "ON": 0.01,
+      "PN": 0.0,
+      "Total": 0.01
+    },
+    {
+      "nome": "LISBELA BAPTISTA LAGE DE SIQUEIRA",
+      "ON": 1.99,
+      "PN": 0.0,
+      "Total": 1.99
+    },
+    {
+      "nome": "LIZETI RODRIGUES DE MENEZES E CASTRO",
+      "ON": 0.21,
+      "PN": 0.0,
+      "Total": 0.21
+    },
+    {
+      "nome": "LUIZ CESAR VAZ DE MELO",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "MARCELO BRAOIOS",
+      "ON": 0.49,
+      "PN": 0.0,
+      "Total": 0.49
+    },
+    {
+      "nome": "MARIA BETHANIA NEVES CARVALHO LAGE SIQUEIRA",
+      "ON": 0.01,
+      "PN": 0.0,
+      "Total": 0.01
+    },
+    {
+      "nome": "MARIA DE LOURDES MATIAZZO",
+      "ON": 1.48,
+      "PN": 0.0,
+      "Total": 1.48
+    },
+    {
+      "nome": "MARIA THEREZINHA CHAIN?A BRAOLLOS",
+      "ON": 1.5,
+      "PN": 0.0,
+      "Total": 1.5
+    },
+    {
+      "nome": "MARÍLIA BAPTISTA DE SIQUEIRA",
+      "ON": 0.03,
+      "PN": 0.0,
+      "Total": 0.03
+    },
+    {
+      "nome": "MIRIAM SIQUEIRA KRUG",
+      "ON": 0.1,
+      "PN": 0.0,
+      "Total": 0.1
+    },
+    {
+      "nome": "MYRIAM PENNA E SIQUEIRA",
+      "ON": 0.03,
+      "PN": 0.0,
+      "Total": 0.03
+    },
+    {
+      "nome": "MÁRIO BENJAMIM BATISTA DE SIQUEIRA",
+      "ON": 0.11,
+      "PN": 0.0,
+      "Total": 0.11
+    },
+    {
+      "nome": "MÔNICA GIBRAIL KANJO DE ÁVILA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "NAZIRA GIBRAIL KANJO NASSER",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "NÁDIA GIBRAIL KANJO",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "OTAVIO LAGE DE SIQUEIRA FILHO",
+      "ON": 0.08,
+      "PN": 0.0,
+      "Total": 0.08
+    },
+    {
+      "nome": "OTÁVIO JOSÉ BAPTISTA DE SIQUEIRA",
+      "ON": 0.11,
+      "PN": 0.0,
+      "Total": 0.11
+    },
+    {
+      "nome": "OZIRES SALVINO DE MENEZES",
+      "ON": 0.21,
+      "PN": 0.0,
+      "Total": 0.21
+    },
+    {
+      "nome": "Planagri S/A",
+      "ON": 0.4,
+      "PN": 0.0,
+      "Total": 0.4
+    },
+    {
+      "nome": "RAUL TADEU BATISTA DE SIQUEIRA",
+      "ON": 0.17,
+      "PN": 0.0,
+      "Total": 0.17
+    },
+    {
+      "nome": "RENATA DRUMMOND DE SIQUEIRA",
+      "ON": 0.69,
+      "PN": 0.0,
+      "Total": 0.69
+    },
+    {
+      "nome": "RICARDO BRAOIOS",
+      "ON": 0.5,
+      "PN": 0.0,
+      "Total": 0.5
+    },
+    {
+      "nome": "RODRIGO PENNA DE SIQUEIRA",
+      "ON": 0.01,
+      "PN": 0.0,
+      "Total": 0.01
+    },
+    {
+      "nome": "ROSANA ABRAH?O DE MORAIS",
+      "ON": 0.52,
+      "PN": 0.0,
+      "Total": 0.52
+    },
+    {
+      "nome": "Rural Agropastoril Empreendimentos e Participações Ltda.",
+      "ON": 2.23,
+      "PN": 0.0,
+      "Total": 2.23
+    },
+    {
+      "nome": "SARA KINJO ESBER",
+      "ON": 0.06,
+      "PN": 0.0,
+      "Total": 0.06
+    },
+    {
+      "nome": "SILVIA DRUMMOND DE SIQUEIRA",
+      "ON": 0.69,
+      "PN": 0.0,
+      "Total": 0.69
+    },
+    {
+      "nome": "SILVIA REGINA FONTOURA DE SIQUEIRA",
+      "ON": 0.04,
+      "PN": 0.0,
+      "Total": 0.04
+    },
+    {
+      "nome": "SILVIO AUGUSTO BATISTA DE SIQUEIRA",
+      "ON": 0.7,
+      "PN": 0.0,
+      "Total": 0.7
+    },
+    {
+      "nome": "TERESA MARCIA NASCIMENTO DE MORAIS",
+      "ON": 0.18,
+      "PN": 0.0,
+      "Total": 0.18
+    },
+    {
+      "nome": "TEREZA PENNA DE SIQUEIRA",
+      "ON": 0.01,
+      "PN": 0.0,
+      "Total": 0.01
+    },
+    {
+      "nome": "Vera Cruz Agropecuária Ltda.",
+      "ON": 35.98,
+      "PN": 0.0,
+      "Total": 35.98
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 31.7,
+      "PN": 0.0,
+      "Total": 31.7
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.66,
+      "PN": 0.0,
+      "Total": 0.66
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 30662,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 160,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 129,
+        "percentual": null
+      }
+    ],
+    "data": "25/07/2024",
+    "quantidade_acoes_ordinarias": 96226077,
+    "percentual_ordinarias": 31.7,
+    "total_acoes": 96226077,
+    "percentual_total": 31.7
+  },
+  "composicao_capital_social": {
+    "data": "15/08/2023",
+    "preferenciais": 0,
+    "total": 303541864
+  }
 }

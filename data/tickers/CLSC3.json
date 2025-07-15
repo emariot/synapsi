@@ -8,8 +8,166 @@
   "subsetor": "Energia Elétrica",
   "segmento": "Energia Elétrica (segmento)",
   "site": "www.celesc.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível5.388.5885.455.031Ativo Total13.428.17013.037.758Patrimônio Líquido3.863.8343.671.279Patrimônio Líquido Atribuído à Controladora3.863.8343.671.279Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda2.977.5312.600.515Resultado Bruto620.932525.053Resultado de Equivalência Patrimonial16.97115.073Resultado Financeiro(81.265)(49.540)Resultado Líquido das Operações Continuadas252.683232.011Lucro (Prejuízo) do Período252.683232.011Lucro (Prejuízo) do Período Atribuído à Controladora252.683232.011Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais31.200238.982Atividades de Investimento(243.999)(223.305)Atividades de Financiamento(51.360)(41.436)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(264.159)(25.759)",
-  "posicao_acionaria": "Nome%ON%PN%TotalALASKA POLAND FIA0,0015,349,16CENTRAIS ELÉTRICAS BRASILEIRAS - ELETROBRAS0,0317,9810,75EDP Energias do Brasil S.A.33,1127,7329,90ESTADO DE SANTA CATARINA50,180,0020,20FUNDAÇÃO CELESC DE SEGURIDADE SOCIAL - CELOS8,631,004,07GERAÇÃO L. PAR FUNDO DE INVESTIMENTO2,8812,118,39OUTROS5,1825,8417,52AÇÕES TESOURARIA0,000,000,00TOTAL100,00100,00100,00Informação recebida em 07/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "30/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas8.278-Pessoas Jurídicas249-Investidores Institucionais70-Quantidade de Ações Ordinárias6.395.65341,19Quantidade de Ações Preferenciais22.813.46399,00Total de Ações29.209.11675,73",
-  "composicao_capital_social": "29/04/2021Ordinárias15.527.137Preferenciais23.044.454Total38.571.591"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 5388588,
+        "31/12/2024": 5455031
+      },
+      "ativo_total": {
+        "31/03/2025": 13428170,
+        "31/12/2024": 13037758
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 3863834,
+        "31/12/2024": 3671279
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 3863834,
+        "31/12/2024": 3671279
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 2977531,
+        "01/01/2024_a_31/03/2024": 2600515
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 620932,
+        "01/01/2024_a_31/03/2024": 525053
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 16971,
+        "01/01/2024_a_31/03/2024": 15073
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -81265,
+        "01/01/2024_a_31/03/2024": -49540
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 252683,
+        "01/01/2024_a_31/03/2024": 232011
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 252683,
+        "01/01/2024_a_31/03/2024": 232011
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 252683,
+        "01/01/2024_a_31/03/2024": 232011
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 31200,
+        "01/01/2024_a_31/03/2024": 238982
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -243999,
+        "01/01/2024_a_31/03/2024": -223305
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -51360,
+        "01/01/2024_a_31/03/2024": -41436
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -264159,
+        "01/01/2024_a_31/03/2024": -25759
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "ALASKA POLAND FIA",
+      "ON": 0.0,
+      "PN": 15.34,
+      "Total": 9.16
+    },
+    {
+      "nome": "CENTRAIS ELÉTRICAS BRASILEIRAS - ELETROBRAS",
+      "ON": 0.03,
+      "PN": 17.98,
+      "Total": 10.75
+    },
+    {
+      "nome": "EDP Energias do Brasil S.A.",
+      "ON": 33.11,
+      "PN": 27.73,
+      "Total": 29.9
+    },
+    {
+      "nome": "ESTADO DE SANTA CATARINA",
+      "ON": 50.18,
+      "PN": 0.0,
+      "Total": 20.2
+    },
+    {
+      "nome": "FUNDAÇÃO CELESC DE SEGURIDADE SOCIAL - CELOS",
+      "ON": 8.63,
+      "PN": 1.0,
+      "Total": 4.07
+    },
+    {
+      "nome": "GERAÇÃO L. PAR FUNDO DE INVESTIMENTO",
+      "ON": 2.88,
+      "PN": 12.11,
+      "Total": 8.39
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 5.18,
+      "PN": 25.84,
+      "Total": 17.52
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 100.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 8278,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 249,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 70,
+        "percentual": null
+      },
+      {
+        "tipo": "Quantidade de Ações Preferenciais",
+        "quantidade": 22813463,
+        "percentual": 99.0
+      }
+    ],
+    "data": "30/04/2025",
+    "quantidade_acoes_ordinarias": 6395653,
+    "percentual_ordinarias": 41.19,
+    "total_acoes": 29209116,
+    "percentual_total": 75.73
+  },
+  "composicao_capital_social": {
+    "data": "29/04/2021",
+    "preferenciais": 23044454,
+    "total": 38571591
+  }
 }

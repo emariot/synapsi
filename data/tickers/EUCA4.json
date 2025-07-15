@@ -8,8 +8,196 @@
   "subsetor": "Madeira e Papel",
   "segmento": "Madeira",
   "site": "www.eucatex.com.br/ri",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível2.538.6232.497.666Ativo Total4.854.6334.569.192Patrimônio Líquido2.652.8142.570.690Patrimônio Líquido Atribuído à Controladora2.652.9162.570.790Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda744.713641.002Resultado Bruto279.233213.310Resultado de Equivalência Patrimonial00Resultado Financeiro14.219(18.996)Resultado Líquido das Operações Continuadas95.96253.304Lucro (Prejuízo) do Período95.96053.301Lucro (Prejuízo) do Período Atribuído à Controladora00Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais75.58392.129Atividades de Investimento(74.058)(99.089)Atividades de Financiamento220.980(130)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes222.505(7.090)",
-  "posicao_acionaria": "Nome%ON%PN%TotalAPOLLO PARTICIPAÇÕES S.A.34,340,0011,58Brascorp Participações Ltda11,770,003,97Economico Agro Pastoril Industrial S/A0,0050,2833,32FABIO TORRES MALUF0,000,030,02FLAVIO MALUF6,500,142,29Grandfood Ind. e Comercio Ltda0,006,594,37Grandfood Ind. e Comércio Ltda0,000,800,53IFF Holding S.A.39,978,0918,84OTAVIO MALUF4,550,071,58PAULO SALIM MALUF0,970,130,41UBS Ag Zurich0,009,816,50OUTROS1,8823,2916,07AÇÕES TESOURARIA0,020,770,52TOTAL100,00100,00100,00Informação recebida em 11/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "24/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas7.000-Pessoas Jurídicas113-Investidores Institucionais64-Quantidade de Ações Ordinárias588.5371,88Quantidade de Ações Preferenciais51.146.94183,24Total de Ações51.735.47855,81",
-  "composicao_capital_social": "25/04/2024Ordinárias31.257.700Preferenciais61.361.556Total92.619.256"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 2538623,
+        "31/12/2024": 2497666
+      },
+      "ativo_total": {
+        "31/03/2025": 4854633,
+        "31/12/2024": 4569192
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 2652814,
+        "31/12/2024": 2570690
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 2652916,
+        "31/12/2024": 2570790
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 744713,
+        "01/01/2024_a_31/03/2024": 641002
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 279233,
+        "01/01/2024_a_31/03/2024": 213310
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": 14219,
+        "01/01/2024_a_31/03/2024": -18996
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 95962,
+        "01/01/2024_a_31/03/2024": 53304
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 95960,
+        "01/01/2024_a_31/03/2024": 53301
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 75583,
+        "01/01/2024_a_31/03/2024": 92129
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -74058,
+        "01/01/2024_a_31/03/2024": -99089
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": 220980,
+        "01/01/2024_a_31/03/2024": -130
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 222505,
+        "01/01/2024_a_31/03/2024": -7090
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "APOLLO PARTICIPAÇÕES S.A.",
+      "ON": 34.34,
+      "PN": 0.0,
+      "Total": 11.58
+    },
+    {
+      "nome": "Brascorp Participações Ltda",
+      "ON": 11.77,
+      "PN": 0.0,
+      "Total": 3.97
+    },
+    {
+      "nome": "Economico Agro Pastoril Industrial S/A",
+      "ON": 0.0,
+      "PN": 50.28,
+      "Total": 33.32
+    },
+    {
+      "nome": "FABIO TORRES MALUF",
+      "ON": 0.0,
+      "PN": 0.03,
+      "Total": 0.02
+    },
+    {
+      "nome": "FLAVIO MALUF",
+      "ON": 6.5,
+      "PN": 0.14,
+      "Total": 2.29
+    },
+    {
+      "nome": "Grandfood Ind. e Comercio Ltda",
+      "ON": 0.0,
+      "PN": 6.59,
+      "Total": 4.37
+    },
+    {
+      "nome": "Grandfood Ind. e Comércio Ltda",
+      "ON": 0.0,
+      "PN": 0.8,
+      "Total": 0.53
+    },
+    {
+      "nome": "IFF Holding S.A.",
+      "ON": 39.97,
+      "PN": 8.09,
+      "Total": 18.84
+    },
+    {
+      "nome": "OTAVIO MALUF",
+      "ON": 4.55,
+      "PN": 0.07,
+      "Total": 1.58
+    },
+    {
+      "nome": "PAULO SALIM MALUF",
+      "ON": 0.97,
+      "PN": 0.13,
+      "Total": 0.41
+    },
+    {
+      "nome": "UBS Ag Zurich",
+      "ON": 0.0,
+      "PN": 9.81,
+      "Total": 6.5
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 1.88,
+      "PN": 23.29,
+      "Total": 16.07
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.02,
+      "PN": 0.77,
+      "Total": 0.52
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 100.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 7000,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 113,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 64,
+        "percentual": null
+      },
+      {
+        "tipo": "Quantidade de Ações Preferenciais",
+        "quantidade": 51146941,
+        "percentual": 83.24
+      }
+    ],
+    "data": "24/04/2025",
+    "quantidade_acoes_ordinarias": 588537,
+    "percentual_ordinarias": 1.88,
+    "total_acoes": 51735478,
+    "percentual_total": 55.81
+  },
+  "composicao_capital_social": {
+    "data": "25/04/2024",
+    "preferenciais": 61361556,
+    "total": 92619256
+  }
 }

@@ -8,8 +8,191 @@
   "subsetor": "Telecomunicações",
   "segmento": "Telecomunicações (segmento)",
   "site": "www.brisanet.com.br/ri",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível3.277.5333.065.101Ativo Total4.095.5194.026.085Patrimônio Líquido1.541.1701.520.725Patrimônio Líquido Atribuído à Controladora1.537.5561.517.175Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda391.583334.419Resultado Bruto169.125142.944Resultado de Equivalência Patrimonial00Resultado Financeiro(38.738)(21.884)Resultado Líquido das Operações Continuadas20.44520.878Lucro (Prejuízo) do Período20.44520.878Lucro (Prejuízo) do Período Atribuído à Controladora20.38120.919Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais223.109116.790Atividades de Investimento(197.910)(243.346)Atividades de Financiamento(73.261)(27.644)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(48.062)(154.200)",
-  "posicao_acionaria": "Nome%ON%PN%TotalANA PAULA NOGUEIRA4,030,004,03FRANCISCO DE FRANÇA REIS2,420,002,42FRANCISCO ESTEVAM SOBRINHO3,630,003,63GABRIELA QUEIROZ ESTEVAM1,810,001,81JORDANIA KARINA NOGUEIRA ESTEVAM4,050,004,05JORDÃO ESTEVAM NOGUEIRA8,100,008,10JOSÉ ROBERTO NOGUEIRA33,830,0033,83JOÃO PAULO ESTEVAM8,170,008,17MIGUEL ESTEVAM PARENTE4,830,004,83PAULO ESTEVAM DA SILVA8,070,008,07PEDRO SALES QUEIROZ ESTEVAM1,810,001,81OUTROS19,260,0019,26AÇÕES TESOURARIA0,000,000,00TOTAL100,000,00100,00Informação recebida em 16/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "24/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas11.004-Pessoas Jurídicas137-Investidores Institucionais327-Quantidade de Ações Ordinárias82.904.21818,93Total de Ações82.904.21818,93",
-  "composicao_capital_social": "29/11/2024Ordinárias438.007.537Preferenciais0Total438.007.537"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 3277533,
+        "31/12/2024": 3065101
+      },
+      "ativo_total": {
+        "31/03/2025": 4095519,
+        "31/12/2024": 4026085
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 1541170,
+        "31/12/2024": 1520725
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 1537556,
+        "31/12/2024": 1517175
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 391583,
+        "01/01/2024_a_31/03/2024": 334419
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 169125,
+        "01/01/2024_a_31/03/2024": 142944
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -38738,
+        "01/01/2024_a_31/03/2024": -21884
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 20445,
+        "01/01/2024_a_31/03/2024": 20878
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 20445,
+        "01/01/2024_a_31/03/2024": 20878
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 20381,
+        "01/01/2024_a_31/03/2024": 20919
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 223109,
+        "01/01/2024_a_31/03/2024": 116790
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -197910,
+        "01/01/2024_a_31/03/2024": -243346
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -73261,
+        "01/01/2024_a_31/03/2024": -27644
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -48062,
+        "01/01/2024_a_31/03/2024": -154200
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "ANA PAULA NOGUEIRA",
+      "ON": 4.03,
+      "PN": 0.0,
+      "Total": 4.03
+    },
+    {
+      "nome": "FRANCISCO DE FRANÇA REIS",
+      "ON": 2.42,
+      "PN": 0.0,
+      "Total": 2.42
+    },
+    {
+      "nome": "FRANCISCO ESTEVAM SOBRINHO",
+      "ON": 3.63,
+      "PN": 0.0,
+      "Total": 3.63
+    },
+    {
+      "nome": "GABRIELA QUEIROZ ESTEVAM",
+      "ON": 1.81,
+      "PN": 0.0,
+      "Total": 1.81
+    },
+    {
+      "nome": "JORDANIA KARINA NOGUEIRA ESTEVAM",
+      "ON": 4.05,
+      "PN": 0.0,
+      "Total": 4.05
+    },
+    {
+      "nome": "JORDÃO ESTEVAM NOGUEIRA",
+      "ON": 8.1,
+      "PN": 0.0,
+      "Total": 8.1
+    },
+    {
+      "nome": "JOSÉ ROBERTO NOGUEIRA",
+      "ON": 33.83,
+      "PN": 0.0,
+      "Total": 33.83
+    },
+    {
+      "nome": "JOÃO PAULO ESTEVAM",
+      "ON": 8.17,
+      "PN": 0.0,
+      "Total": 8.17
+    },
+    {
+      "nome": "MIGUEL ESTEVAM PARENTE",
+      "ON": 4.83,
+      "PN": 0.0,
+      "Total": 4.83
+    },
+    {
+      "nome": "PAULO ESTEVAM DA SILVA",
+      "ON": 8.07,
+      "PN": 0.0,
+      "Total": 8.07
+    },
+    {
+      "nome": "PEDRO SALES QUEIROZ ESTEVAM",
+      "ON": 1.81,
+      "PN": 0.0,
+      "Total": 1.81
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 19.26,
+      "PN": 0.0,
+      "Total": 19.26
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 11004,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 137,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 327,
+        "percentual": null
+      }
+    ],
+    "data": "24/04/2025",
+    "quantidade_acoes_ordinarias": 82904218,
+    "percentual_ordinarias": 18.93,
+    "total_acoes": 82904218,
+    "percentual_total": 18.93
+  },
+  "composicao_capital_social": {
+    "data": "29/11/2024",
+    "preferenciais": 0,
+    "total": 438007537
+  }
 }

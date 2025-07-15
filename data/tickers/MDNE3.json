@@ -8,8 +8,167 @@
   "subsetor": "Construção Civil",
   "segmento": "Incorporações",
   "site": "https://mouradubeux.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível376.037369.714Ativo Total4.210.9154.148.169Patrimônio Líquido1.607.6941.536.068Patrimônio Líquido Atribuído à Controladora1.611.7211.540.280Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda438.973308.443Resultado Bruto148.413100.686Resultado de Equivalência Patrimonial284(64)Resultado Financeiro4.0396.181Resultado Líquido das Operações Continuadas70.38342.156Lucro (Prejuízo) do Período70.38342.156Lucro (Prejuízo) do Período Atribuído à Controladora70.19842.320Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(4.025)(67.426)Atividades de Investimento(135.263)9.681Atividades de Financiamento12.07315.152Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(127.215)(42.593)",
-  "posicao_acionaria": "Nome%ON%PN%TotalALUISIO JOSE MOURA DUBEUX11,040,0011,04GUSTAVO JOSE MOURA DUBEUX11,660,0011,66JOSE DO EGITO FIM CP INVESTIMENTO NO EXTERIOR1,950,001,95MARCOS JOSE MOURA DUBEUX9,550,009,55Navi Capital Administradora e Gestora de Recursos Financeiros Ltda.5,370,005,37REEF 1 RV FUNDO DE INVESTIMENTO MULTIMERCADO CRDITO PRIVADO1,720,001,72Safra Asset Management Ltda.5,080,005,08OUTROS53,310,0053,31AÇÕES TESOURARIA0,340,000,34TOTAL100,000,00100,00Informação recebida em 10/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "25/04/2024Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas12.616-Pessoas Jurídicas401-Investidores Institucionais316-Quantidade de Ações Ordinárias52.153.06061,42Total de Ações52.153.06061,42",
-  "composicao_capital_social": "11/02/2019Ordinárias84.909.375Preferenciais0Total84.909.375"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 376037,
+        "31/12/2024": 369714
+      },
+      "ativo_total": {
+        "31/03/2025": 4210915,
+        "31/12/2024": 4148169
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 1607694,
+        "31/12/2024": 1536068
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 1611721,
+        "31/12/2024": 1540280
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 438973,
+        "01/01/2024_a_31/03/2024": 308443
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 148413,
+        "01/01/2024_a_31/03/2024": 100686
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 284,
+        "01/01/2024_a_31/03/2024": -64
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": 4039,
+        "01/01/2024_a_31/03/2024": 6181
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 70383,
+        "01/01/2024_a_31/03/2024": 42156
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 70383,
+        "01/01/2024_a_31/03/2024": 42156
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 70198,
+        "01/01/2024_a_31/03/2024": 42320
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": -4025,
+        "01/01/2024_a_31/03/2024": -67426
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -135263,
+        "01/01/2024_a_31/03/2024": 9681
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": 12073,
+        "01/01/2024_a_31/03/2024": 15152
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -127215,
+        "01/01/2024_a_31/03/2024": -42593
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "ALUISIO JOSE MOURA DUBEUX",
+      "ON": 11.04,
+      "PN": 0.0,
+      "Total": 11.04
+    },
+    {
+      "nome": "GUSTAVO JOSE MOURA DUBEUX",
+      "ON": 11.66,
+      "PN": 0.0,
+      "Total": 11.66
+    },
+    {
+      "nome": "JOSE DO EGITO FIM CP INVESTIMENTO NO EXTERIOR",
+      "ON": 1.95,
+      "PN": 0.0,
+      "Total": 1.95
+    },
+    {
+      "nome": "MARCOS JOSE MOURA DUBEUX",
+      "ON": 9.55,
+      "PN": 0.0,
+      "Total": 9.55
+    },
+    {
+      "nome": "Navi Capital Administradora e Gestora de Recursos Financeiros Ltda.",
+      "ON": 5.37,
+      "PN": 0.0,
+      "Total": 5.37
+    },
+    {
+      "nome": "REEF 1 RV FUNDO DE INVESTIMENTO MULTIMERCADO CRDITO PRIVADO",
+      "ON": 1.72,
+      "PN": 0.0,
+      "Total": 1.72
+    },
+    {
+      "nome": "Safra Asset Management Ltda.",
+      "ON": 5.08,
+      "PN": 0.0,
+      "Total": 5.08
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 53.31,
+      "PN": 0.0,
+      "Total": 53.31
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.34,
+      "PN": 0.0,
+      "Total": 0.34
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 12616,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 401,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 316,
+        "percentual": null
+      }
+    ],
+    "data": "25/04/2024",
+    "quantidade_acoes_ordinarias": 52153060,
+    "percentual_ordinarias": 61.42,
+    "total_acoes": 52153060,
+    "percentual_total": 61.42
+  },
+  "composicao_capital_social": {
+    "data": "11/02/2019",
+    "preferenciais": 0,
+    "total": 84909375
+  }
 }

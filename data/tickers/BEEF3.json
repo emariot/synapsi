@@ -8,8 +8,137 @@
   "subsetor": "Alimentos Processados",
   "segmento": "Carnes e Derivados",
   "site": "www.minervafoods.com/ri",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível15.985.91916.338.052Ativo Total40.181.43242.141.896Patrimônio Líquido(63.779)87.217Patrimônio Líquido Atribuído à Controladora(650.682)(478.639)Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda11.196.1517.187.084Resultado Bruto2.075.4301.429.162Resultado de Equivalência Patrimonial00Resultado Financeiro(508.948)(626.467)Resultado Líquido das Operações Continuadas184.988(186.151)Lucro (Prejuízo) do Período184.988(186.151)Lucro (Prejuízo) do Período Atribuído à Controladora156.368(200.931)Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais48.0011.355.271Atividades de Investimento(230.874)(181.867)Atividades de Financiamento(2.144.661)1.908.661Variação Cambial sobre Caixa e Equivalentes(259.342)38.295Aumento (Redução) de Caixa e Equivalentes(2.586.876)3.120.360",
-  "posicao_acionaria": "Nome%ON%PN%TotalSALIC INTERNATIONAL INVESTMENT COMPANY24,500,0024,50VDQ HOLDING S.A.29,080,0029,08OUTROS44,520,0044,52AÇÕES TESOURARIA1,910,001,91TOTAL100,000,00100,00Informação recebida em 07/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "30/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas56.530-Pessoas Jurídicas260-Investidores Institucionais394-Quantidade de Ações Ordinárias429.374.47043,19Total de Ações429.374.47043,19",
-  "composicao_capital_social": "29/04/2025Ordinárias994.130.603Preferenciais0Total994.130.603"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 15985919,
+        "31/12/2024": 16338052
+      },
+      "ativo_total": {
+        "31/03/2025": 40181432,
+        "31/12/2024": 42141896
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": -63779,
+        "31/12/2024": 87217
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": -650682,
+        "31/12/2024": -478639
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 11196151,
+        "01/01/2024_a_31/03/2024": 7187084
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 2075430,
+        "01/01/2024_a_31/03/2024": 1429162
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -508948,
+        "01/01/2024_a_31/03/2024": -626467
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 184988,
+        "01/01/2024_a_31/03/2024": -186151
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 184988,
+        "01/01/2024_a_31/03/2024": -186151
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 156368,
+        "01/01/2024_a_31/03/2024": -200931
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 48001,
+        "01/01/2024_a_31/03/2024": 1355271
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -230874,
+        "01/01/2024_a_31/03/2024": -181867
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -2144661,
+        "01/01/2024_a_31/03/2024": 1908661
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -259342,
+        "01/01/2024_a_31/03/2024": 38295
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -2586876,
+        "01/01/2024_a_31/03/2024": 3120360
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "SALIC INTERNATIONAL INVESTMENT COMPANY",
+      "ON": 24.5,
+      "PN": 0.0,
+      "Total": 24.5
+    },
+    {
+      "nome": "VDQ HOLDING S.A.",
+      "ON": 29.08,
+      "PN": 0.0,
+      "Total": 29.08
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 44.52,
+      "PN": 0.0,
+      "Total": 44.52
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 1.91,
+      "PN": 0.0,
+      "Total": 1.91
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 56530,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 260,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 394,
+        "percentual": null
+      }
+    ],
+    "data": "30/04/2025",
+    "quantidade_acoes_ordinarias": 429374470,
+    "percentual_ordinarias": 43.19,
+    "total_acoes": 429374470,
+    "percentual_total": 43.19
+  },
+  "composicao_capital_social": {
+    "data": "29/04/2025",
+    "preferenciais": 0,
+    "total": 994130603
+  }
 }

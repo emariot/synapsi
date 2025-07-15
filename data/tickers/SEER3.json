@@ -8,8 +8,143 @@
   "subsetor": "Diversos",
   "segmento": "Serviços Educacionais",
   "site": "www.sereducacional.com/ri",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível2.236.7042.249.117Ativo Total3.410.7433.456.087Patrimônio Líquido1.251.8711.208.464Patrimônio Líquido Atribuído à Controladora1.251.8711.208.464Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda539.989450.714Resultado Bruto327.711241.280Resultado de Equivalência Patrimonial00Resultado Financeiro(61.845)(70.617)Resultado Líquido das Operações Continuadas43.633(17.524)Lucro (Prejuízo) do Período43.633(17.524)Lucro (Prejuízo) do Período Atribuído à Controladora43.633(17.524)Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais98.16566.190Atividades de Investimento(66.231)(84.390)Atividades de Financiamento(85.726)(56.272)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(53.792)(74.472)",
-  "posicao_acionaria": "Nome%ON%PN%TotalJPMorgan Chase & Co.5,070,005,07SOPHOS 2 FUNDO DE INVESTIMENTO EM AÇÕES (WHG INVESTMENT MULTIMERCADO FIC FIM CP)58,640,0058,64Vokin - VKN Administração de Recursos Ltda.9,180,009,18OUTROS25,950,0025,95AÇÕES TESOURARIA1,160,001,16TOTAL100,000,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "28/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas9.344-Pessoas Jurídicas50-Investidores Institucionais125-Quantidade de Ações Ordinárias50.527.15939,25Total de Ações50.527.15939,25",
-  "composicao_capital_social": "09/05/2019Ordinárias128.721.560Preferenciais0Total128.721.560"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 2236704,
+        "31/12/2024": 2249117
+      },
+      "ativo_total": {
+        "31/03/2025": 3410743,
+        "31/12/2024": 3456087
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 1251871,
+        "31/12/2024": 1208464
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 1251871,
+        "31/12/2024": 1208464
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 539989,
+        "01/01/2024_a_31/03/2024": 450714
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 327711,
+        "01/01/2024_a_31/03/2024": 241280
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -61845,
+        "01/01/2024_a_31/03/2024": -70617
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 43633,
+        "01/01/2024_a_31/03/2024": -17524
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 43633,
+        "01/01/2024_a_31/03/2024": -17524
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 43633,
+        "01/01/2024_a_31/03/2024": -17524
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 98165,
+        "01/01/2024_a_31/03/2024": 66190
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -66231,
+        "01/01/2024_a_31/03/2024": -84390
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -85726,
+        "01/01/2024_a_31/03/2024": -56272
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -53792,
+        "01/01/2024_a_31/03/2024": -74472
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "JPMorgan Chase & Co.",
+      "ON": 5.07,
+      "PN": 0.0,
+      "Total": 5.07
+    },
+    {
+      "nome": "SOPHOS 2 FUNDO DE INVESTIMENTO EM AÇÕES (WHG INVESTMENT MULTIMERCADO FIC FIM CP)",
+      "ON": 58.64,
+      "PN": 0.0,
+      "Total": 58.64
+    },
+    {
+      "nome": "Vokin - VKN Administração de Recursos Ltda.",
+      "ON": 9.18,
+      "PN": 0.0,
+      "Total": 9.18
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 25.95,
+      "PN": 0.0,
+      "Total": 25.95
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 1.16,
+      "PN": 0.0,
+      "Total": 1.16
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 9344,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 50,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 125,
+        "percentual": null
+      }
+    ],
+    "data": "28/04/2025",
+    "quantidade_acoes_ordinarias": 50527159,
+    "percentual_ordinarias": 39.25,
+    "total_acoes": 50527159,
+    "percentual_total": 39.25
+  },
+  "composicao_capital_social": {
+    "data": "09/05/2019",
+    "preferenciais": 0,
+    "total": 128721560
+  }
 }

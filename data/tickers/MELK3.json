@@ -8,8 +8,137 @@
   "subsetor": "Construção Civil",
   "segmento": "Incorporações",
   "site": "https://www.melnick.com.br/",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível91.30989.494Ativo Total2.489.0382.594.695Patrimônio Líquido1.226.8511.367.967Patrimônio Líquido Atribuído à Controladora1.083.0411.211.564Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda225.183245.143Resultado Bruto50.92354.122Resultado de Equivalência Patrimonial1.172(961)Resultado Financeiro20.59324.214Resultado Líquido das Operações Continuadas21.18942.378Lucro (Prejuízo) do Período21.18942.378Lucro (Prejuízo) do Período Atribuído à Controladora13.43330.340Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais69.17378.322Atividades de Investimento108.969(47.929)Atividades de Financiamento(181.693)(30.928)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(3.551)(535)",
-  "posicao_acionaria": "Nome%ON%PN%TotalMELPAR INVEST LTDA48,830,0048,83Real Investor Gestão de Recursos LTDA18,570,0018,57OUTROS32,230,0032,23AÇÕES TESOURARIA0,370,000,37TOTAL100,000,00100,00Informação recebida em 24/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "29/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas14.079-Pessoas Jurídicas40-Investidores Institucionais138-Quantidade de Ações Ordinárias152.333.55773,85Total de Ações152.333.55773,85",
-  "composicao_capital_social": "28/03/2023Ordinárias206.269.341Preferenciais0Total206.269.341"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 91309,
+        "31/12/2024": 89494
+      },
+      "ativo_total": {
+        "31/03/2025": 2489038,
+        "31/12/2024": 2594695
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 1226851,
+        "31/12/2024": 1367967
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 1083041,
+        "31/12/2024": 1211564
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 225183,
+        "01/01/2024_a_31/03/2024": 245143
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 50923,
+        "01/01/2024_a_31/03/2024": 54122
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 1172,
+        "01/01/2024_a_31/03/2024": -961
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": 20593,
+        "01/01/2024_a_31/03/2024": 24214
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 21189,
+        "01/01/2024_a_31/03/2024": 42378
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 21189,
+        "01/01/2024_a_31/03/2024": 42378
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 13433,
+        "01/01/2024_a_31/03/2024": 30340
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 69173,
+        "01/01/2024_a_31/03/2024": 78322
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": 108969,
+        "01/01/2024_a_31/03/2024": -47929
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -181693,
+        "01/01/2024_a_31/03/2024": -30928
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -3551,
+        "01/01/2024_a_31/03/2024": -535
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "MELPAR INVEST LTDA",
+      "ON": 48.83,
+      "PN": 0.0,
+      "Total": 48.83
+    },
+    {
+      "nome": "Real Investor Gestão de Recursos LTDA",
+      "ON": 18.57,
+      "PN": 0.0,
+      "Total": 18.57
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 32.23,
+      "PN": 0.0,
+      "Total": 32.23
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.37,
+      "PN": 0.0,
+      "Total": 0.37
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 14079,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 40,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 138,
+        "percentual": null
+      }
+    ],
+    "data": "29/04/2025",
+    "quantidade_acoes_ordinarias": 152333557,
+    "percentual_ordinarias": 73.85,
+    "total_acoes": 152333557,
+    "percentual_total": 73.85
+  },
+  "composicao_capital_social": {
+    "data": "28/03/2023",
+    "preferenciais": 0,
+    "total": 206269341
+  }
 }

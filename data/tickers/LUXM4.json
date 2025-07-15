@@ -8,8 +8,214 @@
   "subsetor": "Transporte",
   "segmento": "Transporte Hidroviário",
   "site": "www.trevisa.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível160.768154.323Ativo Total221.713208.312Patrimônio Líquido157.085153.119Patrimônio Líquido Atribuído à Controladora157.085153.119Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda34.22834.201Resultado Bruto9.52710.853Resultado de Equivalência Patrimonial00Resultado Financeiro691169Resultado Líquido das Operações Continuadas3.9534.579Lucro (Prejuízo) do Período3.9534.579Lucro (Prejuízo) do Período Atribuído à Controladora3.9534.579Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais5.1582.861Atividades de Investimento(10.824)(7.543)Atividades de Financiamento13.075(1.075)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes7.409(5.757)",
-  "posicao_acionaria": "Nome%ON%PN%TotalBecker Participações S.A.23,590,0010,43EL Participações S.A.14,540,006,43ELIANA LOGEMANN0,000,820,46FERNANDO FERREIRA BECKER0,0015,538,66Glarus S. A.38,0314,7625,05JORGE LINDEMANN0,000,820,46JORGE LUIZ SILVA LOGEMANN0,003,892,17ROBERTO LINDEMANN0,000,820,46ROGÉRIO POHLMANN LIVI0,000,030,02SANDRA INES MALLMANN GUARIGLIA0,003,281,83SCMG Participações Ltda.6,340,002,80SILVIA HELENA BECKER LIVI0,009,705,41SIMG PARTICIPAÇÕES LTDA6,340,002,80SÍLVIA CHRISTINA MALLMANN GUARIGLIA0,004,342,42OUTROS11,1846,0230,61AÇÕES TESOURARIA0,000,000,00TOTAL100,00100,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "29/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas216-Pessoas Jurídicas8-Investidores Institucionais13-Quantidade de Ações Ordinárias2.054.40011,18Quantidade de Ações Preferenciais10.669.20446,02Total de Ações12.723.60430,61",
-  "composicao_capital_social": "29/04/2025Ordinárias18.384.000Preferenciais23.184.000Total41.568.000"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 160768,
+        "31/12/2024": 154323
+      },
+      "ativo_total": {
+        "31/03/2025": 221713,
+        "31/12/2024": 208312
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 157085,
+        "31/12/2024": 153119
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 157085,
+        "31/12/2024": 153119
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 34228,
+        "01/01/2024_a_31/03/2024": 34201
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 9527,
+        "01/01/2024_a_31/03/2024": 10853
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": 691,
+        "01/01/2024_a_31/03/2024": 169
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 3953,
+        "01/01/2024_a_31/03/2024": 4579
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 3953,
+        "01/01/2024_a_31/03/2024": 4579
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 3953,
+        "01/01/2024_a_31/03/2024": 4579
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 5158,
+        "01/01/2024_a_31/03/2024": 2861
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -10824,
+        "01/01/2024_a_31/03/2024": -7543
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": 13075,
+        "01/01/2024_a_31/03/2024": -1075
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 7409,
+        "01/01/2024_a_31/03/2024": -5757
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "Becker Participações S.A.",
+      "ON": 23.59,
+      "PN": 0.0,
+      "Total": 10.43
+    },
+    {
+      "nome": "EL Participações S.A.",
+      "ON": 14.54,
+      "PN": 0.0,
+      "Total": 6.43
+    },
+    {
+      "nome": "ELIANA LOGEMANN",
+      "ON": 0.0,
+      "PN": 0.82,
+      "Total": 0.46
+    },
+    {
+      "nome": "FERNANDO FERREIRA BECKER",
+      "ON": 0.0,
+      "PN": 15.53,
+      "Total": 8.66
+    },
+    {
+      "nome": "Glarus S. A.",
+      "ON": 38.03,
+      "PN": 14.76,
+      "Total": 25.05
+    },
+    {
+      "nome": "JORGE LINDEMANN",
+      "ON": 0.0,
+      "PN": 0.82,
+      "Total": 0.46
+    },
+    {
+      "nome": "JORGE LUIZ SILVA LOGEMANN",
+      "ON": 0.0,
+      "PN": 3.89,
+      "Total": 2.17
+    },
+    {
+      "nome": "ROBERTO LINDEMANN",
+      "ON": 0.0,
+      "PN": 0.82,
+      "Total": 0.46
+    },
+    {
+      "nome": "ROGÉRIO POHLMANN LIVI",
+      "ON": 0.0,
+      "PN": 0.03,
+      "Total": 0.02
+    },
+    {
+      "nome": "SANDRA INES MALLMANN GUARIGLIA",
+      "ON": 0.0,
+      "PN": 3.28,
+      "Total": 1.83
+    },
+    {
+      "nome": "SCMG Participações Ltda.",
+      "ON": 6.34,
+      "PN": 0.0,
+      "Total": 2.8
+    },
+    {
+      "nome": "SILVIA HELENA BECKER LIVI",
+      "ON": 0.0,
+      "PN": 9.7,
+      "Total": 5.41
+    },
+    {
+      "nome": "SIMG PARTICIPAÇÕES LTDA",
+      "ON": 6.34,
+      "PN": 0.0,
+      "Total": 2.8
+    },
+    {
+      "nome": "SÍLVIA CHRISTINA MALLMANN GUARIGLIA",
+      "ON": 0.0,
+      "PN": 4.34,
+      "Total": 2.42
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 11.18,
+      "PN": 46.02,
+      "Total": 30.61
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 100.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 216,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 8,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 13,
+        "percentual": null
+      },
+      {
+        "tipo": "Quantidade de Ações Preferenciais",
+        "quantidade": 10669204,
+        "percentual": 46.02
+      }
+    ],
+    "data": "29/04/2025",
+    "quantidade_acoes_ordinarias": 2054400,
+    "percentual_ordinarias": 11.18,
+    "total_acoes": 12723604,
+    "percentual_total": 30.61
+  },
+  "composicao_capital_social": {
+    "data": "29/04/2025",
+    "preferenciais": 23184000,
+    "total": 41568000
+  }
 }

@@ -8,8 +8,137 @@
   "subsetor": "Energia Elétrica",
   "segmento": "Energia Elétrica (segmento)",
   "site": "www.cpfl.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível17.793.05418.158.079Ativo Total78.709.73077.129.194Patrimônio Líquido23.369.87421.795.030Patrimônio Líquido Atribuído à Controladora22.249.25220.731.763Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda10.655.22010.165.775Resultado Bruto3.914.8823.821.754Resultado de Equivalência Patrimonial60.51291.540Resultado Financeiro(869.265)(815.932)Resultado Líquido das Operações Continuadas1.615.3921.755.102Lucro (Prejuízo) do Período1.615.3921.755.102Lucro (Prejuízo) do Período Atribuído à Controladora1.551.3191.675.376Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais2.093.648526.528Atividades de Investimento(1.634.213)(2.096.041)Atividades de Financiamento(500.031)453.672Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(40.596)(1.115.841)",
-  "posicao_acionaria": "Nome%ON%PN%TotalESC Energia S.A.20,320,0020,32State Grid Brazil Power Participações S.A.63,390,0063,39OUTROS16,290,0016,29AÇÕES TESOURARIA0,000,000,00TOTAL100,000,00100,00Informação recebida em 28/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "29/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas105.108-Pessoas Jurídicas5.005-Investidores Institucionais1.202-Quantidade de Ações Ordinárias187.732.53816,29Total de Ações187.732.53816,29",
-  "composicao_capital_social": "27/06/2019Ordinárias1.152.254.440Preferenciais0Total1.152.254.440"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 17793054,
+        "31/12/2024": 18158079
+      },
+      "ativo_total": {
+        "31/03/2025": 78709730,
+        "31/12/2024": 77129194
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 23369874,
+        "31/12/2024": 21795030
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 22249252,
+        "31/12/2024": 20731763
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 10655220,
+        "01/01/2024_a_31/03/2024": 10165775
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 3914882,
+        "01/01/2024_a_31/03/2024": 3821754
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 60512,
+        "01/01/2024_a_31/03/2024": 91540
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -869265,
+        "01/01/2024_a_31/03/2024": -815932
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 1615392,
+        "01/01/2024_a_31/03/2024": 1755102
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 1615392,
+        "01/01/2024_a_31/03/2024": 1755102
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 1551319,
+        "01/01/2024_a_31/03/2024": 1675376
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 2093648,
+        "01/01/2024_a_31/03/2024": 526528
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -1634213,
+        "01/01/2024_a_31/03/2024": -2096041
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -500031,
+        "01/01/2024_a_31/03/2024": 453672
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -40596,
+        "01/01/2024_a_31/03/2024": -1115841
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "ESC Energia S.A.",
+      "ON": 20.32,
+      "PN": 0.0,
+      "Total": 20.32
+    },
+    {
+      "nome": "State Grid Brazil Power Participações S.A.",
+      "ON": 63.39,
+      "PN": 0.0,
+      "Total": 63.39
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 16.29,
+      "PN": 0.0,
+      "Total": 16.29
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 105108,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 5005,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 1202,
+        "percentual": null
+      }
+    ],
+    "data": "29/04/2025",
+    "quantidade_acoes_ordinarias": 187732538,
+    "percentual_ordinarias": 16.29,
+    "total_acoes": 187732538,
+    "percentual_total": 16.29
+  },
+  "composicao_capital_social": {
+    "data": "27/06/2019",
+    "preferenciais": 0,
+    "total": 1152254440
+  }
 }

@@ -8,8 +8,118 @@
   "subsetor": "Intermediários Financeiros",
   "segmento": "Bancos",
   "site": "www.bancopan.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível814.797783.496Ativo Total65.538.41164.497.705Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita da Intermediação Financeira3.861.7743.659.011Resultado Bruto da Intermediação Financeira2.197.6392.256.294Resultado de Equivalência Patrimonial(583.599)(650.908)Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais1.431.591(1.329.449)Atividades de Investimento(343.189)(703.019)Atividades de Financiamento(1.092.678)1.835.116Variação Cambial sobre Caixa e Equivalentes252214Aumento (Redução) de Caixa e Equivalentes(4.024)(197.138)",
-  "posicao_acionaria": "Nome%ON%PN%TotalBanco BTG Pactual S.A.49,8052,7251,21Banco Sistema S.A.50,200,0026,01OUTROS0,0044,2621,33AÇÕES TESOURARIA0,003,031,46TOTAL100,00100,00100,00Informação recebida em 18/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "28/04/2023Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas56.598-Pessoas Jurídicas312-Investidores Institucionais363-Quantidade de Ações Ordinárias20,00Quantidade de Ações Preferenciais270.610.98044,25Total de Ações270.610.98221,32",
-  "composicao_capital_social": "09/11/2023Ordinárias657.560.635Preferenciais611.509.455Total1.269.070.090"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 814797,
+        "31/12/2024": 783496
+      },
+      "ativo_total": {
+        "31/03/2025": 65538411,
+        "31/12/2024": 64497705
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_da_intermediacao_financeira": {
+        "01/01/2025_a_31/03/2025": 3861774,
+        "01/01/2024_a_31/03/2024": 3659011
+      },
+      "resultado_bruto_da_intermediacao_financeira": {
+        "01/01/2025_a_31/03/2025": 2197639,
+        "01/01/2024_a_31/03/2024": 2256294
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": -583599,
+        "01/01/2024_a_31/03/2024": -650908
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 1431591,
+        "01/01/2024_a_31/03/2024": -1329449
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -343189,
+        "01/01/2024_a_31/03/2024": -703019
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -1092678,
+        "01/01/2024_a_31/03/2024": 1835116
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 252,
+        "01/01/2024_a_31/03/2024": 214
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -4024,
+        "01/01/2024_a_31/03/2024": -197138
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "Banco BTG Pactual S.A.",
+      "ON": 49.8,
+      "PN": 52.72,
+      "Total": 51.21
+    },
+    {
+      "nome": "Banco Sistema S.A.",
+      "ON": 50.2,
+      "PN": 0.0,
+      "Total": 26.01
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 0.0,
+      "PN": 44.26,
+      "Total": 21.33
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.0,
+      "PN": 3.03,
+      "Total": 1.46
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 100.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 56598,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 312,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 363,
+        "percentual": null
+      },
+      {
+        "tipo": "Quantidade de Ações Preferenciais",
+        "quantidade": 270610980,
+        "percentual": 44.25
+      }
+    ],
+    "data": "28/04/2023",
+    "quantidade_acoes_ordinarias": 2,
+    "percentual_ordinarias": 0.0,
+    "total_acoes": 270610982,
+    "percentual_total": 21.32
+  },
+  "composicao_capital_social": {
+    "data": "09/11/2023",
+    "preferenciais": 611509455,
+    "total": 1269070090
+  }
 }

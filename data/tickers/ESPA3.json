@@ -8,8 +8,173 @@
   "subsetor": "Comércio",
   "segmento": "Produtos Diversos",
   "site": "https://espacolaser.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível1.138.1811.150.046Ativo Total2.295.8222.291.655Patrimônio Líquido867.942856.065Patrimônio Líquido Atribuído à Controladora867.856855.794Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda279.360273.561Resultado Bruto101.425106.036Resultado de Equivalência Patrimonial4742.335Resultado Financeiro(30.909)(29.567)Resultado Líquido das Operações Continuadas12.1095.557Lucro (Prejuízo) do Período12.1095.557Lucro (Prejuízo) do Período Atribuído à Controladora12.2576.072Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais18.35519.427Atividades de Investimento(7.129)(4.806)Atividades de Financiamento(26.103)(16.679)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(14.877)(2.058)",
-  "posicao_acionaria": "Nome%ON%PN%TotalFOURTH SAIL LP8,810,008,81JOSÉ CARLOS SEMENZATO0,960,000,96Magnólia Fundo de Investimento em Participações Multiestratégia16,900,0016,90Neo Future Master Fundo De Investimento Em Ações5,100,005,10PAULO JOSÉ IÁSZ DE MORAIS10,040,0010,04SMZXP Participações Ltda.2,550,002,55Una Capital Ltda.7,610,007,61YGOR ALESSANDRO DE MOURA16,900,0016,90OUTROS30,950,0030,95AÇÕES TESOURARIA0,180,000,18TOTAL100,000,00100,00Informação recebida em 05/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "30/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas14.578-Pessoas Jurídicas0-Investidores Institucionais137-Quantidade de Ações Ordinárias189.119.33852,33Total de Ações189.119.33852,33",
-  "composicao_capital_social": "30/08/2022Ordinárias361.423.066Preferenciais0Total361.423.066"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 1138181,
+        "31/12/2024": 1150046
+      },
+      "ativo_total": {
+        "31/03/2025": 2295822,
+        "31/12/2024": 2291655
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 867942,
+        "31/12/2024": 856065
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 867856,
+        "31/12/2024": 855794
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 279360,
+        "01/01/2024_a_31/03/2024": 273561
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 101425,
+        "01/01/2024_a_31/03/2024": 106036
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 474,
+        "01/01/2024_a_31/03/2024": 2335
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -30909,
+        "01/01/2024_a_31/03/2024": -29567
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 12109,
+        "01/01/2024_a_31/03/2024": 5557
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 12109,
+        "01/01/2024_a_31/03/2024": 5557
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 12257,
+        "01/01/2024_a_31/03/2024": 6072
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 18355,
+        "01/01/2024_a_31/03/2024": 19427
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -7129,
+        "01/01/2024_a_31/03/2024": -4806
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -26103,
+        "01/01/2024_a_31/03/2024": -16679
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -14877,
+        "01/01/2024_a_31/03/2024": -2058
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "FOURTH SAIL LP",
+      "ON": 8.81,
+      "PN": 0.0,
+      "Total": 8.81
+    },
+    {
+      "nome": "JOSÉ CARLOS SEMENZATO",
+      "ON": 0.96,
+      "PN": 0.0,
+      "Total": 0.96
+    },
+    {
+      "nome": "Magnólia Fundo de Investimento em Participações Multiestratégia",
+      "ON": 16.9,
+      "PN": 0.0,
+      "Total": 16.9
+    },
+    {
+      "nome": "Neo Future Master Fundo De Investimento Em Ações",
+      "ON": 5.1,
+      "PN": 0.0,
+      "Total": 5.1
+    },
+    {
+      "nome": "PAULO JOSÉ IÁSZ DE MORAIS",
+      "ON": 10.04,
+      "PN": 0.0,
+      "Total": 10.04
+    },
+    {
+      "nome": "SMZXP Participações Ltda.",
+      "ON": 2.55,
+      "PN": 0.0,
+      "Total": 2.55
+    },
+    {
+      "nome": "Una Capital Ltda.",
+      "ON": 7.61,
+      "PN": 0.0,
+      "Total": 7.61
+    },
+    {
+      "nome": "YGOR ALESSANDRO DE MOURA",
+      "ON": 16.9,
+      "PN": 0.0,
+      "Total": 16.9
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 30.95,
+      "PN": 0.0,
+      "Total": 30.95
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.18,
+      "PN": 0.0,
+      "Total": 0.18
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 14578,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 0,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 137,
+        "percentual": null
+      }
+    ],
+    "data": "30/04/2025",
+    "quantidade_acoes_ordinarias": 189119338,
+    "percentual_ordinarias": 52.33,
+    "total_acoes": 189119338,
+    "percentual_total": 52.33
+  },
+  "composicao_capital_social": {
+    "data": "30/08/2022",
+    "preferenciais": 0,
+    "total": 361423066
+  }
 }

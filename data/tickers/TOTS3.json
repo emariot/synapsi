@@ -8,8 +8,155 @@
   "subsetor": "Programas e Serviços",
   "segmento": "Programas e Serviços (segmento)",
   "site": "www.totvs.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível4.943.4964.982.236Ativo Total8.685.5948.531.721Patrimônio Líquido5.111.4984.987.121Patrimônio Líquido Atribuído à Controladora4.799.7814.681.352Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda1.461.9031.225.387Resultado Bruto1.030.041863.457Resultado de Equivalência Patrimonial2.974(4.261)Resultado Financeiro(19.352)(4.695)Resultado Líquido das Operações Continuadas200.444129.917Lucro (Prejuízo) do Período200.595129.371Lucro (Prejuízo) do Período Atribuído à Controladora194.647126.649Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais196.548182.931Atividades de Investimento(180.292)(649.129)Atividades de Financiamento(15.378)(114.848)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes878(581.046)",
-  "posicao_acionaria": "Nome%ON%PN%TotalBlackrock. Inc5,280,005,28Canada Pension Plan Investment Board5,460,005,46HG SENTA PUA FIA0,020,000,02LAÉRCIO JOSÉ DE LUCENA COSENTINO0,180,000,18LC EH Participações e Empreendimentos S/A8,460,008,46OUTROS78,640,0078,64AÇÕES TESOURARIA1,970,001,97TOTAL100,000,00100,00Informação recebida em 04/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "23/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas37.684-Pessoas Jurídicas351-Investidores Institucionais1.150-Quantidade de Ações Ordinárias533.252.45188,96Total de Ações533.252.45188,96",
-  "composicao_capital_social": "06/11/2024Ordinárias599.401.581Preferenciais0Total599.401.581"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 4943496,
+        "31/12/2024": 4982236
+      },
+      "ativo_total": {
+        "31/03/2025": 8685594,
+        "31/12/2024": 8531721
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 5111498,
+        "31/12/2024": 4987121
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 4799781,
+        "31/12/2024": 4681352
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 1461903,
+        "01/01/2024_a_31/03/2024": 1225387
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 1030041,
+        "01/01/2024_a_31/03/2024": 863457
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 2974,
+        "01/01/2024_a_31/03/2024": -4261
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -19352,
+        "01/01/2024_a_31/03/2024": -4695
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 200444,
+        "01/01/2024_a_31/03/2024": 129917
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 200595,
+        "01/01/2024_a_31/03/2024": 129371
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 194647,
+        "01/01/2024_a_31/03/2024": 126649
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 196548,
+        "01/01/2024_a_31/03/2024": 182931
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -180292,
+        "01/01/2024_a_31/03/2024": -649129
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -15378,
+        "01/01/2024_a_31/03/2024": -114848
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 878,
+        "01/01/2024_a_31/03/2024": -581046
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "Blackrock. Inc",
+      "ON": 5.28,
+      "PN": 0.0,
+      "Total": 5.28
+    },
+    {
+      "nome": "Canada Pension Plan Investment Board",
+      "ON": 5.46,
+      "PN": 0.0,
+      "Total": 5.46
+    },
+    {
+      "nome": "HG SENTA PUA FIA",
+      "ON": 0.02,
+      "PN": 0.0,
+      "Total": 0.02
+    },
+    {
+      "nome": "LAÉRCIO JOSÉ DE LUCENA COSENTINO",
+      "ON": 0.18,
+      "PN": 0.0,
+      "Total": 0.18
+    },
+    {
+      "nome": "LC EH Participações e Empreendimentos S/A",
+      "ON": 8.46,
+      "PN": 0.0,
+      "Total": 8.46
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 78.64,
+      "PN": 0.0,
+      "Total": 78.64
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 1.97,
+      "PN": 0.0,
+      "Total": 1.97
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 37684,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 351,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 1150,
+        "percentual": null
+      }
+    ],
+    "data": "23/04/2025",
+    "quantidade_acoes_ordinarias": 533252451,
+    "percentual_ordinarias": 88.96,
+    "total_acoes": 533252451,
+    "percentual_total": 88.96
+  },
+  "composicao_capital_social": {
+    "data": "06/11/2024",
+    "preferenciais": 0,
+    "total": 599401581
+  }
 }

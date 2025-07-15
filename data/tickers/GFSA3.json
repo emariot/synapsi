@@ -8,8 +8,143 @@
   "subsetor": "Construção Civil",
   "segmento": "Incorporações",
   "site": "www.gafisa.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível847.256853.313Ativo Total4.938.0335.302.367Patrimônio Líquido1.995.2871.951.996Patrimônio Líquido Atribuído à Controladora1.995.2511.951.187Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda226.841253.736Resultado Bruto3501.203Resultado de Equivalência Patrimonial5.447(7.752)Resultado Financeiro(33.132)31.989Resultado Líquido das Operações Continuadas21.13820.473Lucro (Prejuízo) do Período21.13819.836Lucro (Prejuízo) do Período Atribuído à Controladora21.13919.832Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais3.313113.595Atividades de Investimento79.12066.054Atividades de Financiamento(85.433)(169.570)Variação Cambial sobre Caixa e Equivalentes0(6.964)Aumento (Redução) de Caixa e Equivalentes(3.000)3.115",
-  "posicao_acionaria": "Nome%ON%PN%TotalRAVELLO FUNDO DE INVESTIMENTO EM PART MULTIESTRATEGIA5,020,005,02WOTAN CAPITAL LLC11,880,0011,88ÁGUIA DOURADA FUNDO DE INVESTIMENTO FINANCEIRO EM AÇÕES RESPONSABILIDADE LIMITADA8,380,008,38OUTROS74,700,0074,70AÇÕES TESOURARIA0,020,000,02TOTAL100,000,00100,00Informação recebida em 07/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "23/06/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas20.328-Pessoas Jurídicas164-Investidores Institucionais69-Quantidade de Ações Ordinárias6.725.92199,96Total de Ações6.725.92199,96",
-  "composicao_capital_social": "29/04/2025Ordinárias6.728.781Preferenciais0Total6.728.781"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 847256,
+        "31/12/2024": 853313
+      },
+      "ativo_total": {
+        "31/03/2025": 4938033,
+        "31/12/2024": 5302367
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 1995287,
+        "31/12/2024": 1951996
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 1995251,
+        "31/12/2024": 1951187
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 226841,
+        "01/01/2024_a_31/03/2024": 253736
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 350,
+        "01/01/2024_a_31/03/2024": 1203
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 5447,
+        "01/01/2024_a_31/03/2024": -7752
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -33132,
+        "01/01/2024_a_31/03/2024": 31989
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 21138,
+        "01/01/2024_a_31/03/2024": 20473
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 21138,
+        "01/01/2024_a_31/03/2024": 19836
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 21139,
+        "01/01/2024_a_31/03/2024": 19832
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 3313,
+        "01/01/2024_a_31/03/2024": 113595
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": 79120,
+        "01/01/2024_a_31/03/2024": 66054
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -85433,
+        "01/01/2024_a_31/03/2024": -169570
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": -6964
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -3000,
+        "01/01/2024_a_31/03/2024": 3115
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "RAVELLO FUNDO DE INVESTIMENTO EM PART MULTIESTRATEGIA",
+      "ON": 5.02,
+      "PN": 0.0,
+      "Total": 5.02
+    },
+    {
+      "nome": "WOTAN CAPITAL LLC",
+      "ON": 11.88,
+      "PN": 0.0,
+      "Total": 11.88
+    },
+    {
+      "nome": "ÁGUIA DOURADA FUNDO DE INVESTIMENTO FINANCEIRO EM AÇÕES RESPONSABILIDADE LIMITADA",
+      "ON": 8.38,
+      "PN": 0.0,
+      "Total": 8.38
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 74.7,
+      "PN": 0.0,
+      "Total": 74.7
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.02,
+      "PN": 0.0,
+      "Total": 0.02
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 20328,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 164,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 69,
+        "percentual": null
+      }
+    ],
+    "data": "23/06/2025",
+    "quantidade_acoes_ordinarias": 6725921,
+    "percentual_ordinarias": 99.96,
+    "total_acoes": 6725921,
+    "percentual_total": 99.96
+  },
+  "composicao_capital_social": {
+    "data": "29/04/2025",
+    "preferenciais": 0,
+    "total": 6728781
+  }
 }

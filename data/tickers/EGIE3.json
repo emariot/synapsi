@@ -8,8 +8,137 @@
   "subsetor": "Energia Elétrica",
   "segmento": "Energia Elétrica (segmento)",
   "site": "//www.engie.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível31.991.28231.526.125Ativo Total52.761.22150.112.301Patrimônio Líquido13.152.65212.280.398Patrimônio Líquido Atribuído à Controladora12.082.96411.266.701Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda3.013.0692.609.417Resultado Bruto1.640.7481.515.005Resultado de Equivalência Patrimonial166.779161.537Resultado Financeiro(623.395)(524.999)Resultado Líquido das Operações Continuadas826.3491.684.362Lucro (Prejuízo) do Período826.3491.684.362Lucro (Prejuízo) do Período Atribuído à Controladora768.7031.684.094Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais869.926899.069Atividades de Investimento(786.243)(351.600)Atividades de Financiamento1.532.198(540.991)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes1.615.8816.478",
-  "posicao_acionaria": "Nome%ON%PN%TotalBanco Clássico S.A.9,860,009,86ENGIE Brasil Participações Ltda.68,710,0068,71OUTROS21,430,0021,43AÇÕES TESOURARIA0,000,000,00TOTAL100,000,00100,00Informação recebida em 04/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "25/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas272.530-Pessoas Jurídicas7.449-Investidores Institucionais1.039-Quantidade de Ações Ordinárias255.215.96731,28Total de Ações255.215.96731,28",
-  "composicao_capital_social": "07/12/2018Ordinárias815.927.740Preferenciais0Total815.927.740"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 31991282,
+        "31/12/2024": 31526125
+      },
+      "ativo_total": {
+        "31/03/2025": 52761221,
+        "31/12/2024": 50112301
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 13152652,
+        "31/12/2024": 12280398
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 12082964,
+        "31/12/2024": 11266701
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 3013069,
+        "01/01/2024_a_31/03/2024": 2609417
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 1640748,
+        "01/01/2024_a_31/03/2024": 1515005
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 166779,
+        "01/01/2024_a_31/03/2024": 161537
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -623395,
+        "01/01/2024_a_31/03/2024": -524999
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 826349,
+        "01/01/2024_a_31/03/2024": 1684362
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 826349,
+        "01/01/2024_a_31/03/2024": 1684362
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 768703,
+        "01/01/2024_a_31/03/2024": 1684094
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 869926,
+        "01/01/2024_a_31/03/2024": 899069
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -786243,
+        "01/01/2024_a_31/03/2024": -351600
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": 1532198,
+        "01/01/2024_a_31/03/2024": -540991
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 1615881,
+        "01/01/2024_a_31/03/2024": 6478
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "Banco Clássico S.A.",
+      "ON": 9.86,
+      "PN": 0.0,
+      "Total": 9.86
+    },
+    {
+      "nome": "ENGIE Brasil Participações Ltda.",
+      "ON": 68.71,
+      "PN": 0.0,
+      "Total": 68.71
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 21.43,
+      "PN": 0.0,
+      "Total": 21.43
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 272530,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 7449,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 1039,
+        "percentual": null
+      }
+    ],
+    "data": "25/04/2025",
+    "quantidade_acoes_ordinarias": 255215967,
+    "percentual_ordinarias": 31.28,
+    "total_acoes": 255215967,
+    "percentual_total": 31.28
+  },
+  "composicao_capital_social": {
+    "data": "07/12/2018",
+    "preferenciais": 0,
+    "total": 815927740
+  }
 }

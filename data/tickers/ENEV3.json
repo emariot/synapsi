@@ -8,8 +8,149 @@
   "subsetor": "Energia Elétrica",
   "segmento": "Energia Elétrica (segmento)",
   "site": "//www.eneva.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível40.517.88140.061.297Ativo Total54.578.56351.629.382Patrimônio Líquido20.527.47920.214.767Patrimônio Líquido Atribuído à Controladora19.137.72618.909.488Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda4.423.5562.004.692Resultado Bruto1.321.555959.071Resultado de Equivalência Patrimonial455440Resultado Financeiro(253.297)(707.078)Resultado Líquido das Operações Continuadas468.85966.703Lucro (Prejuízo) do Período468.85966.703Lucro (Prejuízo) do Período Atribuído à Controladora384.385(60.894)Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais879.9811.036.284Atividades de Investimento(1.235.878)(1.051.849)Atividades de Financiamento797.653(707.879)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes441.756(723.444)",
-  "posicao_acionaria": "Nome%ON%PN%TotalBanco BTG Pactual S.A.25,310,0025,31BW GESTÃO DE INVESTIMENTOS LTDA13,700,0013,70Dynamo Administração de Recursos Ltda.9,520,009,52PARTNERS ALPHA INVESTMENTS LLC22,640,0022,64OUTROS27,730,0027,73AÇÕES TESOURARIA1,110,001,11TOTAL100,000,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "30/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas28.205-Pessoas Jurídicas170-Investidores Institucionais874-Quantidade de Ações Ordinárias1.907.965.49098,73Total de Ações1.907.965.49098,73",
-  "composicao_capital_social": "25/10/2024Ordinárias1.932.591.767Preferenciais0Total1.932.591.767"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 40517881,
+        "31/12/2024": 40061297
+      },
+      "ativo_total": {
+        "31/03/2025": 54578563,
+        "31/12/2024": 51629382
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 20527479,
+        "31/12/2024": 20214767
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 19137726,
+        "31/12/2024": 18909488
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 4423556,
+        "01/01/2024_a_31/03/2024": 2004692
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 1321555,
+        "01/01/2024_a_31/03/2024": 959071
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 455,
+        "01/01/2024_a_31/03/2024": 440
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -253297,
+        "01/01/2024_a_31/03/2024": -707078
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 468859,
+        "01/01/2024_a_31/03/2024": 66703
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 468859,
+        "01/01/2024_a_31/03/2024": 66703
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 384385,
+        "01/01/2024_a_31/03/2024": -60894
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 879981,
+        "01/01/2024_a_31/03/2024": 1036284
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -1235878,
+        "01/01/2024_a_31/03/2024": -1051849
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": 797653,
+        "01/01/2024_a_31/03/2024": -707879
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 441756,
+        "01/01/2024_a_31/03/2024": -723444
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "Banco BTG Pactual S.A.",
+      "ON": 25.31,
+      "PN": 0.0,
+      "Total": 25.31
+    },
+    {
+      "nome": "BW GESTÃO DE INVESTIMENTOS LTDA",
+      "ON": 13.7,
+      "PN": 0.0,
+      "Total": 13.7
+    },
+    {
+      "nome": "Dynamo Administração de Recursos Ltda.",
+      "ON": 9.52,
+      "PN": 0.0,
+      "Total": 9.52
+    },
+    {
+      "nome": "PARTNERS ALPHA INVESTMENTS LLC",
+      "ON": 22.64,
+      "PN": 0.0,
+      "Total": 22.64
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 27.73,
+      "PN": 0.0,
+      "Total": 27.73
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 1.11,
+      "PN": 0.0,
+      "Total": 1.11
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 28205,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 170,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 874,
+        "percentual": null
+      }
+    ],
+    "data": "30/04/2025",
+    "quantidade_acoes_ordinarias": 1907965490,
+    "percentual_ordinarias": 98.73,
+    "total_acoes": 1907965490,
+    "percentual_total": 98.73
+  },
+  "composicao_capital_social": {
+    "data": "25/10/2024",
+    "preferenciais": 0,
+    "total": 1932591767
+  }
 }

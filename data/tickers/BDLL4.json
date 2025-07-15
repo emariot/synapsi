@@ -8,8 +8,196 @@
   "subsetor": "Máquinas e Equipamentos",
   "segmento": "Máq. e Equip. Industriais",
   "site": "www.bardella.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível168.511169.454Ativo Total531.961545.083Patrimônio Líquido(233.585)(223.937)Patrimônio Líquido Atribuído à Controladora(233.585)(223.937)Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda13.0434.120Resultado Bruto2.556(1.152)Resultado de Equivalência Patrimonial(568)135Resultado Financeiro(4.740)(7.191)Resultado Líquido das Operações Continuadas(9.647)(13.548)Lucro (Prejuízo) do Período(9.647)(13.548)Lucro (Prejuízo) do Período Atribuído à Controladora(9.647)(13.548)Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(2.438)(3.880)Atividades de Investimento146525Atividades de Financiamento2.0083.934Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(284)579",
-  "posicao_acionaria": "Nome%ON%PN%TotalANA LUIZA BARDELLA22,171,889,58ANA TEREZA BARDELLA DELNERI22,171,889,58CLAUDIO BARDELLA JUNIOR22,171,899,58DIRCEU LUIZ NATAL0,268,665,48ELTON UGHINI0,007,494,65FUNDO DE INVESTIMENTO JABURA ACOES0,0011,086,88MARCIO KENDLER2,044,093,31PATRICIA BARDELLA R. PUOLI7,700,082,97PAULO HENRIQUE DOS SANTOS3,658,216,48SANDRA BARDELLA R. M. SOARES7,700,092,97SERGIO ALVARENGA DE MATOS0,004,702,92OUTROS12,1549,9535,60AÇÕES TESOURARIA0,000,000,00TOTAL100,00100,00100,00Informação recebida em 31/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "30/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas800-Pessoas Jurídicas8-Investidores Institucionais18-Quantidade de Ações Ordinárias203.42433,50Quantidade de Ações Preferenciais977.17998,43Total de Ações1.180.60373,79",
-  "composicao_capital_social": "23/04/2001Ordinárias607.192Preferenciais992.808Total1.600.000"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 168511,
+        "31/12/2024": 169454
+      },
+      "ativo_total": {
+        "31/03/2025": 531961,
+        "31/12/2024": 545083
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": -233585,
+        "31/12/2024": -223937
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": -233585,
+        "31/12/2024": -223937
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 13043,
+        "01/01/2024_a_31/03/2024": 4120
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 2556,
+        "01/01/2024_a_31/03/2024": -1152
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": -568,
+        "01/01/2024_a_31/03/2024": 135
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -4740,
+        "01/01/2024_a_31/03/2024": -7191
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": -9647,
+        "01/01/2024_a_31/03/2024": -13548
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": -9647,
+        "01/01/2024_a_31/03/2024": -13548
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": -9647,
+        "01/01/2024_a_31/03/2024": -13548
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": -2438,
+        "01/01/2024_a_31/03/2024": -3880
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": 146,
+        "01/01/2024_a_31/03/2024": 525
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": 2008,
+        "01/01/2024_a_31/03/2024": 3934
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -284,
+        "01/01/2024_a_31/03/2024": 579
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "ANA LUIZA BARDELLA",
+      "ON": 22.17,
+      "PN": 1.88,
+      "Total": 9.58
+    },
+    {
+      "nome": "ANA TEREZA BARDELLA DELNERI",
+      "ON": 22.17,
+      "PN": 1.88,
+      "Total": 9.58
+    },
+    {
+      "nome": "CLAUDIO BARDELLA JUNIOR",
+      "ON": 22.17,
+      "PN": 1.89,
+      "Total": 9.58
+    },
+    {
+      "nome": "DIRCEU LUIZ NATAL",
+      "ON": 0.26,
+      "PN": 8.66,
+      "Total": 5.48
+    },
+    {
+      "nome": "ELTON UGHINI",
+      "ON": 0.0,
+      "PN": 7.49,
+      "Total": 4.65
+    },
+    {
+      "nome": "FUNDO DE INVESTIMENTO JABURA ACOES",
+      "ON": 0.0,
+      "PN": 11.08,
+      "Total": 6.88
+    },
+    {
+      "nome": "MARCIO KENDLER",
+      "ON": 2.04,
+      "PN": 4.09,
+      "Total": 3.31
+    },
+    {
+      "nome": "PATRICIA BARDELLA R. PUOLI",
+      "ON": 7.7,
+      "PN": 0.08,
+      "Total": 2.97
+    },
+    {
+      "nome": "PAULO HENRIQUE DOS SANTOS",
+      "ON": 3.65,
+      "PN": 8.21,
+      "Total": 6.48
+    },
+    {
+      "nome": "SANDRA BARDELLA R. M. SOARES",
+      "ON": 7.7,
+      "PN": 0.09,
+      "Total": 2.97
+    },
+    {
+      "nome": "SERGIO ALVARENGA DE MATOS",
+      "ON": 0.0,
+      "PN": 4.7,
+      "Total": 2.92
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 12.15,
+      "PN": 49.95,
+      "Total": 35.6
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 100.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 800,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 8,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 18,
+        "percentual": null
+      },
+      {
+        "tipo": "Quantidade de Ações Preferenciais",
+        "quantidade": 977179,
+        "percentual": 98.43
+      }
+    ],
+    "data": "30/04/2025",
+    "quantidade_acoes_ordinarias": 203424,
+    "percentual_ordinarias": 33.5,
+    "total_acoes": 1180603,
+    "percentual_total": 73.79
+  },
+  "composicao_capital_social": {
+    "data": "23/04/2001",
+    "preferenciais": 992808,
+    "total": 1600000
+  }
 }

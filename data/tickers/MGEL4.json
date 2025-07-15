@@ -8,8 +8,172 @@
   "subsetor": "Siderurgia e Metalurgia",
   "segmento": "Artefatos de Ferro e Aço",
   "site": "www.mangels.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível160.913160.025Ativo Total777.139739.532Patrimônio Líquido9.319553Patrimônio Líquido Atribuído à Controladora9.319553Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda245.015226.351Resultado Bruto22.91119.738Resultado de Equivalência Patrimonial00Resultado Financeiro9.450(21.653)Resultado Líquido das Operações Continuadas9.183(7.340)Lucro (Prejuízo) do Período9.183(7.340)Lucro (Prejuízo) do Período Atribuído à Controladora9.183(7.340)Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais664.358Atividades de Investimento19.5938.451Atividades de Financiamento(1.027)(1.053)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes18.63211.756",
-  "posicao_acionaria": "Nome%ON%PN%TotalANDRE RICARDO BEIM0,009,095,84CLUBE DE INVESTIMENTO VALORE0,008,985,77JOSÉ ANTONIO BORTOLUZZO NETTO0,0010,766,92Mangels S.A.66,620,0023,81Organon Master FIA0,0013,248,51ROBERT MAX MANGELS0,0023,7315,25RS ASSETS LTDA33,310,0011,91OUTROS0,0834,1921,99AÇÕES TESOURARIA0,000,000,00TOTAL100,00100,00100,00Informação recebida em 25/06/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "05/05/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas1.178-Pessoas Jurídicas24-Investidores Institucionais0-Quantidade de Ações Ordinárias1.5470,08Quantidade de Ações Preferenciais2.833.98276,27Total de Ações2.835.52949,03",
-  "composicao_capital_social": "29/04/2016Ordinárias2.067.243Preferenciais3.715.969Total5.783.212"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 160913,
+        "31/12/2024": 160025
+      },
+      "ativo_total": {
+        "31/03/2025": 777139,
+        "31/12/2024": 739532
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 9319,
+        "31/12/2024": 553
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 9319,
+        "31/12/2024": 553
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 245015,
+        "01/01/2024_a_31/03/2024": 226351
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 22911,
+        "01/01/2024_a_31/03/2024": 19738
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": 9450,
+        "01/01/2024_a_31/03/2024": -21653
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 9183,
+        "01/01/2024_a_31/03/2024": -7340
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 9183,
+        "01/01/2024_a_31/03/2024": -7340
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 9183,
+        "01/01/2024_a_31/03/2024": -7340
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 66,
+        "01/01/2024_a_31/03/2024": 4358
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": 19593,
+        "01/01/2024_a_31/03/2024": 8451
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -1027,
+        "01/01/2024_a_31/03/2024": -1053
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 18632,
+        "01/01/2024_a_31/03/2024": 11756
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "ANDRE RICARDO BEIM",
+      "ON": 0.0,
+      "PN": 9.09,
+      "Total": 5.84
+    },
+    {
+      "nome": "CLUBE DE INVESTIMENTO VALORE",
+      "ON": 0.0,
+      "PN": 8.98,
+      "Total": 5.77
+    },
+    {
+      "nome": "JOSÉ ANTONIO BORTOLUZZO NETTO",
+      "ON": 0.0,
+      "PN": 10.76,
+      "Total": 6.92
+    },
+    {
+      "nome": "Mangels S.A.",
+      "ON": 66.62,
+      "PN": 0.0,
+      "Total": 23.81
+    },
+    {
+      "nome": "Organon Master FIA",
+      "ON": 0.0,
+      "PN": 13.24,
+      "Total": 8.51
+    },
+    {
+      "nome": "ROBERT MAX MANGELS",
+      "ON": 0.0,
+      "PN": 23.73,
+      "Total": 15.25
+    },
+    {
+      "nome": "RS ASSETS LTDA",
+      "ON": 33.31,
+      "PN": 0.0,
+      "Total": 11.91
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 0.08,
+      "PN": 34.19,
+      "Total": 21.99
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 100.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 1178,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 24,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 0,
+        "percentual": null
+      },
+      {
+        "tipo": "Quantidade de Ações Preferenciais",
+        "quantidade": 2833982,
+        "percentual": 76.27
+      }
+    ],
+    "data": "05/05/2025",
+    "quantidade_acoes_ordinarias": 1547,
+    "percentual_ordinarias": 0.08,
+    "total_acoes": 2835529,
+    "percentual_total": 49.03
+  },
+  "composicao_capital_social": {
+    "data": "29/04/2016",
+    "preferenciais": 3715969,
+    "total": 5783212
+  }
 }

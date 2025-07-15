@@ -8,8 +8,143 @@
   "subsetor": "Comércio",
   "segmento": "Tecidos. Vestuário e Calçados",
   "site": "https://www.cea.com.br/",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível3.165.0593.246.430Ativo Total9.280.80110.053.899Patrimônio Líquido3.262.5523.308.488Patrimônio Líquido Atribuído à Controladora3.262.5503.308.484Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda1.612.0821.453.008Resultado Bruto871.998770.349Resultado de Equivalência Patrimonial00Resultado Financeiro(77.143)(3.899)Resultado Líquido das Operações Continuadas4.07270.854Lucro (Prejuízo) do Período4.07270.854Lucro (Prejuízo) do Período Atribuído à Controladora4.07470.854Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais189.36693.417Atividades de Investimento(134.807)(54.174)Atividades de Financiamento(264.885)(177.149)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(210.326)(137.906)",
-  "posicao_acionaria": "Nome%ON%PN%TotalCOFRA INVESTMENTS S.A.R.L.26,070,0026,07COFRA LATIN AMERICA LTDA0,000,000,00INCAS SARL26,260,0026,26OUTROS45,940,0045,94AÇÕES TESOURARIA1,730,001,73TOTAL100,000,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "30/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas25.898-Pessoas Jurídicas7-Investidores Institucionais782-Quantidade de Ações Ordinárias138.420.00944,91Total de Ações138.420.00944,91",
-  "composicao_capital_social": "24/10/2019Ordinárias308.245.068Preferenciais0Total308.245.068"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 3165059,
+        "31/12/2024": 3246430
+      },
+      "ativo_total": {
+        "31/03/2025": 9280801,
+        "31/12/2024": 10053899
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 3262552,
+        "31/12/2024": 3308488
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 3262550,
+        "31/12/2024": 3308484
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 1612082,
+        "01/01/2024_a_31/03/2024": 1453008
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 871998,
+        "01/01/2024_a_31/03/2024": 770349
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -77143,
+        "01/01/2024_a_31/03/2024": -3899
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 4072,
+        "01/01/2024_a_31/03/2024": 70854
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 4072,
+        "01/01/2024_a_31/03/2024": 70854
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 4074,
+        "01/01/2024_a_31/03/2024": 70854
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 189366,
+        "01/01/2024_a_31/03/2024": 93417
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -134807,
+        "01/01/2024_a_31/03/2024": -54174
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -264885,
+        "01/01/2024_a_31/03/2024": -177149
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -210326,
+        "01/01/2024_a_31/03/2024": -137906
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "COFRA INVESTMENTS S.A.R.L.",
+      "ON": 26.07,
+      "PN": 0.0,
+      "Total": 26.07
+    },
+    {
+      "nome": "COFRA LATIN AMERICA LTDA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "INCAS SARL",
+      "ON": 26.26,
+      "PN": 0.0,
+      "Total": 26.26
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 45.94,
+      "PN": 0.0,
+      "Total": 45.94
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 1.73,
+      "PN": 0.0,
+      "Total": 1.73
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 25898,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 7,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 782,
+        "percentual": null
+      }
+    ],
+    "data": "30/04/2025",
+    "quantidade_acoes_ordinarias": 138420009,
+    "percentual_ordinarias": 44.91,
+    "total_acoes": 138420009,
+    "percentual_total": 44.91
+  },
+  "composicao_capital_social": {
+    "data": "24/10/2019",
+    "preferenciais": 0,
+    "total": 308245068
+  }
 }

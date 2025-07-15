@@ -8,8 +8,149 @@
   "subsetor": "Serviços Financeiros Diversos",
   "segmento": "Serviços Financeiros Diversos (segmento)",
   "site": "www.b3.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível27.086.87927.151.252Ativo Total46.292.02945.228.850Patrimônio Líquido18.807.29618.383.454Patrimônio Líquido Atribuído à Controladora18.794.55118.370.755Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda2.657.1562.466.317Resultado Bruto2.387.9542.221.328Resultado de Equivalência Patrimonial(246)(2.995)Resultado Financeiro15.61745.374Resultado Líquido das Operações Continuadas1.106.123949.569Lucro (Prejuízo) do Período1.106.123949.569Lucro (Prejuízo) do Período Atribuído à Controladora1.106.077949.583Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(637.265)1.532.810Atividades de Investimento(112.593)(25.669)Atividades de Financiamento700.798(1.475.351)Variação Cambial sobre Caixa e Equivalentes67.59910.037Aumento (Redução) de Caixa e Equivalentes18.53941.827",
-  "posicao_acionaria": "Nome%ON%PN%TotalBaillie Gifford5,820,005,82Capital Research Global Investors9,890,009,89Fundos administrados pela BlackRock. Inc.5,270,005,27Massachusetts Financial Services Company5,100,005,10OUTROS72,810,0072,81AÇÕES TESOURARIA1,110,001,11TOTAL100,000,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "24/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas322.443-Pessoas Jurídicas2.151-Investidores Institucionais1.525-Quantidade de Ações Ordinárias5.196.371.45898,67Total de Ações5.196.371.45898,67",
-  "composicao_capital_social": "20/03/2025Ordinárias5.266.500.000Preferenciais0Total5.266.500.000"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 27086879,
+        "31/12/2024": 27151252
+      },
+      "ativo_total": {
+        "31/03/2025": 46292029,
+        "31/12/2024": 45228850
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 18807296,
+        "31/12/2024": 18383454
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 18794551,
+        "31/12/2024": 18370755
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 2657156,
+        "01/01/2024_a_31/03/2024": 2466317
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 2387954,
+        "01/01/2024_a_31/03/2024": 2221328
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": -246,
+        "01/01/2024_a_31/03/2024": -2995
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": 15617,
+        "01/01/2024_a_31/03/2024": 45374
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 1106123,
+        "01/01/2024_a_31/03/2024": 949569
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 1106123,
+        "01/01/2024_a_31/03/2024": 949569
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 1106077,
+        "01/01/2024_a_31/03/2024": 949583
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": -637265,
+        "01/01/2024_a_31/03/2024": 1532810
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -112593,
+        "01/01/2024_a_31/03/2024": -25669
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": 700798,
+        "01/01/2024_a_31/03/2024": -1475351
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 67599,
+        "01/01/2024_a_31/03/2024": 10037
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 18539,
+        "01/01/2024_a_31/03/2024": 41827
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "Baillie Gifford",
+      "ON": 5.82,
+      "PN": 0.0,
+      "Total": 5.82
+    },
+    {
+      "nome": "Capital Research Global Investors",
+      "ON": 9.89,
+      "PN": 0.0,
+      "Total": 9.89
+    },
+    {
+      "nome": "Fundos administrados pela BlackRock. Inc.",
+      "ON": 5.27,
+      "PN": 0.0,
+      "Total": 5.27
+    },
+    {
+      "nome": "Massachusetts Financial Services Company",
+      "ON": 5.1,
+      "PN": 0.0,
+      "Total": 5.1
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 72.81,
+      "PN": 0.0,
+      "Total": 72.81
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 1.11,
+      "PN": 0.0,
+      "Total": 1.11
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 322443,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 2151,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 1525,
+        "percentual": null
+      }
+    ],
+    "data": "24/04/2025",
+    "quantidade_acoes_ordinarias": 5196371458,
+    "percentual_ordinarias": 98.67,
+    "total_acoes": 5196371458,
+    "percentual_total": 98.67
+  },
+  "composicao_capital_social": {
+    "data": "20/03/2025",
+    "preferenciais": 0,
+    "total": 5266500000
+  }
 }

@@ -8,8 +8,359 @@
   "subsetor": "Comércio",
   "segmento": "Tecidos. Vestuário e Calçados",
   "site": "www.arezzoco.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível5.774.4596.054.322Ativo Total15.343.08115.253.545Patrimônio Líquido7.804.3577.721.515Patrimônio Líquido Atribuído à Controladora7.804.3577.702.653Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda2.696.5381.072.182Resultado Bruto1.476.801566.857Resultado de Equivalência Patrimonial(1.848)0Resultado Financeiro(157.632)(47.621)Resultado Líquido das Operações Continuadas117.82671.562Lucro (Prejuízo) do Período117.82671.562Lucro (Prejuízo) do Período Atribuído à Controladora117.82673.100Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais(104.146)(55.735)Atividades de Investimento(487.789)97.121Atividades de Financiamento547.612(61.040)Variação Cambial sobre Caixa e Equivalentes(876)(627)Aumento (Redução) de Caixa e Equivalentes(45.199)(20.281)",
-  "posicao_acionaria": "Nome%ON%PN%TotalALBERTO DO  AMARAL OSORIO FILHO0,250,000,25ALEXANDRE CAFÉ BIRMAN11,350,0011,35ALISSON SUZZIM  CALGAROTO0,110,000,11ALLAN DE LIMA BIRMAN2,030,002,03ANDERSON LEMOS BIRMAN1,730,001,73ANDRÉ DE LIMA BIRMAN2,030,002,03ANTONIO CARLOS  BRANT DE CARVALHO JUNQUEIRA0,210,000,21AUGUSTO DE LIMA BIRMAN2,030,002,03CLAUDIA JATAHY GONÇALVES4,400,004,40CRISTIANA BARROS  DE OLIVERIA ABDALLA0,420,000,42Canada Pension Plan Investment Board5,070,005,07DANIELA FREITAS DE  OLIVEIRA VERD0,140,000,14FIDELITY MANAGEMENT & RESEARCH (FMR)5,140,005,14FLAVIA FONSECA MIRANDA0,030,000,03FÁBIO HENRIQUE PITTA DE MELLO BARRETO0,100,000,10GABRIEL SILVA LOBO LEITE0,110,000,11GISELLA JATAHY GONCALVES1,460,001,46GISELLI LESSA LOPARDI0,030,000,03GUSTAVO RUDGE DE OLIVEIRA FONSECA0,070,000,07IZABEL YUNES MORAES0,080,000,08KATIA FERREIRA DE BARROS1,080,001,08KÁTIA ROSANE DE ARAÚJO ALFRADIQUE0,130,000,13LEONARDO DE QUEIROZ  CASERTA0,010,000,01LUIZ FELIPE PEDROSA VERDI0,140,000,14MARCELLO RIBEIRO BASTOS1,070,001,07MARCUS MARQUES MANHÃES0,150,000,15MARIA CÉLIA ALMEIDA DO AMARAL  OSORIO0,250,000,25MARTA RODRIGUES NEVES0,030,000,03NATALIA DI ROCCO VOZZA JUNQUEIRA0,210,000,21NÉZIO NOGUEIRA DE BARROS0,890,000,89PATRICIA CAFÉ BIRMAN FERRAZ2,030,002,03PAULO SERGIO DE BRITO RODRIGUES0,060,000,06ROBERTO LUIZ JATAHY GONÇALVES4,410,004,41RODRIGO CARDOZO MARTINS0,060,000,06TACIANA DE ABREU E SILVA0,050,000,05TATIANA ARAÚJO  DE ABREU VIANA0,030,000,03TIAGO HEINZEN DOWSLEY0,080,000,08TIARLE BORGES0,020,000,02WESTWOOD INVESTMENTS. LLC9,500,009,50OUTROS43,020,0043,02AÇÕES TESOURARIA0,010,000,01TOTAL100,000,00100,00Informação recebida em 04/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "30/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas51.919-Pessoas Jurídicas311-Investidores Institucionais740-Quantidade de Ações Ordinárias136.983.54966,34Total de Ações136.983.54966,34",
-  "composicao_capital_social": "18/06/2024Ordinárias206.489.813Preferenciais0Total206.489.813"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 5774459,
+        "31/12/2024": 6054322
+      },
+      "ativo_total": {
+        "31/03/2025": 15343081,
+        "31/12/2024": 15253545
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 7804357,
+        "31/12/2024": 7721515
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 7804357,
+        "31/12/2024": 7702653
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 2696538,
+        "01/01/2024_a_31/03/2024": 1072182
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 1476801,
+        "01/01/2024_a_31/03/2024": 566857
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": -1848,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -157632,
+        "01/01/2024_a_31/03/2024": -47621
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 117826,
+        "01/01/2024_a_31/03/2024": 71562
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 117826,
+        "01/01/2024_a_31/03/2024": 71562
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 117826,
+        "01/01/2024_a_31/03/2024": 73100
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": -104146,
+        "01/01/2024_a_31/03/2024": -55735
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -487789,
+        "01/01/2024_a_31/03/2024": 97121
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": 547612,
+        "01/01/2024_a_31/03/2024": -61040
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -876,
+        "01/01/2024_a_31/03/2024": -627
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -45199,
+        "01/01/2024_a_31/03/2024": -20281
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "ALBERTO DO  AMARAL OSORIO FILHO",
+      "ON": 0.25,
+      "PN": 0.0,
+      "Total": 0.25
+    },
+    {
+      "nome": "ALEXANDRE CAFÉ BIRMAN",
+      "ON": 11.35,
+      "PN": 0.0,
+      "Total": 11.35
+    },
+    {
+      "nome": "ALISSON SUZZIM  CALGAROTO",
+      "ON": 0.11,
+      "PN": 0.0,
+      "Total": 0.11
+    },
+    {
+      "nome": "ALLAN DE LIMA BIRMAN",
+      "ON": 2.03,
+      "PN": 0.0,
+      "Total": 2.03
+    },
+    {
+      "nome": "ANDERSON LEMOS BIRMAN",
+      "ON": 1.73,
+      "PN": 0.0,
+      "Total": 1.73
+    },
+    {
+      "nome": "ANDRÉ DE LIMA BIRMAN",
+      "ON": 2.03,
+      "PN": 0.0,
+      "Total": 2.03
+    },
+    {
+      "nome": "ANTONIO CARLOS  BRANT DE CARVALHO JUNQUEIRA",
+      "ON": 0.21,
+      "PN": 0.0,
+      "Total": 0.21
+    },
+    {
+      "nome": "AUGUSTO DE LIMA BIRMAN",
+      "ON": 2.03,
+      "PN": 0.0,
+      "Total": 2.03
+    },
+    {
+      "nome": "CLAUDIA JATAHY GONÇALVES",
+      "ON": 4.4,
+      "PN": 0.0,
+      "Total": 4.4
+    },
+    {
+      "nome": "CRISTIANA BARROS  DE OLIVERIA ABDALLA",
+      "ON": 0.42,
+      "PN": 0.0,
+      "Total": 0.42
+    },
+    {
+      "nome": "Canada Pension Plan Investment Board",
+      "ON": 5.07,
+      "PN": 0.0,
+      "Total": 5.07
+    },
+    {
+      "nome": "DANIELA FREITAS DE  OLIVEIRA VERD",
+      "ON": 0.14,
+      "PN": 0.0,
+      "Total": 0.14
+    },
+    {
+      "nome": "FIDELITY MANAGEMENT & RESEARCH (FMR)",
+      "ON": 5.14,
+      "PN": 0.0,
+      "Total": 5.14
+    },
+    {
+      "nome": "FLAVIA FONSECA MIRANDA",
+      "ON": 0.03,
+      "PN": 0.0,
+      "Total": 0.03
+    },
+    {
+      "nome": "FÁBIO HENRIQUE PITTA DE MELLO BARRETO",
+      "ON": 0.1,
+      "PN": 0.0,
+      "Total": 0.1
+    },
+    {
+      "nome": "GABRIEL SILVA LOBO LEITE",
+      "ON": 0.11,
+      "PN": 0.0,
+      "Total": 0.11
+    },
+    {
+      "nome": "GISELLA JATAHY GONCALVES",
+      "ON": 1.46,
+      "PN": 0.0,
+      "Total": 1.46
+    },
+    {
+      "nome": "GISELLI LESSA LOPARDI",
+      "ON": 0.03,
+      "PN": 0.0,
+      "Total": 0.03
+    },
+    {
+      "nome": "GUSTAVO RUDGE DE OLIVEIRA FONSECA",
+      "ON": 0.07,
+      "PN": 0.0,
+      "Total": 0.07
+    },
+    {
+      "nome": "IZABEL YUNES MORAES",
+      "ON": 0.08,
+      "PN": 0.0,
+      "Total": 0.08
+    },
+    {
+      "nome": "KATIA FERREIRA DE BARROS",
+      "ON": 1.08,
+      "PN": 0.0,
+      "Total": 1.08
+    },
+    {
+      "nome": "KÁTIA ROSANE DE ARAÚJO ALFRADIQUE",
+      "ON": 0.13,
+      "PN": 0.0,
+      "Total": 0.13
+    },
+    {
+      "nome": "LEONARDO DE QUEIROZ  CASERTA",
+      "ON": 0.01,
+      "PN": 0.0,
+      "Total": 0.01
+    },
+    {
+      "nome": "LUIZ FELIPE PEDROSA VERDI",
+      "ON": 0.14,
+      "PN": 0.0,
+      "Total": 0.14
+    },
+    {
+      "nome": "MARCELLO RIBEIRO BASTOS",
+      "ON": 1.07,
+      "PN": 0.0,
+      "Total": 1.07
+    },
+    {
+      "nome": "MARCUS MARQUES MANHÃES",
+      "ON": 0.15,
+      "PN": 0.0,
+      "Total": 0.15
+    },
+    {
+      "nome": "MARIA CÉLIA ALMEIDA DO AMARAL  OSORIO",
+      "ON": 0.25,
+      "PN": 0.0,
+      "Total": 0.25
+    },
+    {
+      "nome": "MARTA RODRIGUES NEVES",
+      "ON": 0.03,
+      "PN": 0.0,
+      "Total": 0.03
+    },
+    {
+      "nome": "NATALIA DI ROCCO VOZZA JUNQUEIRA",
+      "ON": 0.21,
+      "PN": 0.0,
+      "Total": 0.21
+    },
+    {
+      "nome": "NÉZIO NOGUEIRA DE BARROS",
+      "ON": 0.89,
+      "PN": 0.0,
+      "Total": 0.89
+    },
+    {
+      "nome": "PATRICIA CAFÉ BIRMAN FERRAZ",
+      "ON": 2.03,
+      "PN": 0.0,
+      "Total": 2.03
+    },
+    {
+      "nome": "PAULO SERGIO DE BRITO RODRIGUES",
+      "ON": 0.06,
+      "PN": 0.0,
+      "Total": 0.06
+    },
+    {
+      "nome": "ROBERTO LUIZ JATAHY GONÇALVES",
+      "ON": 4.41,
+      "PN": 0.0,
+      "Total": 4.41
+    },
+    {
+      "nome": "RODRIGO CARDOZO MARTINS",
+      "ON": 0.06,
+      "PN": 0.0,
+      "Total": 0.06
+    },
+    {
+      "nome": "TACIANA DE ABREU E SILVA",
+      "ON": 0.05,
+      "PN": 0.0,
+      "Total": 0.05
+    },
+    {
+      "nome": "TATIANA ARAÚJO  DE ABREU VIANA",
+      "ON": 0.03,
+      "PN": 0.0,
+      "Total": 0.03
+    },
+    {
+      "nome": "TIAGO HEINZEN DOWSLEY",
+      "ON": 0.08,
+      "PN": 0.0,
+      "Total": 0.08
+    },
+    {
+      "nome": "TIARLE BORGES",
+      "ON": 0.02,
+      "PN": 0.0,
+      "Total": 0.02
+    },
+    {
+      "nome": "WESTWOOD INVESTMENTS. LLC",
+      "ON": 9.5,
+      "PN": 0.0,
+      "Total": 9.5
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 43.02,
+      "PN": 0.0,
+      "Total": 43.02
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.01,
+      "PN": 0.0,
+      "Total": 0.01
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 51919,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 311,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 740,
+        "percentual": null
+      }
+    ],
+    "data": "30/04/2025",
+    "quantidade_acoes_ordinarias": 136983549,
+    "percentual_ordinarias": 66.34,
+    "total_acoes": 136983549,
+    "percentual_total": 66.34
+  },
+  "composicao_capital_social": {
+    "data": "18/06/2024",
+    "preferenciais": 0,
+    "total": 206489813
+  }
 }

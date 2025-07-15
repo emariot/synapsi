@@ -8,8 +8,185 @@
   "subsetor": "Máquinas e Equipamentos",
   "segmento": "Máq. e Equip. Industriais",
   "site": "//www.mills.com.br",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível2.272.4922.165.665Ativo Total3.893.6253.869.243Patrimônio Líquido1.490.1401.448.031Patrimônio Líquido Atribuído à Controladora1.487.2441.445.279Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda412.368353.176Resultado Bruto264.597213.466Resultado de Equivalência Patrimonial00Resultado Financeiro(45.720)(19.483)Resultado Líquido das Operações Continuadas67.94267.695Lucro (Prejuízo) do Período67.94267.695Lucro (Prejuízo) do Período Atribuído à Controladora67.79867.631Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais46.43751.812Atividades de Investimento22.611(5.580)Atividades de Financiamento(91.356)99.393Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(22.308)145.625",
-  "posicao_acionaria": "Nome%ON%PN%TotalANDRES CRISTIAN NACHT5,810,005,81ANTONIA KJELLERUP NACHT2,250,002,25FRANCISCA KJELLERUP NACHT0,000,000,00JYTTE KJELLERUP NACHT3,020,003,02PEDRO KAJ KJELLERUP NACHT2,290,002,29SNOW PETREL L.L.C10,110,0010,11SULLAIR ARGENTINA S.A.9,440,009,44Sun Fundo de Investimento em Participações Multiestratégia22,020,0022,02Tarpon Gestora de Recursos Ltda.12,040,0012,04TOMAS RICHARD NACHT2,250,002,25OUTROS27,110,0027,11AÇÕES TESOURARIA3,680,003,68TOTAL100,000,00100,00Informação recebida em 30/05/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "25/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas12.670-Pessoas Jurídicas278-Investidores Institucionais41-Quantidade de Ações Ordinárias91.680.59539,15Total de Ações91.680.59539,15",
-  "composicao_capital_social": "02/12/2024Ordinárias234.178.207Preferenciais0Total234.178.207"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 2272492,
+        "31/12/2024": 2165665
+      },
+      "ativo_total": {
+        "31/03/2025": 3893625,
+        "31/12/2024": 3869243
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 1490140,
+        "31/12/2024": 1448031
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 1487244,
+        "31/12/2024": 1445279
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 412368,
+        "01/01/2024_a_31/03/2024": 353176
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 264597,
+        "01/01/2024_a_31/03/2024": 213466
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -45720,
+        "01/01/2024_a_31/03/2024": -19483
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 67942,
+        "01/01/2024_a_31/03/2024": 67695
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 67942,
+        "01/01/2024_a_31/03/2024": 67695
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 67798,
+        "01/01/2024_a_31/03/2024": 67631
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 46437,
+        "01/01/2024_a_31/03/2024": 51812
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": 22611,
+        "01/01/2024_a_31/03/2024": -5580
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -91356,
+        "01/01/2024_a_31/03/2024": 99393
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -22308,
+        "01/01/2024_a_31/03/2024": 145625
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "ANDRES CRISTIAN NACHT",
+      "ON": 5.81,
+      "PN": 0.0,
+      "Total": 5.81
+    },
+    {
+      "nome": "ANTONIA KJELLERUP NACHT",
+      "ON": 2.25,
+      "PN": 0.0,
+      "Total": 2.25
+    },
+    {
+      "nome": "FRANCISCA KJELLERUP NACHT",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "JYTTE KJELLERUP NACHT",
+      "ON": 3.02,
+      "PN": 0.0,
+      "Total": 3.02
+    },
+    {
+      "nome": "PEDRO KAJ KJELLERUP NACHT",
+      "ON": 2.29,
+      "PN": 0.0,
+      "Total": 2.29
+    },
+    {
+      "nome": "SNOW PETREL L.L.C",
+      "ON": 10.11,
+      "PN": 0.0,
+      "Total": 10.11
+    },
+    {
+      "nome": "SULLAIR ARGENTINA S.A.",
+      "ON": 9.44,
+      "PN": 0.0,
+      "Total": 9.44
+    },
+    {
+      "nome": "Sun Fundo de Investimento em Participações Multiestratégia",
+      "ON": 22.02,
+      "PN": 0.0,
+      "Total": 22.02
+    },
+    {
+      "nome": "Tarpon Gestora de Recursos Ltda.",
+      "ON": 12.04,
+      "PN": 0.0,
+      "Total": 12.04
+    },
+    {
+      "nome": "TOMAS RICHARD NACHT",
+      "ON": 2.25,
+      "PN": 0.0,
+      "Total": 2.25
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 27.11,
+      "PN": 0.0,
+      "Total": 27.11
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 3.68,
+      "PN": 0.0,
+      "Total": 3.68
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 12670,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 278,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 41,
+        "percentual": null
+      }
+    ],
+    "data": "25/04/2025",
+    "quantidade_acoes_ordinarias": 91680595,
+    "percentual_ordinarias": 39.15,
+    "total_acoes": 91680595,
+    "percentual_total": 39.15
+  },
+  "composicao_capital_social": {
+    "data": "02/12/2024",
+    "preferenciais": 0,
+    "total": 234178207
+  }
 }

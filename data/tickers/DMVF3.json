@@ -8,8 +8,131 @@
   "subsetor": "Comércio e Distribuição",
   "segmento": "Medicamentos e Outros Produtos",
   "site": "www.d1000varejofarma.com.br/ri",
-  "dados_economico_financeiros": "Ver dados no formato Consolidado  Não consolidado Balanço Patrimonial  - Consolidado31/03/202531/12/2024Ativo Imobilizado, Investimentos e Intangível1.114.1981.093.017Ativo Total1.831.4301.834.454Patrimônio Líquido896.843896.712Patrimônio Líquido Atribuído à Controladora896.843896.712Demonstração do Resultado - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Receita de Venda568.327481.799Resultado Bruto169.670148.725Resultado de Equivalência Patrimonial00Resultado Financeiro(14.159)(7.640)Resultado Líquido das Operações Continuadas1311.032Lucro (Prejuízo) do Período1311.032Lucro (Prejuízo) do Período Atribuído à Controladora01.032Demonstração do Fluxo de Caixa - Consolidado01/01/2025 a 31/03/202501/01/2024 a 31/03/2024Atividades Operacionais22.72031.725Atividades de Investimento(17.283)(12.929)Atividades de Financiamento(30.287)(10.535)Variação Cambial sobre Caixa e Equivalentes00Aumento (Redução) de Caixa e Equivalentes(24.850)8.261",
-  "posicao_acionaria": "Nome%ON%PN%TotalPROFARMA DISTRIBUIDORA DE PRODUTOS FARMACÊUTICOS S.A.68,470,0068,47OUTROS31,530,0031,53AÇÕES TESOURARIA0,000,000,00TOTAL100,000,00100,00Informação recebida em 04/07/2025. (*) Posição dos acionistas com mais de 5% das ações de cada espécie.",
-  "acoes_em_circulacao_no_mercado": "28/04/2025Tipos de Investidores / AçõesQuantidadePercentualPessoas Físicas8.117-Pessoas Jurídicas84-Investidores Institucionais18-Quantidade de Ações Ordinárias15.927.60531,48Total de Ações15.927.60531,48",
-  "composicao_capital_social": "06/08/2020Ordinárias50.602.842Preferenciais0Total50.602.842"
+  "dados_economico_financeiros": {
+    "balanco_patrimonial": {
+      "ativo_imobilizado_investimentos_e_intangivel": {
+        "31/03/2025": 1114198,
+        "31/12/2024": 1093017
+      },
+      "ativo_total": {
+        "31/03/2025": 1831430,
+        "31/12/2024": 1834454
+      },
+      "patrimônio_liquido": {
+        "31/03/2025": 896843,
+        "31/12/2024": 896712
+      },
+      "patrimônio_liquido_atribuido_à_controladora": {
+        "31/03/2025": 896843,
+        "31/12/2024": 896712
+      }
+    },
+    "demonstracao_resultado": {
+      "receita_de_venda": {
+        "01/01/2025_a_31/03/2025": 568327,
+        "01/01/2024_a_31/03/2024": 481799
+      },
+      "resultado_bruto": {
+        "01/01/2025_a_31/03/2025": 169670,
+        "01/01/2024_a_31/03/2024": 148725
+      },
+      "resultado_de_equivalencia_patrimonial": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "resultado_financeiro": {
+        "01/01/2025_a_31/03/2025": -14159,
+        "01/01/2024_a_31/03/2024": -7640
+      },
+      "resultado_liquido_das_operacões_continuadas": {
+        "01/01/2025_a_31/03/2025": 131,
+        "01/01/2024_a_31/03/2024": 1032
+      },
+      "lucro_prejuizo_do_periodo": {
+        "01/01/2025_a_31/03/2025": 131,
+        "01/01/2024_a_31/03/2024": 1032
+      },
+      "lucro_prejuizo_do_periodo_atribuido_à_controladora": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 1032
+      }
+    },
+    "fluxo_caixa": {
+      "atividades_operacionais": {
+        "01/01/2025_a_31/03/2025": 22720,
+        "01/01/2024_a_31/03/2024": 31725
+      },
+      "atividades_de_investimento": {
+        "01/01/2025_a_31/03/2025": -17283,
+        "01/01/2024_a_31/03/2024": -12929
+      },
+      "atividades_de_financiamento": {
+        "01/01/2025_a_31/03/2025": -30287,
+        "01/01/2024_a_31/03/2024": -10535
+      },
+      "variacao_cambial_sobre_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": 0,
+        "01/01/2024_a_31/03/2024": 0
+      },
+      "aumento_reducao_de_caixa_e_equivalentes": {
+        "01/01/2025_a_31/03/2025": -24850,
+        "01/01/2024_a_31/03/2024": 8261
+      }
+    }
+  },
+  "posicao_acionaria": [
+    {
+      "nome": "PROFARMA DISTRIBUIDORA DE PRODUTOS FARMACÊUTICOS S.A.",
+      "ON": 68.47,
+      "PN": 0.0,
+      "Total": 68.47
+    },
+    {
+      "nome": "OUTROS",
+      "ON": 31.53,
+      "PN": 0.0,
+      "Total": 31.53
+    },
+    {
+      "nome": "AÇÕES TESOURARIA",
+      "ON": 0.0,
+      "PN": 0.0,
+      "Total": 0.0
+    },
+    {
+      "nome": "TOTAL",
+      "ON": 100.0,
+      "PN": 0.0,
+      "Total": 100.0
+    }
+  ],
+  "acoes_em_circulacao_no_mercado": {
+    "tipos_investidores": [
+      {
+        "tipo": "Pessoas Físicas",
+        "quantidade": 8117,
+        "percentual": null
+      },
+      {
+        "tipo": "Pessoas Jurídicas",
+        "quantidade": 84,
+        "percentual": null
+      },
+      {
+        "tipo": "Investidores Institucionais",
+        "quantidade": 18,
+        "percentual": null
+      }
+    ],
+    "data": "28/04/2025",
+    "quantidade_acoes_ordinarias": 15927605,
+    "percentual_ordinarias": 31.48,
+    "total_acoes": 15927605,
+    "percentual_total": 31.48
+  },
+  "composicao_capital_social": {
+    "data": "06/08/2020",
+    "preferenciais": 0,
+    "total": 50602842
+  }
 }

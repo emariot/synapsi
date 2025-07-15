@@ -200,7 +200,7 @@ def extrair_dados_ticker(dados, pw):
         iframe.get_by_role("button", name="Buscar", exact=True).click()
 
         print("Aguardando resultados e clicando na empresa...")
-        resultado = iframe.get_by_text(re.compile(ticker[:-1], re.IGNORECASE)).first
+        resultado = iframe.get_by_text(re.compile(ticker[:-2], re.IGNORECASE)).first
         resultado.wait_for(timeout=10000)
         resultado.click()
 
@@ -273,22 +273,25 @@ def extrair_dados_ticker(dados, pw):
 # Exemplo de uso
 if __name__ == "__main__":
     pasta_tickers = "data/tickers"
-    arquivos = [f for f in os.listdir(pasta_tickers) if f.endswith(".json")]
+    caminho_erro = "Findash/scraper/tickers_erro.json"
+
+    # Carrega diretamente os tickers com erro
+    with open(caminho_erro, "r", encoding="utf-8") as f:
+        tickers_com_erro = json.load(f)
+    print(f"[INFO] Reprocessando {len(tickers_com_erro)} tickers com erro...")
+
     with sync_playwright() as pw:
-        for arquivo in arquivos:
-            caminho = os.path.join(pasta_tickers, arquivo)
-            try:
-                with open(caminho, "r", encoding="utf-8") as f:
-                    dados = json.load(f)
+            for ticker in tickers_com_erro:
+                arquivo = f"{ticker}.json"
+                caminho = os.path.join(pasta_tickers, arquivo)
 
-                ticker = dados.get("ticker")
-                if not ticker:
-                    print(f"[!] Arquivo {arquivo} sem campo 'ticker'. Ignorando.")
-                    continue
+                try:
+                    with open(caminho, "r", encoding="utf-8") as f:
+                        dados = json.load(f)
 
-                print(f"\n[+] Processando ticker: {ticker}")
-                resultado = extrair_dados_ticker(dados, pw)
-                salvar_dados_extraidos(resultado, pasta=pasta_tickers)
+                    print(f"\n[+] Reprocessando ticker: {ticker}")
+                    resultado = extrair_dados_ticker(dados, pw)
+                    salvar_dados_extraidos(resultado, pasta=pasta_tickers)
 
-            except Exception as e:
-                print(f"[ERRO] Falha ao processar arquivo {arquivo}: {e}")
+                except Exception as e:
+                    print(f"[ERRO] Falha ao reprocessar {ticker}: {e}")

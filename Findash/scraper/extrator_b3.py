@@ -5,7 +5,7 @@ import re
 import json
 import os
 
-def salvar_dados_extraidos(dados_extraidos, pasta="data/tickers"):
+def salvar_dados_extraidos(dados_extraidos, pasta="Findash/data/tickers/unicos"):
     ticker = dados_extraidos.get("ticker")
     if not ticker:
         raise ValueError("Ticker ausente nos dados extraídos.")
@@ -272,7 +272,7 @@ def extrair_dados_ticker(dados, pw):
 
 # Exemplo de uso
 if __name__ == "__main__":
-    pasta_tickers = "data/tickers"
+    pasta_tickers = "Findash/data/tickers/unicos"
     caminho_erro = "Findash/scraper/tickers_erro.json"
 
     # Carrega diretamente os tickers com erro

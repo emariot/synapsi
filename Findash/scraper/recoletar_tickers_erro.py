@@ -7,8 +7,8 @@ from extrator_b3 import extrair_dados_ticker
 from extrator_site_via_cnpj import coletar_site_pelo_cnpj
 from coletar_todos_tickers import salvar_json_por_ticker
 
-CAMINHO_TICKERS_ERRO = "Findash/scraper/tickers_ok.json"
-CAMINHO_TICKERS_JSON = "data/tickers"  # onde estão os arquivos JSON salvos
+CAMINHO_TICKERS_ERRO = "Findash/scraper/tickers_erro.json"
+CAMINHO_TICKERS_JSON = "Findash/data/tickers/unicos"  # onde estão os arquivos JSON salvos
 
 def normalizar_json_final(dados: dict) -> dict:
     """

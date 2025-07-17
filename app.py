@@ -1,4 +1,4 @@
-from flask import Flask, session, redirect, url_for, render_template, request, jsonify, make_response, Response, flash
+from flask import Flask, Response, session, redirect, url_for, render_template, request, jsonify, make_response, Response, flash
 from flask_session import Session
 from flask_login import LoginManager, UserMixin, login_user, logout_user, current_user, login_required
 from redis.exceptions import RedisError, ConnectionError
@@ -7,6 +7,7 @@ import redis
 import os
 import re
 import logging
+import sqlite3
 from uuid import uuid4
 from datetime import timedelta, datetime
 from Findash.app_dash import init_dash
@@ -199,14 +200,31 @@ def create_app():
             logger.error(f"Erro no Redis ao acessar /findash | user_id={session.get('user_id')}: {str(e)}")
             return render_template('findash_home.html', error="Erro ao carregar a página.")
    
+    DATABASE_PATH = "Findash/data/tickers.db"
     @app.route('/get-tickers', methods=['GET'])
     def get_tickers():
-        """Retorna a lista de tickers disponíveis."""
-        return Response(
-            orjson_dumps(TICKERS),
-            mimetype='application/json'
-        )
-    
+        """Retorna a lista de tickers disponíveis a partir do banco de dados."""
+        try:
+            conn = sqlite3.connect(DATABASE_PATH)
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
+
+            cursor.execute("SELECT ticker, nome FROM empresas ORDER BY ticker")
+            rows = cursor.fetchall()
+            tickers = [{"symbol": row["ticker"], "name": row["nome"]} for row in rows]
+            conn.close()
+
+            return Response(
+                orjson_dumps(tickers),
+                mimetype='application/json'
+            )
+        except Exception as e:
+            return Response(
+                orjson_dumps({"erro": str(e)}),
+                mimetype='application/json',
+                status=500
+            )
+        
     @app.route('/dashboard', methods=['POST'])
     def dashboard():
         logger.info("/dashboard | Recebendo dados do formulário para criação de portfólio em dash_entry/")

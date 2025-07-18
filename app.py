@@ -19,6 +19,11 @@ from Segurai.app_dash import init_segurai_dash
 from Segurai.services.model_handler import carregar_modelos, prever_todos_modelos
 from Segurai.utils.encoder import preparar_dados_entrada # encoder e função para montar X_input
 
+# Constantes para cache de empresas
+TICKER_CACHE_PREFIX = "ticker_data:"
+CACHE_EXPIRATION_SECONDS = 24 * 60 * 60  # 24 horas
+DATABASE_PATH = "Findash/data/tickers.db"
+
 # Configurar logging
 logging.basicConfig(
     level=logging.INFO,
@@ -54,13 +59,18 @@ def create_app():
 
     # Redis separado para dados do portfólio (DB1)
     data_redis = redis.Redis(host='localhost', port=6379, db=1)
+    # Redis para dados das empresas (DB3)
+    empresas_redis = redis.Redis(host='localhost', port=6379, db=3)
+
+    
     # Redis para dados do SegurAI (não sessões)
     segurai_redis = redis.Redis(host='localhost', port=6379, db=2)
 
     try:
         app.config['SESSION_REDIS'].ping()
         data_redis.ping()
-        logger.info("Redis de sessão e dados conectados.")
+        empresas_redis.ping()
+        logger.info("Redis de sessão DB0 e dados conectados DB1, DB3.")
     except ConnectionError as e:
         logger.error(f"Erro ao conectar no Redis: {str(e)}")
         raise RuntimeError("Redis não está disponível.")
@@ -187,6 +197,55 @@ def create_app():
         raw_data = data_redis.get(f"portfolio:{user_id}")
         return orjson_loads(raw_data) if raw_data else None
 
+    def get_ticker_data(ticker:str) -> Optional[Dict]:
+        """Obtém dados da empresa do Redis (DB3) ou tickers.db, cacheando se necessário."""
+        chache_key = f"{TICKER_CACHE_PREFIX}{ticker}"
+        try:
+            # Verificar Cache
+            cached_data = empresas_redis.get(chache_key)
+            if cached_data:
+                logger.debug(f"Dados do ticker {ticker} obtidos do cache Redis (DB3).")
+                return orjson_loads(cached_data)
+            
+            # Consultar Banco
+            conn = sqlite3.connect(DATABASE_PATH)
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
+            cursor.execute("""
+                SELECT ticker, nome, inicio_negociacao, cnpj, sobre,
+                    setor_economico, subsetor, segmento, site
+                FROM empresas WHERE ticker = ?
+            """, (ticker,))
+
+            row = cursor.fetchone()
+            conn.close()
+
+            if not row:
+                logger.warning(f"Ticker {ticker} não encontrado em tickers.db.")
+                return None
+            data = {
+                "ticker": row["ticker"],
+                "nome": row["nome"],
+                "inicio_negociacao": row["inicio_negociacao"],
+                "cnpj": row["cnpj"],
+                "sobre": row["sobre"],
+                "setor_economico": row["setor_economico"],
+                "subsetor": row["subsetor"],
+                "segmento": row["segmento"],
+                "site": row["site"]
+            }
+            # Cachear resultado
+            empresas_redis.setex(
+                chache_key,
+                CACHE_EXPIRATION_SECONDS,
+                orjson_dumps(data)
+            )
+            logger.info(f"Dados do ticker {ticker} consultados em tickers.db e cacheados em Redis (DB3).")
+            return data
+        except Exception as e:
+            logger.error(f"Erro ao obter dados do ticker {ticker}: {str(e)}")
+            return None
+    
     @app.route('/')
     def homepage():
         return render_template('homepage.html') 
@@ -200,7 +259,6 @@ def create_app():
             logger.error(f"Erro no Redis ao acessar /findash | user_id={session.get('user_id')}: {str(e)}")
             return render_template('findash_home.html', error="Erro ao carregar a página.")
    
-    DATABASE_PATH = "Findash/data/tickers.db"
     @app.route('/get-tickers', methods=['GET'])
     def get_tickers():
         """Retorna a lista de tickers disponíveis a partir do banco de dados."""
@@ -252,7 +310,14 @@ def create_app():
                 raise ValueError("Todos os campos (tickers, quantidades, start_date, end_date) são obrigatórios")
                         
             quantities = [int(q) for q in quantities]
-                           
+
+            # Cachear dados dos tickers selecionados
+            for ticker in tickers:
+                ticker_data = get_ticker_data(ticker)
+                if not ticker_data:
+                    logger.error(f"Ticker {ticker} inválido | user_id={user_id}")
+                    raise ValueError(f"Ticker {ticker} não encontrado.")
+                                        
             essencials = {
                 'tickers': tickers,
                 'quantities': quantities,
@@ -325,6 +390,30 @@ def create_app():
             logger.error(f"Erro ao carregar /dash_entry | user_id={user_id}: {str(e)}")
             flash("Erro ao carregar o portfólio. Tente novamente.", "danger")
             return redirect(url_for('findash_home'))
+
+    @app.route('/get-ticker-data/<ticker>', methods=['GET'])
+    def get_ticker_data_endpoint(ticker):
+        """Retorna dados da empresa para o ticker especificado, usando cache."""
+        try:
+            data = get_ticker_data(ticker)
+            if not data:
+                return Response(
+                    orjson_dumps({"erro": f"Ticker {ticker} não encontrado"}),
+                    mimetype='application/json',
+                    status=404
+                )
+            return Response(
+                orjson_dumps(data),
+                mimetype='application/json'
+            )
+        except Exception as e:
+            logger.error(f"Erro ao obter dados do ticker {ticker}: {str(e)}")
+        return Response(
+            orjson_dumps({"erro": str(e)}),
+            mimetype='application/json',
+            status=500
+        )
+
 
     @app.route('/logout')
     def logout():

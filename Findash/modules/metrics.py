@@ -1,3 +1,4 @@
+from typing import List, Dict, Any, Optional
 import yfinance as yf
 import pandas as pd
 import time
@@ -43,7 +44,7 @@ def get_sector(ticker):
         return "Outros"
 
 @measure_time
-def obter_dados(tickers, start_date, end_date, include_ibov=True):
+def obter_dados(tickers: List[str], start_date: str, end_date: str, include_ibov: bool = True) -> Dict[str, Any]:
     """
     Obtém dados de preços ajustados e dividendos para uma lista de tickers.
     
@@ -56,11 +57,11 @@ def obter_dados(tickers, start_date, end_date, include_ibov=True):
     Returns:
         dict: Contém 'portfolio', 'ibov', 'dividends'.
     """
-
-    result = {'portfolio': {t: {} for t in tickers}, 'ibov': {}, 'dividends': {t: {} for t in tickers}}
+    normalized_tickers = [ticker if ticker == '^BVSP' else f"{ticker}.SA" for ticker in tickers]
+    result = {'portfolio': {t: {} for t in normalized_tickers}, 'ibov': {}, 'dividends': {t: {} for t in normalized_tickers}}
     valid_tickers = []
 
-    tickers_to_download = tickers + ['^BVSP'] if include_ibov else tickers
+    tickers_to_download = normalized_tickers + ['^BVSP'] if include_ibov else normalized_tickers
 
     if tickers_to_download:
         try:
@@ -82,24 +83,24 @@ def obter_dados(tickers, start_date, end_date, include_ibov=True):
 
             available_columns = data.columns.get_level_values(0).unique()
             if 'Adj Close' not in available_columns:
-                print(f"'Adj Close' não encontrado para {tickers_to_download}")
+                logger.warning(f"'Adj Close' não encontrado para {tickers_to_download}")
                 return result
             adj_close = data['Adj Close']
 
             if 'Dividends' in available_columns:
                 dividends_data = data['Dividends']
             else:
-                print("Nenhum dado de dividendos retornado pelo yfinance")
+                logger.info("Nenhum dado de dividendos retornado pelo yfinance")
                 dividends_data = None
 
-            valid_tickers = [t for t in tickers if t in adj_close.columns and not adj_close[t].isna().all()]
+            valid_tickers = [t for t in normalized_tickers if t in adj_close.columns and not adj_close[t].isna().all()]
             if valid_tickers:
                 adj_close_portfolio = adj_close[valid_tickers]
                 print(f"Portfolio: {len(adj_close_portfolio)} linhas para {valid_tickers}")
                 adj_close_portfolio.index = adj_close_portfolio.index.map(lambda x: x.strftime('%Y-%m-%d'))
                 result['portfolio'].update(adj_close_portfolio.to_dict())
             else:
-                print(f"Nenhum dado válido para {tickers}")
+                print(f"Nenhum dado válido para {normalized_tickers}")
 
             if include_ibov and '^BVSP' in adj_close.columns:
                 ibov_adj_close = adj_close['^BVSP'].dropna()
@@ -124,7 +125,7 @@ def obter_dados(tickers, start_date, end_date, include_ibov=True):
 
         except Exception as e:
             print(f"Erro ao obter dados do yfinance: {e}")
-            for ticker in tickers:
+            for ticker in normalized_tickers:
                 result['portfolio'][ticker] = {}
                 result['dividends'][ticker] = {}
             if include_ibov:

@@ -1,21 +1,39 @@
 # Findash/modules/components.py
+import requests
 from dash import dcc
 from dash_iconify import DashIconify
 import dash_mantine_components as dmc
+from Findash.utils.logging_tools import logger
 
 def build_portfolio_cards(tickers: list, plan_type: str, theme: str = "light"):
     """
     Retorna o componente `dmc.Paper` com badges dos tickers e nome do plano, adaptando-se ao tema.
+    Inclui nome e setor econômico no tooltip, buscando dados via endpoint /get-ticker-data/<ticker>.
     """
     is_dark = theme == "dark"
     plan_text_color = "#adb5bd" if is_dark else "#495057"
 
-    ticker_badges = [
-        dmc.Tooltip(
-            label=f"Detalhes de {ticker.replace('.SA', '')}",
+    ticker_badges = []
+    for ticker in tickers:
+        try:
+            # Fazer requisição ao endpoint
+            response = requests.get(f"http://localhost:5000/get-ticker-data/{ticker}")
+            response.raise_for_status()
+            ticker_data = response.json()
+            nome = ticker_data.get('nome', 'N/A')
+            setor = ticker_data.get('setor_economico', 'N/A')
+            tooltip_label = f"{ticker.replace('.SA', '')}\nNome: {nome}\nSetor: {setor}"
+        except Exception as e:
+            logger.error(f"Erro ao buscar dados do ticker {ticker}: {str(e)}")
+            tooltip_label = f"Detalhes de {ticker.replace('.SA', '')}\nErro ao carregar dados"
+
+        badge = dmc.Tooltip(
+            label=tooltip_label,
             position="top",
             withArrow=True,
             transitionProps={"transition": "scale"},
+            multiline=True,
+            w=200,
             children=dmc.Badge(
                 ticker.replace('.SA', ''),
                 variant="filled",
@@ -30,8 +48,7 @@ def build_portfolio_cards(tickers: list, plan_type: str, theme: str = "light"):
                 }
             )
         )
-        for ticker in tickers
-    ]
+        ticker_badges.append(badge)
 
     return dmc.Paper(
         id="portfolio-cards",

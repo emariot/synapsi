@@ -54,10 +54,11 @@ def create_app():
     Session(app)
 
     # Redis separado para dados do portfólio (DB1)
-    data_redis = redis.Redis(host='localhost', port=6379, db=1)
+    pool_db1 = redis.ConnectionPool(host='localhost', port=6379, db=1)
+    data_redis = redis.Redis(connection_pool=pool_db1)
     # Redis para dados das empresas (DB3)
-    empresas_redis = redis.Redis(host='localhost', port=6379, db=3)
-
+    pool_db3 = redis.ConnectionPool(host='localhost', port=6379, db=3)
+    empresas_redis = redis.Redis(connection_pool=pool_db3)
     
     # Redis para dados do SegurAI (não sessões)
     segurai_redis = redis.Redis(host='localhost', port=6379, db=2)
@@ -114,7 +115,7 @@ def create_app():
     login_manager.init_app(app)
 
     # Serviço de portfólio (com redis de dados)
-    portfolio_service = PortfolioService()
+    portfolio_service = PortfolioService(data_redis=data_redis, empresas_redis=empresas_redis)
     portfolio_service.redis_client = data_redis
 
     @login_manager.user_loader
@@ -128,7 +129,7 @@ def create_app():
             self.id = id
 
     # Inicializar apps
-    dash_app = init_dash(app, portfolio_service)
+    dash_app = init_dash(app, portfolio_service, empresas_redis=empresas_redis)
     segurai_dash = init_segurai_dash(app)
 
     # Lista estática de tickers (mantida por enquanto)
@@ -337,31 +338,6 @@ def create_app():
             logger.error(f"Erro ao carregar /dash_entry | user_id={user_id}: {str(e)}")
             flash("Erro ao carregar o portfólio. Tente novamente.", "danger")
             return redirect(url_for('findash_home'))
-
-    @app.route('/get-ticker-data/<ticker>', methods=['GET'])
-    def get_ticker_data_endpoint(ticker):
-        """Retorna dados da empresa para o ticker especificado, usando cache."""
-        try:
-            data = manage_ticker_data(ticker, empresas_redis)  # Alteração: usar função centralizada
-            return Response(
-                orjson_dumps(data),
-                mimetype='application/json'
-            )
-        except ValueError as e:
-            logger.error(f"[get_ticker_data_endpoint] Ticker {ticker} não encontrado: {str(e)}")
-            return Response(
-                orjson_dumps({"erro": str(e)}),
-                mimetype='application/json',
-                status=404
-            )
-        except Exception as e:
-            logger.error(f"[get_ticker_data_endpoint] Erro ao obter dados do ticker {ticker}: {str(e)}")
-            return Response(
-                orjson_dumps({"erro": str(e)}),
-                mimetype='application/json',
-                status=500
-            )
-
 
     @app.route('/logout')
     def logout():

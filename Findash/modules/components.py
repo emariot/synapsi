@@ -1,31 +1,76 @@
 # Findash/modules/components.py
-import requests
 from dash import dcc
 from dash_iconify import DashIconify
 import dash_mantine_components as dmc
 from Findash.utils.logging_tools import logger
+from utils.serialization import orjson_dumps, orjson_loads
+import redis
 
-def build_portfolio_cards(tickers: list, plan_type: str, theme: str = "light"):
+def build_portfolio_cards(tickers: list, plan_type: str, empresas_redis: redis.Redis, theme: str = "light"):
     """
     Retorna o componente `dmc.Paper` com badges dos tickers e nome do plano, adaptando-se ao tema.
-    Inclui nome e setor econômico no tooltip, buscando dados via endpoint /get-ticker-data/<ticker>.
+    Inclui nome e setor econômico no tooltip, buscando dados diretamente do Redis (DB3).
     """
     is_dark = theme == "dark"
     plan_text_color = "#adb5bd" if is_dark else "#495057"
 
+    if not tickers:
+        logger.warning("Lista de tickers vazia, retornando componente vazio")
+        return dmc.Paper(
+            id="portfolio-cards",
+            shadow="xs",
+            p="sm",
+            style={
+                "width": "100%",
+                "border": "1px solid #dee2e6",
+                "borderRadius": "5px",
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "nowrap",
+                "overflowX": "auto",
+                "gap": "8px",
+                "padding": "0px",
+                "alignItems": "center",
+                "margin": "0"
+            },
+            children=[
+                dmc.Group(
+                    style={
+                        "position": "relative",
+                        "minHeight": "60px",
+                        "width": "100%",
+                        "justifyContent": "center",
+                        "alignItems": "center"
+                    },
+                    children=[
+                        dmc.Text(
+                            f"Plano: {plan_type}",
+                            size="xs",
+                            fw=700,
+                            style={"color": plan_text_color}
+                        )
+                    ]
+                )
+            ]
+        )
+
     ticker_badges = []
     for ticker in tickers:
         try:
-            # Fazer requisição ao endpoint
-            response = requests.get(f"http://localhost:5000/get-ticker-data/{ticker}")
-            response.raise_for_status()
-            ticker_data = response.json()
-            nome = ticker_data.get('nome', 'N/A')
-            setor = ticker_data.get('setor_economico', 'N/A')
-            tooltip_label = f"{ticker.replace('.SA', '')}\nNome: {nome}\nSetor: {setor}"
+            # Buscar dados diretamente do Redis (DB3)
+            raw_data = empresas_redis.get(f"ticker_data:{ticker}")
+            
+            if raw_data:
+                ticker_data = orjson_loads(raw_data)
+                nome = ticker_data.get('nome', 'N/A')
+                setor = ticker_data.get('setor_economico', 'N/A')
+                tooltip_label = f"{ticker}\nNome: {nome}\nSetor:{setor}"
+            else:
+                logger.warning(f"Dados do ticker {ticker} não encontrados no Redis (DB3)")
+                tooltip_label = f"Detalhes de {ticker}\nDados não disponíveis"
         except Exception as e:
-            logger.error(f"Erro ao buscar dados do ticker {ticker}: {str(e)}")
-            tooltip_label = f"Detalhes de {ticker.replace('.SA', '')}\nErro ao carregar dados"
+            logger.error(f"Erro ao buscar dados do ticker {ticker} no Redis: {str(e)}")
+            tooltip_label = f"Detalhes de {ticker}\nErro ao carregar dados"
 
         badge = dmc.Tooltip(
             label=tooltip_label,
@@ -35,7 +80,7 @@ def build_portfolio_cards(tickers: list, plan_type: str, theme: str = "light"):
             multiline=True,
             w=200,
             children=dmc.Badge(
-                ticker.replace('.SA', ''),
+                ticker,
                 variant="filled",
                 color="indigo",
                 size="md",

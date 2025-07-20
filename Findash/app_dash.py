@@ -16,6 +16,7 @@ from flask import session, request, has_request_context
 from Findash.callbacks.tables import register_table_callbacks
 from Findash.callbacks.graphs import register_graph_callbacks
 from Findash.callbacks.kpis_cards import register_kpis_card
+from functools import partial
 
 
 from Findash.utils.logging_tools import logger, log_callback
@@ -31,7 +32,7 @@ TICKERS = [
 ticker_options = [{'label': f"{t['symbol']} - {t['name']}", 'value': t['symbol']} for t in TICKERS]
 
 # Layout dinâmico
-def serve_layout():
+def serve_layout(empresas_redis=None):
     portfolio_data = {}
     client_config = {}
     theme = 'light'
@@ -128,7 +129,7 @@ def serve_layout():
                         # Coluna do portfolio-cards (9/12)
                         dmc.GridCol(
                             span={"base": 12, "md": 7},
-                            children=build_portfolio_cards(tickers, plan_type)
+                            children=build_portfolio_cards(tickers, plan_type, empresas_redis)
                         ),
                         # Coluna do dropdown, botão e ActionIcons (3/12)
                         dmc.GridCol(
@@ -625,7 +626,7 @@ def serve_layout():
     ],
 )           
 
-def init_dash(flask_app, portfolio_service):
+def init_dash(flask_app, portfolio_service, empresas_redis=None):
     dash_app = Dash(
         __name__, 
         server=flask_app, 
@@ -639,7 +640,7 @@ def init_dash(flask_app, portfolio_service):
     )
     # dash_app.enable_dev_tools(debug=True, dev_tools_hot_reload=True)
     dash_app.portfolio_service = portfolio_service
-    dash_app.layout = serve_layout
+    dash_app.layout = partial(serve_layout, empresas_redis=empresas_redis)
     
     # Registrar callbacks modulares
     register_table_callbacks(dash_app)

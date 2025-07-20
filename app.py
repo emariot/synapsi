@@ -12,17 +12,13 @@ from uuid import uuid4
 from datetime import timedelta, datetime
 from Findash.app_dash import init_dash
 from Findash.services.portfolio_services import PortfolioService
+from Findash.services.ticker_service import manage_ticker_data, DATABASE_PATH
 from utils.serialization import orjson_dumps, orjson_loads
 from werkzeug.security import generate_password_hash, check_password_hash
-from Segurai.app_dash import init_segurai_dash
 
+from Segurai.app_dash import init_segurai_dash
 from Segurai.services.model_handler import carregar_modelos, prever_todos_modelos
 from Segurai.utils.encoder import preparar_dados_entrada # encoder e função para montar X_input
-
-# Constantes para cache de empresas
-TICKER_CACHE_PREFIX = "ticker_data:"
-CACHE_EXPIRATION_SECONDS = 24 * 60 * 60  # 24 horas
-DATABASE_PATH = "Findash/data/tickers.db"
 
 # Configurar logging
 logging.basicConfig(
@@ -196,55 +192,6 @@ def create_app():
         logger.info(f"[PORTFÓLIO] Usuário anônimo → carregando do Redis | user_id={user_id}")
         raw_data = data_redis.get(f"portfolio:{user_id}")
         return orjson_loads(raw_data) if raw_data else None
-
-    def get_ticker_data(ticker:str) -> Optional[Dict]:
-        """Obtém dados da empresa do Redis (DB3) ou tickers.db, cacheando se necessário."""
-        chache_key = f"{TICKER_CACHE_PREFIX}{ticker}"
-        try:
-            # Verificar Cache
-            cached_data = empresas_redis.get(chache_key)
-            if cached_data:
-                logger.debug(f"Dados do ticker {ticker} obtidos do cache Redis (DB3).")
-                return orjson_loads(cached_data)
-            
-            # Consultar Banco
-            conn = sqlite3.connect(DATABASE_PATH)
-            conn.row_factory = sqlite3.Row
-            cursor = conn.cursor()
-            cursor.execute("""
-                SELECT ticker, nome, inicio_negociacao, cnpj, sobre,
-                    setor_economico, subsetor, segmento, site
-                FROM empresas WHERE ticker = ?
-            """, (ticker,))
-
-            row = cursor.fetchone()
-            conn.close()
-
-            if not row:
-                logger.warning(f"Ticker {ticker} não encontrado em tickers.db.")
-                return None
-            data = {
-                "ticker": row["ticker"],
-                "nome": row["nome"],
-                "inicio_negociacao": row["inicio_negociacao"],
-                "cnpj": row["cnpj"],
-                "sobre": row["sobre"],
-                "setor_economico": row["setor_economico"],
-                "subsetor": row["subsetor"],
-                "segmento": row["segmento"],
-                "site": row["site"]
-            }
-            # Cachear resultado
-            empresas_redis.setex(
-                chache_key,
-                CACHE_EXPIRATION_SECONDS,
-                orjson_dumps(data)
-            )
-            logger.info(f"Dados do ticker {ticker} consultados em tickers.db e cacheados em Redis (DB3).")
-            return data
-        except Exception as e:
-            logger.error(f"Erro ao obter dados do ticker {ticker}: {str(e)}")
-            return None
     
     @app.route('/')
     def homepage():
@@ -311,9 +258,9 @@ def create_app():
                         
             quantities = [int(q) for q in quantities]
 
-            # Cachear dados dos tickers selecionados
+            # Cachear dados dos tickers selecionados usando manage_ticker_data
             for ticker in tickers:
-                ticker_data = get_ticker_data(ticker)
+                ticker_data = manage_ticker_data(ticker, empresas_redis)
                 if not ticker_data:
                     logger.error(f"Ticker {ticker} inválido | user_id={user_id}")
                     raise ValueError(f"Ticker {ticker} não encontrado.")
@@ -395,24 +342,25 @@ def create_app():
     def get_ticker_data_endpoint(ticker):
         """Retorna dados da empresa para o ticker especificado, usando cache."""
         try:
-            data = get_ticker_data(ticker)
-            if not data:
-                return Response(
-                    orjson_dumps({"erro": f"Ticker {ticker} não encontrado"}),
-                    mimetype='application/json',
-                    status=404
-                )
+            data = manage_ticker_data(ticker, empresas_redis)  # Alteração: usar função centralizada
             return Response(
                 orjson_dumps(data),
                 mimetype='application/json'
             )
+        except ValueError as e:
+            logger.error(f"[get_ticker_data_endpoint] Ticker {ticker} não encontrado: {str(e)}")
+            return Response(
+                orjson_dumps({"erro": str(e)}),
+                mimetype='application/json',
+                status=404
+            )
         except Exception as e:
-            logger.error(f"Erro ao obter dados do ticker {ticker}: {str(e)}")
-        return Response(
-            orjson_dumps({"erro": str(e)}),
-            mimetype='application/json',
-            status=500
-        )
+            logger.error(f"[get_ticker_data_endpoint] Erro ao obter dados do ticker {ticker}: {str(e)}")
+            return Response(
+                orjson_dumps({"erro": str(e)}),
+                mimetype='application/json',
+                status=500
+            )
 
 
     @app.route('/logout')

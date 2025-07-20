@@ -1,13 +1,13 @@
 from typing import List, Dict, Any, Optional
+from redis import Redis
 import yfinance as yf
 import pandas as pd
+import numpy as np
 import time
 import functools
 from datetime import datetime
-from Findash.utils.setors_bv import SETOR_MAP, SETORES, YFINANCE_SECTOR_MAP
+from Findash.services.ticker_service import manage_ticker_data, get_all_sectors, DATABASE_PATH
 from Findash.utils.logging_tools import logger 
-
-import numpy as np
 
 # Decorador para medir tempo de execução
 def measure_time(func):
@@ -22,26 +22,26 @@ def measure_time(func):
     return wrapper
 
 @measure_time
-def get_sector(ticker):
+def get_sector(ticker, empresas_redis, database_path=DATABASE_PATH):
+    """
+    Obtém o setor do ticker a partir do Redis (DB3) ou banco, sem fallback para 'Outros'.
     
-    """Obtém o setor do ticker, usando mapeamento manual ou yfinance como fallback."""
-    # Normalizar ticker removendo dígitos de negociação (e.g., PETR4.SA -> PETR.SA)
-    base_ticker = ticker
-    if ticker.endswith('.SA'):
-        base_ticker = ticker[:-3].rstrip('0123456789') + '.SA'
-    
-    if base_ticker in SETOR_MAP:
-        logger.info(f"[get_sector] Setor de {ticker} (normalizado: {base_ticker}) obtido do SETOR_MAP: {SETOR_MAP[base_ticker]}")
-        return SETOR_MAP[base_ticker]
-    logger.info(f"[get_sector] Setor de {ticker} não encontrado no SETOR_MAP, usando fallback yfinance")
+    """
     try:
-        stock = yf.Ticker(ticker)
-        sector = stock.info.get("sector", "Unknown")
-        logger.info(f"[get_sector] Setor de {ticker} não encontrado no SETOR_MAP, usando fallback yfinance")
-        return YFINANCE_SECTOR_MAP.get(sector, "Outros")
+        # Obtendo dados dos tickers com manage_tickers_data
+        ticker_data = manage_ticker_data(ticker, empresas_redis, database_path)
+        setor = ticker_data.get('setor_economico')
+        if not setor:
+            logger.error(f"[get_sector] Setor não encontrado para o ticker {ticker}")
+            raise ValueError(f"Setor não encontrado para o ticker {ticker}")
+        logger.info(f"[get_sector] Setor de {ticker} obtido: {setor}")
+        return setor
+    except ValueError as e:
+        logger.error(f"[get_sector] Erro ao obter setor do ticker {ticker}: {str(e)}")
+        raise
     except Exception as e:
-        logger.error(f"[get_sector] Erro ao consultar setor de {ticker} no yfinance: {e}")
-        return "Outros"
+        logger.error(f"[get_sector] Erro inesperado ao obter setor do ticker {ticker}: {str(e)}")
+        raise
 
 @measure_time
 def obter_dados(tickers: List[str], start_date: str, end_date: str, include_ibov: bool = True) -> Dict[str, Any]:
@@ -57,8 +57,12 @@ def obter_dados(tickers: List[str], start_date: str, end_date: str, include_ibov
     Returns:
         dict: Contém 'portfolio', 'ibov', 'dividends'.
     """
-    normalized_tickers = [ticker if ticker == '^BVSP' else f"{ticker}.SA" for ticker in tickers]
-    result = {'portfolio': {t: {} for t in normalized_tickers}, 'ibov': {}, 'dividends': {t: {} for t in normalized_tickers}}
+    # Normalizar tickers para yfinance (adicionar .SA se necessário)
+    normalized_tickers = [ticker if ticker == '^BVSP' else f"{ticker}.SA" if not ticker.endswith('.SA') else ticker for ticker in tickers]
+    # Mapear tickers normalizados para originais
+    ticker_map = {ticker if ticker == '^BVSP' else f"{ticker}.SA" if not ticker.endswith('.SA') else ticker: ticker.replace('.SA', '') for ticker in tickers}
+    
+    result = {'portfolio': {ticker_map.get(t, t): {} for t in normalized_tickers}, 'ibov': {}, 'dividends': {ticker_map.get(t, t): {} for t in normalized_tickers}}
     valid_tickers = []
 
     tickers_to_download = normalized_tickers + ['^BVSP'] if include_ibov else normalized_tickers
@@ -98,7 +102,8 @@ def obter_dados(tickers: List[str], start_date: str, end_date: str, include_ibov
                 adj_close_portfolio = adj_close[valid_tickers]
                 print(f"Portfolio: {len(adj_close_portfolio)} linhas para {valid_tickers}")
                 adj_close_portfolio.index = adj_close_portfolio.index.map(lambda x: x.strftime('%Y-%m-%d'))
-                result['portfolio'].update(adj_close_portfolio.to_dict())
+                # Remover .SA das chaves ao preencher result['portfolio']
+                result['portfolio'].update({ticker_map.get(ticker, ticker): adj_close_portfolio[ticker].to_dict() for ticker in valid_tickers})
             else:
                 print(f"Nenhum dado válido para {normalized_tickers}")
 
@@ -116,7 +121,8 @@ def obter_dados(tickers: List[str], start_date: str, end_date: str, include_ibov
                     if not ticker_dividends.empty:
                         ticker_dividends = ticker_dividends.loc[start_date:end_date]
                         ticker_dividends.index = ticker_dividends.index.map(lambda x: x.strftime('%Y-%m-%d'))
-                        result['dividends'][ticker] = ticker_dividends.to_dict()
+                        # Remover .SA das chaves ao preencher result['dividends']
+                        result['dividends'][ticker_map.get(ticker, ticker)] = ticker_dividends.to_dict()
                     else:
                         result['dividends'][ticker] = {}
             else:
@@ -154,24 +160,28 @@ def obter_preco_inicial_e_final(prices):
 
 # Funções menores para cada tipo de cálculo
 @measure_time
-def calcular_pesos_por_setor(tickers, quantities, portfolio, get_sector_func=get_sector):
+def calcular_pesos_por_setor(tickers: List[str], quantities: List[float], portfolio: Dict[str, Any], 
+                             empresas_redis: Redis, get_sector_func=lambda t, r: get_sector(t, r)) -> tuple[Dict[str, float], Dict[str, float]]:
     """
     Calcula os pesos por setor com base na quantidade e no valor financeiro.
+    Alteração: Recebe empresas_redis como parâmetro para passar para get_sector.
     
     Args:
         tickers (list): Lista de tickers.
         quantities (list): Lista de quantidades correspondentes aos tickers.
         portfolio (dict): Dicionário de preços {ticker: {data: preço}}.
+        empresas_redis: servidor Redis para DB3
     
     Returns:
         tuple: (setor_pesos, setor_pesos_financeiros), dicionários com os pesos por setor.
     """
     # Inicializar dicionários de pesos por setor
-    setor_pesos = {setor: 0.0 for setor in SETORES}
-    setor_pesos_financeiros = {setor: 0.0 for setor in SETORES}
+    setores = get_all_sectors(empresas_redis)['setores_economicos']
+    setor_pesos = {setor: 0.0 for setor in setores}
+    setor_pesos_financeiros = {setor: 0.0 for setor in setores}
 
     # Pré-calcular setores para evitar chamadas repetitivas a get_sector_func
-    sectores = {ticker: get_sector_func(ticker) for ticker in tickers}
+    sectores = {ticker: get_sector_func(ticker, empresas_redis) for ticker in tickers}
 
     # Converter inputs em DataFrame para cálculos vetoriais
     df = pd.DataFrame({
@@ -350,7 +360,8 @@ def calcular_retorno_diario_ibov(ibov):
         return pd.Series(dtype=float)
 
 @measure_time
-def calcular_metricas_tabela(tickers, quantities, portfolio, setor_pesos, start_date, end_date, dividends=None, get_sector_func=get_sector):
+def calcular_metricas_tabela(tickers: List[str], quantities: List[float], portfolio: Dict[str, Any], start_date: str, end_date: str, 
+                             dividends:Optional[Dict[str, Any]]=None, empresas_redis:Optional[Redis]=None, get_sector_func=lambda t, r: get_sector(t, r)) -> List[Dict[str, Any]]:
     """
     Calcula métricas da tabela de forma eficiente.
     
@@ -367,7 +378,7 @@ def calcular_metricas_tabela(tickers, quantities, portfolio, setor_pesos, start_
         list: Lista de dicionários com as métricas para a tabela, com valores numéricos puros.
     """
     # Pré-calcular setores e ganhos/proventos
-    sectores = {ticker: get_sector_func(ticker) for ticker in tickers}
+    sectores = {ticker: get_sector_func(ticker, empresas_redis) for ticker in tickers}
     ganhos_proventos = calcular_ganhos_e_proventos(tickers, quantities, portfolio, start_date, end_date, dividends=dividends)
 
     # Criar DataFrame com todos os dados
@@ -538,7 +549,8 @@ def calcular_kpis_quantstats(portfolio_daily_returns, benchmark_daily_returns=No
     return metrics
 
 @measure_time
-def calcular_metricas(portfolio, tickers, quantities, start_date, end_date, ibov=None, dividends=None, get_sector_func=get_sector):
+def calcular_metricas(portfolio: Dict[str, Any], tickers: List[str], quantities: List[float], start_date:str, end_date:str,
+                      empresas_redis: Redis, ibov: Optional[Dict[str,float]]=None, dividends: Optional[Dict[str,Any]]=None) -> Dict[str, Any]:
 
     """
     Calcula métricas do portfólio, incluindo tabela, retornos e pesos por setor.
@@ -550,6 +562,7 @@ def calcular_metricas(portfolio, tickers, quantities, start_date, end_date, ibov
         start_date (str): Data inicial no formato 'YYYY-MM-DD'.
         end_date (str): Data final no formato 'YYYY-MM-DD'.
         ibov (dict, optional): Dicionário de preços do IBOV {data: preço}.
+        empresas_redis (redis.Redis): Conexão Redis para dados de empresas (DB3).
     
     Returns:
         dict: Dicionário com todas as métricas calculadas:
@@ -565,8 +578,8 @@ def calcular_metricas(portfolio, tickers, quantities, start_date, end_date, ibov
             - kpis: Indicadores financeiros.
     """
     # Validação inicial
-    if not tickers or not quantities or len(tickers) != len(quantities):
-        print("Erro: tickers e quantities devem ter o mesmo tamanho e não podem estar vazios")
+    if not tickers or not quantities or len(tickers) != len(quantities) or not portfolio:
+        logger.error(f"[calcular_metricas] Entrada inválida: tickers={len(tickers)}, quantities={len(quantities)}, portfolio_vazio={not portfolio}")
         return {
             'table_data': [],
             'portfolio_return': {},
@@ -575,31 +588,24 @@ def calcular_metricas(portfolio, tickers, quantities, start_date, end_date, ibov
             'individual_daily_returns': {},
             'ibov_return': {},
             'portfolio_values': {},
-            'setor_pesos': {setor: 0.0 for setor in SETORES},
-            'setor_pesos_financeiros': {setor: 0.0 for setor in SETORES},
+            'setor_pesos': {setor: 0.0 for setor in get_all_sectors(empresas_redis)['setores_economicos']} if empresas_redis else {},
+            'setor_pesos_financeiros': {setor: 0.0 for setor in get_all_sectors(empresas_redis)['setores_economicos']} if empresas_redis else {},
             'kpis': {}
         }
+    if not empresas_redis:
+        logger.error("[calcular_metricas] empresas_redis não fornecido")
+        raise ValueError("Conexão Redis (empresas_redis) é obrigatória")
 
-    if not portfolio:
-        print("Erro: portfolio está vazio")
-        return {
-            'table_data': [],
-            'portfolio_return': {},
-            'individual_returns': {},
-            'portfolio_daily_return': {},
-            'individual_daily_returns': {},
-            'ibov_return': {},
-            'portfolio_values': {},
-            'setor_pesos': {setor: 0.0 for setor in SETORES},
-            'setor_pesos_financeiros': {setor: 0.0 for setor in SETORES},
-            'kpis': {}
-        }
-
+    # Calcular setores uma única vez
+    sectores = {ticker: get_sector(ticker, empresas_redis) for ticker in tickers}
     # Passo 1: Calcular pesos por setor
-    setor_pesos, setor_pesos_financeiros = calcular_pesos_por_setor(tickers, quantities, portfolio, get_sector_func=get_sector_func)
+    setor_pesos, setor_pesos_financeiros = calcular_pesos_por_setor(tickers, quantities, portfolio, empresas_redis, get_sector_func=lambda t,r: sectores[t])
 
     # Passo 2: Calcular métricas da tabela
-    ticker_metrics = calcular_metricas_tabela(tickers, quantities, portfolio, setor_pesos, start_date, end_date, dividends=dividends, get_sector_func=get_sector_func)
+    ticker_metrics = calcular_metricas_tabela(
+        tickers, quantities, portfolio, start_date, end_date, 
+        dividends=dividends, empresas_redis=empresas_redis, get_sector_func=lambda t, r: sectores[t]
+    )
 
     # Passo 3: Calcular retornos acumulados e diários por ticker
     individual_returns, individual_daily_returns = calcular_retornos_individuais(tickers, portfolio)
@@ -638,9 +644,7 @@ def calcular_metricas(portfolio, tickers, quantities, start_date, end_date, ibov
         benchmark_returns_series = benchmark_returns_series.loc[portfolio_returns_series.index]
 
     kpis = calcular_kpis_quantstats(portfolio_returns_series, benchmark_returns_series)
-    print("KPIs calculados:")
-    for k, v in kpis.items():
-        print(f"{k}: {v:.4f}")
+    logger.info("KPIs calculados: " + ", ".join(f"{k}: {v:.4f}" for k, v in kpis.items()))
 
     # Retornar todas as métricas
     return {

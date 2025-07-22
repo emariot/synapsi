@@ -6,7 +6,7 @@ import numpy as np
 import time
 import functools
 from datetime import datetime
-from Findash.services.ticker_service import manage_ticker_data, get_all_sectors, DATABASE_PATH
+from Findash.services.ticker_service import manage_ticker_data, get_all_sectors, get_sector, DATABASE_PATH
 from Findash.utils.logging_tools import logger 
 
 # Decorador para medir tempo de execução
@@ -21,27 +21,6 @@ def measure_time(func):
         return result
     return wrapper
 
-@measure_time
-def get_sector(ticker, empresas_redis, database_path=DATABASE_PATH):
-    """
-    Obtém o setor do ticker a partir do Redis (DB3) ou banco, sem fallback para 'Outros'.
-    
-    """
-    try:
-        # Obtendo dados dos tickers com manage_tickers_data
-        ticker_data = manage_ticker_data(ticker, empresas_redis, database_path)
-        setor = ticker_data.get('setor_economico')
-        if not setor:
-            logger.error(f"[get_sector] Setor não encontrado para o ticker {ticker}")
-            raise ValueError(f"Setor não encontrado para o ticker {ticker}")
-        logger.info(f"[get_sector] Setor de {ticker} obtido: {setor}")
-        return setor
-    except ValueError as e:
-        logger.error(f"[get_sector] Erro ao obter setor do ticker {ticker}: {str(e)}")
-        raise
-    except Exception as e:
-        logger.error(f"[get_sector] Erro inesperado ao obter setor do ticker {ticker}: {str(e)}")
-        raise
 
 @measure_time
 def obter_dados(tickers: List[str], start_date: str, end_date: str, include_ibov: bool = True) -> Dict[str, Any]:
@@ -161,7 +140,7 @@ def obter_preco_inicial_e_final(prices):
 # Funções menores para cada tipo de cálculo
 @measure_time
 def calcular_pesos_por_setor(tickers: List[str], quantities: List[float], portfolio: Dict[str, Any], 
-                             empresas_redis: Redis, get_sector_func=lambda t, r: get_sector(t, r)) -> tuple[Dict[str, float], Dict[str, float]]:
+                             empresas_redis: Redis, sectores: Dict[str, str]) -> tuple[Dict[str, float], Dict[str, float]]:
     """
     Calcula os pesos por setor com base na quantidade e no valor financeiro.
     Alteração: Recebe empresas_redis como parâmetro para passar para get_sector.
@@ -171,6 +150,7 @@ def calcular_pesos_por_setor(tickers: List[str], quantities: List[float], portfo
         quantities (list): Lista de quantidades correspondentes aos tickers.
         portfolio (dict): Dicionário de preços {ticker: {data: preço}}.
         empresas_redis: servidor Redis para DB3
+        sectores (dict): Dicionário de setores {ticker: setor}.
     
     Returns:
         tuple: (setor_pesos, setor_pesos_financeiros), dicionários com os pesos por setor.
@@ -179,9 +159,6 @@ def calcular_pesos_por_setor(tickers: List[str], quantities: List[float], portfo
     setores = get_all_sectors(empresas_redis)['setores_economicos']
     setor_pesos = {setor: 0.0 for setor in setores}
     setor_pesos_financeiros = {setor: 0.0 for setor in setores}
-
-    # Pré-calcular setores para evitar chamadas repetitivas a get_sector_func
-    sectores = {ticker: get_sector_func(ticker, empresas_redis) for ticker in tickers}
 
     # Converter inputs em DataFrame para cálculos vetoriais
     df = pd.DataFrame({
@@ -361,7 +338,7 @@ def calcular_retorno_diario_ibov(ibov):
 
 @measure_time
 def calcular_metricas_tabela(tickers: List[str], quantities: List[float], portfolio: Dict[str, Any], start_date: str, end_date: str, 
-                             dividends:Optional[Dict[str, Any]]=None, empresas_redis:Optional[Redis]=None, get_sector_func=lambda t, r: get_sector(t, r)) -> List[Dict[str, Any]]:
+                             dividends:Optional[Dict[str, Any]]=None, empresas_redis:Optional[Redis]=None, sectores: Dict[str,str]=None) -> List[Dict[str, Any]]:
     """
     Calcula métricas da tabela de forma eficiente.
     
@@ -373,12 +350,12 @@ def calcular_metricas_tabela(tickers: List[str], quantities: List[float], portfo
         start_date (str): Data inicial no formato 'YYYY-MM-DD'.
         end_date (str): Data final no formato 'YYYY-MM-DD'.
         dividends (dict, optional): Dicionário de dividendos por ticker.
+        sectores (dict, optional): Dicionário de setores {ticker: setor}.
     
     Returns:
         list: Lista de dicionários com as métricas para a tabela, com valores numéricos puros.
     """
     # Pré-calcular setores e ganhos/proventos
-    sectores = {ticker: get_sector_func(ticker, empresas_redis) for ticker in tickers}
     ganhos_proventos = calcular_ganhos_e_proventos(tickers, quantities, portfolio, start_date, end_date, dividends=dividends)
 
     # Criar DataFrame com todos os dados
@@ -387,7 +364,7 @@ def calcular_metricas_tabela(tickers: List[str], quantities: List[float], portfo
         'quantidade': quantities,
         'preco_inicial': [obter_preco_inicial_e_final(portfolio[t])[0] if t in portfolio and portfolio[t] else None for t in tickers],
         'preco_final': [obter_preco_inicial_e_final(portfolio[t])[1] if t in portfolio and portfolio[t] else None for t in tickers],
-        'setor': [sectores[t] for t in tickers],
+        'setor': [sectores.get(t,'') for t in tickers],
         'ganho_capital': [ganhos_proventos[t]['ganho_capital'] for t in tickers],
         'proventos': [ganhos_proventos[t]['proventos'] for t in tickers]
     })
@@ -599,13 +576,14 @@ def calcular_metricas(portfolio: Dict[str, Any], tickers: List[str], quantities:
     # Calcular setores uma única vez
     sectores = {ticker: get_sector(ticker, empresas_redis) for ticker in tickers}
     # Passo 1: Calcular pesos por setor
-    setor_pesos, setor_pesos_financeiros = calcular_pesos_por_setor(tickers, quantities, portfolio, empresas_redis, get_sector_func=lambda t,r: sectores[t])
+    setor_pesos, setor_pesos_financeiros = calcular_pesos_por_setor(
+        tickers, quantities, portfolio, empresas_redis, sectores
+        )
 
     # Passo 2: Calcular métricas da tabela
     ticker_metrics = calcular_metricas_tabela(
-        tickers, quantities, portfolio, start_date, end_date, 
-        dividends=dividends, empresas_redis=empresas_redis, get_sector_func=lambda t, r: sectores[t]
-    )
+        tickers, quantities, portfolio, start_date, end_date, dividends, empresas_redis, sectores
+        )
 
     # Passo 3: Calcular retornos acumulados e diários por ticker
     individual_returns, individual_daily_returns = calcular_retornos_individuais(tickers, portfolio)

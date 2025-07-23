@@ -338,7 +338,8 @@ def calcular_retorno_diario_ibov(ibov):
 
 @measure_time
 def calcular_metricas_tabela(tickers: List[str], quantities: List[float], portfolio: Dict[str, Any], start_date: str, end_date: str, 
-                             dividends:Optional[Dict[str, Any]]=None, empresas_redis:Optional[Redis]=None, sectores: Dict[str,str]=None) -> List[Dict[str, Any]]:
+                             dividends:Optional[Dict[str, Any]]=None, empresas_redis:Optional[Redis]=None, 
+                             sectores: Dict[str,str]=None, precos: Dict[str,tuple]=None) -> List[Dict[str, Any]]:
     """
     Calcula métricas da tabela de forma eficiente.
     
@@ -351,19 +352,20 @@ def calcular_metricas_tabela(tickers: List[str], quantities: List[float], portfo
         end_date (str): Data final no formato 'YYYY-MM-DD'.
         dividends (dict, optional): Dicionário de dividendos por ticker.
         sectores (dict, optional): Dicionário de setores {ticker: setor}.
+        precos (dict, optional): Dicionário {ticker: (preco_inicial, preco_final)}
     
     Returns:
         list: Lista de dicionários com as métricas para a tabela, com valores numéricos puros.
     """
     # Pré-calcular setores e ganhos/proventos
-    ganhos_proventos = calcular_ganhos_e_proventos(tickers, quantities, portfolio, start_date, end_date, dividends=dividends)
+    ganhos_proventos = calcular_ganhos_e_proventos(tickers, quantities, dividends, precos)
 
     # Criar DataFrame com todos os dados
     df = pd.DataFrame({
         'ticker': tickers,
         'quantidade': quantities,
-        'preco_inicial': [obter_preco_inicial_e_final(portfolio[t])[0] if t in portfolio and portfolio[t] else None for t in tickers],
-        'preco_final': [obter_preco_inicial_e_final(portfolio[t])[1] if t in portfolio and portfolio[t] else None for t in tickers],
+        'preco_inicial': [precos[t][0] if precos and t in precos and precos[t][0] is not None else None for t in tickers],
+        'preco_final': [precos[t][1] if precos and t in precos and precos[t][1] is not None else None for t in tickers],
         'setor': [sectores.get(t,'') for t in tickers],
         'ganho_capital': [ganhos_proventos[t]['ganho_capital'] for t in tickers],
         'proventos': [ganhos_proventos[t]['proventos'] for t in tickers]
@@ -407,16 +409,15 @@ def calcular_metricas_tabela(tickers: List[str], quantities: List[float], portfo
     return ticker_metrics
 
 @measure_time
-def calcular_ganhos_e_proventos(tickers, quantities, portfolio, start_date, end_date, dividends=None):
+def calcular_ganhos_e_proventos(tickers, quantities, dividends=None, precos: Dict[str,tuple]=None):
     """
     Calcula o ganho de capital e os proventos (dividendos) para cada ticker no período especificado.
     
     Args:
         tickers (list): Lista de tickers.
         quantities (list): Lista de quantidades correspondentes aos tickers.
-        portfolio (dict): Dicionário de preços {ticker: {data: preço}}.
-        start_date (str): Data inicial no formato 'YYYY-MM-DD'.
-        end_date (str): Data final no formato 'YYYY-MM-DD'.
+        dividends (dict, optional): Dicionário de dividendos por ticker.
+        precos (dict, optional): Dicionário {ticker: (preco_inicial, preco_final)}.
     
     Returns:
         dict: Dicionário com {ticker: {'ganho_capital': float, 'proventos': float}}.
@@ -430,14 +431,10 @@ def calcular_ganhos_e_proventos(tickers, quantities, portfolio, start_date, end_
         ganho_capital = 0.0
         proventos = 0.0
         
-        # Calcular ganho de capital
-        if ticker in portfolio and portfolio[ticker]:
-            precos = portfolio[ticker]
-            preco_inicial, preco_final = obter_preco_inicial_e_final(precos)
-            if preco_inicial is not None and preco_final is not None:
-                ganho_capital = (preco_final - preco_inicial) * quantidade
-            else:
-                ganho_capital = 0.0
+        # Calcular ganho de capital usando preços pré-calculados
+        if precos and ticker in precos and precos[ticker][0] is not None and precos[ticker][1] is not None:
+            preco_inicial, preco_final = precos[ticker]
+            ganho_capital = (preco_final - preco_inicial) * quantidade
         else:
             ganho_capital = 0.0
         
@@ -451,8 +448,7 @@ def calcular_ganhos_e_proventos(tickers, quantities, portfolio, start_date, end_
                 proventos = dividends_data.sum() * quantidade
             else:
                 proventos = 0.0
-        
-        
+
         resultados[ticker] = {
             'ganho_capital': ganho_capital,
             'proventos': proventos
@@ -526,8 +522,9 @@ def calcular_kpis_quantstats(portfolio_daily_returns, benchmark_daily_returns=No
     return metrics
 
 @measure_time
-def calcular_metricas(portfolio: Dict[str, Any], tickers: List[str], quantities: List[float], start_date:str, end_date:str,
-                      empresas_redis: Redis, ibov: Optional[Dict[str,float]]=None, dividends: Optional[Dict[str,Any]]=None) -> Dict[str, Any]:
+def calcular_metricas(portfolio: Dict[str, Any], tickers: List[str], quantities: List[float], 
+                      start_date:str, end_date:str,empresas_redis: Redis, ibov: Optional[Dict[str,float]]=None, 
+                      dividends: Optional[Dict[str,Any]]=None) -> Dict[str, Any]:
 
     """
     Calcula métricas do portfólio, incluindo tabela, retornos e pesos por setor.
@@ -572,6 +569,9 @@ def calcular_metricas(portfolio: Dict[str, Any], tickers: List[str], quantities:
     if not empresas_redis:
         logger.error("[calcular_metricas] empresas_redis não fornecido")
         raise ValueError("Conexão Redis (empresas_redis) é obrigatória")
+    
+    # Pré-calcular preços inicial e final para todos os tickers
+    precos = {ticker: obter_preco_inicial_e_final(portfolio[ticker]) if ticker in portfolio and portfolio[ticker] else (None, None) for ticker in tickers}
 
     # Calcular setores uma única vez
     sectores = {ticker: get_sector(ticker, empresas_redis) for ticker in tickers}
@@ -582,7 +582,7 @@ def calcular_metricas(portfolio: Dict[str, Any], tickers: List[str], quantities:
 
     # Passo 2: Calcular métricas da tabela
     ticker_metrics = calcular_metricas_tabela(
-        tickers, quantities, portfolio, start_date, end_date, dividends, empresas_redis, sectores
+        tickers, quantities, portfolio, start_date, end_date, dividends, empresas_redis, sectores, precos
         )
 
     # Passo 3: Calcular retornos acumulados e diários por ticker

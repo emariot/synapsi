@@ -351,20 +351,28 @@ def calcular_metricas_tabela(tickers: List[str], quantities: List[float], portfo
     Returns:
         list: Lista de dicionários com as métricas para a tabela, com valores numéricos puros.
     """
+    # Extrair preços inicial e final vetorialmente em um único passo
+    quantities_series = pd.Series(quantities, index=tickers)
+    preco_inicial = portfolio_df.iloc[0].reindex(tickers) if not portfolio_df.empty else pd.Series(index=tickers, dtype=float)
+    preco_final = portfolio_df.iloc[-1].reindex(tickers) if not portfolio_df.empty else pd.Series(index=tickers, dtype=float)
+
+    # Calcular ganho de capital vetorialmente
+    ganho_capital = ((preco_final - preco_inicial) * quantities_series).fillna(0.0)
+    # Calcular proventos
+    proventos = pd.Series({
+        t: sum(dividends[t].values()) * quantities_series[t]
+        for t in tickers if t in dividends
+    }).reindex(tickers, fill_value=0.0)
 
     # Criar DataFrame com todos os dados
     df = pd.DataFrame({
         'ticker': tickers,
         'quantidade': quantities,
-        'preco_inicial': [portfolio_df[ticker].iloc[0] if ticker in portfolio_df.columns else None for ticker in tickers],
-        'preco_final': [portfolio_df[ticker].iloc[-1] if ticker in portfolio_df.columns else None for ticker in tickers],
+        'preco_inicial': preco_inicial,
+        'preco_final': preco_final,
         'setor': [sectores.get(t,'') for t in tickers],
-        'ganho_capital': [(portfolio_df[ticker].iloc[-1] - portfolio_df[ticker].iloc[0]) * quantities[i] 
-                         if ticker in portfolio_df.columns and pd.notnull(portfolio_df[ticker].iloc[0]) and pd.notnull(portfolio_df[ticker].iloc[-1]) 
-                         else 0.0 for i, ticker in enumerate(tickers)],
-        'proventos': [pd.Series(dividends.get(ticker, {})).sum() * quantities[i] 
-                      if dividends and ticker in dividends and not pd.Series(dividends[ticker]).empty 
-                      else 0.0 for i, ticker in enumerate(tickers)]
+        'ganho_capital': ganho_capital,
+        'proventos': proventos
     })
 
     # Calcular retorno total e peso por quantidade vetorialmente
@@ -372,34 +380,31 @@ def calcular_metricas_tabela(tickers: List[str], quantities: List[float], portfo
         df['preco_inicial'].notnull() & df['preco_final'].notnull(), None
     )
     soma_quantidades = df['quantidade'].sum()
-    df['peso_quantidade'] = df['quantidade'] / soma_quantidades * 100 if soma_quantidades > 0 else 0.0
+    df['peso_quantidade_percentual'] = df['quantidade'] / soma_quantidades * 100 if soma_quantidades > 0 else 0.0
 
-    # Calcular totais
-    valid_retornos = df[df['retorno_total'].notnull()]
-    retorno_carteira = (valid_retornos['retorno_total'] * valid_retornos['quantidade'] / soma_quantidades).sum() if not valid_retornos.empty and soma_quantidades > 0 else 0.0
-    ganho_carteira = df['ganho_capital'].sum()
-    proventos_carteira = df['proventos'].sum()
+    # Substituir NaN por None (para serialização amigável)
+    df[['retorno_total', 'ganho_capital', 'proventos']] = df[['retorno_total', 'ganho_capital', 'proventos']].where(
+        df[['retorno_total', 'ganho_capital', 'proventos']].notnull(), None
+    )
 
-    # Formatar métricas
-    ticker_metrics = df.apply(lambda row: {
-        'ticker': row['ticker'],
-        'retorno_total': row['retorno_total'] if pd.notnull(row['retorno_total']) else None,
-        'quantidade': row['quantidade'],
-        'peso_quantidade_percentual': row['peso_quantidade'],  # float puro
-        'setor': row['setor'],
-        'ganho_capital': row['ganho_capital'] if pd.notnull(row['ganho_capital']) else None,
-        'proventos': row['proventos'] if pd.notnull(row['proventos']) else None
-    }, axis=1).tolist()
-
+    # Selecionar colunas desejadas e transformar em lista de dicionários
+    ticker_metrics = df[[
+        'ticker', 'retorno_total', 'quantidade', 'peso_quantidade_percentual',
+        'setor', 'ganho_capital', 'proventos'
+    ]].to_dict(orient='records')
     # Adicionar linha de total
+    retorno_carteira = (
+        (df[df['retorno_total'].notnull()]['retorno_total'] * df['quantidade']) / soma_quantidades
+    ).sum() if soma_quantidades > 0 else 0.0
+
     ticker_metrics.append({
-        'ticker': 'Total',
-        'retorno_total': retorno_carteira if retorno_carteira != 0 else None,
-        'quantidade': soma_quantidades,
-        'peso_quantidade_percentual': 100.0,
-        'setor': '',
-        'ganho_capital': ganho_carteira if ganho_carteira != 0 else None,
-        'proventos': proventos_carteira if proventos_carteira != 0 else None
+            'ticker': 'Total',
+            'retorno_total': retorno_carteira if retorno_carteira != 0 else None,
+            'quantidade': soma_quantidades,
+            'peso_quantidade_percentual': 100.0,
+            'setor': '',
+            'ganho_capital': df['ganho_capital'].sum() or None,
+            'proventos': df['proventos'].sum() or None
     })
 
     return ticker_metrics

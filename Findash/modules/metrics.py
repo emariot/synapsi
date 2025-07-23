@@ -140,7 +140,7 @@ def obter_preco_inicial_e_final(prices):
 # Funções menores para cada tipo de cálculo
 @measure_time
 def calcular_pesos_por_setor(tickers: List[str], quantities: List[float], portfolio: Dict[str, Any], 
-                             empresas_redis: Redis, sectores: Dict[str, str]) -> tuple[Dict[str, float], Dict[str, float]]:
+                             setores_economicos: List[str], sectores: Dict[str, str]) -> tuple[Dict[str, float], Dict[str, float]]:
     """
     Calcula os pesos por setor com base na quantidade e no valor financeiro.
     Alteração: Recebe empresas_redis como parâmetro para passar para get_sector.
@@ -150,15 +150,15 @@ def calcular_pesos_por_setor(tickers: List[str], quantities: List[float], portfo
         quantities (list): Lista de quantidades correspondentes aos tickers.
         portfolio (dict): Dicionário de preços {ticker: {data: preço}}.
         empresas_redis: servidor Redis para DB3
+        setores_economicos (list): Lista de setores econômicos pré-carregada.
         sectores (dict): Dicionário de setores {ticker: setor}.
     
     Returns:
         tuple: (setor_pesos, setor_pesos_financeiros), dicionários com os pesos por setor.
     """
     # Inicializar dicionários de pesos por setor
-    setores = get_all_sectors(empresas_redis)['setores_economicos']
-    setor_pesos = {setor: 0.0 for setor in setores}
-    setor_pesos_financeiros = {setor: 0.0 for setor in setores}
+    setor_pesos = {setor: 0.0 for setor in setores_economicos}
+    setor_pesos_financeiros = {setor: 0.0 for setor in setores_economicos}
 
     # Converter inputs em DataFrame para cálculos vetoriais
     df = pd.DataFrame({
@@ -337,7 +337,7 @@ def calcular_retorno_diario_ibov(ibov):
         return pd.Series(dtype=float)
 
 @measure_time
-def calcular_metricas_tabela(tickers: List[str], quantities: List[float], portfolio_df: pd.DataFrame, 
+def calcular_metricas_tabela(tickers: List[str], quantities: List[float], precos_df: pd.DataFrame, 
                              dividends:Optional[Dict[str, Any]]=None, sectores: Dict[str,str]=None) -> List[Dict[str, Any]]:
     """
     Calcula métricas da tabela de forma eficiente.
@@ -353,8 +353,8 @@ def calcular_metricas_tabela(tickers: List[str], quantities: List[float], portfo
     """
     # Extrair preços inicial e final vetorialmente em um único passo
     quantities_series = pd.Series(quantities, index=tickers)
-    preco_inicial = portfolio_df.iloc[0].reindex(tickers) if not portfolio_df.empty else pd.Series(index=tickers, dtype=float)
-    preco_final = portfolio_df.iloc[-1].reindex(tickers) if not portfolio_df.empty else pd.Series(index=tickers, dtype=float)
+    preco_inicial = precos_df.iloc[0].reindex(tickers) if not precos_df.empty else pd.Series(index=tickers, dtype=float)
+    preco_final = precos_df.iloc[-1].reindex(tickers) if not precos_df.empty else pd.Series(index=tickers, dtype=float)
 
     # Calcular ganho de capital vetorialmente
     ganho_capital = ((preco_final - preco_inicial) * quantities_series).fillna(0.0)
@@ -504,9 +504,12 @@ def calcular_metricas(portfolio: Dict[str, Any], tickers: List[str], quantities:
             - setor_pesos_financeiros: Pesos por setor (por valor financeiro).
             - kpis: Indicadores financeiros.
     """
+    # Pré-carregar setores econômicos antes da validação
+    setores_economicos = get_all_sectors(empresas_redis)['setores_economicos'] if empresas_redis else []
     # Validação inicial
     if not tickers or not quantities or len(tickers) != len(quantities) or not portfolio:
         logger.error(f"[calcular_metricas] Entrada inválida: tickers={len(tickers)}, quantities={len(quantities)}, portfolio_vazio={not portfolio}")
+        
         return {
             'table_data': [],
             'portfolio_return': {},
@@ -515,8 +518,8 @@ def calcular_metricas(portfolio: Dict[str, Any], tickers: List[str], quantities:
             'individual_daily_returns': {},
             'ibov_return': {},
             'portfolio_values': {},
-            'setor_pesos': {setor: 0.0 for setor in get_all_sectors(empresas_redis)['setores_economicos']} if empresas_redis else {},
-            'setor_pesos_financeiros': {setor: 0.0 for setor in get_all_sectors(empresas_redis)['setores_economicos']} if empresas_redis else {},
+            'setor_pesos': {setor: 0.0 for setor in setores_economicos},
+            'setor_pesos_financeiros': {setor: 0.0 for setor in setores_economicos},
             'kpis': {}
         }
     if not empresas_redis:
@@ -524,19 +527,19 @@ def calcular_metricas(portfolio: Dict[str, Any], tickers: List[str], quantities:
         raise ValueError("Conexão Redis (empresas_redis) é obrigatória")
     
     # Converter portfolio em DataFrame uma vez
-    portfolio_df = pd.DataFrame(portfolio)
-    portfolio_df = portfolio_df[tickers]
-    portfolio_df.index = pd.to_datetime(portfolio_df.index)
+    precos_df = pd.DataFrame(portfolio)
+    precos_df = precos_df[tickers]
+    precos_df.index = pd.to_datetime(precos_df.index)
 
     # Calcular setores uma única vez
     sectores = {ticker: get_sector(ticker, empresas_redis) for ticker in tickers}
     # Passo 1: Calcular pesos por setor
     setor_pesos, setor_pesos_financeiros = calcular_pesos_por_setor(
-        tickers, quantities, portfolio, empresas_redis, sectores
+        tickers, quantities, portfolio, setores_economicos, sectores
         )
 
     # Passo 2: Calcular métricas da tabela
-    ticker_metrics = calcular_metricas_tabela(tickers, quantities, portfolio_df, dividends, sectores)
+    ticker_metrics = calcular_metricas_tabela(tickers, quantities, precos_df, dividends, sectores)
 
     # Passo 3: Calcular retornos acumulados e diários por ticker
     individual_returns, individual_daily_returns = calcular_retornos_individuais(tickers, portfolio)

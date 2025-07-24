@@ -118,28 +118,9 @@ def obter_dados(tickers: List[str], start_date: str, end_date: str, include_ibov
 
     return result
 
-# Funções auxiliares para cálculos repetitivos
-@measure_time
-def obter_preco_inicial_e_final(prices):
-    """
-    Obtém o preço inicial e final de uma série de preços.
-    
-    Args:
-        prices (dict): Dicionário de preços {data: preço}.
-    
-    Returns:
-        tuple: (preco_inicial, preco_final), ou (None, None) se não houver dados válidos.
-    """
-    if not prices:
-        return None, None
-    datas_ordenadas = sorted(prices.keys())
-    preco_inicial = prices[datas_ordenadas[0]]
-    preco_final = prices[datas_ordenadas[-1]]
-    return preco_inicial, preco_final
-
 # Funções menores para cada tipo de cálculo
 @measure_time
-def calcular_pesos_por_setor(tickers: List[str], quantities: List[float], portfolio: Dict[str, Any], 
+def calcular_pesos_por_setor(tickers: List[str], quantities: List[float], precos_df:pd.DataFrame, 
                              setores_economicos: List[str], sectores: Dict[str, str]) -> tuple[Dict[str, float], Dict[str, float]]:
     """
     Calcula os pesos por setor com base na quantidade e no valor financeiro.
@@ -148,8 +129,7 @@ def calcular_pesos_por_setor(tickers: List[str], quantities: List[float], portfo
     Args:
         tickers (list): Lista de tickers.
         quantities (list): Lista de quantidades correspondentes aos tickers.
-        portfolio (dict): Dicionário de preços {ticker: {data: preço}}.
-        empresas_redis: servidor Redis para DB3
+        precos_df (DataFrame): DataFrame com preços, tickers como colunas, índice como string 'YYYY-MM-DD'.
         setores_economicos (list): Lista de setores econômicos pré-carregada.
         sectores (dict): Dicionário de setores {ticker: setor}.
     
@@ -160,12 +140,12 @@ def calcular_pesos_por_setor(tickers: List[str], quantities: List[float], portfo
     setor_pesos = {setor: 0.0 for setor in setores_economicos}
     setor_pesos_financeiros = {setor: 0.0 for setor in setores_economicos}
 
-    # Converter inputs em DataFrame para cálculos vetoriais
+    # Criar DataFrame com dados necessários
     df = pd.DataFrame({
         'ticker': tickers,
         'quantidade': quantities,
-        'preco_final': [obter_preco_inicial_e_final(portfolio[t])[1] if t in portfolio and portfolio[t] else None for t in tickers],
-        'setor': [sectores[t] for t in tickers]
+        'preco_final': precos_df.iloc[-1].reindex(tickers) if not precos_df.empty else pd.Series(index=tickers, dtype=float),
+        'setor': [sectores.get(t, '') for t in tickers]
     })
     # Filtrar tickers válidos (com preço final não nulo)
     df = df[df['preco_final'].notnull()]
@@ -191,62 +171,59 @@ def calcular_pesos_por_setor(tickers: List[str], quantities: List[float], portfo
     return setor_pesos, setor_pesos_financeiros
 
 @measure_time
-def calcular_retornos_individuais(tickers, portfolio):
+def calcular_retornos_individuais(tickers: List[str], 
+                                  precos_df: pd.DataFrame) -> tuple[Dict[str, Any], Dict[str, Any]]:
     """
     Calcula os retornos acumulados e diários para cada ticker.
     
     Args:
         tickers (list): Lista de tickers.
-        portfolio (dict): Dicionário de preços {ticker: {data: preço}}.
+        precos_df (DataFrame): DataFrame com preços, tickers como colunas.
     
     Returns:
         tuple: (individual_returns_dict, individual_daily_returns_dict)
             - individual_returns_dict: Retornos acumulados por ticker.
             - individual_daily_returns_dict: Retornos diários por ticker.
     """
-    df_portfolio = pd.DataFrame(portfolio)
-    df_portfolio = df_portfolio[tickers]
-
-    if df_portfolio.empty or df_portfolio.shape[0] == 0:
+    if precos_df.empty or precos_df.shape[0] == 0:
         print("Nenhum dado válido para calcular retornos individuais")
         return (
             {ticker: {} for ticker in tickers},
             {ticker: {} for ticker in tickers}
         )
 
-    individual_returns_df = (df_portfolio / df_portfolio.iloc[0] - 1) * 100
+    individual_returns_df = (precos_df / precos_df.iloc[0] - 1) * 100
     individual_returns_dict = {
         ticker: individual_returns_df[ticker].to_dict()
         for ticker in tickers if ticker in individual_returns_df.columns
     }
 
-    daily_returns_df = df_portfolio.pct_change(fill_method=None) * 100
+    daily_returns_df = precos_df.pct_change(fill_method=None) * 100
     individual_daily_returns_dict = {
         ticker: daily_returns_df[ticker].dropna().to_dict()
         for ticker in tickers if ticker in daily_returns_df.columns
     }
 
     return individual_returns_dict, individual_daily_returns_dict
+
 @measure_time
-def calcular_retornos_portfolio(tickers, quantities, portfolio):
+def calcular_retornos_portfolio(tickers:List[str], quantities:List[float], 
+                                precos_df:pd.DataFrame) -> tuple[Dict[str,float], Dict[str,float]]:
     """
     Calcula os retornos acumulados e diários do portfólio.
     
     Args:
         tickers (list): Lista de tickers.
         quantities (list): Lista de quantidades correspondentes aos tickers.
-        portfolio (dict): Dicionário de preços {ticker: {data: preço}}.
+        precos_df (DataFrame): DataFrame com preços, tickers como colunas.
     
     Returns:
         tuple: (portfolio_return_dict, portfolio_daily_return_dict)
             - portfolio_return_dict: Retornos acumulados do portfólio.
             - portfolio_daily_return_dict: Retornos diários do portfólio.
     """
-    df_portfolio = pd.DataFrame(portfolio)
-    df_portfolio = df_portfolio[tickers]
-
     quantities_dict = dict(zip(tickers, quantities))
-    portfolio_values = df_portfolio * pd.Series(quantities_dict)
+    portfolio_values = precos_df * pd.Series(quantities_dict)
     portfolio_total = portfolio_values.sum(axis=1)
 
     # Retornos acumulados
@@ -260,23 +237,21 @@ def calcular_retornos_portfolio(tickers, quantities, portfolio):
     return portfolio_return_dict, portfolio_daily_return_dict
 
 @measure_time
-def calcular_valores_portfolio(tickers, quantities, portfolio):
+def calcular_valores_portfolio(tickers: List[str], quantities:List[float], 
+                               preços_df: pd.DataFrame) -> Dict[str, Any]:
     """
     Calcula os valores do portfólio ao longo do tempo.
     
     Args:
         tickers (list): Lista de tickers.
         quantities (list): Lista de quantidades correspondentes aos tickers.
-        portfolio (dict): Dicionário de preços {ticker: {data: preço}}.
+        precos_df (DataFrame): DataFrame com preços, tickers como colunas..
     
     Returns:
-        dict: Dicionário com os valores do portfólio (portfolio_values.to_dict()).
+        dict: Dicionário com os valores do portfólio, chaves como strings 'YYYY-MM-DD'.
     """
-    df_portfolio = pd.DataFrame(portfolio)
-    df_portfolio = df_portfolio[tickers]
-
     quantities_dict = dict(zip(tickers, quantities))
-    portfolio_values = df_portfolio * pd.Series(quantities_dict)
+    portfolio_values = preços_df * pd.Series(quantities_dict)
 
     return portfolio_values.to_dict()
 
@@ -529,27 +504,28 @@ def calcular_metricas(portfolio: Dict[str, Any], tickers: List[str], quantities:
     # Converter portfolio em DataFrame uma vez
     precos_df = pd.DataFrame(portfolio)
     precos_df = precos_df[tickers]
-    precos_df.index = pd.to_datetime(precos_df.index)
+    precos_df.index = pd.to_datetime(precos_df.index).strftime('%Y-%m-%d')
 
     # Calcular setores uma única vez
     sectores = {ticker: get_sector(ticker, empresas_redis) for ticker in tickers}
+    
     # Passo 1: Calcular pesos por setor
     setor_pesos, setor_pesos_financeiros = calcular_pesos_por_setor(
-        tickers, quantities, portfolio, setores_economicos, sectores
+        tickers, quantities, precos_df, setores_economicos, sectores
         )
-
+    
     # Passo 2: Calcular métricas da tabela
     ticker_metrics = calcular_metricas_tabela(tickers, quantities, precos_df, dividends, sectores)
 
     # Passo 3: Calcular retornos acumulados e diários por ticker
-    individual_returns, individual_daily_returns = calcular_retornos_individuais(tickers, portfolio)
+    individual_returns, individual_daily_returns = calcular_retornos_individuais(tickers, precos_df)
     # Formatar individual_returns para o gráfico
     individual_returns = {
         ticker: [{'x': pd.to_datetime(k).strftime('%Y-%m-%d'), 'y': v} for k, v in returns.items()]
         for ticker, returns in individual_returns.items()
     }
     # Passo 4: Calcular retornos acumulados e diários do portfólio
-    portfolio_return, portfolio_daily_return = calcular_retornos_portfolio(tickers, quantities, portfolio)
+    portfolio_return, portfolio_daily_return = calcular_retornos_portfolio(tickers, quantities, precos_df)
     # Formatar portfolio_return para o gráfico
     portfolio_return = [
         {'x': pd.to_datetime(k).strftime('%Y-%m-%d'), 'y': v}
@@ -557,7 +533,7 @@ def calcular_metricas(portfolio: Dict[str, Any], tickers: List[str], quantities:
     ]
 
     # Passo 5: Calcular valores do portfólio
-    portfolio_values = calcular_valores_portfolio(tickers, quantities, portfolio)
+    portfolio_values = calcular_valores_portfolio(tickers, quantities, precos_df)
 
     # Passo 6: Calcular retorno do IBOV (se fornecido)
     ibov_return = calcular_retorno_ibov(ibov)

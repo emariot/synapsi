@@ -459,7 +459,10 @@ def calcular_metricas(portfolio: Dict[str, Any], tickers: List[str], quantities:
             - kpis: Indicadores financeiros.
     """
     # Pré-carregar setores econômicos antes da validação
-    setores_economicos = get_all_sectors(empresas_redis)['setores_economicos'] if empresas_redis else []
+    sectors_data = get_all_sectors(empresas_redis)
+    setores_economicos = sectors_data['setores_economicos']
+    ticker_to_setor = sectors_data['ticker_to_setor']
+
     # Validação inicial
     if not tickers or not quantities or len(tickers) != len(quantities) or not portfolio:
         logger.error(f"[calcular_metricas] Entrada inválida: tickers={len(tickers)}, quantities={len(quantities)}, portfolio_vazio={not portfolio}")
@@ -490,8 +493,14 @@ def calcular_metricas(portfolio: Dict[str, Any], tickers: List[str], quantities:
     portfolio_values = precos_df * pd.Series(quantities_dict)
     portfolio_values_dict = portfolio_values.to_dict()
 
-    # Calcular setores uma única vez
-    sectores = {ticker: get_sector(ticker, empresas_redis) for ticker in tickers}
+    # Calcular setores usar mapeamento ticker -> setor com fallback para get_sector
+    sectores = {}
+    for ticker in tickers:
+        sector = ticker_to_setor.get(ticker)
+        if not sector:
+            logger.warning(f"[calcular_metricas] Ticker {ticker} não encontrado em ticker_to_setor, usando get_sector")
+            sector = get_sector(ticker, empresas_redis)
+        sectores[ticker] = sector or ''
     
     # Passo 1: Calcular pesos por setor
     setor_pesos, setor_pesos_financeiros = calcular_pesos_por_setor(

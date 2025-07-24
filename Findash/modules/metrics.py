@@ -208,22 +208,20 @@ def calcular_retornos_individuais(tickers: List[str],
 
 @measure_time
 def calcular_retornos_portfolio(tickers:List[str], quantities:List[float], 
-                                precos_df:pd.DataFrame) -> tuple[Dict[str,float], Dict[str,float]]:
+                                portfolio_values:pd.DataFrame) -> tuple[Dict[str,float], Dict[str,float]]:
     """
     Calcula os retornos acumulados e diários do portfólio.
     
     Args:
         tickers (list): Lista de tickers.
         quantities (list): Lista de quantidades correspondentes aos tickers.
-        precos_df (DataFrame): DataFrame com preços, tickers como colunas.
+        portfolio_values (DataFrame): DataFrame com valores do portfólio (precos_df * quantities), índice como string 'YYYY-MM-DD'.
     
     Returns:
         tuple: (portfolio_return_dict, portfolio_daily_return_dict)
             - portfolio_return_dict: Retornos acumulados do portfólio.
             - portfolio_daily_return_dict: Retornos diários do portfólio.
     """
-    quantities_dict = dict(zip(tickers, quantities))
-    portfolio_values = precos_df * pd.Series(quantities_dict)
     portfolio_total = portfolio_values.sum(axis=1)
 
     # Retornos acumulados
@@ -235,25 +233,6 @@ def calcular_retornos_portfolio(tickers:List[str], quantities:List[float],
     portfolio_daily_return_dict = portfolio_daily_return.dropna().to_dict()
 
     return portfolio_return_dict, portfolio_daily_return_dict
-
-@measure_time
-def calcular_valores_portfolio(tickers: List[str], quantities:List[float], 
-                               preços_df: pd.DataFrame) -> Dict[str, Any]:
-    """
-    Calcula os valores do portfólio ao longo do tempo.
-    
-    Args:
-        tickers (list): Lista de tickers.
-        quantities (list): Lista de quantidades correspondentes aos tickers.
-        precos_df (DataFrame): DataFrame com preços, tickers como colunas..
-    
-    Returns:
-        dict: Dicionário com os valores do portfólio, chaves como strings 'YYYY-MM-DD'.
-    """
-    quantities_dict = dict(zip(tickers, quantities))
-    portfolio_values = preços_df * pd.Series(quantities_dict)
-
-    return portfolio_values.to_dict()
 
 @measure_time
 def calcular_retorno_ibov(ibov):
@@ -506,6 +485,11 @@ def calcular_metricas(portfolio: Dict[str, Any], tickers: List[str], quantities:
     precos_df = precos_df[tickers]
     precos_df.index = pd.to_datetime(precos_df.index).strftime('%Y-%m-%d')
 
+    # Calcular valores do portfólio uma vez
+    quantities_dict = dict(zip(tickers, quantities))
+    portfolio_values = precos_df * pd.Series(quantities_dict)
+    portfolio_values_dict = portfolio_values.to_dict()
+
     # Calcular setores uma única vez
     sectores = {ticker: get_sector(ticker, empresas_redis) for ticker in tickers}
     
@@ -521,28 +505,25 @@ def calcular_metricas(portfolio: Dict[str, Any], tickers: List[str], quantities:
     individual_returns, individual_daily_returns = calcular_retornos_individuais(tickers, precos_df)
     # Formatar individual_returns para o gráfico
     individual_returns = {
-        ticker: [{'x': pd.to_datetime(k).strftime('%Y-%m-%d'), 'y': v} for k, v in returns.items()]
+        ticker: [{'x': k, 'y': v} for k, v in returns.items()]
         for ticker, returns in individual_returns.items()
     }
     # Passo 4: Calcular retornos acumulados e diários do portfólio
-    portfolio_return, portfolio_daily_return = calcular_retornos_portfolio(tickers, quantities, precos_df)
+    portfolio_return, portfolio_daily_return = calcular_retornos_portfolio(tickers, quantities, portfolio_values)
     # Formatar portfolio_return para o gráfico
     portfolio_return = [
-        {'x': pd.to_datetime(k).strftime('%Y-%m-%d'), 'y': v}
+        {'x': k, 'y': v}
         for k, v in portfolio_return.items()
     ]
 
-    # Passo 5: Calcular valores do portfólio
-    portfolio_values = calcular_valores_portfolio(tickers, quantities, precos_df)
-
-    # Passo 6: Calcular retorno do IBOV (se fornecido)
+    # Passo 5: Calcular retorno do IBOV (se fornecido)
     ibov_return = calcular_retorno_ibov(ibov)
     ibov_return = [
         {'x': pd.to_datetime(k).strftime('%Y-%m-%d'), 'y': v}
         for k, v in ibov_return.items()
     ]
 
-    # Passo 7: Clacular KPIs usando quantstats
+    # Passo 6: Clacular KPIs usando quantstats
     portfolio_returns_series = pd.Series(portfolio_daily_return).sort_index()
     portfolio_returns_series.index = pd.to_datetime(portfolio_returns_series.index)
     portfolio_returns_series = portfolio_returns_series / 100  # Converter de % para decimal
@@ -564,7 +545,7 @@ def calcular_metricas(portfolio: Dict[str, Any], tickers: List[str], quantities:
         'portfolio_daily_return': portfolio_daily_return,
         'individual_daily_returns': individual_daily_returns,
         'ibov_return': ibov_return,
-        'portfolio_values': portfolio_values,
+        'portfolio_values': portfolio_values_dict,
         'setor_pesos': setor_pesos,
         'setor_pesos_financeiros': setor_pesos_financeiros,
         'kpis': kpis

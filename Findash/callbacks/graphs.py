@@ -56,6 +56,7 @@ def register_graph_callbacks(dash_app: Dash):
 
         fig_ibov = go.Figure(data=traces_ibov)
         fig_ibov.update_layout(**get_figure_theme(theme, title="Retorno Acumulado", yaxis_title="Retorno (%)"))
+        
         return fig_ibov, False
     
     @dash_app.callback(

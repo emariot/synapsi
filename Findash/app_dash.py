@@ -3,15 +3,15 @@ import plotly.graph_objects as go
 import dash_mantine_components as dmc
 from dash_iconify import DashIconify
 import dash_bootstrap_components as dbc
+import dash_ag_grid as dag
 from collections import defaultdict
-from Findash.modules.metrics import calcular_metricas
-from Findash.modules.components import KpiCard, GraphPaper, IconTooltip, build_portfolio_cards
-from Findash.utils.formatting import format_kpi
-from Findash.utils.setors_bv import SETOR_MAP, SETORIAL_B3
+from .modules.components import KpiCard, GraphPaper, IconTooltip, build_portfolio_cards
+from .utils.formatting import format_kpi
+from .utils.setors_bv import SETOR_MAP, SETORIAL_B3
+from utils.serialization import orjson_dumps, orjson_loads
 from datetime import datetime, timedelta
 import pandas as pd
-from Findash.services.portfolio_services import PortfolioService
-from utils.serialization import orjson_dumps, orjson_loads
+from .services.portfolio_services import PortfolioService
 from flask import session, request, has_request_context
 from Findash.callbacks.tables import register_table_callbacks
 from Findash.callbacks.graphs import register_graph_callbacks
@@ -89,6 +89,72 @@ def serve_layout(empresas_redis=None):
     is_registered = client_config.get('is_registered', False) if has_request_context() else False
     portfolio_name = portfolio_data.get('portfolio_name', 'Portfólio 1')
     save_button_disabled = not is_registered or plan_type.lower() != 'registered'
+
+    # Montar tabela com KPIs por período (mensal por padrão) 
+    kpis_por_periodo = portfolio_data.get("kpis_por_periodo", {})
+    if kpis_por_periodo:
+        df_kpis_periodo = pd.DataFrame.from_dict(kpis_por_periodo, orient="index").round(4)
+        df_kpis_periodo.reset_index(inplace=True)
+        df_kpis_periodo.rename(columns={"index": "KPI"}, inplace=True)
+        
+        columnDefs = [
+            {
+                "field": "KPI",
+                "headerName": "Indicador",
+                "pinned": "left",
+                "sortable": True,
+                "filter": True,
+                "width": 120,
+                "headerClass": "center-header"
+            },
+        ]
+
+        for col in df_kpis_periodo.columns[1:]: # Exclui KPI e sparkline
+            columnDefs.append({
+                "field": col,
+                "headerName": col,
+                "sortable": True,
+                "filter": True,
+                "headerClass": "center-header",
+                "cellStyle": {
+                    "styleConditions": [
+                        # Sharpe
+                        {"condition": "params.data.KPI === 'sharpe' && params.value > 2.0", "style": {"backgroundColor": "#28a745", "color": "white"}},
+                        {"condition": "params.data.KPI === 'sharpe' && params.value >= 1.0 && params.value <= 2.0", "style": {"backgroundColor": "#ffc107", "color": "black"}},
+                        {"condition": "params.data.KPI === 'sharpe' && params.value < 1.0", "style": {"backgroundColor": "#dc3545", "color": "white"}},
+                        # Sortino
+                        {"condition": "params.data.KPI === 'sortino' && params.value > 3.0", "style": {"backgroundColor": "#28a745", "color": "white"}},
+                        {"condition": "params.data.KPI === 'sortino' && params.value >= 1.5 && params.value <= 3.0", "style": {"backgroundColor": "#ffc107", "color": "black"}},
+                        {"condition": "params.data.KPI === 'sortino' && params.value < 1.5", "style": {"backgroundColor": "#dc3545", "color": "white"}},
+                        # Volatilidade
+                        {"condition": "params.data.KPI === 'volatilidade' && params.value < 0.20", "style": {"backgroundColor": "#28a745", "color": "white"}},
+                        {"condition": "params.data.KPI === 'volatilidade' && params.value >= 0.20 && params.value <= 0.30", "style": {"backgroundColor": "#ffc107", "color": "black"}},
+                        {"condition": "params.data.KPI === 'volatilidade' && params.value > 0.30", "style": {"backgroundColor": "#dc3545", "color": "white"}},
+                        # Max Drawdown
+                        {"condition": "params.data.KPI === 'max_drawdown' && params.value > -0.10", "style": {"backgroundColor": "#28a745", "color": "white"}},
+                        {"condition": "params.data.KPI === 'max_drawdown' && params.value >= -0.20 && params.value <= -0.10", "style": {"backgroundColor": "#ffc107", "color": "black"}},
+                        {"condition": "params.data.KPI === 'max_drawdown' && params.value < -0.20", "style": {"backgroundColor": "#dc3545", "color": "white"}},
+                        # Retorno Médio Anual
+                        {"condition": "params.data.KPI === 'retorno_medio_anual' && params.value > 0.10", "style": {"backgroundColor": "#28a745", "color": "white"}},
+                        {"condition": "params.data.KPI === 'retorno_medio_anual' && params.value >= 0.0 && params.value <= 0.10", "style": {"backgroundColor": "#ffc107", "color": "black"}},
+                        {"condition": "params.data.KPI === 'retorno_medio_anual' && params.value < 0.0", "style": {"backgroundColor": "#dc3545", "color": "white"}},
+                        # Alpha
+                        {"condition": "params.data.KPI === 'alpha' && params.value > 0.0", "style": {"backgroundColor": "#28a745", "color": "white"}},
+                        {"condition": "params.data.KPI === 'alpha' && params.value >= -0.01 && params.value <= 0.01", "style": {"backgroundColor": "#ffc107", "color": "black"}},
+                        {"condition": "params.data.KPI === 'alpha' && params.value < -0.01", "style": {"backgroundColor": "#dc3545", "color": "white"}},
+                        # Beta
+                        {"condition": "params.data.KPI === 'beta' && params.value >= 0.8 && params.value <= 1.2", "style": {"backgroundColor": "#28a745", "color": "white"}},
+                        {"condition": "params.data.KPI === 'beta' && ((params.value >= 0.5 && params.value < 0.8) || (params.value > 1.2 && params.value <= 1.5))", "style": {"backgroundColor": "#ffc107", "color": "black"}},
+                        {"condition": "params.data.KPI === 'beta' && (params.value < 0.5 || params.value > 1.5)", "style": {"backgroundColor": "#dc3545", "color": "white"}}
+                    ]
+                }
+            })
+
+        rowData = df_kpis_periodo.to_dict("records")
+    else:
+        df_kpis_periodo = pd.DataFrame(columns=["KPI"])  # define DataFrame vazio
+        columnDefs = [{"field": "KPI"}]
+        rowData = []
 
     return dmc.MantineProvider(
         id = "mantine-provider",
@@ -476,7 +542,54 @@ def serve_layout(empresas_redis=None):
                                                 pos="relative"
                                             )
                                         ]                                        
-                                    ),            
+                                    ), 
+                                    # Tabela KPIs           
+                                    dmc.GridCol(
+                                        span=12,
+                                        style={
+                                            "marginTop": "20px",
+                                            "backgroundColor": "#ffffff",
+                                            "border": "1px solid #dee2e6",
+                                            "padding": "12px",
+                                            "borderRadius": "8px",
+                                        },
+                                        children=[
+                                            dmc.Text("Evolução Temporal dos KPIs", fw=600, size="sm", mb=10),
+                                            dmc.Group(
+                                                [
+                                                    dmc.Button("Mensal", id="btn-mensal", variant="outline", size="compact-xs"),
+                                                    dmc.Button("Trimestral", id="btn-trimestral", variant="outline", size="compact-xs"),
+                                                    dmc.Button("Semestral", id="btn-semestral", variant="outline", size="compact-xs"),
+                                                    dmc.Button("Anual", id="btn-anual", variant="outline", size="compact-xs"),
+                                                ],
+                                                justify="flex-start",
+                                                mb=10,
+                                            ),
+                                            dag.AgGrid(
+                                                id="kpi-temporal-grid",
+                                                columnDefs=columnDefs,
+                                                rowData=rowData,
+                                                defaultColDef={
+                                                    "resizable": True,
+                                                    "sortable": True,
+                                                    "filter": True,
+                                                    "flex": 1,
+                                                    "cellStyle": {
+                                                        "padding": "2px",         # Menos espaço interno
+                                                        "fontSize": "11px",   
+                                                        "textAlign": "center",    
+                                                        "lineHeight": "1.2",      # Altura mais compacta
+                                                    },
+                                                    "headerClass": "center-header"
+                                                },
+                                                style={"width": "100%", "height": "205px", "fontSize": "11px"},
+                                                className="ag-theme-alpine",
+                                                dashGridOptions={"rowHeight": 25,"headerHeight": 26 },  # menor altura das linhas (padrão é 28~32)
+
+
+                                            )
+                                        ]
+                                    ),
                                 ]
                             ),
                             dcc.Graph(

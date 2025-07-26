@@ -21,6 +21,7 @@ from functools import partial
 
 from Findash.utils.logging_tools import logger, log_callback
 
+
 # Lista estática de tickers
 TICKERS = [
     {"symbol": "PETR4.SA", "name": "Petrobras PN"},
@@ -103,9 +104,19 @@ def serve_layout(empresas_redis=None):
                 "headerName": "Indicador",
                 "pinned": "left",
                 "sortable": True,
-                "filter": True,
+                "filter": False,
                 "width": 120,
-                "headerClass": "center-header"
+                "headerClass": "center-header",
+                "tooltipField": "tooltip_graph",
+                "tooltipComponent": "DccGraphTooltip",
+                "tooltipComponentParams": {
+                    "style": {
+                        "backgroundColor": "white",
+                        "padding": "10px",
+                        "boxShadow": "var(--ag-card-shadow)",
+                        "borderRadius": "6px"
+                    }
+                }
             },
         ]
 
@@ -114,7 +125,7 @@ def serve_layout(empresas_redis=None):
                 "field": col,
                 "headerName": col,
                 "sortable": True,
-                "filter": True,
+                "filter": False,
                 "headerClass": "center-header",
                 "cellStyle": {
                     "styleConditions": [
@@ -151,6 +162,22 @@ def serve_layout(empresas_redis=None):
             })
 
         rowData = df_kpis_periodo.to_dict("records")
+
+        import plotly.graph_objs as go
+
+        def gerar_figura_inline_json(valores, kpi):
+            fig = go.Figure(data=[go.Scatter(y=valores, mode="lines+markers")])
+            fig.update_layout(
+                margin=dict(l=0, r=0, t=20, b=0),
+                height=200,
+                width=300,
+                title=f"{kpi} - Evolução"
+            )
+            return fig.to_plotly_json()
+        
+        for row in rowData:
+            valores = [v for k, v in row.items() if k != 'KPI']
+            row["tooltip_graph"] = gerar_figura_inline_json(valores, row["KPI"])
     else:
         df_kpis_periodo = pd.DataFrame(columns=["KPI"])  # define DataFrame vazio
         columnDefs = [{"field": "KPI"}]
@@ -572,7 +599,7 @@ def serve_layout(empresas_redis=None):
                                                 defaultColDef={
                                                     "resizable": True,
                                                     "sortable": True,
-                                                    "filter": True,
+                                                    "filter": False,
                                                     "flex": 1,
                                                     "cellStyle": {
                                                         "padding": "2px",         # Menos espaço interno
@@ -584,8 +611,11 @@ def serve_layout(empresas_redis=None):
                                                 },
                                                 style={"width": "100%", "height": "205px", "fontSize": "11px"},
                                                 className="ag-theme-alpine",
-                                                dashGridOptions={"rowHeight": 25,"headerHeight": 26 },  # menor altura das linhas (padrão é 28~32)
-
+                                                dashGridOptions={
+                                                    "rowHeight": 25,
+                                                    "headerHeight": 26, # menor altura das linhas (padrão é 28~32)
+                                                    "tooltipShowDelay": 100
+                                                    },  
 
                                             )
                                         ]

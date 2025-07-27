@@ -21,7 +21,6 @@ from functools import partial
 
 from Findash.utils.logging_tools import logger, log_callback
 
-
 # Lista estática de tickers
 TICKERS = [
     {"symbol": "PETR4.SA", "name": "Petrobras PN"},
@@ -94,9 +93,36 @@ def serve_layout(empresas_redis=None):
     # Montar tabela com KPIs por período (mensal por padrão) 
     kpis_por_periodo = portfolio_data.get("kpis_por_periodo", {})
     if kpis_por_periodo:
-        df_kpis_periodo = pd.DataFrame.from_dict(kpis_por_periodo, orient="index").round(4)
+        df_kpis_periodo = pd.DataFrame.from_dict(kpis_por_periodo, orient="index").round(2)
         df_kpis_periodo.reset_index(inplace=True)
         df_kpis_periodo.rename(columns={"index": "KPI"}, inplace=True)
+
+        # Adicionar coluna de sparklines
+        df_kpis_periodo["sparkline"] = ""
+        for i, row in df_kpis_periodo.iterrows():
+            kpi_name = row["KPI"]
+            values = row.drop(labels=["KPI", "sparkline"], errors="ignore").astype(float).values
+            fig = go.Figure(
+                go.Scatter(
+                    y=values,
+                    mode="lines+markers",
+                    line=dict(width=1, color="#1f77b4"),
+                    marker=dict(size=4),
+                    hovertemplate="%{y:.2f}<extra></extra>"
+                )
+            )
+            fig.update_layout(
+                showlegend=False,
+                margin=dict(l=0, r=0, t=0, b=0),
+                xaxis=dict(visible=False),
+                yaxis=dict(visible=False, showticklabels=False),
+                height=25,  # Altura compacta para sparkline
+                width=100,
+                paper_bgcolor="rgba(0,0,0,0)",
+                plot_bgcolor="rgba(0,0,0,0)"
+             
+            )
+            df_kpis_periodo.at[i, "sparkline"] = fig
         
         columnDefs = [
             {
@@ -106,26 +132,18 @@ def serve_layout(empresas_redis=None):
                 "sortable": True,
                 "filter": False,
                 "width": 120,
-                "headerClass": "center-header",
-                "tooltipField": "tooltip_graph",
-                "tooltipComponent": "DccGraphTooltip",
-                "tooltipComponentParams": {
-                    "style": {
-                        "backgroundColor": "white",
-                        "padding": "10px",
-                        "boxShadow": "var(--ag-card-shadow)",
-                        "borderRadius": "6px"
-                    }
-                }
+                "headerClass": "center-header"
             },
         ]
 
-        for col in df_kpis_periodo.columns[1:]: # Exclui KPI e sparkline
+        for col in df_kpis_periodo.columns[1:-1]: # Exclui KPI e sparkline
             columnDefs.append({
                 "field": col,
                 "headerName": col,
                 "sortable": True,
                 "filter": False,
+                "flex": 1,
+                "minWidth": 80,
                 "headerClass": "center-header",
                 "cellStyle": {
                     "styleConditions": [
@@ -160,24 +178,18 @@ def serve_layout(empresas_redis=None):
                     ]
                 }
             })
+        # Adicionar a coluna de sparklines no final
+        columnDefs.append({
+            "field": "sparkline",
+            "headerName": "Tendência",
+            "cellRenderer": "DCC_Sparkline",
+            "width": 150,
+            "minWidth": 100,
+            "maxWidth": 200,
+            "cellStyle": {"padding": "0px", "display": "flex", "alignItems": "center"}
+        })
 
         rowData = df_kpis_periodo.to_dict("records")
-
-        import plotly.graph_objs as go
-
-        def gerar_figura_inline_json(valores, kpi):
-            fig = go.Figure(data=[go.Scatter(y=valores, mode="lines+markers")])
-            fig.update_layout(
-                margin=dict(l=0, r=0, t=20, b=0),
-                height=200,
-                width=300,
-                title=f"{kpi} - Evolução"
-            )
-            return fig.to_plotly_json()
-        
-        for row in rowData:
-            valores = [v for k, v in row.items() if k != 'KPI']
-            row["tooltip_graph"] = gerar_figura_inline_json(valores, row["KPI"])
     else:
         df_kpis_periodo = pd.DataFrame(columns=["KPI"])  # define DataFrame vazio
         columnDefs = [{"field": "KPI"}]
@@ -601,21 +613,23 @@ def serve_layout(empresas_redis=None):
                                                     "sortable": True,
                                                     "filter": False,
                                                     "flex": 1,
+                                                    "minWidth": 80,
                                                     "cellStyle": {
                                                         "padding": "2px",         # Menos espaço interno
-                                                        "fontSize": "11px",   
+                                                        "fontSize": "10px",   
                                                         "textAlign": "center",    
                                                         "lineHeight": "1.2",      # Altura mais compacta
                                                     },
                                                     "headerClass": "center-header"
                                                 },
-                                                style={"width": "100%", "height": "205px", "fontSize": "11px"},
+                                                style={"width": "100%", "height": "240px", "fontSize": "11px"},
                                                 className="ag-theme-alpine",
-                                                dashGridOptions={
-                                                    "rowHeight": 25,
-                                                    "headerHeight": 26, # menor altura das linhas (padrão é 28~32)
-                                                    "tooltipShowDelay": 100
-                                                    },  
+                                                dashGridOptions={"rowHeight": 30,
+                                                                 "headerHeight": 26,
+                                                                  "autoSizeStrategy": {"type": "fitGridWidth"},
+                                                                  "suppressHorizontalScroll": False
+                                                                    },  
+
 
                                             )
                                         ]

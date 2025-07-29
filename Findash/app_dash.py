@@ -529,8 +529,18 @@ def serve_layout(empresas_redis=None):
                                                 editable=True
                                             ),
                                             
-                                            dcc.Graph(id='portfolio-treemap', style={'width': '100%', 'height': '200px', 'marginTop': '10px'}),
-                                            dcc.Graph(id='financial-treemap', style={'width': '100%', 'height': '200px', 'marginTop': '10px'})
+                                            dcc.Graph(id='portfolio-treemap', 
+                                                      style={
+                                                          'width': '100%', 
+                                                          'height': '200px', 
+                                                          'marginTop': '10px'
+                                                          }),
+                                            dcc.Graph(id='financial-treemap', 
+                                                      style={
+                                                          'width': '100%', 
+                                                          'height': '200px', 
+                                                          'marginTop': '10px'
+                                                          })
                                         ]
                                     ),
                                     # Coluna Direita (2/3)
@@ -634,12 +644,47 @@ def serve_layout(empresas_redis=None):
                                             )
                                         ]
                                     ),
-                                ]
+                                    # de setores e gráfico de barras    
+                                    dmc.GridCol(
+                                        span=12,
+                                        children=[
+                                            dmc.Grid(
+                                                gutter="sm",
+                                                children=[
+                                                    # Coluna Esquerda: Sunburst Chart (1/3)
+                                                    dmc.GridCol(
+                                                        span={"base":12, "md":4},
+                                                        children=[
+                                                            dcc.Graph(
+                                                                id='financial-sunburst-chart',
+                                                                style={
+                                                                    'width': '100%', 
+                                                                    'height': '400px',                                                       
+                                                                },
+                                                                config={
+                                                        
+                                                                    'responsive': True  # Garantir responsividade
+                                                                }
+                                                            ),
+                                                        ]
+                                                    ),
+                                                    # Coluna Direita: Sector Donut Charts (2/3)
+                                                    dmc.GridCol(
+                                                        span={"base":12, "md":8},
+                                                        children=[
+                                                            dcc.Graph(
+                                                                id='sector-bar-charts',
+                                                                style={'width': '100%', 'height':'320px'}
+                                                            )
+                                                        ]
+                                                    ),
+                                                ]
+                                            )
+                                        ]
+                                    )
+                                ]     
                             ),
-                            dcc.Graph(
-                                id='financial-sunburst-chart',
-                                style={'width': '100%', 'height': '500px', 'marginTop': '10px'}
-                            ),
+             
 
                             html.Div([
                                             # Linha de largura total para os três novos elementos
@@ -659,9 +704,6 @@ def serve_layout(empresas_redis=None):
                             ], className="g-3"),
                             # Três Colunas Inferiores
                             dbc.Row([
-                                dbc.Col([
-                                    dcc.Graph(id='sector-donut-charts', style={'width': '100%', 'height': '300px'})
-                                ], md=4, className="p-2"),
                                 dbc.Col([
                                     dcc.Graph(id='correlation-heatmap', style={'width': '100%', 'height': '300px'})
                                 ], md=4, className="p-2"),
@@ -1546,7 +1588,7 @@ def init_dash(flask_app, portfolio_service, empresas_redis=None):
     #     return fig
         
     @dash_app.callback(
-        Output('sector-donut-charts', 'figure'),
+        Output('sector-bar-charts', 'figure'),
         Input('data-store', 'data'),
         prevent_initial_call=False
     )

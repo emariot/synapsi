@@ -13,9 +13,7 @@ from datetime import datetime, timedelta
 import pandas as pd
 from .services.portfolio_services import PortfolioService
 from flask import session, request, has_request_context
-from Findash.callbacks.tables import register_table_callbacks
-from Findash.callbacks.graphs import register_graph_callbacks
-from Findash.callbacks.kpis_cards import register_kpis_card
+from .callbacks import register_graph_callbacks, register_kpis_card, register_table_callbacks
 from functools import partial
 
 
@@ -679,39 +677,93 @@ def serve_layout(empresas_redis=None):
                                                         ]
                                                     ),
                                                 ]
-                                            )
+                                            ),
+                                            # Segunda linha: três gráficos horizontais
+                                            dmc.Grid(
+                                                gutter="sm",
+                                                className="mt-2",
+                                                children=[
+                                                    dmc.GridCol(
+                                                        span={"base": 12, "md": 4},
+                                                        children=[
+                                                            dcc.Graph(
+                                                                id='capital-dividend-chart',
+                                                                style={'width': '100%', 'height': '200px'}  
+                                                            )
+                                                        ]     
+                                                    ),
+                                                    dmc.GridCol(
+                                                        span={"base": 12, "md": 4},
+                                                        children=[
+                                                            dcc.Graph(
+                                                                id='cumulative-gains-dividends-chart',
+                                                                style={'width': '100%', 'height': '200px'}
+                                                            )
+                                                        ]
+                                                    ),
+                                                    dmc.GridCol(
+                                                        span={"base": 12, "md": 4},
+                                                        children=[
+                                                            dcc.Graph(
+                                                                id='dividend-by-sector-chart',
+                                                                style={'width': '100%', 'height': '200px'}
+                                                            )
+                                                        ]
+                                                    )
+                                                ]
+                                            ),
+                                            # Terceira linha: três gráficos horizontais
+                                            dmc.Grid(
+                                                gutter="sm",
+                                                className="mt-2",
+                                                children=[
+                                                    dmc.GridCol(
+                                                        span={"base": 12, "md": 4},
+                                                        children=[
+                                                            dcc.Graph(
+                                                                id='correlation-heatmap',
+                                                                style={'width': '100%', 'height': '200px'}  
+                                                            )
+                                                        ]     
+                                                    ),
+                                                    dmc.GridCol(
+                                                        span={"base": 12, "md": 4},
+                                                        children=[
+                                                            dcc.Graph(
+                                                                id='volatility-chart',
+                                                                style={'width': '100%', 'height': '200px'}
+                                                            )
+                                                        ]
+                                                    ),
+                                                    dmc.GridCol(
+                                                        span={"base": 12, "md": 4},
+                                                        children=[
+                                                            dcc.Graph(
+                                                                id='drawdown-chart',
+                                                                figure={
+                                                                    "layout": {
+                                                                        "title": "Drawdown (em construção)",
+                                                                        "xaxis": {"visible": False},
+                                                                        "yaxis": {"visible": False},
+                                                                        "annotations": [{
+                                                                            "text": "Gráfico de Drawdown Placeholder",
+                                                                            "xref": "paper",
+                                                                            "yref": "paper",
+                                                                            "showarrow": False,
+                                                                            "font": {"size": 16}
+                                                                        }]
+                                                                    }
+                                                                },
+                                                                style={'width': '100%', 'height': '200px'}
+                                                            )
+                                                        ]
+                                                    )
+                                                ]
+                                            ),
                                         ]
                                     )
                                 ]     
                             ),
-             
-
-                            html.Div([
-                                            # Linha de largura total para os três novos elementos
-                            dbc.Row([
-                                # Coluna para o Gráfico 1 (Capital Gains e Dividend Yield)
-                                dbc.Col([
-                                    dcc.Graph(id='capital-dividend-chart', style={'width': '100%', 'height': '200px'})
-                                ], md=4, className="p-2"),
-                                # Placeholder para o Gráfico 2 (Dividendos por Setor)
-                                dbc.Col([
-                                    dcc.Graph(id='dividend-by-sector-chart', style={'width': '100%', 'height': '200px'})
-                                ], md=4, className="p-2"),
-                                # Placeholder para a Tabela (Ranking de DY)
-                                dbc.Col([
-                                    dcc.Graph(id='cumulative-gains-dividends-chart', style={'width': '100%', 'height': '200px'})
-                                ], md=4, className="p-2"),
-                            ], className="g-3"),
-                            # Três Colunas Inferiores
-                            dbc.Row([
-                                dbc.Col([
-                                    dcc.Graph(id='correlation-heatmap', style={'width': '100%', 'height': '300px'})
-                                ], md=4, className="p-2"),
-                                dbc.Col([
-                                    dcc.Graph(id='volatility-chart', style={'width': '100%', 'height': '300px'})
-                                ], md=4, className="p-2"),
-                            ], className="g-3"),
-                        ],id="app-body", className="p-4 container-fluid")
                     ],
                 ), 
                 # Aba Rentabilidade - Placeholder
@@ -1001,10 +1053,261 @@ def init_dash(flask_app, portfolio_service, empresas_redis=None):
             graph_paper_style,
             graph_paper_style
         )
+    
+    @dash_app.callback(
+        [Output('save-portfolio-message', 'children'),
+        Output('data-store', 'data', allow_duplicate=True),
+        Output('portfolio-name-dropdown', 'options', allow_duplicate=True),
+        Output('portfolio-name-dropdown', 'value', allow_duplicate=True),
+        Output('save-portfolio-modal', 'opened', allow_duplicate=True)],  # Novo output para fechar o modal
+        Input('modal-save-button', 'n_clicks'),
+        [State('portfolio-name-input', 'value'),
+        State('data-store', 'data')],
+        prevent_initial_call=True
+    )
+    @log_callback("save_portfolio")
+    def save_portfolio(n_clicks, portfolio_name, store_data):
+        """
+        Salva o portfólio diretamente no banco usando PortfolioService, com dados do dcc.Store, e fecha o modal.
+        """
+        if not n_clicks:
+            return no_update, no_update, no_update, no_update, no_update
 
-        # ALTERAÇÃO: Callback para atualizar cards e dropdown, e controlar modal
-    # Motivo: Exibir tickers no header, nome do portfólio e abrir/fechar modal
-    # Impacto: Integra cards dinâmicos e controle do modal
+        if not portfolio_name:
+            return dmc.Text('Nome do portfólio obrigatório', color='red'), no_update, no_update, no_update, True
+
+        # Verificar se o usuário é cadastrado
+        is_registered = session.get('is_registered', False)
+        plan_type = session.get('plan_type', 'free')
+        user_id = session.get('user_id')
+        if not is_registered or plan_type != 'registered' or not user_id:
+            error_message = "Salvamento restrito a usuários cadastrados"
+            logger.warning(error_message)
+            return dmc.Text(error_message, color='red'), no_update, no_update, no_update, True
+
+        if store_data:
+            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
+
+        try:
+            # Criar portfólio com dados essenciais do dcc.Store
+            portfolio = {
+                'tickers': store_data.get('tickers', []),
+                'quantities': store_data.get('quantities', []),
+                'start_date': store_data.get('start_date', ''),
+                'end_date': store_data.get('end_date', ''),
+                'name': portfolio_name
+            }
+            # Salvar diretamente usando PortfolioService
+            dash_app.portfolio_service.save_portfolio(user_id, portfolio, portfolio_name)
+            # Atualizar store_data com o novo nome
+            store_data['portfolio_name'] = portfolio_name
+            logger.info(f"Portfólio '{portfolio_name}' salvo diretamente para user_id {user_id}")
+            # Atualizar dropdown
+            dropdown_options = [{'label': portfolio_name, 'value': portfolio_name}]
+            return (
+                dmc.Text('Portfólio salvo com sucesso', color='green'),
+                orjson_dumps(store_data).decode('utf-8'),
+                dropdown_options,
+                portfolio_name,
+                False  # Fechar o modal após salvar
+            )
+        except ValueError as e:
+            logger.error(f"Erro ao salvar portfólio: {e}")
+            return dmc.Text(f'Erro: {str(e)}', color='red'), no_update, no_update, no_update, True
+        
+    @dash_app.callback(
+        Output('data-store', 'data', allow_duplicate=True),
+        Input('update-period-button', 'n_clicks'),
+        State('date-input-range-picker', 'value'),
+        State('data-store', 'data'),
+        prevent_initial_call=True
+    )
+    @log_callback("update_period")
+    def update_period(n_clicks, date_range, store_data):
+        """
+        Atualiza o período do portfólio usando o PortfolioService.
+        """
+        if store_data:
+            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
+        if not n_clicks or not date_range or not store_data:
+            return orjson_dumps(store_data).decode('utf-8') if store_data else None
+        try:
+            start_date_formatted = date_range[0]
+            end_date_formatted = date_range[1]
+            updated_portfolio = dash_app.portfolio_service.update_portfolio_period(store_data, start_date_formatted, end_date_formatted)
+            return orjson_dumps(updated_portfolio).decode('utf-8')
+        except ValueError as e:
+            return orjson_dumps(store_data).decode('utf-8')
+        
+    @dash_app.callback(
+        Output('sector-bar-charts', 'figure'),
+        Input('data-store', 'data'),
+        prevent_initial_call=False
+        )
+    @log_callback("update_sector_bar_chart")
+    def update_sector_bar_chart(store_data):
+
+        if store_data:
+            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
+
+        if not store_data or 'setor_pesos' not in store_data or 'setor_pesos_financeiros' not in store_data:
+            return go.Figure()
+
+        setor_pesos = store_data['setor_pesos']
+        setor_pesos_financeiros = store_data['setor_pesos_financeiros']
+        
+        setor_abreviado = {
+            "Petróleo, Gás e Biocombustíveis": "Petróleo\ne Gás",
+            "Materiais Básicos": "Materiais\nBásicos",
+            "Bens Industriais": "Bens\nIndustriais",
+            "Consumo Não Cíclico": "Consumo\nNão Cíclico",
+            "Consumo Cíclico": "Consumo\nCíclico",
+            "Saúde": "Saúde",
+            "Tecnologia da Informação": "Tech da\nInformação",
+            "Comunicações": "Comunicações",
+            "Utilidade Pública": "Utilidade\nPública",
+            "Financeiro": "Financeiro",
+            "Outros": "Outros"
+        }
+        
+        setores_completos = [s for s in setor_pesos.keys() if setor_pesos[s] > 0 or setor_pesos_financeiros[s] > 0]
+        setores = [setor_abreviado.get(s, s) for s in setores_completos]  # Usar get para evitar KeyError
+        pesos_quantidade = [setor_pesos[s] for s in setores_completos]
+        pesos_financeiros = [setor_pesos_financeiros[s] for s in setores_completos]
+
+        fig = go.Figure(data=[
+            go.Bar(
+                x=setores,
+                y=pesos_quantidade,
+                name='Peso por Quantidade',
+                marker_color='#1f77b4',
+                text=[f"{p:.1f}%" for p in pesos_quantidade],
+                textposition='auto'
+            ),
+            go.Bar(
+                x=setores,
+                y=pesos_financeiros,
+                name='Peso Financeiro',
+                marker_color='#ff7f0e',
+                text=[f"{p:.1f}%" for p in pesos_financeiros],
+                textposition='auto'
+            )
+        ])
+        fig.update_layout(
+            title="Pesos por Setor",
+            yaxis_title="Percentual (%)",
+            barmode='group',
+            bargap=0.15,
+            bargroupgap=0.1,
+            height=300,
+            margin=dict(l=40, r=80, t=60, b=40),
+            legend=dict(
+                x=0.5,
+                y=1.1,
+                xanchor='center',
+                yanchor='bottom',
+                bgcolor='rgba(255,255,255,0.5)',
+                orientation='h'
+            )
+        )
+        return fig
+    
+    import re
+    # Função para remover números e .SA
+    def normaliza_ticker(ticker):
+        return re.sub(r'\d+', '', ticker.replace('.SA', ''))
+
+    @dash_app.callback(
+        Output('financial-sunburst-chart', 'figure'),
+        Input('data-store', 'data'),
+        prevent_initial_call=False
+    )
+    def update_sunburst_chart(store_data):
+        if not store_data or 'tickers' not in store_data or 'quantities' not in store_data:
+            return go.Figure()
+
+        store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
+        tickers = store_data['tickers']
+        quantities = store_data['quantities']
+        portfolio_values = store_data.get('portfolio_values', {})
+
+        labels, ids, parents, values, hover_texts = [], [], [], [], []
+        inseridos = set()
+
+        for ticker, quantity in zip(tickers, quantities):
+            ticker_base = normaliza_ticker(ticker)
+            info = SETORIAL_B3.get(ticker_base, {})
+            setor = info.get("setor", "Outros")
+            subsetor = info.get("subsetor", setor)
+            segmento = info.get("segmento", subsetor)
+
+            valor_final = 0
+            if ticker in portfolio_values and portfolio_values[ticker]:
+                valor_final = list(portfolio_values[ticker].values())[-1] * quantity
+
+            setor_id = f"setor::{setor}"
+            subsetor_id = f"{setor_id}|subsetor::{subsetor}"
+            segmento_id = f"{subsetor_id}|segmento::{segmento}"
+
+            if setor_id not in inseridos:
+                labels.append(setor)
+                ids.append(setor_id)
+                parents.append("")
+                values.append(0)
+                hover_texts.append(f"{setor}<br>Nível: Setor")
+                inseridos.add(setor_id)
+
+            if subsetor_id not in inseridos:
+                labels.append(subsetor)
+                ids.append(subsetor_id)
+                parents.append(setor_id)
+                values.append(0)
+                hover_texts.append(f"{subsetor}<br>Nível: Subsetor")
+                inseridos.add(subsetor_id)
+
+            if segmento_id not in inseridos:
+                labels.append(segmento)
+                ids.append(segmento_id)
+                parents.append(subsetor_id)
+                values.append(0)
+                hover_texts.append(f"{segmento}<br>Nível: Segmento")
+                inseridos.add(segmento_id)
+
+            labels.append(ticker)
+            ids.append(ticker)
+            parents.append(segmento_id)
+            values.append(valor_final)
+            hover_texts.append(f"{ticker}<br>Peso: {valor_final:.2f}")
+
+            for node_id in [segmento_id, subsetor_id, setor_id]:
+                idx = ids.index(node_id)
+                values[idx] += valor_final
+
+        fig = go.Figure(go.Sunburst(
+            ids=ids,
+            labels=labels,
+            parents=parents,
+            values=values,
+            customdata=hover_texts,
+            hovertemplate="%{customdata}<extra></extra>",
+            branchvalues="total",
+            textinfo="label+percent entry",
+            insidetextorientation="radial",
+            marker=dict(colorscale="Oranges")
+        ))
+
+        fig.update_layout(
+            title="Distribuição por Peso Financeiro",
+            height=320,
+            margin=dict(t=40, l=20, r=20, b=20)
+        )
+
+        return fig
+    
+
+    #$$---Callbacks comentados --- $$ 
+
+       
     # @dash_app.callback(
     #     [Output('portfolio-cards', 'children'),
     #     Output('portfolio-name-dropdown', 'options'),
@@ -1217,438 +1520,83 @@ def init_dash(flask_app, portfolio_service, empresas_redis=None):
     #     # Logar dados finais
     #     logger.info(f"Retornando updated_table_data: {updated_table_data}")
     #     return updated_table_data, orjson_dumps(updated_store_data).decode('utf-8')
-
-    @dash_app.callback(
-        [Output('save-portfolio-message', 'children'),
-        Output('data-store', 'data', allow_duplicate=True),
-        Output('portfolio-name-dropdown', 'options', allow_duplicate=True),
-        Output('portfolio-name-dropdown', 'value', allow_duplicate=True),
-        Output('save-portfolio-modal', 'opened', allow_duplicate=True)],  # Novo output para fechar o modal
-        Input('modal-save-button', 'n_clicks'),
-        [State('portfolio-name-input', 'value'),
-        State('data-store', 'data')],
-        prevent_initial_call=True
-    )
-    @log_callback("save_portfolio")
-    def save_portfolio(n_clicks, portfolio_name, store_data):
-        """
-        Salva o portfólio diretamente no banco usando PortfolioService, com dados do dcc.Store, e fecha o modal.
-        """
-        if not n_clicks:
-            return no_update, no_update, no_update, no_update, no_update
-
-        if not portfolio_name:
-            return dmc.Text('Nome do portfólio obrigatório', color='red'), no_update, no_update, no_update, True
-
-        # Verificar se o usuário é cadastrado
-        is_registered = session.get('is_registered', False)
-        plan_type = session.get('plan_type', 'free')
-        user_id = session.get('user_id')
-        if not is_registered or plan_type != 'registered' or not user_id:
-            error_message = "Salvamento restrito a usuários cadastrados"
-            logger.warning(error_message)
-            return dmc.Text(error_message, color='red'), no_update, no_update, no_update, True
-
-        if store_data:
-            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
-
-        try:
-            # Criar portfólio com dados essenciais do dcc.Store
-            portfolio = {
-                'tickers': store_data.get('tickers', []),
-                'quantities': store_data.get('quantities', []),
-                'start_date': store_data.get('start_date', ''),
-                'end_date': store_data.get('end_date', ''),
-                'name': portfolio_name
-            }
-            # Salvar diretamente usando PortfolioService
-            dash_app.portfolio_service.save_portfolio(user_id, portfolio, portfolio_name)
-            # Atualizar store_data com o novo nome
-            store_data['portfolio_name'] = portfolio_name
-            logger.info(f"Portfólio '{portfolio_name}' salvo diretamente para user_id {user_id}")
-            # Atualizar dropdown
-            dropdown_options = [{'label': portfolio_name, 'value': portfolio_name}]
-            return (
-                dmc.Text('Portfólio salvo com sucesso', color='green'),
-                orjson_dumps(store_data).decode('utf-8'),
-                dropdown_options,
-                portfolio_name,
-                False  # Fechar o modal após salvar
-            )
-        except ValueError as e:
-            logger.error(f"Erro ao salvar portfólio: {e}")
-            return dmc.Text(f'Erro: {str(e)}', color='red'), no_update, no_update, no_update, True
-        
-    @dash_app.callback(
-        Output('data-store', 'data', allow_duplicate=True),
-        Input('update-period-button', 'n_clicks'),
-        State('date-input-range-picker', 'value'),
-        State('data-store', 'data'),
-        prevent_initial_call=True
-    )
-    @log_callback("update_period")
-    def update_period(n_clicks, date_range, store_data):
-        """
-        Atualiza o período do portfólio usando o PortfolioService.
-        """
-        if store_data:
-            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
-        if not n_clicks or not date_range or not store_data:
-            return orjson_dumps(store_data).decode('utf-8') if store_data else None
-        try:
-            start_date_formatted = date_range[0]
-            end_date_formatted = date_range[1]
-            updated_portfolio = dash_app.portfolio_service.update_portfolio_period(store_data, start_date_formatted, end_date_formatted)
-            return orjson_dumps(updated_portfolio).decode('utf-8')
-        except ValueError as e:
-            return orjson_dumps(store_data).decode('utf-8')
-        
+   
     
        
-    # @dash_app.callback(
-    #     Output('capital-dividend-chart', 'figure'),
-    #     Input('data-store', 'data'),
-    #     prevent_initial_call=False
-    # )
-    # @log_callback("update_capital_dividend_chart")
-    # def update_capital_dividend_chart(store_data):
-    #     """
-    #     Gera um gráfico de colunas lado a lado com ganho de capital, dividend yield e retorno total.
-    #     """
-    #     # ALTERAÇÃO: Desserializar store_data com orjson_loads
-    #     # Motivo: Dados do dcc.Store foram serializados com orjson_dumps; convertemos para dict
-    #     # Impacto: Permite acessar portfolio_values, dividends, etc. para gerar o gráfico
-    #     if store_data:
-    #         store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
-
-    #     if not store_data or 'portfolio_values' not in store_data or 'tickers' not in store_data:
-    #         return go.Figure()
-
-    #     tickers = store_data['tickers']
-    #     quantities = store_data['quantities']
-    #     portfolio_values = store_data['portfolio_values']
-    #     dividends = store_data.get('dividends', {})
-    #     start_date = store_data['start_date']
-    #     end_date = store_data['end_date']
-
-    #     if not start_date or not end_date or not tickers:
-    #         return go.Figure()
-
-    #     metrics = dash_app.portfolio_service.calcular_metricas_mensais_anuais(tickers, quantities, portfolio_values, dividends, start_date, end_date)
-
-    #     periods = metrics['periods']
-    #     capital_gains = metrics['capital_gains']
-    #     dividend_yields = metrics['dividend_yields']
-    #     total_returns = metrics['total_returns']
-
-    #     fig = go.Figure()
-    #     fig.add_trace(go.Bar(
-    #         x=periods,
-    #         y=capital_gains,
-    #         name='Ganho de Capital',
-    #         marker_color='#F5CBA7',
-    #         text=[f"{y:.1f}%" for y in capital_gains],
-    #         textposition='auto'
-    #     ))
-    #     fig.add_trace(go.Bar(
-    #         x=periods,
-    #         y=dividend_yields,
-    #         name='Dividend Yield',
-    #         marker_color='#D35400',
-    #         text=[f"{y:.1f}%" for y in dividend_yields if y > 0],
-    #         textposition='auto'
-    #     ))
-    #     fig.add_trace(go.Scatter(
-    #         x=periods,
-    #         y=total_returns,
-    #         mode='markers',
-    #         name='Retorno Total',
-    #         marker=dict(
-    #             size=6,
-    #             color='black',
-    #             symbol='circle',
-    #             line=dict(width=1, color='white')
-    #         ),
-    #         text=[f"{y:.1f}%" for y in total_returns],
-    #         hoverinfo='text'
-    #     ))
-    #     fig.update_layout(
-    #         title='Ganho de Capital e Dividend Yield',
-    #         yaxis_title='Retorno (%)',
-    #         barmode='group',
-    #         bargap=0.3,
-    #         height=200,
-    #         margin=dict(l=40, r=40, t=60, b=40),
-    #         legend=dict(
-    #             x=0.5,
-    #             y=1.1,
-    #             xanchor='center',
-    #             yanchor='bottom',
-    #             bgcolor='rgba(255,255,255,0.5)',
-    #             orientation='h'
-    #         ),
-    #         yaxis=dict(
-    #             tickformat='.1f',
-    #             ticksuffix='%',
-    #             autorange=True
-    #         )
-    #     )
-    #     return fig
-    
-    # @dash_app.callback(
-    #     Output('dividend-by-sector-chart', 'figure'),
-    #     Input('data-store', 'data'),
-    #     prevent_initial_call=False
-    # )
-    # @log_callback("update_dividend_by_sector_chart")
-    # def update_dividend_by_sector_chart(store_data):
-    #     """
-    #     Gera um gráfico de barras com o Dividend Yield por setor.
-    #     """
-    #     # ALTERAÇÃO: Desserializar store_data com orjson_loads
-    #     # Motivo: Dados do dcc.Store foram serializados com orjson_dumps; convertemos para dict
-    #     # Impacto: Permite acessar portfolio_values, dividends, etc. para gerar o gráfico
-    #     if store_data:
-    #         store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
-
-    #     if not store_data or 'portfolio_values' not in store_data or 'tickers' not in store_data:
-    #         return go.Figure()
-
-    #     tickers = store_data['tickers']
-    #     quantities = store_data['quantities']
-    #     portfolio_values = store_data['portfolio_values']
-    #     dividends = store_data.get('dividends', {})
-    #     start_date = store_data['start_date']
-    #     end_date = store_data['end_date']
-
-    #     if not start_date or not end_date or not tickers:
-    #         return go.Figure()
-
-    #     metrics = dash_app.portfolio_service.calcular_dy_por_setor(tickers, quantities, portfolio_values, dividends, start_date, end_date)
-
-    #     years = metrics['years']
-    #     setores = metrics['setores']
-    #     dy_por_setor_por_ano = metrics['dy_por_setor_por_ano']
-
-    #     fig = go.Figure()
-    #     colors = ['#FF9999', '#FF6666', '#FF3333']
-    #     for idx, year in enumerate(years):
-    #         dy_values = [dy_por_setor_por_ano[setor][year] for setor in setores]
-    #         fig.add_trace(go.Bar(
-    #             x=setores,
-    #             y=dy_values,
-    #             name=year,
-    #             marker_color=colors[idx % len(colors)],
-    #             text=[f"{y:.1f}%" for y in dy_values if y > 0],
-    #             textposition='auto'
-    #         ))
-
-    #     fig.update_layout(
-    #         title='Dividend Yield por Setor',
-    #         yaxis_title='Dividend Yield (%)',
-    #         barmode='group',
-    #         bargap=0.3,
-    #         bargroupgap=0.0,
-    #         height=200,
-    #         margin=dict(l=40, r=40, t=60, b=40),
-    #         legend=dict(
-    #             x=0.5,
-    #             y=1.1,
-    #             xanchor='center',
-    #             yanchor='bottom',
-    #             bgcolor='rgba(255,255,255,0.5)',
-    #             orientation='h'
-    #         ),
-    #         yaxis=dict(
-    #             tickformat='.1f',
-    #             ticksuffix='%',
-    #             autorange=True
-    #         ),
-    #         annotations=[
-    #             dict(
-    #                 x=1,
-    #                 y=-0.2,
-    #                 xref="paper",
-    #                 yref="paper",
-    #                 text="* Anos incompletos foram anualizados",
-    #                 showarrow=False,
-    #                 font=dict(size=10)
-    #             )
-    #         ]
-    #     )
-    #     return fig
-    
-    # @dash_app.callback(
-    #     Output('cumulative-gains-dividends-chart', 'figure'),
-    #     Input('data-store', 'data'),
-    #     prevent_initial_call=False
-    # )
-    # @log_callback("update_cumulative_gains_dividends_chart")
-    # def update_cumulative_gains_dividends_chart(store_data):
-    #     """
-    #     Gera um gráfico de linhas mostrando o retorno total acumulado e o DY acumulado.
-    #     """
-    #     # ALTERAÇÃO: Desserializar store_data com orjson_loads
-    #     # Motivo: Dados do dcc.Store foram serializados com orjson_dumps; convertemos para dict
-    #     # Impacto: Permite acessar portfolio_values, dividends, etc. para gerar o gráfico
-    #     if store_data:
-    #         store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
-
-    #     if not store_data or 'tickers' not in store_data or 'portfolio_values' not in store_data:
-    #         return go.Figure().update_layout(
-    #             title="Retorno Total e DY Acumulados (%)",
-    #             annotations=[dict(text="Sem dados", x=0.5, y=0.5, showarrow=False)]
-    #         )
-
-    #     tickers = store_data.get('tickers', [])
-    #     quantities = store_data.get('quantities', [1] * len(tickers))
-    #     portfolio_values = store_data.get('portfolio_values', {})
-    #     dividends = store_data.get('dividends', {})
-    #     start_date = store_data.get('start_date', '2024-01-01')
-    #     end_date = store_data.get('end_date', '2025-04-23')
-
-    #     start = pd.to_datetime(start_date)
-    #     end = pd.to_datetime(end_date)
-
-    #     portfolio_df = pd.DataFrame()
-    #     for ticker in tickers:
-    #         if ticker in portfolio_values and portfolio_values[ticker]:
-    #             df = pd.DataFrame.from_dict(portfolio_values[ticker], orient='index', columns=[ticker])
-    #             df.index = pd.to_datetime(df.index)
-    #             portfolio_df = portfolio_df.join(df, how='outer') if not portfolio_df.empty else df
-    #     portfolio_df = portfolio_df.ffill().loc[start:end]
-
-    #     if portfolio_df.empty:
-    #         return go.Figure().update_layout(
-    #             title="Retorno Total e DY Acumulados (%)",
-    #             annotations=[dict(text="Sem dados", x=0.5, y=0.5, showarrow=False)]
-    #         )
-
-    #     total_portfolio = pd.DataFrame()
-    #     for ticker, qty in zip(tickers, quantities):
-    #         if ticker in portfolio_df.columns:
-    #             total_portfolio[ticker] = portfolio_df[ticker] * qty
-    #     portfolio_series = total_portfolio.sum(axis=1)
-
-    #     initial_value = portfolio_series.iloc[0]
-    #     if initial_value == 0:
-    #         return go.Figure().update_layout(
-    #             title="Retorno Total e DY Acumulados (%)",
-    #             annotations=[dict(text="Valor inicial zero", x=0.5, y=0.5, showarrow=False)]
-    #         )
-
-    #     gains_series = ((portfolio_series - initial_value) / initial_value) * 100
-
-    #     dividend_dates = []
-    #     dividend_totals = []
-    #     cumulative_dividends = 0
-    #     all_dates = pd.date_range(start=start, end=end, freq='D')
-        
-    #     for date in all_dates:
-    #         date_str = date.strftime('%Y-%m-%d')
-    #         daily_dividend = 0
-    #         for ticker, qty in zip(tickers, quantities):
-    #             if ticker in dividends and date_str in dividends[ticker]:
-    #                 daily_dividend += dividends[ticker][date_str] * qty
-    #         cumulative_dividends += daily_dividend
-    #         dividend_dates.append(date)
-    #         dividend_totals.append(cumulative_dividends)
-
-    #     dividend_series = pd.Series(dividend_totals, index=dividend_dates)
-    #     dividend_series = dividend_series.reindex(portfolio_series.index, method='ffill').fillna(0)
-    #     dy_series = (dividend_series / initial_value) * 100
-
-    #     total_return = gains_series + dy_series
-
-    #     fig = go.Figure()
-    #     fig.add_trace(go.Scatter(
-    #         x=total_return.index,
-    #         y=total_return.values,
-    #         mode='lines',
-    #         name='Retorno Total Acumulado (%)',
-    #         line=dict(color='blue'),
-    #         hovertemplate='%{x|%Y-%m-%d}: %{y:.2f}%'
-    #     ))
-    #     fig.add_trace(go.Scatter(
-    #         x=dy_series.index,
-    #         y=dy_series.values,
-    #         mode='lines',
-    #         name='DY Acumulado (%)',
-    #         line=dict(color='green'),
-    #         hovertemplate='%{x|%Y-%m-%d}: %{y:.2f}%'
-    #     ))
-    #     fig.update_layout(
-    #         title="Retorno Total e DY Acumulados (%)",
-    #         xaxis_title="Data",
-    #         yaxis_title="Retorno Acumulado (%)",
-    #         margin=dict(l=20, r=20, t=40, b=20),
-    #         height=200,
-    #         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
-    #     )
-    #     return fig
-        
     @dash_app.callback(
-        Output('sector-bar-charts', 'figure'),
+        Output('capital-dividend-chart', 'figure'),
         Input('data-store', 'data'),
         prevent_initial_call=False
     )
-    @log_callback("update_sector_bar_chart")
-    def update_sector_bar_chart(store_data):
-
+    @log_callback("update_capital_dividend_chart")
+    def update_capital_dividend_chart(store_data):
+        """
+        Gera um gráfico de colunas lado a lado com ganho de capital, dividend yield e retorno total.
+        """
+        # ALTERAÇÃO: Desserializar store_data com orjson_loads
+        # Motivo: Dados do dcc.Store foram serializados com orjson_dumps; convertemos para dict
+        # Impacto: Permite acessar portfolio_values, dividends, etc. para gerar o gráfico
         if store_data:
             store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
 
-        if not store_data or 'setor_pesos' not in store_data or 'setor_pesos_financeiros' not in store_data:
+        if not store_data or 'portfolio_values' not in store_data or 'tickers' not in store_data:
             return go.Figure()
 
-        setor_pesos = store_data['setor_pesos']
-        setor_pesos_financeiros = store_data['setor_pesos_financeiros']
-        
-        setor_abreviado = {
-            "Petróleo, Gás e Biocombustíveis": "Petróleo\ne Gás",
-            "Materiais Básicos": "Materiais\nBásicos",
-            "Bens Industriais": "Bens\nIndustriais",
-            "Consumo Não Cíclico": "Consumo\nNão Cíclico",
-            "Consumo Cíclico": "Consumo\nCíclico",
-            "Saúde": "Saúde",
-            "Tecnologia da Informação": "Tech da\nInformação",
-            "Comunicações": "Comunicações",
-            "Utilidade Pública": "Utilidade\nPública",
-            "Financeiro": "Financeiro",
-            "Outros": "Outros"
-        }
-        
-        setores_completos = [s for s in setor_pesos.keys() if setor_pesos[s] > 0 or setor_pesos_financeiros[s] > 0]
-        setores = [setor_abreviado.get(s, s) for s in setores_completos]  # Usar get para evitar KeyError
-        pesos_quantidade = [setor_pesos[s] for s in setores_completos]
-        pesos_financeiros = [setor_pesos_financeiros[s] for s in setores_completos]
+        tickers = store_data['tickers']
+        quantities = store_data['quantities']
+        portfolio_values = store_data['portfolio_values']
+        dividends = store_data.get('dividends', {})
+        start_date = store_data['start_date']
+        end_date = store_data['end_date']
 
-        fig = go.Figure(data=[
-            go.Bar(
-                x=setores,
-                y=pesos_quantidade,
-                name='Peso por Quantidade',
-                marker_color='#1f77b4',
-                text=[f"{p:.1f}%" for p in pesos_quantidade],
-                textposition='auto'
+        if not start_date or not end_date or not tickers:
+            return go.Figure()
+
+        metrics = dash_app.portfolio_service.calcular_metricas_mensais_anuais(tickers, quantities, portfolio_values, dividends, start_date, end_date)
+
+        periods = metrics['periods']
+        capital_gains = metrics['capital_gains']
+        dividend_yields = metrics['dividend_yields']
+        total_returns = metrics['total_returns']
+
+        fig = go.Figure()
+        fig.add_trace(go.Bar(
+            x=periods,
+            y=capital_gains,
+            name='Ganho de Capital',
+            marker_color='#F5CBA7',
+            text=[f"{y:.1f}%" for y in capital_gains],
+            textposition='auto'
+        ))
+        fig.add_trace(go.Bar(
+            x=periods,
+            y=dividend_yields,
+            name='Dividend Yield',
+            marker_color='#D35400',
+            text=[f"{y:.1f}%" for y in dividend_yields if y > 0],
+            textposition='auto'
+        ))
+        fig.add_trace(go.Scatter(
+            x=periods,
+            y=total_returns,
+            mode='markers',
+            name='Retorno Total',
+            marker=dict(
+                size=6,
+                color='black',
+                symbol='circle',
+                line=dict(width=1, color='white')
             ),
-            go.Bar(
-                x=setores,
-                y=pesos_financeiros,
-                name='Peso Financeiro',
-                marker_color='#ff7f0e',
-                text=[f"{p:.1f}%" for p in pesos_financeiros],
-                textposition='auto'
-            )
-        ])
+            text=[f"{y:.1f}%" for y in total_returns],
+            hoverinfo='text'
+        ))
         fig.update_layout(
-            title="Pesos por Setor",
-            yaxis_title="Percentual (%)",
+            title='Ganho de Capital e Dividend Yield',
+            yaxis_title='Retorno (%)',
             barmode='group',
-            bargap=0.15,
-            bargroupgap=0.1,
-            height=300,
-            margin=dict(l=40, r=80, t=60, b=40),
+            bargap=0.3,
+            height=200,
+            margin=dict(l=40, r=40, t=60, b=40),
             legend=dict(
                 x=0.5,
                 y=1.1,
@@ -1656,188 +1604,294 @@ def init_dash(flask_app, portfolio_service, empresas_redis=None):
                 yanchor='bottom',
                 bgcolor='rgba(255,255,255,0.5)',
                 orientation='h'
+            ),
+            yaxis=dict(
+                tickformat='.1f',
+                ticksuffix='%',
+                autorange=True
             )
         )
         return fig
     
-    import re
-    # Função para remover números e .SA
-    def normaliza_ticker(ticker):
-        return re.sub(r'\d+', '', ticker.replace('.SA', ''))
-
     @dash_app.callback(
-        Output('financial-sunburst-chart', 'figure'),
+        Output('dividend-by-sector-chart', 'figure'),
         Input('data-store', 'data'),
         prevent_initial_call=False
     )
-    def update_sunburst_chart(store_data):
-        if not store_data or 'tickers' not in store_data or 'quantities' not in store_data:
+    @log_callback("update_dividend_by_sector_chart")
+    def update_dividend_by_sector_chart(store_data):
+        """
+        Gera um gráfico de barras com o Dividend Yield por setor.
+        """
+        # ALTERAÇÃO: Desserializar store_data com orjson_loads
+        # Motivo: Dados do dcc.Store foram serializados com orjson_dumps; convertemos para dict
+        # Impacto: Permite acessar portfolio_values, dividends, etc. para gerar o gráfico
+        if store_data:
+            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
+
+        if not store_data or 'portfolio_values' not in store_data or 'tickers' not in store_data:
             return go.Figure()
 
-        store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
         tickers = store_data['tickers']
         quantities = store_data['quantities']
-        portfolio_values = store_data.get('portfolio_values', {})
+        portfolio_values = store_data['portfolio_values']
+        dividends = store_data.get('dividends', {})
+        start_date = store_data['start_date']
+        end_date = store_data['end_date']
 
-        labels, ids, parents, values, hover_texts = [], [], [], [], []
-        inseridos = set()
+        if not start_date or not end_date or not tickers:
+            return go.Figure()
 
-        for ticker, quantity in zip(tickers, quantities):
-            ticker_base = normaliza_ticker(ticker)
-            info = SETORIAL_B3.get(ticker_base, {})
-            setor = info.get("setor", "Outros")
-            subsetor = info.get("subsetor", setor)
-            segmento = info.get("segmento", subsetor)
+        metrics = dash_app.portfolio_service.calcular_dy_por_setor(tickers, quantities, portfolio_values, dividends, start_date, end_date)
 
-            valor_final = 0
-            if ticker in portfolio_values and portfolio_values[ticker]:
-                valor_final = list(portfolio_values[ticker].values())[-1] * quantity
+        years = metrics['years']
+        setores = metrics['setores']
+        dy_por_setor_por_ano = metrics['dy_por_setor_por_ano']
 
-            setor_id = f"setor::{setor}"
-            subsetor_id = f"{setor_id}|subsetor::{subsetor}"
-            segmento_id = f"{subsetor_id}|segmento::{segmento}"
-
-            if setor_id not in inseridos:
-                labels.append(setor)
-                ids.append(setor_id)
-                parents.append("")
-                values.append(0)
-                hover_texts.append(f"{setor}<br>Nível: Setor")
-                inseridos.add(setor_id)
-
-            if subsetor_id not in inseridos:
-                labels.append(subsetor)
-                ids.append(subsetor_id)
-                parents.append(setor_id)
-                values.append(0)
-                hover_texts.append(f"{subsetor}<br>Nível: Subsetor")
-                inseridos.add(subsetor_id)
-
-            if segmento_id not in inseridos:
-                labels.append(segmento)
-                ids.append(segmento_id)
-                parents.append(subsetor_id)
-                values.append(0)
-                hover_texts.append(f"{segmento}<br>Nível: Segmento")
-                inseridos.add(segmento_id)
-
-            labels.append(ticker)
-            ids.append(ticker)
-            parents.append(segmento_id)
-            values.append(valor_final)
-            hover_texts.append(f"{ticker}<br>Peso: {valor_final:.2f}")
-
-            for node_id in [segmento_id, subsetor_id, setor_id]:
-                idx = ids.index(node_id)
-                values[idx] += valor_final
-
-        fig = go.Figure(go.Sunburst(
-            ids=ids,
-            labels=labels,
-            parents=parents,
-            values=values,
-            customdata=hover_texts,
-            hovertemplate="%{customdata}<extra></extra>",
-            branchvalues="total",
-            textinfo="label+percent entry",
-            insidetextorientation="radial",
-            marker=dict(colorscale="Oranges")
-        ))
+        fig = go.Figure()
+        colors = ['#FF9999', '#FF6666', '#FF3333']
+        for idx, year in enumerate(years):
+            dy_values = [dy_por_setor_por_ano[setor][year] for setor in setores]
+            fig.add_trace(go.Bar(
+                x=setores,
+                y=dy_values,
+                name=year,
+                marker_color=colors[idx % len(colors)],
+                text=[f"{y:.1f}%" for y in dy_values if y > 0],
+                textposition='auto'
+            ))
 
         fig.update_layout(
-            title="Distribuição por Peso Financeiro",
-            height=320,
-            margin=dict(t=40, l=20, r=20, b=20)
+            title='Dividend Yield por Setor',
+            yaxis_title='Dividend Yield (%)',
+            barmode='group',
+            bargap=0.3,
+            bargroupgap=0.0,
+            height=200,
+            margin=dict(l=40, r=40, t=60, b=40),
+            legend=dict(
+                x=0.5,
+                y=1.1,
+                xanchor='center',
+                yanchor='bottom',
+                bgcolor='rgba(255,255,255,0.5)',
+                orientation='h'
+            ),
+            yaxis=dict(
+                tickformat='.1f',
+                ticksuffix='%',
+                autorange=True
+            ),
+            annotations=[
+                dict(
+                    x=1,
+                    y=-0.2,
+                    xref="paper",
+                    yref="paper",
+                    text="* Anos incompletos foram anualizados",
+                    showarrow=False,
+                    font=dict(size=10)
+                )
+            ]
         )
+        return fig
+    
+    @dash_app.callback(
+        Output('cumulative-gains-dividends-chart', 'figure'),
+        Input('data-store', 'data'),
+        prevent_initial_call=False
+    )
+    @log_callback("update_cumulative_gains_dividends_chart")
+    def update_cumulative_gains_dividends_chart(store_data):
+        """
+        Gera um gráfico de linhas mostrando o retorno total acumulado e o DY acumulado.
+        """
+        # ALTERAÇÃO: Desserializar store_data com orjson_loads
+        # Motivo: Dados do dcc.Store foram serializados com orjson_dumps; convertemos para dict
+        # Impacto: Permite acessar portfolio_values, dividends, etc. para gerar o gráfico
+        if store_data:
+            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
 
+        if not store_data or 'tickers' not in store_data or 'portfolio_values' not in store_data:
+            return go.Figure().update_layout(
+                title="Retorno Total e DY Acumulados (%)",
+                annotations=[dict(text="Sem dados", x=0.5, y=0.5, showarrow=False)]
+            )
+
+        tickers = store_data.get('tickers', [])
+        quantities = store_data.get('quantities', [1] * len(tickers))
+        portfolio_values = store_data.get('portfolio_values', {})
+        dividends = store_data.get('dividends', {})
+        start_date = store_data.get('start_date', '2024-01-01')
+        end_date = store_data.get('end_date', '2025-04-23')
+
+        start = pd.to_datetime(start_date)
+        end = pd.to_datetime(end_date)
+
+        portfolio_df = pd.DataFrame()
+        for ticker in tickers:
+            if ticker in portfolio_values and portfolio_values[ticker]:
+                df = pd.DataFrame.from_dict(portfolio_values[ticker], orient='index', columns=[ticker])
+                df.index = pd.to_datetime(df.index)
+                portfolio_df = portfolio_df.join(df, how='outer') if not portfolio_df.empty else df
+        portfolio_df = portfolio_df.ffill().loc[start:end]
+
+        if portfolio_df.empty:
+            return go.Figure().update_layout(
+                title="Retorno Total e DY Acumulados (%)",
+                annotations=[dict(text="Sem dados", x=0.5, y=0.5, showarrow=False)]
+            )
+
+        total_portfolio = pd.DataFrame()
+        for ticker, qty in zip(tickers, quantities):
+            if ticker in portfolio_df.columns:
+                total_portfolio[ticker] = portfolio_df[ticker] * qty
+        portfolio_series = total_portfolio.sum(axis=1)
+
+        initial_value = portfolio_series.iloc[0]
+        if initial_value == 0:
+            return go.Figure().update_layout(
+                title="Retorno Total e DY Acumulados (%)",
+                annotations=[dict(text="Valor inicial zero", x=0.5, y=0.5, showarrow=False)]
+            )
+
+        gains_series = ((portfolio_series - initial_value) / initial_value) * 100
+
+        dividend_dates = []
+        dividend_totals = []
+        cumulative_dividends = 0
+        all_dates = pd.date_range(start=start, end=end, freq='D')
+        
+        for date in all_dates:
+            date_str = date.strftime('%Y-%m-%d')
+            daily_dividend = 0
+            for ticker, qty in zip(tickers, quantities):
+                if ticker in dividends and date_str in dividends[ticker]:
+                    daily_dividend += dividends[ticker][date_str] * qty
+            cumulative_dividends += daily_dividend
+            dividend_dates.append(date)
+            dividend_totals.append(cumulative_dividends)
+
+        dividend_series = pd.Series(dividend_totals, index=dividend_dates)
+        dividend_series = dividend_series.reindex(portfolio_series.index, method='ffill').fillna(0)
+        dy_series = (dividend_series / initial_value) * 100
+
+        total_return = gains_series + dy_series
+
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(
+            x=total_return.index,
+            y=total_return.values,
+            mode='lines',
+            name='Retorno Total Acumulado (%)',
+            line=dict(color='blue'),
+            hovertemplate='%{x|%Y-%m-%d}: %{y:.2f}%'
+        ))
+        fig.add_trace(go.Scatter(
+            x=dy_series.index,
+            y=dy_series.values,
+            mode='lines',
+            name='DY Acumulado (%)',
+            line=dict(color='green'),
+            hovertemplate='%{x|%Y-%m-%d}: %{y:.2f}%'
+        ))
+        fig.update_layout(
+            title="Retorno Total e DY Acumulados (%)",
+            xaxis_title="Data",
+            yaxis_title="Retorno Acumulado (%)",
+            margin=dict(l=20, r=20, t=40, b=20),
+            height=200,
+            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
+        )
+        return fig
+        
+
+
+    @dash_app.callback(
+        Output('correlation-heatmap', 'figure'),
+        Input('data-store', 'data'),
+        prevent_initial_call=False
+    )
+    @log_callback("update_correlation_heatmap")
+    def update_correlation_heatmap(store_data):
+        # ALTERAÇÃO: Desserializar store_data com orjson_loads
+        # Motivo: Dados do dcc.Store foram serializados com orjson_dumps; convertemos para dict
+        # Impacto: Permite acessar individual_returns para gerar o heatmap
+        if store_data:
+            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
+
+        if not store_data or 'individual_returns' not in store_data or not store_data['individual_returns']:
+            return go.Figure()
+
+        individual_returns = store_data['individual_returns']
+        tickers = store_data['tickers']
+        returns_df = pd.DataFrame({ticker: individual_returns.get(ticker, {}) for ticker in tickers})
+        returns_df = returns_df.apply(pd.to_numeric, errors='coerce').dropna()
+
+        if returns_df.empty or len(returns_df.columns) < 2:
+            return go.Figure()
+        correlation_matrix = returns_df.corr()
+
+        fig = go.Figure(data=go.Heatmap(
+            z=correlation_matrix.values,
+            x=correlation_matrix.columns,
+            y=correlation_matrix.index,
+            colorscale='RdBu',
+            zmin=-1, zmax=1,
+            text=[[f"{val:.2f}" for val in row] for row in correlation_matrix.values],
+            hoverinfo='text',
+            colorbar=dict(title="Correlação")
+        ))
+        fig.update_layout(
+            title="Correlação entre Tickers",
+            xaxis_title="Tickers",
+            yaxis_title="Tickers",
+            margin=dict(l=40, r=40, t=60, b=40),
+            height=300
+        )
         return fig
 
+    @dash_app.callback(
+        Output('volatility-chart', 'figure'),
+        Input('data-store', 'data'),
+        prevent_initial_call=False
+    )
+    @log_callback("update_volatility_chart")
+    def update_volatility_chart(store_data):
+        # ALTERAÇÃO: Desserializar store_data com orjson_loads
+        # Motivo: Dados do dcc.Store foram serializados com orjson_dumps; convertemos para dict
+        # Impacto: Permite acessar individual_daily_returns e portfolio_daily_return para gerar o gráfico
+        if store_data:
+            store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
 
-    # @dash_app.callback(
-    #     Output('correlation-heatmap', 'figure'),
-    #     Input('data-store', 'data'),
-    #     prevent_initial_call=False
-    # )
-    # @log_callback("update_correlation_heatmap")
-    # def update_correlation_heatmap(store_data):
-    #     # ALTERAÇÃO: Desserializar store_data com orjson_loads
-    #     # Motivo: Dados do dcc.Store foram serializados com orjson_dumps; convertemos para dict
-    #     # Impacto: Permite acessar individual_returns para gerar o heatmap
-    #     if store_data:
-    #         store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
+        if not store_data or 'individual_daily_returns' not in store_data or 'portfolio_daily_return' not in store_data:
+            return go.Figure()
 
-    #     if not store_data or 'individual_returns' not in store_data or not store_data['individual_returns']:
-    #         return go.Figure()
-
-    #     individual_returns = store_data['individual_returns']
-    #     tickers = store_data['tickers']
-    #     returns_df = pd.DataFrame({ticker: individual_returns.get(ticker, {}) for ticker in tickers})
-    #     returns_df = returns_df.apply(pd.to_numeric, errors='coerce').dropna()
-
-    #     if returns_df.empty or len(returns_df.columns) < 2:
-    #         return go.Figure()
-    #     correlation_matrix = returns_df.corr()
-
-    #     fig = go.Figure(data=go.Heatmap(
-    #         z=correlation_matrix.values,
-    #         x=correlation_matrix.columns,
-    #         y=correlation_matrix.index,
-    #         colorscale='RdBu',
-    #         zmin=-1, zmax=1,
-    #         text=[[f"{val:.2f}" for val in row] for row in correlation_matrix.values],
-    #         hoverinfo='text',
-    #         colorbar=dict(title="Correlação")
-    #     ))
-    #     fig.update_layout(
-    #         title="Correlação entre Tickers",
-    #         xaxis_title="Tickers",
-    #         yaxis_title="Tickers",
-    #         margin=dict(l=40, r=40, t=60, b=40),
-    #         height=300
-    #     )
-    #     return fig
-
-    # @dash_app.callback(
-    #     Output('volatility-chart', 'figure'),
-    #     Input('data-store', 'data'),
-    #     prevent_initial_call=False
-    # )
-    # @log_callback("update_volatility_chart")
-    # def update_volatility_chart(store_data):
-    #     # ALTERAÇÃO: Desserializar store_data com orjson_loads
-    #     # Motivo: Dados do dcc.Store foram serializados com orjson_dumps; convertemos para dict
-    #     # Impacto: Permite acessar individual_daily_returns e portfolio_daily_return para gerar o gráfico
-    #     if store_data:
-    #         store_data = orjson_loads(store_data) if isinstance(store_data, (str, bytes)) else store_data
-
-    #     if not store_data or 'individual_daily_returns' not in store_data or 'portfolio_daily_return' not in store_data:
-    #         return go.Figure()
-
-    #     individual_daily_returns = store_data['individual_daily_returns']
-    #     portfolio_daily_return = store_data['portfolio_daily_return']
-    #     tickers = store_data['tickers']
+        individual_daily_returns = store_data['individual_daily_returns']
+        portfolio_daily_return = store_data['portfolio_daily_return']
+        tickers = store_data['tickers']
         
-    #     returns_df = pd.DataFrame({ticker: individual_daily_returns.get(ticker, {}) for ticker in tickers})
-    #     returns_df = returns_df.apply(pd.to_numeric, errors='coerce').dropna()
-    #     returns_df['Portfolio'] = pd.Series(portfolio_daily_return).reindex(returns_df.index).fillna(0)
+        returns_df = pd.DataFrame({ticker: individual_daily_returns.get(ticker, {}) for ticker in tickers})
+        returns_df = returns_df.apply(pd.to_numeric, errors='coerce').dropna()
+        returns_df['Portfolio'] = pd.Series(portfolio_daily_return).reindex(returns_df.index).fillna(0)
 
-    #     volatilities = returns_df.std() * (252 ** 0.5)
+        volatilities = returns_df.std() * (252 ** 0.5)
 
-    #     fig = go.Figure(go.Bar(
-    #         x=volatilities.index,
-    #         y=volatilities.values,
-    #         text=[f"{v:.2f}%" for v in volatilities.values],
-    #         textposition='auto',
-    #         marker_color=['#1f77b4'] * len(tickers) + ['#ff7f0e'],
-    #     ))
-    #     fig.update_layout(
-    #         title="Volatilidade Anualizada",
-    #         yaxis_title="Volatilidade (%)",
-    #         xaxis_title="Tickers",
-    #         margin=dict(l=40, r=40, t=60, b=40),
-    #         height=300,
-    #         bargap=0.2
-    #     )
-    #     return fig
+        fig = go.Figure(go.Bar(
+            x=volatilities.index,
+            y=volatilities.values,
+            text=[f"{v:.2f}%" for v in volatilities.values],
+            textposition='auto',
+            marker_color=['#1f77b4'] * len(tickers) + ['#ff7f0e'],
+        ))
+        fig.update_layout(
+            title="Volatilidade Anualizada",
+            yaxis_title="Volatilidade (%)",
+            xaxis_title="Tickers",
+            margin=dict(l=40, r=40, t=60, b=40),
+            height=300,
+            bargap=0.2
+        )
+        return fig
         
     return dash_app
